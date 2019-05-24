@@ -9,12 +9,16 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var sleepButton: UIButton!
+    @IBOutlet weak var timePicker: UIDatePicker!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        timePicker.setValue(UIColor.white, forKeyPath: "textColor")
     }
-
-
+    
+    
 }
 
