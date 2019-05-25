@@ -13,7 +13,6 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var sleepButton: UIButton!
     @IBOutlet weak var timePicker: UIDatePicker!
-    
   
     //VC life cycle methods
     override func viewDidLoad() {
@@ -57,7 +56,6 @@ class ViewController: UIViewController {
         let components = Calendar.current.dateComponents([.hour, .minute], from: date)
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
-//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         center.add(request)
