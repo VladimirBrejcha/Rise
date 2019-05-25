@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6970F1112A17F5A396D26D45 /* Pods_RiseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EEB4B42115847363896B9EA /* Pods_RiseUITests.framework */; };
 		922032EA22998F3D0006F92B /* PersonalTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922032E922998F3D0006F92B /* PersonalTimeViewController.swift */; };
+		922032EC229997290006F92B /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922032EB229997290006F92B /* TableViewController.swift */; };
 		92D7D6532296F297009321AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6522296F297009321AE /* AppDelegate.swift */; };
 		92D7D6552296F297009321AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6542296F297009321AE /* ViewController.swift */; };
 		92D7D6582296F297009321AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92D7D6562296F297009321AE /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 		5EEB4B42115847363896B9EA /* Pods_RiseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RiseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7493916A7CC808AD6398DFD7 /* Pods_RiseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RiseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		922032E922998F3D0006F92B /* PersonalTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalTimeViewController.swift; sourceTree = "<group>"; };
+		922032EB229997290006F92B /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		92D7D64F2296F297009321AE /* Rise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D7D6522296F297009321AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92D7D6542296F297009321AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				922032E922998F3D0006F92B /* PersonalTimeViewController.swift */,
+				922032EB229997290006F92B /* TableViewController.swift */,
 				92D7D6542296F297009321AE /* ViewController.swift */,
 			);
 			path = Controller;
@@ -182,7 +185,6 @@
 				E01F32CF24889077FFAC29BC /* Pods-RiseUITests.debug.xcconfig */,
 				EC4D7583ECC99DC0CD0D2DAC /* Pods-RiseUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -425,6 +427,7 @@
 				92D7D6552296F297009321AE /* ViewController.swift in Sources */,
 				92D7D6532296F297009321AE /* AppDelegate.swift in Sources */,
 				922032EA22998F3D0006F92B /* PersonalTimeViewController.swift in Sources */,
+				922032EC229997290006F92B /* TableViewController.swift in Sources */,
 				92D7D68122980125009321AE /* Alarm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
