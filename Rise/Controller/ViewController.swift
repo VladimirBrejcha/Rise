@@ -20,7 +20,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setupTimePicker()
         registerLocal()
-        scheduleLocal()
     }
     
     //UI setup methods
@@ -53,15 +52,19 @@ class ViewController: UIViewController {
         content.userInfo = ["customData" : "fizzbuzz"]
         content.sound = .default
         
-//        var dateComponents = DateComponents()
-//        dateComponents.hour = 10
-//        dateComponents.minute = 30
-//        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let date = timePicker.date
+        
+        let components = Calendar.current.dateComponents([.hour, .minute], from: date)
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         center.add(request)
         
+    }
+    @IBAction func sleepButtonPressed(_ sender: UIButton) {
+        scheduleLocal()
     }
     
 }
