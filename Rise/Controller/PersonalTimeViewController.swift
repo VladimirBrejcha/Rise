@@ -38,18 +38,16 @@ class PersonalTimeViewController: UITableViewController, PickerCellDelegate {
             previousCell = cell
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = super.tableView(tableView, cellForRowAt: indexPath)
-        if (cell is PickerCell) {
-            let datePickerTableViewCell = cell as! PickerCell
-            pickerCell(datePickerTableViewCell, didPickDate: nil)
-            return datePickerTableViewCell
+        if let cell = super.tableView(tableView, cellForRowAt: indexPath) as? PickerCell {
+            pickerCell(cell, didPickDate: nil)
+            return cell
         } else {
             return UITableViewCell()
         }
     }
-    
+
     func pickerCell(_ cell: PickerCell, didPickDate date: Date?) {
         switch cell.reuseIdentifier {
         case "0":
@@ -73,4 +71,3 @@ class PersonalTimeViewController: UITableViewController, PickerCellDelegate {
         }
     }
 }
-
