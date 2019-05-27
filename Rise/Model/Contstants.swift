@@ -11,7 +11,6 @@ import Foundation
 struct Contstants {
     struct DataForPicker {
         static let timeYouHaveArray = ["First", "Second", "Third", "Fourth"]
-        static let currentHoursOfSleepArray = ["1", "2", "3", "4"]
         static let wantedHoursOfSleep = ["2", "3", "4", "5"]
     }
     private init() { }

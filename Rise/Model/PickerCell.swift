@@ -405,8 +405,6 @@ extension PickerCell: UIPickerViewDelegate, UIPickerViewDataSource {
         case 0:
             return NSAttributedString(string: Contstants.DataForPicker.timeYouHaveArray[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         case 3:
-            return NSAttributedString(string: Contstants.DataForPicker.currentHoursOfSleepArray[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-        case 4:
             return NSAttributedString(string: Contstants.DataForPicker.wantedHoursOfSleep[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         default:
             return NSAttributedString(string: Contstants.DataForPicker.timeYouHaveArray[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])

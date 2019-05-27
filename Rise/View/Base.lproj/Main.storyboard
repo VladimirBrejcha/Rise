@@ -81,7 +81,7 @@
                         <color key="sectionIndexBackgroundColor" red="0.086274509799999996" green="0.074509803920000006" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="sectionIndexTrackingBackgroundColor" red="0.086274509799999996" green="0.074509803920000006" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="W4t-FV-e8q">
-                            <rect key="frame" x="0.0" y="537.5" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="433.5" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Calculate"/>
                         </button>
@@ -125,23 +125,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="How much time do you usually sleep?" id="Leh-fW-DNa">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="3" rowHeight="48" id="cyJ-FC-eB4" customClass="PickerCell" customModule="Rise" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="367.5" width="375" height="48"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cyJ-FC-eB4" id="Hsl-WZ-gxC">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="47.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                             <tableViewSection headerTitle="How much time do you want to sleep?" id="9g6-82-Eug">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="4" rowHeight="48" id="s5D-RW-5ln" customClass="PickerCell" customModule="Rise" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="471.5" width="375" height="48"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="3" rowHeight="48" id="s5D-RW-5ln" customClass="PickerCell" customModule="Rise" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="367.5" width="375" height="48"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="s5D-RW-5ln" id="g1T-wL-4i1">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="47.5"/>

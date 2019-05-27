@@ -34,9 +34,12 @@ class PersonalTimeViewController: UITableViewController, PickerCellDelegate {
         let cell = self.tableView.cellForRow(at: indexPath)
         if (cell is PickerCell) {
             let datePickerTableViewCell = cell as! PickerCell
-            if datePickerTableViewCell.expanded == false {
-                previousCell?.selectedInTableView(tableView)
+            if previousCell != nil {
+                if datePickerTableViewCell.expanded == false && previousCell!.expanded {
+                    previousCell?.selectedInTableView(tableView)
+                }
             }
+            
             datePickerTableViewCell.selectedInTableView(tableView)
             self.tableView.deselectRow(at: indexPath, animated: true)
             previousCell = datePickerTableViewCell
@@ -64,6 +67,7 @@ class PersonalTimeViewController: UITableViewController, PickerCellDelegate {
             cell.pickerView.isHidden = false
             cell.rightLabel.text = "Set time"
         case "1", "2":
+            PersonalTimeViewController.numberOfCell = 2
             cell.datePicker.datePickerMode = .time
             cell.datePicker.locale = Locale(identifier: "ru")
             cell.datePicker.setValue(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), forKeyPath: "textColor")
@@ -72,12 +76,6 @@ class PersonalTimeViewController: UITableViewController, PickerCellDelegate {
             cell.rightLabel.text = ""
             cell.datePicker.isHidden = true
             cell.pickerView.isHidden = false
-        case "4":
-            PersonalTimeViewController.numberOfCell = 4
-            cell.rightLabel.text = ""
-            cell.datePicker.isHidden = true
-            cell.pickerView.isHidden = false
-            
         default:
             print("error")
         }
