@@ -6,7 +6,6 @@
 //  Copyright © 2019 VladimirBrejcha. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 /**
@@ -342,7 +341,8 @@ open class PickerCell: UITableViewCell {
         let timeIntervalSinceReferenceDateWithoutSeconds = floor(date.timeIntervalSinceReferenceDate / 60.0) * 60.0
         self.date = Date(timeIntervalSinceReferenceDate: timeIntervalSinceReferenceDateWithoutSeconds)
         leftLabel.text = "Date Picker"
-        
+        leftLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        rightLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     }
     
     /**
@@ -367,7 +367,7 @@ open class PickerCell: UITableViewCell {
     }
     
     /**
-     Used to notify the DatePickerCell2 that it was selected. The DatePickerCell2 will then run its selection animation and expand or collapse.
+     Used to notify the DatePickerCell that it was selected. The DatePickerCell will then run its selection animation and expand or collapse.
      
      - parameter tableView: The tableview the DatePickerCell2 was selected in.
      */
@@ -399,15 +399,19 @@ extension PickerCell: UIPickerViewDelegate, UIPickerViewDataSource {
         return 4
     }
     
-    public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return Contstants.DataForPicker.timeYouHaveArray[row]
-    }
-    
     public func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
-        return NSAttributedString(string: Contstants.DataForPicker.timeYouHaveArray[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        switch PersonalTimeViewController.numberOfCell {
+        case 0:
+            return NSAttributedString(string: Contstants.DataForPicker.timeYouHaveArray[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        case 3:
+            return NSAttributedString(string: Contstants.DataForPicker.currentHoursOfSleepArray[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        case 4:
+            return NSAttributedString(string: Contstants.DataForPicker.wantedHoursOfSleep[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        default:
+            return NSAttributedString(string: Contstants.DataForPicker.timeYouHaveArray[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        }
     }
-    
     
 }
 
