@@ -48,13 +48,17 @@ class PersonalTimeViewController: UITableViewController, PickerCellDelegate {
     func pickerCell(_ cell: PickerCell, didPickDate date: Date?) {
         switch cell.reuseIdentifier {
         case "0":
-            print("0")
             cell.datePicker.isHidden = true
             cell.pickerView.isHidden = false
+            cell.leftLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            cell.pickerView.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            cell.pickerView.setValue(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), forKeyPath: "textColor")
         case "1":
+            cell.leftLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             cell.rightLabelTextColor = .red
             cell.datePicker.datePickerMode = .time
             cell.datePicker.locale = Locale(identifier: "ru")
+            cell.datePicker.setValue(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), forKeyPath: "textColor")
         default:
             print("error")
         }

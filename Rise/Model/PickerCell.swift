@@ -95,6 +95,7 @@ open class PickerCell: UITableViewCell {
     /// The datepicker embeded in the cell.
     open var datePicker: UIDatePicker = UIDatePicker()
     
+    // The pickerview embeded in the cell.
     open var pickerView: UIPickerView = UIPickerView()
     
     /// Is the cell expanded?
@@ -399,8 +400,14 @@ extension PickerCell: UIPickerViewDelegate, UIPickerViewDataSource {
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return 4
     }
+    
     public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return componentsLabel[row]
+    }
+    
+    public func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        
+        return NSAttributedString(string: componentsLabel[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
     }
     
     
