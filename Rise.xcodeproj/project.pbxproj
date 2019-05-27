@@ -11,6 +11,7 @@
 		922032EA22998F3D0006F92B /* PersonalTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922032E922998F3D0006F92B /* PersonalTimeViewController.swift */; };
 		922032EC229997290006F92B /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922032EB229997290006F92B /* TableViewController.swift */; };
 		922032EE229BE2100006F92B /* PickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922032ED229BE2100006F92B /* PickerCell.swift */; };
+		922032F0229BF2890006F92B /* Contstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922032EF229BF2890006F92B /* Contstants.swift */; };
 		92D7D6532296F297009321AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6522296F297009321AE /* AppDelegate.swift */; };
 		92D7D6552296F297009321AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6542296F297009321AE /* ViewController.swift */; };
 		92D7D6582296F297009321AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92D7D6562296F297009321AE /* Main.storyboard */; };
@@ -49,6 +50,7 @@
 		922032E922998F3D0006F92B /* PersonalTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalTimeViewController.swift; sourceTree = "<group>"; };
 		922032EB229997290006F92B /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		922032ED229BE2100006F92B /* PickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerCell.swift; sourceTree = "<group>"; };
+		922032EF229BF2890006F92B /* Contstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contstants.swift; sourceTree = "<group>"; };
 		92D7D64F2296F297009321AE /* Rise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D7D6522296F297009321AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92D7D6542296F297009321AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				922032ED229BE2100006F92B /* PickerCell.swift */,
+				922032EF229BF2890006F92B /* Contstants.swift */,
 				92D7D68022980125009321AE /* Alarm.swift */,
 			);
 			path = Model;
@@ -409,6 +412,7 @@
 				92D7D6532296F297009321AE /* AppDelegate.swift in Sources */,
 				922032EA22998F3D0006F92B /* PersonalTimeViewController.swift in Sources */,
 				922032EC229997290006F92B /* TableViewController.swift in Sources */,
+				922032F0229BF2890006F92B /* Contstants.swift in Sources */,
 				92D7D68122980125009321AE /* Alarm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

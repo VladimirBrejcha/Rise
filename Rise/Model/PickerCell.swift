@@ -22,8 +22,6 @@ import UIKit
 
 open class PickerCell: UITableViewCell {
     
-    let componentsLabel = ["First", "Second", "Third", "Fourth"]
-    
     /**
      *  UIView subclass. Used as a subview in UITableViewCells. Does not change color when the UITableViewCell is selected.
      */
@@ -402,12 +400,12 @@ extension PickerCell: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return componentsLabel[row]
+        return Contstants.DataForPicker.timeYouHaveArray[row]
     }
     
     public func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
-        return NSAttributedString(string: componentsLabel[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        return NSAttributedString(string: Contstants.DataForPicker.timeYouHaveArray[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
     }
     
     
