@@ -86,23 +86,10 @@
                             <state key="normal" title="Calculate"/>
                         </button>
                         <sections>
-                            <tableViewSection headerTitle="How much time do you have?" id="U3Q-mH-kvR">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="0" rowHeight="48" id="2ou-z7-sco" customClass="PickerCell" customModule="Rise" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="48"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2ou-z7-sco" id="873-XR-e42">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="47.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="What time did you fall sleep yesterday?" id="tO5-do-D9b">
+                            <tableViewSection headerTitle="When did you fall asleep yesterday" id="tO5-do-D9b">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="1" rowHeight="48" id="Cx9-uf-rJV" customClass="PickerCell" customModule="Rise" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="159.5" width="375" height="48"/>
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="48"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Cx9-uf-rJV" id="GKS-HC-Nna">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="47.5"/>
@@ -112,10 +99,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="What time do you want to schedule your sleep?" id="9dy-x5-KIg">
+                            <tableViewSection headerTitle="Wake up at" id="9dy-x5-KIg">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="2" rowHeight="48" id="hju-yY-8hT" customClass="PickerCell" customModule="Rise" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="263.5" width="375" height="48"/>
+                                        <rect key="frame" x="0.0" y="159.5" width="375" height="48"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hju-yY-8hT" id="vcy-9W-r5B">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="47.5"/>
@@ -125,12 +112,25 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="How much time do you want to sleep?" id="9g6-82-Eug">
+                            <tableViewSection headerTitle="How much time do you wish to sleep?" id="9g6-82-Eug">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="3" rowHeight="48" id="s5D-RW-5ln" customClass="PickerCell" customModule="Rise" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="367.5" width="375" height="48"/>
+                                        <rect key="frame" x="0.0" y="263.5" width="375" height="48"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="s5D-RW-5ln" id="g1T-wL-4i1">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="47.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="How long" id="U3Q-mH-kvR">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="0" rowHeight="48" id="2ou-z7-sco" customClass="PickerCell" customModule="Rise" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="367.5" width="375" height="48"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2ou-z7-sco" id="873-XR-e42">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="47.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>

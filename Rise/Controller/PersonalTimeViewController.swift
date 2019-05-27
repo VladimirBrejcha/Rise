@@ -9,7 +9,6 @@
 import UIKit
 
 class PersonalTimeViewController: UITableViewController, PickerCellDelegate {
-    
     static var numberOfCell = 0
     var previousCell: PickerCell?
 
@@ -17,35 +16,27 @@ class PersonalTimeViewController: UITableViewController, PickerCellDelegate {
         super.viewDidLoad()
         tableView.delegate = self
     }
-    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         // Get the correct height if the cell is a DatePickerCell.
-        let cell = tableView.cellForRow(at: indexPath)
-        if (cell is PickerCell) {
-            return (cell as! PickerCell).datePickerHeight()
+        if let cell = tableView.cellForRow(at: indexPath) as? PickerCell {
+            return cell.datePickerHeight()
         }
-        
         return super.tableView(tableView, heightForRowAt: indexPath)
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         // Deselect automatically if the cell is a DatePickerCell.
-        let cell = self.tableView.cellForRow(at: indexPath)
-        if (cell is PickerCell) {
-            let datePickerTableViewCell = cell as! PickerCell
+        if let cell = self.tableView.cellForRow(at: indexPath) as? PickerCell {
             if previousCell != nil {
-                if datePickerTableViewCell.expanded == false && previousCell!.expanded {
+                if cell.expanded == false && previousCell!.expanded {
                     previousCell?.selectedInTableView(tableView)
                 }
             }
-            
-            datePickerTableViewCell.selectedInTableView(tableView)
+            cell.selectedInTableView(tableView)
             self.tableView.deselectRow(at: indexPath, animated: true)
-            previousCell = datePickerTableViewCell
+            previousCell = cell
         }
-        
-      
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -66,6 +57,7 @@ class PersonalTimeViewController: UITableViewController, PickerCellDelegate {
             cell.datePicker.isHidden = true
             cell.pickerView.isHidden = false
             cell.rightLabel.text = "Set time"
+            cell.leftLabel.text = "At:"
         case "1", "2":
             PersonalTimeViewController.numberOfCell = 2
             cell.datePicker.datePickerMode = .time
