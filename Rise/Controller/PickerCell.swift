@@ -22,7 +22,6 @@ open class PickerCell: UITableViewCell {
     open var date: Date = Date() {
         didSet {
             datePicker.date = date
-            PickerCell.dateFormatter.dateStyle = dateStyle
             PickerCell.dateFormatter.timeStyle = timeStyle
             rightLabel.text = PickerCell.dateFormatter.string(from: date)
         }
@@ -32,14 +31,6 @@ open class PickerCell: UITableViewCell {
     open var timeStyle = DateFormatter.Style.short {
         didSet {
             PickerCell.dateFormatter.timeStyle = timeStyle
-            rightLabel.text = PickerCell.dateFormatter.string(from: date)
-        }
-    }
-
-    /// The datestyle.
-    open var dateStyle = DateFormatter.Style.medium {
-        didSet {
-            PickerCell.dateFormatter.dateStyle = dateStyle
             rightLabel.text = PickerCell.dateFormatter.string(from: date)
         }
     }
@@ -97,8 +88,6 @@ open class PickerCell: UITableViewCell {
         }
 
         pickerView.isHidden = true
-        pickerView.delegate = self
-        pickerView.dataSource = self
 
         datePicker.addTarget(self, action: #selector(PickerCell.datePicked), for: UIControl.Event.valueChanged)
 
@@ -247,7 +236,7 @@ open class PickerCell: UITableViewCell {
                 toItem: self.contentView,
                 attribute: NSLayoutConstraint.Attribute.bottom,
                 multiplier: 1.0,
-                constant: 1
+                constant: 0
             )
             ])
     }
@@ -280,6 +269,15 @@ open class PickerCell: UITableViewCell {
                 attribute: NSLayoutConstraint.Attribute.top,
                 multiplier: 1.0,
                 constant: 0
+            ),
+            NSLayoutConstraint(
+                item: datePicker,
+                attribute: NSLayoutConstraint.Attribute.height,
+                relatedBy: NSLayoutConstraint.Relation.equal,
+                toItem: nil,
+                attribute: NSLayoutConstraint.Attribute.height,
+                multiplier: 1.0,
+                constant: 130
             )
             ])
     }
@@ -312,37 +310,17 @@ open class PickerCell: UITableViewCell {
                 attribute: NSLayoutConstraint.Attribute.top,
                 multiplier: 1.0,
                 constant: 0
+            ),
+            NSLayoutConstraint(
+                item: pickerView,
+                attribute: NSLayoutConstraint.Attribute.height,
+                relatedBy: NSLayoutConstraint.Relation.equal,
+                toItem: nil,
+                attribute: NSLayoutConstraint.Attribute.height,
+                multiplier: 1.0,
+                constant: 130
             )
             ])
-    }
-
-}
-
-extension PickerCell: UIPickerViewDelegate, UIPickerViewDataSource {
-    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-
-    public func pickerView(_ pickerView: UIPickerView,
-                           numberOfRowsInComponent component: Int) -> Int {
-        return 4
-    }
-
-    public func pickerView(_ pickerView: UIPickerView,
-                           attributedTitleForRow row: Int,
-                           forComponent component: Int) -> NSAttributedString? {
-
-        switch PersonalTimeViewController.numberOfCell {
-        case 0:
-            return NSAttributedString(string: Contstants.DataForPicker.timeYouHaveArray[row],
-                                      attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-        case 3:
-            return NSAttributedString(string: Contstants.DataForPicker.wantedHoursOfSleep[row],
-                                      attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-        default:
-            return NSAttributedString(string: Contstants.DataForPicker.timeYouHaveArray[row],
-                                      attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-        }
     }
 
 }

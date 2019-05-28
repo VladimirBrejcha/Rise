@@ -9,7 +9,7 @@
 import UIKit
 import UserNotifications
 
-class ViewController: UIViewController {
+class SleepViewController: UIViewController {
 
     @IBOutlet weak var sleepButton: UIButton!
     @IBOutlet weak var timePicker: UIDatePicker!
