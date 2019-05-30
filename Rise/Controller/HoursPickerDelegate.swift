@@ -18,8 +18,11 @@ class HoursPickerDelegate: NSObject, UIPickerViewDataSource, UIPickerViewDelegat
         return Constants.DataForPicker.hoursArray.count
     }
 
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return Constants.DataForPicker.hoursArray[row]
+    func pickerView(_ pickerView: UIPickerView,
+                    attributedTitleForRow row: Int,
+                    forComponent component: Int) -> NSAttributedString? {
+        return NSAttributedString(string: Constants.DataForPicker.hoursArray[row],
+                                  attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)])
     }
 
 }
@@ -34,8 +37,11 @@ class DaysPickerDelegate: NSObject, UIPickerViewDataSource, UIPickerViewDelegate
         return Constants.DataForPicker.daysArray.count
     }
 
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return Constants.DataForPicker.daysArray[row]
+    func pickerView(_ pickerView: UIPickerView,
+                    attributedTitleForRow row: Int,
+                    forComponent component: Int) -> NSAttributedString? {
+        return NSAttributedString(string: Constants.DataForPicker.daysArray[row],
+                                  attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)])
     }
 
 }

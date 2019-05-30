@@ -14,19 +14,19 @@ class SleepViewController: UIViewController {
     @IBOutlet weak var sleepButton: UIButton!
     @IBOutlet weak var timePicker: UIDatePicker!
 
-    //VC life cycle methods
+    // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTimePicker()
         registerLocal()
     }
 
-    //UI setup methods
+    // MARK: UI setup methods
     private func setupTimePicker() {
         timePicker.setValue(UIColor.white, forKeyPath: "textColor")
     }
 
-    //Notification center methods
+    // MARK: Notification center methods
     private func registerLocal() {
         let center = UNUserNotificationCenter.current()
 

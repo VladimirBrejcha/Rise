@@ -17,7 +17,7 @@ class ExpandingCell: UITableViewCell {
 
     // MARK: Properties
     var expanded = false // Is the cell expanded?
-    let unexpandedHeight: CGFloat = 44
+    private let unexpandedHeight: CGFloat = 44
 
     // MARK: Lifecycle
     override func awakeFromNib() {
@@ -50,6 +50,9 @@ class ExpandingCell: UITableViewCell {
     open func createPicker(isDatePicker: Bool, delegate: NSObject? = nil) {
         if isDatePicker {
             let datePicker = UIDatePicker()
+            datePicker.setValue(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), forKey: "textColor")
+            datePicker.datePickerMode = .time
+            datePicker.locale = Locale(identifier: "ru")
             setUIForPicker(datePicker)
         } else if isDatePicker == false {
             let pickerView = UIPickerView()
@@ -75,7 +78,7 @@ class ExpandingCell: UITableViewCell {
                                                         toItem: pickerContainer,
                                                         attribute: .top,
                                                         multiplier: 1,
-                                                        constant: 0),
+                                                        constant: 5),
                                      NSLayoutConstraint(item: picker,
                                                         attribute: .left,
                                                         relatedBy: .equal,

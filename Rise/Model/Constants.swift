@@ -13,6 +13,10 @@ struct Constants {
         static let daysArray = ["10 days(hardcore)", "two weeks", "1 month (Recommented)", "2 months(Easier)"]
         static let hoursArray = ["6.5 hours", "7 hours", "7.5 hours", "8 hours (Recommended)", "8.5 hours", "9 hours"]
     }
+    struct Cell {
+        static let identifier = "expandingCell"
+        static let nibName = "ExpandingCell"
+    }
 
     private init() { }
 }

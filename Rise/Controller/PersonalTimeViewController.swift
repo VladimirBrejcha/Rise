@@ -10,17 +10,22 @@ import UIKit
 
 class PersonalTimeViewController: UITableViewController {
 
+    // MARK: Properties
     var previouslySelectedCell: ExpandingCell?
 
+    // MARK: Delegates
     lazy var hoursPickerDelegate = HoursPickerDelegate()
     lazy var daysPickerDelegate = DaysPickerDelegate()
 
+    // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
-        tableView.register(UINib(nibName: "ExpandingCell", bundle: nil), forCellReuseIdentifier: "expandingCell")
+        tableView.register(UINib(nibName: Constants.Cell.nibName, bundle: nil),
+                           forCellReuseIdentifier: Constants.Cell.identifier)
     }
 
+    // MARK: TableView methods
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         // Get the correct height if the cell is a DatePickerCell.
         if let cell = tableView.cellForRow(at: indexPath) as? ExpandingCell {
@@ -47,22 +52,18 @@ class PersonalTimeViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         super.tableView(tableView, cellForRowAt: indexPath)
 
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "expandingCell") as? ExpandingCell {
-            print(indexPath)
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Cell.identifier) as? ExpandingCell {
             switch indexPath.section {
             case 0, 2:
                 cell.createPicker(isDatePicker: true)
-                return cell
             case 1:
                 cell.createPicker(isDatePicker: false, delegate: hoursPickerDelegate)
-                return cell
             case 3:
                 cell.createPicker(isDatePicker: false, delegate: daysPickerDelegate)
-                return cell
             default:
                 print("error")
-                return cell
             }
+            return cell
         } else {
             return UITableViewCell()
         }
