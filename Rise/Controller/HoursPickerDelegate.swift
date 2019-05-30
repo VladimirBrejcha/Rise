@@ -25,6 +25,10 @@ class HoursPickerDelegate: NSObject, UIPickerViewDataSource, UIPickerViewDelegat
                                   attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)])
     }
 
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        // отсюда вытянуть инфу
+    }
+
 }
 
 class DaysPickerDelegate: NSObject, UIPickerViewDataSource, UIPickerViewDelegate {

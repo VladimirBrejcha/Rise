@@ -18,6 +18,7 @@ class ExpandingCell: UITableViewCell {
     // MARK: Properties
     var expanded = false // Is the cell expanded?
     private let unexpandedHeight: CGFloat = 44
+    private lazy var dateFormatter = DateFormatter()
 
     // MARK: Lifecycle
     override func awakeFromNib() {
@@ -53,6 +54,7 @@ class ExpandingCell: UITableViewCell {
             datePicker.setValue(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), forKey: "textColor")
             datePicker.datePickerMode = .time
             datePicker.locale = Locale(identifier: "ru")
+            datePicker.addTarget(self, action: #selector(dateChanged(sender:)), for: .valueChanged)
             setUIForPicker(datePicker)
         } else if isDatePicker == false {
             let pickerView = UIPickerView()
@@ -62,37 +64,29 @@ class ExpandingCell: UITableViewCell {
         }
     }
 
+    @objc func dateChanged(sender: UIDatePicker) {
+
+        let date = sender.date
+
+        dateFormatter.timeStyle = .short
+        dateFormatter.locale = Locale(identifier: "ru")
+
+        rightLabel.text = dateFormatter.string(from: date)
+    }
+
+    @objc func pickerValueChanged(sender: UIPickerView) {
+        //чтобы этот метод вызвался и присвоил лэйблу эту инфу
+        rightLabel.text = ""
+    }
+
     private func setUIForPicker(_ picker: UIView) {
         pickerContainer.addSubview(picker)
+
         picker.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([NSLayoutConstraint(item: picker,
-                                                        attribute: .bottom,
-                                                        relatedBy: .equal,
-                                                        toItem: pickerContainer,
-                                                        attribute: .bottom,
-                                                        multiplier: 1,
-                                                        constant: 0),
-                                     NSLayoutConstraint(item: picker,
-                                                        attribute: .top,
-                                                        relatedBy: .equal,
-                                                        toItem: pickerContainer,
-                                                        attribute: .top,
-                                                        multiplier: 1,
-                                                        constant: 5),
-                                     NSLayoutConstraint(item: picker,
-                                                        attribute: .left,
-                                                        relatedBy: .equal,
-                                                        toItem: pickerContainer,
-                                                        attribute: .left,
-                                                        multiplier: 1,
-                                                        constant: 0),
-                                     NSLayoutConstraint(item: picker,
-                                                        attribute: .right,
-                                                        relatedBy: .equal,
-                                                        toItem: pickerContainer,
-                                                        attribute: .right,
-                                                        multiplier: 1,
-                                                        constant: 0)])
+        picker.bottomAnchor.constraint(equalTo: pickerContainer.bottomAnchor).isActive = true
+        picker.topAnchor.constraint(equalTo: pickerContainer.topAnchor, constant: 5).isActive = true
+        picker.leftAnchor.constraint(equalTo: pickerContainer.leftAnchor).isActive = true
+        picker.rightAnchor.constraint(equalTo: pickerContainer.rightAnchor).isActive = true
     }
 
     open func pickerHeight() -> CGFloat {
