@@ -13,10 +13,6 @@ class PersonalTimeViewController: UITableViewController {
     // MARK: Properties
     var previouslySelectedCell: ExpandingCell?
 
-    // MARK: Delegates
-    lazy var hoursPickerDelegate = HoursPickerDelegate()
-    lazy var daysPickerDelegate = DaysPickerDelegate()
-
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,11 +55,11 @@ class PersonalTimeViewController: UITableViewController {
 
         switch indexPath.section {
         case 0, 2:
-            cell.createPicker(isDatePicker: true)
+            cell.createPicker(.datePicker)
         case 1:
-            cell.createPicker(isDatePicker: false, delegate: hoursPickerDelegate)
+            cell.createPicker(.pickerViewOne)
         case 3:
-            cell.createPicker(isDatePicker: false, delegate: daysPickerDelegate)
+            cell.createPicker(.pickerViewTwo)
         default:
             print("error")
         }

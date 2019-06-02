@@ -12,7 +12,7 @@
 		922032F0229BF2890006F92B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922032EF229BF2890006F92B /* Constants.swift */; };
 		92B78CFA229FAF6C0087240B /* ExpandingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B78CF8229FAF6C0087240B /* ExpandingCell.swift */; };
 		92B78CFB229FAF6C0087240B /* ExpandingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92B78CF9229FAF6C0087240B /* ExpandingCell.xib */; };
-		92B78CFF229FF8B40087240B /* HoursPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B78CFE229FF8B40087240B /* HoursPickerDelegate.swift */; };
+		92D12FD622A4045E0093B0A3 /* PickerDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D12FD522A4045E0093B0A3 /* PickerDataModel.swift */; };
 		92D7D6532296F297009321AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6522296F297009321AE /* AppDelegate.swift */; };
 		92D7D6552296F297009321AE /* SleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6542296F297009321AE /* SleepViewController.swift */; };
 		92D7D6582296F297009321AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92D7D6562296F297009321AE /* Main.storyboard */; };
@@ -52,7 +52,7 @@
 		922032EF229BF2890006F92B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		92B78CF8229FAF6C0087240B /* ExpandingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandingCell.swift; sourceTree = "<group>"; };
 		92B78CF9229FAF6C0087240B /* ExpandingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandingCell.xib; sourceTree = "<group>"; };
-		92B78CFE229FF8B40087240B /* HoursPickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursPickerDelegate.swift; sourceTree = "<group>"; };
+		92D12FD522A4045E0093B0A3 /* PickerDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerDataModel.swift; sourceTree = "<group>"; };
 		92D7D64F2296F297009321AE /* Rise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D7D6522296F297009321AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92D7D6542296F297009321AE /* SleepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +157,7 @@
 		92D7D68222980129009321AE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				92D12FD522A4045E0093B0A3 /* PickerDataModel.swift */,
 				92D7D68022980125009321AE /* Alarm.swift */,
 				922032EF229BF2890006F92B /* Constants.swift */,
 			);
@@ -167,7 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				922032E922998F3D0006F92B /* PersonalTimeViewController.swift */,
-				92B78CFE229FF8B40087240B /* HoursPickerDelegate.swift */,
 				92B78CF8229FAF6C0087240B /* ExpandingCell.swift */,
 				92D7D6542296F297009321AE /* SleepViewController.swift */,
 			);
@@ -430,9 +430,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				92D7D6552296F297009321AE /* SleepViewController.swift in Sources */,
+				92D12FD622A4045E0093B0A3 /* PickerDataModel.swift in Sources */,
 				92D7D6532296F297009321AE /* AppDelegate.swift in Sources */,
 				92B78CFA229FAF6C0087240B /* ExpandingCell.swift in Sources */,
-				92B78CFF229FF8B40087240B /* HoursPickerDelegate.swift in Sources */,
 				922032EA22998F3D0006F92B /* PersonalTimeViewController.swift in Sources */,
 				922032F0229BF2890006F92B /* Constants.swift in Sources */,
 				92D7D68122980125009321AE /* Alarm.swift in Sources */,

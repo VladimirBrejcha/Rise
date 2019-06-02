@@ -10,6 +10,12 @@ import UIKit
 
 class ExpandingCell: UITableViewCell {
 
+    enum Picker {
+        case datePicker
+        case pickerViewOne
+        case pickerViewTwo
+    }
+
     // MARK: IBOutlets
     @IBOutlet weak var leftLabel: UILabel!
     @IBOutlet weak var rightLabel: UILabel!
@@ -18,6 +24,7 @@ class ExpandingCell: UITableViewCell {
     // MARK: Properties
     var expanded = false // Is the cell expanded?
     private let unexpandedHeight: CGFloat = 44
+    lazy var pickerDateModel = PickerDataModel()
     private lazy var dateFormatter = DateFormatter()
 
     // MARK: Lifecycle
@@ -48,20 +55,37 @@ class ExpandingCell: UITableViewCell {
     }
 
     // MARK: Picker methods
-    open func createPicker(isDatePicker: Bool, delegate: NSObject? = nil) {
-        if isDatePicker {
-            let datePicker = UIDatePicker()
-            datePicker.setValue(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), forKey: "textColor")
-            datePicker.datePickerMode = .time
-            datePicker.locale = Locale(identifier: "ru")
-            datePicker.addTarget(self, action: #selector(dateChanged(sender:)), for: .valueChanged)
-            setUIForPicker(datePicker)
-        } else if isDatePicker == false {
-            let pickerView = UIPickerView()
-            pickerView.delegate = delegate as? UIPickerViewDelegate
-            pickerView.dataSource = delegate as? UIPickerViewDataSource
-            setUIForPicker(pickerView)
+    open func createPicker(_ picker: Picker) {
+        switch picker {
+        case .datePicker:
+            setupDatePicker()
+            
+        case .pickerViewOne:
+            pickerDateModel.numberOfRows = Constants.DataForPicker.hoursArray.count
+            pickerDateModel.titleForRowArray = Constants.DataForPicker.hoursArray
+            setupPickerView()
+
+        case .pickerViewTwo:
+            pickerDateModel.numberOfRows = Constants.DataForPicker.daysArray.count
+            pickerDateModel.titleForRowArray = Constants.DataForPicker.daysArray
+            setupPickerView()
         }
+    }
+    
+    private func setupPickerView() {
+        let pickerView = UIPickerView()
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        setUIForPicker(pickerView)
+    }
+    
+    private func setupDatePicker() {
+        let datePicker = UIDatePicker()
+        datePicker.setValue(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), forKey: "textColor")
+        datePicker.datePickerMode = .time
+        datePicker.locale = Locale(identifier: "ru")
+        datePicker.addTarget(self, action: #selector(dateChanged(sender:)), for: .valueChanged)
+        setUIForPicker(datePicker)
     }
 
     @objc func dateChanged(sender: UIDatePicker) {
@@ -92,6 +116,27 @@ class ExpandingCell: UITableViewCell {
     open func pickerHeight() -> CGFloat {
         let expandedHeight = unexpandedHeight + 130 //TODO: change it to layout automatically
         return expanded ? expandedHeight : unexpandedHeight
+    }
+
+}
+
+extension ExpandingCell: UIPickerViewDelegate, UIPickerViewDataSource {
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerDateModel.numberOfRows ?? 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        return NSAttributedString(string: pickerDateModel.titleForRowArray?[row] ?? "Error loading data",
+                                  attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)])
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        rightLabel.text = pickerDateModel.titleForRowArray?[pickerView.selectedRow(inComponent: component)]
     }
 
 }
