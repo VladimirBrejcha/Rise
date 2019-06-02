@@ -17,6 +17,7 @@ class PersonalTimeViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
+        tableView.dataSource = self
         tableView.register(UINib(nibName: Constants.Cell.nibName, bundle: nil),
                            forCellReuseIdentifier: Constants.Cell.identifier)
     }

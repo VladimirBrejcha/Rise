@@ -8,7 +8,8 @@
 
 import UIKit
 import UserNotifications
-import TORoundedWindow
+import SPStorkController
+import Dodo
 
 class SleepViewController: UIViewController {
 
@@ -20,7 +21,6 @@ class SleepViewController: UIViewController {
         super.viewDidLoad()
         setupTimePicker()
         registerLocal()
-        TORoundedWindow.show()
     }
 
     // MARK: UI setup methods
@@ -66,5 +66,22 @@ class SleepViewController: UIViewController {
     @IBAction func sleepButtonPressed(_ sender: UIButton) {
         scheduleLocal()
     }
-
+    @IBAction func bottomButton(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "personalViewController")
+        let transitionDelegate = SPStorkTransitioningDelegate()
+        controller.transitioningDelegate = transitionDelegate
+        controller.modalPresentationStyle = .custom
+        controller.modalPresentationCapturesStatusBarAppearance = true
+        transitionDelegate.storkDelegate = self
+        self.present(controller, animated: true, completion: nil)
+    }
+    
+}
+extension SleepViewController: SPStorkControllerDelegate {
+    func didDismissStorkBySwipe() {
+        view.dodo.style.leftButton.icon = .close
+        view.dodo.topAnchor = view.safeAreaLayoutGuide.topAnchor
+        view.dodo.success("Saved!")
+    }
 }

@@ -101,9 +101,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		92D12FD722A4237C0093B0A3 /* ExpandingCell */ = {
+			isa = PBXGroup;
+			children = (
+				92B78CF8229FAF6C0087240B /* ExpandingCell.swift */,
+				92B78CF9229FAF6C0087240B /* ExpandingCell.xib */,
+			);
+			path = ExpandingCell;
+			sourceTree = "<group>";
+		};
 		92D7D6462296F297009321AE = {
 			isa = PBXGroup;
 			children = (
+				92D7D6522296F297009321AE /* AppDelegate.swift */,
 				92D7D6512296F297009321AE /* Rise */,
 				92D7D6662296F298009321AE /* RiseTests */,
 				92D7D6712296F298009321AE /* RiseUITests */,
@@ -126,7 +136,6 @@
 		92D7D6512296F297009321AE /* Rise */ = {
 			isa = PBXGroup;
 			children = (
-				92D7D6522296F297009321AE /* AppDelegate.swift */,
 				92D7D68322980130009321AE /* Controller */,
 				92D7D68222980129009321AE /* Model */,
 				92D7D68422980138009321AE /* View */,
@@ -168,7 +177,6 @@
 			isa = PBXGroup;
 			children = (
 				922032E922998F3D0006F92B /* PersonalTimeViewController.swift */,
-				92B78CF8229FAF6C0087240B /* ExpandingCell.swift */,
 				92D7D6542296F297009321AE /* SleepViewController.swift */,
 			);
 			path = Controller;
@@ -178,7 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				92D7D65B2296F298009321AE /* LaunchScreen.storyboard */,
-				92B78CF9229FAF6C0087240B /* ExpandingCell.xib */,
+				92D12FD722A4237C0093B0A3 /* ExpandingCell */,
 				92D7D6562296F297009321AE /* Main.storyboard */,
 			);
 			path = View;
@@ -349,12 +357,16 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Rise/Pods-Rise-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Dodo/Dodo.framework",
+				"${BUILT_PRODUCTS_DIR}/SPStorkController/SPStorkController.framework",
 				"${BUILT_PRODUCTS_DIR}/TORoundedWindow/TORoundedWindow.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Dodo.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SPStorkController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TORoundedWindow.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
