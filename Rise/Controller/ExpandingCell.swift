@@ -17,7 +17,6 @@ class ExpandingCell: UITableViewCell {
 
     // MARK: IBOutlets
     @IBOutlet weak var leftLabel: UILabel!
-    @IBOutlet weak var rightLabel: UILabel!
     @IBOutlet weak var pickerContainer: UIView!
 
     // MARK: Properties
@@ -36,11 +35,11 @@ class ExpandingCell: UITableViewCell {
 
         expanded = !expanded
 
-        UIView.transition(with: rightLabel,
+        UIView.transition(with: leftLabel,
                           duration: 0.25,
                           options: .transitionCrossDissolve,
                           animations: { () in
-                            self.rightLabel.textColor
+                            self.leftLabel.textColor
                                 = self.expanded
                                 ? self.tintColor
                                 : UIColor(hue: 0.639,
@@ -97,7 +96,7 @@ class ExpandingCell: UITableViewCell {
         dateFormatter.timeStyle = .short
         dateFormatter.locale = Locale(identifier: "ru")
 
-        rightLabel.text = dateFormatter.string(from: date)
+        leftLabel.text = dateFormatter.string(from: date)
     }
 
     open func pickerHeight() -> CGFloat {
@@ -123,7 +122,7 @@ extension ExpandingCell: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        rightLabel.text = pickerDateModel?.titleForRowArray[pickerView.selectedRow(inComponent: component)]
+        leftLabel.text = pickerDateModel?.titleForRowArray[pickerView.selectedRow(inComponent: component)]
     }
 
 }

@@ -20,18 +20,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kVV-NN-Pdf">
-                        <rect key="frame" x="14" y="0.0" width="42" height="44"/>
+                        <rect key="frame" x="14" y="0.0" width="292" height="44"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="44" id="EeF-EM-uXe"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ik-vR-aOq">
-                        <rect key="frame" x="264" y="0.0" width="42" height="44"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="44" id="NLG-YF-xXm"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -44,10 +35,9 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="3Ik-vR-aOq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Ipj-An-yR5"/>
+                    <constraint firstAttribute="trailing" secondItem="kVV-NN-Pdf" secondAttribute="trailing" constant="14" id="Ak2-4A-ONy"/>
                     <constraint firstAttribute="trailing" secondItem="l3m-K2-Jyu" secondAttribute="trailing" id="JGv-56-IkQ"/>
                     <constraint firstItem="kVV-NN-Pdf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="UQB-in-BvP"/>
-                    <constraint firstAttribute="trailing" secondItem="3Ik-vR-aOq" secondAttribute="trailing" constant="14" id="Vq5-Xb-bIg"/>
                     <constraint firstAttribute="bottom" secondItem="l3m-K2-Jyu" secondAttribute="bottom" id="e6s-4B-S8J"/>
                     <constraint firstItem="l3m-K2-Jyu" firstAttribute="top" secondItem="kVV-NN-Pdf" secondAttribute="bottom" constant="-1" id="pdv-ot-bfg"/>
                     <constraint firstItem="kVV-NN-Pdf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="14" id="pkd-ej-SWT"/>
@@ -59,9 +49,8 @@
             <connections>
                 <outlet property="leftLabel" destination="kVV-NN-Pdf" id="bqR-AS-qVV"/>
                 <outlet property="pickerContainer" destination="l3m-K2-Jyu" id="741-VY-xa7"/>
-                <outlet property="rightLabel" destination="3Ik-vR-aOq" id="RF5-wO-N68"/>
             </connections>
-            <point key="canvasLocation" x="-57" y="93"/>
+            <point key="canvasLocation" x="-57.971014492753625" y="92.410714285714278"/>
         </tableViewCell>
     </objects>
 </document>
