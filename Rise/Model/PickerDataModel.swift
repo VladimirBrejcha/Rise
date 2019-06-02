@@ -9,6 +9,6 @@
 import UIKit
 
 struct PickerDataModel {
-    var numberOfRows: Int?
-    var titleForRowArray: [String]?
+    var numberOfRows: Int
+    var titleForRowArray: [String]
 }

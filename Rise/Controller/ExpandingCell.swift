@@ -12,8 +12,7 @@ class ExpandingCell: UITableViewCell {
 
     enum Picker {
         case datePicker
-        case pickerViewOne
-        case pickerViewTwo
+        case pickerView
     }
 
     // MARK: IBOutlets
@@ -24,7 +23,7 @@ class ExpandingCell: UITableViewCell {
     // MARK: Properties
     var expanded = false // Is the cell expanded?
     private let unexpandedHeight: CGFloat = 44
-    lazy var pickerDateModel = PickerDataModel()
+    var pickerDateModel: PickerDataModel?
     private lazy var dateFormatter = DateFormatter()
 
     // MARK: Lifecycle
@@ -49,25 +48,19 @@ class ExpandingCell: UITableViewCell {
                                           brightness: 0.576,
                                           alpha: 1.0)},
                           completion: nil)
-
+        
         tableView.beginUpdates()
         tableView.endUpdates()
     }
-
+    
     // MARK: Picker methods
-    open func createPicker(_ picker: Picker) {
+    open func createPicker(_ picker: Picker, model pickerData: PickerDataModel? = nil) {
         switch picker {
         case .datePicker:
             setupDatePicker()
             
-        case .pickerViewOne:
-            pickerDateModel.numberOfRows = Constants.DataForPicker.hoursArray.count
-            pickerDateModel.titleForRowArray = Constants.DataForPicker.hoursArray
-            setupPickerView()
-
-        case .pickerViewTwo:
-            pickerDateModel.numberOfRows = Constants.DataForPicker.daysArray.count
-            pickerDateModel.titleForRowArray = Constants.DataForPicker.daysArray
+        case .pickerView:
+            pickerDateModel = pickerData
             setupPickerView()
         }
     }
@@ -87,6 +80,16 @@ class ExpandingCell: UITableViewCell {
         datePicker.addTarget(self, action: #selector(dateChanged(sender:)), for: .valueChanged)
         setUIForPicker(datePicker)
     }
+    
+    private func setUIForPicker(_ picker: UIView) {
+        pickerContainer.addSubview(picker)
+        
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        picker.bottomAnchor.constraint(equalTo: pickerContainer.bottomAnchor).isActive = true
+        picker.topAnchor.constraint(equalTo: pickerContainer.topAnchor, constant: 5).isActive = true
+        picker.leftAnchor.constraint(equalTo: pickerContainer.leftAnchor).isActive = true
+        picker.rightAnchor.constraint(equalTo: pickerContainer.rightAnchor).isActive = true
+    }
 
     @objc func dateChanged(sender: UIDatePicker) {
 
@@ -96,21 +99,6 @@ class ExpandingCell: UITableViewCell {
         dateFormatter.locale = Locale(identifier: "ru")
 
         rightLabel.text = dateFormatter.string(from: date)
-    }
-
-    @objc func pickerValueChanged(sender: UIPickerView) {
-        //чтобы этот метод вызвался и присвоил лэйблу эту инфу
-        rightLabel.text = ""
-    }
-
-    private func setUIForPicker(_ picker: UIView) {
-        pickerContainer.addSubview(picker)
-
-        picker.translatesAutoresizingMaskIntoConstraints = false
-        picker.bottomAnchor.constraint(equalTo: pickerContainer.bottomAnchor).isActive = true
-        picker.topAnchor.constraint(equalTo: pickerContainer.topAnchor, constant: 5).isActive = true
-        picker.leftAnchor.constraint(equalTo: pickerContainer.leftAnchor).isActive = true
-        picker.rightAnchor.constraint(equalTo: pickerContainer.rightAnchor).isActive = true
     }
 
     open func pickerHeight() -> CGFloat {
@@ -127,16 +115,16 @@ extension ExpandingCell: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerDateModel.numberOfRows ?? 1
+        return pickerDateModel?.numberOfRows ?? 1
     }
 
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        return NSAttributedString(string: pickerDateModel.titleForRowArray?[row] ?? "Error loading data",
+        return NSAttributedString(string: pickerDateModel?.titleForRowArray[row] ?? "Error loading data",
                                   attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)])
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        rightLabel.text = pickerDateModel.titleForRowArray?[pickerView.selectedRow(inComponent: component)]
+        rightLabel.text = pickerDateModel?.titleForRowArray[pickerView.selectedRow(inComponent: component)]
     }
 
 }

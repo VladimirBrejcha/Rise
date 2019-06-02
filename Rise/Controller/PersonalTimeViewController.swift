@@ -56,10 +56,17 @@ class PersonalTimeViewController: UITableViewController {
         switch indexPath.section {
         case 0, 2:
             cell.createPicker(.datePicker)
+            
         case 1:
-            cell.createPicker(.pickerViewOne)
+            let pickerDataModel = PickerDataModel(numberOfRows: Constants.DataForPicker.hoursArray.count,
+                                                  titleForRowArray: Constants.DataForPicker.hoursArray)
+            cell.createPicker(.pickerView, model: pickerDataModel)
+            
         case 3:
-            cell.createPicker(.pickerViewTwo)
+            let pickerDataModel = PickerDataModel(numberOfRows: Constants.DataForPicker.daysArray.count,
+                                                  titleForRowArray: Constants.DataForPicker.daysArray)
+            cell.createPicker(.pickerView, model: pickerDataModel)
+            
         default:
             print("error")
         }
