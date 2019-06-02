@@ -10,6 +10,7 @@ import UIKit
 import UserNotifications
 import SPStorkController
 import Dodo
+import TORoundedWindow
 
 class SleepViewController: UIViewController {
 
@@ -22,8 +23,10 @@ class SleepViewController: UIViewController {
         setupTimePicker()
         registerLocal()
         setupDodoBar()
+        TORoundedWindow.show()
+        
     }
-
+    
     // MARK: UI setup methods
     private func setupTimePicker() {
         timePicker.setValue(UIColor.white, forKeyPath: "textColor")
@@ -76,7 +79,7 @@ class SleepViewController: UIViewController {
 
     }
     
-    //MARK: IBActions
+    // MARK: IBActions
     @IBAction func sleepButtonPressed(_ sender: UIButton) {
         scheduleLocal()
     }
