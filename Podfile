@@ -7,6 +7,7 @@ target 'Rise' do
 
   # Pods for Rise
 pod 'SwiftLint'
+pod 'TORoundedWindow'
 
   target 'RiseTests' do
     inherit! :search_paths

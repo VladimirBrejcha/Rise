@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import TORoundedWindow
 
 class SleepViewController: UIViewController {
 
@@ -19,6 +20,7 @@ class SleepViewController: UIViewController {
         super.viewDidLoad()
         setupTimePicker()
         registerLocal()
+        TORoundedWindow.show()
     }
 
     // MARK: UI setup methods

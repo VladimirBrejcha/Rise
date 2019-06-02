@@ -219,6 +219,7 @@
 				92D7D64C2296F297009321AE /* Frameworks */,
 				92D7D64D2296F297009321AE /* Resources */,
 				922032F4229C32180006F92B /* ShellScript */,
+				345475EFCC5EE00150E527E3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -339,6 +340,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		345475EFCC5EE00150E527E3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Rise/Pods-Rise-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/TORoundedWindow/TORoundedWindow.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TORoundedWindow.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Rise/Pods-Rise-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3D41814915D036B4A41CA8E5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

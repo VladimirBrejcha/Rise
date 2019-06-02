@@ -30,7 +30,7 @@ class ExpandingCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
     // MARK: User interaction methods
     open func selectedInTableView(_ tableView: UITableView) {
 
@@ -83,9 +83,8 @@ class ExpandingCell: UITableViewCell {
     
     private func setUIForPicker(_ picker: UIView) {
         pickerContainer.addSubview(picker)
-        
         picker.translatesAutoresizingMaskIntoConstraints = false
-        picker.bottomAnchor.constraint(equalTo: pickerContainer.bottomAnchor).isActive = true
+        picker.heightAnchor.constraint(equalToConstant: 130).isActive = true
         picker.topAnchor.constraint(equalTo: pickerContainer.topAnchor, constant: 5).isActive = true
         picker.leftAnchor.constraint(equalTo: pickerContainer.leftAnchor).isActive = true
         picker.rightAnchor.constraint(equalTo: pickerContainer.rightAnchor).isActive = true
