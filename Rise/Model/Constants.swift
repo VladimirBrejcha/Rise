@@ -21,9 +21,6 @@ struct Constants {
     }
     
     struct Identifiers {
-        static let sleep = "sleep"
-        static let settings = "settings"
-        static let alarm = "alarm"
         static let personal = "personal"
     }
     

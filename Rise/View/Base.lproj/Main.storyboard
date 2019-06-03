@@ -13,7 +13,7 @@
         <!--Alarm View Controller-->
         <scene sceneID="x3b-qG-Bv2">
             <objects>
-                <viewController storyboardIdentifier="alarm" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zaJ-cb-1ng" customClass="AlarmViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zaJ-cb-1ng" customClass="AlarmViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CxZ-qH-yJ3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,7 +49,7 @@
         <!--Sleep View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="sleep" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="SleepViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SleepViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -111,7 +111,7 @@
         <!--Settings View Controller-->
         <scene sceneID="xkZ-mi-ZLn">
             <objects>
-                <viewController storyboardIdentifier="settings" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EOS-ZY-jrg" customClass="SettingsViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="EOS-ZY-jrg" customClass="SettingsViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uQ6-bf-CZi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
