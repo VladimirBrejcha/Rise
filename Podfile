@@ -8,7 +8,7 @@ target 'Rise' do
   # Pods for Rise
 pod 'SwiftLint'
 pod 'SPStorkController'
-pod 'Dodo'
+pod 'NotificationBannerSwift'
 
   target 'RiseTests' do
     inherit! :search_paths

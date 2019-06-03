@@ -20,13 +20,11 @@ struct Constants {
         static let nibName = "ExpandingCell"
     }
     
-    struct Controllers {
-        struct Identifiers {
-            static let sleep = "sleep"
-            static let settings = "settings"
-            static let alarm = "alarm"
-            static let personal = "personal"
-        }
+    struct Identifiers {
+        static let sleep = "sleep"
+        static let settings = "settings"
+        static let alarm = "alarm"
+        static let personal = "personal"
     }
     
     struct Storyboard {

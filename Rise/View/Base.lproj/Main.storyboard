@@ -20,6 +20,7 @@
                         <color key="backgroundColor" red="0.086274509799999996" green="0.074509803920000006" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="ury-MB-qCt"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="alarm" selectedImage="alarmPressed" id="TXr-v4-zcJ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jGW-AY-dG7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -32,14 +33,20 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CMZ-Wo-9Jp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.18431372549019609" green="0.16862745098039217" blue="0.24705882352941178" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
+                    <connections>
+                        <segue destination="zaJ-cb-1ng" kind="relationship" relationship="viewControllers" id="BA5-3i-93H"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="2sH-C9-dZr"/>
+                        <segue destination="EOS-ZY-jrg" kind="relationship" relationship="viewControllers" id="hJr-Ck-VQb"/>
+                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R8c-Vt-iqj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-724" y="27"/>
+            <point key="canvasLocation" x="993" y="-818"/>
         </scene>
-        <!--Item-->
+        <!--Sleep View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="sleep" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="SleepViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
@@ -71,7 +78,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFL-JR-ZJw">
-                                <rect key="frame" x="40" y="601" width="46" height="30"/>
+                                <rect key="frame" x="40" y="552" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="bottomButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3h6-RE-QsJ"/>
@@ -91,7 +98,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="edc-CA-hqr"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="" id="edc-CA-hqr"/>
                     <connections>
                         <outlet property="sleepButton" destination="MrQ-3v-obf" id="x1v-BX-TcC"/>
                         <outlet property="timePicker" destination="mZz-2e-izX" id="K2e-nv-7eF"/>
@@ -111,6 +118,7 @@
                         <color key="backgroundColor" red="0.086274509799999996" green="0.074509803920000006" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="ph6-4x-T4X"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="settings" selectedImage="settingsPressed" id="xnw-vX-lV2"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fEi-tc-VDM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -196,5 +204,11 @@
             <point key="canvasLocation" x="993" y="673"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="alarm" width="25" height="25"/>
+        <image name="alarmPressed" width="25" height="25"/>
+        <image name="settings" width="25" height="25"/>
+        <image name="settingsPressed" width="25" height="25"/>
+    </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
