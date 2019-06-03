@@ -17,27 +17,31 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupTabBarUI()
+        selectedIndex = 1
+        
+        setupTabBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        setupIcons()
+        setupTabBarItems()
     }
     
     // MARK: TabBar UI setup
-    private func setupTabBarUI() {
+    private func setupTabBar() {
         
-        setupButtonBackground()
+        middleButtonBackgroundImageView.image = #imageLiteral(resourceName: "Union")
+        
+        tabBar.addSubview(middleButtonBackgroundImageView)
+        
+        middleButtonBackgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+        middleButtonBackgroundImageView.centerXAnchor.constraint(equalTo: tabBar.centerXAnchor).isActive = true
+        middleButtonBackgroundImageView.centerYAnchor.constraint(equalTo: tabBar.centerYAnchor).isActive = true
         
         tabBar.shadowImage = UIImage()
-        
     }
     
-    private func setupIcons() {
-        
-        selectedIndex = 1
+    private func setupTabBarItems() {
         
         tabBar.items![1].image = #imageLiteral(resourceName: "sleepIcon").withRenderingMode(.alwaysOriginal)
         tabBar.items![1].selectedImage = #imageLiteral(resourceName: "sleepIconPressed").withRenderingMode(.alwaysOriginal)
@@ -46,20 +50,9 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
             tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         }
     }
-    
-    private func setupButtonBackground() {
-        middleButtonBackgroundImageView.image = #imageLiteral(resourceName: "Union")
-        
-        tabBar.addSubview(middleButtonBackgroundImageView)
-
-        middleButtonBackgroundImageView.translatesAutoresizingMaskIntoConstraints = false
-        middleButtonBackgroundImageView.centerXAnchor.constraint(equalTo: tabBar.centerXAnchor).isActive = true
-        middleButtonBackgroundImageView.centerYAnchor.constraint(equalTo: tabBar.centerYAnchor).isActive = true
-    }
 }
 
-extension UITabBar {
-    
+extension UITabBar { //extencion to control over tabbar height
     override open func sizeThatFits(_ size: CGSize) -> CGSize {
         super.sizeThatFits(size)
         var sizeThatFits = super.sizeThatFits(size)
