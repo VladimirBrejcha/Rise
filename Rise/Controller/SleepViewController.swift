@@ -10,7 +10,6 @@ import UIKit
 import UserNotifications
 import SPStorkController
 import Dodo
-import TORoundedWindow
 
 class SleepViewController: UIViewController {
 
@@ -23,7 +22,6 @@ class SleepViewController: UIViewController {
         setupTimePicker()
         registerLocal()
         setupDodoBar()
-        TORoundedWindow.show()
         
     }
     
@@ -87,7 +85,7 @@ class SleepViewController: UIViewController {
     @IBAction func bottomButton(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        let controller = storyboard.instantiateViewController(withIdentifier: "personalViewController")
+        let controller = storyboard.instantiateViewController(withIdentifier: "personal")
         
         let transitionDelegate = SPStorkTransitioningDelegate()
         

@@ -22,6 +22,8 @@
 		92D7D6682296F298009321AE /* RiseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6672296F298009321AE /* RiseTests.swift */; };
 		92D7D6732296F298009321AE /* RiseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6722296F298009321AE /* RiseUITests.swift */; };
 		92D7D68122980125009321AE /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D68022980125009321AE /* Alarm.swift */; };
+		92E77AF822A5303400E5E21C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E77AF722A5303400E5E21C /* SettingsViewController.swift */; };
+		92E77AFA22A5304400E5E21C /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E77AF922A5304400E5E21C /* AlarmViewController.swift */; };
 		A1BA49264A74BA94AE77CEEF /* Pods_RiseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7493916A7CC808AD6398DFD7 /* Pods_RiseTests.framework */; };
 		BD3A273739E802B41C01E2D7 /* Pods_Rise.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0DD2CC1FB697C90613045C1 /* Pods_Rise.framework */; };
 /* End PBXBuildFile section */
@@ -69,6 +71,8 @@
 		92D7D6722296F298009321AE /* RiseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiseUITests.swift; sourceTree = "<group>"; };
 		92D7D6742296F298009321AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92D7D68022980125009321AE /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
+		92E77AF722A5303400E5E21C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		92E77AF922A5304400E5E21C /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
 		BC603B5F15F0B1E85685898A /* Pods-Rise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rise.release.xcconfig"; path = "Target Support Files/Pods-Rise/Pods-Rise.release.xcconfig"; sourceTree = "<group>"; };
 		E01F32CF24889077FFAC29BC /* Pods-RiseUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RiseUITests.debug.xcconfig"; path = "Target Support Files/Pods-RiseUITests/Pods-RiseUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		EC4D7583ECC99DC0CD0D2DAC /* Pods-RiseUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RiseUITests.release.xcconfig"; path = "Target Support Files/Pods-RiseUITests/Pods-RiseUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -179,8 +183,10 @@
 			isa = PBXGroup;
 			children = (
 				92D12FDC22A44B3B0093B0A3 /* CustomTabBarController.swift */,
-				922032E922998F3D0006F92B /* PersonalTimeViewController.swift */,
 				92D7D6542296F297009321AE /* SleepViewController.swift */,
+				922032E922998F3D0006F92B /* PersonalTimeViewController.swift */,
+				92E77AF722A5303400E5E21C /* SettingsViewController.swift */,
+				92E77AF922A5304400E5E21C /* AlarmViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -362,7 +368,6 @@
 				"${PODS_ROOT}/Target Support Files/Pods-Rise/Pods-Rise-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Dodo/Dodo.framework",
 				"${BUILT_PRODUCTS_DIR}/SPStorkController/SPStorkController.framework",
-				"${BUILT_PRODUCTS_DIR}/TORoundedWindow/TORoundedWindow.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -370,7 +375,6 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Dodo.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SPStorkController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TORoundedWindow.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -467,6 +471,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92E77AFA22A5304400E5E21C /* AlarmViewController.swift in Sources */,
 				92D7D6552296F297009321AE /* SleepViewController.swift in Sources */,
 				92D12FD622A4045E0093B0A3 /* PickerDataModel.swift in Sources */,
 				92D12FDD22A44B3B0093B0A3 /* CustomTabBarController.swift in Sources */,
@@ -475,6 +480,7 @@
 				922032EA22998F3D0006F92B /* PersonalTimeViewController.swift in Sources */,
 				922032F0229BF2890006F92B /* Constants.swift in Sources */,
 				92D7D68122980125009321AE /* Alarm.swift in Sources */,
+				92E77AF822A5303400E5E21C /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
