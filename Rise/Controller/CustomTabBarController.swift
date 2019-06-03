@@ -19,7 +19,7 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
         let settingsViewContoller = storyboard.instantiateViewController(withIdentifier: Constants.Controllers.Identifiers.settings)
         let alarmViewController = storyboard.instantiateViewController(withIdentifier: Constants.Controllers.Identifiers.alarm)
         
-        self.delegate = self
+        
         let imageView = UIImageView()
         imageView.image = #imageLiteral(resourceName: "Union")
         tabBar.addSubview(imageView)
