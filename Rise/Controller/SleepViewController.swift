@@ -27,7 +27,7 @@ class SleepViewController: UIViewController {
     
     // MARK: UI setup methods
     private func setupTimePicker() {
-        timePicker.setValue(UIColor.white, forKeyPath: "textColor")
+        timePicker.setValue(UIColor.white, forKeyPath: Constants.KeyPath.textColor)
     }
     
     private func setupDodoBar() {
@@ -83,9 +83,9 @@ class SleepViewController: UIViewController {
     }
     
     @IBAction func bottomButton(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: Constants.Storyboard.name, bundle: nil)
         
-        let controller = storyboard.instantiateViewController(withIdentifier: "personal")
+        let controller = storyboard.instantiateViewController(withIdentifier: Constants.Controllers.Identifiers.personal)
         
         let transitionDelegate = SPStorkTransitioningDelegate()
         

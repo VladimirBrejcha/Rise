@@ -13,11 +13,11 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: Constants.Storyboard.name, bundle: nil)
         
-        let sleepViewController = storyboard.instantiateViewController(withIdentifier: "sleep")
-        let settingsViewContoller = storyboard.instantiateViewController(withIdentifier: "settings")
-        let alarmViewController = storyboard.instantiateViewController(withIdentifier: "alarm")
+        let sleepViewController = storyboard.instantiateViewController(withIdentifier: Constants.Controllers.Identifiers.sleep)
+        let settingsViewContoller = storyboard.instantiateViewController(withIdentifier: Constants.Controllers.Identifiers.settings)
+        let alarmViewController = storyboard.instantiateViewController(withIdentifier: Constants.Controllers.Identifiers.alarm)
         
         self.delegate = self
         let imageView = UIImageView()
@@ -26,7 +26,9 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.centerXAnchor.constraint(equalToSystemSpacingAfter: tabBar.centerXAnchor, multiplier: 1).isActive = true
         imageView.centerYAnchor.constraint(equalToSystemSpacingBelow: tabBar.centerYAnchor, multiplier: 1).isActive = true
-        sleepViewController.tabBarItem.image = #imageLiteral(resourceName: "sleepIcon")
+        tabBar.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        sleepViewController.tabBarItem.image = #imageLiteral(resourceName: "sleepIcon").withRenderingMode(.alwaysOriginal)
+        sleepViewController.tabBarItem.selectedImage = #imageLiteral(resourceName: "sleepIconPressed").withRenderingMode(.alwaysOriginal)
         settingsViewContoller.tabBarItem.image = #imageLiteral(resourceName: "settings")
         settingsViewContoller.tabBarItem.selectedImage = #imageLiteral(resourceName: "settingsPressed")
         alarmViewController.tabBarItem.image = #imageLiteral(resourceName: "alarm")
@@ -40,6 +42,7 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
             tabBarItem.title = ""
             tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         }
+        
     }
     
     func createTabBarbackground() {
@@ -59,21 +62,16 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
 //    // MARK: UITabbar Delegate
 //    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
 //        if viewController.isKind(of: SleepViewController.self) {
-//            print("middle button pressed")
-//            return false
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//
+//            let sleepViewController = storyboard.instantiateViewController(withIdentifier: "sleep")
+//            sleepViewController.tabBarItem.image = #imageLiteral(resourceName: "sleepIconPressed")
+//            tabBarController.tabBar.tintColor = .yellow
+//
+//            return true
 //        }
 //        return true
 //    }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
