@@ -18,18 +18,16 @@ class NewViewController: UIViewController {
         super.viewDidLoad()
         
         ringProgressView.startColor = #colorLiteral(red: 0.8830604553, green: 0.1576697826, blue: 0.4471456409, alpha: 1)
-        ringProgressView.endColor = #colorLiteral(red: 0.8830604553, green: 0.1576697826, blue: 0.4471456409, alpha: 1)
+        ringProgressView.endColor = #colorLiteral(red: 0.8823529412, green: 0.3723942152, blue: 0.4470588235, alpha: 1)
         ringProgressView.backgroundRingColor = #colorLiteral(red: 0.7176470588, green: 0.6156862745, blue: 0.7450980392, alpha: 1)
-        ringProgressView.ringWidth = 25
+        ringProgressView.ringWidth = 40
         ringProgressView.progress = 0.2
         ringProgressView.shadowOpacity = 1
-        
-        label.text = "sefsdfsef"
     }
     
     override func viewDidAppear(_ animated: Bool) {
         UIView.animate(withDuration: 0.5) {
-            self.ringProgressView.progress = 1.0
+            self.ringProgressView.progress = 0.8
         }
     }
 
