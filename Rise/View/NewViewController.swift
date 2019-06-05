@@ -12,6 +12,7 @@ import MKRingProgressView
 class NewViewController: UIViewController {
 
     @IBOutlet weak var ringProgressView: RingProgressView!
+    @IBOutlet weak var label: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +22,9 @@ class NewViewController: UIViewController {
         ringProgressView.backgroundRingColor = #colorLiteral(red: 0.7176470588, green: 0.6156862745, blue: 0.7450980392, alpha: 1)
         ringProgressView.ringWidth = 25
         ringProgressView.progress = 0.2
-        view.addSubview(ringProgressView)
+        ringProgressView.shadowOpacity = 1
+        
+        label.text = "sefsdfsef"
     }
     
     override func viewDidAppear(_ animated: Bool) {
