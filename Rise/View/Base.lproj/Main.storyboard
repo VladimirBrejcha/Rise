@@ -82,24 +82,29 @@
                                     <action selector="sleepButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Ly-ov-mnB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFL-JR-ZJw">
-                                <rect key="frame" x="40" y="747" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9i-c1-Zds">
+                                <rect key="frame" x="100" y="735" width="214" height="48"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
+                                <state key="normal" title="Sleep">
+                                    <color key="titleColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
-                                    <action selector="bottomButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3h6-RE-QsJ"/>
+                                    <action selector="bottomButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NUM-Vt-vgJ"/>
+                                    <action selector="sleepButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AZ5-Bg-Vy9"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.086274509803921567" green="0.074509803921568626" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="mZz-2e-izX" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="E2F-tt-Int"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="x9i-c1-Zds" secondAttribute="trailing" constant="100" id="Eix-2C-RA1"/>
                             <constraint firstItem="mZz-2e-izX" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="HT2-PZ-OTI"/>
                             <constraint firstItem="MrQ-3v-obf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="HUD-XG-HXz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MrQ-3v-obf" secondAttribute="trailing" constant="100" id="JPc-T8-Q6y"/>
                             <constraint firstItem="mZz-2e-izX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TUa-Vh-hZC"/>
                             <constraint firstItem="MrQ-3v-obf" firstAttribute="top" secondItem="mZz-2e-izX" secondAttribute="bottom" constant="9" id="XUd-yf-3AQ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="tFL-JR-ZJw" secondAttribute="bottom" constant="36" id="jer-Sx-4oo"/>
-                            <constraint firstItem="tFL-JR-ZJw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="jq6-mb-eLJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="x9i-c1-Zds" secondAttribute="bottom" constant="30" id="XXl-Yd-5Cs"/>
+                            <constraint firstItem="x9i-c1-Zds" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="lbB-1T-y09"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
