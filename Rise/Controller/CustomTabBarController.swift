@@ -18,27 +18,24 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
         super.viewDidLoad()
         
         selectedIndex = 1
-        
-        setupTabBar()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setupTabBarItems()
     }
     
     // MARK: TabBar UI setup
-    private func setupTabBar() {
-        
+    override func viewSafeAreaInsetsDidChange() {
         middleButtonBackgroundImageView.image = #imageLiteral(resourceName: "Union")
         
         tabBar.addSubview(middleButtonBackgroundImageView)
         
         middleButtonBackgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+        middleButtonBackgroundImageView.topAnchor.constraint(equalTo: tabBar.topAnchor,
+                                                             constant: 3).isActive = true
+        middleButtonBackgroundImageView.bottomAnchor.constraint(equalTo: tabBar.bottomAnchor,
+                                                                constant: -(3 + view.safeAreaInsets.bottom)).isActive = true
         middleButtonBackgroundImageView.centerXAnchor.constraint(equalTo: tabBar.centerXAnchor).isActive = true
-        middleButtonBackgroundImageView.centerYAnchor.constraint(equalTo: tabBar.centerYAnchor).isActive = true
         
         tabBar.shadowImage = UIImage()
+        
+        setupTabBarItems()
     }
     
     private func setupTabBarItems() {
@@ -48,15 +45,19 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
 
         for tabBarItem in tabBar.items! {
             tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
+            tabBarItem.title = nil
         }
     }
 }
 
-extension UITabBar { //extencion to control over tabbar height
-    override open func sizeThatFits(_ size: CGSize) -> CGSize {
-        super.sizeThatFits(size)
+class CustomTabBar: UITabBar {
+    @IBInspectable var height: CGFloat = 0.0
+    
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
         var sizeThatFits = super.sizeThatFits(size)
-        sizeThatFits.height = 50
+        if height > 0.0 {
+            sizeThatFits.height = height + (UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0.0)
+        }
         return sizeThatFits
     }
 }
