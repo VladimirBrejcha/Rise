@@ -9,6 +9,7 @@ target 'Rise' do
 pod 'SwiftLint'
 pod 'SPStorkController'
 pod 'NotificationBannerSwift'
+pod 'MKRingProgressView'
 
   target 'RiseTests' do
     inherit! :search_paths
