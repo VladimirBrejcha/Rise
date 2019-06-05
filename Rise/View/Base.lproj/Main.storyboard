@@ -10,21 +10,38 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Alarm View Controller-->
+        <!--Main Screen View Controller-->
         <scene sceneID="x3b-qG-Bv2">
             <objects>
-                <viewController id="zaJ-cb-1ng" customClass="AlarmViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zaJ-cb-1ng" customClass="MainScreenViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CxZ-qH-yJ3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9i-c1-Zds">
+                                <rect key="frame" x="100" y="735" width="214" height="48"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
+                                <state key="normal" title="Sleep">
+                                    <color key="titleColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="sleepButtonTouch:" destination="zaJ-cb-1ng" eventType="touchUpInside" id="A4E-A1-azt"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="0.086274509799999996" green="0.074509803920000006" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ury-MB-qCt" firstAttribute="bottom" secondItem="x9i-c1-Zds" secondAttribute="bottom" constant="30" id="OWg-5h-R7r"/>
+                            <constraint firstItem="x9i-c1-Zds" firstAttribute="leading" secondItem="ury-MB-qCt" secondAttribute="leading" constant="100" id="aCj-Xr-esR"/>
+                            <constraint firstItem="ury-MB-qCt" firstAttribute="trailing" secondItem="x9i-c1-Zds" secondAttribute="trailing" constant="100" id="iIe-eJ-TZh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ury-MB-qCt"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="alarm" selectedImage="alarmPressed" id="TXr-v4-zcJ"/>
+                    <tabBarItem key="tabBarItem" title="" id="TXr-v4-zcJ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jGW-AY-dG7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="342" y="27"/>
+            <point key="canvasLocation" x="993" y="25"/>
         </scene>
         <!--Custom Tab Bar Controller-->
         <scene sceneID="WYa-Sz-OrB">
@@ -42,9 +59,9 @@
                         </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
-                        <segue destination="zaJ-cb-1ng" kind="relationship" relationship="viewControllers" id="BA5-3i-93H"/>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="2sH-C9-dZr"/>
-                        <segue destination="EOS-ZY-jrg" kind="relationship" relationship="viewControllers" id="hJr-Ck-VQb"/>
+                        <segue destination="FEH-Ao-bw3" kind="relationship" relationship="viewControllers" id="nVx-ba-1qn"/>
+                        <segue destination="zaJ-cb-1ng" kind="relationship" relationship="viewControllers" id="9sZ-03-5JX"/>
+                        <segue destination="EOS-ZY-jrg" kind="relationship" relationship="viewControllers" id="AyL-Yk-b2R"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R8c-Vt-iqj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -54,13 +71,13 @@
         <!--Sleep View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="SleepViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="sleep" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="SleepViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="mZz-2e-izX">
-                                <rect key="frame" x="0.0" y="298.66666666666669" width="414" height="216.00000000000006"/>
+                                <rect key="frame" x="0.0" y="340" width="414" height="216"/>
                                 <date key="date" timeIntervalSinceReferenceDate="580318829.04359698">
                                     <!--2019-05-23 15:40:29 +0000-->
                                 </date>
@@ -73,7 +90,7 @@
                                 <locale key="locale" localeIdentifier="ru"/>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MrQ-3v-obf">
-                                <rect key="frame" x="100" y="523.66666666666663" width="214" height="48"/>
+                                <rect key="frame" x="100" y="565" width="214" height="48"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
                                 <state key="normal" title="Sleep">
                                     <color key="titleColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -82,29 +99,15 @@
                                     <action selector="sleepButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Ly-ov-mnB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9i-c1-Zds">
-                                <rect key="frame" x="100" y="735" width="214" height="48"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
-                                <state key="normal" title="Sleep">
-                                    <color key="titleColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="bottomButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NUM-Vt-vgJ"/>
-                                    <action selector="sleepButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AZ5-Bg-Vy9"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.086274509803921567" green="0.074509803921568626" blue="0.15686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="mZz-2e-izX" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="E2F-tt-Int"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="x9i-c1-Zds" secondAttribute="trailing" constant="100" id="Eix-2C-RA1"/>
                             <constraint firstItem="mZz-2e-izX" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="HT2-PZ-OTI"/>
                             <constraint firstItem="MrQ-3v-obf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="HUD-XG-HXz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MrQ-3v-obf" secondAttribute="trailing" constant="100" id="JPc-T8-Q6y"/>
                             <constraint firstItem="mZz-2e-izX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TUa-Vh-hZC"/>
                             <constraint firstItem="MrQ-3v-obf" firstAttribute="top" secondItem="mZz-2e-izX" secondAttribute="bottom" constant="9" id="XUd-yf-3AQ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="x9i-c1-Zds" secondAttribute="bottom" constant="30" id="XXl-Yd-5Cs"/>
-                            <constraint firstItem="x9i-c1-Zds" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="lbB-1T-y09"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -116,7 +119,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="992.79999999999995" y="26.53673163418291"/>
+            <point key="canvasLocation" x="993" y="718"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="xkZ-mi-ZLn">
@@ -132,14 +135,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fEi-tc-VDM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1639" y="27"/>
+            <point key="canvasLocation" x="1772" y="25"/>
         </scene>
         <!--Personal Time View Controller-->
         <scene sceneID="I16-B5-N92">
             <objects>
                 <tableViewController storyboardIdentifier="personal" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FEH-Ao-bw3" customClass="PersonalTimeViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="grouped" separatorStyle="default" sectionIndexMinimumDisplayRowCount="1" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="9f7-Sd-5cW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.086274509799999996" green="0.074509803920000006" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="sectionIndexBackgroundColor" red="0.086274509799999996" green="0.074509803920000006" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -208,10 +211,11 @@
                             <outlet property="delegate" destination="FEH-Ao-bw3" id="VQn-Mt-qR4"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="" image="alarm" selectedImage="alarmPressed" id="qMy-5a-14p"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tOv-yo-py0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="993" y="673"/>
+            <point key="canvasLocation" x="251" y="26"/>
         </scene>
     </scenes>
     <resources>

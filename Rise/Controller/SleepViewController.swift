@@ -8,8 +8,6 @@
 
 import UIKit
 import UserNotifications
-import SPStorkController
-import NotificationBannerSwift
 
 class SleepViewController: UIViewController {
 
@@ -69,29 +67,4 @@ class SleepViewController: UIViewController {
         scheduleLocal()
     }
     
-    @IBAction func bottomButton(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: Constants.Storyboard.name, bundle: nil)
-        
-        let controller = storyboard.instantiateViewController(withIdentifier: Constants.Identifiers.personal)
-        
-        let transitionDelegate = SPStorkTransitioningDelegate()
-        
-        controller.transitioningDelegate = transitionDelegate
-        controller.modalPresentationStyle = .custom
-        controller.modalPresentationCapturesStatusBarAppearance = true
-        
-        transitionDelegate.storkDelegate = self
-        
-        self.present(controller, animated: true, completion: nil)
-    }
-    
-}
-
-extension SleepViewController: SPStorkControllerDelegate {
-    
-    func didDismissStorkBySwipe() {
-        let banner = StatusBarNotificationBanner(title: "Saved", style: .success)
-        banner.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-        banner.show()
-    }
 }
