@@ -188,14 +188,21 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hRZ-Gb-VtP">
+                                <rect key="frame" x="161" y="537" width="53" height="30"/>
+                                <state key="normal" title="Change"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.18431372549019609" green="0.21176470588235294" blue="0.41176470588235292" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="zeF-yj-VTm" firstAttribute="top" secondItem="FU8-c9-NeR" secondAttribute="bottom" constant="30" id="E5s-cY-cVZ"/>
                             <constraint firstItem="FU8-c9-NeR" firstAttribute="leading" secondItem="JQk-a9-ZGr" secondAttribute="leading" constant="80" id="KYM-Gc-wbu"/>
                             <constraint firstItem="zeF-yj-VTm" firstAttribute="leading" secondItem="JQk-a9-ZGr" secondAttribute="leading" constant="60" id="OJu-q7-3Pb"/>
+                            <constraint firstItem="JQk-a9-ZGr" firstAttribute="bottom" secondItem="hRZ-Gb-VtP" secondAttribute="bottom" constant="100" id="a85-Ao-k9t"/>
                             <constraint firstItem="JQk-a9-ZGr" firstAttribute="trailing" secondItem="FU8-c9-NeR" secondAttribute="trailing" constant="80" id="c2w-kt-eOC"/>
+                            <constraint firstItem="JQk-a9-ZGr" firstAttribute="trailing" secondItem="hRZ-Gb-VtP" secondAttribute="trailing" constant="161" id="fr0-7p-CK2"/>
                             <constraint firstItem="JQk-a9-ZGr" firstAttribute="trailing" secondItem="zeF-yj-VTm" secondAttribute="trailing" constant="60" id="ksT-j4-hT8"/>
+                            <constraint firstItem="hRZ-Gb-VtP" firstAttribute="leading" secondItem="JQk-a9-ZGr" secondAttribute="leading" constant="161" id="mkP-sX-vHg"/>
                             <constraint firstItem="FU8-c9-NeR" firstAttribute="top" secondItem="JQk-a9-ZGr" secondAttribute="top" constant="80" id="nyE-Yj-frb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JQk-a9-ZGr"/>
@@ -219,7 +226,7 @@
                         <color key="backgroundColor" red="0.086274509799999996" green="0.074509803920000006" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="sectionIndexBackgroundColor" red="0.086274509799999996" green="0.074509803920000006" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="sectionIndexTrackingBackgroundColor" red="0.086274509799999996" green="0.074509803920000006" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="W4t-FV-e8q">
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="W4t-FV-e8q">
                             <rect key="frame" x="0.0" y="433.5" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Calculate"/>
