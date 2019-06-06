@@ -100,7 +100,7 @@ class ExpandingCell: UITableViewCell {
     }
 
     open func pickerHeight() -> CGFloat {
-        let expandedHeight = unexpandedHeight + 130 //TODO: change it to layout automatically
+        let expandedHeight = unexpandedHeight + 130
         return expanded ? expandedHeight : unexpandedHeight
     }
 
