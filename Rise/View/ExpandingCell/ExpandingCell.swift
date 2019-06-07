@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AIFlatSwitch
 
 class ExpandingCell: UITableViewCell {
 
@@ -18,7 +19,8 @@ class ExpandingCell: UITableViewCell {
     // MARK: IBOutlets
     @IBOutlet weak var leftLabel: UILabel!
     @IBOutlet weak var pickerContainer: UIView!
-
+    @IBOutlet weak var animatedSwitch: AIFlatSwitch!
+    
     // MARK: Properties
     var expanded = false // Is the cell expanded?
     private let unexpandedHeight: CGFloat = 44
@@ -123,6 +125,8 @@ extension ExpandingCell: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         leftLabel.text = pickerDateModel?.titleForRowArray[pickerView.selectedRow(inComponent: component)]
+        animatedSwitch.isHidden = false
+        animatedSwitch.setSelected(true, animated: true)
     }
 
 }

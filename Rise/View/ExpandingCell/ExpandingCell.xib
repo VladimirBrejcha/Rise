@@ -32,7 +32,7 @@
                         <rect key="frame" x="0.0" y="43" width="320" height="0.5"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aoc-PK-ISO" customClass="AIFlatSwitch" customModule="AIFlatSwitch">
+                    <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aoc-PK-ISO" customClass="AIFlatSwitch" customModule="AIFlatSwitch">
                         <rect key="frame" x="287" y="10" width="23" height="23"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -40,12 +40,13 @@
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
-                                <color key="value" red="0.71764705880000002" green="0.61568627450000002" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="value" red="0.23529411764705882" green="0.6588235294117647" blue="0.54509803921568623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="animatesOnTouch" value="YES"/>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSelected" value="NO"/>
                             <userDefinedRuntimeAttribute type="color" keyPath="trailStrokeColor">
-                                <color key="value" red="0.71764705880000002" green="0.61568627450000002" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="value" red="0.23529411764705882" green="0.6588235294117647" blue="0.54509803921568623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                <real key="value" value="1.5"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
@@ -67,6 +68,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="animatedSwitch" destination="aoc-PK-ISO" id="yfk-zC-Hkx"/>
                 <outlet property="leftLabel" destination="kVV-NN-Pdf" id="bqR-AS-qVV"/>
                 <outlet property="pickerContainer" destination="l3m-K2-Jyu" id="741-VY-xa7"/>
             </connections>
