@@ -18,6 +18,7 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
+        view.tintColor = .clear
         selectedIndex = 1
         
     }
@@ -37,8 +38,6 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     // MARK: TabBar UI setup
     override func viewSafeAreaInsetsDidChange() {
         middleButtonBackgroundImageView.image = #imageLiteral(resourceName: "Union")
-        let backgroundViewController = BackgroundAnimationViewController()
-        tabBarController?.addChild(backgroundViewController)
         
         tabBar.addSubview(middleButtonBackgroundImageView)
         
@@ -48,8 +47,6 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
         middleButtonBackgroundImageView.bottomAnchor.constraint(equalTo: tabBar.bottomAnchor,
                                                                 constant: -(3 + view.safeAreaInsets.bottom)).isActive = true
         middleButtonBackgroundImageView.centerXAnchor.constraint(equalTo: tabBar.centerXAnchor).isActive = true
-        
-        tabBar.shadowImage = UIImage()
         
         setupTabBarItems()
     }
