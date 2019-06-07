@@ -8,30 +8,36 @@
 
 import UIKit
 import UserNotifications
-import AnimatedGradientView
 
 class SleepViewController: UIViewController {
 
     @IBOutlet weak var sleepButton: UIButton!
     @IBOutlet weak var timePicker: UIDatePicker!
-
+    
+    private var gradientManager: GradientManager?
+    
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTimePicker()
         registerLocal()
         
-        let gradientView = AnimatedGradientView(frame: view.bounds)
-        gradientView.colors = [[#colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1), #colorLiteral(red: 0.4588235294, green: 0.168627451, blue: 0.2705882353, alpha: 1)]]
-        gradientView.direction = .up
-        gradientView.alpha = 0.5
-        view.addSubview(gradientView)
-        view.sendSubviewToBack(gradientView)
+        createBackground()
     }
-
+    
     // MARK: UI setup methods
     private func setupTimePicker() {
         timePicker.setValue(UIColor.white, forKeyPath: KeyPath.textColor)
+    }
+    
+    private func createBackground() {
+        gradientManager = GradientManager()
+        guard let gradientView = gradientManager?.createStaticGradient(colors: [#colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1), #colorLiteral(red: 0.4588235294, green: 0.168627451, blue: 0.2705882353, alpha: 1)],
+                                                                 direction: .up,
+                                                                 alpha: 0.5,
+                                                                 frame: view.bounds) else { return }
+        view.addSubview(gradientView)
+        view.sendSubviewToBack(gradientView)
     }
     
     // MARK: Notification center methods
