@@ -36,7 +36,7 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     // MARK: TabBar UI setup
     override func viewSafeAreaInsetsDidChange() {
-        middleButtonBackgroundImageView.image = #imageLiteral(resourceName: "Union")
+        middleButtonBackgroundImageView.image = #imageLiteral(resourceName: "Union2")
         
         tabBar.addSubview(middleButtonBackgroundImageView)
         
@@ -48,6 +48,15 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
         middleButtonBackgroundImageView.centerXAnchor.constraint(equalTo: tabBar.centerXAnchor).isActive = true
         
         setupTabBarItems()
+    }
+    
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        if item == tabBar.items?[1] {
+            middleButtonBackgroundImageView.image = #imageLiteral(resourceName: "Union2")
+        } else {
+            middleButtonBackgroundImageView.image = #imageLiteral(resourceName: "Union")
+        }
+        
     }
     
     private func setupTabBarItems() {
