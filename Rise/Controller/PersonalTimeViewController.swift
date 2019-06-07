@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AnimatedGradientView
 
 class PersonalTimeViewController: UITableViewController {
 
@@ -21,6 +22,11 @@ class PersonalTimeViewController: UITableViewController {
         tableView.register(UINib(nibName: Constants.Cell.nibName, bundle: nil),
                            forCellReuseIdentifier: Constants.Cell.identifier)
         
+        let gradientView = AnimatedGradientView(frame: view.bounds)
+        gradientView.colors = [[#colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1), #colorLiteral(red: 0.4588235294, green: 0.168627451, blue: 0.2705882353, alpha: 1)]]
+        gradientView.direction = .up
+        gradientView.alpha = 0.5
+        tableView.backgroundView = gradientView
     }
 
     // MARK: TableView methods
