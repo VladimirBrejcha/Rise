@@ -12,7 +12,7 @@ import SPStorkController
 class MainScreenViewController: UIViewController {
     
     // MARK: Properties
-    var transtitionManager: TranstitionManager?
+    var transtitionManager: TransitionManager?
 
     // MARK: LifeCycle
     override func viewDidLoad() {
@@ -22,7 +22,7 @@ class MainScreenViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func sleepButtonTouch(_ sender: UIButton) {
-        transtitionManager = TranstitionManager()
+        transtitionManager = TransitionManager()
         transtitionManager?.makeTransition(from: self, to: Identifiers.sleep)
     }
     

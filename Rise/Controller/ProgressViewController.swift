@@ -12,7 +12,7 @@ import MKRingProgressView
 class ProgressViewController: UIViewController {
     
     // MARK: Properties
-    let transitionManager = TranstitionManager()
+    let transitionManager = TransitionManager()
     let bannerManager = BannerManager()
     
     // MARK: IBOutlets

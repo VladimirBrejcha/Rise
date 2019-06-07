@@ -9,7 +9,7 @@
 import UIKit
 import SPStorkController
 
-class TranstitionManager {
+class TransitionManager {
     
     // MARK: Properties
     var storyboard = UIStoryboard(name: Storyboard.name, bundle: nil)
