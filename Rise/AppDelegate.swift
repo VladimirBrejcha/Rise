@@ -18,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        UITabBar.appearance().backgroundImage = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2753356074).image()
+        UITabBar.appearance().backgroundImage = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2038402289).image()
+        UITabBar.appearance().shadowImage = UIImage()
         
         return true
     }

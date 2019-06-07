@@ -42,9 +42,9 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         middleButtonBackgroundImageView.translatesAutoresizingMaskIntoConstraints = false
         middleButtonBackgroundImageView.topAnchor.constraint(equalTo: tabBar.topAnchor,
-                                                             constant: 3).isActive = true
+                                                             constant: 6).isActive = true
         middleButtonBackgroundImageView.bottomAnchor.constraint(equalTo: tabBar.bottomAnchor,
-                                                                constant: -(3 + view.safeAreaInsets.bottom)).isActive = true
+                                                                constant: -(6 + view.safeAreaInsets.bottom)).isActive = true
         middleButtonBackgroundImageView.centerXAnchor.constraint(equalTo: tabBar.centerXAnchor).isActive = true
         
         setupTabBarItems()
