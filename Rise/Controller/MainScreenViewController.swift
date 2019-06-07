@@ -11,7 +11,8 @@ import SPStorkController
 
 class MainScreenViewController: UIViewController {
     
-    let transitor = TranstitionManager()
+    // MARK: Properties
+    var transtitionManager: TranstitionManager?
 
     // MARK: LifeCycle
     override func viewDidLoad() {
@@ -21,7 +22,8 @@ class MainScreenViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func sleepButtonTouch(_ sender: UIButton) {
-        transitor.makeTransition(from: self, to: Identifiers.sleep)
+        transtitionManager = TranstitionManager()
+        transtitionManager?.makeTransition(from: self, to: Identifiers.sleep)
     }
     
 }

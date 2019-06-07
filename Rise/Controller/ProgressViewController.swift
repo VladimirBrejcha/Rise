@@ -8,19 +8,32 @@
 
 import UIKit
 import MKRingProgressView
-import SPStorkController
-import NotificationBannerSwift
 
 class ProgressViewController: UIViewController {
     
-    let transitor = TranstitionManager()
-
+    // MARK: Properties
+    let transitionManager = TranstitionManager()
+    let bannerManager = BannerManager()
+    
+    // MARK: IBOutlets
     @IBOutlet weak var ringProgressView: RingProgressView!
     @IBOutlet weak var label: UILabel!
     
+    // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupRingView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        UIView.animate(withDuration: 0.5) {
+            self.ringProgressView.progress = 0.8
+        }
+    }
+    
+    // MARK: UISetup Methods
+    private func setupRingView() {
         ringProgressView.startColor = #colorLiteral(red: 0.8830604553, green: 0.1576697826, blue: 0.4471456409, alpha: 1)
         ringProgressView.endColor = #colorLiteral(red: 0.8823529412, green: 0.3723942152, blue: 0.4470588235, alpha: 1)
         ringProgressView.backgroundRingColor = #colorLiteral(red: 0.7176470588, green: 0.6156862745, blue: 0.7450980392, alpha: 1)
@@ -29,24 +42,13 @@ class ProgressViewController: UIViewController {
         ringProgressView.shadowOpacity = 1
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        UIView.animate(withDuration: 0.5) {
-            self.ringProgressView.progress = 0.8
-        }
-    }
+    // MARK: Actions
     @IBAction func changeButtonTouch(_ sender: UIButton) {
-        
-        transitor.makeTransition(from: self, to: Identifiers.personal)
+        transitionManager.makeTransition(from: self, to: Identifiers.personal)
     }
-    
-}
-
-extension ProgressViewController: SPStorkControllerDelegate {
     
     func didDismissStorkBySwipe() {
-        let banner = StatusBarNotificationBanner(title: "Saved", style: .success)
-        banner.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-        banner.show()
+        bannerManager.showBanner(title: "Saved", style: .success)
     }
     
 }

@@ -31,3 +31,6 @@ class TranstitionManager {
     }
     
 }
+
+extension ProgressViewController: SPStorkControllerDelegate {
+}
