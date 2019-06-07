@@ -31,7 +31,7 @@ class SleepViewController: UIViewController {
 
     // MARK: UI setup methods
     private func setupTimePicker() {
-        timePicker.setValue(UIColor.white, forKeyPath: Constants.KeyPath.textColor)
+        timePicker.setValue(UIColor.white, forKeyPath: KeyPath.textColor)
     }
     
     // MARK: Notification center methods

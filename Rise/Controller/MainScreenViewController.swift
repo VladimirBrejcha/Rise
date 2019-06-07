@@ -8,44 +8,20 @@
 
 import UIKit
 import SPStorkController
-import NotificationBannerSwift
 
 class MainScreenViewController: UIViewController {
+    
+    let transitor = TranstitionManager()
 
+    // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        tabBarController?.tabBar.backgroundColor = .clear
     }
     
+    // MARK: Actions
     @IBAction func sleepButtonTouch(_ sender: UIButton) {
-        
-        let storyboard = UIStoryboard(name: Constants.Storyboard.name, bundle: nil)
-        
-        let controller = storyboard.instantiateViewController(withIdentifier: Constants.Identifiers.sleep)
-        
-        let transitionDelegate = SPStorkTransitioningDelegate()
-        
-        controller.transitioningDelegate = transitionDelegate
-        controller.modalPresentationStyle = .custom
-        controller.modalPresentationCapturesStatusBarAppearance = true
-        
-        transitionDelegate.storkDelegate = self
-        
-        self.present(controller, animated: true, completion: nil)
+        transitor.makeTransition(from: self, to: Identifiers.sleep)
     }
     
-}
-
-extension MainScreenViewController: SPStorkControllerDelegate {
-    
-    func didDismissStorkBySwipe() {
-        let banner = StatusBarNotificationBanner(title: "Saved", style: .success)
-        banner.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-        banner.show()
-    }
 }

@@ -119,7 +119,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="993" y="718"/>
+            <point key="canvasLocation" x="992" y="716"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="xkZ-mi-ZLn">
@@ -140,7 +140,7 @@
         <!--Item-->
         <scene sceneID="RXt-XW-JpE">
             <objects>
-                <viewController id="P26-iI-q7r" customClass="NewViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="P26-iI-q7r" customClass="ProgressViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="M7I-qU-Q0Q">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

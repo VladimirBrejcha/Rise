@@ -19,8 +19,8 @@ class PersonalTimeViewController: UITableViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: Constants.Cell.nibName, bundle: nil),
-                           forCellReuseIdentifier: Constants.Cell.identifier)
+        tableView.register(UINib(nibName: Cell.nibName, bundle: nil),
+                           forCellReuseIdentifier: Cell.identifier)
         
         let gradientView = AnimatedGradientView(frame: view.bounds)
         gradientView.colors = [[#colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1), #colorLiteral(red: 0.4588235294, green: 0.168627451, blue: 0.2705882353, alpha: 1)]]
@@ -58,7 +58,7 @@ class PersonalTimeViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         super.tableView(tableView, cellForRowAt: indexPath)
 
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Cell.identifier) as? ExpandingCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.identifier) as? ExpandingCell else {
             return UITableViewCell()
         }
 
@@ -69,14 +69,14 @@ class PersonalTimeViewController: UITableViewController {
             
         case 1:
             cell.leftLabel.text = "Choose hours:"
-            let pickerDataModel = PickerDataModel(numberOfRows: Constants.DataForPicker.hoursArray.count,
-                                                  titleForRowArray: Constants.DataForPicker.hoursArray)
+            let pickerDataModel = PickerDataModel(numberOfRows: DataForPicker.hoursArray.count,
+                                                  titleForRowArray: DataForPicker.hoursArray)
             cell.createPicker(.pickerView, model: pickerDataModel)
             
         case 3:
             cell.leftLabel.text = "Choose options:"
-            let pickerDataModel = PickerDataModel(numberOfRows: Constants.DataForPicker.daysArray.count,
-                                                  titleForRowArray: Constants.DataForPicker.daysArray)
+            let pickerDataModel = PickerDataModel(numberOfRows: DataForPicker.daysArray.count,
+                                                  titleForRowArray: DataForPicker.daysArray)
             cell.createPicker(.pickerView, model: pickerDataModel)
             
         default:

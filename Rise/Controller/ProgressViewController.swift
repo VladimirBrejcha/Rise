@@ -9,8 +9,11 @@
 import UIKit
 import MKRingProgressView
 import SPStorkController
+import NotificationBannerSwift
 
-class NewViewController: UIViewController {
+class ProgressViewController: UIViewController {
+    
+    let transitor = TranstitionManager()
 
     @IBOutlet weak var ringProgressView: RingProgressView!
     @IBOutlet weak var label: UILabel!
@@ -33,21 +36,17 @@ class NewViewController: UIViewController {
     }
     @IBAction func changeButtonTouch(_ sender: UIButton) {
         
-        let storyboard = UIStoryboard(name: Constants.Storyboard.name, bundle: nil)
-        
-        let controller = storyboard.instantiateViewController(withIdentifier: Constants.Identifiers.personal)
-        
-        let transitionDelegate = SPStorkTransitioningDelegate()
-        controller.transitioningDelegate = transitionDelegate
-        controller.modalPresentationStyle = .custom
-        controller.modalPresentationCapturesStatusBarAppearance = true
-        transitionDelegate.storkDelegate = self
-        presentAsStork(controller)
-        
+        transitor.makeTransition(from: self, to: Identifiers.personal)
     }
     
 }
 
-extension NewViewController: SPStorkControllerDelegate {
-
+extension ProgressViewController: SPStorkControllerDelegate {
+    
+    func didDismissStorkBySwipe() {
+        let banner = StatusBarNotificationBanner(title: "Saved", style: .success)
+        banner.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        banner.show()
+    }
+    
 }
