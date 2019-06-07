@@ -8,6 +8,7 @@
 
 import UIKit
 import MKRingProgressView
+import SPStorkController
 
 class NewViewController: UIViewController {
 
@@ -30,5 +31,25 @@ class NewViewController: UIViewController {
             self.ringProgressView.progress = 0.8
         }
     }
+    @IBAction func changeButtonTouch(_ sender: UIButton) {
+        
+        let storyboard = UIStoryboard(name: Constants.Storyboard.name, bundle: nil)
+        
+        let controller = storyboard.instantiateViewController(withIdentifier: Constants.Identifiers.personal)
+        
+        let transitionDelegate = SPStorkTransitioningDelegate()
+        
+        controller.transitioningDelegate = transitionDelegate
+        controller.modalPresentationStyle = .custom
+        controller.modalPresentationCapturesStatusBarAppearance = true
+        
+        transitionDelegate.storkDelegate = self
+        
+        self.present(controller, animated: true, completion: nil)
+    }
+    
+}
 
+extension NewViewController: SPStorkControllerDelegate {
+    
 }

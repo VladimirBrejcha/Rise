@@ -22,6 +22,7 @@ struct Constants {
     
     struct Identifiers {
         static let sleep = "sleep"
+        static let personal = "personal"
     }
     
     struct Storyboard {
