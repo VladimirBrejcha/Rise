@@ -186,6 +186,7 @@
 				92E77AF922A5304400E5E21C /* MainScreenViewController.swift */,
 				92E77AF722A5303400E5E21C /* SettingsViewController.swift */,
 				92D7D6542296F297009321AE /* SleepViewController.swift */,
+				9276892622A82DD1002E50F5 /* NewViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -196,7 +197,6 @@
 				92D12FD722A4237C0093B0A3 /* ExpandingCell */,
 				92D7D65B2296F298009321AE /* LaunchScreen.storyboard */,
 				92D7D6562296F297009321AE /* Main.storyboard */,
-				9276892622A82DD1002E50F5 /* NewViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

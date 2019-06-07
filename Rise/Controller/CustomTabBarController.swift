@@ -13,6 +13,7 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     // MARK: Properties
     private var middleButtonBackgroundImageView = UIImageView()
+    let animatedGradient = AnimatedGradientView()
     
     // MARK: Life cycle
     override func viewDidLoad() {
@@ -25,7 +26,8 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let animatedGradient = AnimatedGradientView(frame: view.bounds)
+        
+        animatedGradient.frame = view.bounds
         animatedGradient.animationValues = [(colors: ["#161328", "#752B45"], .up, .axial),
                                             (colors: ["#161328", "#262850"], .upLeft, .axial),
                                             (colors: ["#262850", "#161328"], .upRight, .axial),

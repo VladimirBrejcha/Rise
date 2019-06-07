@@ -41,14 +41,13 @@ class NewViewController: UIViewController {
         controller.transitioningDelegate = transitionDelegate
         controller.modalPresentationStyle = .custom
         controller.modalPresentationCapturesStatusBarAppearance = true
-        
         transitionDelegate.storkDelegate = self
+        presentAsStork(controller)
         
-        self.present(controller, animated: true, completion: nil)
     }
     
 }
 
 extension NewViewController: SPStorkControllerDelegate {
-    
+
 }
