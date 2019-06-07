@@ -10,7 +10,7 @@ pod 'SwiftLint'
 pod 'SPStorkController'
 pod 'NotificationBannerSwift'
 pod 'MKRingProgressView'
-
+pod 'AnimatedGradientView', :git => 'https://github.com/rwbutler/AnimatedGradientView.git', :branch => 'swift-5'
   target 'RiseTests' do
     inherit! :search_paths
     # Pods for testing

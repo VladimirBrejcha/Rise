@@ -20,6 +20,7 @@ class PersonalTimeViewController: UITableViewController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: Constants.Cell.nibName, bundle: nil),
                            forCellReuseIdentifier: Constants.Cell.identifier)
+        
     }
 
     // MARK: TableView methods
