@@ -12,8 +12,8 @@ import MKRingProgressView
 class ProgressViewController: UIViewController {
     
     // MARK: Properties
-    let transitionManager = TransitionManager()
-    let bannerManager = BannerManager()
+    var transitionManager: TransitionManager?
+    var bannerManager: BannerManager?
     
     // MARK: IBOutlets
     @IBOutlet weak var ringProgressView: RingProgressView!
@@ -44,11 +44,13 @@ class ProgressViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func changeButtonTouch(_ sender: UIButton) {
-        transitionManager.makeTransition(from: self, to: Identifiers.personal)
+        transitionManager = TransitionManager()
+        transitionManager?.makeTransition(from: self, to: Identifiers.personal)
     }
     
     func didDismissStorkBySwipe() {
-        bannerManager.showBanner(title: "Saved", style: .success)
+        bannerManager = BannerManager()
+        bannerManager?.showBanner(title: "Saved", style: .success)
     }
     
 }
