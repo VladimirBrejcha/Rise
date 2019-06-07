@@ -25,11 +25,11 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let animatedGradient = AnimatedGradientView(frame: view.bounds)
-        animatedGradient.direction = .up
-        animatedGradient.animationValues = [(colors: ["#2BC0E4", "#EAECC6"], .up, .axial),
-                                            (colors: ["#833ab4", "#fd1d1d", "#fcb045"], .right, .axial),
-                                            (colors: ["#003973", "#E5E5BE"], .down, .axial),
-                                            (colors: ["#1E9600", "#FFF200", "#FF0000"], .left, .axial)]
+        animatedGradient.animationDuration = 1
+        animatedGradient.animationValues = [(colors: ["#161328", "#752B45"], .up, .axial),
+                                            (colors: ["#161328", "#262850"], .upLeft, .axial),
+                                            (colors: ["#262850", "#161328"], .upRight, .axial),
+                                            (colors: ["#161328", "#752B45"], .up, .axial)]
         view.addSubview(animatedGradient)
         view.sendSubviewToBack(animatedGradient)
     }
