@@ -38,7 +38,6 @@ class NewViewController: UIViewController {
         let controller = storyboard.instantiateViewController(withIdentifier: Constants.Identifiers.personal)
         
         let transitionDelegate = SPStorkTransitioningDelegate()
-        
         controller.transitioningDelegate = transitionDelegate
         controller.modalPresentationStyle = .custom
         controller.modalPresentationCapturesStatusBarAppearance = true
