@@ -366,6 +366,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Rise/Pods-Rise-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AIFlatSwitch/AIFlatSwitch.framework",
 				"${BUILT_PRODUCTS_DIR}/AnimatedGradientView/AnimatedGradientView.framework",
 				"${BUILT_PRODUCTS_DIR}/MKRingProgressView/MKRingProgressView.framework",
 				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
@@ -377,6 +378,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AIFlatSwitch.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AnimatedGradientView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MKRingProgressView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
