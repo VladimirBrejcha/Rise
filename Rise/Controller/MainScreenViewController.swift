@@ -17,6 +17,10 @@ class MainScreenViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tabBarController?.tabBar.backgroundColor = .clear
+    }
     
     @IBAction func sleepButtonTouch(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: Constants.Storyboard.name, bundle: nil)

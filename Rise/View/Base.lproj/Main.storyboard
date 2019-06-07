@@ -50,7 +50,6 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CMZ-Wo-9Jp" customClass="CustomTabBar" customModule="Rise" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.18431372549019609" green="0.16862745098039217" blue="0.24705882352941178" alpha="0.56126210387323938" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="height">
