@@ -15,6 +15,7 @@
 		92B78CFB229FAF6C0087240B /* ExpandingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92B78CF9229FAF6C0087240B /* ExpandingCell.xib */; };
 		92BC919022AB159D00BB1D19 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BC918F22AB159D00BB1D19 /* TransitionManager.swift */; };
 		92BC919222AB216900BB1D19 /* BannerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BC919122AB216900BB1D19 /* BannerManager.swift */; };
+		92BC919422AB24D800BB1D19 /* GradientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BC919322AB24D800BB1D19 /* GradientManager.swift */; };
 		92D12FD622A4045E0093B0A3 /* PickerDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D12FD522A4045E0093B0A3 /* PickerDataModel.swift */; };
 		92D12FDD22A44B3B0093B0A3 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D12FDC22A44B3B0093B0A3 /* CustomTabBarController.swift */; };
 		92D7D6532296F297009321AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6522296F297009321AE /* AppDelegate.swift */; };
@@ -60,6 +61,7 @@
 		92B78CF9229FAF6C0087240B /* ExpandingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandingCell.xib; sourceTree = "<group>"; };
 		92BC918F22AB159D00BB1D19 /* TransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		92BC919122AB216900BB1D19 /* BannerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerManager.swift; sourceTree = "<group>"; };
+		92BC919322AB24D800BB1D19 /* GradientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientManager.swift; sourceTree = "<group>"; };
 		92D12FD522A4045E0093B0A3 /* PickerDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerDataModel.swift; sourceTree = "<group>"; };
 		92D12FDC22A44B3B0093B0A3 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		92D7D64F2296F297009321AE /* Rise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rise.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,6 +190,7 @@
 				92D12FDC22A44B3B0093B0A3 /* CustomTabBarController.swift */,
 				92BC918F22AB159D00BB1D19 /* TransitionManager.swift */,
 				92BC919122AB216900BB1D19 /* BannerManager.swift */,
+				92BC919322AB24D800BB1D19 /* GradientManager.swift */,
 				9276892622A82DD1002E50F5 /* ProgressViewController.swift */,
 				92E77AF922A5304400E5E21C /* MainScreenViewController.swift */,
 				92E77AF722A5303400E5E21C /* SettingsViewController.swift */,
@@ -490,6 +493,7 @@
 				92E77AFA22A5304400E5E21C /* MainScreenViewController.swift in Sources */,
 				92D7D6552296F297009321AE /* SleepViewController.swift in Sources */,
 				92D12FD622A4045E0093B0A3 /* PickerDataModel.swift in Sources */,
+				92BC919422AB24D800BB1D19 /* GradientManager.swift in Sources */,
 				92D12FDD22A44B3B0093B0A3 /* CustomTabBarController.swift in Sources */,
 				92D7D6532296F297009321AE /* AppDelegate.swift in Sources */,
 				92BC919022AB159D00BB1D19 /* TransitionManager.swift in Sources */,

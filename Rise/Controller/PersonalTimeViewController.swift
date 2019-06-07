@@ -17,8 +17,7 @@ class PersonalTimeViewController: UITableViewController {
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
+        
         tableView.register(UINib(nibName: Cell.nibName, bundle: nil),
                            forCellReuseIdentifier: Cell.identifier)
         
@@ -26,6 +25,7 @@ class PersonalTimeViewController: UITableViewController {
         gradientView.colors = [[#colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1), #colorLiteral(red: 0.4588235294, green: 0.168627451, blue: 0.2705882353, alpha: 1)]]
         gradientView.direction = .up
         gradientView.alpha = 0.5
+        
         tableView.backgroundView = gradientView
     }
 
