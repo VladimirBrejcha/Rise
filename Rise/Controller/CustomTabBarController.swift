@@ -13,7 +13,6 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     // MARK: Properties
     private var middleButtonBackgroundImageView = UIImageView()
-    let animatedGradient = AnimatedGradientView()
     private var gradientManager: GradientManager?
     
     // MARK: Life cycle
@@ -25,18 +24,22 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        gradientManager = GradientManager()
-        let gradientView = gradientManager?.createAnimatedGradient(colorsArray: [[#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)], [#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)], [#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)], [#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0),#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)]],
-                                                directionsArray: [.up, .upLeft, .upRight, .up],
-                                                frame: view.bounds)
+        gradientManager = GradientManager(frame: view.bounds)
+        gradientManager?.frame = view.bounds
+        let gradientView = gradientManager?.createAnimatedGradient(colors: [[#colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1), #colorLiteral(red: 0.4588235294, green: 0.168627451, blue: 0.2705882353, alpha: 1)],
+                                                                            [#colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1), #colorLiteral(red: 0.1490196078, green: 0.1568627451, blue: 0.3137254902, alpha: 1)],
+                                                                            [#colorLiteral(red: 0.1490196078, green: 0.1568627451, blue: 0.3137254902, alpha: 1), #colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1)],
+                                                                            [#colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1), #colorLiteral(red: 0.4588235294, green: 0.168627451, blue: 0.2705882353, alpha: 1)]],
+                                                                   directionsArray: [.up,
+                                                                                     .upLeft,
+                                                                                     .upRight,
+                                                                                     .up])
         
-        
-        animatedGradient.frame = view.bounds
-        animatedGradient.animationValues = [(colors: ["#161328", "#752B45"], .up, .axial),
-                                            (colors: ["#161328", "#262850"], .upLeft, .axial),
-                                            (colors: ["#262850", "#161328"], .upRight, .axial),
-                                            (colors: ["#161328", "#752B45"], .up, .axial)]
+        //        animatedGradient.frame = view.bounds
+//        animatedGradient.animationValues = [(colors: ["#161328", "#752B45"], .up, .axial),
+//                                            (colors: ["#161328", "#262850"], .upLeft, .axial),
+//                                            (colors: ["#262850", "#161328"], .upRight, .axial),
+//                                            (colors: ["#161328", "#752B45"], .up, .axial)]
         view.addSubview(gradientView!)
         view.sendSubviewToBack(gradientView!)
     }

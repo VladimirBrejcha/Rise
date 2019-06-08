@@ -27,11 +27,10 @@ class PersonalTimeViewController: UITableViewController {
     
     // MARK: UISetup Methods
     private func createBackground() {
-        gradientManager = GradientManager()
+        gradientManager = GradientManager(frame: view.bounds)
         tableView.backgroundView = gradientManager?.createStaticGradient(colors: [#colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1), #colorLiteral(red: 0.4588235294, green: 0.168627451, blue: 0.2705882353, alpha: 1)],
                                                                          direction: .up,
-                                                                         alpha: 0.5,
-                                                                         frame: view.bounds)
+                                                                         alpha: 0.5)
     }
 
     // MARK: TableView methods

@@ -11,23 +11,39 @@ import AnimatedGradientView
 
 class GradientManager {
     
+    // MARK: Properties
+    var frame: CGRect!
+    
     var gradientView: AnimatedGradientView?
     
-    func createStaticGradient(colors: [UIColor], direction: AnimatedGradientViewDirection, alpha: CGFloat, frame: CGRect) -> UIView {
+    // MARK: LifeCycle
+    init(frame: CGRect) {
+        
+        self.frame = frame
+        
         gradientView = AnimatedGradientView(frame: frame)
-        gradientView?.colors = [colors]
+    }
+    
+    // MARK: Methods
+    func createStaticGradient(colors array: [UIColor],
+                              direction: AnimatedGradientViewDirection,
+                              alpha: CGFloat) -> UIView {
+        
+        gradientView?.colors = [array]
         gradientView?.direction = direction
         gradientView?.alpha = alpha
         
         return gradientView ?? UIView()
     }
     
-    func createAnimatedGradient(colorsArray: [[UIColor]], directionsArray: [AnimatedGradientViewDirection], frame: CGRect) -> UIView {
-        guard colorsArray.count == directionsArray.count else {
+    func createAnimatedGradient(colors array: [[UIColor]],
+                                directionsArray: [AnimatedGradientViewDirection]) -> UIView {
+        
+        guard array.count == directionsArray.count else {
             fatalError("Input data doesnt match")
         }
-        gradientView = AnimatedGradientView(frame: frame)
-        let colorStringsArray = colorToHex(colorArray: colorsArray)
+        
+        let colorStringsArray = colorToHex(colorArray: array)
         gradientView?.animationValues = createMainArray(strings: colorStringsArray, directions: directionsArray, type: .axial)
         
         return gradientView ?? UIView()
