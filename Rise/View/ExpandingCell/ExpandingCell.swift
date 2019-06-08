@@ -15,7 +15,7 @@ final class ExpandingCell: UITableViewCell {
         case datePicker
         case pickerView
     }
-
+    
     // MARK: IBOutlets
     @IBOutlet weak var leftLabel: UILabel!
     @IBOutlet weak var pickerContainer: UIView!
@@ -36,7 +36,7 @@ final class ExpandingCell: UITableViewCell {
             notificationCenter.post(name: .pickerValueChanged, object: nil)
         }
     }
-
+    
     // MARK: Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -128,20 +128,20 @@ final class ExpandingCell: UITableViewCell {
         picker.leftAnchor.constraint(equalTo: pickerContainer.leftAnchor).isActive = true
         picker.rightAnchor.constraint(equalTo: pickerContainer.rightAnchor).isActive = true
     }
-
+    
 }
 
 // MARK: Extensions
 extension ExpandingCell: UIPickerViewDelegate, UIPickerViewDataSource {
-
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerDataModel?.numberOfRows ?? 1
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         return NSAttributedString(string: pickerDataModel?.titleForRowArray[row] ?? "Error loading data",
                                   attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)])
@@ -151,7 +151,7 @@ extension ExpandingCell: UIPickerViewDelegate, UIPickerViewDataSource {
         
         pickedValue = pickerDataModel?.titleForRowArray[pickerView.selectedRow(inComponent: component)]
     }
-
+    
 }
 
 extension Notification.Name {

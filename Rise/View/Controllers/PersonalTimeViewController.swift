@@ -40,7 +40,7 @@ final class PersonalTimeViewController: UITableViewController {
                                                                          alpha: 0.5)
     }
     
-     // MARK: Actions
+    // MARK: Actions
     @IBAction func scheduleTapped(_ sender: UIButton) {
         
     }
@@ -90,7 +90,6 @@ final class PersonalTimeViewController: UITableViewController {
         default:
             fatalError("cell with this tag doent exists")
         }
-        print(personalTimeModel)
         
     }
     
