@@ -9,14 +9,14 @@
 import UIKit
 import AnimatedGradientView
 
-class GradientManager {
+struct GradientManager {
     
     // MARK: Properties
-    var frame: CGRect!
+    public var frame: CGRect!
     
-    var arrayManager: ArrayManager?
+    private var arrayManager: ArrayManager?
     
-    var gradientView: AnimatedGradientView?
+    private var gradientView: AnimatedGradientView?
     
     // MARK: LifeCycle
     init(frame: CGRect) {
@@ -27,7 +27,7 @@ class GradientManager {
     }
     
     // MARK: Methods
-    func createStaticGradient(colors array: [UIColor],
+    public func createStaticGradient(colors array: [UIColor],
                               direction: AnimatedGradientViewDirection,
                               alpha: CGFloat) -> UIView {
         
@@ -38,7 +38,7 @@ class GradientManager {
         return gradientView ?? UIView()
     }
     
-    func createAnimatedGradient(colors colorsArray: [[UIColor]],
+    mutating public func createAnimatedGradient(colors colorsArray: [[UIColor]],
                                 directions directionsArray: [AnimatedGradientViewDirection]) -> UIView {
         
         guard colorsArray.count == directionsArray.count else {
