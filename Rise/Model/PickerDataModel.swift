@@ -13,4 +13,5 @@ struct PickerDataModel {
     // MARK: Properties
     var numberOfRows: Int
     var titleForRowArray: [String]
+    var defaultRow: Int
 }

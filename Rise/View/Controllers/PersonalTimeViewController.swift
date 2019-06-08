@@ -76,13 +76,13 @@ final class PersonalTimeViewController: UITableViewController {
         case 1:
             cell.leftLabel.text = "Choose hours:"
             let pickerDataModel = PickerDataModel(numberOfRows: DataForPicker.hoursArray.count,
-                                                  titleForRowArray: DataForPicker.hoursArray)
+                                                  titleForRowArray: DataForPicker.hoursArray, defaultRow: 2)
             cell.createPicker(.pickerView, model: pickerDataModel)
             
         case 3:
             cell.leftLabel.text = "Choose duration:"
             let pickerDataModel = PickerDataModel(numberOfRows: DataForPicker.daysArray.count,
-                                                  titleForRowArray: DataForPicker.daysArray)
+                                                  titleForRowArray: DataForPicker.daysArray, defaultRow: 2)
             cell.createPicker(.pickerView, model: pickerDataModel)
             
         default:

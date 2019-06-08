@@ -90,6 +90,10 @@ final class ExpandingCell: UITableViewCell {
         pickerView.delegate = self
         pickerView.dataSource = self
         
+        pickerView.selectRow(pickerDataModel?.defaultRow ?? 0,
+                             inComponent: 0,
+                             animated: true)
+        
         setUIForPicker(pickerView)
     }
     
