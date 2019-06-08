@@ -42,7 +42,6 @@ class GradientManager {
         guard array.count == directionsArray.count else {
             fatalError("Input data doesnt match")
         }
-        
         let colorStringsArray = colorToHex(colorArray: array)
         gradientView?.animationValues = createMainArray(strings: colorStringsArray, directions: directionsArray, type: .axial)
         
@@ -79,12 +78,17 @@ class GradientManager {
     }
 }
 
+// MARK: Extensions
 extension UIColor {
-    var hexString: String {
+    var hexString: String { //UIColor -> Hex String
         let colorRef = cgColor.components
         let colorR = colorRef?[0] ?? 0
         let colorG = colorRef?[1] ?? 0
-        let colorB = ((colorRef?.count ?? 0) > 2 ? colorRef?[2] : colorG) ?? 0
+        let colorB
+            = ((colorRef?.count ?? 0) > 2
+            ? colorRef?[2]
+            : colorG) ?? 0
+        
         let colorA = cgColor.alpha
         
         var color = String(
