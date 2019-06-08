@@ -17,15 +17,15 @@ struct ArrayManager<GradientDirection> {
     
     // MARK: Methods
     public func createGradientParameters() -> [(colors: [String], GradientDirection, CAGradientLayerType)] {
-            
-            let colorStringsArray = convertArray(colors)
-            
-            let gradientParameters = colorStringsArray.enumerated().map { (index, array)
-                -> (colors: [String], GradientDirection, CAGradientLayerType) in
-                return (colors: array, directions[index], type)
-            }
-            
-            return gradientParameters
+        
+        let colorStringsArray = convertArray(colors)
+        
+        let gradientParameters = colorStringsArray.enumerated().map { (index, array)
+            -> (colors: [String], GradientDirection, CAGradientLayerType) in
+            return (colors: array, directions[index], type)
+        }
+        
+        return gradientParameters
     }
     
     public func convertArray(_ array: [[UIColor]]) -> [[String]] {

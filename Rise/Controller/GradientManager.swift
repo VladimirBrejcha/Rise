@@ -31,27 +31,27 @@ struct GradientManager {
                                      direction: AnimatedGradientViewDirection,
                                      alpha: CGFloat)
         -> UIView {
-        
-        gradientView?.colors = [array]
-        gradientView?.direction = direction
-        gradientView?.alpha = alpha
-        
-        return gradientView ?? UIView()
+            
+            gradientView?.colors = [array]
+            gradientView?.direction = direction
+            gradientView?.alpha = alpha
+            
+            return gradientView ?? UIView()
     }
     
-    mutating internal func createAnimatedGradient(colors colorsArray: [[UIColor]],
-                                                  directions directionsArray: [AnimatedGradientViewDirection])
+    mutating public func createAnimatedGradient(colors colorsArray: [[UIColor]],
+                                                directions directionsArray: [AnimatedGradientViewDirection])
         -> UIView {
-        
-        guard colorsArray.count == directionsArray.count else {
-            fatalError("Input data doesnt match")
-        }
-        
-        arrayManager = ArrayManager(colors: colorsArray, directions: directionsArray, type: .axial)
-        gradientView?.animationValues = arrayManager?.createGradientParameters()
-        
-        return gradientView ?? UIView()
-        
+            
+            guard colorsArray.count == directionsArray.count else {
+                fatalError("Input data doesnt match")
+            }
+            
+            arrayManager = ArrayManager(colors: colorsArray, directions: directionsArray, type: .axial)
+            gradientView?.animationValues = arrayManager?.createGradientParameters()
+            
+            return gradientView ?? UIView()
+            
     }
     
 }

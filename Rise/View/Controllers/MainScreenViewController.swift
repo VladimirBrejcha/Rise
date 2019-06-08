@@ -11,7 +11,7 @@ import UIKit
 final class MainScreenViewController: UIViewController {
     
     // MARK: Properties
-    var transtitionManager: TransitionManager?
+    private var transtitionManager: TransitionManager?
 
     // MARK: LifeCycle
     override func viewDidLoad() {

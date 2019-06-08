@@ -9,7 +9,7 @@
 import UIKit
 import AIFlatSwitch
 
-class ExpandingCell: UITableViewCell {
+final class ExpandingCell: UITableViewCell {
 
     enum Picker {
         case datePicker
@@ -22,9 +22,9 @@ class ExpandingCell: UITableViewCell {
     @IBOutlet weak var animatedSwitch: AIFlatSwitch!
     
     // MARK: Properties
-    var expanded = false // Is the cell expanded?
+    public var expanded = false // Is the cell expanded?
     private let unexpandedHeight: CGFloat = 44
-    var pickerDateModel: PickerDataModel?
+    private var pickerDataModel: PickerDataModel?
     private lazy var dateFormatter = DateFormatter()
 
     // MARK: Lifecycle
@@ -33,57 +33,61 @@ class ExpandingCell: UITableViewCell {
     }
     
     // MARK: User interaction methods
-    open func selectedInTableView(_ tableView: UITableView) {
-
+    public func selectedInTableView(_ tableView: UITableView) {
+        
         expanded = !expanded
-
-        UIView.transition(with: leftLabel,
-                          duration: 0.25,
-                          options: .transitionCrossDissolve,
-                          animations: { () in
-                            self.leftLabel.textColor
-                                = self.expanded
-                                ? self.tintColor
-                                : UIColor(hue: 0.639,
-                                          saturation: 0.041,
-                                          brightness: 0.576,
-                                          alpha: 1.0)},
-                          completion: nil)
+        
+        UIView.transition(with: leftLabel, duration: 0.25, options: .transitionCrossDissolve, animations: { () in
+            self.leftLabel.textColor
+                = self.expanded
+                ? self.tintColor
+                : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.75)
+        }, completion: nil)
         
         tableView.beginUpdates()
         tableView.endUpdates()
     }
     
     // MARK: Picker methods
-    open func createPicker(_ picker: Picker, model pickerData: PickerDataModel? = nil) {
+    public func createPicker(_ picker: Picker, model pickerData: PickerDataModel? = nil) {
         switch picker {
         case .datePicker:
             setupDatePicker()
             
         case .pickerView:
-            pickerDateModel = pickerData
-            setupPickerView()
+            setupPickerView(dataModel: pickerData)
         }
     }
     
-    private func setupPickerView() {
+    private func setupPickerView(dataModel: PickerDataModel? = nil) {
+        
+        pickerDataModel = dataModel
+        
         let pickerView = UIPickerView()
+        
         pickerView.delegate = self
         pickerView.dataSource = self
+        
         setUIForPicker(pickerView)
     }
     
     private func setupDatePicker() {
+        
         let datePicker = UIDatePicker()
+        
         datePicker.setValue(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), forKey: "textColor")
         datePicker.datePickerMode = .time
         datePicker.locale = Locale(identifier: "ru")
+        
         datePicker.addTarget(self, action: #selector(dateChanged(sender:)), for: .valueChanged)
+        
         setUIForPicker(datePicker)
     }
     
     private func setUIForPicker(_ picker: UIView) {
+        
         pickerContainer.addSubview(picker)
+        
         picker.translatesAutoresizingMaskIntoConstraints = false
         picker.heightAnchor.constraint(equalToConstant: 130).isActive = true
         picker.topAnchor.constraint(equalTo: pickerContainer.topAnchor, constant: 5).isActive = true
@@ -94,6 +98,9 @@ class ExpandingCell: UITableViewCell {
     @objc func dateChanged(sender: UIDatePicker) {
 
         let date = sender.date
+        
+        animatedSwitch.isHidden = false
+        animatedSwitch.setSelected(true, animated: true)
 
         dateFormatter.timeStyle = .short
         dateFormatter.locale = Locale(identifier: "ru")
@@ -101,7 +108,7 @@ class ExpandingCell: UITableViewCell {
         leftLabel.text = dateFormatter.string(from: date)
     }
 
-    open func pickerHeight() -> CGFloat {
+    public func pickerHeight() -> CGFloat {
         let expandedHeight = unexpandedHeight + 130
         return expanded ? expandedHeight : unexpandedHeight
     }
@@ -115,16 +122,16 @@ extension ExpandingCell: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerDateModel?.numberOfRows ?? 1
+        return pickerDataModel?.numberOfRows ?? 1
     }
 
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        return NSAttributedString(string: pickerDateModel?.titleForRowArray[row] ?? "Error loading data",
+        return NSAttributedString(string: pickerDataModel?.titleForRowArray[row] ?? "Error loading data",
                                   attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)])
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        leftLabel.text = pickerDateModel?.titleForRowArray[pickerView.selectedRow(inComponent: component)]
+        leftLabel.text = pickerDataModel?.titleForRowArray[pickerView.selectedRow(inComponent: component)]
         animatedSwitch.isHidden = false
         animatedSwitch.setSelected(true, animated: true)
     }

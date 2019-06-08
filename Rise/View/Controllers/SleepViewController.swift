@@ -10,7 +10,7 @@ import UIKit
 import UserNotifications
 
 final class SleepViewController: UIViewController {
-
+    
     // MARK: Properties
     private var gradientManager: GradientManager?
     
@@ -35,8 +35,8 @@ final class SleepViewController: UIViewController {
     private func createBackground() {
         gradientManager = GradientManager(frame: view.bounds)
         guard let gradientView = gradientManager?.createStaticGradient(colors: [#colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1), #colorLiteral(red: 0.4588235294, green: 0.168627451, blue: 0.2705882353, alpha: 1)],
-                                                                 direction: .up,
-                                                                 alpha: 0.5) else { return }
+                                                                       direction: .up,
+                                                                       alpha: 0.5) else { return }
         view.addSubview(gradientView)
         view.sendSubviewToBack(gradientView)
     }
@@ -44,7 +44,7 @@ final class SleepViewController: UIViewController {
     // MARK: Notification center methods
     private func registerLocal() {
         let center = UNUserNotificationCenter.current()
-
+        
         center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
             if granted {
                 print("granted")
@@ -53,28 +53,28 @@ final class SleepViewController: UIViewController {
             }
         }
     }
-
+    
     private func scheduleLocal() {
         let center = UNUserNotificationCenter.current()
         center.removeAllPendingNotificationRequests()
-
+        
         let content = UNMutableNotificationContent()
-
+        
         content.title = "Wake up"
         content.body = "its time to rise and shine"
         content.categoryIdentifier = "alarm"
         content.userInfo = ["customData": "fizzbuzz"]
         content.sound = .default
-
+        
         let date = timePicker.date
-
+        
         let components = Calendar.current.dateComponents([.hour, .minute], from: date)
-
+        
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
-
+        
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         center.add(request)
-
+        
     }
     
     // MARK: IBActions

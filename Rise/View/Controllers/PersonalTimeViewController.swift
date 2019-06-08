@@ -10,11 +10,11 @@ import UIKit
 import AnimatedGradientView
 
 final class PersonalTimeViewController: UITableViewController {
-
+    
     // MARK: Properties
     private var previouslySelectedCell: ExpandingCell?
-    private var gradientManager: GradientManager? //is it stealing my memory?
-
+    private var gradientManager: GradientManager?
+    
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,7 @@ final class PersonalTimeViewController: UITableViewController {
                                                                          direction: .up,
                                                                          alpha: 0.5)
     }
-
+    
     // MARK: TableView methods
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -43,29 +43,31 @@ final class PersonalTimeViewController: UITableViewController {
         
         return cell.pickerHeight()
     }
-
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Deselect automatically if the cell is a DatePickerCell.
         guard let cell = tableView.cellForRow(at: indexPath) as? ExpandingCell else { return }
-
-        if previouslySelectedCell != nil && cell.expanded == false && previouslySelectedCell!.expanded {
-            previouslySelectedCell?.selectedInTableView(tableView)
+        
+        if previouslySelectedCell != nil
+            && cell.expanded == false
+            && previouslySelectedCell!.expanded {
+            previouslySelectedCell?.selectedInTableView(tableView) // telling cell to hide if other cell has been selected
         }
-
+        
         cell.selectedInTableView(tableView)
-
+        
         self.tableView.deselectRow(at: indexPath, animated: true)
-
+        
         previouslySelectedCell = cell
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         super.tableView(tableView, cellForRowAt: indexPath)
-
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.identifier) as? ExpandingCell else {
             return UITableViewCell()
         }
-
+        
         switch indexPath.section {
         case 0, 2:
             cell.leftLabel.text = "Choose time:"
@@ -86,6 +88,8 @@ final class PersonalTimeViewController: UITableViewController {
         default:
             print("error")
         }
+        
         return cell
     }
+    
 }

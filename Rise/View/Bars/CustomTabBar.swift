@@ -16,9 +16,11 @@ final class CustomTabBar: UITabBar {
     // MARK: Methods
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         var sizeThatFits = super.sizeThatFits(size)
+        
         if height > 0.0 {
             sizeThatFits.height = height + (UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0.0)
         }
+        
         return sizeThatFits
     }
     
