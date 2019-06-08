@@ -37,45 +37,43 @@ class GradientManager {
     }
     
     func createAnimatedGradient(colors array: [[UIColor]],
-                                directionsArray: [AnimatedGradientViewDirection]) -> UIView {
+                                directions directionsArray: [AnimatedGradientViewDirection]) -> UIView {
         
         guard array.count == directionsArray.count else {
             fatalError("Input data doesnt match")
         }
-        let colorStringsArray = colorToHex(colorArray: array)
-        gradientView?.animationValues = createMainArray(strings: colorStringsArray, directions: directionsArray, type: .axial)
+        
+        gradientView?.animationValues = createGradientParameters(strings: array, directions: directionsArray, type: .axial)
         
         return gradientView ?? UIView()
         
     }
     
-    func colorToHex(colorArray: [[UIColor]]) -> [[String]] {
-        var innerArray: [String] = []
-        var mainArray: [[String]] = []
-        for index in colorArray {
-            for index in index {
-                innerArray.append(index.hexString)
-            }
-            mainArray.append(innerArray)
-            innerArray.removeAll()
+    // MARK: Data convertion
+    func createGradientParameters(strings: [[UIColor]], directions: [AnimatedGradientViewDirection], type: CAGradientLayerType)
+        -> [(colors: [String], AnimatedGradientViewDirection, CAGradientLayerType)] {
+        
+        let colorStringsArray = convertArray(strings)
+            
+        let gradientParameters = colorStringsArray.enumerated().map { (index, array)
+            -> (colors: [String], AnimatedGradientViewDirection, CAGradientLayerType) in
+            return (colors: array, directions[index], type)
         }
-        return mainArray
+        
+        return gradientParameters
     }
     
-    func createMainArray(strings: [[String]],
-                         directions: [AnimatedGradientViewDirection],
-                         type: CAGradientLayerType) -> [
-        (colors: [String],
-        AnimatedGradientViewDirection,
-        CAGradientLayerType)
-        ] {
+    func convertArray(_ array: [[UIColor]]) -> [[String]] {
         
-        var newArray: [(colors: [String], AnimatedGradientViewDirection, CAGradientLayerType)] = []
-        for (index, array) in strings.enumerated() {
-            newArray.append((colors: array, directions[index], .axial))
+        let convertedArray = array.map { array -> [String] in
+            array.map { color -> String in
+                color.hexString
+            }
         }
-        return newArray
+        
+        return convertedArray
     }
+    
 }
 
 // MARK: Extensions
