@@ -14,6 +14,7 @@ final class PersonalTimeViewController: UITableViewController {
     // MARK: Properties
     private var previouslySelectedCell: ExpandingCell?
     private var gradientManager: GradientManager?
+    private var personalTimeModel: PersonalTimeModel?
     
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -32,6 +33,15 @@ final class PersonalTimeViewController: UITableViewController {
                                                                          direction: .up,
                                                                          alpha: 0.5)
     }
+    
+     // MARK: Actions
+    @IBAction func scheduleTapped(_ sender: UIButton) {
+//        personalTimeModel = PersonalTimeModel(preferedWakeUpTime: <#T##Date#>,
+//                                              preferedSleepDuration: <#T##String#>,
+//                                              lastTimeAsleep: <#T##Date#>,
+//                                              duration: <#T##String#>)
+    }
+    
     
     // MARK: TableView methods
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

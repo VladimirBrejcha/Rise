@@ -232,7 +232,10 @@
                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="W4t-FV-e8q">
                             <rect key="frame" x="0.0" y="417.5" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Calculate"/>
+                            <state key="normal" title="Create sleep schedule"/>
+                            <connections>
+                                <action selector="scheduleTapped:" destination="FEH-Ao-bw3" eventType="touchUpInside" id="UvN-Qs-QEY"/>
+                            </connections>
                         </button>
                         <sections>
                             <tableViewSection headerTitle="What time do you wish to wake up?" id="9dy-x5-KIg">

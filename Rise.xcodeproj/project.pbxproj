@@ -22,6 +22,8 @@
 		92D41C2822AC0A2C00706CD3 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D41C2722AC0A2C00706CD3 /* CustomTabBar.swift */; };
 		92D41C2F22AC345C00706CD3 /* PersonalTimeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D41C2E22AC345C00706CD3 /* PersonalTimeCalculator.swift */; };
 		92D41C3122AC347600706CD3 /* PersonalTimeDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D41C3022AC347600706CD3 /* PersonalTimeDataModel.swift */; };
+		92D41C3322AC395C00706CD3 /* PersonalTimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D41C3222AC395C00706CD3 /* PersonalTimeModel.swift */; };
+		92D41C3522AC396600706CD3 /* PersonalTimeConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D41C3422AC396600706CD3 /* PersonalTimeConverter.swift */; };
 		92D7D6532296F297009321AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6522296F297009321AE /* AppDelegate.swift */; };
 		92D7D6552296F297009321AE /* SleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6542296F297009321AE /* SleepViewController.swift */; };
 		92D7D6582296F297009321AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92D7D6562296F297009321AE /* Main.storyboard */; };
@@ -72,6 +74,8 @@
 		92D41C2722AC0A2C00706CD3 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		92D41C2E22AC345C00706CD3 /* PersonalTimeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalTimeCalculator.swift; sourceTree = "<group>"; };
 		92D41C3022AC347600706CD3 /* PersonalTimeDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalTimeDataModel.swift; sourceTree = "<group>"; };
+		92D41C3222AC395C00706CD3 /* PersonalTimeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalTimeModel.swift; sourceTree = "<group>"; };
+		92D41C3422AC396600706CD3 /* PersonalTimeConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalTimeConverter.swift; sourceTree = "<group>"; };
 		92D7D64F2296F297009321AE /* Rise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D7D6522296F297009321AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92D7D6542296F297009321AE /* SleepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepViewController.swift; sourceTree = "<group>"; };
@@ -216,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				92D7D6592296F298009321AE /* Assets.xcassets */,
+				92D41C3222AC395C00706CD3 /* PersonalTimeModel.swift */,
 				92D41C3022AC347600706CD3 /* PersonalTimeDataModel.swift */,
 				92D12FD522A4045E0093B0A3 /* PickerDataModel.swift */,
 				922032EF229BF2890006F92B /* Constants.swift */,
@@ -231,6 +236,7 @@
 				92BC919322AB24D800BB1D19 /* GradientManager.swift */,
 				92D41C2522AC04DF00706CD3 /* ArrayManager.swift */,
 				92D41C2E22AC345C00706CD3 /* PersonalTimeCalculator.swift */,
+				92D41C3422AC396600706CD3 /* PersonalTimeConverter.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -537,7 +543,9 @@
 				92D7D6532296F297009321AE /* AppDelegate.swift in Sources */,
 				92BC919022AB159D00BB1D19 /* TransitionManager.swift in Sources */,
 				92D41C3122AC347600706CD3 /* PersonalTimeDataModel.swift in Sources */,
+				92D41C3322AC395C00706CD3 /* PersonalTimeModel.swift in Sources */,
 				9276892722A82DD1002E50F5 /* ProgressViewController.swift in Sources */,
+				92D41C3522AC396600706CD3 /* PersonalTimeConverter.swift in Sources */,
 				92B78CFA229FAF6C0087240B /* ExpandingCell.swift in Sources */,
 				922032EA22998F3D0006F92B /* PersonalTimeViewController.swift in Sources */,
 				922032F0229BF2890006F92B /* Constants.swift in Sources */,
