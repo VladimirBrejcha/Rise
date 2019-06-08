@@ -248,7 +248,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="How much time do you wish to sleep?" id="9g6-82-Eug">
+                            <tableViewSection headerTitle="How long do you wish to sleep?" id="9g6-82-Eug">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="expandingCell" id="s5D-RW-5ln" customClass="ExpandingCell" customModule="Rise" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="155.5" width="320" height="44"/>
@@ -261,7 +261,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="When did you fall asleep yesterday" id="tO5-do-D9b">
+                            <tableViewSection headerTitle="When did you fall asleep yesterday?" id="tO5-do-D9b">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="expandingCell" id="Cx9-uf-rJV" customClass="ExpandingCell" customModule="Rise" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="255.5" width="320" height="44"/>
@@ -274,7 +274,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Options" id="U3Q-mH-kvR">
+                            <tableViewSection headerTitle="Duration" id="U3Q-mH-kvR">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="expandingCell" id="2ou-z7-sco" customClass="ExpandingCell" customModule="Rise" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="355.5" width="320" height="44"/>
