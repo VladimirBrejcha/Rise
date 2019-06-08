@@ -48,6 +48,23 @@ final class ExpandingCell: UITableViewCell {
         tableView.endUpdates()
     }
     
+    @objc func dateChanged(sender: UIDatePicker) {
+        
+        let date = sender.date
+        
+        toggleSwitch()
+        
+        dateFormatter.timeStyle = .short
+        dateFormatter.locale = Locale(identifier: "ru")
+        
+        leftLabel.text = dateFormatter.string(from: date)
+    }
+    
+    private func toggleSwitch() {
+        animatedSwitch.isHidden = false
+        animatedSwitch.setSelected(true, animated: true)
+    }
+    
     // MARK: Picker methods
     public func createPicker(_ picker: Picker, model pickerData: PickerDataModel? = nil) {
         switch picker {
@@ -57,6 +74,11 @@ final class ExpandingCell: UITableViewCell {
         case .pickerView:
             setupPickerView(dataModel: pickerData)
         }
+    }
+    
+    public func pickerHeight() -> CGFloat {
+        let expandedHeight = unexpandedHeight + 130
+        return expanded ? expandedHeight : unexpandedHeight
     }
     
     private func setupPickerView(dataModel: PickerDataModel? = nil) {
@@ -95,26 +117,9 @@ final class ExpandingCell: UITableViewCell {
         picker.rightAnchor.constraint(equalTo: pickerContainer.rightAnchor).isActive = true
     }
 
-    @objc func dateChanged(sender: UIDatePicker) {
-
-        let date = sender.date
-        
-        animatedSwitch.isHidden = false
-        animatedSwitch.setSelected(true, animated: true)
-
-        dateFormatter.timeStyle = .short
-        dateFormatter.locale = Locale(identifier: "ru")
-
-        leftLabel.text = dateFormatter.string(from: date)
-    }
-
-    public func pickerHeight() -> CGFloat {
-        let expandedHeight = unexpandedHeight + 130
-        return expanded ? expandedHeight : unexpandedHeight
-    }
-
 }
 
+// MARK: Extensions
 extension ExpandingCell: UIPickerViewDelegate, UIPickerViewDataSource {
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -132,8 +137,7 @@ extension ExpandingCell: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         leftLabel.text = pickerDataModel?.titleForRowArray[pickerView.selectedRow(inComponent: component)]
-        animatedSwitch.isHidden = false
-        animatedSwitch.setSelected(true, animated: true)
+        toggleSwitch()
     }
 
 }
