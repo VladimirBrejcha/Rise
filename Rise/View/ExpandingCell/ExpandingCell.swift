@@ -9,6 +9,10 @@
 import UIKit
 import AIFlatSwitch
 
+protocol ExpandingCellDelegate: AnyObject {
+    var pickerChoosenValue: String { get set }
+}
+
 final class ExpandingCell: UITableViewCell {
 
     enum Picker {
@@ -26,6 +30,14 @@ final class ExpandingCell: UITableViewCell {
     private let unexpandedHeight: CGFloat = 44
     private var pickerDataModel: PickerDataModel?
     private lazy var dateFormatter = DateFormatter()
+    public var pickedValue: String? {
+        willSet {
+            leftLabel.text = newValue
+        }
+    }
+    
+    // MARK: Delegate
+    weak var delegate: ExpandingCellDelegate?
 
     // MARK: Lifecycle
     override func awakeFromNib() {
@@ -57,7 +69,7 @@ final class ExpandingCell: UITableViewCell {
         dateFormatter.timeStyle = .short
         dateFormatter.locale = Locale(identifier: "ru")
         
-        leftLabel.text = dateFormatter.string(from: date)
+        pickedValue = dateFormatter.string(from: date)
     }
     
     private func toggleSwitch() {
@@ -140,8 +152,22 @@ extension ExpandingCell: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        leftLabel.text = pickerDataModel?.titleForRowArray[pickerView.selectedRow(inComponent: component)]
+        
+        pickedValue = pickerDataModel?.titleForRowArray[pickerView.selectedRow(inComponent: component)]
+        
         toggleSwitch()
     }
 
 }
+
+//extension ExpandingCell: ExpandingCellDelegate {
+//    var pickerChoosenValue: String {
+//        get {
+//            return
+//        }
+//        set {
+//
+//        }
+//    }
+//
+//}
