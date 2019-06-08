@@ -9,12 +9,8 @@
 import UIKit
 import AIFlatSwitch
 
-protocol ExpandingCellDelegate: AnyObject {
-    var pickerChoosenValue: String { get set }
-}
-
 final class ExpandingCell: UITableViewCell {
-
+    
     enum Picker {
         case datePicker
         case pickerView
@@ -30,14 +26,13 @@ final class ExpandingCell: UITableViewCell {
     private let unexpandedHeight: CGFloat = 44
     private var pickerDataModel: PickerDataModel?
     private lazy var dateFormatter = DateFormatter()
+    private let notificationCenter: NotificationCenter = .default
     public var pickedValue: String? {
         willSet {
             leftLabel.text = newValue
+            notificationCenter.post(name: .pickerValueChanged, object: nil)
         }
     }
-    
-    // MARK: Delegate
-    weak var delegate: ExpandingCellDelegate?
 
     // MARK: Lifecycle
     override func awakeFromNib() {
@@ -160,14 +155,8 @@ extension ExpandingCell: UIPickerViewDelegate, UIPickerViewDataSource {
 
 }
 
-//extension ExpandingCell: ExpandingCellDelegate {
-//    var pickerChoosenValue: String {
-//        get {
-//            return
-//        }
-//        set {
-//
-//        }
-//    }
-//
-//}
+extension Notification.Name {
+    static var pickerValueChanged: Notification.Name {
+        return .init(rawValue: "ExpandingCell.pickerValueChanged")
+    }
+}

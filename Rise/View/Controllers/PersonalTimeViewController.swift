@@ -14,7 +14,8 @@ final class PersonalTimeViewController: UITableViewController {
     // MARK: Properties
     private var previouslySelectedCell: ExpandingCell?
     private var gradientManager: GradientManager?
-    private var personalTimeModel: PersonalTimeModel?
+    private var personalTimeModel = PersonalTimeModel()
+    private let notificationCenter: NotificationCenter = .default
     
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -22,6 +23,11 @@ final class PersonalTimeViewController: UITableViewController {
         
         tableView.register(UINib(nibName: Cell.nibName, bundle: nil),
                            forCellReuseIdentifier: Cell.identifier)
+        
+        notificationCenter.addObserver(self,
+                                       selector: #selector(saveData),
+                                       name: .pickerValueChanged,
+                                       object: nil)
         
         createBackground()
     }
@@ -36,12 +42,8 @@ final class PersonalTimeViewController: UITableViewController {
     
      // MARK: Actions
     @IBAction func scheduleTapped(_ sender: UIButton) {
-//        personalTimeModel = PersonalTimeModel(preferedWakeUpTime: <#T##Date#>,
-//                                              preferedSleepDuration: <#T##String#>,
-//                                              lastTimeAsleep: <#T##Date#>,
-//                                              duration: <#T##String#>)
+        
     }
-    
     
     // MARK: TableView methods
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -61,7 +63,9 @@ final class PersonalTimeViewController: UITableViewController {
         if previouslySelectedCell != nil
             && cell.expanded == false
             && previouslySelectedCell!.expanded {
+            
             previouslySelectedCell?.selectedInTableView(tableView) // telling cell to hide if other cell has been selected
+            
         }
         
         cell.selectedInTableView(tableView)
@@ -69,6 +73,26 @@ final class PersonalTimeViewController: UITableViewController {
         self.tableView.deselectRow(at: indexPath, animated: true)
         
         previouslySelectedCell = cell
+        
+    }
+    
+    @objc func saveData() {
+        
+        let pickedValue = previouslySelectedCell?.pickedValue
+        
+        switch previouslySelectedCell?.tag {
+        case 0:
+            personalTimeModel.preferedWakeUpTime = pickedValue
+        case 1:
+            personalTimeModel.preferedSleepDuration = pickedValue
+        case 2:
+            personalTimeModel.lastTimeAsleep = pickedValue
+        case 3:
+            personalTimeModel.duration = pickedValue
+        default:
+            fatalError("cell with this tag doent exists")
+        }
+        print(personalTimeModel)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -77,6 +101,8 @@ final class PersonalTimeViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.identifier) as? ExpandingCell else {
             return UITableViewCell()
         }
+        
+        cell.tag = indexPath.section
         
         switch indexPath.section {
         case 0, 2:

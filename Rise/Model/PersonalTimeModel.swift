@@ -9,8 +9,8 @@
 import Foundation
 
 struct PersonalTimeModel {
-    var preferedWakeUpTime: Date
-    var preferedSleepDuration: String
-    var lastTimeAsleep: Date
-    var duration: String
+    var preferedWakeUpTime: String?
+    var preferedSleepDuration: String?
+    var lastTimeAsleep: String?
+    var duration: String?
 }
