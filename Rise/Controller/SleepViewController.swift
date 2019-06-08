@@ -11,10 +11,12 @@ import UserNotifications
 
 class SleepViewController: UIViewController {
 
+    // MARK: Properties
+    private var gradientManager: GradientManager?
+    
+    // MARK: IBOutlets
     @IBOutlet weak var sleepButton: UIButton!
     @IBOutlet weak var timePicker: UIDatePicker!
-    
-    private var gradientManager: GradientManager?
     
     // MARK: Lifecycle
     override func viewDidLoad() {

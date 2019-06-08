@@ -14,6 +14,7 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     // MARK: Properties
     private var middleButtonBackgroundImageView = UIImageView()
     let animatedGradient = AnimatedGradientView()
+    private var gradientManager: GradientManager?
     
     // MARK: Life cycle
     override func viewDidLoad() {
@@ -21,19 +22,23 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
         view.backgroundColor = .clear
         view.tintColor = .clear
         selectedIndex = 1
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        gradientManager = GradientManager()
+        let gradientView = gradientManager?.createAnimatedGradient(colorsArray: [[#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)], [#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)], [#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)], [#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0),#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)]],
+                                                directionsArray: [.up, .upLeft, .upRight, .up],
+                                                frame: view.bounds)
+        
         
         animatedGradient.frame = view.bounds
         animatedGradient.animationValues = [(colors: ["#161328", "#752B45"], .up, .axial),
                                             (colors: ["#161328", "#262850"], .upLeft, .axial),
                                             (colors: ["#262850", "#161328"], .upRight, .axial),
                                             (colors: ["#161328", "#752B45"], .up, .axial)]
-        view.addSubview(animatedGradient)
-        view.sendSubviewToBack(animatedGradient)
+        view.addSubview(gradientView!)
+        view.sendSubviewToBack(gradientView!)
     }
     
     // MARK: TabBar UI setup
