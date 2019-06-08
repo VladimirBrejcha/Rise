@@ -6,23 +6,22 @@
 //  Copyright © 2019 VladimirBrejcha. All rights reserved.
 //
 
-import Foundation
-import AnimatedGradientView
+import UIKit
 
-struct ArrayManager {
+struct ArrayManager<GradientDirection> {
     
     // MARK: Properties
     let colors: [[UIColor]]
-    let directions: [AnimatedGradientViewDirection]
+    let directions: [GradientDirection]
     let type: CAGradientLayerType
     
     // MARK: Methods
-    func createGradientParameters() -> [(colors: [String], AnimatedGradientViewDirection, CAGradientLayerType)] {
+    func createGradientParameters() -> [(colors: [String], GradientDirection, CAGradientLayerType)] {
             
             let colorStringsArray = convertArray(colors)
             
             let gradientParameters = colorStringsArray.enumerated().map { (index, array)
-                -> (colors: [String], AnimatedGradientViewDirection, CAGradientLayerType) in
+                -> (colors: [String], GradientDirection, CAGradientLayerType) in
                 return (colors: array, directions[index], type)
             }
             
