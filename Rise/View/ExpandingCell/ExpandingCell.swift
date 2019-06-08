@@ -27,9 +27,12 @@ final class ExpandingCell: UITableViewCell {
     private var pickerDataModel: PickerDataModel?
     private lazy var dateFormatter = DateFormatter()
     private let notificationCenter: NotificationCenter = .default
-    public var pickedValue: String? {
+    var pickedValue: String? {
         willSet {
             leftLabel.text = newValue
+        }
+        didSet {
+            toggleSwitch()
             notificationCenter.post(name: .pickerValueChanged, object: nil)
         }
     }
@@ -58,8 +61,6 @@ final class ExpandingCell: UITableViewCell {
     @objc func dateChanged(sender: UIDatePicker) {
         
         let date = sender.date
-        
-        toggleSwitch()
         
         dateFormatter.timeStyle = .short
         dateFormatter.locale = Locale(identifier: "ru")
@@ -149,8 +150,6 @@ extension ExpandingCell: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         pickedValue = pickerDataModel?.titleForRowArray[pickerView.selectedRow(inComponent: component)]
-        
-        toggleSwitch()
     }
 
 }

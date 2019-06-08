@@ -25,7 +25,7 @@ final class PersonalTimeViewController: UITableViewController {
                            forCellReuseIdentifier: Cell.identifier)
         
         notificationCenter.addObserver(self,
-                                       selector: #selector(saveData),
+                                       selector: #selector(updateModel),
                                        name: .pickerValueChanged,
                                        object: nil)
         
@@ -57,7 +57,6 @@ final class PersonalTimeViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Deselect automatically if the cell is a DatePickerCell.
         guard let cell = tableView.cellForRow(at: indexPath) as? ExpandingCell else { return }
         
         if previouslySelectedCell != nil
@@ -70,17 +69,16 @@ final class PersonalTimeViewController: UITableViewController {
         
         cell.selectedInTableView(tableView)
         
-        self.tableView.deselectRow(at: indexPath, animated: true)
-        
         previouslySelectedCell = cell
         
     }
     
-    @objc func saveData() {
+    @objc func updateModel() {
         
-        let pickedValue = previouslySelectedCell?.pickedValue
+        guard let cell = tableView.cellForRow(at: tableView.indexPathForSelectedRow!) as? ExpandingCell  else { fatalError("cell wasnt find") }
+        guard let pickedValue = cell.pickedValue  else { fatalError("pickedValue is nil") }
         
-        switch previouslySelectedCell?.tag {
+        switch cell.tag {
         case 0:
             personalTimeModel.preferedWakeUpTime = pickedValue
         case 1:
@@ -93,6 +91,7 @@ final class PersonalTimeViewController: UITableViewController {
             fatalError("cell with this tag doent exists")
         }
         print(personalTimeModel)
+        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
