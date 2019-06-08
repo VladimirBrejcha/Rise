@@ -9,7 +9,7 @@
 import UIKit
 import AnimatedGradientView
 
-class PersonalTimeViewController: UITableViewController {
+final class PersonalTimeViewController: UITableViewController {
 
     // MARK: Properties
     private var previouslySelectedCell: ExpandingCell?

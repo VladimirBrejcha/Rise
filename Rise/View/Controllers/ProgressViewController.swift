@@ -9,7 +9,7 @@
 import UIKit
 import MKRingProgressView
 
-class ProgressViewController: UIViewController {
+final class ProgressViewController: UIViewController {
     
     // MARK: Properties
     var transitionManager: TransitionManager?

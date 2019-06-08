@@ -9,13 +9,13 @@
 import UIKit
 import NotificationBannerSwift
 
-class BannerManager {
+struct BannerManager {
     
     // MARK: Properties
     private var banner: StatusBarNotificationBanner!
     
     // MARK: Methods
-    func showBanner(title: String, style: BannerStyle) {
+    public mutating func showBanner(title: String, style: BannerStyle) {
         
         banner = StatusBarNotificationBanner(title: title, style: style)
         

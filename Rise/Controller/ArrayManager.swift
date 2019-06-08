@@ -11,12 +11,12 @@ import UIKit
 struct ArrayManager<GradientDirection> {
     
     // MARK: Properties
-    let colors: [[UIColor]]
-    let directions: [GradientDirection]
-    let type: CAGradientLayerType
+    public let colors: [[UIColor]]
+    public let directions: [GradientDirection]
+    public let type: CAGradientLayerType
     
     // MARK: Methods
-    func createGradientParameters() -> [(colors: [String], GradientDirection, CAGradientLayerType)] {
+    public func createGradientParameters() -> [(colors: [String], GradientDirection, CAGradientLayerType)] {
             
             let colorStringsArray = convertArray(colors)
             
@@ -28,7 +28,7 @@ struct ArrayManager<GradientDirection> {
             return gradientParameters
     }
     
-    func convertArray(_ array: [[UIColor]]) -> [[String]] {
+    public func convertArray(_ array: [[UIColor]]) -> [[String]] {
         
         let convertedArray = array.map { array -> [String] in
             array.map { color -> String in

@@ -9,17 +9,18 @@
 import UIKit
 import SPStorkController
 
-class TransitionManager {
+struct TransitionManager {
     
     // MARK: Properties
-    var storyboard = UIStoryboard(name: Storyboard.name, bundle: nil)
+    private var storyboard = UIStoryboard(name: Storyboard.name, bundle: nil)
     
     // MARK: Methods
-    func makeTransition(from senderController: UIViewController, to controllerID: String) {
+    public func makeTransition(from senderController: UIViewController, to controllerID: String) {
         
         let controller = storyboard.instantiateViewController(withIdentifier: controllerID)
         
         let transitionDelegate = SPStorkTransitioningDelegate()
+        
         controller.transitioningDelegate = transitionDelegate
         controller.modalPresentationStyle = .custom
         

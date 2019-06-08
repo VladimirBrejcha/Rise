@@ -19,6 +19,7 @@
 		92D12FD622A4045E0093B0A3 /* PickerDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D12FD522A4045E0093B0A3 /* PickerDataModel.swift */; };
 		92D12FDD22A44B3B0093B0A3 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D12FDC22A44B3B0093B0A3 /* CustomTabBarController.swift */; };
 		92D41C2622AC04DF00706CD3 /* ArrayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D41C2522AC04DF00706CD3 /* ArrayManager.swift */; };
+		92D41C2822AC0A2C00706CD3 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D41C2722AC0A2C00706CD3 /* CustomTabBar.swift */; };
 		92D7D6532296F297009321AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6522296F297009321AE /* AppDelegate.swift */; };
 		92D7D6552296F297009321AE /* SleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6542296F297009321AE /* SleepViewController.swift */; };
 		92D7D6582296F297009321AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92D7D6562296F297009321AE /* Main.storyboard */; };
@@ -66,6 +67,7 @@
 		92D12FD522A4045E0093B0A3 /* PickerDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerDataModel.swift; sourceTree = "<group>"; };
 		92D12FDC22A44B3B0093B0A3 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		92D41C2522AC04DF00706CD3 /* ArrayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayManager.swift; sourceTree = "<group>"; };
+		92D41C2722AC0A2C00706CD3 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		92D7D64F2296F297009321AE /* Rise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D7D6522296F297009321AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92D7D6542296F297009321AE /* SleepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +126,36 @@
 			path = ExpandingCell;
 			sourceTree = "<group>";
 		};
+		92D41C2922AC0A5800706CD3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				92D7D6542296F297009321AE /* SleepViewController.swift */,
+				922032E922998F3D0006F92B /* PersonalTimeViewController.swift */,
+				92E77AF722A5303400E5E21C /* SettingsViewController.swift */,
+				92E77AF922A5304400E5E21C /* MainScreenViewController.swift */,
+				9276892622A82DD1002E50F5 /* ProgressViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		92D41C2A22AC0A5F00706CD3 /* Bars */ = {
+			isa = PBXGroup;
+			children = (
+				92D12FDC22A44B3B0093B0A3 /* CustomTabBarController.swift */,
+				92D41C2722AC0A2C00706CD3 /* CustomTabBar.swift */,
+			);
+			path = Bars;
+			sourceTree = "<group>";
+		};
+		92D41C2B22AC0A6F00706CD3 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				92D7D65B2296F298009321AE /* LaunchScreen.storyboard */,
+				92D7D6562296F297009321AE /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		92D7D6462296F297009321AE = {
 			isa = PBXGroup;
 			children = (
@@ -153,7 +185,6 @@
 				92D7D68322980130009321AE /* Controller */,
 				92D7D68222980129009321AE /* Model */,
 				92D7D68422980138009321AE /* View */,
-				92D7D6592296F298009321AE /* Assets.xcassets */,
 				92D7D65E2296F298009321AE /* Info.plist */,
 			);
 			path = Rise;
@@ -180,6 +211,7 @@
 		92D7D68222980129009321AE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				92D7D6592296F298009321AE /* Assets.xcassets */,
 				92D12FD522A4045E0093B0A3 /* PickerDataModel.swift */,
 				922032EF229BF2890006F92B /* Constants.swift */,
 			);
@@ -189,16 +221,10 @@
 		92D7D68322980130009321AE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				92D12FDC22A44B3B0093B0A3 /* CustomTabBarController.swift */,
 				92BC918F22AB159D00BB1D19 /* TransitionManager.swift */,
 				92BC919122AB216900BB1D19 /* BannerManager.swift */,
 				92BC919322AB24D800BB1D19 /* GradientManager.swift */,
 				92D41C2522AC04DF00706CD3 /* ArrayManager.swift */,
-				9276892622A82DD1002E50F5 /* ProgressViewController.swift */,
-				92E77AF922A5304400E5E21C /* MainScreenViewController.swift */,
-				92E77AF722A5303400E5E21C /* SettingsViewController.swift */,
-				922032E922998F3D0006F92B /* PersonalTimeViewController.swift */,
-				92D7D6542296F297009321AE /* SleepViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -206,9 +232,10 @@
 		92D7D68422980138009321AE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				92D41C2922AC0A5800706CD3 /* Controllers */,
+				92D41C2A22AC0A5F00706CD3 /* Bars */,
 				92D12FD722A4237C0093B0A3 /* ExpandingCell */,
-				92D7D65B2296F298009321AE /* LaunchScreen.storyboard */,
-				92D7D6562296F297009321AE /* Main.storyboard */,
+				92D41C2B22AC0A6F00706CD3 /* Storyboards */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -494,6 +521,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92E77AFA22A5304400E5E21C /* MainScreenViewController.swift in Sources */,
+				92D41C2822AC0A2C00706CD3 /* CustomTabBar.swift in Sources */,
 				92D7D6552296F297009321AE /* SleepViewController.swift in Sources */,
 				92D12FD622A4045E0093B0A3 /* PickerDataModel.swift in Sources */,
 				92D41C2622AC04DF00706CD3 /* ArrayManager.swift in Sources */,

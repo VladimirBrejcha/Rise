@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import AnimatedGradientView
 
-class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
+final class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     // MARK: Properties
     private var middleButtonBackgroundImageView = UIImageView()
@@ -30,17 +29,7 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
         let gradientView = gradientManager?.createAnimatedGradient(colors: [[#colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1), #colorLiteral(red: 0.4588235294, green: 0.168627451, blue: 0.2705882353, alpha: 1)],
                                                                             [#colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1), #colorLiteral(red: 0.1490196078, green: 0.1568627451, blue: 0.3137254902, alpha: 1)],
                                                                             [#colorLiteral(red: 0.1490196078, green: 0.1568627451, blue: 0.3137254902, alpha: 1), #colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1)],
-                                                                            [#colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1), #colorLiteral(red: 0.4588235294, green: 0.168627451, blue: 0.2705882353, alpha: 1)]],
-                                                                   directions: [.up,
-                                                                                     .upLeft,
-                                                                                     .upRight,
-                                                                                     .up])
-        
-        //        animatedGradient.frame = view.bounds
-//        animatedGradient.animationValues = [(colors: ["#161328", "#752B45"], .up, .axial),
-//                                            (colors: ["#161328", "#262850"], .upLeft, .axial),
-//                                            (colors: ["#262850", "#161328"], .upRight, .axial),
-//                                            (colors: ["#161328", "#752B45"], .up, .axial)]
+                                                                            [#colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1), #colorLiteral(red: 0.4588235294, green: 0.168627451, blue: 0.2705882353, alpha: 1)]], directions: [.up, .upLeft, .upRight, .up])
         view.addSubview(gradientView!)
         view.sendSubviewToBack(gradientView!)
     }
@@ -79,17 +68,5 @@ class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
             tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
             tabBarItem.title = nil
         }
-    }
-}
-
-class CustomTabBar: UITabBar {
-    @IBInspectable var height: CGFloat = 0.0
-    
-    override func sizeThatFits(_ size: CGSize) -> CGSize {
-        var sizeThatFits = super.sizeThatFits(size)
-        if height > 0.0 {
-            sizeThatFits.height = height + (UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0.0)
-        }
-        return sizeThatFits
     }
 }

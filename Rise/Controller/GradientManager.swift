@@ -28,8 +28,9 @@ struct GradientManager {
     
     // MARK: Methods
     public func createStaticGradient(colors array: [UIColor],
-                              direction: AnimatedGradientViewDirection,
-                              alpha: CGFloat) -> UIView {
+                                     direction: AnimatedGradientViewDirection,
+                                     alpha: CGFloat)
+        -> UIView {
         
         gradientView?.colors = [array]
         gradientView?.direction = direction
@@ -39,7 +40,8 @@ struct GradientManager {
     }
     
     mutating internal func createAnimatedGradient(colors colorsArray: [[UIColor]],
-                                                  directions directionsArray: [AnimatedGradientViewDirection]) -> UIView {
+                                                  directions directionsArray: [AnimatedGradientViewDirection])
+        -> UIView {
         
         guard colorsArray.count == directionsArray.count else {
             fatalError("Input data doesnt match")
@@ -52,7 +54,4 @@ struct GradientManager {
         
     }
     
-    
 }
-
-

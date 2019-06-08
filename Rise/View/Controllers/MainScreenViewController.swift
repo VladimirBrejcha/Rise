@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainScreenViewController: UIViewController {
+final class MainScreenViewController: UIViewController {
     
     // MARK: Properties
     var transtitionManager: TransitionManager?

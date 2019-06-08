@@ -9,7 +9,7 @@
 import UIKit
 import UserNotifications
 
-class SleepViewController: UIViewController {
+final class SleepViewController: UIViewController {
 
     // MARK: Properties
     private var gradientManager: GradientManager?
