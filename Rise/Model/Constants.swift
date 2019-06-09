@@ -15,7 +15,7 @@ struct DataForPicker {
     private init() { }
 }
 
-struct DateFormattter {
+struct Formater {
     static let dateFormatter = CustomDateFormatter()
     
     private init() { }

@@ -25,7 +25,6 @@ final class ExpandingCell: UITableViewCell {
     public var expanded = false // Is the cell expanded?
     private let unexpandedHeight: CGFloat = 44
     private var pickerDataModel: PickerDataModel?
-    private lazy var dateFormatter = DateFormatter()
     private let notificationCenter: NotificationCenter = .default
     var pickedValue: String? {
         willSet {
@@ -62,10 +61,9 @@ final class ExpandingCell: UITableViewCell {
         
         let date = sender.date
         
-        dateFormatter.timeStyle = .short
-        dateFormatter.locale = Locale(identifier: "ru")
+        Formater.dateFormatter.timeStyle = .short
         
-        pickedValue = dateFormatter.string(from: date)
+        pickedValue = Formater.dateFormatter.string(from: date)
     }
     
     private func toggleSwitch() {

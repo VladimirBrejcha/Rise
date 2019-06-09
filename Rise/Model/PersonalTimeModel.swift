@@ -63,12 +63,14 @@ struct PersonalTimeModel {
     var convertedTimeWentSleep: Date?
     var convertedDuration: Int?
     
-    private var dateFormatter = DateFormatter()
-    
     func convertData(string input: String) -> Date {
-        dateFormatter.dateFormat = "HH:mm"
-        dateFormatter.locale = Locale(identifier: "ru")
-        guard let convertedData = dateFormatter.date(from: input) else { fatalError("Could'nt convert String to Date") }
+        
+        Formater.dateFormatter.dateFormat = "HH:mm"
+        
+        guard let convertedData = Formater.dateFormatter.date(from: input) else {
+            fatalError("Could'nt convert String to Date")
+        }
+        
         return convertedData
     }
 }
