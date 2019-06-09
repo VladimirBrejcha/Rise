@@ -9,64 +9,66 @@
 import Foundation
 
 struct PersonalTimeModel {
+    
     var preferedWakeUpTime: String? {
         willSet {
-            newPreferedWakeUpTime = convertData(data: newValue!)
+            convertedWakeUpTime = convertData(string: newValue!)
         }
     }
+    
     var preferedSleepDuration: String? {
         willSet {
             switch newValue {
             case DataForPicker.hoursArray[0]:
-                newPreferedSleepDuration = 420
+                convertedSleepDuration = 420
             case DataForPicker.hoursArray[1]:
-                newPreferedSleepDuration = 450
+                convertedSleepDuration = 450
             case DataForPicker.hoursArray[2]:
-                newPreferedSleepDuration = 480
+                convertedSleepDuration = 480
             case DataForPicker.hoursArray[3]:
-                newPreferedSleepDuration = 510
+                convertedSleepDuration = 510
             case DataForPicker.hoursArray[4]:
-                newPreferedSleepDuration = 540
+                convertedSleepDuration = 540
             default:
                 fatalError("index doesnt exists")
             }
         }
     }
-    var lastTimeAsleep: String? {
+    
+    var timeWentSleep: String? {
         willSet {
-            newLastTimeAsleep = convertData(data: newValue!)
+            convertedTimeWentSleep = convertData(string: newValue!)
         }
     }
+    
     var duration: String? {
         willSet {
             switch newValue {
             case DataForPicker.daysArray[0]:
-                newDuration = 10
+                convertedDuration = 10
             case DataForPicker.daysArray[1]:
-                newDuration = 15
+                convertedDuration = 15
             case DataForPicker.daysArray[2]:
-                newDuration = 30
+                convertedDuration = 30
             case DataForPicker.daysArray[3]:
-                newDuration = 50
+                convertedDuration = 50
             default:
                 fatalError("index doesnt exists")
             }
         }
     }
     
-    var newPreferedWakeUpTime: Date?
-    var newPreferedSleepDuration: Int?
-    var newLastTimeAsleep: Date?
-    var newDuration: Int?
+    var convertedWakeUpTime: Date?
+    var convertedSleepDuration: Int?
+    var convertedTimeWentSleep: Date?
+    var convertedDuration: Int?
     
-    var converter: PersonalTimeConverter?
+    private var dateFormatter = DateFormatter()
     
-    func buildData() {
-        
-    }
-    
-    mutating func convertData(data: String) -> Date {
-        converter = PersonalTimeConverter()
-        return (converter?.convertData(string: data))!
+    func convertData(string input: String) -> Date {
+        dateFormatter.dateFormat = "HH:mm"
+        dateFormatter.locale = Locale(identifier: "ru")
+        guard let convertedData = dateFormatter.date(from: input) else { fatalError("Could'nt convert String to Date") }
+        return convertedData
     }
 }

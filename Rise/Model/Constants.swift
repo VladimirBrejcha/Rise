@@ -15,6 +15,12 @@ struct DataForPicker {
     private init() { }
 }
 
+struct DateFormattter {
+    static let dateFormatter = CustomDateFormatter()
+    
+    private init() { }
+}
+
 struct Cell {
     static let identifier = "expandingCell"
     static let nibName = "ExpandingCell"

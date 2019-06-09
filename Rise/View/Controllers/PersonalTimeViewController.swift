@@ -84,7 +84,7 @@ final class PersonalTimeViewController: UITableViewController {
         case 1:
             personalTimeModel.preferedSleepDuration = pickedValue
         case 2:
-            personalTimeModel.lastTimeAsleep = pickedValue
+            personalTimeModel.timeWentSleep = pickedValue
         case 3:
             personalTimeModel.duration = pickedValue
         default:
