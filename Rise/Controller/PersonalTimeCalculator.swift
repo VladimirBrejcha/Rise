@@ -10,4 +10,9 @@ import Foundation
 
 struct PersonalTimeCalculator {
     
+    var wakeUp: Date
+    var sleepDuration: Date
+    var wentSleepTime: Date
+    var duration: Int
+    
 }

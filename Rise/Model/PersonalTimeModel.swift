@@ -20,15 +20,20 @@ struct PersonalTimeModel {
         willSet {
             switch newValue {
             case DataForPicker.hoursArray[0]:
-                convertedSleepDuration = 420
+                let newTime = Formater.dateFormatter.date(from: "07:00")
+                convertedSleepDuration = newTime
             case DataForPicker.hoursArray[1]:
-                convertedSleepDuration = 450
+                let newTime = Formater.dateFormatter.date(from: "07:30")
+                convertedSleepDuration = newTime
             case DataForPicker.hoursArray[2]:
-                convertedSleepDuration = 480
+                let newTime = Formater.dateFormatter.date(from: "08:00")
+                convertedSleepDuration = newTime
             case DataForPicker.hoursArray[3]:
-                convertedSleepDuration = 510
+                let newTime = Formater.dateFormatter.date(from: "08:30")
+                convertedSleepDuration = newTime
             case DataForPicker.hoursArray[4]:
-                convertedSleepDuration = 540
+                let newTime = Formater.dateFormatter.date(from: "09:00")
+                convertedSleepDuration = newTime
             default:
                 fatalError("index doesnt exists")
             }
@@ -59,7 +64,7 @@ struct PersonalTimeModel {
     }
     
     var convertedWakeUpTime: Date?
-    var convertedSleepDuration: Int?
+    var convertedSleepDuration: Date?
     var convertedTimeWentSleep: Date?
     var convertedDuration: Int?
     
@@ -69,6 +74,7 @@ struct PersonalTimeModel {
             fatalError("Could'nt convert String to Date")
         }
         
+        print(convertedData)
         return convertedData
     }
 }
