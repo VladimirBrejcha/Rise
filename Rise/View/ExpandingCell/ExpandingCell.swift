@@ -61,8 +61,6 @@ final class ExpandingCell: UITableViewCell {
         
         let date = sender.date
         
-        Formater.dateFormatter.timeStyle = .short
-        
         pickedValue = Formater.dateFormatter.string(from: date)
     }
     

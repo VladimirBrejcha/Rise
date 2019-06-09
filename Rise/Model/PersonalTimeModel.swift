@@ -65,8 +65,6 @@ struct PersonalTimeModel {
     
     func convertData(string input: String) -> Date {
         
-        Formater.dateFormatter.dateFormat = "HH:mm"
-        
         guard let convertedData = Formater.dateFormatter.date(from: input) else {
             fatalError("Could'nt convert String to Date")
         }
