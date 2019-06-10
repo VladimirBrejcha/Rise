@@ -10,6 +10,7 @@ import Foundation
 
 struct PersonalTimeCalculator {
     
+    // MARK: Properties
     var wakeUp: Date
     var sleepDuration: Int
     var wentSleepTime: Date
@@ -17,6 +18,7 @@ struct PersonalTimeCalculator {
     
     var result: Int?
     
+    // MARK: LifeCycle
     init(wakeUp: Date, sleepDuration: Int, wentSleepTime: Date, duration: Int, result: Double? = nil) {
         self.wakeUp = wakeUp
         self.sleepDuration = sleepDuration
@@ -24,27 +26,19 @@ struct PersonalTimeCalculator {
         self.duration = duration
     }
     
+    // MARK: Methods
     mutating func calculate() {
         
         guard let neededTimeToGoSleep = Calendar.current.date(byAdding: .minute,
                                                               value: -sleepDuration,
                                                               to: wakeUp) else { fatalError("date doesnt exist") }
         
-        //slepduration = 480 = -480
-        //06:00 - 8 02:00 prev day
-        //
-        print(Calendar.current.compare(wakeUp, to: wentSleepTime, toGranularity: .hour).rawValue)
-        
         let timeBetweenNeededSleepAndActualSleep = Int(-neededTimeToGoSleep.timeIntervalSince(wentSleepTime) / 60)
-        if timeBetweenNeededSleepAndActualSleep > 1440 {
-            result = (timeBetweenNeededSleepAndActualSleep - 1440) / duration
-        } else {
-            result = timeBetweenNeededSleepAndActualSleep / duration
-        }
         
-        print(neededTimeToGoSleep)
-        print(timeBetweenNeededSleepAndActualSleep)
-        print(result)
+        result //check if time between times is more than 1 day
+            = timeBetweenNeededSleepAndActualSleep > 1440
+            ? (timeBetweenNeededSleepAndActualSleep - 1440) / duration
+            : timeBetweenNeededSleepAndActualSleep / duration
     }
     
 }

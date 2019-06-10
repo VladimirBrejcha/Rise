@@ -42,7 +42,7 @@ final class PersonalTimeViewController: UITableViewController {
     
     // MARK: Actions
     @IBAction func scheduleTapped(_ sender: UIButton) {
-        personalTimeModel.buildCalc()
+        personalTimeModel.buildCalculator()
         
     }
     

@@ -10,6 +10,7 @@ import Foundation
 
 struct PersonalTimeModel {
     
+    // MARK: Properties
     var preferedWakeUpTime: String? {
         willSet {
             convertedWakeUpTime = convertData(string: newValue!)
@@ -58,11 +59,13 @@ struct PersonalTimeModel {
         }
     }
     
+    // MARK: Converted properties
     var convertedWakeUpTime: Date?
     var convertedSleepDuration: Int?
     var convertedTimeWentSleep: Date?
     var convertedDuration: Int?
     
+    // MARK: Methods
     func convertData(string input: String) -> Date {
         
         guard let convertedData = Formater.dateFormatter.date(from: input) else {
@@ -72,14 +75,13 @@ struct PersonalTimeModel {
         return convertedData
     }
     
-    func buildCalc() {
+    func buildCalculator() {
         var calculator = PersonalTimeCalculator(wakeUp: convertedWakeUpTime!,
                                                 sleepDuration: convertedSleepDuration!,
                                                 wentSleepTime: convertedTimeWentSleep!,
                                                 duration: convertedDuration!)
         
         calculator.calculate()
-        
     }
     
 }
