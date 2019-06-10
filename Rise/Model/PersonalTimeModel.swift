@@ -20,20 +20,15 @@ struct PersonalTimeModel {
         willSet {
             switch newValue {
             case DataForPicker.hoursArray[0]:
-                let newTime = Formater.dateFormatter.date(from: "07:00")
-                convertedSleepDuration = newTime
+                convertedSleepDuration = 420
             case DataForPicker.hoursArray[1]:
-                let newTime = Formater.dateFormatter.date(from: "07:30")
-                convertedSleepDuration = newTime
+                convertedSleepDuration = 450
             case DataForPicker.hoursArray[2]:
-                let newTime = Formater.dateFormatter.date(from: "08:00")
-                convertedSleepDuration = newTime
+                convertedSleepDuration = 480
             case DataForPicker.hoursArray[3]:
-                let newTime = Formater.dateFormatter.date(from: "08:30")
-                convertedSleepDuration = newTime
+                convertedSleepDuration = 510
             case DataForPicker.hoursArray[4]:
-                let newTime = Formater.dateFormatter.date(from: "09:00")
-                convertedSleepDuration = newTime
+                convertedSleepDuration = 540
             default:
                 fatalError("index doesnt exists")
             }
@@ -64,7 +59,7 @@ struct PersonalTimeModel {
     }
     
     var convertedWakeUpTime: Date?
-    var convertedSleepDuration: Date?
+    var convertedSleepDuration: Int?
     var convertedTimeWentSleep: Date?
     var convertedDuration: Int?
     
@@ -74,7 +69,17 @@ struct PersonalTimeModel {
             fatalError("Could'nt convert String to Date")
         }
         
-        print(convertedData)
         return convertedData
     }
+    
+    func buildCalc() {
+        var calculator = PersonalTimeCalculator(wakeUp: convertedWakeUpTime!,
+                                                sleepDuration: convertedSleepDuration!,
+                                                wentSleepTime: convertedTimeWentSleep!,
+                                                duration: convertedDuration!)
+        
+        calculator.calculate()
+        
+    }
+    
 }

@@ -11,8 +11,31 @@ import Foundation
 struct PersonalTimeCalculator {
     
     var wakeUp: Date
-    var sleepDuration: Date
+    var sleepDuration: Int
     var wentSleepTime: Date
     var duration: Int
+    
+    var result: Double?
+    
+    init(wakeUp: Date, sleepDuration: Int, wentSleepTime: Date, duration: Int, result: Double? = nil) {
+        self.wakeUp = wakeUp
+        self.sleepDuration = sleepDuration
+        self.wentSleepTime = wentSleepTime
+        self.duration = duration
+    }
+    
+    mutating func calculate() {
+        
+        guard let neededTimeToGoSleep = Calendar.current.date(byAdding: .minute,
+                                                              value: -sleepDuration,
+                                                              to: wakeUp) else { fatalError("date doesnt exist") }
+        
+        let newOne = -neededTimeToGoSleep.timeIntervalSince(wentSleepTime) / 60
+        
+        print(newOne)
+        result = newOne
+        print(neededTimeToGoSleep)
+        
+    }
     
 }

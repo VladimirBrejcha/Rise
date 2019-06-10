@@ -42,6 +42,7 @@ final class PersonalTimeViewController: UITableViewController {
     
     // MARK: Actions
     @IBAction func scheduleTapped(_ sender: UIButton) {
+        personalTimeModel.buildCalc()
         
     }
     
@@ -58,7 +59,6 @@ final class PersonalTimeViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? ExpandingCell else { return }
-        
         if previouslySelectedCell != nil
             && cell.expanded == false
             && previouslySelectedCell!.expanded {
