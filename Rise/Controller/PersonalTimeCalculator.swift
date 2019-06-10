@@ -15,7 +15,7 @@ struct PersonalTimeCalculator {
     var wentSleepTime: Date
     var duration: Int
     
-    var result: Double?
+    var result: Int?
     
     init(wakeUp: Date, sleepDuration: Int, wentSleepTime: Date, duration: Int, result: Double? = nil) {
         self.wakeUp = wakeUp
@@ -30,12 +30,9 @@ struct PersonalTimeCalculator {
                                                               value: -sleepDuration,
                                                               to: wakeUp) else { fatalError("date doesnt exist") }
         
-        let newOne = -neededTimeToGoSleep.timeIntervalSince(wentSleepTime) / 60
+        let timeBetweenNeededSleepAndActualSleep = Int(-neededTimeToGoSleep.timeIntervalSince(wentSleepTime) / 60)
         
-        print(newOne)
-        result = newOne
-        print(neededTimeToGoSleep)
-        
+        result = timeBetweenNeededSleepAndActualSleep / duration
     }
     
 }

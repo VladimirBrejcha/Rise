@@ -31,7 +31,7 @@ class RiseTests: XCTestCase {
         
         calculator?.calculate()
         
-        XCTAssertEqual(calculator?.result, 240.0)
+        XCTAssertEqual(calculator?.result, 24)
     }
 
     func testExample() {
