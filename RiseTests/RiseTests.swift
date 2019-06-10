@@ -17,7 +17,7 @@ class RiseTests: XCTestCase {
         super.setUp()
         
         guard let wakeUpDate = Formater.dateFormatter.date(from: "06:00") else { fatalError("cant convert") }
-        guard let wentSleepTimeDate = Formater.dateFormatter.date(from: "02:00") else { fatalError("cant convert") }
+        guard let wentSleepTimeDate = Formater.dateFormatter.date(from: "23:00") else { fatalError("cant convert") }
         
         calculator = PersonalTimeCalculator(wakeUp: wakeUpDate, sleepDuration: 480, wentSleepTime: wentSleepTimeDate, duration: 10)
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -31,7 +31,7 @@ class RiseTests: XCTestCase {
         
         calculator?.calculate()
         
-        XCTAssertEqual(calculator?.result, 24)
+        XCTAssertEqual(calculator?.result, 6)
     }
 
     func testExample() {

@@ -30,9 +30,21 @@ struct PersonalTimeCalculator {
                                                               value: -sleepDuration,
                                                               to: wakeUp) else { fatalError("date doesnt exist") }
         
-        let timeBetweenNeededSleepAndActualSleep = Int(-neededTimeToGoSleep.timeIntervalSince(wentSleepTime) / 60)
+        //slepduration = 480 = -480
+        //06:00 - 8 02:00 prev day
+        //
+        print(Calendar.current.compare(wakeUp, to: wentSleepTime, toGranularity: .hour).rawValue)
         
-        result = timeBetweenNeededSleepAndActualSleep / duration
+        let timeBetweenNeededSleepAndActualSleep = Int(-neededTimeToGoSleep.timeIntervalSince(wentSleepTime) / 60)
+        if timeBetweenNeededSleepAndActualSleep > 1440 {
+            result = (timeBetweenNeededSleepAndActualSleep - 1440) / duration
+        } else {
+            result = timeBetweenNeededSleepAndActualSleep / duration
+        }
+        
+        print(neededTimeToGoSleep)
+        print(timeBetweenNeededSleepAndActualSleep)
+        print(result)
     }
     
 }
