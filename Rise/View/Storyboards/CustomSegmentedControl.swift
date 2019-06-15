@@ -61,6 +61,7 @@ class CustomSegmentedContrl: UIControl {
             let button = UIButton.init(type: .system)
             button.setTitle(buttonTitle, for: .normal)
             button.setTitleColor(textColor, for: .normal)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 12.5)
             button.addTarget(self, action: #selector(buttonTapped(button:)), for: .touchUpInside)
             buttons.append(button)
             //            button.setTitleColor(button.isSelected ? UIColor.gray : selectorTextColor, for: .normal)
