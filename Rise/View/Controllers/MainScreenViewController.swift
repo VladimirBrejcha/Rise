@@ -13,7 +13,7 @@ final class MainScreenViewController: UIViewController {
     // MARK: Properties
     private var transtitionManager: TransitionManager?
 
-    @IBOutlet weak var mainContainerView: UIView!
+    @IBOutlet weak var mainContainerView: CustomContainerView!
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
