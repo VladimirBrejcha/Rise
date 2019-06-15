@@ -22,7 +22,6 @@ struct TransitionManager {
         let controller = storyboard.instantiateViewController(withIdentifier: controllerID)
         
         let transitionDelegate = SPStorkTransitioningDelegate()
-        
         controller.transitioningDelegate = transitionDelegate
         controller.modalPresentationStyle = .custom
         

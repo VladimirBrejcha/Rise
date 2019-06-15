@@ -19,6 +19,7 @@ final class ProgressViewController: UIViewController {
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     // MARK: UISetup Methods

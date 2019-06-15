@@ -162,8 +162,6 @@
 			children = (
 				92D7D65B2296F298009321AE /* LaunchScreen.storyboard */,
 				92D7D6562296F297009321AE /* Main.storyboard */,
-				929D3DF322B58AA800B8A7F1 /* CustomContainerView.swift */,
-				92E4A7FC22B5766F0027D42C /* CustomSegmentedControl.swift */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -247,6 +245,8 @@
 		92D7D68422980138009321AE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				929D3DF322B58AA800B8A7F1 /* CustomContainerView.swift */,
+				92E4A7FC22B5766F0027D42C /* CustomSegmentedControl.swift */,
 				92D41C2922AC0A5800706CD3 /* Controllers */,
 				92D41C2A22AC0A5F00706CD3 /* Bars */,
 				92D12FD722A4237C0093B0A3 /* ExpandingCell */,

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SPStorkController
 
 final class MainScreenViewController: UIViewController {
     
@@ -18,6 +19,10 @@ final class MainScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         createSegmentedControl()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
     }
     
     func createSegmentedControl() {
@@ -35,8 +40,25 @@ final class MainScreenViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func sleepButtonTouch(_ sender: UIButton) {
-        transtitionManager = TransitionManager()
-        transtitionManager?.makeTransition(from: self, to: Identifiers.sleep)
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1)
+        }) { (true) in
+            self.transtitionManager = TransitionManager()
+            self.transtitionManager?.makeTransition(from: self, to: Identifiers.sleep)
+        }
+        
+        
     }
     
+}
+
+extension MainScreenViewController: SPStorkControllerDelegate {
+    func didDismissStorkBySwipe() {
+        UIView.animate(withDuration: 2) {
+            self.view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1)
+            self.view.backgroundColor = .clear
+        }
+        
+        
+    }
 }
