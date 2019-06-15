@@ -21,13 +21,11 @@ final class MainScreenViewController: UIViewController {
     }
     
     func createSegmentedControl() {
-        let segmentedControl = CustomSegmentedContrl(frame: CGRect(x: 0, y: 0, width: 0, height: 0), buttonTitles: "yesterday,today,tomorrow")
+        let segmentedControl = CustomSegmentedContrl(buttonTitles: "yesterday,today,tomorrow", startingIndex: 1)
         segmentedControl.backgroundColor = .clear
         
 //        segmentedControl.addTarget(self, action: #selector(onChangeOfSegment(_:)), for: .valueChanged)
-//        segmentedControl.selectedSegmentIndex = 2
         view.addSubview(segmentedControl)
-//        segmentedControl.commaSeperatedButtonTitles = "yesterday,today,tomorrow"
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.heightAnchor.constraint(equalToConstant: 45).isActive = true
         segmentedControl.bottomAnchor.constraint(equalTo: mainContainerView.bottomAnchor, constant: -3).isActive = true

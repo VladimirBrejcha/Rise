@@ -12,7 +12,7 @@ import UIKit
 class CustomSegmentedContrl: UIControl {
     
     var buttons = [UIButton]()
-    var selectedSegmentIndex = 1
+    var selectedSegmentIndex = Int()
     
     var commaSeperatedButtonTitles: String = "" {
         
@@ -35,9 +35,10 @@ class CustomSegmentedContrl: UIControl {
         }
     }
     
-    init(frame: CGRect, buttonTitles: String) {
-        super.init(frame: frame)
+    init(buttonTitles: String, startingIndex: Int) {
+        super.init(frame: .zero)
         commaSeperatedButtonTitles = buttonTitles
+        selectedSegmentIndex = startingIndex
         updateView()
     }
     
