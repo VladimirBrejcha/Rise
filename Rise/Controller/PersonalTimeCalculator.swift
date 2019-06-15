@@ -11,12 +11,22 @@ import Foundation
 struct PersonalTimeCalculator {
     
     // MARK: Properties
-    var wakeUp: Date
-    var sleepDuration: Int
-    var wentSleepTime: Date
-    var duration: Int
+    let wakeUp: Date
+    let sleepDuration: Int
+    let wentSleepTime: Date
+    let duration: Int
     
-    var result: Int?
+    var result: Int {
+        guard let neededTimeToGoSleep = Calendar.current.date(byAdding: .minute,
+                                                              value: -sleepDuration,
+                                                              to: wakeUp) else { fatalError("date doesnt exist") }
+        
+        let timeBetweenNeededSleepAndActualSleep = Int(-neededTimeToGoSleep.timeIntervalSince(wentSleepTime) / 60)
+        
+        return timeBetweenNeededSleepAndActualSleep > 1440
+                ? (timeBetweenNeededSleepAndActualSleep - 1440) / duration
+                : timeBetweenNeededSleepAndActualSleep / duration
+    }
     
     // MARK: LifeCycle
     init(wakeUp: Date, sleepDuration: Int, wentSleepTime: Date, duration: Int, result: Double? = nil) {
@@ -24,21 +34,6 @@ struct PersonalTimeCalculator {
         self.sleepDuration = sleepDuration
         self.wentSleepTime = wentSleepTime
         self.duration = duration
-    }
-    
-    // MARK: Methods
-    mutating func calculate() {
-        
-        guard let neededTimeToGoSleep = Calendar.current.date(byAdding: .minute,
-                                                              value: -sleepDuration,
-                                                              to: wakeUp) else { fatalError("date doesnt exist") }
-        
-        let timeBetweenNeededSleepAndActualSleep = Int(-neededTimeToGoSleep.timeIntervalSince(wentSleepTime) / 60)
-        
-        result //check if time between times is more than 1 day
-            = timeBetweenNeededSleepAndActualSleep > 1440
-            ? (timeBetweenNeededSleepAndActualSleep - 1440) / duration
-            : timeBetweenNeededSleepAndActualSleep / duration
     }
     
 }

@@ -7,40 +7,21 @@
 //
 
 import UIKit
-import MKRingProgressView
 
 final class ProgressViewController: UIViewController {
     
     // MARK: Properties
     var transitionManager: TransitionManager?
-    var bannerManager: BannerManager?
+    var bannerManager: BannerManager!
     
     // MARK: IBOutlets
-    @IBOutlet weak var ringProgressView: RingProgressView!
-    @IBOutlet weak var label: UILabel!
     
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupRingView()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        UIView.animate(withDuration: 0.5) {
-            self.ringProgressView.progress = 0.8
-        }
     }
     
     // MARK: UISetup Methods
-    private func setupRingView() {
-        ringProgressView.startColor = #colorLiteral(red: 0.8830604553, green: 0.1576697826, blue: 0.4471456409, alpha: 1)
-        ringProgressView.endColor = #colorLiteral(red: 0.8823529412, green: 0.3723942152, blue: 0.4470588235, alpha: 1)
-        ringProgressView.backgroundRingColor = #colorLiteral(red: 0.7176470588, green: 0.6156862745, blue: 0.7450980392, alpha: 1)
-        ringProgressView.ringWidth = 40
-        ringProgressView.progress = 0.2
-        ringProgressView.shadowOpacity = 1
-    }
     
     // MARK: Actions
     @IBAction func changeButtonTouch(_ sender: UIButton) {
@@ -49,8 +30,8 @@ final class ProgressViewController: UIViewController {
     }
     
     func didDismissStorkBySwipe() {
-        bannerManager = BannerManager()
-        bannerManager?.showBanner(title: "Saved", style: .success)
+        bannerManager = BannerManager(title: "Saved", style: .success)
+        bannerManager?.banner.show()
     }
     
 }

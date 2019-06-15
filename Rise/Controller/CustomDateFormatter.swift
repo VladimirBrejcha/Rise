@@ -9,8 +9,10 @@
 import Foundation
 
 class CustomDateFormatter: DateFormatter {
+    
     override init() {
         super.init()
+        
         locale = Locale(identifier: "ru")
         timeStyle = .short
         dateFormat = "HH:mm"

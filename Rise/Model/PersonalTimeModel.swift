@@ -59,11 +59,19 @@ struct PersonalTimeModel {
         }
     }
     
+    var calculator: PersonalTimeCalculator {
+        let calculator = PersonalTimeCalculator(wakeUp: convertedWakeUpTime,
+                                                sleepDuration: convertedSleepDuration,
+                                                wentSleepTime: convertedTimeWentSleep,
+                                                duration: convertedDuration)
+        return calculator
+    }
+    
     // MARK: Converted properties
-    var convertedWakeUpTime: Date?
-    var convertedSleepDuration: Int?
-    var convertedTimeWentSleep: Date?
-    var convertedDuration: Int?
+    var convertedWakeUpTime: Date!
+    var convertedSleepDuration: Int!
+    var convertedTimeWentSleep: Date!
+    var convertedDuration: Int!
     
     // MARK: Methods
     func convertData(string input: String) -> Date {
@@ -76,12 +84,12 @@ struct PersonalTimeModel {
     }
     
     func buildCalculator() {
-        var calculator = PersonalTimeCalculator(wakeUp: convertedWakeUpTime!,
-                                                sleepDuration: convertedSleepDuration!,
-                                                wentSleepTime: convertedTimeWentSleep!,
-                                                duration: convertedDuration!)
-        
-        calculator.calculate()
+//        let calculator = PersonalTimeCalculator(wakeUp: convertedWakeUpTime!,
+//                                                sleepDuration: convertedSleepDuration!,
+//                                                wentSleepTime: convertedTimeWentSleep!,
+//                                                duration: convertedDuration!)
+//
+        print(calculator.result)
     }
     
 }

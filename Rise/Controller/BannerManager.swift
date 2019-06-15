@@ -11,16 +11,13 @@ import NotificationBannerSwift
 
 struct BannerManager {
     
-    // MARK: Properties
-    private var banner: StatusBarNotificationBanner!
+    public var title: String
+    public var style: BannerStyle
     
-    // MARK: Methods
-    public mutating func showBanner(title: String, style: BannerStyle) {
-        
-        banner = StatusBarNotificationBanner(title: title, style: style)
-        
+    public var banner: StatusBarNotificationBanner {
+        let banner = StatusBarNotificationBanner(title: title, style: style)
         banner.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-        
-        banner.show()
+        return banner
     }
+    
 }

@@ -12,7 +12,9 @@ import SPStorkController
 struct TransitionManager {
     
     // MARK: Properties
-    private var storyboard = UIStoryboard(name: Storyboard.name, bundle: nil)
+    private var storyboard: UIStoryboard {
+        return UIStoryboard(name: Storyboard.name, bundle: nil)
+    }
     
     // MARK: Methods
     public func makeTransition(from senderController: UIViewController, to controllerID: String) {

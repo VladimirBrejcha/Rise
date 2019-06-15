@@ -9,7 +9,6 @@ target 'Rise' do
 pod 'SwiftLint'
 pod 'SPStorkController'
 pod 'NotificationBannerSwift'
-pod 'MKRingProgressView'
 pod 'AnimatedGradientView', :git => 'https://github.com/rwbutler/AnimatedGradientView.git', :branch => 'swift-5'
 pod 'AIFlatSwitch'
 

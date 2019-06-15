@@ -30,6 +30,7 @@
 		92D7D65D2296F298009321AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92D7D65B2296F298009321AE /* LaunchScreen.storyboard */; };
 		92D7D6682296F298009321AE /* RiseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6672296F298009321AE /* RiseTests.swift */; };
 		92D7D6732296F298009321AE /* RiseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6722296F298009321AE /* RiseUITests.swift */; };
+		92E4A7FD22B5766F0027D42C /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E4A7FC22B5766F0027D42C /* CustomSegmentedControl.swift */; };
 		92E77AF822A5303400E5E21C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E77AF722A5303400E5E21C /* SettingsViewController.swift */; };
 		92E77AFA22A5304400E5E21C /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E77AF922A5304400E5E21C /* MainScreenViewController.swift */; };
 		A1BA49264A74BA94AE77CEEF /* Pods_RiseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7493916A7CC808AD6398DFD7 /* Pods_RiseTests.framework */; };
@@ -87,6 +88,7 @@
 		92D7D66E2296F298009321AE /* RiseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RiseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D7D6722296F298009321AE /* RiseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiseUITests.swift; sourceTree = "<group>"; };
 		92D7D6742296F298009321AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92E4A7FC22B5766F0027D42C /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		92E77AF722A5303400E5E21C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		92E77AF922A5304400E5E21C /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		BC603B5F15F0B1E85685898A /* Pods-Rise.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rise.release.xcconfig"; path = "Target Support Files/Pods-Rise/Pods-Rise.release.xcconfig"; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				92D7D65B2296F298009321AE /* LaunchScreen.storyboard */,
 				92D7D6562296F297009321AE /* Main.storyboard */,
+				92E4A7FC22B5766F0027D42C /* CustomSegmentedControl.swift */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -416,7 +419,6 @@
 				"${PODS_ROOT}/Target Support Files/Pods-Rise/Pods-Rise-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AIFlatSwitch/AIFlatSwitch.framework",
 				"${BUILT_PRODUCTS_DIR}/AnimatedGradientView/AnimatedGradientView.framework",
-				"${BUILT_PRODUCTS_DIR}/MKRingProgressView/MKRingProgressView.framework",
 				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/NotificationBannerSwift/NotificationBannerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SPStorkController/SPStorkController.framework",
@@ -428,7 +430,6 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AIFlatSwitch.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AnimatedGradientView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MKRingProgressView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NotificationBannerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SPStorkController.framework",
@@ -530,6 +531,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92E77AFA22A5304400E5E21C /* MainScreenViewController.swift in Sources */,
+				92E4A7FD22B5766F0027D42C /* CustomSegmentedControl.swift in Sources */,
 				92D41C2822AC0A2C00706CD3 /* CustomTabBar.swift in Sources */,
 				92D7D6552296F297009321AE /* SleepViewController.swift in Sources */,
 				92D12FD622A4045E0093B0A3 /* PickerDataModel.swift in Sources */,

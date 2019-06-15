@@ -13,7 +13,7 @@
         <!--Main Screen View Controller-->
         <scene sceneID="x3b-qG-Bv2">
             <objects>
-                <viewController id="zaJ-cb-1ng" customClass="MainScreenViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zaJ-cb-1ng" customClass="MainScreenViewController" customModule="Rise" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CxZ-qH-yJ3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,20 +28,44 @@
                                     <action selector="sleepButtonTouch:" destination="zaJ-cb-1ng" eventType="touchUpInside" id="A4E-A1-azt"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GMJ-xI-VUX">
+                                <rect key="frame" x="20" y="169" width="280" height="230"/>
+                                <color key="backgroundColor" white="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="GMJ-xI-VUX" secondAttribute="height" multiplier="28:23" id="cUR-zf-KqQ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rotate">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ury-MB-qCt" firstAttribute="bottom" secondItem="x9i-c1-Zds" secondAttribute="bottom" constant="30" id="OWg-5h-R7r"/>
                             <constraint firstItem="x9i-c1-Zds" firstAttribute="leading" secondItem="ury-MB-qCt" secondAttribute="leading" constant="100" id="aCj-Xr-esR"/>
                             <constraint firstItem="ury-MB-qCt" firstAttribute="trailing" secondItem="x9i-c1-Zds" secondAttribute="trailing" constant="100" id="iIe-eJ-TZh"/>
+                            <constraint firstItem="GMJ-xI-VUX" firstAttribute="leading" secondItem="ury-MB-qCt" secondAttribute="leading" constant="20" id="qP2-US-sfI"/>
+                            <constraint firstItem="ury-MB-qCt" firstAttribute="trailing" secondItem="GMJ-xI-VUX" secondAttribute="trailing" constant="20" id="qdR-kL-hgo"/>
+                            <constraint firstItem="GMJ-xI-VUX" firstAttribute="centerY" secondItem="CxZ-qH-yJ3" secondAttribute="centerY" id="wnz-Qf-8LT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ury-MB-qCt"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" id="TXr-v4-zcJ"/>
+                    <connections>
+                        <outlet property="mainContainerView" destination="GMJ-xI-VUX" id="b40-8L-O7w"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jGW-AY-dG7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="993" y="25"/>
+            <point key="canvasLocation" x="991.875" y="24.295774647887324"/>
         </scene>
         <!--Custom Tab Bar Controller-->
         <scene sceneID="WYa-Sz-OrB">
@@ -145,43 +169,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zeF-yj-VTm">
-                                <rect key="frame" x="60" y="151" width="200" height="200"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Btk-RN-yhz" customClass="MKRingProgressView">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="Btk-RN-yhz" secondAttribute="height" multiplier="1:1" id="OXN-qw-Rdf"/>
-                                        </constraints>
-                                    </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100/100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XjW-Ed-zNh">
-                                        <rect key="frame" x="69" y="89.5" width="62" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pillow-2-3" translatesAutoresizingMaskIntoConstraints="NO" id="nEd-9k-iC8">
-                                        <rect key="frame" x="87" y="7" width="26" height="26"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="26" id="ATe-wb-5ch"/>
-                                            <constraint firstAttribute="height" constant="26" id="IZ3-lP-27Q"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Btk-RN-yhz" secondAttribute="trailing" id="1Gk-qD-AHN"/>
-                                    <constraint firstItem="XjW-Ed-zNh" firstAttribute="centerX" secondItem="zeF-yj-VTm" secondAttribute="centerX" id="6Yo-gT-5Ht"/>
-                                    <constraint firstAttribute="bottom" secondItem="Btk-RN-yhz" secondAttribute="bottom" id="M4W-B2-3u1"/>
-                                    <constraint firstAttribute="width" secondItem="zeF-yj-VTm" secondAttribute="height" multiplier="1:1" id="NXQ-lw-CwK"/>
-                                    <constraint firstItem="nEd-9k-iC8" firstAttribute="centerX" secondItem="zeF-yj-VTm" secondAttribute="centerX" id="PCY-Qt-ANk"/>
-                                    <constraint firstItem="XjW-Ed-zNh" firstAttribute="centerY" secondItem="zeF-yj-VTm" secondAttribute="centerY" id="bQa-w5-qz1"/>
-                                    <constraint firstItem="Btk-RN-yhz" firstAttribute="leading" secondItem="zeF-yj-VTm" secondAttribute="leading" id="q5X-9w-jfI"/>
-                                    <constraint firstItem="nEd-9k-iC8" firstAttribute="top" secondItem="zeF-yj-VTm" secondAttribute="top" constant="7" id="rAu-hK-2VY"/>
-                                    <constraint firstItem="Btk-RN-yhz" firstAttribute="top" secondItem="zeF-yj-VTm" secondAttribute="top" id="xu9-y0-zPn"/>
-                                </constraints>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your progress" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FU8-c9-NeR">
                                 <rect key="frame" x="80" y="100" width="160" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
@@ -198,23 +185,16 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="zeF-yj-VTm" firstAttribute="top" secondItem="FU8-c9-NeR" secondAttribute="bottom" constant="30" id="E5s-cY-cVZ"/>
                             <constraint firstItem="FU8-c9-NeR" firstAttribute="leading" secondItem="JQk-a9-ZGr" secondAttribute="leading" constant="80" id="KYM-Gc-wbu"/>
-                            <constraint firstItem="zeF-yj-VTm" firstAttribute="leading" secondItem="JQk-a9-ZGr" secondAttribute="leading" constant="60" id="OJu-q7-3Pb"/>
                             <constraint firstItem="hRZ-Gb-VtP" firstAttribute="leading" secondItem="JQk-a9-ZGr" secondAttribute="leading" constant="100" id="TrW-ik-i62"/>
                             <constraint firstItem="JQk-a9-ZGr" firstAttribute="bottom" secondItem="hRZ-Gb-VtP" secondAttribute="bottom" constant="30" id="a85-Ao-k9t"/>
                             <constraint firstItem="JQk-a9-ZGr" firstAttribute="trailing" secondItem="FU8-c9-NeR" secondAttribute="trailing" constant="80" id="c2w-kt-eOC"/>
-                            <constraint firstItem="JQk-a9-ZGr" firstAttribute="trailing" secondItem="zeF-yj-VTm" secondAttribute="trailing" constant="60" id="ksT-j4-hT8"/>
                             <constraint firstItem="FU8-c9-NeR" firstAttribute="top" secondItem="JQk-a9-ZGr" secondAttribute="top" constant="80" id="nyE-Yj-frb"/>
                             <constraint firstItem="JQk-a9-ZGr" firstAttribute="trailing" secondItem="hRZ-Gb-VtP" secondAttribute="trailing" constant="100" id="y2J-Rb-CiM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JQk-a9-ZGr"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" image="alarm" selectedImage="alarmPressed" id="coO-Zq-xFO"/>
-                    <connections>
-                        <outlet property="label" destination="XjW-Ed-zNh" id="Wjv-lC-Oav"/>
-                        <outlet property="ringProgressView" destination="Btk-RN-yhz" id="QJE-iX-9vo"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WSD-p6-oMV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -306,7 +286,6 @@
     <resources>
         <image name="alarm" width="25" height="25"/>
         <image name="alarmPressed" width="25" height="25"/>
-        <image name="pillow-2-3" width="240" height="240"/>
         <image name="settings" width="25" height="25"/>
         <image name="settingsPressed" width="25" height="25"/>
     </resources>
