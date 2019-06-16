@@ -37,3 +37,6 @@ struct TransitionManager {
 // MARK: Extensions
 extension ProgressViewController: SPStorkControllerDelegate {
 }
+
+extension MainScreenViewController: SPStorkControllerDelegate {
+}

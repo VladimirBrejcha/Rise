@@ -245,14 +245,22 @@
 		92D7D68422980138009321AE /* View */ = {
 			isa = PBXGroup;
 			children = (
-				929D3DF322B58AA800B8A7F1 /* CustomContainerView.swift */,
-				92E4A7FC22B5766F0027D42C /* CustomSegmentedControl.swift */,
+				92DCFF6722B6B53D0038545B /* Views */,
 				92D41C2922AC0A5800706CD3 /* Controllers */,
 				92D41C2A22AC0A5F00706CD3 /* Bars */,
 				92D12FD722A4237C0093B0A3 /* ExpandingCell */,
 				92D41C2B22AC0A6F00706CD3 /* Storyboards */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		92DCFF6722B6B53D0038545B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				929D3DF322B58AA800B8A7F1 /* CustomContainerView.swift */,
+				92E4A7FC22B5766F0027D42C /* CustomSegmentedControl.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		D2124982893C2715CAD825C5 /* Pods */ = {

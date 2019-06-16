@@ -177,10 +177,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sleepIconPressed" translatesAutoresizingMaskIntoConstraints="NO" id="vEV-lX-0BK">
-                                <rect key="frame" x="214" y="447" width="52" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -199,7 +195,6 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" id="TXr-v4-zcJ"/>
                     <connections>
-                        <outlet property="iconForAnimation" destination="vEV-lX-0BK" id="dcX-nH-nRo"/>
                         <outlet property="mainContainerView" destination="GMJ-xI-VUX" id="b40-8L-O7w"/>
                     </connections>
                 </viewController>
@@ -429,7 +424,6 @@
         <image name="fallasleep" width="50" height="50"/>
         <image name="settings" width="25" height="25"/>
         <image name="settingsPressed" width="25" height="25"/>
-        <image name="sleepIconPressed" width="25" height="25"/>
         <image name="sunrise" width="54.333332061767578" height="54.333332061767578"/>
         <image name="sunset" width="54.333332061767578" height="54.333332061767578"/>
         <image name="wakeup" width="50" height="50"/>

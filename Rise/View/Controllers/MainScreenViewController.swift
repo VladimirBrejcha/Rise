@@ -7,23 +7,19 @@
 //
 
 import UIKit
-import SPStorkController
 
 final class MainScreenViewController: UIViewController {
     
     // MARK: Properties
-    private var transtitionManager: TransitionManager?
-    @IBOutlet weak var iconForAnimation: UIImageView!
+    private var transitionManager: TransitionManager?
     
+    // MARK: IBOutlets
     @IBOutlet weak var mainContainerView: CustomContainerView!
+    
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         createSegmentedControl()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
     }
     
     func createSegmentedControl() {
@@ -41,26 +37,19 @@ final class MainScreenViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func sleepButtonTouch(_ sender: UIButton) {
-        iconForAnimation.isHidden = false
         UIView.animate(withDuration: 0.5, animations: {
             self.view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1)
-        }) { (true) in
-            self.transtitionManager = TransitionManager()
-            self.transtitionManager?.makeTransition(from: self, to: Identifiers.sleep)
+        }) { _ in
+            self.transitionManager = TransitionManager()
+            self.transitionManager?.makeTransition(from: self, to: Identifiers.sleep)
         }
-        
-        
     }
     
-}
-
-extension MainScreenViewController: SPStorkControllerDelegate {
     func didDismissStorkBySwipe() {
         UIView.animate(withDuration: 2) {
             self.view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1)
             self.view.backgroundColor = .clear
         }
-        
-        
     }
+    
 }
