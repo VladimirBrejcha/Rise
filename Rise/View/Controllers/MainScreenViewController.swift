@@ -13,7 +13,8 @@ final class MainScreenViewController: UIViewController {
     
     // MARK: Properties
     private var transtitionManager: TransitionManager?
-
+    @IBOutlet weak var iconForAnimation: UIImageView!
+    
     @IBOutlet weak var mainContainerView: CustomContainerView!
     // MARK: LifeCycle
     override func viewDidLoad() {
@@ -40,6 +41,7 @@ final class MainScreenViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func sleepButtonTouch(_ sender: UIButton) {
+        iconForAnimation.isHidden = false
         UIView.animate(withDuration: 0.5, animations: {
             self.view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1)
         }) { (true) in
