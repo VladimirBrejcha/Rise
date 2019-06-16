@@ -11,7 +11,11 @@ import UIKit
 final class MainScreenViewController: UIViewController {
     
     // MARK: Properties
-    private var transitionManager: TransitionManager?
+    private var transitionManager: TransitionManager? {
+        return TransitionManager(self)
+    }
+    
+    private var segmentedControl: CustomSegmentedContrl!
     
     // MARK: IBOutlets
     @IBOutlet weak var mainContainerView: CustomContainerView!
@@ -19,15 +23,20 @@ final class MainScreenViewController: UIViewController {
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        createSegmentedControl()
+        
+        setupSegmentedControl()
     }
     
-    func createSegmentedControl() {
-        let segmentedControl = CustomSegmentedContrl(buttonTitles: "yesterday,today,tomorrow", startingIndex: 1)
+    // MARK: UISetup Methods
+    private func setupSegmentedControl() {
+        
+        segmentedControl = CustomSegmentedContrl(buttonTitles: "yesterday,today,tomorrow", startingIndex: 1)
         segmentedControl.backgroundColor = .clear
         
-//        segmentedControl.addTarget(self, action: #selector(onChangeOfSegment(_:)), for: .valueChanged)
+        //        segmentedControl.addTarget(self, action: #selector(onChangeOfSegment(_:)), for: .valueChanged)
+        
         view.addSubview(segmentedControl)
+        
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.heightAnchor.constraint(equalToConstant: 20).isActive = true
         segmentedControl.bottomAnchor.constraint(equalTo: mainContainerView.bottomAnchor, constant: -8).isActive = true
@@ -37,19 +46,11 @@ final class MainScreenViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func sleepButtonTouch(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1)
-        }) { _ in
-            self.transitionManager = TransitionManager()
-            self.transitionManager?.makeTransition(from: self, to: Identifiers.sleep)
-        }
+        transitionManager?.makeTransition(to: Identifiers.sleep)
     }
     
     func didDismissStorkBySwipe() {
-        UIView.animate(withDuration: 2) {
-            self.view.backgroundColor = #colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1)
-            self.view.backgroundColor = .clear
-        }
+        transitionManager?.dismissController()
     }
     
 }

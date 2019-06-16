@@ -12,7 +12,9 @@ import UserNotifications
 final class SleepViewController: UIViewController {
     
     // MARK: Properties
-    private var gradientManager: GradientManager?
+    private var gradientManager: GradientManager? {
+        return GradientManager(frame: view.bounds)
+    }
     
     // MARK: IBOutlets
     @IBOutlet weak var sleepButton: UIButton!
@@ -33,7 +35,6 @@ final class SleepViewController: UIViewController {
     }
     
     private func createBackground() {
-        gradientManager = GradientManager(frame: view.bounds)
         guard let gradientView = gradientManager?.createStaticGradient(colors: [#colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1), #colorLiteral(red: 0.4588235294, green: 0.168627451, blue: 0.2705882353, alpha: 1)],
                                                                        direction: .up,
                                                                        alpha: 0.5) else { return }

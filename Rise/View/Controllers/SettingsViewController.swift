@@ -13,7 +13,6 @@ final class SettingsViewController: UIViewController {
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
 }
