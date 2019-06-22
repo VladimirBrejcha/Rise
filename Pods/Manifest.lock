@@ -1,0 +1,49 @@
+PODS:
+  - AIFlatSwitch (1.0.6)
+  - AnimatedGradientView (1.1.1)
+  - MarqueeLabel (4.0.0)
+  - NotificationBannerSwift (2.2.2):
+    - MarqueeLabel (~> 4.0.0)
+    - SnapKit (~> 5.0.0)
+  - SnapKit (5.0.0)
+  - SPStorkController (1.6.5)
+  - SwiftLint (0.33.0)
+
+DEPENDENCIES:
+  - AIFlatSwitch
+  - AnimatedGradientView (from `https://github.com/rwbutler/AnimatedGradientView.git`, branch `swift-5`)
+  - NotificationBannerSwift
+  - SPStorkController
+  - SwiftLint
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AIFlatSwitch
+    - MarqueeLabel
+    - NotificationBannerSwift
+    - SnapKit
+    - SPStorkController
+    - SwiftLint
+
+EXTERNAL SOURCES:
+  AnimatedGradientView:
+    :branch: swift-5
+    :git: https://github.com/rwbutler/AnimatedGradientView.git
+
+CHECKOUT OPTIONS:
+  AnimatedGradientView:
+    :commit: e24e0971d7b873f571f5ced8ca39372faeb6fb3b
+    :git: https://github.com/rwbutler/AnimatedGradientView.git
+
+SPEC CHECKSUMS:
+  AIFlatSwitch: b1965ccd826c3ea7566f6bebda19562d131ec2b7
+  AnimatedGradientView: e3d928407034be3e97ae62564a4071da4b10b0f2
+  MarqueeLabel: b55b26e690b6ad41faedd95cbf5eae6f1d1735b4
+  NotificationBannerSwift: 2d46cc1b4a0ebf4372baef383f2a2ca82bf0c235
+  SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
+  SPStorkController: f74a60dbcd3c35180c996688873f6eadac839642
+  SwiftLint: fed9c66336e41fc74dc48a73678380718f0c8b0e
+
+PODFILE CHECKSUM: 833fd665efed028f3e4236058587473ded67d228
+
+COCOAPODS: 1.6.1
