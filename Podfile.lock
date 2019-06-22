@@ -5,6 +5,11 @@ PODS:
   - NotificationBannerSwift (2.2.2):
     - MarqueeLabel (~> 4.0.0)
     - SnapKit (~> 5.0.0)
+  - Realm (3.16.2):
+    - Realm/Headers (= 3.16.2)
+  - Realm/Headers (3.16.2)
+  - RealmSwift (3.16.2):
+    - Realm (= 3.16.2)
   - SnapKit (5.0.0)
   - SPStorkController (1.6.5)
   - SwiftLint (0.33.0)
@@ -13,6 +18,7 @@ DEPENDENCIES:
   - AIFlatSwitch
   - AnimatedGradientView (from `https://github.com/rwbutler/AnimatedGradientView.git`, branch `swift-5`)
   - NotificationBannerSwift
+  - RealmSwift
   - SPStorkController
   - SwiftLint
 
@@ -21,6 +27,8 @@ SPEC REPOS:
     - AIFlatSwitch
     - MarqueeLabel
     - NotificationBannerSwift
+    - Realm
+    - RealmSwift
     - SnapKit
     - SPStorkController
     - SwiftLint
@@ -40,10 +48,12 @@ SPEC CHECKSUMS:
   AnimatedGradientView: e3d928407034be3e97ae62564a4071da4b10b0f2
   MarqueeLabel: b55b26e690b6ad41faedd95cbf5eae6f1d1735b4
   NotificationBannerSwift: 2d46cc1b4a0ebf4372baef383f2a2ca82bf0c235
+  Realm: 0e73b4edeb5b6a90da3d83206883b2e34e00eb38
+  RealmSwift: a81e650171ef0a5f999df1ed8d39ba8d6fce88a4
   SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
   SPStorkController: f74a60dbcd3c35180c996688873f6eadac839642
   SwiftLint: fed9c66336e41fc74dc48a73678380718f0c8b0e
 
-PODFILE CHECKSUM: 833fd665efed028f3e4236058587473ded67d228
+PODFILE CHECKSUM: d5d272df485baacc8fc4987adc67d8f9983ddc07
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.7.2
