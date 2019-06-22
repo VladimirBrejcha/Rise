@@ -19,6 +19,9 @@ final class PersonalTimeViewController: UITableViewController {
     private var personalTimeModel = PersonalTimeModel()
     private let notificationCenter: NotificationCenter = .default
     
+    // MARK: IBOutlets
+    @IBOutlet weak var createScheduleButton: UIButton!
+    
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,9 +39,9 @@ final class PersonalTimeViewController: UITableViewController {
     
     // MARK: UISetup Methods
     private func createBackground() {
-        tableView.backgroundView = gradientManager?.createStaticGradient(colors: [#colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1), #colorLiteral(red: 0.4588235294, green: 0.168627451, blue: 0.2705882353, alpha: 1)],
+        tableView.backgroundView = gradientManager?.createStaticGradient(colors: [#colorLiteral(red: 0.1254607141, green: 0.1326543987, blue: 0.2668849528, alpha: 1), #colorLiteral(red: 0.34746629, green: 0.1312789619, blue: 0.2091784477, alpha: 1)],
                                                                          direction: .up,
-                                                                         alpha: 0.5)
+                                                                         alpha: 1)
     }
     
     // MARK: Actions
@@ -90,6 +93,10 @@ final class PersonalTimeViewController: UITableViewController {
             personalTimeModel.duration = pickedValue
         default:
             fatalError("cell with this tag doent exists")
+        }
+        
+        if personalTimeModel.preferedWakeUpTime != nil && personalTimeModel.preferedSleepDuration != nil && personalTimeModel.timeWentSleep != nil && personalTimeModel.duration != nil {
+            createScheduleButton.isEnabled = true
         }
         
     }

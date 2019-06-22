@@ -344,7 +344,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="separatorColor" red="0.71764705880000002" green="0.61568627450000002" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="W4t-FV-e8q">
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="W4t-FV-e8q">
                             <rect key="frame" x="0.0" y="417.5" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Create sleep schedule"/>
@@ -412,6 +412,9 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="" image="alarm" selectedImage="alarmPressed" id="qMy-5a-14p"/>
+                    <connections>
+                        <outlet property="createScheduleButton" destination="W4t-FV-e8q" id="JNe-Sc-vQV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tOv-yo-py0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
