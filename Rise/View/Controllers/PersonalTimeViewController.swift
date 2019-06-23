@@ -16,8 +16,13 @@ final class PersonalTimeViewController: UITableViewController {
     private var gradientManager: GradientManager? {
         return GradientManager(frame: view.bounds)
     }
-    private var personalTimeModel = PersonalTimeModel()
+    private var personalTimeModel: PersonalTimeModel?
     private let notificationCenter: NotificationCenter = .default
+    
+    private var wakeUpForModel: String?
+    private var sleepDurationForModel: String?
+    private var lastTimeWentSleepForModel: String?
+    private var planDurationForModel: String?
     
     // MARK: IBOutlets
     @IBOutlet weak var createScheduleButton: UIButton!
@@ -46,7 +51,7 @@ final class PersonalTimeViewController: UITableViewController {
     
     // MARK: Actions
     @IBAction func scheduleTapped(_ sender: UIButton) {
-        personalTimeModel.buildCalculator()
+        personalTimeModel!.buildCalculator()
         
     }
     
@@ -84,21 +89,26 @@ final class PersonalTimeViewController: UITableViewController {
         
         switch cell.tag {
         case 0:
-            personalTimeModel.preferedWakeUpTime = pickedValue
+            wakeUpForModel = pickedValue
         case 1:
-            personalTimeModel.preferedSleepDuration = pickedValue
+            sleepDurationForModel = pickedValue
         case 2:
-            personalTimeModel.timeWentSleep = pickedValue
+            lastTimeWentSleepForModel = pickedValue
         case 3:
-            personalTimeModel.duration = pickedValue
+            planDurationForModel = pickedValue
         default:
             fatalError("cell with this tag doent exists")
         }
         
-        if personalTimeModel.preferedWakeUpTime != nil && personalTimeModel.preferedSleepDuration != nil && personalTimeModel.timeWentSleep != nil && personalTimeModel.duration != nil {
+        guard let wakeUp = wakeUpForModel,
+            let sleepDuration = sleepDurationForModel,
+            let wentSleep = lastTimeWentSleepForModel,
+            let planDuration = planDurationForModel else { return }
             createScheduleButton.isEnabled = true
-        }
-        
+            personalTimeModel = PersonalTimeModel(wakeUp: wakeUp,
+                                                  sleepDuration: sleepDuration,
+                                                  wentSleep: wentSleep,
+                                                  planDuration: planDuration)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

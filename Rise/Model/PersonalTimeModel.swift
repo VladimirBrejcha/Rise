@@ -8,16 +8,16 @@
 
 import Foundation
 
-struct PersonalTimeModel {
+class PersonalTimeModel {
     
     // MARK: Properties
-    var preferedWakeUpTime: String? {
+    var preferedWakeUpTime: String! {
         willSet {
-            convertedWakeUpTime = convertData(string: newValue!)
+            convertedWakeUpTime = convertData(string: newValue)
         }
     }
     
-    var preferedSleepDuration: String? {
+    var preferedSleepDuration: String! {
         willSet {
             switch newValue {
             case DataForPicker.hoursArray[0]:
@@ -36,13 +36,13 @@ struct PersonalTimeModel {
         }
     }
     
-    var timeWentSleep: String? {
+    var timeWentSleep: String! {
         willSet {
-            convertedTimeWentSleep = convertData(string: newValue!)
+            convertedTimeWentSleep = convertData(string: newValue)
         }
     }
     
-    var duration: String? {
+    var duration: String! {
         willSet {
             switch newValue {
             case DataForPicker.daysArray[0]:
@@ -59,22 +59,21 @@ struct PersonalTimeModel {
         }
     }
     
-    var calculator: PersonalTimeCalculator {
-        let calculator = PersonalTimeCalculator(wakeUp: convertedWakeUpTime,
-                                                sleepDuration: convertedSleepDuration,
-                                                wentSleepTime: convertedTimeWentSleep,
-                                                duration: convertedDuration)
-        return calculator
-    }
+    private var calculator: PersonalTimeCalculator?
     
     // MARK: Converted properties
-    var convertedWakeUpTime: Date!
-    var convertedSleepDuration: Int!
-    var convertedTimeWentSleep: Date!
-    var convertedDuration: Int!
+    private var convertedWakeUpTime: Date!
+    private var convertedSleepDuration: Int!
+    private var convertedTimeWentSleep: Date!
+    private var convertedDuration: Int!
+    
+    // MARK: LifeCycle
+    init(wakeUp: String, sleepDuration: String, wentSleep: String, planDuration: String) {
+        buildModel(wakeUp: wakeUp, sleepDuration: sleepDuration, wentSleep: wentSleep, planDuration: planDuration)
+    }
     
     // MARK: Methods
-    func convertData(string input: String) -> Date {
+    private func convertData(string input: String) -> Date {
         
         guard let convertedData = Formater.dateFormatter.date(from: input) else {
             fatalError("Could'nt convert String to Date")
@@ -83,13 +82,18 @@ struct PersonalTimeModel {
         return convertedData
     }
     
+    func buildModel(wakeUp: String, sleepDuration: String, wentSleep: String, planDuration: String) {
+        preferedWakeUpTime = wakeUp
+        preferedSleepDuration = sleepDuration
+        timeWentSleep = wentSleep
+        duration = planDuration
+    }
+    
     func buildCalculator() {
-//        let calculator = PersonalTimeCalculator(wakeUp: convertedWakeUpTime!,
-//                                                sleepDuration: convertedSleepDuration!,
-//                                                wentSleepTime: convertedTimeWentSleep!,
-//                                                duration: convertedDuration!)
-//
-        print(calculator.result)
+        calculator = PersonalTimeCalculator(wakeUp: convertedWakeUpTime,
+                                            sleepDuration: convertedSleepDuration,
+                                            wentSleepTime: convertedTimeWentSleep,
+                                            duration: convertedDuration)
     }
     
 }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 struct PersonalTimeCalculator {
     
@@ -16,7 +17,7 @@ struct PersonalTimeCalculator {
     let wentSleepTime: Date
     let duration: Int
     
-    var result: Int {
+    fileprivate var result: Int {
         guard let neededTimeToGoSleep = Calendar.current.date(byAdding: .minute,
                                                               value: -sleepDuration,
                                                               to: wakeUp) else { fatalError("date doesnt exist") }
@@ -24,16 +25,41 @@ struct PersonalTimeCalculator {
         let timeBetweenNeededSleepAndActualSleep = Int(-neededTimeToGoSleep.timeIntervalSince(wentSleepTime) / 60)
         
         return timeBetweenNeededSleepAndActualSleep > 1440
-                ? (timeBetweenNeededSleepAndActualSleep - 1440) / duration
-                : timeBetweenNeededSleepAndActualSleep / duration
+            ? (timeBetweenNeededSleepAndActualSleep - 1440) / duration
+            : timeBetweenNeededSleepAndActualSleep / duration
     }
     
     // MARK: LifeCycle
-    init(wakeUp: Date, sleepDuration: Int, wentSleepTime: Date, duration: Int, result: Double? = nil) {
+    init(wakeUp: Date, sleepDuration: Int, wentSleepTime: Date, duration: Int) {
         self.wakeUp = wakeUp
         self.sleepDuration = sleepDuration
         self.wentSleepTime = wentSleepTime
         self.duration = duration
+        let calculatedPlan = CalculatedPlan()
+        calculatedPlan.days = duration
+        calculatedPlan.minutesPerDay = result
+        let manager = PersonalTimeManager(calculatedPlan: calculatedPlan)
+        manager.save()
     }
     
+}
+
+class CalculatedPlan: Object {
+    @objc dynamic var days: Int = 0
+    @objc dynamic var minutesPerDay: Int = 0
+}
+
+struct PersonalTimeManager {
+    private let realm = try! Realm()
+    let calculatedPlan: CalculatedPlan
+    
+    func save() {
+        do {
+            try realm.write {
+                realm.add(calculatedPlan)
+            }
+        } catch {
+            print("error saving plan \(error)")
+        }
+    }
 }
