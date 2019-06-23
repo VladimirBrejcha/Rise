@@ -11,6 +11,7 @@
 		922032EA22998F3D0006F92B /* PersonalTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922032E922998F3D0006F92B /* PersonalTimeViewController.swift */; };
 		922032F0229BF2890006F92B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922032EF229BF2890006F92B /* Constants.swift */; };
 		9276892722A82DD1002E50F5 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9276892622A82DD1002E50F5 /* ProgressViewController.swift */; };
+		9291F5D922BFE04C00F7037D /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9291F5D822BFE04C00F7037D /* DataBaseManager.swift */; };
 		929D3DF422B58AA800B8A7F1 /* CustomContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929D3DF322B58AA800B8A7F1 /* CustomContainerView.swift */; };
 		92B78CFA229FAF6C0087240B /* ExpandingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B78CF8229FAF6C0087240B /* ExpandingCell.swift */; };
 		92B78CFB229FAF6C0087240B /* ExpandingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92B78CF9229FAF6C0087240B /* ExpandingCell.xib */; };
@@ -64,6 +65,7 @@
 		922032E922998F3D0006F92B /* PersonalTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalTimeViewController.swift; sourceTree = "<group>"; };
 		922032EF229BF2890006F92B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9276892622A82DD1002E50F5 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
+		9291F5D822BFE04C00F7037D /* DataBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataBaseManager.swift; path = Rise/Model/DataBaseManager.swift; sourceTree = SOURCE_ROOT; };
 		929D3DF322B58AA800B8A7F1 /* CustomContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContainerView.swift; sourceTree = "<group>"; };
 		92B78CF8229FAF6C0087240B /* ExpandingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandingCell.swift; sourceTree = "<group>"; };
 		92B78CF9229FAF6C0087240B /* ExpandingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandingCell.xib; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				92D7D6592296F298009321AE /* Assets.xcassets */,
+				9291F5D822BFE04C00F7037D /* DataBaseManager.swift */,
 				92D41C3222AC395C00706CD3 /* PersonalTimeModel.swift */,
 				92D12FD522A4045E0093B0A3 /* PickerDataModel.swift */,
 				922032EF229BF2890006F92B /* Constants.swift */,
@@ -530,6 +533,7 @@
 				92E4A7FD22B5766F0027D42C /* CustomSegmentedControl.swift in Sources */,
 				92D41C2822AC0A2C00706CD3 /* CustomTabBar.swift in Sources */,
 				92D7D6552296F297009321AE /* SleepViewController.swift in Sources */,
+				9291F5D922BFE04C00F7037D /* DataBaseManager.swift in Sources */,
 				92D12FD622A4045E0093B0A3 /* PickerDataModel.swift in Sources */,
 				929D3DF422B58AA800B8A7F1 /* CustomContainerView.swift in Sources */,
 				92D41C2F22AC345C00706CD3 /* PersonalTimeCalculator.swift in Sources */,
