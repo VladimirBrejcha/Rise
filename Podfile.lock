@@ -1,6 +1,7 @@
 PODS:
   - AIFlatSwitch (1.0.6)
   - AnimatedGradientView (1.1.1)
+  - FSCalendar (2.8.0)
   - MarqueeLabel (4.0.0)
   - NotificationBannerSwift (2.2.2):
     - MarqueeLabel (~> 4.0.0)
@@ -17,6 +18,7 @@ PODS:
 DEPENDENCIES:
   - AIFlatSwitch
   - AnimatedGradientView (from `https://github.com/rwbutler/AnimatedGradientView.git`, branch `swift-5`)
+  - FSCalendar
   - NotificationBannerSwift
   - RealmSwift
   - SPStorkController
@@ -25,6 +27,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AIFlatSwitch
+    - FSCalendar
     - MarqueeLabel
     - NotificationBannerSwift
     - Realm
@@ -46,6 +49,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AIFlatSwitch: b1965ccd826c3ea7566f6bebda19562d131ec2b7
   AnimatedGradientView: e3d928407034be3e97ae62564a4071da4b10b0f2
+  FSCalendar: 3a5ed3636e2ba1b83ebebfcf0c2603105a6f5efe
   MarqueeLabel: b55b26e690b6ad41faedd95cbf5eae6f1d1735b4
   NotificationBannerSwift: 2d46cc1b4a0ebf4372baef383f2a2ca82bf0c235
   Realm: 0e73b4edeb5b6a90da3d83206883b2e34e00eb38
@@ -54,6 +58,6 @@ SPEC CHECKSUMS:
   SPStorkController: f74a60dbcd3c35180c996688873f6eadac839642
   SwiftLint: fed9c66336e41fc74dc48a73678380718f0c8b0e
 
-PODFILE CHECKSUM: d5d272df485baacc8fc4987adc67d8f9983ddc07
+PODFILE CHECKSUM: 3e1457e9a2b78222a839de5c4ddf32d81b4d154a
 
-COCOAPODS: 1.7.2
+COCOAPODS: 1.7.3

@@ -12,6 +12,7 @@ pod 'NotificationBannerSwift'
 pod 'AnimatedGradientView', :git => 'https://github.com/rwbutler/AnimatedGradientView.git', :branch => 'swift-5'
 pod 'AIFlatSwitch'
 pod 'RealmSwift'
+pod 'FSCalendar'
 
   target 'RiseTests' do
     inherit! :search_paths
