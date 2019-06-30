@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
+final class CustomTabBarController: UITabBarController {
     
     // MARK: Properties
     private var middleButtonBackgroundImageView = UIImageView()
@@ -18,6 +18,7 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        delegate = self
         selectedIndex = 1
     }
     
@@ -26,6 +27,7 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
         
         setupBackground()
         setupTabBarItems()
+        
     }
     
     // MARK: UISetup Methods
@@ -75,4 +77,10 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
             :  #imageLiteral(resourceName: "Union")
     }
     
+}
+
+extension CustomTabBarController: UITabBarControllerDelegate  {
+    func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return CustomTransition(viewControllers: tabBarController.viewControllers)
+    }
 }

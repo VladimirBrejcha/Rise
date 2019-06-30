@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import FSCalendar
 
 final class ProgressViewController: UIViewController {
+    @IBOutlet weak var calendar: FSCalendar!
     
     // MARK: Properties
     var transitionManager: TransitionManager? {
@@ -21,6 +23,9 @@ final class ProgressViewController: UIViewController {
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        calendar.appearance.titleSelectionColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        calendar.scope = FSCalendarScope.month
+        calendar.adjustMonthPosition()
     }
     
     // MARK: Actions
@@ -33,4 +38,10 @@ final class ProgressViewController: UIViewController {
         bannerManager?.banner.show()
     }
     
+}
+
+extension ProgressViewController: FSCalendarDelegate {
+    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+        print("123")
+    }
 }

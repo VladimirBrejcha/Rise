@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6970F1112A17F5A396D26D45 /* Pods_RiseUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EEB4B42115847363896B9EA /* Pods_RiseUITests.framework */; };
+		7EA0924222C8CF820019F2E9 /* CustomTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA0924122C8CF820019F2E9 /* CustomTransition.swift */; };
 		922032EA22998F3D0006F92B /* PersonalTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922032E922998F3D0006F92B /* PersonalTimeViewController.swift */; };
 		922032F0229BF2890006F92B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922032EF229BF2890006F92B /* Constants.swift */; };
 		9276892722A82DD1002E50F5 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9276892622A82DD1002E50F5 /* ProgressViewController.swift */; };
@@ -62,6 +63,7 @@
 		5BAFA10F1E301FBD37FCBAAC /* Pods-Rise.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rise.debug.xcconfig"; path = "Target Support Files/Pods-Rise/Pods-Rise.debug.xcconfig"; sourceTree = "<group>"; };
 		5EEB4B42115847363896B9EA /* Pods_RiseUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RiseUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7493916A7CC808AD6398DFD7 /* Pods_RiseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RiseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7EA0924122C8CF820019F2E9 /* CustomTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTransition.swift; sourceTree = "<group>"; };
 		922032E922998F3D0006F92B /* PersonalTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalTimeViewController.swift; sourceTree = "<group>"; };
 		922032EF229BF2890006F92B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9276892622A82DD1002E50F5 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				92D12FDC22A44B3B0093B0A3 /* CustomTabBarController.swift */,
+				7EA0924122C8CF820019F2E9 /* CustomTransition.swift */,
 				92D41C2722AC0A2C00706CD3 /* CustomTabBar.swift */,
 			);
 			path = Bars;
@@ -542,6 +545,7 @@
 				92D12FDD22A44B3B0093B0A3 /* CustomTabBarController.swift in Sources */,
 				92D7D6532296F297009321AE /* AppDelegate.swift in Sources */,
 				92BC919022AB159D00BB1D19 /* TransitionManager.swift in Sources */,
+				7EA0924222C8CF820019F2E9 /* CustomTransition.swift in Sources */,
 				92D41C3322AC395C00706CD3 /* PersonalTimeModel.swift in Sources */,
 				92D41C3722AD6D5E00706CD3 /* CustomDateFormatter.swift in Sources */,
 				9276892722A82DD1002E50F5 /* ProgressViewController.swift in Sources */,
