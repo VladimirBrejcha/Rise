@@ -6,7 +6,6 @@ target 'Rise' do
   use_frameworks!
 
   # Pods for Rise
-pod 'SwiftLint'
 pod 'SPStorkController'
 pod 'NotificationBannerSwift'
 pod 'AnimatedGradientView', :git => 'https://github.com/rwbutler/AnimatedGradientView.git', :branch => 'swift-5'

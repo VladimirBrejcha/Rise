@@ -411,7 +411,7 @@
                                 <rect key="frame" x="10" y="455" width="300" height="44"/>
                                 <subviews>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hRZ-Gb-VtP">
-                                        <rect key="frame" x="0.0" y="0.0" width="145" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
                                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="18"/>
                                         <state key="normal" title="Change"/>
@@ -422,20 +422,6 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="changeButtonTouch:" destination="P26-iI-q7r" eventType="touchUpInside" id="bhn-cY-d0G"/>
-                                        </connections>
-                                    </button>
-                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ETb-dL-Y4Z">
-                                        <rect key="frame" x="155" y="0.0" width="145" height="44"/>
-                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="19"/>
-                                        <state key="normal" title="Pause"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <integer key="value" value="12"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="changeButtonTouch:" destination="P26-iI-q7r" eventType="touchUpInside" id="2Tr-qN-Bya"/>
                                         </connections>
                                     </button>
                                 </subviews>

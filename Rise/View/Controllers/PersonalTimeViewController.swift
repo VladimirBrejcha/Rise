@@ -18,7 +18,9 @@ final class PersonalTimeViewController: UITableViewController {
     }
     private var personalTimeModel: PersonalTimeModel?
     private let notificationCenter: NotificationCenter = .default
-    
+    private var transitionManager: TransitionManager? {
+        return TransitionManager()
+    }
     private var wakeUpForModel: String?
     private var sleepDurationForModel: String?
     private var lastTimeWentSleepForModel: String?
@@ -52,7 +54,7 @@ final class PersonalTimeViewController: UITableViewController {
     // MARK: Actions
     @IBAction func scheduleTapped(_ sender: UIButton) {
         personalTimeModel!.buildCalculator()
-        
+        transitionManager?.dismiss(self)
     }
     
     // MARK: TableView methods

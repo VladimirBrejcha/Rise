@@ -12,7 +12,7 @@ final class MainScreenViewController: UIViewController {
     
     // MARK: Properties
     private var transitionManager: TransitionManager? {
-        return TransitionManager(self)
+        return TransitionManager()
     }
     
     private var segmentedControl: CustomSegmentedContrl!
@@ -50,7 +50,7 @@ final class MainScreenViewController: UIViewController {
     }
     
     func didDismissStorkBySwipe() {
-        transitionManager?.dismissController()
+        transitionManager?.animateBackground()
     }
     
 }

@@ -13,9 +13,7 @@ final class ProgressViewController: UIViewController {
     @IBOutlet weak var calendar: FSCalendar!
     
     // MARK: Properties
-    var transitionManager: TransitionManager? {
-        return TransitionManager(self)
-    }
+    private let transitionManager = TransitionManager()
     var bannerManager: BannerManager? {
         return BannerManager(title: "Saved", style: .success)
     }
@@ -30,12 +28,11 @@ final class ProgressViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func changeButtonTouch(_ sender: UIButton) {
-        transitionManager?.makeTransition(to: Identifiers.personal)
+        transitionManager.makeTransition(to: Identifiers.personal)
     }
     
     func didDismissStorkBySwipe() {
-        transitionManager?.dismissController()
-        bannerManager?.banner.show()
+        transitionManager.animateBackground()
     }
     
 }

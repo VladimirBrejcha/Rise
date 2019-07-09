@@ -13,7 +13,6 @@ PODS:
     - Realm (= 3.16.2)
   - SnapKit (5.0.0)
   - SPStorkController (1.6.5)
-  - SwiftLint (0.33.0)
 
 DEPENDENCIES:
   - AIFlatSwitch
@@ -22,7 +21,6 @@ DEPENDENCIES:
   - NotificationBannerSwift
   - RealmSwift
   - SPStorkController
-  - SwiftLint
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -34,7 +32,6 @@ SPEC REPOS:
     - RealmSwift
     - SnapKit
     - SPStorkController
-    - SwiftLint
 
 EXTERNAL SOURCES:
   AnimatedGradientView:
@@ -56,8 +53,7 @@ SPEC CHECKSUMS:
   RealmSwift: a81e650171ef0a5f999df1ed8d39ba8d6fce88a4
   SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
   SPStorkController: f74a60dbcd3c35180c996688873f6eadac839642
-  SwiftLint: fed9c66336e41fc74dc48a73678380718f0c8b0e
 
-PODFILE CHECKSUM: 3e1457e9a2b78222a839de5c4ddf32d81b4d154a
+PODFILE CHECKSUM: f48b19aecbb794b232e77ba116466e22db226c65
 
 COCOAPODS: 1.7.3
