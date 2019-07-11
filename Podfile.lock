@@ -45,7 +45,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AIFlatSwitch: b1965ccd826c3ea7566f6bebda19562d131ec2b7
-  AnimatedGradientView: e3d928407034be3e97ae62564a4071da4b10b0f2
+  AnimatedGradientView: e73ba49cb1e2d5ce9533f0aa06d0065156f04e35
   FSCalendar: 3a5ed3636e2ba1b83ebebfcf0c2603105a6f5efe
   MarqueeLabel: b55b26e690b6ad41faedd95cbf5eae6f1d1735b4
   NotificationBannerSwift: 2d46cc1b4a0ebf4372baef383f2a2ca82bf0c235
