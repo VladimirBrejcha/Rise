@@ -11,10 +11,7 @@ import UIKit
 final class MainScreenViewController: UIViewController {
     
     // MARK: Properties
-    private var transitionManager: TransitionManager? {
-        return TransitionManager()
-    }
-    
+    private lazy var transitionManager = TransitionManager()
     private var segmentedControl: CustomSegmentedContrl!
     
     // MARK: IBOutlets
@@ -46,11 +43,11 @@ final class MainScreenViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func sleepButtonTouch(_ sender: UIButton) {
-        transitionManager?.makeTransition(to: Identifiers.sleep)
+        transitionManager.makeTransition(to: Identifiers.sleep)
     }
     
     func didDismissStorkBySwipe() {
-        transitionManager?.animateBackground()
+        transitionManager.animateBackground()
     }
     
 }

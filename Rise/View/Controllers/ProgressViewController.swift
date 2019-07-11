@@ -18,6 +18,7 @@ final class ProgressViewController: UIViewController {
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         calendar.appearance.titleSelectionColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         calendar.scope = FSCalendarScope.month
         calendar.adjustMonthPosition()
@@ -32,10 +33,21 @@ final class ProgressViewController: UIViewController {
         transitionManager.animateBackground()
     }
     
+    func didDismissByNewScheduleButton(controller: UIViewController) {
+        guard let personalTimeVC = controller as? PersonalTimeViewController else { return }
+        personalTimeVC.delegate = self
+    }
+    
 }
 
 extension ProgressViewController: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
         print("123")
+    }
+}
+
+extension ProgressViewController: PersonalPlanDelegate {
+    func newPlanCreated(plan: CalculatedPlan) {
+        print(plan)
     }
 }

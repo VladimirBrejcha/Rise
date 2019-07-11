@@ -59,17 +59,26 @@ class PersonalTimeModel {
         }
     }
     
-    private var calculator: PersonalTimeCalculator?
-    
     // MARK: Converted properties
     private var convertedWakeUpTime: Date!
     private var convertedSleepDuration: Int!
     private var convertedTimeWentSleep: Date!
     private var convertedDuration: Int!
+    public var plan: CalculatedPlan {
+        let calculator = PersonalTimeCalculator(wakeUp: convertedWakeUpTime,
+                                                sleepDuration: convertedSleepDuration,
+                                                wentSleepTime: convertedTimeWentSleep,
+                                                duration: convertedDuration)
+        return calculator.calculatedPlan
+    }
+
     
     // MARK: LifeCycle
     init(wakeUp: String, sleepDuration: String, wentSleep: String, planDuration: String) {
-        buildModel(wakeUp: wakeUp, sleepDuration: sleepDuration, wentSleep: wentSleep, planDuration: planDuration)
+        buildModel(wakeUp: wakeUp,
+                   sleepDuration: sleepDuration,
+                   wentSleep: wentSleep,
+                   planDuration: planDuration)
     }
     
     // MARK: Methods
@@ -88,12 +97,4 @@ class PersonalTimeModel {
         timeWentSleep = wentSleep
         duration = planDuration
     }
-    
-    func buildCalculator() {
-        calculator = PersonalTimeCalculator(wakeUp: convertedWakeUpTime,
-                                            sleepDuration: convertedSleepDuration,
-                                            wentSleepTime: convertedTimeWentSleep,
-                                            duration: convertedDuration)
-    }
-    
 }

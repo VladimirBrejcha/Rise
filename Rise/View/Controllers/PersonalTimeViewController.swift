@@ -9,6 +9,10 @@
 import UIKit
 import AnimatedGradientView
 
+protocol PersonalPlanDelegate: class {
+    func newPlanCreated(plan: CalculatedPlan)
+}
+
 final class PersonalTimeViewController: UITableViewController {
     
     // MARK: Properties
@@ -25,6 +29,7 @@ final class PersonalTimeViewController: UITableViewController {
     private var bannerManager: BannerManager? {
         return BannerManager(title: "Saved", style: .success)
     }
+    weak var delegate: PersonalPlanDelegate?
     
     // MARK: IBOutlets
     @IBOutlet weak var createScheduleButton: UIButton!
@@ -48,9 +53,10 @@ final class PersonalTimeViewController: UITableViewController {
     
     // MARK: Actions
     @IBAction func scheduleTapped(_ sender: UIButton) {
-        personalTimeModel!.buildCalculator()
+        guard let plan = personalTimeModel?.plan else { fatalError() }
         transitionManager.dismiss(self)
         bannerManager?.banner.show()
+        delegate?.newPlanCreated(plan: plan)
     }
     
     // MARK: TableView methods

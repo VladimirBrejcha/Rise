@@ -41,6 +41,9 @@ struct TransitionManager {
     }
     
     public func dismiss(_ controller: UIViewController) {
+        if let progressVC = selectedViewController as? ProgressViewController {
+            progressVC.didDismissByNewScheduleButton(controller: controller)
+        }
         controller.dismiss(animated: true) {
             self.animateBackground()
         }

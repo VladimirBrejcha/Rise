@@ -28,15 +28,11 @@ struct PersonalTimeCalculator {
             : timeBetweenNeededSleepAndActualSleep / duration
     }
     
-    private var calculatedPlan: CalculatedPlan! {
+    public var calculatedPlan: CalculatedPlan {
         let plan = CalculatedPlan()
         plan.days = duration
         plan.minutesPerDay = result
         return plan
-    }
-    
-    private var manager: DataBaseManager! {
-        return DataBaseManager(calculatedPlan: calculatedPlan)
     }
     
     // MARK: LifeCycle
@@ -45,7 +41,6 @@ struct PersonalTimeCalculator {
         self.sleepDuration = sleepDuration
         self.wentSleepTime = wentSleepTime
         self.duration = duration
-        manager.save()
     }
     
 }
