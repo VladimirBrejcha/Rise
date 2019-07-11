@@ -9,6 +9,10 @@
 import UIKit
 import AIFlatSwitch
 
+protocol ExpandingCellDelegate: class {
+    func cellValueUpdated(newValue: String, cell: ExpandingCell)
+}
+
 final class ExpandingCell: UITableViewCell {
     
     enum Picker {
@@ -25,16 +29,7 @@ final class ExpandingCell: UITableViewCell {
     public var expanded = false // Is the cell expanded?
     private let unexpandedHeight: CGFloat = 44
     private var pickerDataModel: PickerDataModel?
-    private let notificationCenter: NotificationCenter = .default
-    var pickedValue: String? {
-        willSet {
-            leftLabel.text = newValue
-        }
-        didSet {
-            toggleSwitch()
-            notificationCenter.post(name: .pickerValueChanged, object: nil)
-        }
-    }
+    weak var delegate: ExpandingCellDelegate?
     
     // MARK: Lifecycle
     override func awakeFromNib() {
@@ -61,7 +56,7 @@ final class ExpandingCell: UITableViewCell {
         
         let date = sender.date
         
-        pickedValue = Formater.dateFormatter.string(from: date)
+        pickerValueDidSet(newValue: Formater.dateFormatter.string(from: date))
     }
     
     private func toggleSwitch() {
@@ -125,6 +120,12 @@ final class ExpandingCell: UITableViewCell {
         picker.rightAnchor.constraint(equalTo: pickerContainer.rightAnchor).isActive = true
     }
     
+    private func pickerValueDidSet(newValue: String) {
+        leftLabel.text = newValue
+        toggleSwitch()
+        delegate?.cellValueUpdated(newValue: newValue, cell: self)
+    }
+    
 }
 
 // MARK: Extensions
@@ -144,14 +145,12 @@ extension ExpandingCell: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        pickedValue = pickerDataModel?.titleForRowArray[pickerView.selectedRow(inComponent: component)]
+        guard let value = pickerDataModel?.titleForRowArray[pickerView.selectedRow(inComponent: component)] else {
+            fatalError()
+        }
+        pickerValueDidSet(newValue: value)
     }
     
 }
 
-extension Notification.Name {
-    static var pickerValueChanged: Notification.Name {
-        return .init(rawValue: "ExpandingCell.pickerValueChanged")
-    }
-}
+

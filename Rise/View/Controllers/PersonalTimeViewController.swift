@@ -17,14 +17,14 @@ final class PersonalTimeViewController: UITableViewController {
         return GradientManager(frame: view.bounds)
     }
     private var personalTimeModel: PersonalTimeModel?
-    private let notificationCenter: NotificationCenter = .default
-    private var transitionManager: TransitionManager? {
-        return TransitionManager()
-    }
+    private lazy var transitionManager = TransitionManager()
     private var wakeUpForModel: String?
     private var sleepDurationForModel: String?
     private var lastTimeWentSleepForModel: String?
     private var planDurationForModel: String?
+    private var bannerManager: BannerManager? {
+        return BannerManager(title: "Saved", style: .success)
+    }
     
     // MARK: IBOutlets
     @IBOutlet weak var createScheduleButton: UIButton!
@@ -35,11 +35,6 @@ final class PersonalTimeViewController: UITableViewController {
         
         tableView.register(UINib(nibName: Cell.nibName, bundle: nil),
                            forCellReuseIdentifier: Cell.identifier)
-        
-        notificationCenter.addObserver(self,
-                                       selector: #selector(updateModel),
-                                       name: .pickerValueChanged,
-                                       object: nil)
         
         createBackground()
     }
@@ -54,7 +49,8 @@ final class PersonalTimeViewController: UITableViewController {
     // MARK: Actions
     @IBAction func scheduleTapped(_ sender: UIButton) {
         personalTimeModel!.buildCalculator()
-        transitionManager?.dismiss(self)
+        transitionManager.dismiss(self)
+        bannerManager?.banner.show()
     }
     
     // MARK: TableView methods
@@ -73,9 +69,7 @@ final class PersonalTimeViewController: UITableViewController {
         if previouslySelectedCell != nil
             && cell.expanded == false
             && previouslySelectedCell!.expanded {
-            
             previouslySelectedCell?.selectedInTableView(tableView) // telling cell to hide if other cell has been selected
-            
         }
         
         cell.selectedInTableView(tableView)
@@ -84,41 +78,14 @@ final class PersonalTimeViewController: UITableViewController {
         
     }
     
-    @objc func updateModel() {
-        
-        guard let cell = tableView.cellForRow(at: tableView.indexPathForSelectedRow!) as? ExpandingCell  else { fatalError("cell wasnt find") }
-        guard let pickedValue = cell.pickedValue  else { fatalError("pickedValue is nil") }
-        
-        switch cell.tag {
-        case 0:
-            wakeUpForModel = pickedValue
-        case 1:
-            sleepDurationForModel = pickedValue
-        case 2:
-            lastTimeWentSleepForModel = pickedValue
-        case 3:
-            planDurationForModel = pickedValue
-        default:
-            fatalError("cell with this tag doent exists")
-        }
-        
-        guard let wakeUp = wakeUpForModel,
-            let sleepDuration = sleepDurationForModel,
-            let wentSleep = lastTimeWentSleepForModel,
-            let planDuration = planDurationForModel else { return }
-            createScheduleButton.isEnabled = true
-            personalTimeModel = PersonalTimeModel(wakeUp: wakeUp,
-                                                  sleepDuration: sleepDuration,
-                                                  wentSleep: wentSleep,
-                                                  planDuration: planDuration)
-    }
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         super.tableView(tableView, cellForRowAt: indexPath)
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.identifier) as? ExpandingCell else {
             return UITableViewCell()
         }
+        
+        cell.delegate = self
         
         cell.tag = indexPath.section
         
@@ -150,6 +117,34 @@ final class PersonalTimeViewController: UITableViewController {
         if let headerView = view as? UITableViewHeaderFooterView {
             headerView.textLabel?.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.6)
         }
+    }
+    
+}
+
+extension PersonalTimeViewController: ExpandingCellDelegate {
+    func cellValueUpdated(newValue: String, cell: ExpandingCell) {
+        switch cell.tag {
+        case 0:
+            wakeUpForModel = newValue
+        case 1:
+            sleepDurationForModel = newValue
+        case 2:
+            lastTimeWentSleepForModel = newValue
+        case 3:
+            planDurationForModel = newValue
+        default:
+            fatalError("cell with this tag doesnt exist")
+        }
+        
+        guard let wakeUp = wakeUpForModel,
+            let sleepDuration = sleepDurationForModel,
+            let wentSleep = lastTimeWentSleepForModel,
+            let planDuration = planDurationForModel else { return }
+        createScheduleButton.isEnabled = true
+        personalTimeModel = PersonalTimeModel(wakeUp: wakeUp,
+                                              sleepDuration: sleepDuration,
+                                              wentSleep: wentSleep,
+                                              planDuration: planDuration)
     }
     
 }

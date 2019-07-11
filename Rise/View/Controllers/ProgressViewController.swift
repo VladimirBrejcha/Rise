@@ -13,10 +13,7 @@ final class ProgressViewController: UIViewController {
     @IBOutlet weak var calendar: FSCalendar!
     
     // MARK: Properties
-    private let transitionManager = TransitionManager()
-    var bannerManager: BannerManager? {
-        return BannerManager(title: "Saved", style: .success)
-    }
+    private lazy var transitionManager = TransitionManager()
     
     // MARK: LifeCycle
     override func viewDidLoad() {
