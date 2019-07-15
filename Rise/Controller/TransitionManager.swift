@@ -14,8 +14,8 @@ struct TransitionManager {
     // MARK: Properties
     private let storyboard = UIStoryboard(name: Storyboard.name, bundle: nil)
     private var selectedViewController: UIViewController? {
-        let rootViewController = UIApplication.shared.keyWindow?.rootViewController as? CustomTabBarController
-        return rootViewController?.selectedViewController
+        let tabBarController = UIApplication.shared.keyWindow?.rootViewController as? CustomTabBarController
+        return tabBarController?.selectedViewController
     }
     
     // MARK: Methods
@@ -44,6 +44,7 @@ struct TransitionManager {
         if let progressVC = selectedViewController as? ProgressViewController {
             progressVC.didDismissByNewScheduleButton(controller: controller)
         }
+        
         controller.dismiss(animated: true) {
             self.animateBackground()
         }
@@ -57,7 +58,6 @@ struct TransitionManager {
                         self.selectedViewController?.view.backgroundColor = .clear
         })
     }
-    
 }
 
 // MARK: Extensions

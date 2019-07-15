@@ -11,8 +11,11 @@ import UIKit
 final class MainScreenViewController: UIViewController {
     
     // MARK: Properties
-    private lazy var transitionManager = TransitionManager()
-    private var segmentedControl: CustomSegmentedContrl?
+    private var transitionManager: TransitionManager? {
+        return TransitionManager(self)
+    }
+    
+    private var segmentedControl: CustomSegmentedContrl!
     
     // MARK: IBOutlets
     @IBOutlet weak var mainContainerView: CustomContainerView!
@@ -43,11 +46,11 @@ final class MainScreenViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func sleepButtonTouch(_ sender: UIButton) {
-        transitionManager.makeTransition(to: Identifiers.sleep)
+        transitionManager?.makeTransition(to: Identifiers.sleep)
     }
     
     func didDismissStorkBySwipe() {
-        transitionManager.animateBackground()
+        transitionManager?.dismissController()
     }
     
 }

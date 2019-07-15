@@ -13,12 +13,18 @@ class CustomDateFormatter: DateFormatter {
     override init() {
         super.init()
         
-        locale = Locale(identifier: "ru")
-        timeStyle = .short
-        dateFormat = "HH:mm"
+        sharedInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        
+        sharedInit()
+    }
+    
+    private func sharedInit() {
+        locale = Locale(identifier: "ru")
+        timeStyle = .short
+        dateFormat = "HH:mm"
     }
 }
