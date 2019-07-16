@@ -8,8 +8,14 @@
 
 import UIKit
 
+protocol CustomSegmentedControlDelegate: class {
+    func segmentedButtonPressed(_ button: UIButton)
+}
+
 @IBDesignable
 class CustomSegmentedContrl: UIControl {
+    
+    weak var delegate: CustomSegmentedControlDelegate?
     
     var buttons = [UIButton]()
     var selectedSegmentIndex = Int()
@@ -97,6 +103,7 @@ class CustomSegmentedContrl: UIControl {
     }
     
     @objc func buttonTapped(button: UIButton) {
+        delegate?.segmentedButtonPressed(button)
         
         for (buttonIndex, btn) in buttons.enumerated() {
             
