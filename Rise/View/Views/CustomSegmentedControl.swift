@@ -8,8 +8,24 @@
 
 import UIKit
 
+enum SegmentedDate {
+    case yesterday
+    case today
+    case tomorrow
+    
+    var dayDescription: String {
+        switch self {
+        case .yesterday:
+            return "yesterday"
+        case .today:
+            return "today"
+        case .tomorrow:
+            return "tomorrow"
+    }
+}
+
 protocol CustomSegmentedControlDelegate: class {
-    func segmentedButtonPressed(_ button: UIButton)
+    func segmentedButtonPressed(_ segment: SegmentedDate)
 }
 
 @IBDesignable
@@ -103,7 +119,16 @@ class CustomSegmentedContrl: UIControl {
     }
     
     @objc func buttonTapped(button: UIButton) {
-        delegate?.segmentedButtonPressed(button)
+        switch button.currentTitle {
+        case SegmentedDate.yesterday.dayDescription:
+            delegate?.segmentedButtonPressed(.yesterday)
+        case SegmentedDate.today.dayDescription:
+            delegate?.segmentedButtonPressed(.today)
+        case SegmentedDate.tomorrow.dayDescription:
+            delegate?.segmentedButtonPressed(.tomorrow)
+        default:
+            fatalError("wrong case in buttonTapped")
+        }
         
         for (buttonIndex, btn) in buttons.enumerated() {
             
