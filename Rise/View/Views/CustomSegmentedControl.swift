@@ -21,6 +21,7 @@ enum SegmentedDate {
             return "today"
         case .tomorrow:
             return "tomorrow"
+        }
     }
 }
 
@@ -29,15 +30,14 @@ protocol CustomSegmentedControlDelegate: class {
 }
 
 @IBDesignable
-class CustomSegmentedContrl: UIControl {
+class CustomSegmentedControl: UIControl {
     
     weak var delegate: CustomSegmentedControlDelegate?
     
     var buttons = [UIButton]()
     var selectedSegmentIndex = Int()
     
-    var commaSeperatedButtonTitles: String = "" {
-        
+    var buttonTitlesArray: [String] = [] {
         didSet {
             updateView()
         }
@@ -57,9 +57,9 @@ class CustomSegmentedContrl: UIControl {
         }
     }
     
-    init(buttonTitles: String, startingIndex: Int) {
+    init(buttonTitles: [String], startingIndex: Int) {
         super.init(frame: .zero)
-        commaSeperatedButtonTitles = buttonTitles
+        buttonTitlesArray = buttonTitles
         selectedSegmentIndex = startingIndex
         updateView()
     }
@@ -76,11 +76,8 @@ class CustomSegmentedContrl: UIControl {
             view.removeFromSuperview()
         }
         
-        let buttonTitles = commaSeperatedButtonTitles.components(separatedBy: ",")
-        
-        for buttonTitle in buttonTitles {
-            
-            let button = UIButton.init(type: .system)
+        for buttonTitle in buttonTitlesArray {
+            let button = UIButton(type: .system)
             button.setTitle(buttonTitle, for: .normal)
             button.setTitleColor(textColor, for: .normal)
             button.titleLabel?.font = UIFont.systemFont(ofSize: 12.5)

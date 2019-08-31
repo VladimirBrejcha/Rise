@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class MainScreenViewController: UIViewController, CustomSegmentedControlDelegate {
+final class MainScreenViewController: UIViewController {
     
     // MARK: Properties
     private lazy var transitionManager = TransitionManager()
@@ -29,18 +29,6 @@ final class MainScreenViewController: UIViewController, CustomSegmentedControlDe
     
     func didDismissStorkBySwipe() {
         transitionManager.animateBackground()
-    }
-    
-    func segmentedButtonPressed(_ segment: SegmentedDate) {
-        switch segment {
-        case .yesterday:
-            print("yesterday")
-        case .today:
-            print("today")
-        case .tomorrow:
-            print("tomorrow")
-        }
-        
     }
     
 }

@@ -10,7 +10,6 @@ import UIKit
 
 @IBDesignable
 class CustomContainerView: UIView {
-
     @IBInspectable var cornerRadius: CGFloat {
         set { layer.cornerRadius = newValue }
         get { return layer.cornerRadius }
@@ -22,9 +21,9 @@ class CustomContainerViewWithTime: CustomContainerView {
     @IBOutlet weak var eveningTimeLabel: UILabel!
 }
 
-class CustomContainerViewWithSegmentedControl: CustomContainerView {
+class CustomContainerViewWithSegmentedControl: CustomContainerView, CustomSegmentedControlDelegate {
     
-    private var segmentedControl: CustomSegmentedContrl!
+    private var segmentedControl: CustomSegmentedControl!
     @IBOutlet weak var riseContainer: CustomContainerViewWithTime!
     @IBOutlet weak var wakeContainer: CustomContainerViewWithTime!
     
@@ -36,8 +35,9 @@ class CustomContainerViewWithSegmentedControl: CustomContainerView {
     
     // MARK: UISetup Methods
     private func setupSegmentedControl() {
-        
-        segmentedControl = CustomSegmentedContrl(buttonTitles: "yesterday,today,tomorrow", startingIndex: 1)
+        segmentedControl = CustomSegmentedControl(buttonTitles: [SegmentedDate.yesterday.dayDescription,
+                                                                 SegmentedDate.today.dayDescription,
+                                                                 SegmentedDate.tomorrow.dayDescription], startingIndex: 1)
         segmentedControl.backgroundColor = .clear
         segmentedControl.delegate = self
         
@@ -51,14 +51,25 @@ class CustomContainerViewWithSegmentedControl: CustomContainerView {
     }
 }
 
-extension CustomContainerViewWithSegmentedControl: CustomSegmentedControlDelegate {
-    func segmentedButtonPressed(_ button: UIButton) {
-        if button.currentTitle == "yesterday" {
-            riseContainer.morningTimeLabel.text = "test"
-        } else if button.currentTitle == "tomorrow" {
-            riseContainer.morningTimeLabel.text = "test2"
+// MARK: CustomContainerViewWithSegmentedControl
+extension CustomContainerViewWithSegmentedControl {
+    func segmentedButtonPressed(_ segment: SegmentedDate) {
+        switch segment {
+        case .yesterday:
+            riseContainer.morningTimeLabel.text = "07:00"
+            riseContainer.eveningTimeLabel.text = "23:47"
+            wakeContainer.morningTimeLabel.text = "07:00"
+            wakeContainer.eveningTimeLabel.text = "23:00"
+        case .today:
+            riseContainer.morningTimeLabel.text = "06:54"
+            riseContainer.eveningTimeLabel.text = "23:57"
+            wakeContainer.morningTimeLabel.text = "06:54"
+            wakeContainer.eveningTimeLabel.text = "23:05"
+        case .tomorrow:
+            riseContainer.morningTimeLabel.text = "06:49"
+            riseContainer.eveningTimeLabel.text = "23:59"
+            wakeContainer.morningTimeLabel.text = "06:49"
+            wakeContainer.eveningTimeLabel.text = "23:10"
         }
-        
     }
-    
 }
