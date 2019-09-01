@@ -11,6 +11,18 @@ import RealmSwift
 
 let sharedLocationManager = LocationManager()
 
+fileprivate let mainAppScreenIdentifier = "mainAppScreen"
+fileprivate let welcomeScreenIdentifier = "welcomeScreen"
+
+extension UIStoryboard {
+    class var welcomeScreenController: UIViewController {
+        return UIStoryboard.main.instantiateViewController(withIdentifier: welcomeScreenIdentifier)
+    }
+    class var mainAppController: UIViewController {
+        return UIStoryboard.main.instantiateViewController(withIdentifier: mainAppScreenIdentifier)
+    }
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -18,10 +30,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     // MARK: LifeCycle
-    func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        setupInitialController()
         realmSetup()
+        
         return true
+    }
+    
+    private func setupInitialController() {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = UserDefaults.welcomeScreenBeenShowed
+            ? UIStoryboard.mainAppController
+            : UIStoryboard.welcomeScreenController
+        window?.makeKeyAndVisible()
     }
     
     private func realmSetup() {

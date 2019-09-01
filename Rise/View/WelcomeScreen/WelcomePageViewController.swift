@@ -17,6 +17,15 @@ extension UIStoryboard {
 fileprivate let locationPermissionsViewControllerIdentifier = "locationPermissionsViewController"
 fileprivate let welcomeButtonViewControllerIdentifier = "welcomeButtonViewController"
 
+extension UIStoryboard {
+    class var locationPermissionsViewController: UIViewController {
+        return UIStoryboard.main.instantiateViewController(withIdentifier: locationPermissionsViewControllerIdentifier)
+    }
+    class var welcomeButtonViewController: UIViewController {
+        return UIStoryboard.main.instantiateViewController(withIdentifier: welcomeButtonViewControllerIdentifier)
+    }
+}
+
 class WelcomePageViewController: UIPageViewController, UIPageViewControllerDataSource {
 
     override func viewDidLoad() {
@@ -31,13 +40,9 @@ class WelcomePageViewController: UIPageViewController, UIPageViewControllerDataS
     
     // MARK: ViewControllers
     private(set) lazy var orderedViewControllers: [UIViewController] = {
-        return [newControllerWithIdentifier(identifier: locationPermissionsViewControllerIdentifier),
-                newControllerWithIdentifier(identifier: welcomeButtonViewControllerIdentifier)]
+        return [UIStoryboard.locationPermissionsViewController,
+                UIStoryboard.welcomeButtonViewController]
     }()
-    
-    private func newControllerWithIdentifier(identifier: String) -> UIViewController {
-        return UIStoryboard.main.instantiateViewController(withIdentifier: identifier)
-    }
     
     // MARK: UIPageViewControllerDataSource
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
