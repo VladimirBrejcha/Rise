@@ -29,7 +29,7 @@ class CustomContainerViewWithSegmentedControl: CustomContainerView, CustomSegmen
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         setupSegmentedControl()
     }
     

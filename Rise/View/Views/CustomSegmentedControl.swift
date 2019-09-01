@@ -33,9 +33,9 @@ protocol CustomSegmentedControlDelegate: class {
 class CustomSegmentedControl: UIControl {
     weak var delegate: CustomSegmentedControlDelegate?
     
-    var buttons = [UIButton]()
-    var selectedSegmentIndex = 1
-    var buttonTitlesArray: [String] = [] {
+    private(set) var buttons = [UIButton]()
+    private(set) var selectedSegmentIndex = 1
+    private(set) var buttonTitlesArray: [String] = [] {
         didSet { updateView() }
     }
     var textColor: UIColor = UIColor.white.withAlphaComponent(0.5) {

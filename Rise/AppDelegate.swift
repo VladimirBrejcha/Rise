@@ -9,6 +9,8 @@
 import UIKit
 import RealmSwift
 
+let sharedLocationManager = LocationManager()
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -18,6 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: LifeCycle
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        realmSetup()
+        return true
+    }
+    
+    private func realmSetup() {
         do {
             _ = try Realm() //initialising Realm
         } catch {
@@ -25,21 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         //to check realm file path
         print(Realm.Configuration.defaultConfiguration.fileURL as Any)
-        
-        UITabBar.appearance().backgroundImage = #colorLiteral(red: 0.9953911901, green: 0.9881951213, blue: 1, alpha: 0.1007922535).image()
-        UITabBar.appearance().shadowImage = UIImage()
-        
-        return true
     }
     
 }
 
-// MARK: Extensions
-extension UIColor { //allows to create UIImage from UIColor
-    func image(_ size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
-        return UIGraphicsImageRenderer(size: size).image { rendererContext in
-            self.setFill()
-            rendererContext.fill(CGRect(origin: .zero, size: size))
-        }
-    }
-}
