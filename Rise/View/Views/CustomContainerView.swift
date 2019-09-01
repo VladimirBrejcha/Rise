@@ -35,9 +35,9 @@ class CustomContainerViewWithSegmentedControl: CustomContainerView, CustomSegmen
     
     // MARK: UISetup Methods
     private func setupSegmentedControl() {
-        segmentedControl = CustomSegmentedControl(buttonTitles: [SegmentedDate.yesterday.dayDescription,
-                                                                 SegmentedDate.today.dayDescription,
-                                                                 SegmentedDate.tomorrow.dayDescription], startingIndex: 1)
+        segmentedControl = CustomSegmentedControl(buttonTitles: [SegmentedControlCases.yesterday.dayDescription,
+                                                                 SegmentedControlCases.today.dayDescription,
+                                                                 SegmentedControlCases.tomorrow.dayDescription], startingIndex: 1)
         segmentedControl.backgroundColor = .clear
         segmentedControl.delegate = self
         
@@ -53,7 +53,7 @@ class CustomContainerViewWithSegmentedControl: CustomContainerView, CustomSegmen
 
 // MARK: CustomContainerViewWithSegmentedControl
 extension CustomContainerViewWithSegmentedControl {
-    func segmentedButtonPressed(_ segment: SegmentedDate) {
+    func segmentedButtonPressed(_ segment: SegmentedControlCases) {
         switch segment {
         case .yesterday:
             riseContainer.morningTimeLabel.text = "07:00"
