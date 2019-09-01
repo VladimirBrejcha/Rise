@@ -218,7 +218,7 @@
         <!--Custom Tab Bar Controller-->
         <scene sceneID="WYa-Sz-OrB">
             <objects>
-                <tabBarController id="Upr-F1-t92" customClass="CustomTabBarController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="mainAppScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Upr-F1-t92" customClass="CustomTabBarController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CMZ-Wo-9Jp" customClass="CustomTabBar" customModule="Rise" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -244,7 +244,7 @@
         <scene sceneID="pwC-xV-kBR">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y4i-Qs-tSO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="wgh-AH-61c" customClass="WelcomePageViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="welcomeScreen" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="wgh-AH-61c" customClass="WelcomePageViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController"/>
             </objects>
             <point key="canvasLocation" x="2858" y="-1139"/>
         </scene>
@@ -264,7 +264,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="obp-xN-iAA" firstAttribute="centerY" secondItem="Ijk-z1-g5x" secondAttribute="centerY" id="MeQ-JN-DlW"/>
                             <constraint firstItem="obp-xN-iAA" firstAttribute="centerX" secondItem="Ijk-z1-g5x" secondAttribute="centerX" id="hf8-Ge-Jtg"/>
@@ -287,9 +287,12 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="751-R0-SKz">
                                 <rect key="frame" x="144" y="269" width="32" height="30"/>
                                 <state key="normal" title="start"/>
+                                <connections>
+                                    <action selector="startButtonPressed:" destination="AdP-78-fhf" eventType="touchUpInside" id="6VP-a4-qnj"/>
+                                </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="751-R0-SKz" firstAttribute="centerX" secondItem="vkU-Z4-uIy" secondAttribute="centerX" id="MPN-n4-Cwj"/>
                             <constraint firstItem="751-R0-SKz" firstAttribute="centerY" secondItem="vkU-Z4-uIy" secondAttribute="centerY" id="hxM-Kl-vev"/>
