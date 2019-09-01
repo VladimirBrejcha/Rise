@@ -10,6 +10,21 @@ import UIKit
 
 final class CustomTabBar: UITabBar {
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        sharedInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        sharedInit()
+    }
+    
+    private func sharedInit() {
+        UITabBar.appearance().backgroundImage = #colorLiteral(red: 0.9953911901, green: 0.9881951213, blue: 1, alpha: 0.1007922535).image()
+        UITabBar.appearance().shadowImage = UIImage()
+    }
+    
     // MARK: Properties
     @IBInspectable var height: CGFloat = 0.0
     

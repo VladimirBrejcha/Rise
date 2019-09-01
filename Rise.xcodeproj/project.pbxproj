@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E98FE5A231C28F10065FB09 /* WelcomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE59231C28F10065FB09 /* WelcomePageViewController.swift */; };
+		7E98FE5C231C2E980065FB09 /* LocationPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE5B231C2E980065FB09 /* LocationPermissionsViewController.swift */; };
+		7E98FE5E231C2EAD0065FB09 /* WelcomeButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE5D231C2EAD0065FB09 /* WelcomeButtonViewController.swift */; };
+		7E98FE61231C2F340065FB09 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE60231C2F340065FB09 /* LocationManager.swift */; };
+		7E98FE63231C2F8C0065FB09 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE62231C2F8C0065FB09 /* LocationModel.swift */; };
+		7E98FE65231C30C10065FB09 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE64231C30C10065FB09 /* UIHelper.swift */; };
+		7E98FE67231C3D5C0065FB09 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE66231C3D5C0065FB09 /* UserDefaultsManager.swift */; };
 		7EA0924222C8CF820019F2E9 /* CustomTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA0924122C8CF820019F2E9 /* CustomTransition.swift */; };
 		922032EA22998F3D0006F92B /* PersonalTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922032E922998F3D0006F92B /* PersonalTimeViewController.swift */; };
 		922032F0229BF2890006F92B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922032EF229BF2890006F92B /* Constants.swift */; };
@@ -55,6 +62,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7E98FE59231C28F10065FB09 /* WelcomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WelcomePageViewController.swift; path = Rise/View/WelcomeScreen/WelcomePageViewController.swift; sourceTree = SOURCE_ROOT; };
+		7E98FE5B231C2E980065FB09 /* LocationPermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationPermissionsViewController.swift; path = Rise/View/WelcomeScreen/LocationPermissionsViewController.swift; sourceTree = SOURCE_ROOT; };
+		7E98FE5D231C2EAD0065FB09 /* WelcomeButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeButtonViewController.swift; sourceTree = "<group>"; };
+		7E98FE60231C2F340065FB09 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		7E98FE62231C2F8C0065FB09 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		7E98FE64231C30C10065FB09 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		7E98FE66231C3D5C0065FB09 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		7EA0924122C8CF820019F2E9 /* CustomTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTransition.swift; sourceTree = "<group>"; };
 		922032E922998F3D0006F92B /* PersonalTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalTimeViewController.swift; sourceTree = "<group>"; };
 		922032EF229BF2890006F92B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -116,6 +130,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E98FE5F231C2EEC0065FB09 /* WelcomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				7E98FE59231C28F10065FB09 /* WelcomePageViewController.swift */,
+				7E98FE5B231C2E980065FB09 /* LocationPermissionsViewController.swift */,
+				7E98FE5D231C2EAD0065FB09 /* WelcomeButtonViewController.swift */,
+			);
+			path = WelcomeScreen;
+			sourceTree = "<group>";
+		};
 		92D12FD722A4237C0093B0A3 /* ExpandingCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +239,7 @@
 				92D41C3222AC395C00706CD3 /* PersonalTimeModel.swift */,
 				92D12FD522A4045E0093B0A3 /* PickerDataModel.swift */,
 				922032EF229BF2890006F92B /* Constants.swift */,
+				7E98FE62231C2F8C0065FB09 /* LocationModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -228,6 +253,9 @@
 				92BC919322AB24D800BB1D19 /* GradientManager.swift */,
 				92D41C2522AC04DF00706CD3 /* ArrayManager.swift */,
 				92D41C2E22AC345C00706CD3 /* PersonalTimeCalculator.swift */,
+				7E98FE60231C2F340065FB09 /* LocationManager.swift */,
+				7E98FE64231C30C10065FB09 /* UIHelper.swift */,
+				7E98FE66231C3D5C0065FB09 /* UserDefaultsManager.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -235,6 +263,7 @@
 		92D7D68422980138009321AE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7E98FE5F231C2EEC0065FB09 /* WelcomeScreen */,
 				92DCFF6722B6B53D0038545B /* Views */,
 				92D41C2922AC0A5800706CD3 /* Controllers */,
 				92D41C2A22AC0A5F00706CD3 /* Bars */,
@@ -414,27 +443,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				92E77AFA22A5304400E5E21C /* MainScreenViewController.swift in Sources */,
+				7E98FE5A231C28F10065FB09 /* WelcomePageViewController.swift in Sources */,
 				92E4A7FD22B5766F0027D42C /* CustomSegmentedControl.swift in Sources */,
 				92D41C2822AC0A2C00706CD3 /* CustomTabBar.swift in Sources */,
+				7E98FE63231C2F8C0065FB09 /* LocationModel.swift in Sources */,
 				92D7D6552296F297009321AE /* SleepViewController.swift in Sources */,
 				9291F5D922BFE04C00F7037D /* DataBaseManager.swift in Sources */,
+				7E98FE5C231C2E980065FB09 /* LocationPermissionsViewController.swift in Sources */,
 				92D12FD622A4045E0093B0A3 /* PickerDataModel.swift in Sources */,
 				929D3DF422B58AA800B8A7F1 /* CustomContainerView.swift in Sources */,
 				92D41C2F22AC345C00706CD3 /* PersonalTimeCalculator.swift in Sources */,
 				92D41C2622AC04DF00706CD3 /* ArrayManager.swift in Sources */,
 				92BC919422AB24D800BB1D19 /* GradientManager.swift in Sources */,
+				7E98FE61231C2F340065FB09 /* LocationManager.swift in Sources */,
 				92D12FDD22A44B3B0093B0A3 /* CustomTabBarController.swift in Sources */,
 				92D7D6532296F297009321AE /* AppDelegate.swift in Sources */,
 				92BC919022AB159D00BB1D19 /* TransitionManager.swift in Sources */,
 				7EA0924222C8CF820019F2E9 /* CustomTransition.swift in Sources */,
 				92D41C3322AC395C00706CD3 /* PersonalTimeModel.swift in Sources */,
+				7E98FE5E231C2EAD0065FB09 /* WelcomeButtonViewController.swift in Sources */,
 				92D41C3722AD6D5E00706CD3 /* CustomDateFormatter.swift in Sources */,
 				9276892722A82DD1002E50F5 /* ProgressViewController.swift in Sources */,
 				92B78CFA229FAF6C0087240B /* ExpandingCell.swift in Sources */,
+				7E98FE67231C3D5C0065FB09 /* UserDefaultsManager.swift in Sources */,
 				922032EA22998F3D0006F92B /* PersonalTimeViewController.swift in Sources */,
 				922032F0229BF2890006F92B /* Constants.swift in Sources */,
 				92E77AF822A5303400E5E21C /* SettingsViewController.swift in Sources */,
 				92BC919222AB216900BB1D19 /* BannerManager.swift in Sources */,
+				7E98FE65231C30C10065FB09 /* UIHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
