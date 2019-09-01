@@ -31,6 +31,10 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         locationManager.stopUpdatingLocation()
     }
     
+    func requestPermissions() {
+        locationManager.requestWhenInUseAuthorization()
+    }
+    
     //MARK: CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         // TODO: implementation missing

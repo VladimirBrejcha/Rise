@@ -255,7 +255,20 @@
                     <view key="view" contentMode="scaleToFill" id="Ijk-z1-g5x">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="obp-xN-iAA">
+                                <rect key="frame" x="118.5" y="269" width="83" height="30"/>
+                                <state key="normal" title="permissions"/>
+                                <connections>
+                                    <action selector="requestPermissionButtonPressed:" destination="D3Q-dx-YeH" eventType="touchUpInside" id="cuH-5M-uRs"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="obp-xN-iAA" firstAttribute="centerY" secondItem="Ijk-z1-g5x" secondAttribute="centerY" id="MeQ-JN-DlW"/>
+                            <constraint firstItem="obp-xN-iAA" firstAttribute="centerX" secondItem="Ijk-z1-g5x" secondAttribute="centerX" id="hf8-Ge-Jtg"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Xhe-kS-5ks"/>
                     </view>
                 </viewController>
@@ -270,7 +283,17 @@
                     <view key="view" contentMode="scaleToFill" id="vkU-Z4-uIy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="751-R0-SKz">
+                                <rect key="frame" x="144" y="269" width="32" height="30"/>
+                                <state key="normal" title="start"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="751-R0-SKz" firstAttribute="centerX" secondItem="vkU-Z4-uIy" secondAttribute="centerX" id="MPN-n4-Cwj"/>
+                            <constraint firstItem="751-R0-SKz" firstAttribute="centerY" secondItem="vkU-Z4-uIy" secondAttribute="centerY" id="hxM-Kl-vev"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="LTd-sg-XZf"/>
                     </view>
                 </viewController>

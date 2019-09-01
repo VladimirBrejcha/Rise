@@ -9,14 +9,24 @@
 import UIKit
 
 class LocationPermissionsViewController: UIViewController, LocationPermissionsProtocol {
-
+    let locationManager = sharedLocationManager
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         sharedLocationManager.permissionsDelegate = self
     }
     
     func permissionsGranted(granted: Bool) {
+        if granted {
+            print("granted")
+        } else {
+            print("not granted")
+        }
     }
-
+    
+    @IBAction func requestPermissionButtonPressed(_ sender: UIButton) {
+        locationManager.requestPermissions()
+    }
+    
 }
