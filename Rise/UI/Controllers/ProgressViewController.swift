@@ -79,8 +79,6 @@ extension ProgressViewController: FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         let today = Date()
         let myCalendar = Calendar.current
-        let tomorrow = myCalendar.date(byAdding: .day, value: 1, to: today)
-        let tomorrow2 = myCalendar.date(byAdding: .day, value: 2, to: today)
         let day = myCalendar.component(.day, from: today)
         let calendarDay = myCalendar.component(.day, from: date as Date)
         

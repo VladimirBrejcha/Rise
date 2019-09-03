@@ -36,7 +36,7 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         guard let newLocation = locations.last else { return }
         let locationModel = LocationModel(latitude: newLocation.coordinate.latitude.description,
                                           longitude: newLocation.coordinate.longitude.description)
-        NetworkManager.getSunData(location: locationModel) { result in
+        NetworkManager.getSunData(location: locationModel, day: .today) { result in
             switch result {
             case let .success(sunModel):
                 print(DatesConverter.formatDateToHHmm(date: sunModel.sunrise))

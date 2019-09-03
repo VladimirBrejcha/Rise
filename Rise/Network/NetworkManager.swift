@@ -40,8 +40,8 @@ fileprivate class RequestManager {
 }
 
 class NetworkManager {
-    class func getSunData(location: LocationModel, completion: @escaping (Swift.Result<SunModel, Error>) -> Void) {
-        let requestModel = NetworkManager.buildRequestModel(location: location, day: .today)
+    class func getSunData(location: LocationModel, day: SegmentedControlCases, completion: @escaping (Swift.Result<SunModel, Error>) -> Void) {
+        let requestModel = NetworkManager.buildRequestModel(location: location, day: day)
         let requestURL = RequestManager.buildURL(requestModel: requestModel)
         RequestManager.makeRequest(url: requestURL) { response in
             switch response {
