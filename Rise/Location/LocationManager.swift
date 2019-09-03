@@ -13,8 +13,13 @@ protocol LocationPermissionsProtocol: AnyObject {
     func permissionsGranted(granted: Bool)
 }
 
+protocol LocationManagerDelegate: AnyObject {
+    func newLocationDataArrived(locationModel: LocationModel)
+}
+
 final class LocationManager: NSObject, CLLocationManagerDelegate {
     weak var permissionsDelegate: LocationPermissionsProtocol?
+    weak var delegate: LocationManagerDelegate?
     
     let locationManager = CLLocationManager()
     
@@ -36,15 +41,7 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         guard let newLocation = locations.last else { return }
         let locationModel = LocationModel(latitude: newLocation.coordinate.latitude.description,
                                           longitude: newLocation.coordinate.longitude.description)
-        NetworkManager.getSunData(location: locationModel, day: .today) { result in
-            switch result {
-            case let .success(sunModel):
-                print(DatesConverter.formatDateToHHmm(date: sunModel.sunrise))
-                print(DatesConverter.formatDateToHHmm(date: sunModel.sunset))
-            case let .failure(error):
-                print(error.localizedDescription)
-            }
-        }
+        delegate?.newLocationDataArrived(locationModel: locationModel)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

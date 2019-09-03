@@ -8,20 +8,21 @@
 
 import UIKit
 
-final class MainScreenViewController: UIViewController {
+final class MainScreenViewController: UIViewController, LocationManagerDelegate {
     let locationManager = sharedLocationManager
     
     // MARK: Properties
     private lazy var transitionManager = TransitionManager()
     
     // MARK: IBOutlets
-    @IBOutlet weak var mainContainerView: CustomContainerView!
+    @IBOutlet weak var mainContainerView: CustomContainerViewWithSegmentedControl!
     
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         locationManager.requestLocation()
+        sharedLocationManager.delegate = self
     }
     @IBAction func buttonTouch(_ sender: Any) {
         locationManager.requestLocation()
@@ -34,6 +35,18 @@ final class MainScreenViewController: UIViewController {
     
     func didDismissStorkBySwipe() {
         transitionManager.animateBackground()
+    }
+    
+    func newLocationDataArrived(locationModel: LocationModel) {
+        NetworkManager.getSunData(location: locationModel, day: .today) { result in // TODO: weakSelf
+            switch result {
+            case let .success(sunModel):
+                self.mainContainerView.riseContainer.morningTimeLabel.text = DatesConverter.formatDateToHHmm(date: sunModel.sunrise)
+                self.mainContainerView.riseContainer.eveningTimeLabel.text = DatesConverter.formatDateToHHmm(date: sunModel.sunset)
+            case let .failure(error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
 }
