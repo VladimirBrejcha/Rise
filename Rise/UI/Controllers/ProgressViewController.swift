@@ -73,7 +73,6 @@ extension ProgressViewController: PersonalPlanDelegate {
     }
 }
 
-// начинать по кнопке старт
 extension ProgressViewController: FSCalendarDataSource {
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
