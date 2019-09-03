@@ -27,7 +27,7 @@ struct OneDaySunModel {
 
 fileprivate class RequestManager {
     fileprivate func buildURL(requestModel: RequestModel) -> URL {
-        let urlString = requestModel.forecastRequest + requestModel.key + "/" + requestModel.latitude + "," + requestModel.longtitude + "," + requestModel.time
+        let urlString = "\(requestModel.forecastRequest)\(requestModel.key)/\(requestModel.latitude),\(requestModel.longtitude),\(requestModel.time)"
         guard let url = URL(string: urlString) else { fatalError("Could'nt build URL from String") }
         return url
     }
@@ -44,7 +44,7 @@ fileprivate class RequestManager {
     }
 }
 
-class NetworkingManager {
+class NetworkManager {
     fileprivate let requestManager = RequestManager()
     fileprivate let parser = JSONParser()
     fileprivate let locationManager = sharedLocationManager
