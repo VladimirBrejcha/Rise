@@ -9,12 +9,8 @@
 import UIKit
 
 final class MainScreenViewController: UIViewController, LocationManagerDelegate {
-    let locationManager = sharedLocationManager
-    
-    // MARK: Properties
+    private let locationManager = sharedLocationManager
     private lazy var transitionManager = TransitionManager()
-    
-    // MARK: IBOutlets
     @IBOutlet weak var mainContainerView: CustomContainerViewWithSegmentedControl!
     
     // MARK: LifeCycle
