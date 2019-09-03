@@ -9,7 +9,6 @@
 import Foundation
 
 struct LocationModel {
-    var longitude: String
     var latitude: String
-    var date: String
+    var longitude: String
 }

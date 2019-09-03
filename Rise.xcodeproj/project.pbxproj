@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E1F3AA3231D98FC00F60577 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1F3AA2231D98FC00F60577 /* JSONParser.swift */; };
 		7E98FE5E231C2EAD0065FB09 /* WelcomeButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE5D231C2EAD0065FB09 /* WelcomeButtonViewController.swift */; };
 		7E98FE61231C2F340065FB09 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE60231C2F340065FB09 /* LocationManager.swift */; };
 		7E98FE63231C2F8C0065FB09 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE62231C2F8C0065FB09 /* LocationModel.swift */; };
@@ -15,6 +16,7 @@
 		7E98FE6A231C481D0065FB09 /* WelcomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE69231C481D0065FB09 /* WelcomePageViewController.swift */; };
 		7E98FE6C231C482B0065FB09 /* LocationPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE6B231C482B0065FB09 /* LocationPermissionsViewController.swift */; };
 		7E98FE70231C49360065FB09 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE6F231C49360065FB09 /* DataBaseManager.swift */; };
+		7E98FE72231D973B0065FB09 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE71231D973B0065FB09 /* NetworkManager.swift */; };
 		7EA0924222C8CF820019F2E9 /* CustomTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA0924122C8CF820019F2E9 /* CustomTransition.swift */; };
 		922032EA22998F3D0006F92B /* PersonalTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922032E922998F3D0006F92B /* PersonalTimeViewController.swift */; };
 		922032F0229BF2890006F92B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922032EF229BF2890006F92B /* Constants.swift */; };
@@ -62,6 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7E1F3AA2231D98FC00F60577 /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 		7E98FE5D231C2EAD0065FB09 /* WelcomeButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeButtonViewController.swift; sourceTree = "<group>"; };
 		7E98FE60231C2F340065FB09 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		7E98FE62231C2F8C0065FB09 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
@@ -70,6 +73,7 @@
 		7E98FE69231C481D0065FB09 /* WelcomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomePageViewController.swift; sourceTree = "<group>"; };
 		7E98FE6B231C482B0065FB09 /* LocationPermissionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPermissionsViewController.swift; sourceTree = "<group>"; };
 		7E98FE6F231C49360065FB09 /* DataBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
+		7E98FE71231D973B0065FB09 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		7EA0924122C8CF820019F2E9 /* CustomTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTransition.swift; sourceTree = "<group>"; };
 		922032E922998F3D0006F92B /* PersonalTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalTimeViewController.swift; sourceTree = "<group>"; };
 		922032EF229BF2890006F92B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -276,6 +280,8 @@
 			children = (
 				7E98FE66231C3D5C0065FB09 /* UserDefaultsManager.swift */,
 				7E98FE6F231C49360065FB09 /* DataBaseManager.swift */,
+				7E98FE71231D973B0065FB09 /* NetworkManager.swift */,
+				7E1F3AA2231D98FC00F60577 /* JSONParser.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -468,6 +474,7 @@
 			files = (
 				92E77AFA22A5304400E5E21C /* MainScreenViewController.swift in Sources */,
 				92E4A7FD22B5766F0027D42C /* CustomSegmentedControl.swift in Sources */,
+				7E1F3AA3231D98FC00F60577 /* JSONParser.swift in Sources */,
 				92D41C2822AC0A2C00706CD3 /* CustomTabBar.swift in Sources */,
 				7E98FE6A231C481D0065FB09 /* WelcomePageViewController.swift in Sources */,
 				7E98FE70231C49360065FB09 /* DataBaseManager.swift in Sources */,
@@ -478,6 +485,7 @@
 				929D3DF422B58AA800B8A7F1 /* CustomContainerView.swift in Sources */,
 				92D41C2F22AC345C00706CD3 /* PersonalTimeCalculator.swift in Sources */,
 				92D41C2622AC04DF00706CD3 /* ArrayManager.swift in Sources */,
+				7E98FE72231D973B0065FB09 /* NetworkManager.swift in Sources */,
 				92BC919422AB24D800BB1D19 /* GradientManager.swift in Sources */,
 				7E98FE61231C2F340065FB09 /* LocationManager.swift in Sources */,
 				92D12FDD22A44B3B0093B0A3 /* CustomTabBarController.swift in Sources */,

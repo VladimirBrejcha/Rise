@@ -12,6 +12,8 @@ pod 'AnimatedGradientView', :git => 'https://github.com/rwbutler/AnimatedGradien
 pod 'AIFlatSwitch'
 pod 'RealmSwift'
 pod 'FSCalendar'
+pod 'Alamofire'
+pod 'SwiftyJSON'
 
   target 'RiseTests' do
     inherit! :search_paths

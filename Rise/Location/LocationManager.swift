@@ -17,18 +17,15 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     weak var permissionsDelegate: LocationPermissionsProtocol?
     
     let locationManager = CLLocationManager()
+    var latestLocation: LocationModel?
     
     override init() {
         super.init()
         locationManager.delegate = self
     }
     
-    func startSavingLocation() {
-        locationManager.startUpdatingLocation()
-    }
-    
-    func stopUpdatingLocation() {
-        locationManager.stopUpdatingLocation()
+    func requestLocation() {
+        locationManager.requestLocation()
     }
     
     func requestPermissions() {
@@ -37,7 +34,10 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     
     //MARK: CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        // TODO: implementation missing
+        guard let newLocation = locations.last else { return }
+        let locationModel = LocationModel(latitude: newLocation.coordinate.latitude.description,
+                                          longitude: newLocation.coordinate.longitude.description)
+        latestLocation = locationModel
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
