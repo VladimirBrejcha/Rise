@@ -10,7 +10,6 @@ import UIKit
 
 final class MainScreenViewController: UIViewController {
     let locationManager = sharedLocationManager
-    let networkManager = sharedNetworkManager
     
     // MARK: Properties
     private lazy var transitionManager = TransitionManager()
@@ -30,16 +29,7 @@ final class MainScreenViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func sleepButtonTouch(_ sender: UIButton) {
-//        transitionManager.makeTransition(to: Identifiers.sleep)
-        networkManager.getSunData { result in
-            switch result {
-            case let .success(sunModel):
-                print(sunModel.sunrise)
-                print(sunModel.sunset)
-            case let .failure(error):
-                print(error.localizedDescription)
-            }
-        }
+        transitionManager.makeTransition(to: Identifiers.sleep)
     }
     
     func didDismissStorkBySwipe() {

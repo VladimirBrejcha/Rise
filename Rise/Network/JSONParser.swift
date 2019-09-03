@@ -10,12 +10,12 @@ import Foundation
 import SwiftyJSON
 
 class JSONParser {
-    func convertToJSON(any: Any) -> JSON {
+    class func convertToJSON(any: Any) -> JSON {
         let json = JSON(any)
         return json
     }
     
-    func parse(json: JSON) -> (sunrise: Int, sunset: Int) {
+    class func parse(json: JSON) -> (sunrise: Int, sunset: Int) {
         guard let sunriseTime = json["daily"]["data"][0]["sunriseTime"].int,
             let sunsetTime = json["daily"]["data"][0]["sunsetTime"].int else { fatalError("couldnt parse JSON") }
         return (sunriseTime, sunsetTime)

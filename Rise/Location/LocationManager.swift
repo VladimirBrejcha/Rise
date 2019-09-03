@@ -17,7 +17,6 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     weak var permissionsDelegate: LocationPermissionsProtocol?
     
     let locationManager = CLLocationManager()
-    var latestLocation: LocationModel?
     
     override init() {
         super.init()
@@ -37,7 +36,15 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         guard let newLocation = locations.last else { return }
         let locationModel = LocationModel(latitude: newLocation.coordinate.latitude.description,
                                           longitude: newLocation.coordinate.longitude.description)
-        latestLocation = locationModel
+        NetworkManager.getSunData(location: locationModel) { result in
+            switch result {
+            case let .success(sunModel):
+                print(DatesConverter.formatDateToHHmm(date: sunModel.sunrise))
+                print(DatesConverter.formatDateToHHmm(date: sunModel.sunset))
+            case let .failure(error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

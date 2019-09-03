@@ -10,7 +10,6 @@ import UIKit
 import RealmSwift
 
 let sharedLocationManager = LocationManager()
-let sharedNetworkManager = NetworkManager()
 
 fileprivate let mainAppScreenIdentifier = "mainAppScreen"
 fileprivate let welcomeScreenIdentifier = "welcomeScreen"

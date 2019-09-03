@@ -12,17 +12,12 @@ import Alamofire
 fileprivate let secretKey = "c9d64be4228a302b2e8bfed7689a0b05"
 fileprivate let forecastRequestURLString = "https://api.darksky.net/forecast/"
 
-struct RequestModel {
+fileprivate struct RequestModel {
     let forecastRequest = forecastRequestURLString
     let key = secretKey
     var longtitude: String
     var latitude: String
     var time: String
-}
-
-struct OneDaySunModel {
-    var sunrise: Date
-    var sunset: Date
 }
 
 fileprivate class RequestManager {
@@ -45,23 +40,17 @@ fileprivate class RequestManager {
 }
 
 class NetworkManager {
-    fileprivate let parser = JSONParser()
-    fileprivate let locationManager = sharedLocationManager
-    fileprivate let calendar = Calendar.current
-    fileprivate let todayDate = Date()
-    
-    func getSunData(completion: @escaping (Swift.Result<OneDaySunModel, Error>) -> Void) {
-        let requestModel = buildRequestModel(day: .today)
+    class func getSunData(location: LocationModel, completion: @escaping (Swift.Result<SunModel, Error>) -> Void) {
+        let requestModel = NetworkManager.buildRequestModel(location: location, day: .today)
         let requestURL = RequestManager.buildURL(requestModel: requestModel)
-        print(requestURL)
         RequestManager.makeRequest(url: requestURL) { response in
             switch response {
             case let .success(unparsedJSON):
-                let json = self.parser.convertToJSON(any: unparsedJSON)
-                let time = self.parser.parse(json: json)
-                let sunrise = self.buildDate(timestamp: time.sunrise)
-                let sunset = self.buildDate(timestamp: time.sunset)
-                let dayModel = OneDaySunModel(sunrise: sunrise, sunset: sunset)
+                let json = JSONParser.convertToJSON(any: unparsedJSON)
+                let sunTime = JSONParser.parse(json: json)
+                let sunrise = DatesConverter.buildDate(timestamp: sunTime.sunrise)
+                let sunset = DatesConverter.buildDate(timestamp: sunTime.sunset)
+                let dayModel = SunModel(sunrise: sunrise, sunset: sunset)
                 completion(.success(dayModel))
             case let .failure(error):
                 completion(.failure(error))
@@ -69,37 +58,10 @@ class NetworkManager {
         }
     }
     
-    func buildDate(timestamp: Int) -> Date {
-        return Date(timeIntervalSince1970: Double(timestamp))
-    }
-
-    func buildTime(day: SegmentedControlCases) -> Date {
-        switch day {
-        case .yesterday:
-            guard let yesterdayDate = calendar.date(byAdding: .day, value: -1, to: todayDate) else { fatalError("couldnt build yesterday date") }
-            return yesterdayDate
-        case .today:
-            return todayDate
-        case .tomorrow:
-            guard let tomorrowDate = calendar.date(byAdding: .day, value: 1, to: todayDate) else { fatalError("couldnt build tomorrow date") }
-            return tomorrowDate
-        }
-    }
-    
-    func createStringTimestamp(date: Date) -> String {
-        return Int(date.timeIntervalSince1970).description
-    }
-    
-    func buildRequestModel(day: SegmentedControlCases) -> RequestModel {
-        guard let location = locationManager.latestLocation else { fatalError("latest location is nil") }
-        let date = buildTime(day: day)
-        let timestamp = createStringTimestamp(date: date)
+    private class func buildRequestModel(location: LocationModel, day: SegmentedControlCases) -> RequestModel {
+        let date = DatesConverter.buildDate(day: day)
+        let timestamp = DatesConverter.buildTimestamp(date: date).description
         let requestModel = RequestModel(longtitude: String(location.longitude.prefix(7)), latitude: String(location.latitude.prefix(7)), time: timestamp)
         return requestModel
     }
-    
-    func askForASunData(requestModel: RequestModel) {
-        
-    }
-    
 }
