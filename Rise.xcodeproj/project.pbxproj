@@ -184,11 +184,22 @@
 		7E98FE6E231C48B00065FB09 /* PersonalTime */ = {
 			isa = PBXGroup;
 			children = (
+				92D12FD722A4237C0093B0A3 /* ExpandingCell */,
+				922032E922998F3D0006F92B /* PersonalTimeViewController.swift */,
 				92D41C3622AD6D5E00706CD3 /* CustomDateFormatter.swift */,
 				92D41C2E22AC345C00706CD3 /* PersonalTimeCalculator.swift */,
 				92D41C3222AC395C00706CD3 /* PersonalTimeModel.swift */,
 			);
 			path = PersonalTime;
+			sourceTree = "<group>";
+		};
+		7EB9004123258241006EB9A8 /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7E41981F2323CA7F007867AB /* CustomCollectionViewCell.swift */,
+				7E4198202323CA7F007867AB /* CustomCollectionViewCell.xib */,
+			);
+			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
 		92D12FD722A4237C0093B0A3 /* ExpandingCell */ = {
@@ -205,7 +216,6 @@
 			isa = PBXGroup;
 			children = (
 				92D7D6542296F297009321AE /* SleepViewController.swift */,
-				922032E922998F3D0006F92B /* PersonalTimeViewController.swift */,
 				92E77AF722A5303400E5E21C /* SettingsViewController.swift */,
 				92E77AF922A5304400E5E21C /* MainScreenViewController.swift */,
 				9276892622A82DD1002E50F5 /* ProgressViewController.swift */,
@@ -221,17 +231,6 @@
 				92D41C2722AC0A2C00706CD3 /* CustomTabBar.swift */,
 			);
 			path = Bars;
-			sourceTree = "<group>";
-		};
-		92D41C2B22AC0A6F00706CD3 /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				92D7D65B2296F298009321AE /* LaunchScreen.storyboard */,
-				92D7D6562296F297009321AE /* Main.storyboard */,
-				7E41981F2323CA7F007867AB /* CustomCollectionViewCell.swift */,
-				7E4198202323CA7F007867AB /* CustomCollectionViewCell.xib */,
-			);
-			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		92D7D6462296F297009321AE = {
@@ -258,14 +257,17 @@
 		92D7D6512296F297009321AE /* Rise */ = {
 			isa = PBXGroup;
 			children = (
+				92D7D65E2296F298009321AE /* Info.plist */,
 				92D7D6522296F297009321AE /* AppDelegate.swift */,
+				92D7D6562296F297009321AE /* Main.storyboard */,
 				92D7D68422980138009321AE /* UI */,
 				7E0A8F3A231F03170036105C /* Network */,
 				92D7D68322980130009321AE /* Managers */,
 				7E98FE6E231C48B00065FB09 /* PersonalTime */,
 				7E98FE68231C47890065FB09 /* Location */,
 				92D7D68222980129009321AE /* Model */,
-				92D7D65E2296F298009321AE /* Info.plist */,
+				92D7D65B2296F298009321AE /* LaunchScreen.storyboard */,
+				92D7D6592296F298009321AE /* Assets.xcassets */,
 			);
 			path = Rise;
 			sourceTree = "<group>";
@@ -291,7 +293,6 @@
 		92D7D68222980129009321AE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				92D7D6592296F298009321AE /* Assets.xcassets */,
 				922032EF229BF2890006F92B /* Constants.swift */,
 			);
 			path = Model;
@@ -318,8 +319,6 @@
 				92DCFF6722B6B53D0038545B /* Views */,
 				92D41C2922AC0A5800706CD3 /* Controllers */,
 				92D41C2A22AC0A5F00706CD3 /* Bars */,
-				92D12FD722A4237C0093B0A3 /* ExpandingCell */,
-				92D41C2B22AC0A6F00706CD3 /* Storyboards */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -327,10 +326,11 @@
 		92DCFF6722B6B53D0038545B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7EB9003D23256AC9006EB9A8 /* DesignableContainerView.swift */,
 				7E41982323254C36007867AB /* SegmentedControlView.swift */,
 				7E41982523254F1A007867AB /* SegmentedControlButton.swift */,
-				7EB9003D23256AC9006EB9A8 /* DesignableContainerView.swift */,
 				7EB9003F23256BF3006EB9A8 /* CollectionViewWithSegmentedControl.swift */,
+				7EB9004123258241006EB9A8 /* CollectionViewCell */,
 			);
 			path = Views;
 			sourceTree = "<group>";

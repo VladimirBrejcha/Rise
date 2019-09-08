@@ -7,34 +7,19 @@
 //
 
 import UIKit
-import DGActivityIndicatorView
 
 final class MainScreenViewController: UIViewController, LocationManagerDelegate {
     private let locationManager = sharedLocationManager
     private lazy var transitionManager = TransitionManager()
     @IBOutlet weak var mainContainerView: CollectionViewWithSegmentedControl!
-    @IBOutlet weak var activityIndicator: DGActivityIndicatorView!
     
-    // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         locationManager.requestLocation()
         sharedLocationManager.delegate = self
-    
-//        let blurEffect = UIBlurEffect(style: .light)
-//        blurredView.effect = blurEffect
-//        blurredView.alpha = 0.95
-//
-//        activityIndicator.type = .ballScaleMultiple
-//        activityIndicator.startAnimating()
-        
-    }
-    @IBAction func buttonTouch(_ sender: Any) {
-        locationManager.requestLocation()
     }
     
-    // MARK: Actions
     @IBAction func sleepButtonTouch(_ sender: UIButton) {
         transitionManager.makeTransition(to: Identifiers.sleep)
     }
@@ -44,19 +29,19 @@ final class MainScreenViewController: UIViewController, LocationManagerDelegate 
     }
     
     func newLocationDataArrived(locationModel: LocationModel) {
-        NetworkManager.getSunData(location: locationModel, day: .yesterday) { result in // TODO: weakSelf
+        NetworkManager.getSunData(location: locationModel, day: .yesterday) { [weak self] result in
             switch result {
             case let .success(sunModel):
-                self.mainContainerView.timesArray.append(sunModel)
-                NetworkManager.getSunData(location: locationModel, day: .today) { result in // TODO: weakSelf
+                self?.mainContainerView.timesArray.append(sunModel)
+                NetworkManager.getSunData(location: locationModel, day: .today) { result in
                     switch result {
                     case let .success(sunModel):
-                        self.mainContainerView.timesArray.append(sunModel)
-                        NetworkManager.getSunData(location: locationModel, day: .tomorrow) { result in // TODO: weakSelf
+                        self?.mainContainerView.timesArray.append(sunModel)
+                        NetworkManager.getSunData(location: locationModel, day: .tomorrow) { result in
                             switch result {
                             case let .success(sunModel):
-                                self.mainContainerView.timesArray.append(sunModel)
-                                self.mainContainerView.collectionView.reloadData()
+                                self?.mainContainerView.timesArray.append(sunModel)
+                                self?.mainContainerView.collectionView.reloadData()
                             case let .failure(error):
                                 print(error.localizedDescription)
                             }

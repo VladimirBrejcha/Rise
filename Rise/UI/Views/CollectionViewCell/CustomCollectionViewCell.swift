@@ -21,7 +21,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         sunBlurView.backgroundColor = sunContainerView.backgroundColor
-        sunContainerView.alpha = 0.0
         sunActivityIndicatorView.type = .ballScaleMultiple
         sunActivityIndicatorView.startAnimating()
     }

@@ -44,7 +44,11 @@ class SegmentedControlView: UIStackView {
     
     func selectButton(_ selectedButton: SegmentedControlViewButtons) {
         for button in buttons {
-            button.isSelected = button.day == selectedButton ? true : false
+            UIView.transition(with: button,
+                              duration: 0.35,
+                              options: .transitionCrossDissolve,
+                              animations: { button.isSelected = button.day == selectedButton ? true : false },
+                              completion: nil)
             self.selectedButton = selectedButton
         }
     }

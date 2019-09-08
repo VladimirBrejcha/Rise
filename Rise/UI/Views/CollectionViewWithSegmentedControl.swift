@@ -11,7 +11,7 @@ import UIKit
 class CollectionViewWithSegmentedControl: DesignableContainerView, SegmentedControlViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var segmentedControl: SegmentedControlView!
     @IBOutlet weak var collectionView: UICollectionView!
-    let cellIdentifier = "cellIdentifier"
+    private let cellIdentifier = "collectionViewWithSegmentedControlCellID"
     var timesArray: [SunModel] = []
     
     override func awakeFromNib() {
@@ -52,12 +52,11 @@ class CollectionViewWithSegmentedControl: DesignableContainerView, SegmentedCont
         let x = scrollView.contentOffset.x
         let w = scrollView.bounds.size.width
         let currentPage = Int(ceil(x/w))
-        if currentPage > 2 || currentPage < 0 {
-            return
-        }
+        if currentPage > 2 || currentPage < 0 { return }
         segmentedControl.selectButton(SegmentedControlViewButtons(rawValue: currentPage)!)
     }
     
+    // MARK: SegmentedControlViewDelegate
     func userDidSelect(segment: SegmentedControlViewButtons) {
         collectionView?.scrollToItem(at: IndexPath(item: segment.row, section: 0), at: .centeredHorizontally, animated: true)
     }
