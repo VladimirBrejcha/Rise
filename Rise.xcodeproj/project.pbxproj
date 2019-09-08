@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7E0A8F3C231F04BA0036105C /* DatesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0A8F3B231F04BA0036105C /* DatesManager.swift */; };
 		7E1F3AA3231D98FC00F60577 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1F3AA2231D98FC00F60577 /* JSONParser.swift */; };
+		7E4198212323CA7F007867AB /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E41981F2323CA7F007867AB /* CustomCollectionViewCell.swift */; };
+		7E4198222323CA7F007867AB /* CustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E4198202323CA7F007867AB /* CustomCollectionViewCell.xib */; };
 		7E98FE5E231C2EAD0065FB09 /* WelcomeButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE5D231C2EAD0065FB09 /* WelcomeButtonViewController.swift */; };
 		7E98FE61231C2F340065FB09 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE60231C2F340065FB09 /* LocationManager.swift */; };
 		7E98FE63231C2F8C0065FB09 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE62231C2F8C0065FB09 /* LocationModel.swift */; };
@@ -22,7 +24,7 @@
 		922032EA22998F3D0006F92B /* PersonalTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922032E922998F3D0006F92B /* PersonalTimeViewController.swift */; };
 		922032F0229BF2890006F92B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922032EF229BF2890006F92B /* Constants.swift */; };
 		9276892722A82DD1002E50F5 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9276892622A82DD1002E50F5 /* ProgressViewController.swift */; };
-		929D3DF422B58AA800B8A7F1 /* CustomContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929D3DF322B58AA800B8A7F1 /* CustomContainerView.swift */; };
+		929D3DF422B58AA800B8A7F1 /* DesignableContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929D3DF322B58AA800B8A7F1 /* DesignableContainerView.swift */; };
 		92B78CFA229FAF6C0087240B /* ExpandingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B78CF8229FAF6C0087240B /* ExpandingCell.swift */; };
 		92B78CFB229FAF6C0087240B /* ExpandingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92B78CF9229FAF6C0087240B /* ExpandingCell.xib */; };
 		92BC919022AB159D00BB1D19 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BC918F22AB159D00BB1D19 /* TransitionManager.swift */; };
@@ -67,6 +69,8 @@
 /* Begin PBXFileReference section */
 		7E0A8F3B231F04BA0036105C /* DatesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatesManager.swift; sourceTree = "<group>"; };
 		7E1F3AA2231D98FC00F60577 /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
+		7E41981F2323CA7F007867AB /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		7E4198202323CA7F007867AB /* CustomCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCollectionViewCell.xib; sourceTree = "<group>"; };
 		7E98FE5D231C2EAD0065FB09 /* WelcomeButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeButtonViewController.swift; sourceTree = "<group>"; };
 		7E98FE60231C2F340065FB09 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		7E98FE62231C2F8C0065FB09 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
@@ -80,7 +84,7 @@
 		922032E922998F3D0006F92B /* PersonalTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalTimeViewController.swift; sourceTree = "<group>"; };
 		922032EF229BF2890006F92B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9276892622A82DD1002E50F5 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
-		929D3DF322B58AA800B8A7F1 /* CustomContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContainerView.swift; sourceTree = "<group>"; };
+		929D3DF322B58AA800B8A7F1 /* DesignableContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableContainerView.swift; sourceTree = "<group>"; };
 		92B78CF8229FAF6C0087240B /* ExpandingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandingCell.swift; sourceTree = "<group>"; };
 		92B78CF9229FAF6C0087240B /* ExpandingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandingCell.xib; sourceTree = "<group>"; };
 		92BC918F22AB159D00BB1D19 /* TransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
@@ -220,6 +224,8 @@
 			children = (
 				92D7D65B2296F298009321AE /* LaunchScreen.storyboard */,
 				92D7D6562296F297009321AE /* Main.storyboard */,
+				7E41981F2323CA7F007867AB /* CustomCollectionViewCell.swift */,
+				7E4198202323CA7F007867AB /* CustomCollectionViewCell.xib */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -317,7 +323,7 @@
 		92DCFF6722B6B53D0038545B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				929D3DF322B58AA800B8A7F1 /* CustomContainerView.swift */,
+				929D3DF322B58AA800B8A7F1 /* DesignableContainerView.swift */,
 				92E4A7FC22B5766F0027D42C /* CustomSegmentedControl.swift */,
 			);
 			path = Views;
@@ -437,6 +443,7 @@
 				92D7D65D2296F298009321AE /* LaunchScreen.storyboard in Resources */,
 				92B78CFB229FAF6C0087240B /* ExpandingCell.xib in Resources */,
 				92D7D65A2296F298009321AE /* Assets.xcassets in Resources */,
+				7E4198222323CA7F007867AB /* CustomCollectionViewCell.xib in Resources */,
 				92D7D6582296F297009321AE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -472,7 +479,8 @@
 				92D7D6552296F297009321AE /* SleepViewController.swift in Sources */,
 				7E98FE6C231C482B0065FB09 /* LocationPermissionsViewController.swift in Sources */,
 				92D12FD622A4045E0093B0A3 /* PickerDataModel.swift in Sources */,
-				929D3DF422B58AA800B8A7F1 /* CustomContainerView.swift in Sources */,
+				7E4198212323CA7F007867AB /* CustomCollectionViewCell.swift in Sources */,
+				929D3DF422B58AA800B8A7F1 /* DesignableContainerView.swift in Sources */,
 				92D41C2F22AC345C00706CD3 /* PersonalTimeCalculator.swift in Sources */,
 				92D41C2622AC04DF00706CD3 /* ArrayManager.swift in Sources */,
 				7E98FE72231D973B0065FB09 /* NetworkManager.swift in Sources */,

@@ -11,14 +11,15 @@ import UIKit
 final class MainScreenViewController: UIViewController, LocationManagerDelegate {
     private let locationManager = sharedLocationManager
     private lazy var transitionManager = TransitionManager()
-    @IBOutlet weak var mainContainerView: CustomContainerViewWithSegmentedControl!
+    @IBOutlet weak var mainContainerView: CollectionViewWithSegmentedControl!
     
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        locationManager.requestLocation()
+//        locationManager.requestLocation()
         sharedLocationManager.delegate = self
+        
     }
     @IBAction func buttonTouch(_ sender: Any) {
         locationManager.requestLocation()
@@ -37,12 +38,12 @@ final class MainScreenViewController: UIViewController, LocationManagerDelegate 
         NetworkManager.getSunData(location: locationModel, day: .today) { result in // TODO: weakSelf
             switch result {
             case let .success(sunModel):
-                self.mainContainerView.riseContainer.morningTimeLabel.text = DatesConverter.formatDateToHHmm(date: sunModel.sunrise)
-                self.mainContainerView.riseContainer.eveningTimeLabel.text = DatesConverter.formatDateToHHmm(date: sunModel.sunset)
+//                self.mainContainerView.riseContainer.morningTimeLabel.text = DatesConverter.formatDateToHHmm(date: sunModel.sunrise)
+//                self.mainContainerView.riseContainer.eveningTimeLabel.text = DatesConverter.formatDateToHHmm(date: sunModel.sunset)
+                print(sunModel)
             case let .failure(error):
                 print(error.localizedDescription)
             }
         }
     }
-    
 }

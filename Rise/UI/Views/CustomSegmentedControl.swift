@@ -29,12 +29,20 @@ protocol CustomSegmentedControlDelegate: class {
     func segmentedButtonPressed(_ segment: SegmentedControlCases)
 }
 
-@IBDesignable
 class CustomSegmentedControl: UIControl {
     weak var delegate: CustomSegmentedControlDelegate?
     
     private(set) var buttons = [UIButton]()
-    private(set) var selectedSegmentIndex = 1
+    var selectedSegmentIndex = 1 {
+        willSet {
+            for (buttonIndex, btn) in buttons.enumerated() {
+                btn.setTitleColor(textColor, for: .normal)
+                if btn == buttons[newValue] {
+                    btn.setTitleColor(selectorTextColor, for: .normal)
+                }
+            }
+        }
+    }
     private(set) var buttonTitlesArray: [String] = [] {
         didSet { updateView() }
     }
