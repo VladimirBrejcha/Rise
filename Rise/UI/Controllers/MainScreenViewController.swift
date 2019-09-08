@@ -17,7 +17,7 @@ final class MainScreenViewController: UIViewController, LocationManagerDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        locationManager.requestLocation()
+        locationManager.requestLocation()
         sharedLocationManager.delegate = self
         
     }
@@ -35,12 +35,32 @@ final class MainScreenViewController: UIViewController, LocationManagerDelegate 
     }
     
     func newLocationDataArrived(locationModel: LocationModel) {
+        NetworkManager.getSunData(location: locationModel, day: .yesterday) { result in // TODO: weakSelf
+            switch result {
+            case let .success(sunModel):
+                self.mainContainerView.timesArray.append(sunModel)
+                self.mainContainerView.collectionView.reloadData()
+                print("it worked")
+            case let .failure(error):
+                print(error.localizedDescription)
+            }
+        }
         NetworkManager.getSunData(location: locationModel, day: .today) { result in // TODO: weakSelf
             switch result {
             case let .success(sunModel):
-//                self.mainContainerView.riseContainer.morningTimeLabel.text = DatesConverter.formatDateToHHmm(date: sunModel.sunrise)
-//                self.mainContainerView.riseContainer.eveningTimeLabel.text = DatesConverter.formatDateToHHmm(date: sunModel.sunset)
-                print(sunModel)
+                self.mainContainerView.timesArray.append(sunModel)
+                self.mainContainerView.collectionView.reloadData()
+                print("it worked")
+            case let .failure(error):
+                print(error.localizedDescription)
+            }
+        }
+        NetworkManager.getSunData(location: locationModel, day: .tomorrow) { result in // TODO: weakSelf
+            switch result {
+            case let .success(sunModel):
+                self.mainContainerView.timesArray.append(sunModel)
+                self.mainContainerView.collectionView.reloadData()
+                print("it worked")
             case let .failure(error):
                 print(error.localizedDescription)
             }

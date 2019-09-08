@@ -40,7 +40,7 @@ fileprivate class RequestManager {
 }
 
 class NetworkManager {
-    class func getSunData(location: LocationModel, day: SegmentedControlCases, completion: @escaping (Swift.Result<SunModel, Error>) -> Void) {
+    class func getSunData(location: LocationModel, day: SegmentedControlViewButtons, completion: @escaping (Swift.Result<SunModel, Error>) -> Void) {
         let requestModel = NetworkManager.buildRequestModel(location: location, day: day)
         let requestURL = RequestManager.buildURL(requestModel: requestModel)
         RequestManager.makeRequest(url: requestURL) { response in
@@ -58,7 +58,7 @@ class NetworkManager {
         }
     }
     
-    private class func buildRequestModel(location: LocationModel, day: SegmentedControlCases) -> RequestModel {
+    private class func buildRequestModel(location: LocationModel, day: SegmentedControlViewButtons) -> RequestModel {
         let date = DatesConverter.buildDate(day: day)
         let timestamp = DatesConverter.buildTimestamp(date: date).description
         let requestModel = RequestModel(longtitude: String(location.longitude.prefix(7)), latitude: String(location.latitude.prefix(7)), time: timestamp)

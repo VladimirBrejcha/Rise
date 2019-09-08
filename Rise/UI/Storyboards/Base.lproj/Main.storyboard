@@ -52,14 +52,82 @@
                                             <outlet property="delegate" destination="GMJ-xI-VUX" id="THC-Jc-HLE"/>
                                         </connections>
                                     </collectionView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="1So-Po-EsV" customClass="SegmentedControlView" customModule="Rise" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="218" width="280" height="18"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xKc-rS-Ifx" customClass="SegmentedControlButton" customModule="Rise" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="93.5" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <state key="normal" title="yesterday">
+                                                    <color key="titleColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <state key="selected">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="buttonIndex">
+                                                        <integer key="value" value="0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="didPressButton:" destination="1So-Po-EsV" eventType="touchUpInside" id="ObQ-bg-fBM"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ROw-AF-K5u" customClass="SegmentedControlButton" customModule="Rise" customModuleProvider="target">
+                                                <rect key="frame" x="93.5" y="0.0" width="93" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <state key="normal" title="today">
+                                                    <color key="titleColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <state key="selected">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="buttonIndex">
+                                                        <integer key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="didPressButton:" destination="1So-Po-EsV" eventType="touchUpInside" id="ugY-67-Gg8"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SaR-h9-8iw" customClass="SegmentedControlButton" customModule="Rise" customModuleProvider="target">
+                                                <rect key="frame" x="186.5" y="0.0" width="93.5" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <state key="normal" title="tomorrow">
+                                                    <color key="titleColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <state key="selected">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="buttonIndex">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="didPressButton:" destination="1So-Po-EsV" eventType="touchUpInside" id="OK1-4l-SoL"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <connections>
+                                            <outletCollection property="buttons" destination="xKc-rS-Ifx" collectionClass="NSMutableArray" id="12p-kJ-uLs"/>
+                                            <outletCollection property="buttons" destination="ROw-AF-K5u" collectionClass="NSMutableArray" id="LCk-g6-6bc"/>
+                                            <outletCollection property="buttons" destination="SaR-h9-8iw" collectionClass="NSMutableArray" id="5XJ-zS-LqE"/>
+                                        </connections>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="K58-rc-BMQ" secondAttribute="trailing" constant="5" id="7Rg-00-oBL"/>
+                                    <constraint firstItem="1So-Po-EsV" firstAttribute="top" secondItem="K58-rc-BMQ" secondAttribute="bottom" constant="10" id="Naz-dG-2X2"/>
                                     <constraint firstAttribute="width" secondItem="GMJ-xI-VUX" secondAttribute="height" multiplier="28:23" id="cUR-zf-KqQ"/>
                                     <constraint firstAttribute="bottom" secondItem="K58-rc-BMQ" secondAttribute="bottom" constant="38" id="cjA-F8-BQy"/>
+                                    <constraint firstAttribute="trailing" secondItem="1So-Po-EsV" secondAttribute="trailing" constant="10" id="haw-gY-Chf"/>
+                                    <constraint firstAttribute="bottom" secondItem="1So-Po-EsV" secondAttribute="bottom" constant="10" id="hjO-9Y-V5k"/>
                                     <constraint firstItem="K58-rc-BMQ" firstAttribute="top" secondItem="GMJ-xI-VUX" secondAttribute="top" constant="10" id="k9P-Us-Rbu"/>
                                     <constraint firstItem="K58-rc-BMQ" firstAttribute="leading" secondItem="GMJ-xI-VUX" secondAttribute="leading" constant="5" id="n9I-qV-0DL"/>
+                                    <constraint firstItem="1So-Po-EsV" firstAttribute="leading" secondItem="GMJ-xI-VUX" secondAttribute="leading" constant="10" id="o32-vG-Jqp"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -68,6 +136,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="collectionView" destination="K58-rc-BMQ" id="Y3x-az-iqN"/>
+                                    <outlet property="segmentedControl" destination="1So-Po-EsV" id="jZK-hc-emJ"/>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q7C-TX-der" customClass="DesignableContainerView" customModule="Rise" customModuleProvider="target">

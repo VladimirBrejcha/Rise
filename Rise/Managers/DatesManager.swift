@@ -26,7 +26,7 @@ class DatesConverter {
         return Int(date.timeIntervalSince1970)
     }
     
-    class func buildDate(day: SegmentedControlCases) -> Date {
+    class func buildDate(day: SegmentedControlViewButtons) -> Date {
         switch day {
         case .yesterday:
             guard let yesterdayDate = Calendar.current.date(byAdding: .day, value: -1, to: Date()) else { fatalError("couldnt build yesterday date") }
