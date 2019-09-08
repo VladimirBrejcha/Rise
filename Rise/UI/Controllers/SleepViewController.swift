@@ -15,6 +15,7 @@ final class SleepViewController: UIViewController {
     private var gradientManager: GradientManager? {
         return GradientManager(frame: view.bounds)
     }
+    private let textColor = "textColor"
     
     // MARK: IBOutlets
     @IBOutlet weak var sleepButton: UIButton!
@@ -31,7 +32,7 @@ final class SleepViewController: UIViewController {
     
     // MARK: UI setup methods
     private func setupTimePicker() {
-        timePicker.setValue(UIColor.white, forKeyPath: KeyPath.textColor)
+        timePicker.setValue(UIColor.white, forKeyPath: textColor)
     }
     
     private func createBackground() {

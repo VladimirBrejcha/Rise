@@ -30,6 +30,7 @@ final class PersonalTimeViewController: UITableViewController {
         return BannerManager(title: "Saved", style: .success)
     }
     weak var delegate: PersonalPlanDelegate?
+    fileprivate let identifier = "expandingCell"
     
     // MARK: IBOutlets
     @IBOutlet weak var createScheduleButton: UIButton!
@@ -38,8 +39,8 @@ final class PersonalTimeViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(UINib(nibName: Cell.nibName, bundle: nil),
-                           forCellReuseIdentifier: Cell.identifier)
+        tableView.register(UINib(nibName: "ExpandingCell", bundle: nil),
+                           forCellReuseIdentifier: identifier)
         
         createBackground()
     }
@@ -87,7 +88,7 @@ final class PersonalTimeViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         super.tableView(tableView, cellForRowAt: indexPath)
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.identifier) as? ExpandingCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier) as? ExpandingCell else {
             return UITableViewCell()
         }
         

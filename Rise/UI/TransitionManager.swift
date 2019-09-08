@@ -12,7 +12,7 @@ import SPStorkController
 struct TransitionManager {
     
     // MARK: Properties
-    private let storyboard = UIStoryboard(name: Storyboard.name, bundle: nil)
+    private let storyboard = UIStoryboard.main
     private var selectedViewController: UIViewController? {
         let tabBarController = UIApplication.shared.keyWindow?.rootViewController as? CustomTabBarController
         return tabBarController?.selectedViewController

@@ -21,13 +21,6 @@ struct Formater {
     private init() { }
 }
 
-struct Cell {
-    static let identifier = "expandingCell"
-    static let nibName = "ExpandingCell"
-    
-    private init() { }
-}
-
 struct Identifiers {
     static let sleep = "sleep"
     static let personal = "personal"
@@ -35,14 +28,3 @@ struct Identifiers {
     private init() { }
 }
 
-struct Storyboard {
-    static let name = "Main"
-    
-    private init() { }
-}
-
-struct KeyPath {
-    static let textColor = "textColor"
-    
-    private init() { }
-}
