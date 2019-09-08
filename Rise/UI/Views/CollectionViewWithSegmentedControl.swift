@@ -37,6 +37,7 @@ class CollectionViewWithSegmentedControl: DesignableContainerView, SegmentedCont
         if timesArray.indices.contains(indexPath.row) {
             cell.sunriseTimeLabel.text = DatesConverter.formatDateToHHmm(date: timesArray[indexPath.row].sunrise)
             cell.sunsetTimeLabel.text = DatesConverter.formatDateToHHmm(date: timesArray[indexPath.row].sunset)
+            cell.showContent()
         }
         return cell
     }
@@ -51,7 +52,7 @@ class CollectionViewWithSegmentedControl: DesignableContainerView, SegmentedCont
         let x = scrollView.contentOffset.x
         let w = scrollView.bounds.size.width
         let currentPage = Int(ceil(x/w))
-        if currentPage > 2 || currentPage < 0{
+        if currentPage > 2 || currentPage < 0 {
             return
         }
         segmentedControl.selectButton(SegmentedControlViewButtons(rawValue: currentPage)!)

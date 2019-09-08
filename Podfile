@@ -14,6 +14,7 @@ pod 'RealmSwift'
 pod 'FSCalendar'
 pod 'Alamofire'
 pod 'SwiftyJSON'
+pod 'DGActivityIndicatorView'
 
   target 'RiseTests' do
     inherit! :search_paths

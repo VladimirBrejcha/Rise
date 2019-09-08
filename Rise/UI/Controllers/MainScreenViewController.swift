@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import DGActivityIndicatorView
 
 final class MainScreenViewController: UIViewController, LocationManagerDelegate {
     private let locationManager = sharedLocationManager
     private lazy var transitionManager = TransitionManager()
     @IBOutlet weak var mainContainerView: CollectionViewWithSegmentedControl!
+    @IBOutlet weak var activityIndicator: DGActivityIndicatorView!
     
     // MARK: LifeCycle
     override func viewDidLoad() {
@@ -19,6 +21,13 @@ final class MainScreenViewController: UIViewController, LocationManagerDelegate 
         
         locationManager.requestLocation()
         sharedLocationManager.delegate = self
+    
+//        let blurEffect = UIBlurEffect(style: .light)
+//        blurredView.effect = blurEffect
+//        blurredView.alpha = 0.95
+//
+//        activityIndicator.type = .ballScaleMultiple
+//        activityIndicator.startAnimating()
         
     }
     @IBAction func buttonTouch(_ sender: Any) {
@@ -39,28 +48,23 @@ final class MainScreenViewController: UIViewController, LocationManagerDelegate 
             switch result {
             case let .success(sunModel):
                 self.mainContainerView.timesArray.append(sunModel)
-                self.mainContainerView.collectionView.reloadData()
-                print("it worked")
-            case let .failure(error):
-                print(error.localizedDescription)
-            }
-        }
-        NetworkManager.getSunData(location: locationModel, day: .today) { result in // TODO: weakSelf
-            switch result {
-            case let .success(sunModel):
-                self.mainContainerView.timesArray.append(sunModel)
-                self.mainContainerView.collectionView.reloadData()
-                print("it worked")
-            case let .failure(error):
-                print(error.localizedDescription)
-            }
-        }
-        NetworkManager.getSunData(location: locationModel, day: .tomorrow) { result in // TODO: weakSelf
-            switch result {
-            case let .success(sunModel):
-                self.mainContainerView.timesArray.append(sunModel)
-                self.mainContainerView.collectionView.reloadData()
-                print("it worked")
+                NetworkManager.getSunData(location: locationModel, day: .today) { result in // TODO: weakSelf
+                    switch result {
+                    case let .success(sunModel):
+                        self.mainContainerView.timesArray.append(sunModel)
+                        NetworkManager.getSunData(location: locationModel, day: .tomorrow) { result in // TODO: weakSelf
+                            switch result {
+                            case let .success(sunModel):
+                                self.mainContainerView.timesArray.append(sunModel)
+                                self.mainContainerView.collectionView.reloadData()
+                            case let .failure(error):
+                                print(error.localizedDescription)
+                            }
+                        }
+                    case let .failure(error):
+                        print(error.localizedDescription)
+                    }
+                }
             case let .failure(error):
                 print(error.localizedDescription)
             }
