@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -346,7 +345,7 @@
             </objects>
             <point key="canvasLocation" x="1772" y="25"/>
         </scene>
-        <!--Data Source-->
+        <!--Item-->
         <scene sceneID="RXt-XW-JpE">
             <objects>
                 <viewController id="P26-iI-q7r" customClass="ProgressViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
@@ -357,75 +356,24 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TkH-IC-x5O" customClass="DesignableContainerView" customModule="Rise" customModuleProvider="target">
                                 <rect key="frame" x="10" y="161" width="300" height="246"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PJi-ch-WLN" customClass="FSCalendar">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Gk-em-Af3">
                                         <rect key="frame" x="10" y="10" width="280" height="226"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <sections/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="firstWeekday">
-                                                <integer key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="eventDefaultColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="eventSelectionColor">
-                                                <color key="value" name="DarkPink"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
-                                                <color key="value" name="Pink"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="headerTitleColor">
-                                                <color key="value" name="Pink"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="useVeryShortWeekdaySymbols" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="titlePlaceholderColor">
-                                                <color key="value" white="1" alpha="0.193634463028169" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="titleSelectionColor">
-                                                <color key="value" name="Purple"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="titleDefaultColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="titleTodayColor">
-                                                <color key="value" name="Black"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="selectionColor">
-                                                <color key="value" name="Pink"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="fakedSelectedDay">
-                                                <integer key="value" value="0"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="fakeSubtitles" value="NO"/>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="fakeEventDots" value="NO"/>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="todaySelectionColor">
-                                                <color key="value" name="Pink"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
-                                                <color key="value" name="LightPink"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="headerMinimumDissolvedAlpha">
-                                                <real key="value" value="0.0"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="titleTextSize">
-                                                <real key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="weekdayHeight">
-                                                <real key="value" value="0.0"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="12"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <outlet property="dataSource" destination="P26-iI-q7r" id="zfz-c7-DR4"/>
-                                            <outlet property="delegate" destination="P26-iI-q7r" id="jGk-M0-JMH"/>
-                                        </connections>
-                                    </view>
+                                    </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="PJi-ch-WLN" secondAttribute="bottom" constant="10" id="9IF-vp-eEg"/>
                                     <constraint firstAttribute="height" constant="246" id="S9o-8O-ohu"/>
-                                    <constraint firstItem="PJi-ch-WLN" firstAttribute="leading" secondItem="TkH-IC-x5O" secondAttribute="leading" constant="10" id="VnN-FB-W5V"/>
-                                    <constraint firstItem="PJi-ch-WLN" firstAttribute="top" secondItem="TkH-IC-x5O" secondAttribute="top" constant="10" id="c4O-jN-O0o"/>
-                                    <constraint firstAttribute="trailing" secondItem="PJi-ch-WLN" secondAttribute="trailing" constant="10" id="xVz-6u-Ki5"/>
+                                    <constraint firstItem="0Gk-em-Af3" firstAttribute="leading" secondItem="TkH-IC-x5O" secondAttribute="leading" constant="10" id="WV8-j1-oI2"/>
+                                    <constraint firstAttribute="trailing" secondItem="0Gk-em-Af3" secondAttribute="trailing" constant="10" id="mz8-NR-jfg"/>
+                                    <constraint firstAttribute="bottom" secondItem="0Gk-em-Af3" secondAttribute="bottom" constant="10" id="spH-9Y-mHb"/>
+                                    <constraint firstItem="0Gk-em-Af3" firstAttribute="top" secondItem="TkH-IC-x5O" secondAttribute="top" constant="10" id="xra-ao-ZdI"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -499,8 +447,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" image="alarm" selectedImage="alarmPressed" id="coO-Zq-xFO"/>
                     <connections>
-                        <outlet property="calendar" destination="PJi-ch-WLN" id="Kne-jf-lxd"/>
                         <outlet property="infomationLabel" destination="l6b-Je-AIM" id="1cG-LH-SB3"/>
+                        <outlet property="progressTableView" destination="0Gk-em-Af3" id="PQu-dd-7RB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WSD-p6-oMV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -598,21 +546,6 @@
         <image name="alarmPressed" width="25" height="25"/>
         <image name="settings" width="25" height="25"/>
         <image name="settingsPressed" width="25" height="25"/>
-        <namedColor name="Black">
-            <color red="0.16470588235294117" green="0.16470588235294117" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="DarkPink">
-            <color red="0.45882352941176469" green="0.16862745098039217" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="LightPink">
-            <color red="0.71764705882352942" green="0.61568627450980395" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="Pink">
-            <color red="0.88235294117647056" green="0.27843137254901962" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="Purple">
-            <color red="0.18431372549019609" green="0.21176470588235294" blue="0.41176470588235292" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

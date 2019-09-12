@@ -25,6 +25,9 @@
 		7EA0924222C8CF820019F2E9 /* CustomTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA0924122C8CF820019F2E9 /* CustomTransition.swift */; };
 		7EB9003E23256AC9006EB9A8 /* DesignableContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9003D23256AC9006EB9A8 /* DesignableContainerView.swift */; };
 		7EB9004023256BF3006EB9A8 /* CollectionViewWithSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9003F23256BF3006EB9A8 /* CollectionViewWithSegmentedControl.swift */; };
+		7EB9004423298902006EB9A8 /* ProgressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9004223298902006EB9A8 /* ProgressTableViewCell.swift */; };
+		7EB9004523298902006EB9A8 /* ProgressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB9004323298902006EB9A8 /* ProgressTableViewCell.xib */; };
+		7EB90047232AB9EB006EB9A8 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */; };
 		922032EA22998F3D0006F92B /* PersonalTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922032E922998F3D0006F92B /* PersonalTimeViewController.swift */; };
 		922032F0229BF2890006F92B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922032EF229BF2890006F92B /* Constants.swift */; };
 		9276892722A82DD1002E50F5 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9276892622A82DD1002E50F5 /* ProgressViewController.swift */; };
@@ -87,6 +90,9 @@
 		7EA0924122C8CF820019F2E9 /* CustomTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTransition.swift; sourceTree = "<group>"; };
 		7EB9003D23256AC9006EB9A8 /* DesignableContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableContainerView.swift; sourceTree = "<group>"; };
 		7EB9003F23256BF3006EB9A8 /* CollectionViewWithSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewWithSegmentedControl.swift; sourceTree = "<group>"; };
+		7EB9004223298902006EB9A8 /* ProgressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTableViewCell.swift; sourceTree = "<group>"; };
+		7EB9004323298902006EB9A8 /* ProgressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressTableViewCell.xib; sourceTree = "<group>"; };
+		7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		922032E922998F3D0006F92B /* PersonalTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalTimeViewController.swift; sourceTree = "<group>"; };
 		922032EF229BF2890006F92B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9276892622A82DD1002E50F5 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
@@ -219,6 +225,9 @@
 				92E77AF722A5303400E5E21C /* SettingsViewController.swift */,
 				92E77AF922A5304400E5E21C /* MainScreenViewController.swift */,
 				9276892622A82DD1002E50F5 /* ProgressViewController.swift */,
+				7EB9004223298902006EB9A8 /* ProgressTableViewCell.swift */,
+				7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */,
+				7EB9004323298902006EB9A8 /* ProgressTableViewCell.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -446,6 +455,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EB9004523298902006EB9A8 /* ProgressTableViewCell.xib in Resources */,
 				92D7D65D2296F298009321AE /* LaunchScreen.storyboard in Resources */,
 				92B78CFB229FAF6C0087240B /* ExpandingCell.xib in Resources */,
 				92D7D65A2296F298009321AE /* Assets.xcassets in Resources */,
@@ -477,11 +487,13 @@
 			files = (
 				92E77AFA22A5304400E5E21C /* MainScreenViewController.swift in Sources */,
 				7E1F3AA3231D98FC00F60577 /* JSONParser.swift in Sources */,
+				7EB9004423298902006EB9A8 /* ProgressTableViewCell.swift in Sources */,
 				92D41C2822AC0A2C00706CD3 /* CustomTabBar.swift in Sources */,
 				7E98FE6A231C481D0065FB09 /* WelcomePageViewController.swift in Sources */,
 				7E98FE70231C49360065FB09 /* DataBaseManager.swift in Sources */,
 				7E98FE63231C2F8C0065FB09 /* LocationModel.swift in Sources */,
 				92D7D6552296F297009321AE /* SleepViewController.swift in Sources */,
+				7EB90047232AB9EB006EB9A8 /* ProgressBar.swift in Sources */,
 				7E98FE6C231C482B0065FB09 /* LocationPermissionsViewController.swift in Sources */,
 				92D12FD622A4045E0093B0A3 /* PickerDataModel.swift in Sources */,
 				7E4198212323CA7F007867AB /* CustomCollectionViewCell.swift in Sources */,

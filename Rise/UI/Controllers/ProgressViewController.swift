@@ -7,11 +7,12 @@
 //
 
 import UIKit
-import FSCalendar
 
-final class ProgressViewController: UIViewController {
-    @IBOutlet weak var calendar: FSCalendar!
+final class ProgressViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     @IBOutlet weak var infomationLabel: UILabel!
+    @IBOutlet weak var progressTableView: UITableView!
+    private let progressCellsContent: [(String, CGFloat)] = [("Streak", 0.5), ("Completed", 0.8), ("Closed to sunrise", 0.3)]
     
     // MARK: Properties
     private lazy var transitionManager = TransitionManager()
@@ -20,11 +21,11 @@ final class ProgressViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        calendar.appearance.titleSelectionColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        calendar.scope = FSCalendarScope.month
-        calendar.adjustMonthPosition()
-        calendar.dataSource = self
-        calendar.delegate = self
+        progressTableView.layer.cornerRadius = 12
+        progressTableView.register(UINib(nibName: "ProgressTableViewCell", bundle: nil),
+                           forCellReuseIdentifier: "progressCell")
+        progressTableView.delegate = self
+        progressTableView.dataSource = self
     }
     
     // MARK: Actions
@@ -61,10 +62,6 @@ final class ProgressViewController: UIViewController {
         guard let personalTimeVC = controller as? PersonalTimeViewController else { return }
         personalTimeVC.delegate = self
     }
-    
-}
-
-extension ProgressViewController: FSCalendarDelegate {
 }
 
 extension ProgressViewController: PersonalPlanDelegate {
@@ -73,19 +70,31 @@ extension ProgressViewController: PersonalPlanDelegate {
     }
 }
 
-extension ProgressViewController: FSCalendarDataSource {
+// MARK: TableViewControllerDelegate
+extension ProgressViewController {
     
-    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        let today = Date()
-        let myCalendar = Calendar.current
-        let day = myCalendar.component(.day, from: today)
-        let calendarDay = myCalendar.component(.day, from: date as Date)
-        
-        if day == calendarDay {
-            return 0
-        } else {
-            return 1
-        }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
     }
-
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 10.0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "progressCell", for: indexPath) as! ProgressTableViewCell
+        cell.centerProgressLabel.text = progressCellsContent[indexPath.section].0
+        cell.progress = progressCellsContent[indexPath.section].1
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }
 }

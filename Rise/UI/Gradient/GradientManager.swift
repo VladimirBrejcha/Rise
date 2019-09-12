@@ -39,6 +39,14 @@ struct GradientManager {
             return gradientView ?? UIView()
     }
     
+    public func createStaticGradientImage(colors array: [UIColor],
+                                          direction: AnimatedGradientViewDirection,
+                                          alpha: CGFloat)
+        -> UIImage {
+            
+            return createStaticGradient(colors: array, direction: direction, alpha: alpha).asImage()
+    }
+    
     mutating public func createAnimatedGradient(colors colorsArray: [[UIColor]],
                                                 directions directionsArray: [AnimatedGradientViewDirection])
         -> UIView {

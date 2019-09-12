@@ -3,7 +3,6 @@ PODS:
   - Alamofire (4.8.2)
   - AnimatedGradientView (1.1.1)
   - DGActivityIndicatorView (2.1.1)
-  - FSCalendar (2.8.0)
   - MarqueeLabel (4.0.0)
   - NotificationBannerSwift (2.2.2):
     - MarqueeLabel (~> 4.0.0)
@@ -22,7 +21,6 @@ DEPENDENCIES:
   - Alamofire
   - AnimatedGradientView (from `https://github.com/rwbutler/AnimatedGradientView.git`, branch `swift-5`)
   - DGActivityIndicatorView
-  - FSCalendar
   - NotificationBannerSwift
   - RealmSwift
   - SPStorkController
@@ -33,7 +31,6 @@ SPEC REPOS:
     - AIFlatSwitch
     - Alamofire
     - DGActivityIndicatorView
-    - FSCalendar
     - MarqueeLabel
     - NotificationBannerSwift
     - Realm
@@ -57,7 +54,6 @@ SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   AnimatedGradientView: e73ba49cb1e2d5ce9533f0aa06d0065156f04e35
   DGActivityIndicatorView: ff2c76073d79692f724863c8dd38685866a03cb6
-  FSCalendar: 3a5ed3636e2ba1b83ebebfcf0c2603105a6f5efe
   MarqueeLabel: b55b26e690b6ad41faedd95cbf5eae6f1d1735b4
   NotificationBannerSwift: 2d46cc1b4a0ebf4372baef383f2a2ca82bf0c235
   Realm: 0e73b4edeb5b6a90da3d83206883b2e34e00eb38
@@ -66,6 +62,6 @@ SPEC CHECKSUMS:
   SPStorkController: f74a60dbcd3c35180c996688873f6eadac839642
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 34487769cefcac703c1e4185e4d81afbdbdd5f22
+PODFILE CHECKSUM: 50e0c43710e3ccf6fdcd8128cf2728ce0a6113b6
 
 COCOAPODS: 1.7.5

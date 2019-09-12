@@ -11,7 +11,7 @@ import UIKit
 final class CustomTransition: NSObject {
     
     private let viewControllers: [UIViewController]?
-    private let transitionDuration: Double = 0.2
+    private let transitionDuration: Double = 0.15
     
     init(viewControllers: [UIViewController]?) {
         self.viewControllers = viewControllers

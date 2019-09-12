@@ -27,7 +27,6 @@ final class CustomTabBarController: UITabBarController {
         
         setupBackground()
         setupTabBarItems()
-        
     }
     
     // MARK: UISetup Methods
