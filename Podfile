@@ -13,7 +13,6 @@ pod 'AIFlatSwitch'
 pod 'RealmSwift'
 pod 'Alamofire'
 pod 'SwiftyJSON'
-pod 'DGActivityIndicatorView'
 
   target 'RiseTests' do
     inherit! :search_paths
