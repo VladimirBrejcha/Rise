@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import DGActivityIndicatorView
 
 class CustomCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var sunriseTimeLabel: UILabel!
@@ -16,20 +15,22 @@ class CustomCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var toSleepTimeSleep: UILabel!
     @IBOutlet weak var sunBlurView: UIView!
     @IBOutlet weak var sunContainerView: UIView!
-    @IBOutlet weak var sunActivityIndicatorView: DGActivityIndicatorView!
+    @IBOutlet weak var sunActivityAnimationVIew: UIView!
+    var animationManager: AnimationManager?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         sunBlurView.backgroundColor = sunContainerView.backgroundColor
-        sunActivityIndicatorView.type = .ballScaleMultiple
-        sunActivityIndicatorView.startAnimating()
+        animationManager = AnimationManager(layer: sunActivityAnimationVIew.layer, tintColor: .white)
+        animationManager?.setupAnimation()
+        animationManager?.startAnimating()
     }
     
     func showContent() {
         UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction, animations: {
-            self.sunActivityIndicatorView.alpha = 0.0
+            self.sunActivityAnimationVIew.alpha = 0.0
         }) { completed in
-            self.sunActivityIndicatorView.stopAnimating()
+            self.animationManager?.stopAnimating()
             UIView.animate(withDuration: 0.8, delay: 0, options: .allowUserInteraction, animations: {
                 self.sunContainerView.alpha = 1.0
                 self.sunBlurView.alpha = 0.0
