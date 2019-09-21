@@ -28,6 +28,7 @@
 		7EB9004423298902006EB9A8 /* ProgressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9004223298902006EB9A8 /* ProgressTableViewCell.swift */; };
 		7EB9004523298902006EB9A8 /* ProgressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB9004323298902006EB9A8 /* ProgressTableViewCell.xib */; };
 		7EB90047232AB9EB006EB9A8 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */; };
+		7ED962AC2336334A00CD2408 /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED962AB2336334A00CD2408 /* AnimationManager.swift */; };
 		922032EA22998F3D0006F92B /* PersonalTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922032E922998F3D0006F92B /* PersonalTimeViewController.swift */; };
 		922032F0229BF2890006F92B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922032EF229BF2890006F92B /* Constants.swift */; };
 		9276892722A82DD1002E50F5 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9276892622A82DD1002E50F5 /* ProgressViewController.swift */; };
@@ -93,6 +94,7 @@
 		7EB9004223298902006EB9A8 /* ProgressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTableViewCell.swift; sourceTree = "<group>"; };
 		7EB9004323298902006EB9A8 /* ProgressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressTableViewCell.xib; sourceTree = "<group>"; };
 		7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		7ED962AB2336334A00CD2408 /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
 		922032E922998F3D0006F92B /* PersonalTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalTimeViewController.swift; sourceTree = "<group>"; };
 		922032EF229BF2890006F92B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9276892622A82DD1002E50F5 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				7E41981F2323CA7F007867AB /* CustomCollectionViewCell.swift */,
+				7ED962AB2336334A00CD2408 /* AnimationManager.swift */,
 				7E4198202323CA7F007867AB /* CustomCollectionViewCell.xib */,
 			);
 			path = CollectionViewCell;
@@ -521,6 +524,7 @@
 				7E41982423254C36007867AB /* SegmentedControlView.swift in Sources */,
 				7EB9004023256BF3006EB9A8 /* CollectionViewWithSegmentedControl.swift in Sources */,
 				92BC919222AB216900BB1D19 /* BannerManager.swift in Sources */,
+				7ED962AC2336334A00CD2408 /* AnimationManager.swift in Sources */,
 				7E98FE65231C30C10065FB09 /* UIHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
