@@ -29,6 +29,8 @@
 		7EB9004523298902006EB9A8 /* ProgressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB9004323298902006EB9A8 /* ProgressTableViewCell.xib */; };
 		7EB90047232AB9EB006EB9A8 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */; };
 		7ED962AC2336334A00CD2408 /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED962AB2336334A00CD2408 /* AnimationManager.swift */; };
+		7ED962AF2336649E00CD2408 /* PlanInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED962AD2336649E00CD2408 /* PlanInfoTableViewCell.swift */; };
+		7ED962B02336649E00CD2408 /* PlanInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ED962AE2336649E00CD2408 /* PlanInfoTableViewCell.xib */; };
 		922032EA22998F3D0006F92B /* PersonalTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922032E922998F3D0006F92B /* PersonalTimeViewController.swift */; };
 		922032F0229BF2890006F92B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922032EF229BF2890006F92B /* Constants.swift */; };
 		9276892722A82DD1002E50F5 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9276892622A82DD1002E50F5 /* ProgressViewController.swift */; };
@@ -95,6 +97,8 @@
 		7EB9004323298902006EB9A8 /* ProgressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressTableViewCell.xib; sourceTree = "<group>"; };
 		7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		7ED962AB2336334A00CD2408 /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
+		7ED962AD2336649E00CD2408 /* PlanInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanInfoTableViewCell.swift; sourceTree = "<group>"; };
+		7ED962AE2336649E00CD2408 /* PlanInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanInfoTableViewCell.xib; sourceTree = "<group>"; };
 		922032E922998F3D0006F92B /* PersonalTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalTimeViewController.swift; sourceTree = "<group>"; };
 		922032EF229BF2890006F92B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9276892622A82DD1002E50F5 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
@@ -228,6 +232,8 @@
 				92E77AF722A5303400E5E21C /* SettingsViewController.swift */,
 				92E77AF922A5304400E5E21C /* MainScreenViewController.swift */,
 				9276892622A82DD1002E50F5 /* ProgressViewController.swift */,
+				7ED962AD2336649E00CD2408 /* PlanInfoTableViewCell.swift */,
+				7ED962AE2336649E00CD2408 /* PlanInfoTableViewCell.xib */,
 				7EB9004223298902006EB9A8 /* ProgressTableViewCell.swift */,
 				7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */,
 				7EB9004323298902006EB9A8 /* ProgressTableViewCell.xib */,
@@ -460,6 +466,7 @@
 			files = (
 				7EB9004523298902006EB9A8 /* ProgressTableViewCell.xib in Resources */,
 				92D7D65D2296F298009321AE /* LaunchScreen.storyboard in Resources */,
+				7ED962B02336649E00CD2408 /* PlanInfoTableViewCell.xib in Resources */,
 				92B78CFB229FAF6C0087240B /* ExpandingCell.xib in Resources */,
 				92D7D65A2296F298009321AE /* Assets.xcassets in Resources */,
 				7E4198222323CA7F007867AB /* CustomCollectionViewCell.xib in Resources */,
@@ -516,6 +523,7 @@
 				92D41C3722AD6D5E00706CD3 /* CustomDateFormatter.swift in Sources */,
 				9276892722A82DD1002E50F5 /* ProgressViewController.swift in Sources */,
 				92B78CFA229FAF6C0087240B /* ExpandingCell.swift in Sources */,
+				7ED962AF2336649E00CD2408 /* PlanInfoTableViewCell.swift in Sources */,
 				7E0A8F3C231F04BA0036105C /* DatesManager.swift in Sources */,
 				7E98FE67231C3D5C0065FB09 /* UserDefaultsManager.swift in Sources */,
 				922032EA22998F3D0006F92B /* PersonalTimeViewController.swift in Sources */,

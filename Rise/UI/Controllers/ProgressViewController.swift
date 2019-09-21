@@ -11,8 +11,9 @@ import UIKit
 final class ProgressViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var infomationLabel: UILabel!
+    @IBOutlet weak var infoTableView: UITableView!
     @IBOutlet weak var progressTableView: UITableView!
-    private let progressCellsContent: [(String, CGFloat)] = [("Streak", 0.5), ("Completed", 0.8), ("Closed to sunrise", 0.3)]
+    private let progressCellsContent: [(String, CGFloat)] = [("Streak", 0.5)]
     
     // MARK: Properties
     private lazy var transitionManager = TransitionManager()
@@ -21,11 +22,18 @@ final class ProgressViewController: UIViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        progressTableView.layer.cornerRadius = 12
+        infoTableView.register(UINib(nibName: "PlanInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "infoCell")
         progressTableView.register(UINib(nibName: "ProgressTableViewCell", bundle: nil),
                            forCellReuseIdentifier: "progressCell")
+        infoTableView.delegate = self
+        infoTableView.dataSource = self
         progressTableView.delegate = self
         progressTableView.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+//        infoTableView.estimatedRowHeight = 100
+//        infoTableView.rowHeight = UITableView.automaticDimension
     }
     
     // MARK: Actions
@@ -74,27 +82,50 @@ extension ProgressViewController: PersonalPlanDelegate {
 extension ProgressViewController {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 10.0
+        return tableView == progressTableView ? 1 : 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "progressCell", for: indexPath) as! ProgressTableViewCell
-        cell.centerProgressLabel.text = progressCellsContent[indexPath.section].0
-        cell.progress = progressCellsContent[indexPath.section].1
-        
-        return cell
+        if tableView == progressTableView {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "progressCell", for: indexPath) as! ProgressTableViewCell
+            
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "infoCell", for: indexPath) as! PlanInfoTableViewCell
+            return cell
+        }
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if tableView == infoTableView {
+        return 5
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let view = UIView()
         view.backgroundColor = .clear
         return view
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if tableView == infoTableView {
+        return 5
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView == progressTableView ? tableView.frame.size.height : tableView.frame.size.height / 4 - 2.5
     }
 }
