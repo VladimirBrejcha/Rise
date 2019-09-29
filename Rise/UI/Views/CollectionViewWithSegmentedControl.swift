@@ -21,6 +21,7 @@ class CollectionViewWithSegmentedControl: DesignableContainerView, SegmentedCont
         
         collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
         collectionView.scrollToItem(at: IndexPath(row: 1, section: 0), at: .centeredHorizontally, animated: true)
+        collectionView.reloadData()
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

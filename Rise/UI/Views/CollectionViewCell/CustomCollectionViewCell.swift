@@ -20,6 +20,9 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+//        let newView = UIView(frame: sunContainerView.frame)
+//        newView.backgroundColor = sunContainerView.backgroundColor
+//        sunContainerView.addSubview(newView)
         sunBlurView.backgroundColor = sunContainerView.backgroundColor
         animationManager = AnimationManager(layer: sunActivityAnimationVIew.layer, tintColor: .white)
         animationManager?.setupAnimation()
