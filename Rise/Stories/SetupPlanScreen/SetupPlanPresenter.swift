@@ -13,7 +13,7 @@ protocol PersonalPlanDelegate: class {
 }
 
 class SetupPlanPresenter: SetupPlanViewOutput {
-    weak var view: SetupPlanViewInput!
+    weak var view: SetupPlanViewInput?
     
     weak var personalPlanDelegate: PersonalPlanDelegate?
     
@@ -27,9 +27,9 @@ class SetupPlanPresenter: SetupPlanViewOutput {
     
     // MARK: - SetupPlanViewOutput
     func scheduleTapped() {
-        view.dismiss()
+        view?.dismiss()
         createPlan()
-        view.showBanner()
+        view?.showBanner()
     }
     
     private func createPlan() { personalPlanDelegate?.newPlanCreated(personalPlanModel!)  }
@@ -50,7 +50,7 @@ class SetupPlanPresenter: SetupPlanViewOutput {
             let wentSleep = lastTimeWentSleepForModel,
             let planDuration = planDurationForModel else { return }
         
-        view.isScheduleButtonEnabled = true
+        view?.isScheduleButtonEnabled = true
         
         personalPlanModel = PersonalPlanBuilder.buildPlan(wakeUp: wakeUp, wentSleep: wentSleep, sleepDuration: sleepDuration, planDuration: planDuration)
     }

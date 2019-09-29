@@ -11,21 +11,37 @@ import UIKit
 fileprivate let infoTableViewInfo = (nib: UINib(nibName: "PlanInfoTableViewCell", bundle: nil), cellID: "infoCell")
 fileprivate let progressTableViewInfo = (nib: UINib(nibName: "ProgressTableViewCell", bundle: nil), cellID: "progressCell")
 
+protocol PersonalPlanViewInput: class {
+    func showSetupPlanController()
+    func updateProgressView(with progress: Double, maxProgress: String)
+    func updatePlanInfo(with info: [String])
+}
 
-class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PersonalPlanDelegate {
+protocol PersonalPlanViewOutput: PersonalPlanDelegate {
+    func changeButtonPressed()
+}
+
+class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PersonalPlanViewInput {
+    var output: PersonalPlanViewOutput!
     
+    @IBOutlet weak var planButton: UIButton!
     @IBOutlet weak var infomationLabel: UILabel!
+    
     @IBOutlet weak var infoTableView: UITableView!
     @IBOutlet weak var progressTableView: UITableView!
-    private let progressCellsContent: [(String, CGFloat)] = [("Streak", 0.5)]
-    private let infoCellsContent: [(UIImage, String)] = [( #imageLiteral(resourceName: "Clock") , "8 hours of sleep daily"), ( #imageLiteral(resourceName: "wakeup") , "Will wake up at 07:69"),
-                                                         ( #imageLiteral(resourceName: "fallasleep") , "Will sleep at 22:13"), ( #imageLiteral(resourceName: "sun") , "Synchronksed with sunrise")]
+    
+    private var progressCellMaxValue: String?
+    private var progressCellValue: Double = 0.0
+    private let infoCellImageArray: [UIImage] = [#imageLiteral(resourceName: "Clock"), #imageLiteral(resourceName: "wakeup"), #imageLiteral(resourceName: "fallasleep"), #imageLiteral(resourceName: "sun")]
+    private var infoCellLabelTextArray: [String]?
     
     private lazy var transitionManager = TransitionManager()
     
-    // MARK: LifeCycle
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        output = PersonalPlanPresenter(view: self)
         
         configureTableView(tableView: infoTableView, info: infoTableViewInfo)
         configureTableView(tableView: progressTableView, info: progressTableViewInfo)
@@ -37,37 +53,39 @@ class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITable
         tableView.dataSource = self
     }
     
-    // MARK: Actions
-    @IBAction func changeButtonTouch(_ sender: UIButton) {
-        transitionManager.makeTransition(to: Identifiers.personal)
-        
-        UIView.animate(withDuration: 0.1) { sender.transform = CGAffineTransform.identity }
-    }
+    // MARK: - Actions
+    @IBAction func planButtonPressed(_ sender: UIButton) { output.changeButtonPressed() }
     
-    @IBAction func buttonTouch(_ sender: UIButton) {
+    @IBAction func decreaseButtonSize(_ sender: UIButton) {
         UIView.animate(withDuration: 0.1, animations: { sender.transform = CGAffineTransform(scaleX: 0.93, y: 0.93) })
     }
-    
-    @IBAction func touchCancel(_ sender: UIButton) {
+    @IBAction func backToNormalSize(_ sender: UIButton) {
         UIView.animate(withDuration: 0.1) { sender.transform = CGAffineTransform.identity }
     }
     
-    @IBAction func dragOutside(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.1) { sender.transform = CGAffineTransform.identity }
-    }
-    
+    // MARK: - SPStorkControllerDelegate
     func didDismissStorkBySwipe() { transitionManager.animateBackground() }
     
     func didDismissByNewScheduleButton(controller: UIViewController) {
         guard let personalTimeVC = controller as? SetupPlanTableViewController else { return }
-        personalTimeVC.output?.personalPlanDelegate = self
+        personalTimeVC.output?.personalPlanDelegate = output
     }
-}
-
-// MARK: - PersonalPlanDelegate
-extension PersonalPlanViewController {
-    func newPlanCreated(plan: CalculatedPlan) {
-        infomationLabel.text = "Your plan will take \(plan.days) days, about \(plan.minutesPerDay) minutes per day"
+    
+    // MARK: - PersonalPlanViewInput
+    func showSetupPlanController() {
+        transitionManager.makeTransition(to: Identifiers.personal)
+        backToNormalSize(planButton)
+    }
+    
+    func updatePlanInfo(with info: [String]) {
+        infoCellLabelTextArray = info
+        infoTableView.reloadData()
+    }
+    
+    func updateProgressView(with progress: Double, maxProgress: String) {
+        progressCellValue = progress
+        progressCellMaxValue = maxProgress
+        progressTableView.reloadData()
     }
 }
 
@@ -80,11 +98,15 @@ extension PersonalPlanViewController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == progressTableView
         { let cell = tableView.dequeueReusableCell(withIdentifier: progressTableViewInfo.cellID, for: indexPath) as! ProgressTableViewCell
+            cell.centerProgressLabel.text = "Perfomance"
+            cell.startProgressLabel.text = "0"
+            cell.endProgressLabel.text = progressCellMaxValue
+            cell.progress = CGFloat(progressCellValue)
             return cell }
         else
         { let cell = tableView.dequeueReusableCell(withIdentifier: infoTableViewInfo.cellID, for: indexPath) as! PlanInfoTableViewCell
-            cell.infoImageView.image = infoCellsContent[indexPath.row].0
-            cell.infoLabel.text = infoCellsContent[indexPath.row].1
+            cell.infoImageView.image = infoCellImageArray[indexPath.row]
+            cell.infoLabel.text = infoCellLabelTextArray?[indexPath.row]
             return cell }
     }
 }
