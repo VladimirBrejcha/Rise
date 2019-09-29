@@ -25,6 +25,8 @@
 		7E98FE72231D973B0065FB09 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE71231D973B0065FB09 /* NetworkManager.swift */; };
 		7EA0924222C8CF820019F2E9 /* CustomTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA0924122C8CF820019F2E9 /* CustomTransition.swift */; };
 		7EB1C0332340F9550028237E /* PersonalPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE939162340F68800FE9954 /* PersonalPlanViewController.swift */; };
+		7EB1C0372340FC6B0028237E /* PersonalPlanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1C0362340FC6B0028237E /* PersonalPlanModel.swift */; };
+		7EB1C0392340FDB00028237E /* SetupPlanPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1C0382340FDB00028237E /* SetupPlanPresenter.swift */; };
 		7EB9003E23256AC9006EB9A8 /* DesignableContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9003D23256AC9006EB9A8 /* DesignableContainerView.swift */; };
 		7EB9004023256BF3006EB9A8 /* CollectionViewWithSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9003F23256BF3006EB9A8 /* CollectionViewWithSegmentedControl.swift */; };
 		7EB9004423298902006EB9A8 /* ProgressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9004223298902006EB9A8 /* ProgressTableViewCell.swift */; };
@@ -92,6 +94,8 @@
 		7E98FE6F231C49360065FB09 /* DataBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
 		7E98FE71231D973B0065FB09 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		7EA0924122C8CF820019F2E9 /* CustomTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTransition.swift; sourceTree = "<group>"; };
+		7EB1C0362340FC6B0028237E /* PersonalPlanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPlanModel.swift; sourceTree = "<group>"; };
+		7EB1C0382340FDB00028237E /* SetupPlanPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPlanPresenter.swift; sourceTree = "<group>"; };
 		7EB9003D23256AC9006EB9A8 /* DesignableContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableContainerView.swift; sourceTree = "<group>"; };
 		7EB9003F23256BF3006EB9A8 /* CollectionViewWithSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewWithSegmentedControl.swift; sourceTree = "<group>"; };
 		7EB9004223298902006EB9A8 /* ProgressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTableViewCell.swift; sourceTree = "<group>"; };
@@ -290,8 +294,10 @@
 				92D41C3622AD6D5E00706CD3 /* CustomDateFormatter.swift */,
 				92D41C2E22AC345C00706CD3 /* PersonalTimeCalculator.swift */,
 				92D41C3222AC395C00706CD3 /* PersonalTimeModel.swift */,
+				7EB1C0362340FC6B0028237E /* PersonalPlanModel.swift */,
 				92D12FD722A4237C0093B0A3 /* ExpandingCell */,
 				922032E922998F3D0006F92B /* SetupPlanTableViewController.swift */,
+				7EB1C0382340FDB00028237E /* SetupPlanPresenter.swift */,
 			);
 			path = SetupPlanScreen;
 			sourceTree = "<group>";
@@ -545,6 +551,7 @@
 				92D7D6552296F297009321AE /* SleepViewController.swift in Sources */,
 				7EB90047232AB9EB006EB9A8 /* ProgressBar.swift in Sources */,
 				7E98FE6C231C482B0065FB09 /* LocationPermissionsViewController.swift in Sources */,
+				7EB1C0372340FC6B0028237E /* PersonalPlanModel.swift in Sources */,
 				92D12FD622A4045E0093B0A3 /* PickerDataModel.swift in Sources */,
 				7E4198212323CA7F007867AB /* TodayCollectionViewCell.swift in Sources */,
 				7EB9003E23256AC9006EB9A8 /* DesignableContainerView.swift in Sources */,
@@ -561,6 +568,7 @@
 				92D41C3322AC395C00706CD3 /* PersonalTimeModel.swift in Sources */,
 				7E98FE5E231C2EAD0065FB09 /* WelcomeButtonViewController.swift in Sources */,
 				7E41982623254F1A007867AB /* SegmentedControlButton.swift in Sources */,
+				7EB1C0392340FDB00028237E /* SetupPlanPresenter.swift in Sources */,
 				92D41C3722AD6D5E00706CD3 /* CustomDateFormatter.swift in Sources */,
 				92B78CFA229FAF6C0087240B /* ExpandingCell.swift in Sources */,
 				7ED962AF2336649E00CD2408 /* PlanInfoTableViewCell.swift in Sources */,

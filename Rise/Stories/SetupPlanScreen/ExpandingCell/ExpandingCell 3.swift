@@ -10,29 +10,38 @@ import UIKit
 import AIFlatSwitch
 
 protocol ExpandingCellDelegate: class {
-    func cellValueUpdated(with value: String, cell: ExpandingCell)
+    func cellValueUpdated(newValue: String, cell: ExpandingCell)
 }
 
-final class ExpandingCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate {
-    enum PickerType {
+final class ExpandingCell: UITableViewCell {
+    
+    enum Picker {
         case datePicker
         case pickerView
     }
+    
+    // MARK: IBOutlets
     @IBOutlet weak var leftLabel: UILabel!
     @IBOutlet weak var pickerContainer: UIView!
     @IBOutlet weak var animatedSwitch: AIFlatSwitch!
     
-    public var expanded = false
+    // MARK: Properties
+    public var expanded = false // Is the cell expanded?
     private let unexpandedHeight: CGFloat = 44
     private var pickerDataModel: PickerDataModel?
     weak var delegate: ExpandingCellDelegate?
     
+    // MARK: Lifecycle
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
     // MARK: User interaction methods
-    func selectedInTableView(_ tableView: UITableView) {
+    public func selectedInTableView(_ tableView: UITableView) {
         
         expanded = !expanded
         
-        UIView.transition(with: leftLabel, duration: 0.25, options: [.transitionCrossDissolve, .allowUserInteraction], animations: { () in
+        UIView.transition(with: leftLabel, duration: 0.25, options: .transitionCrossDissolve, animations: { () in
             self.leftLabel.textColor
                 = self.expanded
                 ? self.tintColor
@@ -56,7 +65,7 @@ final class ExpandingCell: UITableViewCell, UIPickerViewDataSource, UIPickerView
     }
     
     // MARK: Picker methods
-    public func createPicker(_ picker: PickerType, model pickerData: PickerDataModel? = nil) {
+    public func createPicker(_ picker: Picker, model pickerData: PickerDataModel? = nil) {
         switch picker {
         case .datePicker:
             setupDatePicker()
@@ -114,15 +123,17 @@ final class ExpandingCell: UITableViewCell, UIPickerViewDataSource, UIPickerView
     private func pickerValueDidSet(newValue: String) {
         leftLabel.text = newValue
         toggleSwitch()
-        delegate?.cellValueUpdated(with: newValue, cell: self)
+        delegate?.cellValueUpdated(newValue: newValue, cell: self)
     }
     
 }
 
-// MARK: UIPickerViewDataSource && UIPickerViewDelegate
-extension ExpandingCell {
+// MARK: Extensions
+extension ExpandingCell: UIPickerViewDelegate, UIPickerViewDataSource {
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int { return 1 }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerDataModel?.numberOfRows ?? 1

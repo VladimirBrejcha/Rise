@@ -60,7 +60,7 @@ class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITable
     
     func didDismissByNewScheduleButton(controller: UIViewController) {
         guard let personalTimeVC = controller as? SetupPlanTableViewController else { return }
-        personalTimeVC.output?.personalPlanDelegate = self
+        personalTimeVC.delegate = self
     }
 }
 
@@ -68,6 +68,7 @@ class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITable
 extension PersonalPlanViewController {
     func newPlanCreated(plan: CalculatedPlan) {
         infomationLabel.text = "Your plan will take \(plan.days) days, about \(plan.minutesPerDay) minutes per day"
+        
     }
 }
 
