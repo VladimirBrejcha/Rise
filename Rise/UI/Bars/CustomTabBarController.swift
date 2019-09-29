@@ -50,6 +50,9 @@ final class CustomTabBarController: UITabBarController {
             tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
             tabBarItem.title = nil
         }
+        
+        UITabBar.appearance().backgroundImage = #colorLiteral(red: 0.9953911901, green: 0.9881951213, blue: 1, alpha: 0.1007922535).image()
+        UITabBar.appearance().shadowImage = UIImage()
     }
     
     // MARK: TabBar UI setup
@@ -83,3 +86,5 @@ extension CustomTabBarController: UITabBarControllerDelegate  {
         return CustomTransition(viewControllers: tabBarController.viewControllers)
     }
 }
+
+

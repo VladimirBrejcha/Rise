@@ -17,9 +17,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9i-c1-Zds">
-                                <rect key="frame" x="100" y="665" width="175" height="44"/>
+                                <rect key="frame" x="10" y="665" width="355" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="n2N-jz-GKj"/>
+                                    <constraint firstAttribute="height" constant="44" id="5Zs-BB-wyl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
                                 <state key="normal" title="Sleep">
@@ -167,14 +167,13 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Q7C-TX-der" firstAttribute="top" secondItem="ury-MB-qCt" secondAttribute="top" constant="10" id="MwH-OO-f3I"/>
-                            <constraint firstItem="x9i-c1-Zds" firstAttribute="top" relation="greaterThanOrEqual" secondItem="GMJ-xI-VUX" secondAttribute="bottom" constant="20" id="ZLZ-q4-QU3"/>
-                            <constraint firstItem="x9i-c1-Zds" firstAttribute="leading" secondItem="ury-MB-qCt" secondAttribute="leading" constant="100" id="aCj-Xr-esR"/>
+                            <constraint firstItem="ury-MB-qCt" firstAttribute="bottom" secondItem="x9i-c1-Zds" secondAttribute="bottom" constant="20" id="UVS-UY-qcw"/>
+                            <constraint firstItem="x9i-c1-Zds" firstAttribute="leading" secondItem="ury-MB-qCt" secondAttribute="leading" constant="10" id="aCj-Xr-esR"/>
                             <constraint firstItem="ury-MB-qCt" firstAttribute="trailing" secondItem="Q7C-TX-der" secondAttribute="trailing" constant="10" id="bxb-Nb-AUq"/>
-                            <constraint firstItem="ury-MB-qCt" firstAttribute="trailing" secondItem="x9i-c1-Zds" secondAttribute="trailing" constant="100" id="iIe-eJ-TZh"/>
+                            <constraint firstItem="ury-MB-qCt" firstAttribute="trailing" secondItem="x9i-c1-Zds" secondAttribute="trailing" constant="10" id="iIe-eJ-TZh"/>
                             <constraint firstItem="Q7C-TX-der" firstAttribute="leading" secondItem="ury-MB-qCt" secondAttribute="leading" constant="10" id="jgE-Xd-89i"/>
                             <constraint firstItem="GMJ-xI-VUX" firstAttribute="leading" secondItem="ury-MB-qCt" secondAttribute="leading" constant="10" id="qP2-US-sfI"/>
                             <constraint firstItem="ury-MB-qCt" firstAttribute="trailing" secondItem="GMJ-xI-VUX" secondAttribute="trailing" constant="10" id="qdR-kL-hgo"/>
-                            <constraint firstItem="ury-MB-qCt" firstAttribute="bottom" secondItem="x9i-c1-Zds" secondAttribute="bottom" constant="20" id="vYo-7N-5Re"/>
                             <constraint firstItem="GMJ-xI-VUX" firstAttribute="centerY" secondItem="CxZ-qH-yJ3" secondAttribute="centerY" id="wnz-Qf-8LT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ury-MB-qCt"/>
@@ -192,17 +191,13 @@
         <scene sceneID="WYa-Sz-OrB">
             <objects>
                 <tabBarController storyboardIdentifier="mainAppScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Upr-F1-t92" customClass="CustomTabBarController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CMZ-Wo-9Jp" customClass="CustomTabBar" customModule="Rise" customModuleProvider="target">
+                    <tabBar key="tabBar" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CMZ-Wo-9Jp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="selectedImageTintColor" red="0.95460249352331605" green="0.95460249352331605" blue="0.95460249352331605" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="height">
-                                <real key="value" value="50"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="P26-iI-q7r" kind="relationship" relationship="viewControllers" id="2BA-2m-q8B"/>
