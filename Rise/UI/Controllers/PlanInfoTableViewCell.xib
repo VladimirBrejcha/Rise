@@ -17,28 +17,37 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clock" translatesAutoresizingMaskIntoConstraints="NO" id="vac-sR-9MH">
-                        <rect key="frame" x="15" y="15" width="28" height="28"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="vac-sR-9MH" secondAttribute="height" multiplier="1:1" id="BZ7-j2-YGb"/>
-                        </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8 hours of sleep" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VyK-c6-0Rr">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TlI-k5-fhr">
                         <rect key="frame" x="15" y="10" width="290" height="38"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="8 hours of sleep" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VyK-c6-0Rr">
+                                <rect key="frame" x="0.0" y="0.0" width="290" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clock" translatesAutoresizingMaskIntoConstraints="NO" id="vac-sR-9MH">
+                                <rect key="frame" x="0.0" y="0.0" width="38" height="38"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="vac-sR-9MH" secondAttribute="height" multiplier="1:1" id="BZ7-j2-YGb"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vac-sR-9MH" firstAttribute="leading" secondItem="TlI-k5-fhr" secondAttribute="leading" id="3QI-L8-Pgz"/>
+                            <constraint firstAttribute="bottom" secondItem="vac-sR-9MH" secondAttribute="bottom" id="Nj7-9z-eHc"/>
+                            <constraint firstItem="vac-sR-9MH" firstAttribute="top" secondItem="TlI-k5-fhr" secondAttribute="top" id="fqK-WH-ew2"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="vac-sR-9MH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="P8h-Pu-JnY"/>
-                    <constraint firstItem="VyK-c6-0Rr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="aNT-xX-BCR"/>
-                    <constraint firstItem="VyK-c6-0Rr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="gCv-mT-BgS"/>
-                    <constraint firstAttribute="bottom" secondItem="VyK-c6-0Rr" secondAttribute="bottom" constant="10" id="hCQ-Kl-9yb"/>
-                    <constraint firstAttribute="bottom" secondItem="vac-sR-9MH" secondAttribute="bottom" constant="15" id="izO-Wk-3TR"/>
-                    <constraint firstAttribute="trailing" secondItem="VyK-c6-0Rr" secondAttribute="trailing" constant="15" id="j9z-lo-i70"/>
-                    <constraint firstItem="vac-sR-9MH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="ned-oJ-jt1"/>
+                    <constraint firstAttribute="bottom" secondItem="TlI-k5-fhr" secondAttribute="bottom" constant="10" id="AD4-nP-lEF"/>
+                    <constraint firstItem="TlI-k5-fhr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="F8I-xa-1xm"/>
+                    <constraint firstItem="TlI-k5-fhr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="MMi-85-Iev"/>
+                    <constraint firstAttribute="trailing" secondItem="TlI-k5-fhr" secondAttribute="trailing" constant="15" id="UPg-Cm-OhM"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

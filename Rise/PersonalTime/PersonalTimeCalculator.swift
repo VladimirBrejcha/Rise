@@ -29,9 +29,7 @@ struct PersonalTimeCalculator {
     }
     
     public var calculatedPlan: CalculatedPlan {
-        let plan = CalculatedPlan()
-        plan.days = duration
-        plan.minutesPerDay = result
+        let plan = CalculatedPlan(minutesOfSleep: sleepDuration, days: duration, minutesPerDay: result)
         return plan
     }
     

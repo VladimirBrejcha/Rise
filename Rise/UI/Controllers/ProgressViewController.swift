@@ -67,6 +67,7 @@ final class ProgressViewController: UIViewController, UITableViewDelegate, UITab
 extension ProgressViewController {
     func newPlanCreated(plan: CalculatedPlan) {
         infomationLabel.text = "Your plan will take \(plan.days) days, about \(plan.minutesPerDay) minutes per day"
+        
     }
 }
 

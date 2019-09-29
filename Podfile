@@ -10,7 +10,6 @@ pod 'SPStorkController'
 pod 'NotificationBannerSwift'
 pod 'AnimatedGradientView', :git => 'https://github.com/rwbutler/AnimatedGradientView.git', :branch => 'swift-5'
 pod 'AIFlatSwitch'
-pod 'RealmSwift'
 pod 'Alamofire'
 pod 'SwiftyJSON'
 

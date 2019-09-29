@@ -6,11 +6,6 @@ PODS:
   - NotificationBannerSwift (2.2.2):
     - MarqueeLabel (~> 4.0.0)
     - SnapKit (~> 5.0.0)
-  - Realm (3.16.2):
-    - Realm/Headers (= 3.16.2)
-  - Realm/Headers (3.16.2)
-  - RealmSwift (3.16.2):
-    - Realm (= 3.16.2)
   - SnapKit (5.0.0)
   - SPStorkController (1.6.5)
   - SwiftyJSON (5.0.0)
@@ -20,7 +15,6 @@ DEPENDENCIES:
   - Alamofire
   - AnimatedGradientView (from `https://github.com/rwbutler/AnimatedGradientView.git`, branch `swift-5`)
   - NotificationBannerSwift
-  - RealmSwift
   - SPStorkController
   - SwiftyJSON
 
@@ -30,8 +24,6 @@ SPEC REPOS:
     - Alamofire
     - MarqueeLabel
     - NotificationBannerSwift
-    - Realm
-    - RealmSwift
     - SnapKit
     - SPStorkController
     - SwiftyJSON
@@ -52,12 +44,10 @@ SPEC CHECKSUMS:
   AnimatedGradientView: e73ba49cb1e2d5ce9533f0aa06d0065156f04e35
   MarqueeLabel: b55b26e690b6ad41faedd95cbf5eae6f1d1735b4
   NotificationBannerSwift: 2d46cc1b4a0ebf4372baef383f2a2ca82bf0c235
-  Realm: 0e73b4edeb5b6a90da3d83206883b2e34e00eb38
-  RealmSwift: a81e650171ef0a5f999df1ed8d39ba8d6fce88a4
   SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
   SPStorkController: f74a60dbcd3c35180c996688873f6eadac839642
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 7d49e513b3f347d075fda37ab6660cca835867b8
+PODFILE CHECKSUM: 20eeba959fd414fcbba296cacfadf4cf905ad602
 
 COCOAPODS: 1.7.5
