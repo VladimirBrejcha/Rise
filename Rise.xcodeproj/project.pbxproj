@@ -42,7 +42,6 @@
 		92D12FD622A4045E0093B0A3 /* PickerDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D12FD522A4045E0093B0A3 /* PickerDataModel.swift */; };
 		92D12FDD22A44B3B0093B0A3 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D12FDC22A44B3B0093B0A3 /* CustomTabBarController.swift */; };
 		92D41C2622AC04DF00706CD3 /* ArrayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D41C2522AC04DF00706CD3 /* ArrayManager.swift */; };
-		92D41C2822AC0A2C00706CD3 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D41C2722AC0A2C00706CD3 /* CustomTabBar.swift */; };
 		92D41C2F22AC345C00706CD3 /* PersonalTimeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D41C2E22AC345C00706CD3 /* PersonalTimeCalculator.swift */; };
 		92D41C3322AC395C00706CD3 /* PersonalTimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D41C3222AC395C00706CD3 /* PersonalTimeModel.swift */; };
 		92D41C3722AD6D5E00706CD3 /* CustomDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D41C3622AD6D5E00706CD3 /* CustomDateFormatter.swift */; };
@@ -110,7 +109,6 @@
 		92D12FD522A4045E0093B0A3 /* PickerDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerDataModel.swift; sourceTree = "<group>"; };
 		92D12FDC22A44B3B0093B0A3 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		92D41C2522AC04DF00706CD3 /* ArrayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayManager.swift; sourceTree = "<group>"; };
-		92D41C2722AC0A2C00706CD3 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		92D41C2E22AC345C00706CD3 /* PersonalTimeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalTimeCalculator.swift; sourceTree = "<group>"; };
 		92D41C3222AC395C00706CD3 /* PersonalTimeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalTimeModel.swift; sourceTree = "<group>"; };
 		92D41C3622AD6D5E00706CD3 /* CustomDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDateFormatter.swift; sourceTree = "<group>"; };
@@ -246,7 +244,6 @@
 			children = (
 				92D12FDC22A44B3B0093B0A3 /* CustomTabBarController.swift */,
 				7EA0924122C8CF820019F2E9 /* CustomTransition.swift */,
-				92D41C2722AC0A2C00706CD3 /* CustomTabBar.swift */,
 			);
 			path = Bars;
 			sourceTree = "<group>";
@@ -498,7 +495,6 @@
 				92E77AFA22A5304400E5E21C /* MainScreenViewController.swift in Sources */,
 				7E1F3AA3231D98FC00F60577 /* JSONParser.swift in Sources */,
 				7EB9004423298902006EB9A8 /* ProgressTableViewCell.swift in Sources */,
-				92D41C2822AC0A2C00706CD3 /* CustomTabBar.swift in Sources */,
 				7E98FE6A231C481D0065FB09 /* WelcomePageViewController.swift in Sources */,
 				7E98FE70231C49360065FB09 /* DataBaseManager.swift in Sources */,
 				7E98FE63231C2F8C0065FB09 /* LocationModel.swift in Sources */,

@@ -73,8 +73,8 @@ class AnimationManager {
             circle.path = circlePath.cgPath
             circle.opacity = 0
             circle.add(animation, forKey: animationKey)
-            circle.frame = CGRect(x: (layer.bounds.size.width - size.width) / 2,
-                                  y: (layer.bounds.size.height - size.height) / 2,
+            circle.frame = CGRect(x: (layer.frame.size.width - size.width) / 2,
+                                  y: (layer.frame.size.height - size.height) / 2,
                                   width: size.width, height: size.height)
             layer.addSublayer(circle)
         }

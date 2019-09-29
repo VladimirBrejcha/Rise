@@ -33,8 +33,9 @@ class CollectionViewWithSegmentedControl: DesignableContainerView, SegmentedCont
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! CustomCollectionViewCell
+
         if timesArray.indices.contains(indexPath.row) {
             cell.sunriseTimeLabel.text = DatesConverter.formatDateToHHmm(date: timesArray[indexPath.row].sunrise)
             cell.sunsetTimeLabel.text = DatesConverter.formatDateToHHmm(date: timesArray[indexPath.row].sunset)

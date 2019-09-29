@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" id="gTV-IL-0wX" customClass="CustomCollectionViewCell" customModule="Rise" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gTV-IL-0wX" customClass="CustomCollectionViewCell" customModule="Rise" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="280" height="198"/>
-            <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="280" height="198"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -95,7 +93,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0AP-YO-4Ss">
+                    <view contentMode="center" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0AP-YO-4Ss">
                         <rect key="frame" x="5" y="0.0" width="270" height="95"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
@@ -171,26 +169,26 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="0AP-YO-4Ss" firstAttribute="top" secondItem="Ska-F4-EGl" secondAttribute="top" id="08h-ry-HJe"/>
                 <constraint firstAttribute="trailing" secondItem="Ska-F4-EGl" secondAttribute="trailing" constant="5" id="1zv-Q7-wRe"/>
                 <constraint firstAttribute="trailing" secondItem="0lH-Mc-ICP" secondAttribute="trailing" constant="5" id="2iW-dg-hYC"/>
                 <constraint firstItem="b8Z-Gu-TIM" firstAttribute="top" secondItem="Ska-F4-EGl" secondAttribute="top" id="79T-W6-ioc"/>
+                <constraint firstItem="0AP-YO-4Ss" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="9jM-cH-vsA"/>
                 <constraint firstItem="0lH-Mc-ICP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="As0-62-Aa9"/>
                 <constraint firstItem="Ska-F4-EGl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="FyZ-Yn-fuB"/>
                 <constraint firstAttribute="bottom" secondItem="0lH-Mc-ICP" secondAttribute="bottom" id="MRc-lr-hcP"/>
                 <constraint firstItem="b8Z-Gu-TIM" firstAttribute="trailing" secondItem="Ska-F4-EGl" secondAttribute="trailing" id="Qn0-gw-Hj1"/>
+                <constraint firstItem="0AP-YO-4Ss" firstAttribute="width" secondItem="0lH-Mc-ICP" secondAttribute="width" id="UhE-bY-UnB"/>
                 <constraint firstItem="0lH-Mc-ICP" firstAttribute="top" secondItem="Ska-F4-EGl" secondAttribute="bottom" constant="8" id="UqY-6W-Z2k"/>
                 <constraint firstItem="b8Z-Gu-TIM" firstAttribute="bottom" secondItem="Ska-F4-EGl" secondAttribute="bottom" id="hap-5l-eX4"/>
+                <constraint firstItem="0AP-YO-4Ss" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="j5b-YD-Emb"/>
+                <constraint firstItem="0AP-YO-4Ss" firstAttribute="height" secondItem="0lH-Mc-ICP" secondAttribute="height" id="n3g-Es-Aup"/>
                 <constraint firstItem="b8Z-Gu-TIM" firstAttribute="leading" secondItem="Ska-F4-EGl" secondAttribute="leading" id="otS-MG-xha"/>
-                <constraint firstItem="b8Z-Gu-TIM" firstAttribute="width" secondItem="0lH-Mc-ICP" secondAttribute="width" id="pgR-2O-Xtd"/>
                 <constraint firstItem="Ska-F4-EGl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="q0k-wR-Gyt"/>
                 <constraint firstItem="0lH-Mc-ICP" firstAttribute="height" secondItem="Ska-F4-EGl" secondAttribute="height" id="r1s-PT-rzT"/>
-                <constraint firstItem="0AP-YO-4Ss" firstAttribute="bottom" secondItem="Ska-F4-EGl" secondAttribute="bottom" id="wFw-l0-kh1"/>
-                <constraint firstItem="0AP-YO-4Ss" firstAttribute="trailing" secondItem="Ska-F4-EGl" secondAttribute="trailing" id="wsq-Bv-mHi"/>
+                <constraint firstAttribute="trailing" secondItem="0AP-YO-4Ss" secondAttribute="trailing" constant="5" id="vAW-sl-p5n"/>
                 <constraint firstItem="0lH-Mc-ICP" firstAttribute="width" secondItem="Ska-F4-EGl" secondAttribute="width" id="xTs-oT-mwt"/>
-                <constraint firstItem="0AP-YO-4Ss" firstAttribute="leading" secondItem="Ska-F4-EGl" secondAttribute="leading" id="zLN-nC-30B"/>
+                <constraint firstItem="0lH-Mc-ICP" firstAttribute="top" secondItem="0AP-YO-4Ss" secondAttribute="bottom" constant="8" id="zYF-Ln-ilH"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="280" height="198"/>
             <connections>
                 <outlet property="sunActivityAnimationVIew" destination="0AP-YO-4Ss" id="14K-gd-QaR"/>
