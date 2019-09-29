@@ -11,7 +11,8 @@ import UIKit
 fileprivate let infoTableViewInfo = (nib: UINib(nibName: "PlanInfoTableViewCell", bundle: nil), cellID: "infoCell")
 fileprivate let progressTableViewInfo = (nib: UINib(nibName: "ProgressTableViewCell", bundle: nil), cellID: "progressCell")
 
-final class ProgressViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PersonalPlanDelegate {
+
+class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PersonalPlanDelegate {
     
     @IBOutlet weak var infomationLabel: UILabel!
     @IBOutlet weak var infoTableView: UITableView!
@@ -58,13 +59,13 @@ final class ProgressViewController: UIViewController, UITableViewDelegate, UITab
     func didDismissStorkBySwipe() { transitionManager.animateBackground() }
     
     func didDismissByNewScheduleButton(controller: UIViewController) {
-        guard let personalTimeVC = controller as? PersonalTimeViewController else { return }
+        guard let personalTimeVC = controller as? SetupPlanTableViewController else { return }
         personalTimeVC.delegate = self
     }
 }
 
 // MARK: - PersonalPlanDelegate
-extension ProgressViewController {
+extension PersonalPlanViewController {
     func newPlanCreated(plan: CalculatedPlan) {
         infomationLabel.text = "Your plan will take \(plan.days) days, about \(plan.minutesPerDay) minutes per day"
         
@@ -72,7 +73,7 @@ extension ProgressViewController {
 }
 
 // MARK: - TableViewControllerDataSource
-extension ProgressViewController {
+extension PersonalPlanViewController {
     func numberOfSections(in tableView: UITableView) -> Int { return 1 }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return tableView == progressTableView ? 1 : 4 }
@@ -90,7 +91,7 @@ extension ProgressViewController {
 }
 
 // MARK: - TableViewControllerDelegate
-extension ProgressViewController {
+extension PersonalPlanViewController {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat { return tableView == infoTableView ? 5 : 0 }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { return tableView == infoTableView ? 5 : 0 }

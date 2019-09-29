@@ -1,5 +1,5 @@
 //
-//  CustomCollectionViewCell.swift
+//  TodayCollectionViewCell.swift
 //  Rise
 //
 //  Created by Владимир Королев on 07/09/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomCollectionViewCell: UICollectionViewCell {
+class TodayCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var sunriseTimeLabel: UILabel!
     @IBOutlet weak var sunsetTimeLabel: UILabel!
     @IBOutlet weak var wakeUpTimeLabel: UILabel!

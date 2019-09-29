@@ -41,7 +41,7 @@ struct TransitionManager {
     }
     
     public func dismiss(_ controller: UIViewController) {
-        if let progressVC = selectedViewController as? ProgressViewController {
+        if let progressVC = selectedViewController as? PersonalPlanViewController {
             progressVC.didDismissByNewScheduleButton(controller: controller)
         }
         
@@ -61,7 +61,7 @@ struct TransitionManager {
 }
 
 // MARK: Extensions
-extension ProgressViewController: SPStorkControllerDelegate {
+extension PersonalPlanViewController: SPStorkControllerDelegate {
 }
 
 extension MainScreenViewController: SPStorkControllerDelegate {

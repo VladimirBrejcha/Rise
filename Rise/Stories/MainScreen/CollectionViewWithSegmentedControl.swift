@@ -19,7 +19,7 @@ class CollectionViewWithSegmentedControl: DesignableContainerView, SegmentedCont
         
         segmentedControl.delegate = self
         
-        collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
+        collectionView.register(UINib(nibName: "TodayCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
         collectionView.scrollToItem(at: IndexPath(row: 1, section: 0), at: .centeredHorizontally, animated: true)
         collectionView.reloadData()
     }
@@ -34,7 +34,7 @@ class CollectionViewWithSegmentedControl: DesignableContainerView, SegmentedCont
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! CustomCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! TodayCollectionViewCell
 
         if timesArray.indices.contains(indexPath.row) {
             cell.sunriseTimeLabel.text = DatesConverter.formatDateToHHmm(date: timesArray[indexPath.row].sunrise)

@@ -13,7 +13,7 @@ protocol PersonalPlanDelegate: class {
     func newPlanCreated(plan: CalculatedPlan)
 }
 
-final class PersonalTimeViewController: UITableViewController {
+final class SetupPlanTableViewController: UITableViewController {
     
     // MARK: Properties
     private var previouslySelectedCell: ExpandingCell?
@@ -127,7 +127,7 @@ final class PersonalTimeViewController: UITableViewController {
     
 }
 
-extension PersonalTimeViewController: ExpandingCellDelegate {
+extension SetupPlanTableViewController: ExpandingCellDelegate {
     func cellValueUpdated(newValue: String, cell: ExpandingCell) {
         switch cell.tag {
         case 0:
