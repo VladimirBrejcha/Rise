@@ -82,7 +82,6 @@ final class PersonalTimeViewController: UITableViewController {
         cell.selectedInTableView(tableView)
         
         previouslySelectedCell = cell
-        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
