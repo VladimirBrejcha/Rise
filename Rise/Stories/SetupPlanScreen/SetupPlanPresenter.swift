@@ -9,44 +9,39 @@
 import Foundation
 
 protocol PersonalPlanDelegate: class {
-    func newPlanCreated(plan: CalculatedPlan)
+    func newPlanCreated(_ plan: PersonalPlanModel)
 }
 
-class SetupPlanPresenter: SetupPlanViewOutput {    
+class SetupPlanPresenter: SetupPlanViewOutput {
     weak var view: SetupPlanViewInput!
-    private var personalPlanModel: PersonalPlanModel?
     
-    // old
     weak var personalPlanDelegate: PersonalPlanDelegate?
-    private var personalTimeModel: PersonalTimeModel?
-    private var wakeUpForModel: String?
+    
+    private var personalPlanModel: PersonalPlanModel?
+    private var wakeUpForModel: Date?
     private var sleepDurationForModel: String?
-    private var lastTimeWentSleepForModel: String?
+    private var lastTimeWentSleepForModel: Date?
     private var planDurationForModel: String?
-    //
     
     init(view: SetupPlanViewInput) { self.view = view }
     
     // MARK: - SetupPlanViewOutput
     func scheduleTapped() {
-        createPlan()
         view.dismiss()
+        createPlan()
         view.showBanner()
     }
     
-    private func createPlan() {
-        guard let plan = personalTimeModel?.plan else { fatalError() }
-        personalPlanDelegate?.newPlanCreated(plan: plan)
-    }
+    private func createPlan() { personalPlanDelegate?.newPlanCreated(personalPlanModel!)  }
     
     // MARK: - ExpandingCellDelegate
-    func cellValueUpdated(with value: String, cell: ExpandingCell) {
+    func cellValueUpdated(with value: PickerOutputValue, cell: ExpandingCell) {
         switch cell.tag
         {
-        case 0: wakeUpForModel = value
-        case 1: sleepDurationForModel = value
-        case 2: lastTimeWentSleepForModel = value
-        case 3: planDurationForModel = value
+        case 0: wakeUpForModel = value.dateValue
+        case 1: sleepDurationForModel = value.stringValue
+        case 2: lastTimeWentSleepForModel = value.dateValue
+        case 3: planDurationForModel = value.stringValue
         default: fatalError("cell with this tag doesnt exist")
         }
         
@@ -57,9 +52,6 @@ class SetupPlanPresenter: SetupPlanViewOutput {
         
         view.isScheduleButtonEnabled = true
         
-        personalTimeModel = PersonalTimeModel(wakeUp: wakeUp,
-                                              sleepDuration: sleepDuration,
-                                              wentSleep: wentSleep,
-                                              planDuration: planDuration)
+        personalPlanModel = PersonalPlanBuilder.buildPlan(wakeUp: wakeUp, wentSleep: wentSleep, sleepDuration: sleepDuration, planDuration: planDuration)
     }
 }

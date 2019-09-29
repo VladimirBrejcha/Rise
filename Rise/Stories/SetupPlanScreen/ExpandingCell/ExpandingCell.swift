@@ -10,7 +10,7 @@ import UIKit
 import AIFlatSwitch
 
 protocol ExpandingCellDelegate: class {
-    func cellValueUpdated(with value: String, cell: ExpandingCell)
+    func cellValueUpdated(with value: PickerOutputValue, cell: ExpandingCell)
 }
 
 final class ExpandingCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate {
@@ -43,12 +43,7 @@ final class ExpandingCell: UITableViewCell, UIPickerViewDataSource, UIPickerView
         tableView.endUpdates()
     }
     
-    @objc func dateChanged(sender: UIDatePicker) {
-        
-        let date = sender.date
-        
-        pickerValueDidSet(newValue: Formater.dateFormatter.string(from: date))
-    }
+    @objc func dateChanged(sender: UIDatePicker) { pickerValueDidSet(sender.date) }
     
     private func toggleSwitch() {
         animatedSwitch.isHidden = false
@@ -111,10 +106,10 @@ final class ExpandingCell: UITableViewCell, UIPickerViewDataSource, UIPickerView
         picker.rightAnchor.constraint(equalTo: pickerContainer.rightAnchor).isActive = true
     }
     
-    private func pickerValueDidSet(newValue: String) {
-        leftLabel.text = newValue
+    private func pickerValueDidSet(_ value: PickerOutputValue) {
+        if let text = value.stringValue { leftLabel.text = text }
         toggleSwitch()
-        delegate?.cellValueUpdated(with: newValue, cell: self)
+        delegate?.cellValueUpdated(with: value, cell: self)
     }
     
 }
@@ -124,9 +119,7 @@ extension ExpandingCell {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int { return 1 }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerDataModel?.numberOfRows ?? 1
-    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int { return pickerDataModel?.numberOfRows ?? 1 }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         return NSAttributedString(string: pickerDataModel?.titleForRowArray[row] ?? "Error loading data",
@@ -134,12 +127,15 @@ extension ExpandingCell {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        guard let value = pickerDataModel?.titleForRowArray[pickerView.selectedRow(inComponent: component)] else {
-            fatalError()
-        }
-        pickerValueDidSet(newValue: value)
+        guard let value = pickerDataModel?.titleForRowArray[pickerView.selectedRow(inComponent: component)] else { fatalError() }
+        pickerValueDidSet(value)
     }
-    
 }
 
-
+protocol PickerOutputValue { }
+extension PickerOutputValue {
+    var stringValue: String? { return self as? String }
+    var dateValue: Date? { return self as? Date }
+}
+extension String: PickerOutputValue { }
+extension Date: PickerOutputValue { }
