@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7E0A8F3C231F04BA0036105C /* DatesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0A8F3B231F04BA0036105C /* DatesManager.swift */; };
 		7E1F3AA3231D98FC00F60577 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1F3AA2231D98FC00F60577 /* JSONParser.swift */; };
+		7E31497D23425CA600941606 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31497C23425CA600941606 /* TableViewDataSource.swift */; };
+		7E31497F23425D3700941606 /* SetupPlanDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31497E23425D3700941606 /* SetupPlanDataSource.swift */; };
 		7E4198212323CA7F007867AB /* TodayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E41981F2323CA7F007867AB /* TodayCollectionViewCell.swift */; };
 		7E4198222323CA7F007867AB /* TodayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E4198202323CA7F007867AB /* TodayCollectionViewCell.xib */; };
 		7E41982423254C36007867AB /* SegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E41982323254C36007867AB /* SegmentedControlView.swift */; };
@@ -82,6 +84,8 @@
 /* Begin PBXFileReference section */
 		7E0A8F3B231F04BA0036105C /* DatesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatesManager.swift; sourceTree = "<group>"; };
 		7E1F3AA2231D98FC00F60577 /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
+		7E31497C23425CA600941606 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
+		7E31497E23425D3700941606 /* SetupPlanDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPlanDataSource.swift; sourceTree = "<group>"; };
 		7E41981F2323CA7F007867AB /* TodayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCollectionViewCell.swift; sourceTree = "<group>"; };
 		7E4198202323CA7F007867AB /* TodayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayCollectionViewCell.xib; sourceTree = "<group>"; };
 		7E41982323254C36007867AB /* SegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlView.swift; sourceTree = "<group>"; };
@@ -315,6 +319,7 @@
 				92D12FD722A4237C0093B0A3 /* ExpandingCell */,
 				922032E922998F3D0006F92B /* SetupPlanTableViewController.swift */,
 				7EB1C0382340FDB00028237E /* SetupPlanPresenter.swift */,
+				7E31497E23425D3700941606 /* SetupPlanDataSource.swift */,
 			);
 			path = SetupPlanScreen;
 			sourceTree = "<group>";
@@ -339,6 +344,7 @@
 				92D41C2522AC04DF00706CD3 /* ArrayManager.swift */,
 				92BC919322AB24D800BB1D19 /* GradientManager.swift */,
 				7E98FE64231C30C10065FB09 /* UIHelper.swift */,
+				7E31497C23425CA600941606 /* TableViewDataSource.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -561,6 +567,7 @@
 				7EB1C0332340F9550028237E /* PersonalPlanViewController.swift in Sources */,
 				92E77AFA22A5304400E5E21C /* MainScreenViewController.swift in Sources */,
 				7E1F3AA3231D98FC00F60577 /* JSONParser.swift in Sources */,
+				7E31497F23425D3700941606 /* SetupPlanDataSource.swift in Sources */,
 				7EB9004423298902006EB9A8 /* ProgressTableViewCell.swift in Sources */,
 				7E98FE6A231C481D0065FB09 /* WelcomePageViewController.swift in Sources */,
 				7E98FE70231C49360065FB09 /* DataBaseManager.swift in Sources */,
@@ -594,6 +601,7 @@
 				7E0A8F3C231F04BA0036105C /* DatesManager.swift in Sources */,
 				7E98FE67231C3D5C0065FB09 /* UserDefaultsManager.swift in Sources */,
 				922032EA22998F3D0006F92B /* SetupPlanTableViewController.swift in Sources */,
+				7E31497D23425CA600941606 /* TableViewDataSource.swift in Sources */,
 				922032F0229BF2890006F92B /* Constants.swift in Sources */,
 				92E77AF822A5303400E5E21C /* SettingsViewController.swift in Sources */,
 				7EB1C03F23412AAA0028237E /* PersonalPlanBuilder.swift in Sources */,

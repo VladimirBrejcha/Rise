@@ -9,7 +9,9 @@
 import UIKit
 
 struct PickerDataModel {
-    var numberOfRows: Int
-    var titleForRowArray: [String]
-    var defaultRow: Int
+    var tag: Int
+    var labelText: String
+    var pickerType: PickerType
+    var titleForRowArray: [String]?
+    var defaultRow: Int?
 }

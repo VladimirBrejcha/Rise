@@ -9,23 +9,30 @@
 import UIKit
 import AIFlatSwitch
 
+enum PickerType {
+    case datePicker
+    case pickerView
+}
+
 protocol ExpandingCellDelegate: class {
     func cellValueUpdated(with value: PickerOutputValue, cell: ExpandingCell)
 }
 
 final class ExpandingCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate {
-    enum PickerType {
-        case datePicker
-        case pickerView
-    }
     @IBOutlet weak var leftLabel: UILabel!
     @IBOutlet weak var pickerContainer: UIView!
     @IBOutlet weak var animatedSwitch: AIFlatSwitch!
     
-    public var expanded = false
+    var textForPicker: [String]?
+    var expanded = false
     private let unexpandedHeight: CGFloat = 44
-    private var pickerDataModel: PickerDataModel?
     weak var delegate: ExpandingCellDelegate?
+    
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        return formatter
+    }()
     
     // MARK: User interaction methods
     func selectedInTableView(_ tableView: UITableView) {
@@ -51,14 +58,10 @@ final class ExpandingCell: UITableViewCell, UIPickerViewDataSource, UIPickerView
     }
     
     // MARK: Picker methods
-    public func createPicker(_ picker: PickerType, model pickerData: PickerDataModel? = nil) {
+    public func createPicker(_ picker: PickerType, with defaultRow: Int?) {
         switch picker {
-        case .datePicker:
-            setupDatePicker()
-            
-        case .pickerView:
-            setupPickerView(dataModel: pickerData)
-        }
+        case .datePicker: setupDatePicker()
+        case .pickerView: setupPickerView(with: defaultRow ?? 0) }
     }
     
     public func pickerHeight() -> CGFloat {
@@ -66,18 +69,13 @@ final class ExpandingCell: UITableViewCell, UIPickerViewDataSource, UIPickerView
         return expanded ? expandedHeight : unexpandedHeight
     }
     
-    private func setupPickerView(dataModel: PickerDataModel? = nil) {
-        
-        pickerDataModel = dataModel
-        
+    private func setupPickerView(with defaultRow: Int) {
         let pickerView = UIPickerView()
         
         pickerView.delegate = self
         pickerView.dataSource = self
         
-        pickerView.selectRow(pickerDataModel?.defaultRow ?? 0,
-                             inComponent: 0,
-                             animated: true)
+        pickerView.selectRow(defaultRow, inComponent: 0, animated: true)
         
         setUIForPicker(pickerView)
     }
@@ -108,6 +106,7 @@ final class ExpandingCell: UITableViewCell, UIPickerViewDataSource, UIPickerView
     
     private func pickerValueDidSet(_ value: PickerOutputValue) {
         if let text = value.stringValue { leftLabel.text = text }
+        if let date = value.dateValue { leftLabel.text = dateFormatter.string(from: date) }
         toggleSwitch()
         delegate?.cellValueUpdated(with: value, cell: self)
     }
@@ -116,19 +115,16 @@ final class ExpandingCell: UITableViewCell, UIPickerViewDataSource, UIPickerView
 
 // MARK: UIPickerViewDataSource && UIPickerViewDelegate
 extension ExpandingCell {
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int { return 1 }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int { return pickerDataModel?.numberOfRows ?? 1 }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int { return textForPicker?.count ?? 0}
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        return NSAttributedString(string: pickerDataModel?.titleForRowArray[row] ?? "Error loading data",
-                                  attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)])
+        return NSAttributedString(string: textForPicker?[row] ?? "", attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)])
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        guard let value = pickerDataModel?.titleForRowArray[pickerView.selectedRow(inComponent: component)] else { fatalError() }
-        pickerValueDidSet(value)
+        pickerValueDidSet(textForPicker?[pickerView.selectedRow(inComponent: component)] ?? "")
     }
 }
 

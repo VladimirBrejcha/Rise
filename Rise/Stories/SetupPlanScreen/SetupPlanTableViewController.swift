@@ -12,9 +12,12 @@ import AnimatedGradientView
 protocol SetupPlanViewOutput: ExpandingCellDelegate {
     var personalPlanDelegate: PersonalPlanDelegate? { get set }
     func scheduleTapped()
+    func viewDidLoad()
 }
 
 protocol SetupPlanViewInput: class {
+    var cellID: String { get }
+    var setupPlanTableView: UITableView? { get }
     func dismiss()
     func showBanner()
     var isScheduleButtonEnabled: Bool { get set }
@@ -23,13 +26,15 @@ protocol SetupPlanViewInput: class {
 final class SetupPlanTableViewController: UITableViewController, SetupPlanViewInput {
     var output: SetupPlanViewOutput?
     
+    var setupPlanTableView: UITableView? { return tableView }
+    
     var isScheduleButtonEnabled: Bool = false { willSet { createScheduleButton.isEnabled = newValue } }
     
     private var gradientManager: GradientManager? { return GradientManager(frame: view.bounds) }
     private var transitionManager = TransitionManager()
     private var bannerManager: BannerManager? { return BannerManager(title: "Saved", style: .success) }
     
-    private let CellID = "expandingCell"
+    var cellID = "expandingCell"
     private let cellNibName = "ExpandingCell"
     private var cellNib: UINib { return UINib(nibName: cellNibName, bundle: nil) }
     private var previouslySelectedCell: ExpandingCell?
@@ -40,7 +45,8 @@ final class SetupPlanTableViewController: UITableViewController, SetupPlanViewIn
     override func viewDidLoad() {
         super.viewDidLoad()
         output = SetupPlanPresenter(view: self)
-        tableView.register(cellNib, forCellReuseIdentifier: CellID)
+        tableView.register(cellNib, forCellReuseIdentifier: cellID)
+        output?.viewDidLoad()
         
         createBackground()
     }
@@ -57,7 +63,7 @@ final class SetupPlanTableViewController: UITableViewController, SetupPlanViewIn
     func dismiss() { transitionManager.dismiss(self) }
     func showBanner() { bannerManager?.banner.show() } // TODO: use my solution insted
     
-    // MARK: - TableView methods
+    // MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         // Get the correct height if the cell is a ExpandingCell.
         guard let cell = tableView.cellForRow(at: indexPath) as? ExpandingCell else { return super.tableView(tableView, heightForRowAt: indexPath) }
@@ -70,33 +76,6 @@ final class SetupPlanTableViewController: UITableViewController, SetupPlanViewIn
             previouslySelectedCell?.selectedInTableView(tableView) } // telling cell to hide if other cell has been selected
         cell.selectedInTableView(tableView)
         previouslySelectedCell = cell
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        super.tableView(tableView, cellForRowAt: indexPath)
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellID) as? ExpandingCell else { return UITableViewCell() }
-        
-        cell.delegate = output
-        cell.tag = indexPath.section
-        
-        switch indexPath.section {
-        case 0, 2:
-            cell.leftLabel.text = "Choose time:"
-            cell.createPicker(.datePicker)
-        case 1:
-            cell.leftLabel.text = "Choose hours:"
-            let pickerDataModel = PickerDataModel(numberOfRows: DataForPicker.hoursArray.count,
-                                                  titleForRowArray: DataForPicker.hoursArray, defaultRow: 2)
-            cell.createPicker(.pickerView, model: pickerDataModel)
-        case 3:
-            cell.leftLabel.text = "Choose duration:"
-            let pickerDataModel = PickerDataModel(numberOfRows: DataForPicker.daysArray.count,
-                                                  titleForRowArray: DataForPicker.daysArray, defaultRow: 2)
-            cell.createPicker(.pickerView, model: pickerDataModel)
-        default: print("error") }
-        
-        return cell
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
