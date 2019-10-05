@@ -31,5 +31,6 @@ class PersonalPlanPresenter: PersonalPlanViewOutput {
         view?.updateProgressView(with: 0.7, maxProgress: personalPlanHelper!.planDurationDays.description)
 
         view?.updatePlanInfo(with: [durationText, wakeUpText, toSleepText, syncText])
+        view?.hideLoading()
     }
 }

@@ -36,6 +36,7 @@ class AnimatedLoadingView: DesignableContainerView {
     func showLoading() {
         animationManager?.startAnimating()
         UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction, animations: {
+            self.alpha = 1
             self.animationView.alpha = 1
         })
     }

@@ -15,6 +15,7 @@ protocol PersonalPlanViewInput: class {
     func showSetupPlanController()
     func updateProgressView(with progress: Double, maxProgress: String)
     func updatePlanInfo(with info: [String])
+    func hideLoading()
 }
 
 protocol PersonalPlanViewOutput: PersonalPlanDelegate {
@@ -29,6 +30,9 @@ class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBOutlet weak var infoTableView: UITableView!
     @IBOutlet weak var progressTableView: UITableView!
+    
+    @IBOutlet weak var mainContainerView: UIView!
+    @IBOutlet weak var loadingView: AnimatedLoadingView!
     
     private var progressCellMaxValue: String?
     private var progressCellValue: Double = 0.0
@@ -59,6 +63,7 @@ class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITable
     @IBAction func decreaseButtonSize(_ sender: UIButton) {
         UIView.animate(withDuration: 0.1, animations: { sender.transform = CGAffineTransform(scaleX: 0.93, y: 0.93) })
     }
+    
     @IBAction func backToNormalSize(_ sender: UIButton) {
         UIView.animate(withDuration: 0.1) { sender.transform = CGAffineTransform.identity }
     }
@@ -69,6 +74,7 @@ class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITable
     func didDismissByNewScheduleButton(controller: UIViewController) {
         guard let personalTimeVC = controller as? SetupPlanTableViewController else { return }
         personalTimeVC.output?.personalPlanDelegate = output
+        loadingView.showLoading()
     }
     
     // MARK: - PersonalPlanViewInput
@@ -86,6 +92,15 @@ class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITable
         progressCellValue = progress
         progressCellMaxValue = maxProgress
         progressTableView.reloadData()
+    }
+    
+    func hideLoading() {
+        loadingView.hideLoading {
+            UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction, animations: {
+                self.loadingView.alpha = 0
+                self.mainContainerView.alpha = 1
+            })
+        }
     }
 }
 
