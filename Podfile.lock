@@ -1,13 +1,13 @@
 PODS:
-  - AIFlatSwitch (1.0.6)
-  - Alamofire (4.8.2)
-  - AnimatedGradientView (1.1.1)
+  - AIFlatSwitch (1.0.7)
+  - Alamofire (4.9.0)
+  - AnimatedGradientView (2.0.0)
   - MarqueeLabel (4.0.0)
-  - NotificationBannerSwift (2.2.2):
+  - NotificationBannerSwift (2.5.1):
     - MarqueeLabel (~> 4.0.0)
     - SnapKit (~> 5.0.0)
-  - SnapKit (5.0.0)
-  - SPStorkController (1.6.5)
+  - SnapKit (5.0.1)
+  - SPStorkController (1.7.9)
   - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
@@ -19,7 +19,7 @@ DEPENDENCIES:
   - SwiftyJSON
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - AIFlatSwitch
     - Alamofire
     - MarqueeLabel
@@ -35,19 +35,19 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   AnimatedGradientView:
-    :commit: e24e0971d7b873f571f5ced8ca39372faeb6fb3b
+    :commit: 212188047d74bd48ebc8046ca1897a6d23bd2fcf
     :git: https://github.com/rwbutler/AnimatedGradientView.git
 
 SPEC CHECKSUMS:
-  AIFlatSwitch: b1965ccd826c3ea7566f6bebda19562d131ec2b7
-  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
-  AnimatedGradientView: e73ba49cb1e2d5ce9533f0aa06d0065156f04e35
+  AIFlatSwitch: fd56a5e6ab8769f0b52cef815c4f071e83050352
+  Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
+  AnimatedGradientView: c80156d88aba16953af9d381b216ee9bc22ea945
   MarqueeLabel: b55b26e690b6ad41faedd95cbf5eae6f1d1735b4
-  NotificationBannerSwift: 2d46cc1b4a0ebf4372baef383f2a2ca82bf0c235
-  SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
-  SPStorkController: f74a60dbcd3c35180c996688873f6eadac839642
+  NotificationBannerSwift: e55dd801b0d78f1a7bacb10d722a935ec95f94a3
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SPStorkController: 36bd84206267232747b19d48852659bd71ede28f
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
 PODFILE CHECKSUM: 20eeba959fd414fcbba296cacfadf4cf905ad602
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.1

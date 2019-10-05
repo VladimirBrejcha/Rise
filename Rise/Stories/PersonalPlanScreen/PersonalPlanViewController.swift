@@ -32,7 +32,7 @@ class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITable
     
     private var progressCellMaxValue: String?
     private var progressCellValue: Double = 0.0
-    private let infoCellImageArray: [UIImage] = [#imageLiteral(resourceName: "Clock"), #imageLiteral(resourceName: "wakeup"), #imageLiteral(resourceName: "fallasleep"), #imageLiteral(resourceName: "sun")]
+    private let infoCellImageArray: [UIImage] = [#imageLiteral(resourceName: "Clock 2"), #imageLiteral(resourceName: "wakeup"), #imageLiteral(resourceName: "fallasleep"), #imageLiteral(resourceName: "sun")]
     private var infoCellLabelTextArray: [String]?
     
     private lazy var transitionManager = TransitionManager()
@@ -113,9 +113,9 @@ extension PersonalPlanViewController {
 
 // MARK: - TableViewControllerDelegate
 extension PersonalPlanViewController {
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat { return tableView == infoTableView ? 5 : 0 }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat { return tableView == infoTableView ? 0 : 1 }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { return tableView == infoTableView ? 5 : 0 }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { return tableView == infoTableView ? 0 : 1 }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let view = UIView()

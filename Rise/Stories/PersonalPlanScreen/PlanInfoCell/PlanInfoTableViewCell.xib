@@ -18,17 +18,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TlI-k5-fhr">
-                        <rect key="frame" x="15" y="10" width="290" height="38"/>
+                        <rect key="frame" x="0.0" y="0.0" width="63" height="58"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="8 hours of sleep" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VyK-c6-0Rr">
-                                <rect key="frame" x="0.0" y="0.0" width="290" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clock" translatesAutoresizingMaskIntoConstraints="NO" id="vac-sR-9MH">
-                                <rect key="frame" x="0.0" y="0.0" width="38" height="38"/>
+                                <rect key="frame" x="10" y="10" width="38" height="38"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="vac-sR-9MH" secondAttribute="height" multiplier="1:1" id="BZ7-j2-YGb"/>
@@ -37,17 +30,44 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="vac-sR-9MH" firstAttribute="leading" secondItem="TlI-k5-fhr" secondAttribute="leading" id="3QI-L8-Pgz"/>
-                            <constraint firstAttribute="bottom" secondItem="vac-sR-9MH" secondAttribute="bottom" id="Nj7-9z-eHc"/>
-                            <constraint firstItem="vac-sR-9MH" firstAttribute="top" secondItem="TlI-k5-fhr" secondAttribute="top" id="fqK-WH-ew2"/>
+                            <constraint firstItem="vac-sR-9MH" firstAttribute="leading" secondItem="TlI-k5-fhr" secondAttribute="leading" constant="10" id="3QI-L8-Pgz"/>
+                            <constraint firstAttribute="bottom" secondItem="vac-sR-9MH" secondAttribute="bottom" constant="10" id="Nj7-9z-eHc"/>
+                            <constraint firstAttribute="trailing" secondItem="vac-sR-9MH" secondAttribute="trailing" constant="15" id="bs5-YD-487"/>
+                            <constraint firstItem="vac-sR-9MH" firstAttribute="top" secondItem="TlI-k5-fhr" secondAttribute="top" constant="10" id="fqK-WH-ew2"/>
                         </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OkK-zb-k4m" customClass="DesignableContainerView" customModule="Rise" customModuleProvider="target">
+                        <rect key="frame" x="63" y="4" width="257" height="50"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8 hours of sleep" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VyK-c6-0Rr">
+                                <rect key="frame" x="0.0" y="0.0" width="257" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="0.070000000000000007" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="VyK-c6-0Rr" secondAttribute="bottom" id="KED-zs-sY1"/>
+                            <constraint firstItem="VyK-c6-0Rr" firstAttribute="top" secondItem="OkK-zb-k4m" secondAttribute="top" id="tkK-MR-ULX"/>
+                            <constraint firstAttribute="trailing" secondItem="VyK-c6-0Rr" secondAttribute="trailing" id="uZE-9u-1s1"/>
+                            <constraint firstItem="VyK-c6-0Rr" firstAttribute="leading" secondItem="OkK-zb-k4m" secondAttribute="leading" id="x0w-jD-ZKB"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="12"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="TlI-k5-fhr" secondAttribute="bottom" constant="10" id="AD4-nP-lEF"/>
-                    <constraint firstItem="TlI-k5-fhr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="F8I-xa-1xm"/>
-                    <constraint firstItem="TlI-k5-fhr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="MMi-85-Iev"/>
-                    <constraint firstAttribute="trailing" secondItem="TlI-k5-fhr" secondAttribute="trailing" constant="15" id="UPg-Cm-OhM"/>
+                    <constraint firstAttribute="bottom" secondItem="TlI-k5-fhr" secondAttribute="bottom" id="AD4-nP-lEF"/>
+                    <constraint firstItem="TlI-k5-fhr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="F8I-xa-1xm"/>
+                    <constraint firstItem="TlI-k5-fhr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="MMi-85-Iev"/>
+                    <constraint firstItem="OkK-zb-k4m" firstAttribute="leading" secondItem="TlI-k5-fhr" secondAttribute="trailing" id="Obd-p6-3Dm"/>
+                    <constraint firstItem="OkK-zb-k4m" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="QCm-df-wh9"/>
+                    <constraint firstAttribute="trailing" secondItem="OkK-zb-k4m" secondAttribute="trailing" id="eSY-Mn-ls6"/>
+                    <constraint firstAttribute="bottom" secondItem="OkK-zb-k4m" secondAttribute="bottom" constant="4" id="sO6-ME-WBb"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

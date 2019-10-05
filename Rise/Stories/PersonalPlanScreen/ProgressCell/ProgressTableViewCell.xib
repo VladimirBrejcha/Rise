@@ -16,9 +16,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="158"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Streak" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pMf-uV-sxv">
-                        <rect key="frame" x="10" y="12" width="300" height="114"/>
-                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Perfomance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pMf-uV-sxv">
+                        <rect key="frame" x="10" y="8" width="300" height="122"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -52,8 +52,8 @@
                     <constraint firstAttribute="trailing" secondItem="dlh-YG-2ko" secondAttribute="trailing" constant="20" id="Jf9-dU-ojg"/>
                     <constraint firstAttribute="bottom" secondItem="lhx-WI-zwX" secondAttribute="bottom" constant="12" id="MPe-I8-eSo"/>
                     <constraint firstItem="hcf-3R-uHC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="eTg-WW-7sG"/>
-                    <constraint firstItem="lhx-WI-zwX" firstAttribute="top" secondItem="pMf-uV-sxv" secondAttribute="bottom" constant="12" id="l5i-Vk-wUv"/>
-                    <constraint firstItem="pMf-uV-sxv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="skI-9e-Xui"/>
+                    <constraint firstItem="lhx-WI-zwX" firstAttribute="top" secondItem="pMf-uV-sxv" secondAttribute="bottom" constant="8" id="l5i-Vk-wUv"/>
+                    <constraint firstItem="pMf-uV-sxv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="skI-9e-Xui"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

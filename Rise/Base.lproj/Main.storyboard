@@ -117,7 +117,7 @@
                                         </connections>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="0.070000000000000007" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="K58-rc-BMQ" secondAttribute="trailing" constant="5" id="7Rg-00-oBL"/>
                                     <constraint firstItem="1So-Po-EsV" firstAttribute="top" secondItem="K58-rc-BMQ" secondAttribute="bottom" constant="10" id="Naz-dG-2X2"/>
@@ -149,7 +149,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="0.070000000000000007" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="yuw-uY-MJR" firstAttribute="leading" secondItem="Q7C-TX-der" secondAttribute="leading" constant="10" id="BKk-Wx-110"/>
                                     <constraint firstAttribute="bottom" secondItem="yuw-uY-MJR" secondAttribute="bottom" constant="10" id="Boa-SX-2Wd"/>
@@ -352,12 +352,12 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your personalized plan" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l6b-Je-AIM">
                                         <rect key="frame" x="10" y="10" width="374" height="59"/>
-                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="0.070000000000000007" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="l6b-Je-AIM" secondAttribute="bottom" constant="10" id="B96-KA-Cxn"/>
                                     <constraint firstItem="l6b-Je-AIM" firstAttribute="leading" secondItem="Bgy-k3-l5I" secondAttribute="leading" constant="10" id="ccr-wS-Gep"/>
@@ -375,8 +375,8 @@
                                 <subviews>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hRZ-Gb-VtP">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="44"/>
-                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="18"/>
+                                        <color key="backgroundColor" white="1" alpha="0.070000000000000007" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                         <state key="normal" title="Change"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -400,8 +400,8 @@
                                 <rect key="frame" x="10" y="251" width="394" height="394"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="uTf-Eb-nKG">
-                                        <rect key="frame" x="0.0" y="89" width="394" height="295"/>
-                                        <color key="backgroundColor" white="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="0.0" y="83" width="394" height="301"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <integer key="value" value="12"/>
@@ -410,7 +410,7 @@
                                     </tableView>
                                     <tableView clipsSubviews="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="IaP-qe-KSL">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="79"/>
-                                        <color key="backgroundColor" white="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="1" alpha="0.070000000000000007" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <integer key="value" value="12"/>
@@ -427,7 +427,7 @@
                                     <constraint firstAttribute="width" secondItem="nGM-k5-nD5" secondAttribute="height" multiplier="23:23" id="f4H-Bb-BNz"/>
                                     <constraint firstItem="IaP-qe-KSL" firstAttribute="leading" secondItem="nGM-k5-nD5" secondAttribute="leading" id="vnA-yg-e4a"/>
                                     <constraint firstItem="uTf-Eb-nKG" firstAttribute="leading" secondItem="nGM-k5-nD5" secondAttribute="leading" id="xhZ-w6-eCg"/>
-                                    <constraint firstItem="uTf-Eb-nKG" firstAttribute="top" secondItem="IaP-qe-KSL" secondAttribute="bottom" constant="10" id="yjD-Ex-1wq"/>
+                                    <constraint firstItem="uTf-Eb-nKG" firstAttribute="top" secondItem="IaP-qe-KSL" secondAttribute="bottom" constant="4" id="yjD-Ex-1wq"/>
                                 </constraints>
                             </view>
                         </subviews>
