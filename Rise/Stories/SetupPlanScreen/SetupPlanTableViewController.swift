@@ -67,7 +67,7 @@ final class SetupPlanTableViewController: UITableViewController, SetupPlanViewIn
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         // Get the correct height if the cell is a ExpandingCell.
         guard let cell = tableView.cellForRow(at: indexPath) as? ExpandingCell else { return super.tableView(tableView, heightForRowAt: indexPath) }
-        return cell.pickerHeight()
+        return cell.pickerHeight
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

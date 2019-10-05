@@ -8,6 +8,13 @@
 
 import Foundation
 
+struct DataForPicker {
+    static let daysArray = ["Hardcore - 10 days", "Normal - 15 days", "Recommended - 30 days", "Calm - 50 days"]
+    static let hoursArray = ["7 hours", "7.5 hours", "Recommended - 8 hours", "8.5 hours", "9 hours"]
+    
+    private init() { }
+}
+
 protocol PersonalPlanDelegate: class {
     func newPlanCreated(_ plan: PersonalPlanModel)
 }
@@ -32,10 +39,10 @@ class SetupPlanPresenter: SetupPlanViewOutput {
     
     // MARK: - SetupPlanViewOutput
     func viewDidLoad() {
-        let datePickerModel = PickerDataModel(tag: 0, labelText: "Choose time", pickerType: .datePicker)
-        let hoursPickerModel = PickerDataModel(tag: 1, labelText: "Choose hours", pickerType: .pickerView, titleForRowArray: hoursArray, defaultRow: 2)
-        let secondDatePickerModel = PickerDataModel(tag: 2, labelText: "Choose time", pickerType: .datePicker)
-        let durationPickerModel = PickerDataModel(tag: 3, labelText: "Choose duration", pickerType: .pickerView, titleForRowArray: daysArray, defaultRow: 2)
+        let datePickerModel = PickerDataModel(tag: 0, labelText: "Choose time", type: .datePicker)
+        let hoursPickerModel = PickerDataModel(tag: 1, labelText: "Choose hours", type: .pickerView, titleForRowArray: hoursArray, defaultRow: 2)
+        let secondDatePickerModel = PickerDataModel(tag: 2, labelText: "Choose time", type: .datePicker)
+        let durationPickerModel = PickerDataModel(tag: 3, labelText: "Choose duration", type: .pickerView, titleForRowArray: daysArray, defaultRow: 2)
         
         dataSource = SectionedTableViewDataSource(dataSources:
             [TableViewDataSource.make(for: [datePickerModel], reuseIdentifier: view.cellID, output: self),

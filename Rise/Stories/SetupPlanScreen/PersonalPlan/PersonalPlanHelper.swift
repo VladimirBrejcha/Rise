@@ -23,5 +23,4 @@ class PersonalPlanHelper {
     
     init(plan: PersonalPlanModel) { self.plan = plan }
     
-    
 }

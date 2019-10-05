@@ -9,7 +9,7 @@
 import UIKit
 import AIFlatSwitch
 
-enum PickerType {
+enum ExpandingCellType {
     case datePicker
     case pickerView
 }
@@ -19,84 +19,79 @@ protocol ExpandingCellDelegate: class {
 }
 
 final class ExpandingCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate {
-    @IBOutlet weak var leftLabel: UILabel!
-    @IBOutlet weak var pickerContainer: UIView!
-    @IBOutlet weak var animatedSwitch: AIFlatSwitch!
-    
-    var textForPicker: [String]?
-    var expanded = false
-    private let unexpandedHeight: CGFloat = 44
     weak var delegate: ExpandingCellDelegate?
     
-    let dateFormatter: DateFormatter = {
+    @IBOutlet private weak var leftLabel: UILabel!
+    @IBOutlet private weak var pickerContainer: UIView!
+    @IBOutlet private weak var animatedSwitch: AIFlatSwitch!
+    private var picker: Picker! {
+        didSet {
+            if let picker = picker as? UIDatePicker {
+                picker.setValue(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), forKey: "textColor")
+                picker.datePickerMode = .time
+                picker.addTarget(self, action: #selector(dateChanged(sender:)), for: .valueChanged)
+            } else if let picker = picker as? UIPickerView {
+                picker.delegate = self
+                picker.dataSource = self
+                picker.selectRow(defaultPickerRow, inComponent: 0, animated: true)
+            }
+            setupConstraints(for: picker)
+        }
+    }
+    
+    var cellModel: PickerDataModel! {
+        didSet {
+            cellType = cellModel.type
+            tag = cellModel.tag
+            leftLabel.text = cellModel.labelText
+        }
+    }
+    private var cellType: ExpandingCellType! {
+        didSet {
+            if cellType == .datePicker { picker = UIDatePicker() }
+            else if cellType == .pickerView {
+                defaultPickerRow = cellModel.defaultRow
+                textForPicker = cellModel.titleForRowArray
+                picker = UIPickerView()
+            }
+        }
+    }
+    private var defaultPickerRow: Int!
+    private var textForPicker: [String]?
+    
+    var expanded = false
+    private let unexpandedHeight: CGFloat = 44
+    private var expandedHeight: CGFloat { return unexpandedHeight + 130 }
+    var pickerHeight: CGFloat { return expanded ? expandedHeight : unexpandedHeight }
+    
+    private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
         return formatter
     }()
     
-    // MARK: User interaction methods
     func selectedInTableView(_ tableView: UITableView) {
-        
         expanded = !expanded
         
-        UIView.transition(with: leftLabel, duration: 0.25, options: [.transitionCrossDissolve, .allowUserInteraction], animations: { () in
+        UIView.transition(with: leftLabel, duration: 0.25, options: [.transitionCrossDissolve, .allowUserInteraction], animations: {
             self.leftLabel.textColor
                 = self.expanded
                 ? self.tintColor
                 : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.75)
         }, completion: nil)
-        
         tableView.beginUpdates()
         tableView.endUpdates()
     }
-    
-    @objc func dateChanged(sender: UIDatePicker) { pickerValueDidSet(sender.date) }
     
     private func toggleSwitch() {
         animatedSwitch.isHidden = false
         animatedSwitch.setSelected(true, animated: true)
     }
     
-    // MARK: Picker methods
-    public func createPicker(_ picker: PickerType, with defaultRow: Int?) {
-        switch picker {
-        case .datePicker: setupDatePicker()
-        case .pickerView: setupPickerView(with: defaultRow ?? 0) }
-    }
+    @objc func dateChanged(sender: UIDatePicker) { pickerValueDidSet(sender.date) }
     
-    public func pickerHeight() -> CGFloat {
-        let expandedHeight = unexpandedHeight + 130
-        return expanded ? expandedHeight : unexpandedHeight
-    }
-    
-    private func setupPickerView(with defaultRow: Int) {
-        let pickerView = UIPickerView()
-        
-        pickerView.delegate = self
-        pickerView.dataSource = self
-        
-        pickerView.selectRow(defaultRow, inComponent: 0, animated: true)
-        
-        setUIForPicker(pickerView)
-    }
-    
-    private func setupDatePicker() {
-        
-        let datePicker = UIDatePicker()
-        
-        datePicker.setValue(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), forKey: "textColor")
-        datePicker.datePickerMode = .time
-        datePicker.locale = Locale(identifier: "ru")
-        
-        datePicker.addTarget(self, action: #selector(dateChanged(sender:)), for: .valueChanged)
-        
-        setUIForPicker(datePicker)
-    }
-    
-    private func setUIForPicker(_ picker: UIView) {
-        
+    private func setupConstraints(for picker: Picker) {
         pickerContainer.addSubview(picker)
-        
         picker.translatesAutoresizingMaskIntoConstraints = false
         picker.heightAnchor.constraint(equalToConstant: 130).isActive = true
         picker.topAnchor.constraint(equalTo: pickerContainer.topAnchor, constant: 5).isActive = true
@@ -117,7 +112,7 @@ final class ExpandingCell: UITableViewCell, UIPickerViewDataSource, UIPickerView
 extension ExpandingCell {
     func numberOfComponents(in pickerView: UIPickerView) -> Int { return 1 }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int { return textForPicker?.count ?? 0}
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int { return textForPicker?.count ?? 0 }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         return NSAttributedString(string: textForPicker?[row] ?? "", attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)])
@@ -135,3 +130,7 @@ extension PickerOutputValue {
 }
 extension String: PickerOutputValue { }
 extension Date: PickerOutputValue { }
+
+fileprivate protocol Picker: UIView { }
+extension UIPickerView: Picker { }
+extension UIDatePicker: Picker { }

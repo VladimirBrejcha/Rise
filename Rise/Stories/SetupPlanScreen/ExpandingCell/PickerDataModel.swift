@@ -11,7 +11,7 @@ import UIKit
 struct PickerDataModel {
     var tag: Int
     var labelText: String
-    var pickerType: PickerType
+    var type: ExpandingCellType
     var titleForRowArray: [String]?
     var defaultRow: Int?
 }
