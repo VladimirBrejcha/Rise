@@ -15,14 +15,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="280" height="198"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b8Z-Gu-TIM">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b8Z-Gu-TIM" customClass="AnimatedLoadingView" customModule="Rise" customModuleProvider="target">
                         <rect key="frame" x="5" y="0.0" width="270" height="95"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <integer key="value" value="12"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </view>
                     <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ska-F4-EGl">
                         <rect key="frame" x="5" y="0.0" width="270" height="95"/>
@@ -92,10 +86,6 @@
                                 <real key="value" value="12"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
-                    </view>
-                    <view contentMode="center" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0AP-YO-4Ss">
-                        <rect key="frame" x="5" y="0.0" width="270" height="95"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0lH-Mc-ICP">
                         <rect key="frame" x="5" y="103" width="270" height="95"/>
@@ -172,27 +162,20 @@
                 <constraint firstAttribute="trailing" secondItem="Ska-F4-EGl" secondAttribute="trailing" constant="5" id="1zv-Q7-wRe"/>
                 <constraint firstAttribute="trailing" secondItem="0lH-Mc-ICP" secondAttribute="trailing" constant="5" id="2iW-dg-hYC"/>
                 <constraint firstItem="b8Z-Gu-TIM" firstAttribute="top" secondItem="Ska-F4-EGl" secondAttribute="top" id="79T-W6-ioc"/>
-                <constraint firstItem="0AP-YO-4Ss" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="9jM-cH-vsA"/>
                 <constraint firstItem="0lH-Mc-ICP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="As0-62-Aa9"/>
                 <constraint firstItem="Ska-F4-EGl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="FyZ-Yn-fuB"/>
                 <constraint firstAttribute="bottom" secondItem="0lH-Mc-ICP" secondAttribute="bottom" id="MRc-lr-hcP"/>
                 <constraint firstItem="b8Z-Gu-TIM" firstAttribute="trailing" secondItem="Ska-F4-EGl" secondAttribute="trailing" id="Qn0-gw-Hj1"/>
-                <constraint firstItem="0AP-YO-4Ss" firstAttribute="width" secondItem="0lH-Mc-ICP" secondAttribute="width" id="UhE-bY-UnB"/>
                 <constraint firstItem="0lH-Mc-ICP" firstAttribute="top" secondItem="Ska-F4-EGl" secondAttribute="bottom" constant="8" id="UqY-6W-Z2k"/>
                 <constraint firstItem="b8Z-Gu-TIM" firstAttribute="bottom" secondItem="Ska-F4-EGl" secondAttribute="bottom" id="hap-5l-eX4"/>
-                <constraint firstItem="0AP-YO-4Ss" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="j5b-YD-Emb"/>
-                <constraint firstItem="0AP-YO-4Ss" firstAttribute="height" secondItem="0lH-Mc-ICP" secondAttribute="height" id="n3g-Es-Aup"/>
                 <constraint firstItem="b8Z-Gu-TIM" firstAttribute="leading" secondItem="Ska-F4-EGl" secondAttribute="leading" id="otS-MG-xha"/>
                 <constraint firstItem="Ska-F4-EGl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="q0k-wR-Gyt"/>
                 <constraint firstItem="0lH-Mc-ICP" firstAttribute="height" secondItem="Ska-F4-EGl" secondAttribute="height" id="r1s-PT-rzT"/>
-                <constraint firstAttribute="trailing" secondItem="0AP-YO-4Ss" secondAttribute="trailing" constant="5" id="vAW-sl-p5n"/>
                 <constraint firstItem="0lH-Mc-ICP" firstAttribute="width" secondItem="Ska-F4-EGl" secondAttribute="width" id="xTs-oT-mwt"/>
-                <constraint firstItem="0lH-Mc-ICP" firstAttribute="top" secondItem="0AP-YO-4Ss" secondAttribute="bottom" constant="8" id="zYF-Ln-ilH"/>
             </constraints>
             <size key="customSize" width="280" height="198"/>
             <connections>
-                <outlet property="sunActivityAnimationVIew" destination="0AP-YO-4Ss" id="14K-gd-QaR"/>
-                <outlet property="sunBlurView" destination="b8Z-Gu-TIM" id="vbD-6h-17J"/>
+                <outlet property="loadingView" destination="b8Z-Gu-TIM" id="vbD-6h-17J"/>
                 <outlet property="sunContainerView" destination="Ska-F4-EGl" id="NdA-WY-jIN"/>
                 <outlet property="sunriseTimeLabel" destination="W3a-as-p6Y" id="ybx-Va-wJi"/>
                 <outlet property="sunsetTimeLabel" destination="MgN-sD-dqT" id="7ep-t4-AS4"/>
