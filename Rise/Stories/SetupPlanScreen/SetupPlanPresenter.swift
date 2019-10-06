@@ -53,7 +53,6 @@ class SetupPlanPresenter: SetupPlanViewOutput {
     }
     
     func scheduleTapped() {
-        view?.dismiss()
         createPlan()
         view?.showBanner()
     }

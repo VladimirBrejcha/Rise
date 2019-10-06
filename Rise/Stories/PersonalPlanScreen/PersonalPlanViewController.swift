@@ -12,7 +12,6 @@ fileprivate let infoTableViewInfo = (nib: UINib(nibName: "PlanInfoTableViewCell"
 fileprivate let progressTableViewInfo = (nib: UINib(nibName: "ProgressTableViewCell", bundle: nil), cellID: "progressCell")
 
 protocol PersonalPlanViewInput: class {
-    func showSetupPlanController()
     func updateProgressView(with progress: Double, maxProgress: String)
     func updatePlanInfo(with info: [String])
     func hideLoading()
@@ -39,8 +38,6 @@ class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITable
     private let infoCellImageArray: [UIImage] = [#imageLiteral(resourceName: "Clock 2"), #imageLiteral(resourceName: "wakeup"), #imageLiteral(resourceName: "fallasleep"), #imageLiteral(resourceName: "sun")]
     private var infoCellLabelTextArray: [String]?
     
-    private lazy var transitionManager = TransitionManager()
-    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,9 +60,7 @@ class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITable
         tableView.dataSource = self
     }
     
-    // MARK: - Actions
-    @IBAction func planButtonPressed(_ sender: UIButton) { output.changeButtonPressed() }
-    
+    // MARK: - Actions    
     @IBAction func decreaseButtonSize(_ sender: UIButton) {
         UIView.animate(withDuration: 0.1, animations: { sender.transform = CGAffineTransform(scaleX: 0.93, y: 0.93) })
     }
@@ -74,20 +69,7 @@ class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITable
         UIView.animate(withDuration: 0.1) { sender.transform = CGAffineTransform.identity }
     }
     
-    // MARK: - SPStorkControllerDelegate
-    func didDismissStorkBySwipe() { transitionManager.animateBackground() }
-    
-    func didDismissByNewScheduleButton(controller: UIViewController) {
-        guard let personalTimeVC = controller as? SetupPlanTableViewController else { return }
-        personalTimeVC.output?.personalPlanDelegate = output
-    }
-    
     // MARK: - PersonalPlanViewInput
-    func showSetupPlanController() {
-        transitionManager.makeTransition(to: Identifiers.personal)
-        backToNormalSize(planButton)
-    }
-    
     func updatePlanInfo(with info: [String]) {
         infoCellLabelTextArray = info
         infoTableView.reloadData()

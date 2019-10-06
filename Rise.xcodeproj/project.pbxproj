@@ -45,7 +45,6 @@
 		922032F0229BF2890006F92B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922032EF229BF2890006F92B /* Constants.swift */; };
 		92B78CFA229FAF6C0087240B /* ExpandingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B78CF8229FAF6C0087240B /* ExpandingCell.swift */; };
 		92B78CFB229FAF6C0087240B /* ExpandingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92B78CF9229FAF6C0087240B /* ExpandingCell.xib */; };
-		92BC919022AB159D00BB1D19 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BC918F22AB159D00BB1D19 /* TransitionManager.swift */; };
 		92BC919222AB216900BB1D19 /* BannerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BC919122AB216900BB1D19 /* BannerManager.swift */; };
 		92BC919422AB24D800BB1D19 /* GradientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BC919322AB24D800BB1D19 /* GradientManager.swift */; };
 		92D12FD622A4045E0093B0A3 /* PickerDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D12FD522A4045E0093B0A3 /* PickerDataModel.swift */; };
@@ -121,7 +120,6 @@
 		922032EF229BF2890006F92B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		92B78CF8229FAF6C0087240B /* ExpandingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandingCell.swift; sourceTree = "<group>"; };
 		92B78CF9229FAF6C0087240B /* ExpandingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandingCell.xib; sourceTree = "<group>"; };
-		92BC918F22AB159D00BB1D19 /* TransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		92BC919122AB216900BB1D19 /* BannerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerManager.swift; sourceTree = "<group>"; };
 		92BC919322AB24D800BB1D19 /* GradientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientManager.swift; sourceTree = "<group>"; };
 		92D12FD522A4045E0093B0A3 /* PickerDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerDataModel.swift; sourceTree = "<group>"; };
@@ -342,7 +340,6 @@
 				7E98FE66231C3D5C0065FB09 /* UserDefaultsManager.swift */,
 				7ED962AB2336334A00CD2408 /* AnimationManager.swift */,
 				92BC919122AB216900BB1D19 /* BannerManager.swift */,
-				92BC918F22AB159D00BB1D19 /* TransitionManager.swift */,
 				92D41C2522AC04DF00706CD3 /* ArrayManager.swift */,
 				92BC919322AB24D800BB1D19 /* GradientManager.swift */,
 				7E98FE64231C30C10065FB09 /* UIHelper.swift */,
@@ -592,7 +589,6 @@
 				92D7D6532296F297009321AE /* AppDelegate.swift in Sources */,
 				7E7413BC2349069500BF4416 /* AnimatedLoadingView.swift in Sources */,
 				7E4901862340DD810034521E /* PersonalPlanData.xcdatamodeld in Sources */,
-				92BC919022AB159D00BB1D19 /* TransitionManager.swift in Sources */,
 				7EA0924222C8CF820019F2E9 /* CustomTransition.swift in Sources */,
 				92D41C3322AC395C00706CD3 /* PersonalTimeModel.swift in Sources */,
 				7E98FE5E231C2EAD0065FB09 /* WelcomeButtonViewController.swift in Sources */,

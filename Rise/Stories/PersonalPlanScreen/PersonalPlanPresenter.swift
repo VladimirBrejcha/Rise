@@ -17,7 +17,6 @@ class PersonalPlanPresenter: PersonalPlanViewOutput {
     
     // MARK: - PersonalPlanViewOutput
     func changeButtonPressed() {
-        view?.showSetupPlanController()
     }
     
     // MARK: - PersonalPlanDelegate

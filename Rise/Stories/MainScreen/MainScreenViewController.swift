@@ -10,7 +10,6 @@ import UIKit
 
 final class MainScreenViewController: UIViewController, LocationManagerDelegate {
     private let locationManager = sharedLocationManager
-    private lazy var transitionManager = TransitionManager()
     @IBOutlet weak var mainContainerView: CollectionViewWithSegmentedControl!
     
     override func viewDidLoad() {
@@ -21,11 +20,6 @@ final class MainScreenViewController: UIViewController, LocationManagerDelegate 
     }
     
     @IBAction func sleepButtonTouch(_ sender: UIButton) {
-        transitionManager.makeTransition(to: Identifiers.sleep)
-    }
-    
-    func didDismissStorkBySwipe() {
-        transitionManager.animateBackground()
     }
     
     func newLocationDataArrived(locationModel: LocationModel) {
