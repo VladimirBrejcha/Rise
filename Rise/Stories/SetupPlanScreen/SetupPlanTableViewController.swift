@@ -18,6 +18,7 @@ protocol SetupPlanViewOutput: ExpandingCellDelegate {
 protocol SetupPlanViewInput: class {
     var cellID: String { get }
     var setupPlanTableView: UITableView? { get }
+    func dismiss()
     func showBanner()
     var isScheduleButtonEnabled: Bool { get set }
 }
@@ -58,6 +59,7 @@ final class SetupPlanTableViewController: UITableViewController, SetupPlanViewIn
     @IBAction func scheduleTapped(_ sender: UIButton) { output?.scheduleTapped() }
     
     // MARK: - SetupPlanViewInput
+    func dismiss() { dismiss(animated: true, completion: nil) }
     func showBanner() { bannerManager?.banner.show() } // TODO: use my solution insted
     
     // MARK: - UITableViewDelegate
