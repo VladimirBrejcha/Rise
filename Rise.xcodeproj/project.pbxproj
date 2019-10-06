@@ -45,7 +45,6 @@
 		922032F0229BF2890006F92B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922032EF229BF2890006F92B /* Constants.swift */; };
 		92B78CFA229FAF6C0087240B /* ExpandingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B78CF8229FAF6C0087240B /* ExpandingCell.swift */; };
 		92B78CFB229FAF6C0087240B /* ExpandingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92B78CF9229FAF6C0087240B /* ExpandingCell.xib */; };
-		92BC919222AB216900BB1D19 /* BannerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BC919122AB216900BB1D19 /* BannerManager.swift */; };
 		92BC919422AB24D800BB1D19 /* GradientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BC919322AB24D800BB1D19 /* GradientManager.swift */; };
 		92D12FD622A4045E0093B0A3 /* PickerDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D12FD522A4045E0093B0A3 /* PickerDataModel.swift */; };
 		92D12FDD22A44B3B0093B0A3 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D12FDC22A44B3B0093B0A3 /* CustomTabBarController.swift */; };
@@ -120,7 +119,6 @@
 		922032EF229BF2890006F92B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		92B78CF8229FAF6C0087240B /* ExpandingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandingCell.swift; sourceTree = "<group>"; };
 		92B78CF9229FAF6C0087240B /* ExpandingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandingCell.xib; sourceTree = "<group>"; };
-		92BC919122AB216900BB1D19 /* BannerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerManager.swift; sourceTree = "<group>"; };
 		92BC919322AB24D800BB1D19 /* GradientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientManager.swift; sourceTree = "<group>"; };
 		92D12FD522A4045E0093B0A3 /* PickerDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerDataModel.swift; sourceTree = "<group>"; };
 		92D12FDC22A44B3B0093B0A3 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
@@ -339,7 +337,6 @@
 				7E98FE68231C47890065FB09 /* Location */,
 				7E98FE66231C3D5C0065FB09 /* UserDefaultsManager.swift */,
 				7ED962AB2336334A00CD2408 /* AnimationManager.swift */,
-				92BC919122AB216900BB1D19 /* BannerManager.swift */,
 				92D41C2522AC04DF00706CD3 /* ArrayManager.swift */,
 				92BC919322AB24D800BB1D19 /* GradientManager.swift */,
 				7E98FE64231C30C10065FB09 /* UIHelper.swift */,
@@ -607,7 +604,6 @@
 				7EB1C03F23412AAA0028237E /* PersonalPlanBuilder.swift in Sources */,
 				7E41982423254C36007867AB /* SegmentedControlView.swift in Sources */,
 				7EB9004023256BF3006EB9A8 /* CollectionViewWithSegmentedControl.swift in Sources */,
-				92BC919222AB216900BB1D19 /* BannerManager.swift in Sources */,
 				7ED962AC2336334A00CD2408 /* AnimationManager.swift in Sources */,
 				7E98FE65231C30C10065FB09 /* UIHelper.swift in Sources */,
 			);

@@ -19,7 +19,6 @@ protocol SetupPlanViewInput: class {
     var cellID: String { get }
     var setupPlanTableView: UITableView? { get }
     func dismiss()
-    func showBanner()
     var isScheduleButtonEnabled: Bool { get set }
 }
 
@@ -31,7 +30,6 @@ final class SetupPlanTableViewController: UITableViewController, SetupPlanViewIn
     var isScheduleButtonEnabled: Bool = false { willSet { createScheduleButton.isEnabled = newValue } }
     
     private var gradientManager: GradientManager? { return GradientManager(frame: view.bounds) }
-    private var bannerManager: BannerManager? { return BannerManager(title: "Saved", style: .success) }
     
     var cellID = "expandingCell"
     private let cellNibName = "ExpandingCell"
@@ -60,7 +58,6 @@ final class SetupPlanTableViewController: UITableViewController, SetupPlanViewIn
     
     // MARK: - SetupPlanViewInput
     func dismiss() { dismiss(animated: true, completion: nil) }
-    func showBanner() { bannerManager?.banner.show() } // TODO: use my solution insted
     
     // MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

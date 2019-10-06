@@ -55,7 +55,6 @@ class SetupPlanPresenter: SetupPlanViewOutput {
     func scheduleTapped() {
         view.dismiss()
         createPlan()
-        view?.showBanner()
     }
     
     private func createPlan() { personalPlanDelegate?.newPlanCreated(personalPlanModel!)  }
