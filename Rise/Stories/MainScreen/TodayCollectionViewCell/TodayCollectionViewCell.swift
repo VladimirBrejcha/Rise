@@ -18,13 +18,13 @@ class TodayCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        loadingView.setupAnimationLayer()
         loadingView.showLoading()
     }
     
     func showContent() {
         loadingView.hideLoading {
             UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction, animations: {
-                self.loadingView.alpha = 0
                 self.sunContainerView.alpha = 1
             })
         }

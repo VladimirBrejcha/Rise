@@ -32,7 +32,7 @@ class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var progressTableView: UITableView!
     
     @IBOutlet weak var mainContainerView: UIView!
-    @IBOutlet weak var loadingView: AnimatedLoadingView!
+    @IBOutlet var loadingView: AnimatedLoadingView!
     
     private var progressCellMaxValue: String?
     private var progressCellValue: Double = 0.0
@@ -49,6 +49,12 @@ class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITable
         
         configureTableView(tableView: infoTableView, info: infoTableViewInfo)
         configureTableView(tableView: progressTableView, info: progressTableViewInfo)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loadingView.setupAnimationLayer()
+        loadingView.showLoading()
     }
     
     private func configureTableView(tableView: UITableView, info: (nib: UINib, cellID: String)) {
@@ -74,7 +80,6 @@ class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITable
     func didDismissByNewScheduleButton(controller: UIViewController) {
         guard let personalTimeVC = controller as? SetupPlanTableViewController else { return }
         personalTimeVC.output?.personalPlanDelegate = output
-        loadingView.showLoading()
     }
     
     // MARK: - PersonalPlanViewInput
