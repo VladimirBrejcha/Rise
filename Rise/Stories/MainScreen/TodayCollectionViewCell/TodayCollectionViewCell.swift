@@ -8,6 +8,12 @@
 
 import UIKit
 
+struct TodayCellModel {
+    var isDataLoaded: Bool
+    var sunriseTime: String
+    var sunsetTime: String
+}
+
 class TodayCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var sunriseTimeLabel: UILabel!
     @IBOutlet weak var sunsetTimeLabel: UILabel!
@@ -16,17 +22,23 @@ class TodayCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var loadingView: AnimatedLoadingView!
     @IBOutlet weak var sunContainerView: UIView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        loadingView.setupAnimationLayer()
-        loadingView.showLoading()
+    private var isDataLoaded: Bool = false
+    
+    var cellModel: TodayCellModel! {
+        didSet {
+            sunriseTimeLabel.text = cellModel.sunriseTime
+            sunsetTimeLabel.text = cellModel.sunsetTime
+            isDataLoaded = cellModel.isDataLoaded
+        }
     }
     
-    func showContent() {
-        loadingView.hideLoading {
-            UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction, animations: {
-                self.sunContainerView.alpha = 1
-            })
-        }
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        loadingView.setupAnimationLayer()
+        
+        isDataLoaded
+            ? loadingView.hideLoading { UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction,
+                                                       animations: { self.sunContainerView.alpha = 1 }) }
+            : loadingView.showLoading()
     }
 }

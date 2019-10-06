@@ -16,6 +16,7 @@
 		7E41982423254C36007867AB /* SegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E41982323254C36007867AB /* SegmentedControlView.swift */; };
 		7E41982623254F1A007867AB /* SegmentedControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E41982523254F1A007867AB /* SegmentedControlButton.swift */; };
 		7E4901862340DD810034521E /* PersonalPlanData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E4901842340DD810034521E /* PersonalPlanData.xcdatamodeld */; };
+		7E695A34234A675F0098213D /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E695A33234A675F0098213D /* CollectionViewDataSource.swift */; };
 		7E7413BC2349069500BF4416 /* AnimatedLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7413BB2349069500BF4416 /* AnimatedLoadingView.swift */; };
 		7E98FE5E231C2EAD0065FB09 /* WelcomeButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE5D231C2EAD0065FB09 /* WelcomeButtonViewController.swift */; };
 		7E98FE61231C2F340065FB09 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE60231C2F340065FB09 /* LocationManager.swift */; };
@@ -90,6 +91,7 @@
 		7E41982323254C36007867AB /* SegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlView.swift; sourceTree = "<group>"; };
 		7E41982523254F1A007867AB /* SegmentedControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlButton.swift; sourceTree = "<group>"; };
 		7E4901852340DD810034521E /* PersonalPlanData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonalPlanData.xcdatamodel; sourceTree = "<group>"; };
+		7E695A33234A675F0098213D /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		7E7413BB2349069500BF4416 /* AnimatedLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedLoadingView.swift; sourceTree = "<group>"; };
 		7E98FE5D231C2EAD0065FB09 /* WelcomeButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeButtonViewController.swift; sourceTree = "<group>"; };
 		7E98FE60231C2F340065FB09 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 				92BC919322AB24D800BB1D19 /* GradientManager.swift */,
 				7E98FE64231C30C10065FB09 /* UIHelper.swift */,
 				7E31497C23425CA600941606 /* TableViewDataSource.swift */,
+				7E695A33234A675F0098213D /* CollectionViewDataSource.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -578,6 +581,7 @@
 				7EB9003E23256AC9006EB9A8 /* DesignableContainerView.swift in Sources */,
 				92D41C2F22AC345C00706CD3 /* PersonalTimeCalculator.swift in Sources */,
 				92D41C2622AC04DF00706CD3 /* ArrayManager.swift in Sources */,
+				7E695A34234A675F0098213D /* CollectionViewDataSource.swift in Sources */,
 				7EB1C03D23412A9C0028237E /* PersonalPlanHelper.swift in Sources */,
 				7E98FE72231D973B0065FB09 /* NetworkManager.swift in Sources */,
 				92BC919422AB24D800BB1D19 /* GradientManager.swift in Sources */,

@@ -8,16 +8,25 @@
 
 import UIKit
 
-class CollectionViewWithSegmentedControl: DesignableContainerView, SegmentedControlViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class CollectionViewWithSegmentedControl: DesignableContainerView, SegmentedControlViewDelegate, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var segmentedControl: SegmentedControlView!
     @IBOutlet weak var collectionView: UICollectionView!
     private let cellIdentifier = "collectionViewWithSegmentedControlCellID"
-    var timesArray: [SunModel] = []
+    
+    var cellModels: [TodayCellModel] {
+        get { return dataSource.models }
+        set { dataSource.models = newValue }
+    }
+    
+    private var dataSource: CollectionViewDataSource<TodayCellModel>!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         segmentedControl.delegate = self
         collectionView.register(UINib(nibName: "TodayCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
+        
+        dataSource = CollectionViewDataSource.make(for: [buildLoadingCellModel(), buildLoadingCellModel(), buildLoadingCellModel()], reuseIdentifier: cellIdentifier)
+        collectionView.dataSource = dataSource
     }
     
     override func layoutSubviews() {
@@ -25,24 +34,11 @@ class CollectionViewWithSegmentedControl: DesignableContainerView, SegmentedCont
         collectionView.scrollToItem(at: IndexPath(row: 1, section: 0), at: .centeredHorizontally, animated: false)
     }
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return segmentedControl.buttons.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! TodayCollectionViewCell
-
-        if timesArray.indices.contains(indexPath.row) {
-            cell.sunriseTimeLabel.text = DatesConverter.formatDateToHHmm(date: timesArray[indexPath.row].sunrise)
-            cell.sunsetTimeLabel.text = DatesConverter.formatDateToHHmm(date: timesArray[indexPath.row].sunset)
-            cell.showContent()
-        }
-        return cell
+    func updateView(with sunModelArray: [SunModel]) {
+        var models: [TodayCellModel] = []
+        sunModelArray.forEach { sunModel in models.append(buildCellModel(from: sunModel)) }
+        cellModels = models
+        collectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -62,5 +58,23 @@ class CollectionViewWithSegmentedControl: DesignableContainerView, SegmentedCont
     // MARK: SegmentedControlViewDelegate
     func userDidSelect(segment: SegmentedControlViewButtons) {
         collectionView?.scrollToItem(at: IndexPath(item: segment.row, section: 0), at: .centeredHorizontally, animated: true)
+    }
+    
+    private func buildCellModel(from sunModel: SunModel) -> TodayCellModel {
+        return TodayCellModel(isDataLoaded: true, sunriseTime: DatesConverter.formatDateToHHmm(date: sunModel.sunrise),
+                              sunsetTime: DatesConverter.formatDateToHHmm(date: sunModel.sunset))
+    }
+    
+    private func buildLoadingCellModel() -> TodayCellModel {
+        return TodayCellModel(isDataLoaded: false, sunriseTime: "", sunsetTime: "")
+    }
+}
+
+extension CollectionViewDataSource where Model == TodayCellModel {
+    static func make(for cellModels: [TodayCellModel],
+                     reuseIdentifier: String = "collectionViewWithSegmentedControlCellID") -> CollectionViewDataSource {
+        return CollectionViewDataSource (models: cellModels, reuseIdentifier: reuseIdentifier) { (model, cell) in
+            (cell as! TodayCollectionViewCell).cellModel = model
+        }
     }
 }

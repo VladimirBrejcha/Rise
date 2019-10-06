@@ -18,7 +18,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b8Z-Gu-TIM" customClass="AnimatedLoadingView" customModule="Rise" customModuleProvider="target">
                         <rect key="frame" x="5" y="0.0" width="270" height="95"/>
                     </view>
-                    <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ska-F4-EGl">
+                    <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ska-F4-EGl" customClass="DesignableContainerView" customModule="Rise" customModuleProvider="target">
                         <rect key="frame" x="5" y="0.0" width="270" height="95"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BG1-fS-ZwQ">
@@ -70,7 +70,6 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="0.050000000000000003" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="R3E-WT-WRJ" secondAttribute="bottom" constant="9" id="0BN-fP-yHR"/>
                             <constraint firstAttribute="bottom" secondItem="BG1-fS-ZwQ" secondAttribute="bottom" constant="9" id="10m-gu-sVG"/>

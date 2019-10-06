@@ -23,19 +23,20 @@ final class MainScreenViewController: UIViewController, LocationManagerDelegate 
     }
     
     func newLocationDataArrived(locationModel: LocationModel) {
+        var sunModelArray: [SunModel] = []
         NetworkManager.getSunData(location: locationModel, day: .yesterday) { [weak self] result in
             switch result {
             case let .success(sunModel):
-                self?.mainContainerView.timesArray.append(sunModel)
+                sunModelArray.append(sunModel)
                 NetworkManager.getSunData(location: locationModel, day: .today) { result in
                     switch result {
                     case let .success(sunModel):
-                        self?.mainContainerView.timesArray.append(sunModel)
+                        sunModelArray.append(sunModel)
                         NetworkManager.getSunData(location: locationModel, day: .tomorrow) { result in
                             switch result {
                             case let .success(sunModel):
-                                self?.mainContainerView.timesArray.append(sunModel)
-                                self?.mainContainerView.collectionView.reloadData()
+                                sunModelArray.append(sunModel)
+                                self?.mainContainerView.updateView(with: sunModelArray)
                             case let .failure(error):
                                 print(error.localizedDescription)
                             }
