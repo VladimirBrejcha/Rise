@@ -16,12 +16,13 @@ class CollectionViewWithSegmentedControl: DesignableContainerView, SegmentedCont
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         segmentedControl.delegate = self
-        
         collectionView.register(UINib(nibName: "TodayCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
-        collectionView.scrollToItem(at: IndexPath(row: 1, section: 0), at: .centeredHorizontally, animated: true)
-        collectionView.reloadData()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        collectionView.scrollToItem(at: IndexPath(row: 1, section: 0), at: .centeredHorizontally, animated: false)
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
