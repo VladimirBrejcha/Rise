@@ -25,7 +25,8 @@ class CollectionViewWithSegmentedControl: DesignableContainerView, SegmentedCont
         segmentedControl.delegate = self
         collectionView.register(UINib(nibName: "TodayCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
         
-        dataSource = CollectionViewDataSource.make(for: [buildLoadingCellModel(), buildLoadingCellModel(), buildLoadingCellModel()], reuseIdentifier: cellIdentifier)
+        dataSource = CollectionViewDataSource.make(for: [buildLoadingCellModel(), buildLoadingCellModel(), buildLoadingCellModel()],
+                                                   reuseIdentifier: cellIdentifier)
         collectionView.dataSource = dataSource
     }
     

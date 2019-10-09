@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="18G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="PersonalPlan" representedClassName="PersonalPlan" syncable="YES" codeGenerationType="class">
-        <attribute name="minutesOfSleep" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="19A583" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="PersonalPlan" representedClassName="RisePersonalPlan" syncable="YES">
+        <attribute name="endDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="planDuration" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="planStrartSleepTime" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="sleepDuration" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="sleepTime" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="startDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="wakeUpTime" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="PersonalPlan" positionX="-63" positionY="-18" width="128" height="58"/>
+        <element name="PersonalPlan" positionX="-63" positionY="-18" width="128" height="148"/>
     </elements>
 </model>

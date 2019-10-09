@@ -34,6 +34,7 @@
 		7EB1C03B23411FFD0028237E /* PersonalPlanPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1C03A23411FFD0028237E /* PersonalPlanPresenter.swift */; };
 		7EB1C03D23412A9C0028237E /* PersonalPlanHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1C03C23412A9C0028237E /* PersonalPlanHelper.swift */; };
 		7EB1C03F23412AAA0028237E /* PersonalPlanBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1C03E23412AAA0028237E /* PersonalPlanBuilder.swift */; };
+		7EB2694E234E5816008AEB3D /* RisePersonalPlan+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB2694C234E5816008AEB3D /* RisePersonalPlan+CoreDataClass.swift */; };
 		7EB9003E23256AC9006EB9A8 /* DesignableContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9003D23256AC9006EB9A8 /* DesignableContainerView.swift */; };
 		7EB9004023256BF3006EB9A8 /* CollectionViewWithSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9003F23256BF3006EB9A8 /* CollectionViewWithSegmentedControl.swift */; };
 		7EB9004423298902006EB9A8 /* ProgressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9004223298902006EB9A8 /* ProgressTableViewCell.swift */; };
@@ -108,6 +109,7 @@
 		7EB1C03A23411FFD0028237E /* PersonalPlanPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPlanPresenter.swift; sourceTree = "<group>"; };
 		7EB1C03C23412A9C0028237E /* PersonalPlanHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPlanHelper.swift; sourceTree = "<group>"; };
 		7EB1C03E23412AAA0028237E /* PersonalPlanBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPlanBuilder.swift; sourceTree = "<group>"; };
+		7EB2694C234E5816008AEB3D /* RisePersonalPlan+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RisePersonalPlan+CoreDataClass.swift"; path = "/Users/vladimirbrejcha/Desktop/Projects/RiseApp/Rise/Rise/DataManaging/Local/RisePersonalPlan+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		7EB9003D23256AC9006EB9A8 /* DesignableContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableContainerView.swift; sourceTree = "<group>"; };
 		7EB9003F23256BF3006EB9A8 /* CollectionViewWithSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewWithSegmentedControl.swift; sourceTree = "<group>"; };
 		7EB9004223298902006EB9A8 /* ProgressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTableViewCell.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 		7EB1C0352340FA9A0028237E /* Local */ = {
 			isa = PBXGroup;
 			children = (
+				7EB2694C234E5816008AEB3D /* RisePersonalPlan+CoreDataClass.swift */,
 				7E4901842340DD810034521E /* PersonalPlanData.xcdatamodeld */,
 				7E98FE6F231C49360065FB09 /* DataBaseManager.swift */,
 			);
@@ -586,6 +589,7 @@
 				7E98FE72231D973B0065FB09 /* NetworkManager.swift in Sources */,
 				92BC919422AB24D800BB1D19 /* GradientManager.swift in Sources */,
 				7E98FE61231C2F340065FB09 /* LocationManager.swift in Sources */,
+				7EB2694E234E5816008AEB3D /* RisePersonalPlan+CoreDataClass.swift in Sources */,
 				92D12FDD22A44B3B0093B0A3 /* CustomTabBarController.swift in Sources */,
 				92D7D6532296F297009321AE /* AppDelegate.swift in Sources */,
 				7E7413BC2349069500BF4416 /* AnimatedLoadingView.swift in Sources */,
