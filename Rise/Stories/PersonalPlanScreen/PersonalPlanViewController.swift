@@ -14,7 +14,10 @@ fileprivate let progressTableViewInfo = (nib: UINib(nibName: "ProgressTableViewC
 protocol PersonalPlanViewInput: class {
     func updateProgressView(with progress: Double, maxProgress: String)
     func updatePlanInfo(with info: [String])
+    func showLoading()
     func hideLoading()
+    func showPlanDoesntExistInfo()
+    func hidePlanDoesntExistInfo()
 }
 
 protocol PersonalPlanViewOutput: PersonalPlanDelegate {
@@ -31,7 +34,7 @@ class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var progressTableView: UITableView!
     
     @IBOutlet weak var mainContainerView: UIView!
-    @IBOutlet var loadingView: AnimatedLoadingView!
+    @IBOutlet weak var loadingView: LoadingView!
     
     private var progressCellMaxValue: String?
     private var progressCellValue: Double = 0.0
@@ -51,22 +54,13 @@ class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         loadingView.setupAnimationLayer()
-        loadingView.showLoading()
+        showPlanDoesntExistInfo()
     }
     
     private func configureTableView(tableView: UITableView, info: (nib: UINib, cellID: String)) {
         tableView.register(info.nib, forCellReuseIdentifier: info.cellID)
         tableView.delegate = self
         tableView.dataSource = self
-    }
-    
-    // MARK: - Actions    
-    @IBAction func decreaseButtonSize(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.1, animations: { sender.transform = CGAffineTransform(scaleX: 0.93, y: 0.93) })
-    }
-    
-    @IBAction func backToNormalSize(_ sender: UIButton) {
-        UIView.animate(withDuration: 0.1) { sender.transform = CGAffineTransform.identity }
     }
     
     // MARK: - PersonalPlanViewInput
@@ -81,10 +75,21 @@ class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITable
         progressTableView.reloadData()
     }
     
+    func showPlanDoesntExistInfo() {
+        loadingView.showInfo(with: "You don't have sleep plan yet, go and create one!")
+    }
+    
+    func hidePlanDoesntExistInfo() {
+        loadingView.hideInfo()
+    }
+    
+    func showLoading() {
+        loadingView.showLoading()
+    }
+    
     func hideLoading() {
         loadingView.hideLoading {
             UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction, animations: {
-                self.loadingView.alpha = 0
                 self.mainContainerView.alpha = 1
             })
         }
