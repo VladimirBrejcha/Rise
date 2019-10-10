@@ -2,12 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/vladimirbrejcha/Desktop/Projects/RiseApp/Rise/Rise/DataManaging/Local/RisePersonalPlan+CoreDataClass.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/vladimirbrejcha/Desktop/Projects/RiseApp/Rise/Rise/DataManaging/Local/RisePersonalPlan+CoreDataProperties.swift">
-   </FileRef>
-   <FileRef
       location = "group:Rise.xcodeproj">
    </FileRef>
    <FileRef
