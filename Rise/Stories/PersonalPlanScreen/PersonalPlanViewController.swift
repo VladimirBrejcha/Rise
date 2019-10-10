@@ -21,6 +21,8 @@ protocol PersonalPlanViewInput: class {
 }
 
 protocol PersonalPlanViewOutput: PersonalPlanDelegate {
+    func viewDidLoad()
+    func viewDidAppear()
     func changeButtonPressed()
 }
 
@@ -49,12 +51,14 @@ class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITable
         
         configureTableView(tableView: infoTableView, info: infoTableViewInfo)
         configureTableView(tableView: progressTableView, info: progressTableViewInfo)
+        
+        output.viewDidLoad()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         loadingView.setupAnimationLayer()
-        showPlanDoesntExistInfo()
+        output.viewDidAppear()
     }
     
     private func configureTableView(tableView: UITableView, info: (nib: UINib, cellID: String)) {

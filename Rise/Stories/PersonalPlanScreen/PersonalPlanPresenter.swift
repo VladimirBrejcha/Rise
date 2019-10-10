@@ -12,10 +12,23 @@ class PersonalPlanPresenter: PersonalPlanViewOutput {
     weak var view: PersonalPlanViewInput?
     
     var personalPlanHelper: PersonalPlanHelper?
+    private var coreDataManager: CoreDataManager! { return sharedCoreDataManager }
     
     init(view: PersonalPlanViewInput) { self.view = view }
     
     // MARK: - PersonalPlanViewOutput
+    func viewDidLoad() {
+
+    }
+    
+    func viewDidAppear() {
+        if coreDataManager.currentPlan != nil {
+            
+        } else {
+            view?.showPlanDoesntExistInfo()
+        }Rise/Stories/PersonalPlanScreen/PersonalPlanViewController.swift
+    }
+    
     func changeButtonPressed() {
     }
     
