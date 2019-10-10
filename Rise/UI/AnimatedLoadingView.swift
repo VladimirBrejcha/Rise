@@ -16,6 +16,8 @@ class AnimatedLoadingView: DesignableContainerView {
         return layer
     }()
     
+    
+    
     func setupAnimationLayer() {
         layer.sublayers = nil
         animationLayer.frame = bounds
