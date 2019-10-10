@@ -38,6 +38,8 @@
 		7EB2694E234E5816008AEB3D /* RisePersonalPlan+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB2694C234E5816008AEB3D /* RisePersonalPlan+CoreDataClass.swift */; };
 		7EB26951234F9972008AEB3D /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB26950234F9972008AEB3D /* NibLoadable.swift */; };
 		7EB26953234F99AE008AEB3D /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB26952234F99AE008AEB3D /* Button.swift */; };
+		7EB26957234FA6EB008AEB3D /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB26956234FA6EB008AEB3D /* LoadingView.swift */; };
+		7EB26959234FA6F7008AEB3D /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB26958234FA6F7008AEB3D /* LoadingView.xib */; };
 		7EB9003E23256AC9006EB9A8 /* DesignableContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9003D23256AC9006EB9A8 /* DesignableContainerView.swift */; };
 		7EB9004023256BF3006EB9A8 /* CollectionViewWithSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9003F23256BF3006EB9A8 /* CollectionViewWithSegmentedControl.swift */; };
 		7EB9004423298902006EB9A8 /* ProgressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9004223298902006EB9A8 /* ProgressTableViewCell.swift */; };
@@ -120,6 +122,8 @@
 		7EB2694C234E5816008AEB3D /* RisePersonalPlan+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RisePersonalPlan+CoreDataClass.swift"; path = "/Users/vladimirbrejcha/Desktop/Projects/RiseApp/Rise/Rise/DataManaging/Local/RisePersonalPlan+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		7EB26950234F9972008AEB3D /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 		7EB26952234F99AE008AEB3D /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		7EB26956234FA6EB008AEB3D /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		7EB26958234FA6F7008AEB3D /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		7EB9003D23256AC9006EB9A8 /* DesignableContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableContainerView.swift; sourceTree = "<group>"; };
 		7EB9003F23256BF3006EB9A8 /* CollectionViewWithSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewWithSegmentedControl.swift; sourceTree = "<group>"; };
 		7EB9004223298902006EB9A8 /* ProgressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTableViewCell.swift; sourceTree = "<group>"; };
@@ -443,6 +447,8 @@
 				7EA0924122C8CF820019F2E9 /* CustomTransition.swift */,
 				7E7413BB2349069500BF4416 /* AnimatedLoadingView.swift */,
 				7EB26952234F99AE008AEB3D /* Button.swift */,
+				7EB26956234FA6EB008AEB3D /* LoadingView.swift */,
+				7EB26958234FA6F7008AEB3D /* LoadingView.xib */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -579,6 +585,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EB9004523298902006EB9A8 /* ProgressTableViewCell.xib in Resources */,
+				7EB26959234FA6F7008AEB3D /* LoadingView.xib in Resources */,
 				92D7D65D2296F298009321AE /* LaunchScreen.storyboard in Resources */,
 				7ED962B02336649E00CD2408 /* PlanInfoTableViewCell.xib in Resources */,
 				92B78CFB229FAF6C0087240B /* ExpandingCell.xib in Resources */,
@@ -738,6 +745,7 @@
 				922032EA22998F3D0006F92B /* SetupPlanTableViewController.swift in Sources */,
 				7E31497D23425CA600941606 /* TableViewDataSource.swift in Sources */,
 				922032F0229BF2890006F92B /* Constants.swift in Sources */,
+				7EB26957234FA6EB008AEB3D /* LoadingView.swift in Sources */,
 				92E77AF822A5303400E5E21C /* SettingsViewController.swift in Sources */,
 				7EB1C03F23412AAA0028237E /* PersonalPlanBuilder.swift in Sources */,
 				7E41982423254C36007867AB /* SegmentedControlView.swift in Sources */,
