@@ -15,11 +15,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="280" height="198"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b8Z-Gu-TIM" customClass="AnimatedLoadingView" customModule="Rise" customModuleProvider="target">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b8Z-Gu-TIM" customClass="LoadingView" customModule="Rise" customModuleProvider="target">
                         <rect key="frame" x="5" y="0.0" width="270" height="95"/>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U93-Yo-WF6" customClass="AnimatedLoadingView" customModule="Rise" customModuleProvider="target">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U93-Yo-WF6" customClass="LoadingView" customModule="Rise" customModuleProvider="target">
                         <rect key="frame" x="5" y="103" width="270" height="95"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ska-F4-EGl" customClass="DesignableContainerView" customModule="Rise" customModuleProvider="target">
                         <rect key="frame" x="5" y="0.0" width="270" height="95"/>
@@ -182,9 +183,9 @@
             <size key="customSize" width="280" height="198"/>
             <connections>
                 <outlet property="planContainerView" destination="0lH-Mc-ICP" id="ohi-y6-T4o"/>
-                <outlet property="planLoadingView" destination="U93-Yo-WF6" id="czm-Vc-7KM"/>
+                <outlet property="planLoadingView" destination="U93-Yo-WF6" id="cbj-7h-85Q"/>
                 <outlet property="sunContainerView" destination="Ska-F4-EGl" id="jKY-2d-aqc"/>
-                <outlet property="sunLoadingView" destination="b8Z-Gu-TIM" id="vbD-6h-17J"/>
+                <outlet property="sunLoadingView" destination="b8Z-Gu-TIM" id="7lR-MA-aIf"/>
                 <outlet property="sunriseTimeLabel" destination="W3a-as-p6Y" id="ybx-Va-wJi"/>
                 <outlet property="sunsetTimeLabel" destination="MgN-sD-dqT" id="7ep-t4-AS4"/>
                 <outlet property="toSleepTimeSleep" destination="n5E-k2-rRw" id="9xj-LV-uMp"/>

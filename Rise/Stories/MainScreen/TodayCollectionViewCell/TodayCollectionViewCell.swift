@@ -19,10 +19,10 @@ class TodayCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var sunsetTimeLabel: UILabel!
     @IBOutlet weak var wakeUpTimeLabel: UILabel!
     @IBOutlet weak var toSleepTimeSleep: UILabel!
-    @IBOutlet weak var sunLoadingView: AnimatedLoadingView!
+    @IBOutlet weak var sunLoadingView: LoadingView!
     @IBOutlet weak var sunContainerView: UIView!
     @IBOutlet weak var planContainerView: UIView!
-    @IBOutlet weak var planLoadingView: AnimatedLoadingView!
+    @IBOutlet weak var planLoadingView: LoadingView!
     
     private var dataManager: CoreDataManager! {
         return sharedCoreDataManager
@@ -51,9 +51,13 @@ class TodayCollectionViewCell: UICollectionViewCell {
                                                        animations: { self.sunContainerView.alpha = 1 }) }
             : sunLoadingView.showLoading()
         
-        isPlanDataLoaded
-            ? planLoadingView.hideLoading { UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction,
-                                                       animations: { self.planContainerView.alpha = 1 }) }
-            : planLoadingView.showLoading()
+        if isPlanDataLoaded {
+            planLoadingView.hideSelf {
+                UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction,
+                               animations: { self.planContainerView.alpha = 1 }) }
+        } else {
+            planLoadingView.showInfo(with: "You don't have sleep plan yet, go and create one!")
+        }
     }
+    
 }
