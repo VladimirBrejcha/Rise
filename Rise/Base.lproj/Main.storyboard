@@ -375,22 +375,12 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="QRB-lf-jzj">
                                 <rect key="frame" x="10" y="749" width="394" height="44"/>
                                 <subviews>
-                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hRZ-Gb-VtP">
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hRZ-Gb-VtP" customClass="Button" customModule="Rise" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="44"/>
                                         <color key="backgroundColor" white="1" alpha="0.070000000000000007" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                         <state key="normal" title="Change"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <integer key="value" value="12"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="backToNormalSize:" destination="P26-iI-q7r" eventType="touchDragOutside" id="5HU-uY-UiG"/>
-                                            <action selector="backToNormalSize:" destination="P26-iI-q7r" eventType="touchUpInside" id="O7W-8a-qm5"/>
-                                            <action selector="backToNormalSize:" destination="P26-iI-q7r" eventType="touchCancel" id="y7P-Fp-EQF"/>
-                                            <action selector="decreaseButtonSize:" destination="P26-iI-q7r" eventType="touchDown" id="aCU-Cr-Gb4"/>
-                                            <action selector="decreaseButtonSize:" destination="P26-iI-q7r" eventType="touchDragInside" id="qZg-Au-yHt"/>
                                             <segue destination="FEH-Ao-bw3" kind="show" id="rx7-Pq-bcK"/>
                                         </connections>
                                     </button>
