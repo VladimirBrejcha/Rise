@@ -425,9 +425,9 @@
                                             <constraint firstItem="uTf-Eb-nKG" firstAttribute="top" secondItem="IaP-qe-KSL" secondAttribute="bottom" constant="4" id="uDW-xv-0HF"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcl-0z-OKT" customClass="AnimatedLoadingView" customModule="Rise" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcl-0z-OKT" customClass="LoadingView" customModule="Rise" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="394"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -465,7 +465,7 @@
                     <connections>
                         <outlet property="infoTableView" destination="uTf-Eb-nKG" id="cOk-gE-pty"/>
                         <outlet property="infomationLabel" destination="l6b-Je-AIM" id="1cG-LH-SB3"/>
-                        <outlet property="loadingView" destination="fcl-0z-OKT" id="3OV-eZ-P1y"/>
+                        <outlet property="loadingView" destination="fcl-0z-OKT" id="YDj-pl-iJC"/>
                         <outlet property="mainContainerView" destination="h7m-Jx-GLK" id="r1u-wN-qb5"/>
                         <outlet property="planButton" destination="hRZ-Gb-VtP" id="ywd-o7-v4z"/>
                         <outlet property="progressTableView" destination="IaP-qe-KSL" id="8P0-MY-JbL"/>
