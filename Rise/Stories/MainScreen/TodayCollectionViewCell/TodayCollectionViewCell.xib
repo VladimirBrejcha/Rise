@@ -18,6 +18,9 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b8Z-Gu-TIM" customClass="AnimatedLoadingView" customModule="Rise" customModuleProvider="target">
                         <rect key="frame" x="5" y="0.0" width="270" height="95"/>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U93-Yo-WF6" customClass="AnimatedLoadingView" customModule="Rise" customModuleProvider="target">
+                        <rect key="frame" x="5" y="103" width="270" height="95"/>
+                    </view>
                     <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ska-F4-EGl" customClass="DesignableContainerView" customModule="Rise" customModuleProvider="target">
                         <rect key="frame" x="5" y="0.0" width="270" height="95"/>
                         <subviews>
@@ -86,7 +89,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0lH-Mc-ICP">
+                    <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0lH-Mc-ICP">
                         <rect key="frame" x="5" y="103" width="270" height="95"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jeV-0j-REA">
@@ -161,12 +164,16 @@
                 <constraint firstAttribute="trailing" secondItem="Ska-F4-EGl" secondAttribute="trailing" constant="5" id="1zv-Q7-wRe"/>
                 <constraint firstAttribute="trailing" secondItem="0lH-Mc-ICP" secondAttribute="trailing" constant="5" id="2iW-dg-hYC"/>
                 <constraint firstItem="b8Z-Gu-TIM" firstAttribute="top" secondItem="Ska-F4-EGl" secondAttribute="top" id="79T-W6-ioc"/>
+                <constraint firstItem="U93-Yo-WF6" firstAttribute="leading" secondItem="0lH-Mc-ICP" secondAttribute="leading" id="AJ8-jH-Tbq"/>
                 <constraint firstItem="0lH-Mc-ICP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="As0-62-Aa9"/>
                 <constraint firstItem="Ska-F4-EGl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="FyZ-Yn-fuB"/>
+                <constraint firstItem="U93-Yo-WF6" firstAttribute="trailing" secondItem="0lH-Mc-ICP" secondAttribute="trailing" id="Lwl-pf-Xpe"/>
                 <constraint firstAttribute="bottom" secondItem="0lH-Mc-ICP" secondAttribute="bottom" id="MRc-lr-hcP"/>
                 <constraint firstItem="b8Z-Gu-TIM" firstAttribute="trailing" secondItem="Ska-F4-EGl" secondAttribute="trailing" id="Qn0-gw-Hj1"/>
                 <constraint firstItem="0lH-Mc-ICP" firstAttribute="top" secondItem="Ska-F4-EGl" secondAttribute="bottom" constant="8" id="UqY-6W-Z2k"/>
+                <constraint firstItem="U93-Yo-WF6" firstAttribute="bottom" secondItem="0lH-Mc-ICP" secondAttribute="bottom" id="fea-bB-mPc"/>
                 <constraint firstItem="b8Z-Gu-TIM" firstAttribute="bottom" secondItem="Ska-F4-EGl" secondAttribute="bottom" id="hap-5l-eX4"/>
+                <constraint firstItem="U93-Yo-WF6" firstAttribute="top" secondItem="0lH-Mc-ICP" secondAttribute="top" id="hbi-5p-37g"/>
                 <constraint firstItem="b8Z-Gu-TIM" firstAttribute="leading" secondItem="Ska-F4-EGl" secondAttribute="leading" id="otS-MG-xha"/>
                 <constraint firstItem="Ska-F4-EGl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="q0k-wR-Gyt"/>
                 <constraint firstItem="0lH-Mc-ICP" firstAttribute="height" secondItem="Ska-F4-EGl" secondAttribute="height" id="r1s-PT-rzT"/>
@@ -174,8 +181,10 @@
             </constraints>
             <size key="customSize" width="280" height="198"/>
             <connections>
-                <outlet property="loadingView" destination="b8Z-Gu-TIM" id="vbD-6h-17J"/>
-                <outlet property="sunContainerView" destination="Ska-F4-EGl" id="NdA-WY-jIN"/>
+                <outlet property="planContainerView" destination="0lH-Mc-ICP" id="ohi-y6-T4o"/>
+                <outlet property="planLoadingView" destination="U93-Yo-WF6" id="czm-Vc-7KM"/>
+                <outlet property="sunContainerView" destination="Ska-F4-EGl" id="jKY-2d-aqc"/>
+                <outlet property="sunLoadingView" destination="b8Z-Gu-TIM" id="vbD-6h-17J"/>
                 <outlet property="sunriseTimeLabel" destination="W3a-as-p6Y" id="ybx-Va-wJi"/>
                 <outlet property="sunsetTimeLabel" destination="MgN-sD-dqT" id="7ep-t4-AS4"/>
                 <outlet property="toSleepTimeSleep" destination="n5E-k2-rRw" id="9xj-LV-uMp"/>
