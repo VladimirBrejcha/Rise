@@ -15,10 +15,10 @@ enum ExpandingCellType {
 }
 
 protocol ExpandingCellDelegate: class {
-    func cellValueUpdated(with value: PickerOutputValue, cell: ExpandingCell)
+    func cellValueUpdated(with value: PickerOutputValue, cell: SectionedTableViewCell)
 }
 
-final class ExpandingCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate {
+final class SectionedTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate {
     weak var delegate: ExpandingCellDelegate?
     
     @IBOutlet private weak var leftLabel: UILabel!
@@ -109,7 +109,7 @@ final class ExpandingCell: UITableViewCell, UIPickerViewDataSource, UIPickerView
 }
 
 // MARK: UIPickerViewDataSource && UIPickerViewDelegate
-extension ExpandingCell {
+extension SectionedTableViewCell {
     func numberOfComponents(in pickerView: UIPickerView) -> Int { return 1 }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int { return textForPicker?.count ?? 0 }
