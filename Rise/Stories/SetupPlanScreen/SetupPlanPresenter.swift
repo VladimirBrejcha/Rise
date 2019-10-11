@@ -8,15 +8,12 @@
 
 import Foundation
 
-struct DataForPicker {
+struct DataForPicker { // TODO: - Picker input and output need refactoringRise/Stories/SetupPlanScreen/SetupPlanPresenter.swift
     static let daysArray = ["Hardcore - 10 days", "Normal - 15 days", "Recommended - 30 days", "Calm - 50 days"]
     static let hoursArray = ["7 hours", "7.5 hours", "Recommended - 8 hours", "8.5 hours", "9 hours"]
     
     private init() { }
 }
-
-fileprivate let daysArray = ["Hardcore - 10 days", "Normal - 15 days", "Recommended - 30 days", "Calm - 50 days"]
-fileprivate let hoursArray = ["7 hours", "7.5 hours", "Recommended - 8 hours", "8.5 hours", "9 hours"]
 
 class SetupPlanPresenter: SetupPlanViewOutput {
     weak var view: SetupPlanViewInput!
@@ -24,10 +21,10 @@ class SetupPlanPresenter: SetupPlanViewOutput {
     private var dataSource: SectionedTableViewDataSource!
     private let datePickerModel = PickerDataModel(tag: 0, labelText: "Choose time", type: .datePicker)
     private let hoursPickerModel = PickerDataModel(tag: 1, labelText: "Choose hours", type: .pickerView,
-                                                   titleForRowArray: hoursArray, defaultRow: 2)
+                                                   titleForRowArray: DataForPicker.hoursArray, defaultRow: 2)
     private let secondDatePickerModel = PickerDataModel(tag: 2, labelText: "Choose time", type: .datePicker)
     private let durationPickerModel = PickerDataModel(tag: 3, labelText: "Choose duration", type: .pickerView,
-                                                      titleForRowArray: daysArray, defaultRow: 2)
+                                                      titleForRowArray: DataForPicker.daysArray, defaultRow: 2)
     
     private let coreDataManager = sharedCoreDataManager
     private var personalPlanModel: PersonalPlanModel? {

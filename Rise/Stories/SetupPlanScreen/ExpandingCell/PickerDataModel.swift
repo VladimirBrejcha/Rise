@@ -12,6 +12,6 @@ struct PickerDataModel {
     var tag: Int
     var labelText: String
     var type: SectionedTableViewCellType
-    var titleForRowArray: [String]?
-    var defaultRow: Int?
+    var titleForRowArray: [String]? // only for pickerView
+    var defaultRow: Int? // only for pickerView
 }
