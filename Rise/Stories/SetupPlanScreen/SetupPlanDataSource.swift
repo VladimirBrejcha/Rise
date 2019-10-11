@@ -8,10 +8,18 @@
 
 import UIKit
 
+fileprivate let sectionedCellID = "SectionedTableViewCell"
+fileprivate let sectionedNibName = "SectionedTableViewCell"
+
+class SectionedTableView: TableView {
+    override var cellID: String { return sectionedCellID }
+    override var nibName: String { return sectionedNibName }
+}
+
 extension TableViewDataSource where Model == PickerDataModel {
-    static func make(for pickerData: [PickerDataModel], reuseIdentifier: String = "expandingCell", output: SetupPlanViewOutput) -> TableViewDataSource {
+    static func make(for pickerData: [PickerDataModel], reuseIdentifier: String = sectionedCellID, output: SetupPlanViewOutput) -> TableViewDataSource {
         return TableViewDataSource(models: pickerData, reuseIdentifier: reuseIdentifier) { (model, cell) in
-            guard let cell = cell as? ExpandingCell else { return }
+            guard let cell = cell as? SectionedTableViewCell else { return }
             cell.cellModel = model
             cell.delegate = output
         }

@@ -10,7 +10,6 @@ import Foundation
 
 struct PersonalTimeCalculator {
     
-    // MARK: Properties
     let wakeUp: Date
     let sleepDuration: Int
     let wentSleepTime: Date

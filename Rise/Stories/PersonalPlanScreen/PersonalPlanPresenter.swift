@@ -26,7 +26,7 @@ class PersonalPlanPresenter: PersonalPlanViewOutput {
             
         } else {
             view?.showPlanDoesntExistInfo()
-        }Rise/Stories/PersonalPlanScreen/PersonalPlanViewController.swift
+        }
     }
     
     func changeButtonPressed() {

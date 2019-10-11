@@ -15,21 +15,25 @@ struct DataForPicker {
     private init() { }
 }
 
-protocol PersonalPlanDelegate: class {
-    func newPlanCreated(_ plan: PersonalPlanModel)
-}
-
 fileprivate let daysArray = ["Hardcore - 10 days", "Normal - 15 days", "Recommended - 30 days", "Calm - 50 days"]
 fileprivate let hoursArray = ["7 hours", "7.5 hours", "Recommended - 8 hours", "8.5 hours", "9 hours"]
 
 class SetupPlanPresenter: SetupPlanViewOutput {
     weak var view: SetupPlanViewInput!
     
-    weak var personalPlanDelegate: PersonalPlanDelegate?
+    private var dataSource: SectionedTableViewDataSource!
+    private let datePickerModel = PickerDataModel(tag: 0, labelText: "Choose time", type: .datePicker)
+    private let hoursPickerModel = PickerDataModel(tag: 1, labelText: "Choose hours", type: .pickerView,
+                                                   titleForRowArray: hoursArray, defaultRow: 2)
+    private let secondDatePickerModel = PickerDataModel(tag: 2, labelText: "Choose time", type: .datePicker)
+    private let durationPickerModel = PickerDataModel(tag: 3, labelText: "Choose duration", type: .pickerView,
+                                                      titleForRowArray: daysArray, defaultRow: 2)
     
-    var dataSource: SectionedTableViewDataSource?
-    
-    private var personalPlanModel: PersonalPlanModel?
+    private var personalPlanModel: PersonalPlanModel? {
+        didSet {
+            
+        }
+    }
     private var wakeUpForModel: Date?
     private var sleepDurationForModel: String?
     private var lastTimeWentSleepForModel: Date?
@@ -39,28 +43,22 @@ class SetupPlanPresenter: SetupPlanViewOutput {
     
     // MARK: - SetupPlanViewOutput
     func viewDidLoad() {
-        let datePickerModel = PickerDataModel(tag: 0, labelText: "Choose time", type: .datePicker)
-        let hoursPickerModel = PickerDataModel(tag: 1, labelText: "Choose hours", type: .pickerView, titleForRowArray: hoursArray, defaultRow: 2)
-        let secondDatePickerModel = PickerDataModel(tag: 2, labelText: "Choose time", type: .datePicker)
-        let durationPickerModel = PickerDataModel(tag: 3, labelText: "Choose duration", type: .pickerView, titleForRowArray: daysArray, defaultRow: 2)
-        
         dataSource = SectionedTableViewDataSource(dataSources:
-            [TableViewDataSource.make(for: [datePickerModel], reuseIdentifier: view.cellID, output: self),
-             TableViewDataSource.make(for: [hoursPickerModel], reuseIdentifier: view.cellID, output: self),
-             TableViewDataSource.make(for: [secondDatePickerModel], reuseIdentifier: view.cellID, output: self),
-             TableViewDataSource.make(for: [durationPickerModel], reuseIdentifier: view.cellID, output: self)])
-        view.setupPlanTableView?.dataSource = dataSource
+            [TableViewDataSource.make(for: [datePickerModel], output: self),
+             TableViewDataSource.make(for: [hoursPickerModel], output: self),
+             TableViewDataSource.make(for: [secondDatePickerModel], output: self),
+             TableViewDataSource.make(for: [durationPickerModel], output: self)])
+        view?.configureTableView(with: dataSource)
     }
     
     func scheduleTapped() {
         view.dismiss()
-        createPlan()
     }
     
-    private func createPlan() { personalPlanDelegate?.newPlanCreated(personalPlanModel!)  }
+//    private func createPlan() { personalPlanDelegate?.newPlanCreated(personalPlanModel!) }
     
     // MARK: - ExpandingCellDelegate
-    func cellValueUpdated(with value: PickerOutputValue, cell: ExpandingCell) {
+    func cellValueUpdated(with value: PickerOutputValue, cell: SectionedTableViewCell) {
         switch cell.tag
         {
         case 0: wakeUpForModel = value.dateValue
@@ -75,8 +73,8 @@ class SetupPlanPresenter: SetupPlanViewOutput {
             let wentSleep = lastTimeWentSleepForModel,
             let planDuration = planDurationForModel else { return }
         print("worked")
-        view?.isScheduleButtonEnabled = true
+        view?.changeScheduleButtonEnableState(true)
         
-        personalPlanModel = PersonalPlanBuilder.buildPlan(wakeUp: wakeUp, wentSleep: wentSleep, sleepDuration: sleepDuration, planDuration: planDuration)
+//        personalPlanModel = PersonalPlanBuilder.buildPlan(wakeUp: wakeUp, wentSleep: wentSleep, sleepDuration: sleepDuration, planDuration: planDuration)
     }
 }

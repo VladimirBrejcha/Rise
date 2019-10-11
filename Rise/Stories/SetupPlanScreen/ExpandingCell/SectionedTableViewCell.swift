@@ -9,17 +9,17 @@
 import UIKit
 import AIFlatSwitch
 
-enum ExpandingCellType {
+enum SectionedTableViewCellType {
     case datePicker
     case pickerView
 }
 
-protocol ExpandingCellDelegate: class {
+protocol SectionedTableViewCellDelegate: AnyObject {
     func cellValueUpdated(with value: PickerOutputValue, cell: SectionedTableViewCell)
 }
 
 final class SectionedTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPickerViewDelegate {
-    weak var delegate: ExpandingCellDelegate?
+    weak var delegate: SectionedTableViewCellDelegate?
     
     @IBOutlet private weak var leftLabel: UILabel!
     @IBOutlet private weak var pickerContainer: UIView!
@@ -46,7 +46,7 @@ final class SectionedTableViewCell: UITableViewCell, UIPickerViewDataSource, UIP
             leftLabel.text = cellModel.labelText
         }
     }
-    private var cellType: ExpandingCellType! {
+    private var cellType: SectionedTableViewCellType! {
         didSet {
             if cellType == .datePicker { picker = UIDatePicker() }
             else if cellType == .pickerView {

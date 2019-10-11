@@ -11,7 +11,7 @@ import UIKit
 struct PickerDataModel {
     var tag: Int
     var labelText: String
-    var type: ExpandingCellType
+    var type: SectionedTableViewCellType
     var titleForRowArray: [String]?
     var defaultRow: Int?
 }
