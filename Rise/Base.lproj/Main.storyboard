@@ -479,7 +479,7 @@
         <scene sceneID="I16-B5-N92">
             <objects>
                 <tableViewController storyboardIdentifier="personal" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FEH-Ao-bw3" customClass="SetupPlanTableViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="grouped" separatorStyle="default" sectionIndexMinimumDisplayRowCount="1" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="9f7-Sd-5cW">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="grouped" separatorStyle="default" sectionIndexMinimumDisplayRowCount="1" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="9f7-Sd-5cW" customClass="SectionedTableView" customModule="Rise" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -495,7 +495,7 @@
                         <sections>
                             <tableViewSection headerTitle="What time do you wish to wake up?" id="9dy-x5-KIg">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="expandingCell" id="hju-yY-8hT" customClass="ExpandingCell" customModule="Rise" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="expandingCell" id="hju-yY-8hT" customClass="SectionedTableViewCell" customModule="Rise" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hju-yY-8hT" id="vcy-9W-r5B">
@@ -508,7 +508,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="How long do you wish to sleep?" id="9g6-82-Eug">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="expandingCell" id="s5D-RW-5ln" customClass="ExpandingCell" customModule="Rise" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="expandingCell" id="s5D-RW-5ln" customClass="SectionedTableViewCell" customModule="Rise" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="155.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="s5D-RW-5ln" id="g1T-wL-4i1">
@@ -521,7 +521,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="When did you fall asleep yesterday?" id="tO5-do-D9b">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="expandingCell" id="Cx9-uf-rJV" customClass="ExpandingCell" customModule="Rise" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="expandingCell" id="Cx9-uf-rJV" customClass="SectionedTableViewCell" customModule="Rise" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="255.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Cx9-uf-rJV" id="GKS-HC-Nna">
@@ -534,7 +534,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Duration" id="U3Q-mH-kvR">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="expandingCell" id="2ou-z7-sco" customClass="ExpandingCell" customModule="Rise" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="expandingCell" id="2ou-z7-sco" customClass="SectionedTableViewCell" customModule="Rise" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="355.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2ou-z7-sco" id="873-XR-e42">
@@ -555,6 +555,7 @@
                     <navigationItem key="navigationItem" id="ik0-Be-uQg"/>
                     <connections>
                         <outlet property="createScheduleButton" destination="W4t-FV-e8q" id="JNe-Sc-vQV"/>
+                        <outlet property="sectionedTableView" destination="9f7-Sd-5cW" id="DxB-p4-Wxy"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tOv-yo-py0" userLabel="First Responder" sceneMemberID="firstResponder"/>
