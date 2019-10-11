@@ -11,7 +11,7 @@ import UIKit
 fileprivate let infoTableViewInfo = (nib: UINib(nibName: "PlanInfoTableViewCell", bundle: nil), cellID: "infoCell")
 fileprivate let progressTableViewInfo = (nib: UINib(nibName: "ProgressTableViewCell", bundle: nil), cellID: "progressCell")
 
-protocol PersonalPlanViewInput: class {
+protocol PersonalPlanViewInput: AnyObject {
     func updateProgressView(with progress: Double, maxProgress: String)
     func updatePlanInfo(with info: [String])
     func showLoading()
@@ -20,7 +20,7 @@ protocol PersonalPlanViewInput: class {
     func hidePlanDoesntExistInfo()
 }
 
-protocol PersonalPlanViewOutput: PersonalPlanDelegate {
+protocol PersonalPlanViewOutput: AnyObject {
     func viewDidLoad()
     func viewDidAppear()
     func changeButtonPressed()

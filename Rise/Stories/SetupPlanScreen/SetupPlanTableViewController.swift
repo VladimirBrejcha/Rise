@@ -16,7 +16,6 @@ protocol SetupPlanViewInput: class {
 }
 
 protocol SetupPlanViewOutput: SectionedTableViewCellDelegate {
-    var personalPlanDelegate: PersonalPlanDelegate? { get set }
     func scheduleTapped()
     func viewDidLoad()
 }
