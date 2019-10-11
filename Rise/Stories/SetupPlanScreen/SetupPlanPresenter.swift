@@ -29,9 +29,11 @@ class SetupPlanPresenter: SetupPlanViewOutput {
     private let durationPickerModel = PickerDataModel(tag: 3, labelText: "Choose duration", type: .pickerView,
                                                       titleForRowArray: daysArray, defaultRow: 2)
     
+    private let coreDataManager = sharedCoreDataManager
     private var personalPlanModel: PersonalPlanModel? {
         didSet {
-            
+            guard let model = personalPlanModel else { return }
+            coreDataManager.createObject(model)
         }
     }
     private var wakeUpForModel: Date?
@@ -55,8 +57,6 @@ class SetupPlanPresenter: SetupPlanViewOutput {
         view.dismiss()
     }
     
-//    private func createPlan() { personalPlanDelegate?.newPlanCreated(personalPlanModel!) }
-    
     // MARK: - ExpandingCellDelegate
     func cellValueUpdated(with value: PickerOutputValue, cell: SectionedTableViewCell) {
         switch cell.tag
@@ -72,9 +72,9 @@ class SetupPlanPresenter: SetupPlanViewOutput {
             let sleepDuration = sleepDurationForModel,
             let wentSleep = lastTimeWentSleepForModel,
             let planDuration = planDurationForModel else { return }
-        print("worked")
+        
         view?.changeScheduleButtonEnableState(true)
         
-//        personalPlanModel = PersonalPlanBuilder.buildPlan(wakeUp: wakeUp, wentSleep: wentSleep, sleepDuration: sleepDuration, planDuration: planDuration)
+        personalPlanModel = PersonalPlanBuilder.buildPlan(wakeUp: wakeUp, wentSleep: wentSleep, sleepDuration: sleepDuration, planDuration: planDuration)
     }
 }
