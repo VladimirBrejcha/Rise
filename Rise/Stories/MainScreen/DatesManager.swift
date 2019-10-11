@@ -14,8 +14,11 @@ struct SunModel {
 }
 
 class DatesConverter {
+    
     class func formatDateToHHmm(date: Date) -> String {
-        return Formater.dateFormatter.string(from: date) // TODO: move formatter to this file
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        return dateFormatter.string(from: date)
     }
     
     class func buildDate(timestamp: Int) -> Date {
@@ -38,4 +41,5 @@ class DatesConverter {
             return tomorrowDate
         }
     }
+    
 }
