@@ -3,18 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		7E0A8F3C231F04BA0036105C /* DatesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0A8F3B231F04BA0036105C /* DatesManager.swift */; };
-		7E1F3AA3231D98FC00F60577 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1F3AA2231D98FC00F60577 /* JSONParser.swift */; };
 		7E31497D23425CA600941606 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31497C23425CA600941606 /* TableViewDataSource.swift */; };
 		7E31497F23425D3700941606 /* SetupPlanDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31497E23425D3700941606 /* SetupPlanDataSource.swift */; };
 		7E4198212323CA7F007867AB /* TodayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E41981F2323CA7F007867AB /* TodayCollectionViewCell.swift */; };
 		7E4198222323CA7F007867AB /* TodayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E4198202323CA7F007867AB /* TodayCollectionViewCell.xib */; };
 		7E41982423254C36007867AB /* SegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E41982323254C36007867AB /* SegmentedControlView.swift */; };
 		7E41982623254F1A007867AB /* SegmentedControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E41982523254F1A007867AB /* SegmentedControlButton.swift */; };
+		7E4389142351B7A70059DF1C /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4389132351B7A70059DF1C /* Repository.swift */; };
+		7E438916235230800059DF1C /* PrivateKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E438915235230800059DF1C /* PrivateKeys.swift */; };
 		7E4901862340DD810034521E /* PersonalPlanData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E4901842340DD810034521E /* PersonalPlanData.xcdatamodeld */; };
 		7E695A34234A675F0098213D /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E695A33234A675F0098213D /* CollectionViewDataSource.swift */; };
 		7E7413BC2349069500BF4416 /* AnimatedLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7413BB2349069500BF4416 /* AnimatedLoadingView.swift */; };
@@ -27,7 +28,6 @@
 		7E98FE6A231C481D0065FB09 /* WelcomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE69231C481D0065FB09 /* WelcomePageViewController.swift */; };
 		7E98FE6C231C482B0065FB09 /* LocationPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE6B231C482B0065FB09 /* LocationPermissionsViewController.swift */; };
 		7E98FE70231C49360065FB09 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE6F231C49360065FB09 /* DataBaseManager.swift */; };
-		7E98FE72231D973B0065FB09 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE71231D973B0065FB09 /* NetworkManager.swift */; };
 		7EA0924222C8CF820019F2E9 /* CustomTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA0924122C8CF820019F2E9 /* CustomTransition.swift */; };
 		7EB1C0332340F9550028237E /* PersonalPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE939162340F68800FE9954 /* PersonalPlanViewController.swift */; };
 		7EB1C0372340FC6B0028237E /* PersonalPlanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1C0362340FC6B0028237E /* PersonalPlanModel.swift */; };
@@ -86,13 +86,14 @@
 
 /* Begin PBXFileReference section */
 		7E0A8F3B231F04BA0036105C /* DatesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatesManager.swift; sourceTree = "<group>"; };
-		7E1F3AA2231D98FC00F60577 /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 		7E31497C23425CA600941606 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		7E31497E23425D3700941606 /* SetupPlanDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPlanDataSource.swift; sourceTree = "<group>"; };
 		7E41981F2323CA7F007867AB /* TodayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCollectionViewCell.swift; sourceTree = "<group>"; };
 		7E4198202323CA7F007867AB /* TodayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayCollectionViewCell.xib; sourceTree = "<group>"; };
 		7E41982323254C36007867AB /* SegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlView.swift; sourceTree = "<group>"; };
 		7E41982523254F1A007867AB /* SegmentedControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlButton.swift; sourceTree = "<group>"; };
+		7E4389132351B7A70059DF1C /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		7E438915235230800059DF1C /* PrivateKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKeys.swift; sourceTree = "<group>"; };
 		7E4901852340DD810034521E /* PersonalPlanData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonalPlanData.xcdatamodel; sourceTree = "<group>"; };
 		7E695A33234A675F0098213D /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		7E7413BB2349069500BF4416 /* AnimatedLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedLoadingView.swift; sourceTree = "<group>"; };
@@ -105,7 +106,6 @@
 		7E98FE69231C481D0065FB09 /* WelcomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomePageViewController.swift; sourceTree = "<group>"; };
 		7E98FE6B231C482B0065FB09 /* LocationPermissionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPermissionsViewController.swift; sourceTree = "<group>"; };
 		7E98FE6F231C49360065FB09 /* DataBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
-		7E98FE71231D973B0065FB09 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		7EA0924122C8CF820019F2E9 /* CustomTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTransition.swift; sourceTree = "<group>"; };
 		7EB1C0362340FC6B0028237E /* PersonalPlanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPlanModel.swift; sourceTree = "<group>"; };
 		7EB1C0382340FDB00028237E /* SetupPlanPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPlanPresenter.swift; sourceTree = "<group>"; };
@@ -179,8 +179,6 @@
 		7E0A8F3A231F03170036105C /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				7E98FE71231D973B0065FB09 /* NetworkManager.swift */,
-				7E1F3AA2231D98FC00F60577 /* JSONParser.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -263,6 +261,7 @@
 			children = (
 				7EB1C0352340FA9A0028237E /* Local */,
 				7E0A8F3A231F03170036105C /* Network */,
+				7E4389132351B7A70059DF1C /* Repository.swift */,
 			);
 			path = DataManaging;
 			sourceTree = "<group>";
@@ -311,6 +310,7 @@
 				92D7D65E2296F298009321AE /* Info.plist */,
 				92D7D65B2296F298009321AE /* LaunchScreen.storyboard */,
 				92D7D6592296F298009321AE /* Assets.xcassets */,
+				7E438915235230800059DF1C /* PrivateKeys.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -518,7 +518,7 @@
 				};
 			};
 			buildConfigurationList = 92D7D64A2296F297009321AE /* Build configuration list for PBXProject "Rise" */;
-			compatibilityVersion = "Xcode 10.0";
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -577,7 +577,6 @@
 				7EB26953234F99AE008AEB3D /* Button.swift in Sources */,
 				7EB1C0332340F9550028237E /* PersonalPlanViewController.swift in Sources */,
 				92E77AFA22A5304400E5E21C /* MainScreenViewController.swift in Sources */,
-				7E1F3AA3231D98FC00F60577 /* JSONParser.swift in Sources */,
 				7E31497F23425D3700941606 /* SetupPlanDataSource.swift in Sources */,
 				7EB9004423298902006EB9A8 /* ProgressTableViewCell.swift in Sources */,
 				7E98FE6A231C481D0065FB09 /* WelcomePageViewController.swift in Sources */,
@@ -588,6 +587,7 @@
 				7EB90047232AB9EB006EB9A8 /* ProgressBar.swift in Sources */,
 				7E98FE6C231C482B0065FB09 /* LocationPermissionsViewController.swift in Sources */,
 				7EB1C0372340FC6B0028237E /* PersonalPlanModel.swift in Sources */,
+				7E4389142351B7A70059DF1C /* Repository.swift in Sources */,
 				92D12FD622A4045E0093B0A3 /* PickerDataModel.swift in Sources */,
 				7E4198212323CA7F007867AB /* TodayCollectionViewCell.swift in Sources */,
 				7EB9003E23256AC9006EB9A8 /* DesignableContainerView.swift in Sources */,
@@ -595,7 +595,6 @@
 				92D41C2622AC04DF00706CD3 /* ArrayManager.swift in Sources */,
 				7E695A34234A675F0098213D /* CollectionViewDataSource.swift in Sources */,
 				7EB1C03D23412A9C0028237E /* PersonalPlanHelper.swift in Sources */,
-				7E98FE72231D973B0065FB09 /* NetworkManager.swift in Sources */,
 				92BC919422AB24D800BB1D19 /* GradientManager.swift in Sources */,
 				7E98FE61231C2F340065FB09 /* LocationManager.swift in Sources */,
 				7EB2694E234E5816008AEB3D /* RisePersonalPlan+CoreDataClass.swift in Sources */,
@@ -620,6 +619,7 @@
 				7E8C6B982350FB9C0086162F /* TableView.swift in Sources */,
 				7E41982423254C36007867AB /* SegmentedControlView.swift in Sources */,
 				7EB9004023256BF3006EB9A8 /* CollectionViewWithSegmentedControl.swift in Sources */,
+				7E438916235230800059DF1C /* PrivateKeys.swift in Sources */,
 				7ED962AC2336334A00CD2408 /* AnimationManager.swift in Sources */,
 				7E98FE65231C30C10065FB09 /* UIHelper.swift in Sources */,
 			);
@@ -727,7 +727,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -782,7 +782,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
