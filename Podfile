@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+ platform :ios, '12.0'
 
 target 'Rise' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
@@ -8,8 +8,6 @@ target 'Rise' do
   # Pods for Rise
 pod 'AnimatedGradientView', :git => 'https://github.com/rwbutler/AnimatedGradientView.git', :branch => 'swift-5'
 pod 'AIFlatSwitch'
-pod 'Alamofire'
-pod 'SwiftyJSON'
 
   target 'RiseTests' do
     inherit! :search_paths

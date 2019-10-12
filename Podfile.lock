@@ -1,20 +1,14 @@
 PODS:
   - AIFlatSwitch (1.0.7)
-  - Alamofire (4.9.0)
   - AnimatedGradientView (2.0.0)
-  - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
   - AIFlatSwitch
-  - Alamofire
   - AnimatedGradientView (from `https://github.com/rwbutler/AnimatedGradientView.git`, branch `swift-5`)
-  - SwiftyJSON
 
 SPEC REPOS:
   trunk:
     - AIFlatSwitch
-    - Alamofire
-    - SwiftyJSON
 
 EXTERNAL SOURCES:
   AnimatedGradientView:
@@ -28,10 +22,8 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AIFlatSwitch: fd56a5e6ab8769f0b52cef815c4f071e83050352
-  Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
   AnimatedGradientView: c80156d88aba16953af9d381b216ee9bc22ea945
-  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: db0247190749076fb9a032f531ed069e32d5b0ad
+PODFILE CHECKSUM: 36b1402ce396b17e9bd3641d8f1d66c4a11edd7f
 
 COCOAPODS: 1.8.3
