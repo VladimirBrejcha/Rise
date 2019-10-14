@@ -54,6 +54,7 @@
 		7ED962AC2336334A00CD2408 /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED962AB2336334A00CD2408 /* AnimationManager.swift */; };
 		7ED962AF2336649E00CD2408 /* PlanInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED962AD2336649E00CD2408 /* PlanInfoTableViewCell.swift */; };
 		7ED962B02336649E00CD2408 /* PlanInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ED962AE2336649E00CD2408 /* PlanInfoTableViewCell.xib */; };
+		7EDD73492354E1CD00C5D1F9 /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDD73482354E1CD00C5D1F9 /* PersistentContainer.swift */; };
 		922032EA22998F3D0006F92B /* SetupPlanTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922032E922998F3D0006F92B /* SetupPlanTableViewController.swift */; };
 		92B78CFA229FAF6C0087240B /* SectionedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B78CF8229FAF6C0087240B /* SectionedTableViewCell.swift */; };
 		92B78CFB229FAF6C0087240B /* SectionedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92B78CF9229FAF6C0087240B /* SectionedTableViewCell.xib */; };
@@ -137,6 +138,7 @@
 		7ED962AB2336334A00CD2408 /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
 		7ED962AD2336649E00CD2408 /* PlanInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanInfoTableViewCell.swift; sourceTree = "<group>"; };
 		7ED962AE2336649E00CD2408 /* PlanInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanInfoTableViewCell.xib; sourceTree = "<group>"; };
+		7EDD73482354E1CD00C5D1F9 /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
 		7EE939162340F68800FE9954 /* PersonalPlanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalPlanViewController.swift; sourceTree = "<group>"; };
 		922032E922998F3D0006F92B /* SetupPlanTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPlanTableViewController.swift; sourceTree = "<group>"; };
 		92B78CF8229FAF6C0087240B /* SectionedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedTableViewCell.swift; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				7E98FE6F231C49360065FB09 /* DataBaseManager.swift */,
+				7EDD73482354E1CD00C5D1F9 /* PersistentContainer.swift */,
 				7E4901842340DD810034521E /* PersonalPlanData.xcdatamodeld */,
 			);
 			path = Local;
@@ -647,6 +650,7 @@
 				7E31497D23425CA600941606 /* TableViewDataSource.swift in Sources */,
 				7EB26957234FA6EB008AEB3D /* LoadingView.swift in Sources */,
 				92E77AF822A5303400E5E21C /* SettingsViewController.swift in Sources */,
+				7EDD73492354E1CD00C5D1F9 /* PersistentContainer.swift in Sources */,
 				7EB1C03F23412AAA0028237E /* PersonalPlanBuilder.swift in Sources */,
 				7E8C6B982350FB9C0086162F /* TableView.swift in Sources */,
 				7E41982423254C36007867AB /* SegmentedControlView.swift in Sources */,

@@ -28,13 +28,14 @@ class Repository: RiseRepository {
         
         localDataSource.requestSunForecast(for: numberOfDays, at: startingDate, with: location)
         { result in
-            if case .failure (let error) = result {
+            if case .failure (let error) = result
+            {
                 print(error)
                 self.remoteDataSource.requestSunForecast(for: numberOfDays, at: startingDate, with: location)
                 { result in
                     if case .failure (let error) = result { completion(.failure(error)) }
                     else if case .success (let sunTimeModelArray) = result {
-                        sunTimeModelArray.forEach { self.localDataSource.createSunObject($0) }
+                        sunTimeModelArray.forEach { self.localDataSource.createSunTimeObject(with: $0) }
                         completion(.success(sunTimeModelArray)) }
                 }
             }
@@ -52,7 +53,7 @@ class Repository: RiseRepository {
                     { result in
                         if case .failure (let error) = result { completion(.failure(error)) }
                         else if case .success (let sunTimeModelArray) = result {
-                            sunTimeModelArray.forEach { self.localDataSource.createSunObject($0) }
+                            sunTimeModelArray.forEach { self.localDataSource.createSunTimeObject(with: $0) }
                             sortedLocalSunTimeModelArray.append(contentsOf: sunTimeModelArray)
                             completion(.success(sortedLocalSunTimeModelArray)) }
                     }
