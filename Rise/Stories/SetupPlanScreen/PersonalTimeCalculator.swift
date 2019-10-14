@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct PersonalTimeCalculator {
+class PersonalTimeCalculator {
     
     let wakeUp: Date
     let sleepDuration: Int

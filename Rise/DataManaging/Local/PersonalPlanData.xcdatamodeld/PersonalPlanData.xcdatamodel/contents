@@ -9,7 +9,13 @@
         <attribute name="startDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="wakeUpTime" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
+    <entity name="SunTime" representedClassName="RiseSunTime" syncable="YES">
+        <attribute name="day" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="sunrise" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="sunset" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
     <elements>
         <element name="PersonalPlan" positionX="-63" positionY="-18" width="128" height="148"/>
+        <element name="SunTime" positionX="-63" positionY="36" width="128" height="88"/>
     </elements>
 </model>

@@ -10,15 +10,14 @@
 import Foundation
 import CoreData
 
-
 extension RiseSunTime {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<RiseSunTime> {
         return NSFetchRequest<RiseSunTime>(entityName: "SunTime")
     }
 
-    @NSManaged public var sunrise: Date?
-    @NSManaged public var sunset: Date?
-    @NSManaged public var day: Date?
+    @NSManaged public var sunrise: Date
+    @NSManaged public var sunset: Date
+    @NSManaged public var day: Date
 
 }

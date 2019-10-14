@@ -35,7 +35,7 @@ class CollectionViewWithSegmentedControl: DesignableContainerView, SegmentedCont
         collectionView.scrollToItem(at: IndexPath(row: 1, section: 0), at: .centeredHorizontally, animated: false)
     }
     
-    func updateView(with sunModelArray: [SunModel]) {
+    func updateView(with sunModelArray: [SunTimeModel]) {
         var models: [TodayCellModel] = []
         sunModelArray.forEach { sunModel in models.append(buildCellModel(from: sunModel)) }
         cellModels = models
@@ -61,7 +61,7 @@ class CollectionViewWithSegmentedControl: DesignableContainerView, SegmentedCont
         collectionView?.scrollToItem(at: IndexPath(item: segment.row, section: 0), at: .centeredHorizontally, animated: true)
     }
     
-    private func buildCellModel(from sunModel: SunModel) -> TodayCellModel {
+    private func buildCellModel(from sunModel: SunTimeModel) -> TodayCellModel {
         return TodayCellModel(isDataLoaded: true, sunriseTime: DatesConverter.formatDateToHHmm(date: sunModel.sunrise),
                               sunsetTime: DatesConverter.formatDateToHHmm(date: sunModel.sunset))
     }

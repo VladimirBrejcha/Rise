@@ -12,6 +12,8 @@ final class MainScreenViewController: UIViewController, LocationManagerDelegate 
     private let locationManager = sharedLocationManager
     @IBOutlet weak var mainContainerView: CollectionViewWithSegmentedControl!
     
+    private let repository: RiseRepository = Repository()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,31 +25,12 @@ final class MainScreenViewController: UIViewController, LocationManagerDelegate 
     }
     
     func newLocationDataArrived(locationModel: LocationModel) {
-        var sunModelArray: [SunModel] = []
-        NetworkManager.getSunData(location: locationModel, day: .yesterday) { [weak self] result in
-            switch result {
-            case let .success(sunModel):
-                sunModelArray.append(sunModel)
-                NetworkManager.getSunData(location: locationModel, day: .today) { result in
-                    switch result {
-                    case let .success(sunModel):
-                        sunModelArray.append(sunModel)
-                        NetworkManager.getSunData(location: locationModel, day: .tomorrow) { result in
-                            switch result {
-                            case let .success(sunModel):
-                                sunModelArray.append(sunModel)
-                                self?.mainContainerView.updateView(with: sunModelArray)
-                            case let .failure(error):
-                                print(error.localizedDescription)
-                            }
-                        }
-                    case let .failure(error):
-                        print(error.localizedDescription)
-                    }
-                }
-            case let .failure(error):
-                print(error.localizedDescription)
+        repository.requestSunForecast(for: 3, at: Date(), with: locationModel) { result in
+            if case .failure (let error) = result { print(error.localizedDescription) }
+            else if case .success (let sunModelArray) = result {
+                self.mainContainerView.updateView(with: sunModelArray.sorted { $0.day < $1.day })
             }
         }
     }
+    
 }
