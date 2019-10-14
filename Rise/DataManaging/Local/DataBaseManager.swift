@@ -9,22 +9,11 @@
 import Foundation
 import CoreData
 
-struct CalculatedPlan {
-    var minutesOfSleep: Int
-    var days: Int
-    var minutesPerDay: Int
-}
-
 fileprivate let planEntityName = "PersonalPlan"
 fileprivate let sunTimeEntityName = "SunTime"
 
-class CoreDataManager: SunTimeDataSource { // TODO: - Location is not used in requestSunForecast
+class CoreDataManager: SunTimeDataSource {
     private var managedContext: NSManagedObjectContext { return persistentContainer.viewContext }
-    
-    var currentPlan: PersonalPlanModel? {
-        guard let object = persistentContainer.fetchPersonalPlan() else { return nil }
-        return buildPlanModel(from: object)
-    }
     
     lazy var persistentContainer: PersistentContainer = {
         let container = PersistentContainer(name: "PersonalPlanData")
@@ -40,7 +29,6 @@ class CoreDataManager: SunTimeDataSource { // TODO: - Location is not used in re
         var returnArray: [SunTimeModel] = []
         
         let group = DispatchGroup()
-
         DispatchQueue.concurrentPerform(iterations: numberOfDays) { dayNumber in
             group.enter()
             
@@ -61,22 +49,10 @@ class CoreDataManager: SunTimeDataSource { // TODO: - Location is not used in re
             if returnArray.isEmpty { completion(.failure(RiseError.errorNoDataReceived())) }
             else { completion(.success(returnArray)) }
         }
-        
     }
     
-    func createSunObject(_ model: SunTimeModel) {
+    func createSunTimeObject(with model: SunTimeModel) {
         buildSunTimeObject(from: model)
-        persistentContainer.saveContext()
-    }
-    
-    func createObject(_ model: PersonalPlanModel) {
-        buildCoreDataObject(from: model)
-        persistentContainer.saveContext()
-    }
-    
-    func updateObject(with model: PersonalPlanModel) {
-        guard let object = persistentContainer.fetchPersonalPlan() else { fatalError() }
-        updateCoreDataObject(object, with: model)
         persistentContainer.saveContext()
     }
     
@@ -86,20 +62,45 @@ class CoreDataManager: SunTimeDataSource { // TODO: - Location is not used in re
         updateSunObject(sunTimeModel, with: model)
     }
     
-    private func buildCoreDataObject(from model: PersonalPlanModel) {
-        let personalPlan = NSEntityDescription.insertNewObject(forEntityName: planEntityName,
-                                                               into: managedContext) as! RisePersonalPlan
-        updateCoreDataObject(personalPlan, with: model)
-    }
-    
     private func updateSunObject(_ object: RiseSunTime, with model: SunTimeModel) {
         object.day = model.day
         object.sunrise = model.sunrise
         object.sunset = model.sunset
-        print("## objectday \(object.day)")
     }
     
-    private func updateCoreDataObject(_ object: RisePersonalPlan, with model: PersonalPlanModel) {
+    private func buildSunTimeModel(from object: RiseSunTime) -> SunTimeModel {
+        return SunTimeModel(day: object.day, sunrise: object.sunrise, sunset: object.sunset)
+    }
+    
+    // MARK: - Personal Plan
+    var currentPlan: PersonalPlanModel? {
+        let result = persistentContainer.fetchPersonalPlan()
+        if case .failure (let error) = result {
+            print(error)
+            return nil
+        }
+        else if case .success (let object) = result { return buildPlanModel(from: object) }
+        else { return nil }
+    }
+    
+    func createPersonalPlanObject(with model: PersonalPlanModel) {
+        buildPersonalPlanObject(with: model)
+        persistentContainer.saveContext()
+    }
+    
+    private func buildPersonalPlanObject(with model: PersonalPlanModel) {
+        let result = persistentContainer.fetchPersonalPlan()
+        var personalPlan: RisePersonalPlan!
+        if case .failure (let error) = result {
+            print(error)
+            personalPlan = NSEntityDescription.insertNewObject(forEntityName: planEntityName,
+                                                               into: managedContext) as? RisePersonalPlan
+        }
+        else if case .success (let object) = result { personalPlan = object }
+        updatePersonalPlanObject(personalPlan, with: model)
+    }
+    
+    private func updatePersonalPlanObject(_ object: RisePersonalPlan, with model: PersonalPlanModel) {
         object.endDate = model.planEndDate
         object.startDate = model.planStartDate
         object.planDuration = model.planDuration
@@ -116,57 +117,5 @@ class CoreDataManager: SunTimeDataSource { // TODO: - Location is not used in re
                                  planDuration: object.planDuration)
     }
     
-    private func buildSunTimeModel(from object: RiseSunTime) -> SunTimeModel {
-        return SunTimeModel(day: object.day, sunrise: object.sunrise, sunset: object.sunset)
-    }
 }
 
-class PersistentContainer: NSPersistentContainer {
-    func saveContext(backgroundContext: NSManagedObjectContext? = nil) {
-        let context = backgroundContext ?? viewContext
-        guard context.hasChanges else { return }
-        do {
-            try context.save()
-        } catch let error as NSError {
-            print("Error: \(error), \(error.userInfo)")
-        }
-    }
-    
-    func fetchPersonalPlan() -> RisePersonalPlan? {
-        let fetchRequest: NSFetchRequest<RisePersonalPlan> = RisePersonalPlan.fetchRequest()
-        
-        do {
-            let fetchedResult = try viewContext.fetch(fetchRequest)
-            return fetchedResult.first
-        } catch {
-            print("Failed to fetch: \(error.localizedDescription)")
-            return nil
-        }
-    }
-    
-    func fetchSunTime(for day: Date) -> Result<RiseSunTime, Error> {
-        let fetchRequest: NSFetchRequest<RiseSunTime> = RiseSunTime.fetchRequest()
-        do {
-            print("## day \(day)")
-            fetchRequest.predicate = makeDayPredicate(with: day)
-            let fetchedResult = try viewContext.fetch(fetchRequest)
-            guard let result = fetchedResult.first else { return .failure(RiseError.errorNoDataFound()) }
-            return .success(result) }
-        catch { return .failure(error) }
-    }
-    
-    func makeDayPredicate(with date: Date) -> NSPredicate {
-        let calendar = Calendar.current
-        var components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
-        components.hour = 00
-        components.minute = 00
-        components.second = 00
-        let startDate = calendar.date(from: components)
-        components.hour = 23
-        components.minute = 59
-        components.second = 59
-        let endDate = calendar.date(from: components)
-        return NSPredicate(format: "day >= %@ AND day =< %@", argumentArray: [startDate!, endDate!])
-    }
-    
-}

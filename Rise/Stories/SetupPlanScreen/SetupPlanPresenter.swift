@@ -30,7 +30,7 @@ class SetupPlanPresenter: SetupPlanViewOutput {
     private var personalPlanModel: PersonalPlanModel? {
         didSet {
             guard let model = personalPlanModel else { return }
-            coreDataManager.createObject(model)
+            coreDataManager.createPersonalPlanObject(with: model)
         }
     }
     private var wakeUpForModel: Date?

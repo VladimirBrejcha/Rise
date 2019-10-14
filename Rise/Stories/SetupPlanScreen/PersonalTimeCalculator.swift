@@ -8,6 +8,12 @@
 
 import Foundation
 
+struct CalculatedPlan {
+    var minutesOfSleep: Int
+    var days: Int
+    var minutesPerDay: Int
+}
+
 class PersonalTimeCalculator {
     
     let wakeUp: Date
