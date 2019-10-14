@@ -36,6 +36,9 @@
 		7E98FE6C231C482B0065FB09 /* LocationPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE6B231C482B0065FB09 /* LocationPermissionsViewController.swift */; };
 		7E98FE70231C49360065FB09 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE6F231C49360065FB09 /* DataBaseManager.swift */; };
 		7EA0924222C8CF820019F2E9 /* CustomTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA0924122C8CF820019F2E9 /* CustomTransition.swift */; };
+		7EA7BA082354EBFD0051A92D /* MainScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA7BA072354EBFD0051A92D /* MainScreenPresenter.swift */; };
+		7EA7BA0A2354F1810051A92D /* TodayCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA7BA092354F1810051A92D /* TodayCollectionViewDataSource.swift */; };
+		7EA7BA0C2354F2510051A92D /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA7BA0B2354F2510051A92D /* CollectionView.swift */; };
 		7EB1C0332340F9550028237E /* PersonalPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE939162340F68800FE9954 /* PersonalPlanViewController.swift */; };
 		7EB1C0372340FC6B0028237E /* PersonalPlanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1C0362340FC6B0028237E /* PersonalPlanModel.swift */; };
 		7EB1C0392340FDB00028237E /* SetupPlanPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1C0382340FDB00028237E /* SetupPlanPresenter.swift */; };
@@ -121,6 +124,9 @@
 		7E98FE6B231C482B0065FB09 /* LocationPermissionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPermissionsViewController.swift; sourceTree = "<group>"; };
 		7E98FE6F231C49360065FB09 /* DataBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
 		7EA0924122C8CF820019F2E9 /* CustomTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTransition.swift; sourceTree = "<group>"; };
+		7EA7BA072354EBFD0051A92D /* MainScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenPresenter.swift; sourceTree = "<group>"; };
+		7EA7BA092354F1810051A92D /* TodayCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		7EA7BA0B2354F2510051A92D /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		7EB1C0362340FC6B0028237E /* PersonalPlanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPlanModel.swift; sourceTree = "<group>"; };
 		7EB1C0382340FDB00028237E /* SetupPlanPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPlanPresenter.swift; sourceTree = "<group>"; };
 		7EB1C03A23411FFD0028237E /* PersonalPlanPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPlanPresenter.swift; sourceTree = "<group>"; };
@@ -232,6 +238,7 @@
 				7E0A8F3B231F04BA0036105C /* DatesManager.swift */,
 				7EF3EE182340F875003BE978 /* TodayCollectionViewCell */,
 				92E77AF922A5304400E5E21C /* MainScreenViewController.swift */,
+				7EA7BA072354EBFD0051A92D /* MainScreenPresenter.swift */,
 			);
 			path = MainScreen;
 			sourceTree = "<group>";
@@ -361,6 +368,7 @@
 			children = (
 				7E41981F2323CA7F007867AB /* TodayCollectionViewCell.swift */,
 				7E4198202323CA7F007867AB /* TodayCollectionViewCell.xib */,
+				7EA7BA092354F1810051A92D /* TodayCollectionViewDataSource.swift */,
 			);
 			path = TodayCollectionViewCell;
 			sourceTree = "<group>";
@@ -456,6 +464,7 @@
 				7EB26956234FA6EB008AEB3D /* LoadingView.swift */,
 				7EB26958234FA6F7008AEB3D /* LoadingView.xib */,
 				7E8C6B972350FB9C0086162F /* TableView.swift */,
+				7EA7BA0B2354F2510051A92D /* CollectionView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -610,8 +619,10 @@
 				7EB9004423298902006EB9A8 /* ProgressTableViewCell.swift in Sources */,
 				7E98FE6A231C481D0065FB09 /* WelcomePageViewController.swift in Sources */,
 				7E98FE70231C49360065FB09 /* DataBaseManager.swift in Sources */,
+				7EA7BA0A2354F1810051A92D /* TodayCollectionViewDataSource.swift in Sources */,
 				7E98FE63231C2F8C0065FB09 /* LocationModel.swift in Sources */,
 				92D7D6552296F297009321AE /* SleepViewController.swift in Sources */,
+				7EA7BA082354EBFD0051A92D /* MainScreenPresenter.swift in Sources */,
 				7E052A40235236F1005D7FAD /* SunTimeModel.swift in Sources */,
 				7E052A4E23524787005D7FAD /* RiseSunTime+CoreDataProperties.swift in Sources */,
 				7EB26951234F9972008AEB3D /* NibLoadable.swift in Sources */,
@@ -635,6 +646,7 @@
 				92D12FDD22A44B3B0093B0A3 /* CustomTabBarController.swift in Sources */,
 				92D7D6532296F297009321AE /* AppDelegate.swift in Sources */,
 				7E7413BC2349069500BF4416 /* AnimatedLoadingView.swift in Sources */,
+				7EA7BA0C2354F2510051A92D /* CollectionView.swift in Sources */,
 				7E4901862340DD810034521E /* PersonalPlanData.xcdatamodeld in Sources */,
 				7EA0924222C8CF820019F2E9 /* CustomTransition.swift in Sources */,
 				7E98FE5E231C2EAD0065FB09 /* WelcomeButtonViewController.swift in Sources */,
