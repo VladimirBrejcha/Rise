@@ -9,16 +9,10 @@
 import UIKit
 
 class TableView: UITableView {
-    var cellID: String {
-        return ""
-    }
-    var nibName: String {
-        return ""
-    }
+    var cellID: String { return "" }
+    var nibName: String { return "" }
     
-    var nib: UINib {
-        return UINib(nibName: nibName, bundle: nil)
-    }
+    var nib: UINib { return UINib(nibName: nibName, bundle: nil) }
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)

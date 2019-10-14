@@ -11,6 +11,7 @@ import CoreData
 
 let sharedLocationManager = LocationManager()
 let sharedCoreDataManager = CoreDataManager()
+let sharedRepository = Repository()
 
 fileprivate let mainAppScreenIdentifier = "mainAppScreen"
 fileprivate let welcomeScreenIdentifier = "welcomeScreen"

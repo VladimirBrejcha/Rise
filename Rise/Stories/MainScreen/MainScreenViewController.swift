@@ -8,29 +8,39 @@
 
 import UIKit
 
-final class MainScreenViewController: UIViewController, LocationManagerDelegate {
-    private let locationManager = sharedLocationManager
-    @IBOutlet weak var mainContainerView: CollectionViewWithSegmentedControl!
+protocol MainScreenViewInput: AnyObject {
+    func setupCollectionView(with dataSource: UICollectionViewDataSource)
+    func refreshCollectionView()
+    func showSunTimeLoadingError()
+}
+
+protocol MainScreenViewOutput: AnyObject {
     
-    private let repository: RiseRepository = Repository()
+}
+
+final class MainScreenViewController: UIViewController, MainScreenViewInput {
+
+    @IBOutlet weak var mainContainerView: CollectionViewWithSegmentedControl!
+    var presenter: MainScreenViewOutput!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        locationManager.requestLocation()
-        sharedLocationManager.delegate = self
+        presenter = MainScreenPresenter(view: self)
     }
     
     @IBAction func sleepButtonTouch(_ sender: UIButton) {
     }
     
-    func newLocationDataArrived(locationModel: LocationModel) {
-        repository.requestSunForecast(for: 3, at: Date(), with: locationModel) { result in
-            if case .failure (let error) = result { print(error.localizedDescription) }
-            else if case .success (let sunModelArray) = result {
-                self.mainContainerView.updateView(with: sunModelArray.sorted { $0.day < $1.day })
-            }
-        }
+    // MARK: - MainScreenViewInput
+    func setupCollectionView(with dataSource: UICollectionViewDataSource) {
+        mainContainerView.collectionView.dataSource = dataSource
+        mainContainerView.collectionView.delegate = mainContainerView
+    }
+    
+    func refreshCollectionView() { mainContainerView.collectionView.reloadData() }
+    
+    func showSunTimeLoadingError() {
+        
     }
     
 }

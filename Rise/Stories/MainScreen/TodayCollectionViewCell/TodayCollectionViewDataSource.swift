@@ -7,3 +7,19 @@
 //
 
 import Foundation
+
+fileprivate let todayCellID = "TodayCollectionViewCell"
+fileprivate let todayNibName = "TodayCollectionViewCell"
+
+class TodayCollectionView: ColectionView {
+    override var cellID: String { return todayCellID }
+    override var nibName: String { return todayNibName }
+}
+
+extension CollectionViewDataSource where Model == TodayCellModel {
+    static func make(for cellModels: [TodayCellModel], reuseIdentifier: String = todayCellID) -> CollectionViewDataSource {
+        return CollectionViewDataSource (models: cellModels, reuseIdentifier: reuseIdentifier) { (model, cell) in
+            (cell as! TodayCollectionViewCell).cellModel = model
+        }
+    }
+}

@@ -40,7 +40,7 @@ class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITable
     
     private var progressCellMaxValue: String?
     private var progressCellValue: Double = 0.0
-    private let infoCellImageArray: [UIImage] = [#imageLiteral(resourceName: "Clock 2"), #imageLiteral(resourceName: "wakeup"), #imageLiteral(resourceName: "fallasleep"), #imageLiteral(resourceName: "sun")]
+    private let infoCellImageArray: [UIImage] = [#imageLiteral(resourceName: "Clock"), #imageLiteral(resourceName: "wakeup"), #imageLiteral(resourceName: "fallasleep"), #imageLiteral(resourceName: "sun")]
     private var infoCellLabelTextArray: [String]?
     
     // MARK: - LifeCycle
