@@ -13,22 +13,19 @@ protocol LocationPermissionsProtocol: AnyObject {
     func permissionsGranted(granted: Bool)
 }
 
-protocol LocationManagerDelegate: AnyObject {
-    func newLocationDataArrived(locationModel: LocationModel)
-}
-
 final class LocationManager: NSObject, CLLocationManagerDelegate {
     weak var permissionsDelegate: LocationPermissionsProtocol?
-    weak var delegate: LocationManagerDelegate?
+    private var requestLocationCompletion: ((Result<LocationModel, Error>) -> Void)?
     
-    let locationManager = CLLocationManager()
+    private let locationManager = CLLocationManager()
     
     override init() {
         super.init()
         locationManager.delegate = self
     }
     
-    func requestLocation() {
+    func requestNewLocation(with completion:  @escaping (Result<LocationModel, Error>) -> Void) {
+        requestLocationCompletion = completion
         locationManager.requestLocation()
     }
     
@@ -36,12 +33,16 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
     }
     
-    //MARK: CLLocationManagerDelegate
+    //MARK: - CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let newLocation = locations.last else { return }
-        let locationModel = LocationModel(latitude: newLocation.coordinate.latitude.description,
-                                          longitude: newLocation.coordinate.longitude.description)
-        delegate?.newLocationDataArrived(locationModel: locationModel)
+        guard let completion = requestLocationCompletion else { return }
+        if let newLocation = locations.last
+        {
+            let locationModel = LocationModel(latitude: newLocation.coordinate.latitude.description,
+                                              longitude: newLocation.coordinate.longitude.description)
+            completion(.success(locationModel))
+        }
+        else { completion(.failure(RiseError.errorNoLocationArrived())) }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

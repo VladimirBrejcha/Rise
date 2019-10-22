@@ -14,6 +14,7 @@ protocol SunTimeDataSource: AnyObject {
 }
 
 protocol RiseRepository: AnyObject {
+    func requestLocation(with completion: @escaping (Result<LocationModel, Error>) -> Void)
     func requestSunForecast(for numberOfDays: Int, at startingDate: Date, with location: LocationModel,
                          completion: @escaping (Swift.Result<[SunTimeModel], Error>) -> Void)
     
@@ -22,6 +23,7 @@ protocol RiseRepository: AnyObject {
 class Repository: RiseRepository {
     private let remoteDataSource: SunTimeDataSource = SunAPIService()
     private let localDataSource = sharedCoreDataManager
+    private let locationManager = sharedLocationManager
     
     func requestSunForecast(for numberOfDays: Int, at startingDate: Date, with location: LocationModel,
                             completion: @escaping (Result<[SunTimeModel], Error>) -> Void) {
@@ -59,6 +61,13 @@ class Repository: RiseRepository {
                     }
                 }
             }
+        }
+    }
+    
+    func requestLocation(with completion: @escaping (Result<LocationModel, Error>) -> Void) {
+        locationManager.requestNewLocation { result in
+            if case .failure (let error) = result { completion(.failure(error)) }
+            else if case .success (let location) = result { completion(.success(location)) }
         }
     }
     
