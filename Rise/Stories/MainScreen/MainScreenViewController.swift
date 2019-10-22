@@ -12,10 +12,11 @@ protocol MainScreenViewInput: AnyObject {
     func setupCollectionView(with dataSource: UICollectionViewDataSource)
     func refreshCollectionView()
     func showSunTimeLoadingError()
+    func showError(with text: String)
 }
 
 protocol MainScreenViewOutput: AnyObject {
-    
+    func viewDidLoad()
 }
 
 final class MainScreenViewController: UIViewController, MainScreenViewInput {
@@ -26,6 +27,7 @@ final class MainScreenViewController: UIViewController, MainScreenViewInput {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = MainScreenPresenter(view: self)
+        presenter.viewDidLoad()
     }
     
     @IBAction func sleepButtonTouch(_ sender: UIButton) {
@@ -42,5 +44,7 @@ final class MainScreenViewController: UIViewController, MainScreenViewInput {
     func showSunTimeLoadingError() {
         
     }
+    
+    func showError(with text: String) { UIHelper.showError(errorMessage: text) }
     
 }
