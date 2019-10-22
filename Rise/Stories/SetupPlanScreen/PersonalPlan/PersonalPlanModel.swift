@@ -21,7 +21,7 @@ struct PersonalPlanModel {
 
 struct NewPersonalPlanModel {
     var planStartDay: Date
-    var planDuration: TimeInterval // probably int?
+    var planDuration: Int
     var finalSleepTime: Date
     var finalWakeTime: Date
     var sleepDuration: TimeInterval
@@ -30,6 +30,7 @@ struct NewPersonalPlanModel {
 }
 
 struct DailyTimesModel {
+    var day: Date
     var sunrise: Date
     var sunset: Date
     var wake: Date

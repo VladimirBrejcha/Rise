@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct DataForPicker { // TODO: - Picker input and output need refactoringRise/Stories/SetupPlanScreen/SetupPlanPresenter.swift
+struct DataForPicker { // TODO: - Picker input and output need refactoring
     static let daysArray = ["Hardcore - 10 days", "Normal - 15 days", "Recommended - 30 days", "Calm - 50 days"]
     static let hoursArray = ["7 hours", "7.5 hours", "Recommended - 8 hours", "8.5 hours", "9 hours"]
     
@@ -72,6 +72,8 @@ class SetupPlanPresenter: SetupPlanViewOutput {
         
         view?.changeScheduleButtonEnableState(true)
         
-        personalPlanModel = PersonalPlanBuilder.buildPlan(wakeUp: wakeUp, wentSleep: wentSleep, sleepDuration: sleepDuration, planDuration: planDuration)
+        PersonalPlanBuilder.buildNewPlan(with: wakeUp, sleepDuration, planDuration, wentSleep) { result in
+            print(result)
+        }
     }
 }
