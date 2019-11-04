@@ -42,12 +42,12 @@ class PersonalPlanBuilder {
                 let timeBetweenNeededSleepAndActualSleep = Int(wentSleep.timeIntervalSince(finalSleepTime) / 60)
                 
                 let dailyShiftMin: Int = timeBetweenNeededSleepAndActualSleep > 1440
-                ? (timeBetweenNeededSleepAndActualSleep - 1440) / planDuration
-                : timeBetweenNeededSleepAndActualSleep / planDuration
+                ? -(timeBetweenNeededSleepAndActualSleep - 1440) / planDuration
+                : -timeBetweenNeededSleepAndActualSleep / planDuration
                 
                 var dailyPlanTimesArray: [DailyTimesModel] = []
                 
-                for day in 1 ..< planDuration {
+                for day in 1 ..< planDuration + 1 {
                     let dayDate = Calendar.current.date(byAdding: .day, value: day, to: today)!
                     let sleepDate = Calendar.current.date(byAdding: .minute, value: dailyShiftMin * day, to: wentSleep)!
                     let wakeDate = sleepDate.addingTimeInterval(sleepDurationTime)
@@ -56,7 +56,8 @@ class PersonalPlanBuilder {
                     dailyPlanTimesArray.append(buildDailySunTimeModel(with: sunModel, and: dailyPlanModel))
                 }
                 let plan = NewPersonalPlanModel(planStartDay: today, planDuration: planDuration, finalSleepTime: finalSleepTime,
-                                                    finalWakeTime: wakeUpTime, sleepDuration: sleepDurationTime, dailyTimes: dailyPlanTimesArray, latestConfirmedDay: today)
+                                                    finalWakeTime: wakeUpTime, sleepDuration: sleepDurationTime,
+                                                    dailyTimes: dailyPlanTimesArray, latestConfirmedDay: today)
                 completion(.success(plan))
             }
         }
