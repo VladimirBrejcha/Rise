@@ -41,7 +41,6 @@
 		7E97656E2378813700E3AEF2 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E97656D2378813700E3AEF2 /* Log.swift */; };
 		7E976572237C7A2C00E3AEF2 /* PersonalPlanUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E976571237C7A2C00E3AEF2 /* PersonalPlanUseCases.swift */; };
 		7E98FE5E231C2EAD0065FB09 /* WelcomeButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE5D231C2EAD0065FB09 /* WelcomeButtonViewController.swift */; };
-		7E98FE61231C2F340065FB09 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE60231C2F340065FB09 /* LocationManager.swift */; };
 		7E98FE63231C2F8C0065FB09 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE62231C2F8C0065FB09 /* Location.swift */; };
 		7E98FE65231C30C10065FB09 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE64231C30C10065FB09 /* UIHelper.swift */; };
 		7E98FE67231C3D5C0065FB09 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE66231C3D5C0065FB09 /* UserDefaultsManager.swift */; };
@@ -148,7 +147,6 @@
 		7E97656D2378813700E3AEF2 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		7E976571237C7A2C00E3AEF2 /* PersonalPlanUseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPlanUseCases.swift; sourceTree = "<group>"; };
 		7E98FE5D231C2EAD0065FB09 /* WelcomeButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeButtonViewController.swift; sourceTree = "<group>"; };
-		7E98FE60231C2F340065FB09 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		7E98FE62231C2F8C0065FB09 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		7E98FE64231C30C10065FB09 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		7E98FE66231C3D5C0065FB09 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
@@ -340,14 +338,6 @@
 			path = WelcomeScreen;
 			sourceTree = "<group>";
 		};
-		7E98FE68231C47890065FB09 /* Location */ = {
-			isa = PBXGroup;
-			children = (
-				7E98FE60231C2F340065FB09 /* LocationManager.swift */,
-			);
-			path = Location;
-			sourceTree = "<group>";
-		};
 		7EA38AEA237852FD0007919B /* Location */ = {
 			isa = PBXGroup;
 			children = (
@@ -472,7 +462,6 @@
 		7EF3EE192340F8A5003BE978 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				7E98FE68231C47890065FB09 /* Location */,
 				7E98FE66231C3D5C0065FB09 /* UserDefaultsManager.swift */,
 				7ED962AB2336334A00CD2408 /* AnimationManager.swift */,
 				92D41C2522AC04DF00706CD3 /* ArrayManager.swift */,
@@ -740,7 +729,6 @@
 				7E695A34234A675F0098213D /* CollectionViewDataSource.swift in Sources */,
 				7EB1C03D23412A9C0028237E /* PersonalPlanHelper.swift in Sources */,
 				92BC919422AB24D800BB1D19 /* GradientManager.swift in Sources */,
-				7E98FE61231C2F340065FB09 /* LocationManager.swift in Sources */,
 				7E052A422352377E005D7FAD /* RiseError.swift in Sources */,
 				92D12FDD22A44B3B0093B0A3 /* CustomTabBarController.swift in Sources */,
 				7E5BDADF2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift in Sources */,

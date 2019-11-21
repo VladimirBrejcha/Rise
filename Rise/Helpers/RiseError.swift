@@ -11,27 +11,29 @@ import Foundation
 fileprivate let errorDomain = Bundle.main.bundleIdentifier!
 
 enum RiseError: Int {
-    case unknownError      = 5999
-    case cantFormatDate    = 6000
-    case cantParseJSON     = 6001
-    case cantBuildJSON     = 6002
-    case noDataReceived    = 6003
-    case cantBuildURL      = 6004
-    case noDataFound       = 6005
-    case noLocationArrived = 6006
-    case noChangesBeenMade = 6007
+    case unknownError         = 5999
+    case cantFormatDate       = 6000
+    case cantParseJSON        = 6001
+    case cantBuildJSON        = 6002
+    case noDataReceived       = 6003
+    case cantBuildURL         = 6004
+    case noDataFound          = 6005
+    case noLocationArrived    = 6006
+    case noChangesBeenMade    = 6007
+    case locationAccessDenied = 6008
     
     private var description: String {
         switch self {
-        case .unknownError      : return "Unknown error"
-        case .cantFormatDate    : return "Could'nt formate Date"
-        case .cantParseJSON     : return "Could'nt parce JSON"
-        case .cantBuildJSON     : return "Could'nt build JSON from Data"
-        case .noDataReceived    : return "Did'nt receive any data from request"
-        case .cantBuildURL      : return "Could'nt build URL"
-        case .noDataFound       : return "Could'nt find any data"
-        case .noLocationArrived : return "Location data did'nt arrive"
-        case .noChangesBeenMade : return "No changes have been made"
+        case .unknownError         : return "Unknown error"
+        case .cantFormatDate       : return "Could'nt formate Date"
+        case .cantParseJSON        : return "Could'nt parce JSON"
+        case .cantBuildJSON        : return "Could'nt build JSON from Data"
+        case .noDataReceived       : return "Did'nt receive any data from request"
+        case .cantBuildURL         : return "Could'nt build URL"
+        case .noDataFound          : return "Could'nt find any data"
+        case .noLocationArrived    : return "Location data did'nt arrive"
+        case .noChangesBeenMade    : return "No changes have been made"
+        case .locationAccessDenied : return "Access to location was not granted"
         }
     }
     
@@ -85,5 +87,10 @@ extension RiseError {
     static func errorNoChanges() -> NSError {
         return NSError(domain: errorDomain, code: RiseError.noChangesBeenMade.rawValue,
                        userInfo: RiseError.noChangesBeenMade.localizedDescriptionInfo)
+    }
+    
+    static func errorLocationAccessDenied() -> NSError {
+        return NSError(domain: errorDomain, code: RiseError.locationAccessDenied.rawValue,
+                       userInfo: RiseError.locationAccessDenied.localizedDescriptionInfo)
     }
 }

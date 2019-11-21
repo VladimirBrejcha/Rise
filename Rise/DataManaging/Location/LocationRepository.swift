@@ -18,11 +18,17 @@ class LocationRepository {
             completion(.success(location))
         case .failure(let error):
             log(error.localizedDescription)
-            remote.requestLocation { result in
-                if case .failure (let error) = result { completion(.failure(error)) }
-                if case .success (let location) = result {
-                    self.create(location: location)
-                    completion(.success(location))
+            remote.requestPermissions { granted in
+                if granted {
+                    self.remote.requestLocation { result in
+                        if case .failure (let error) = result { completion(.failure(error)) }
+                        if case .success (let location) = result {
+                            self.create(location: location)
+                            completion(.success(location))
+                        }
+                    }
+                } else {
+                    completion(.failure(RiseError.errorLocationAccessDenied()))
                 }
             }
         }
