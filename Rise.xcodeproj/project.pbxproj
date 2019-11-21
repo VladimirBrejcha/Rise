@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7E052A3D23523535005D7FAD /* SunAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E052A3C23523535005D7FAD /* SunAPIService.swift */; };
 		7E052A40235236F1005D7FAD /* DailySunTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E052A3F235236F1005D7FAD /* DailySunTime.swift */; };
 		7E052A422352377E005D7FAD /* RiseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E052A412352377E005D7FAD /* RiseError.swift */; };
 		7E0834AC2387351400BA1AE8 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0834AB2387351400BA1AE8 /* DateExtensions.swift */; };
@@ -114,7 +113,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7E052A3C23523535005D7FAD /* SunAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunAPIService.swift; sourceTree = "<group>"; };
 		7E052A3F235236F1005D7FAD /* DailySunTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySunTime.swift; sourceTree = "<group>"; };
 		7E052A412352377E005D7FAD /* RiseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiseError.swift; sourceTree = "<group>"; };
 		7E0834AB2387351400BA1AE8 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
@@ -242,14 +240,6 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
-		7E0A8F3A231F03170036105C /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				7E052A3C23523535005D7FAD /* SunAPIService.swift */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
 		7E4901872340F3970034521E /* Stories */ = {
 			isa = PBXGroup;
 			children = (
@@ -353,28 +343,19 @@
 			path = Location;
 			sourceTree = "<group>";
 		};
-		7EB1C0342340FA6E0028237E /* DataManaging */ = {
+		7EB1C0342340FA6E0028237E /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				7E976571237C7A2C00E3AEF2 /* PersonalPlanUseCases.swift */,
 				7E97656123786AED00E3AEF2 /* PersonalPlan */,
 				7EE6404723786617005BE355 /* SunTime */,
 				7EA38AEA237852FD0007919B /* Location */,
+				7EE6404E23786693005BE355 /* PersistentContainer.swift */,
 				7E91D9652371E5150087436F /* ModelBuilder.swift */,
 				7EB1C03C23412A9C0028237E /* PersonalPlanHelper.swift */,
-				7EB1C0352340FA9A0028237E /* Local */,
-				7E0A8F3A231F03170036105C /* Network */,
 				7E052A3E23523647005D7FAD /* Entity */,
-				7E976571237C7A2C00E3AEF2 /* PersonalPlanUseCases.swift */,
 			);
-			path = DataManaging;
-			sourceTree = "<group>";
-		};
-		7EB1C0352340FA9A0028237E /* Local */ = {
-			isa = PBXGroup;
-			children = (
-				7EE6404E23786693005BE355 /* PersistentContainer.swift */,
-			);
-			path = Local;
+			path = Data;
 			sourceTree = "<group>";
 		};
 		7EE6404723786617005BE355 /* SunTime */ = {
@@ -516,7 +497,7 @@
 				92D7D6522296F297009321AE /* AppDelegate.swift */,
 				92D7D6562296F297009321AE /* Main.storyboard */,
 				7E4901872340F3970034521E /* Stories */,
-				7EB1C0342340FA6E0028237E /* DataManaging */,
+				7EB1C0342340FA6E0028237E /* Data */,
 				7EF3EE192340F8A5003BE978 /* Helpers */,
 				92D7D68422980138009321AE /* UI */,
 				7EF3EE162340F75A003BE978 /* Resources */,
@@ -728,7 +709,6 @@
 				7E91D95F2371E4080087436F /* RisePersonalPlan+CoreDataClass.swift in Sources */,
 				7EB9003E23256AC9006EB9A8 /* DesignableContainerView.swift in Sources */,
 				7E0834AC2387351400BA1AE8 /* DateExtensions.swift in Sources */,
-				7E052A3D23523535005D7FAD /* SunAPIService.swift in Sources */,
 				92D41C2622AC04DF00706CD3 /* ArrayManager.swift in Sources */,
 				7E695A34234A675F0098213D /* CollectionViewDataSource.swift in Sources */,
 				7EB1C03D23412A9C0028237E /* PersonalPlanHelper.swift in Sources */,
