@@ -9,10 +9,6 @@
 import UIKit
 import CoreData
 
-let sharedLocationManager = LocationManager()
-let sharedCoreDataManager = CoreDataManager()
-let sharedRepository = Repository()
-
 fileprivate let mainAppScreenIdentifier = "mainAppScreen"
 fileprivate let welcomeScreenIdentifier = "welcomeScreen"
 
@@ -40,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
-        sharedCoreDataManager.persistentContainer.saveContext()
+//        coreDataManager.persistentContainer.saveContext() // TODO
     }
     
     private func setupInitialController() {

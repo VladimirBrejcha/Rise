@@ -24,14 +24,14 @@ class TodayCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var planContainerView: UIView!
     @IBOutlet weak var planLoadingView: LoadingView!
     
-    private var dataManager: CoreDataManager! {
-        return sharedCoreDataManager
-    }
+//    private var dataManager: CoreDataManager! {
+////        return sharedCoreDataManager
+//    }
     
     private var isSunDataLoaded: Bool = false
-    private var isPlanDataLoaded: Bool! {
-        return dataManager.currentPlan != nil
-    }
+//    private var isPlanDataLoaded: Bool! {
+//        return dataManager.currentPlan != nil
+//    }
     
     var cellModel: TodayCellModel! {
         didSet {
@@ -51,13 +51,13 @@ class TodayCollectionViewCell: UICollectionViewCell {
                                                        animations: { self.sunContainerView.alpha = 1 }) }
             : sunLoadingView.showLoading()
         
-        if isPlanDataLoaded {
-            planLoadingView.hideSelf {
-                UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction,
-                               animations: { self.planContainerView.alpha = 1 }) }
-        } else {
-            planLoadingView.showInfo(with: "You don't have sleep plan yet, go and create one!")
-        }
+//        if isPlanDataLoaded {
+//            planLoadingView.hideSelf {
+//                UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction,
+//                               animations: { self.planContainerView.alpha = 1 }) }
+//        } else {
+//            planLoadingView.showInfo(with: "You don't have sleep plan yet, go and create one!")
+//        }
     }
     
 }

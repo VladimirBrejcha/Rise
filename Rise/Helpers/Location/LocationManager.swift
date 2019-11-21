@@ -13,9 +13,13 @@ protocol LocationPermissionsProtocol: AnyObject {
     func permissionsGranted(granted: Bool)
 }
 
+//protocol Location {
+//    func requestLocation(with completion:  @escaping (Result<Location, Error>) -> Void)
+//}
+
 final class LocationManager: NSObject, CLLocationManagerDelegate {
     weak var permissionsDelegate: LocationPermissionsProtocol?
-    private var requestLocationCompletion: ((Result<LocationModel, Error>) -> Void)?
+    private var requestLocationCompletion: ((Result<Location, Error>) -> Void)?
     
     private let locationManager = CLLocationManager()
     
@@ -24,7 +28,7 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         locationManager.delegate = self
     }
     
-    func requestNewLocation(with completion:  @escaping (Result<LocationModel, Error>) -> Void) {
+    func requestLocation(with completion:  @escaping (Result<Location, Error>) -> Void) {
         requestLocationCompletion = completion
         locationManager.requestLocation()
     }
@@ -38,7 +42,7 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         guard let completion = requestLocationCompletion else { return }
         if let newLocation = locations.last
         {
-            let locationModel = LocationModel(latitude: newLocation.coordinate.latitude.description,
+            let locationModel = Location(latitude: newLocation.coordinate.latitude.description,
                                               longitude: newLocation.coordinate.longitude.description)
             completion(.success(locationModel))
         }

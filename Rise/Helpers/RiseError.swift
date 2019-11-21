@@ -19,6 +19,7 @@ enum RiseError: Int {
     case cantBuildURL      = 6004
     case noDataFound       = 6005
     case noLocationArrived = 6006
+    case noChangesBeenMade = 6007
     
     private var description: String {
         switch self {
@@ -30,6 +31,7 @@ enum RiseError: Int {
         case .cantBuildURL      : return "Could'nt build URL"
         case .noDataFound       : return "Could'nt find any data"
         case .noLocationArrived : return "Location data did'nt arrive"
+        case .noChangesBeenMade : return "No changes have been made"
         }
     }
     
@@ -78,5 +80,10 @@ extension RiseError {
     static func errorNoLocationArrived() -> NSError {
         return NSError(domain: errorDomain, code: RiseError.noLocationArrived.rawValue,
                        userInfo: RiseError.noLocationArrived.localizedDescriptionInfo)
+    }
+    
+    static func errorNoChanges() -> NSError {
+        return NSError(domain: errorDomain, code: RiseError.noChangesBeenMade.rawValue,
+                       userInfo: RiseError.noChangesBeenMade.localizedDescriptionInfo)
     }
 }

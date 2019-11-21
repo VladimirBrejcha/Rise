@@ -1,58 +1,35 @@
 //
-//  PersistentContainer.swift
+//  SunTimePersistentContainer.swift
 //  Rise
 //
-//  Created by Владимир Королев on 14.10.2019.
+//  Created by Владимир Королев on 10.11.2019.
 //  Copyright © 2019 VladimirBrejcha. All rights reserved.
 //
 
 import Foundation
 import CoreData
 
-class PersistentContainer: NSPersistentContainer {
+class PersistentContainer<ObjectType: NSManagedObject>: NSPersistentContainer {
+    func fetch(with predicate: NSPredicate? = nil) -> Result<[ObjectType], Error> {
+        let entityName = String(describing: ObjectType.self)
+        let fetchRequest = NSFetchRequest<ObjectType>(entityName: entityName)
+        do {
+            fetchRequest.predicate = predicate
+            return .success(try viewContext.fetch(fetchRequest)) }
+        catch { return .failure(error) }
+    }
     
-    func saveContext(backgroundContext: NSManagedObjectContext? = nil) {
+    @discardableResult func saveContext(backgroundContext: NSManagedObjectContext? = nil) -> Bool {
         let context = backgroundContext ?? viewContext
-        guard context.hasChanges else { return }
-        do { try context.save() }
-        catch { print("Error: \(error.localizedDescription)") }
-    }
-    
-    // MARK: - Personal Plan
-    func fetchPersonalPlan() -> Result<RisePersonalPlan, Error> {
-        let fetchRequest: NSFetchRequest<RisePersonalPlan> = RisePersonalPlan.fetchRequest()
+        guard context.hasChanges else { return false }
         do {
-            let fetchedResult = try viewContext.fetch(fetchRequest)
-            guard let result = fetchedResult.first else { return .failure(RiseError.errorNoDataFound()) }
-            return(.success(result)) }
-        catch { return .failure(error) }
+            try context.save()
+            return true
+        }
+        catch {
+            log(error.localizedDescription)
+            return false
+        }
     }
-    
-    // MARK: - Sun Time
-    func fetchSunTime(for day: Date) -> Result<RiseSunTime, Error> {
-        let fetchRequest: NSFetchRequest<RiseSunTime> = RiseSunTime.fetchRequest()
-        do {
-            fetchRequest.predicate = day.makeDayPredicate()
-            let fetchedResult = try viewContext.fetch(fetchRequest)
-            guard let result = fetchedResult.first else { return .failure(RiseError.errorNoDataFound()) }
-            return .success(result) }
-        catch { return .failure(error) }
-    }
-    
 }
 
-fileprivate extension Date {
-    func makeDayPredicate() -> NSPredicate {
-        let calendar = Calendar.current
-        var components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self)
-        components.hour = 00
-        components.minute = 00
-        components.second = 00
-        let startDate = calendar.date(from: components)
-        components.hour = 23
-        components.minute = 59
-        components.second = 59
-        let endDate = calendar.date(from: components)
-        return NSPredicate(format: "day >= %@ AND day =< %@", argumentArray: [startDate!, endDate!])
-    }
-}

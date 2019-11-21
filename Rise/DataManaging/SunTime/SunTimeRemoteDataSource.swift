@@ -1,8 +1,8 @@
 //
-//  SunAPIService.swift
+//  SunTimeRemoteDataSource.swift
 //  Rise
 //
-//  Created by Владимир Королев on 12.10.2019.
+//  Created by Владимир Королев on 10.11.2019.
 //  Copyright © 2019 VladimirBrejcha. All rights reserved.
 //
 
@@ -12,56 +12,54 @@ fileprivate typealias JSON = [[String: Any]]
 
 fileprivate let host = "sun.p.rapidapi.com"
 fileprivate let requestURLString = "https://sun.p.rapidapi.com/api/sun/"
+fileprivate let headers = ["x-rapidapi-host": host, "x-rapidapi-key": SunAPIKey]
 
-class SunAPIService {
-    func requestLocation(with completion: @escaping (Result<Location, Error>) -> Void) {
-        
-    }
-    
-    private let headers = ["x-rapidapi-host": host, "x-rapidapi-key": SunAPIKey]
-    
-    private let builder: Builder
-    
-    init(builder: Builder) {
-        self.builder = builder
-    }
-    
-    func requestSunForecast(for numberOfDays: Int, at startingDate: Date, with location: Location,
-                              completion: @escaping (Result<[DailySunTime], Error>) -> Void) {
-        
-        var returnArray: [DailySunTime] = []
-        
+class SunTimeRemoteDataSource {
+    func requestSunTime(for numberOfDays: Int, since day: Date, for location: Location,
+                        completion: @escaping (Result<[DailySunTime], Error>) -> Void) {
+
+        var returnArray = [DailySunTime]()
+
         let group = DispatchGroup()
 
         DispatchQueue.concurrentPerform(iterations: numberOfDays) { dayNumber in
             group.enter()
-            
-            guard let date = Calendar.current.date(byAdding: .day, value: dayNumber - 1, to: startingDate)
+
+            guard let date = Calendar.current.date(byAdding: .day, value: dayNumber - 1, to: day)
                 else {
                     completion(.failure(RiseError.errorCantFormatDate()))
                     group.leave()
                     return
             }
-            
-            guard let url = buildURL(with: location, and: date)
+
+            guard let url = self.buildURL(with: location, and: date)
                 else {
                     completion(.failure(RiseError.errorCantBuildURL()))
                     group.leave()
                     return
             }
-            
-            makeSingleRequest(with: url) { result in
-                if case .failure (let error) = result { completion(.failure(error)) }
-                else if case .success (let data) = result
-                {
-                    let sunModelResult = self.buildSunModel(from: data, and: date)
-                    if case .failure (let error) = sunModelResult { completion(.failure(error)) }
-                    else if case .success (let sunModel) = sunModelResult { returnArray.append(sunModel) }
+
+            self.makeSingleRequest(with: url) { result in
+                if case .failure (let error) = result {
+                    completion(.failure(error))
+                    group.leave()
                 }
-                group.leave()
+
+                if case .success (let data) = result {
+                    let sunModelResult = self.buildSunModel(from: data, and: date)
+
+                    if case .failure (let error) = sunModelResult {
+                        completion(.failure(error))
+                        group.leave()
+                    }
+                    if case .success (let sunModel) = sunModelResult {
+                        returnArray.append(sunModel)
+                        group.leave()
+                    }
+                }
             }
         }
-        
+
         group.notify(queue: .main) {
             if returnArray.isEmpty { completion(.failure(RiseError.errorNoDataReceived())) }
             else { completion(.success(returnArray)) }

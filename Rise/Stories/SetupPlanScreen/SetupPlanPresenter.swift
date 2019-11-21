@@ -26,11 +26,11 @@ class SetupPlanPresenter: SetupPlanViewOutput {
     private let durationPickerModel = PickerDataModel(tag: 3, labelText: "Choose duration", type: .pickerView,
                                                       titleForRowArray: DataForPicker.daysArray, defaultRow: 2)
     
-    private let coreDataManager = sharedCoreDataManager
-    private var personalPlanModel: PersonalPlanModel? {
+//    private let coreDataManager = sharedCoreDataManager
+    private var personalPlanModel: PersonalPlan? {
         didSet {
             guard let model = personalPlanModel else { return }
-            coreDataManager.createPersonalPlanObject(with: model)
+//            coreDataManager.createPersonalPlanObject(with: model)
         }
     }
     private var wakeUpForModel: Date?
@@ -72,8 +72,8 @@ class SetupPlanPresenter: SetupPlanViewOutput {
         
         view?.changeScheduleButtonEnableState(true)
         
-        PersonalPlanBuilder.buildNewPlan(with: wakeUp, sleepDuration, planDuration, wentSleep) { result in
-            print(result)
-        }
+//        PersonalPlanBuilder.buildNewPlan(with: wakeUp, sleepDuration, planDuration, wentSleep) { result in
+//            print(result)
+//        }
     }
 }

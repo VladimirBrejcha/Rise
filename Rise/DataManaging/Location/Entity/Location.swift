@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct LocationModel {
-    var latitude: String
-    var longitude: String
+struct Location {    
+    let latitude: String
+    let longitude: String
 }

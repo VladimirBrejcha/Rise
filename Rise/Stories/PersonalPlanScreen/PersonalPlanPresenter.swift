@@ -12,7 +12,7 @@ class PersonalPlanPresenter: PersonalPlanViewOutput {
     weak var view: PersonalPlanViewInput?
     
     var personalPlanHelper: PersonalPlanHelper?
-    private var coreDataManager: CoreDataManager! { return sharedCoreDataManager }
+//    private var coreDataManager: CoreDataManager! { return sharedCoreDataManager }
     
     init(view: PersonalPlanViewInput) { self.view = view }
     
@@ -22,18 +22,18 @@ class PersonalPlanPresenter: PersonalPlanViewOutput {
     }
     
     func viewDidAppear() {
-        if coreDataManager.currentPlan != nil {
-            
-        } else {
-            view?.showPlanDoesntExistInfo()
-        }
+//        if coreDataManager.currentPlan != nil {
+//            
+//        } else {
+//            view?.showPlanDoesntExistInfo()
+//        }
     }
     
     func changeButtonPressed() {
     }
     
     // MARK: - PersonalPlanDelegate
-    func newPlanCreated(_ plan: PersonalPlanModel) {
+    func newPlanCreated(_ plan: PersonalPlan) {
         personalPlanHelper = PersonalPlanHelper(plan: plan)
         let durationText = "\(personalPlanHelper!.sleepDurationHours) hours of sleep daily"
         let wakeUpText = "Will wake up at \(personalPlanHelper!.wakeUpAt)"

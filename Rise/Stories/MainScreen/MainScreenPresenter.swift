@@ -11,8 +11,7 @@ import Foundation
 class MainScreenPresenter: MainScreenViewOutput {
     weak var view: MainScreenViewInput?
     
-    private let locationManager = sharedLocationManager
-    private let repository: RiseRepository = sharedRepository
+    private let requestSunTimeUseCase: RequestSunTimeUseCase = sharedUseCaseManager
     
     private var cellModels: [TodayCellModel] {
         get { return collectionViewDataSource.models }
@@ -30,33 +29,20 @@ class MainScreenPresenter: MainScreenViewOutput {
     
     // MARK: - MainScreenViewOutput
     func viewDidLoad() {
-        requestLocation()
-    }
-    
-    // MARK: - Private Methods
-    private func requestLocation() {
-        guard let view = view else { return }
-        repository.requestLocation { [weak self] result in
-            guard let self = self else { return }
-            if case .failure (let error) = result { view.showError(with: error.localizedDescription) }
-            else if case .success (let locationModel) = result { self.newLocationDataArrived(locationModel: locationModel) }
-        }
-    }
-    
-    
-    private func newLocationDataArrived(locationModel: LocationModel) {
-        repository.requestSunForecast(for: 3, at: Date(), with: locationModel) { [weak self] result in
+        requestSunTimeUseCase.request(for: 3, since: Date() - 1) { [weak self] result in
             guard let self = self else { return }
             if case .failure (let error) = result {
-                self.view?.showSunTimeLoadingError()
-                self.view?.showError(with: error.localizedDescription) }
-            else if case .success (let sunModelArray) = result {
-                self.updateView(with: sunModelArray.sorted { $0.day < $1.day } )
+                
+            }
+            if case .success (let sunTime) = result {
+                self.updateView(with: sunTime)
             }
         }
     }
     
-    private func updateView(with sunModelArray: [SunTimeModel]) {
+    // MARK: - Private Methods
+    
+    private func updateView(with sunModelArray: [DailySunTime]) {
         guard let view = view else { return }
         var models: [TodayCellModel] = []
         sunModelArray.forEach { sunModel in models.append(buildCellModel(from: sunModel)) }
@@ -64,7 +50,7 @@ class MainScreenPresenter: MainScreenViewOutput {
         view.refreshCollectionView()
     }
     
-    private func buildCellModel(from sunModel: SunTimeModel) -> TodayCellModel {
+    private func buildCellModel(from sunModel: DailySunTime) -> TodayCellModel {
         return TodayCellModel(isDataLoaded: true, sunriseTime: DatesConverter.formatDateToHHmm(date: sunModel.sunrise),
                               sunsetTime: DatesConverter.formatDateToHHmm(date: sunModel.sunset))
     }
