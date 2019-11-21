@@ -59,7 +59,13 @@ extension UseCaseManager: RequestSunTimeUseCase {
             if case .failure (let error) = result { completion(.failure(error)) }
             if case .success (let location) = result {
                 self.sunTimeRepository.requestSunTime(for: numberOfDays, since: day,
-                                                      for: location, completion: completion)
+                                                      for: location) { result in
+                                                        if case .failure (let error) = result { completion(.failure(error)) }
+                                                        if case .success (let sunTimes) = result {
+                                                            completion(.success(sunTimes.sorted { $0.day < $1.day }))
+                                                        }
+                                                        
+                }
             }
         }
     }

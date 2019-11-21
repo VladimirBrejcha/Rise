@@ -29,19 +29,19 @@ class MainScreenPresenter: MainScreenViewOutput {
     
     // MARK: - MainScreenViewOutput
     func viewDidLoad() {
-        requestSunTimeUseCase.request(for: 3, since: Date() - 1) { [weak self] result in
+        requestSunTimeUseCase.request(for: 3, since: Date().appending(days: -1)) { [weak self] result in
             guard let self = self else { return }
-            if case .failure (let error) = result {
-                
-            }
             if case .success (let sunTime) = result {
                 self.updateView(with: sunTime)
+            }
+            if case .failure (let error) = result {
+                log(error.localizedDescription)
+                UIHelper.showError(errorMessage: error.localizedDescription)
             }
         }
     }
     
     // MARK: - Private Methods
-    
     private func updateView(with sunModelArray: [DailySunTime]) {
         guard let view = view else { return }
         var models: [TodayCellModel] = []
@@ -51,7 +51,8 @@ class MainScreenPresenter: MainScreenViewOutput {
     }
     
     private func buildCellModel(from sunModel: DailySunTime) -> TodayCellModel {
-        return TodayCellModel(isDataLoaded: true, sunriseTime: DatesConverter.formatDateToHHmm(date: sunModel.sunrise),
+        return TodayCellModel(isDataLoaded: true,
+                              sunriseTime: DatesConverter.formatDateToHHmm(date: sunModel.sunrise),
                               sunsetTime: DatesConverter.formatDateToHHmm(date: sunModel.sunset))
     }
 }

@@ -44,7 +44,10 @@ class SunTimeLocalDataSource {
                 log(error.localizedDescription)
             }
             
-            if iteration == numberOfDays - 1 { return .success(returnArray) }
+            if iteration == numberOfDays - 1 {
+                if returnArray.isEmpty { return .failure(RiseError.errorNoDataFound()) }
+                return .success(returnArray)
+            }
         }
         
         return .failure(RiseError.errorNoDataFound())

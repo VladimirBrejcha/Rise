@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LocationPermissionsViewController: UIViewController, LocationPermissionsProtocol {
+class LocationPermissionsViewController: UIViewController {
 //    let locationManager = sharedLocationManager
     
     override func viewDidLoad() {

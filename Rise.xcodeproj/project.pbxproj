@@ -10,6 +10,7 @@
 		7E052A3D23523535005D7FAD /* SunAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E052A3C23523535005D7FAD /* SunAPIService.swift */; };
 		7E052A40235236F1005D7FAD /* DailySunTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E052A3F235236F1005D7FAD /* DailySunTime.swift */; };
 		7E052A422352377E005D7FAD /* RiseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E052A412352377E005D7FAD /* RiseError.swift */; };
+		7E0834AC2387351400BA1AE8 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0834AB2387351400BA1AE8 /* DateExtensions.swift */; };
 		7E0A8F3C231F04BA0036105C /* DatesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0A8F3B231F04BA0036105C /* DatesManager.swift */; };
 		7E31497D23425CA600941606 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31497C23425CA600941606 /* TableViewDataSource.swift */; };
 		7E31497F23425D3700941606 /* SetupPlanDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31497E23425D3700941606 /* SetupPlanDataSource.swift */; };
@@ -116,6 +117,7 @@
 		7E052A3C23523535005D7FAD /* SunAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunAPIService.swift; sourceTree = "<group>"; };
 		7E052A3F235236F1005D7FAD /* DailySunTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySunTime.swift; sourceTree = "<group>"; };
 		7E052A412352377E005D7FAD /* RiseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiseError.swift; sourceTree = "<group>"; };
+		7E0834AB2387351400BA1AE8 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		7E0A8F3B231F04BA0036105C /* DatesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatesManager.swift; sourceTree = "<group>"; };
 		7E31497C23425CA600941606 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		7E31497E23425D3700941606 /* SetupPlanDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPlanDataSource.swift; sourceTree = "<group>"; };
@@ -472,6 +474,7 @@
 				7EB26950234F9972008AEB3D /* NibLoadable.swift */,
 				7E052A412352377E005D7FAD /* RiseError.swift */,
 				7E97656D2378813700E3AEF2 /* Log.swift */,
+				7E0834AB2387351400BA1AE8 /* DateExtensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -724,6 +727,7 @@
 				7E4198212323CA7F007867AB /* TodayCollectionViewCell.swift in Sources */,
 				7E91D95F2371E4080087436F /* RisePersonalPlan+CoreDataClass.swift in Sources */,
 				7EB9003E23256AC9006EB9A8 /* DesignableContainerView.swift in Sources */,
+				7E0834AC2387351400BA1AE8 /* DateExtensions.swift in Sources */,
 				7E052A3D23523535005D7FAD /* SunAPIService.swift in Sources */,
 				92D41C2622AC04DF00706CD3 /* ArrayManager.swift in Sources */,
 				7E695A34234A675F0098213D /* CollectionViewDataSource.swift in Sources */,

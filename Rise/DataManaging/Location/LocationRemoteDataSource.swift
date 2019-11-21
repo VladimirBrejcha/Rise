@@ -51,10 +51,11 @@ final class LocationRemoteDataSource: NSObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         guard let completion = requestPermissionsCompletion else { return }
         
-        if status == .authorizedAlways || status == .authorizedWhenInUse {
-            completion(true)
-        } else {
-            completion(false)
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse : completion(true)
+        case .notDetermined : requestPermissions(with: completion); return
+        default: completion(false)
         }
+        
     }
 }

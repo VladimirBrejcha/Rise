@@ -15,12 +15,19 @@ class SunTimeRepository {
     func requestSunTime(for numberOfDays: Int, since day: Date, for location: Location,
                      completion: @escaping (Result<[DailySunTime], Error>) -> Void) {
         switch local.requestSunTime(for: numberOfDays, since: day) {
-        case .success(let localSunTimes):
+        case .success(var localSunTimes):
             localSunTimes.count == numberOfDays
                 ? completion(.success(localSunTimes))
                 : remoteRequest(for: calculateMissingDays(from: localSunTimes, and: numberOfDays),
-                                since: calculateLatestDay(from: localSunTimes),
-                                for: location, completion: completion)
+                                since: calculateLatestDay(from: localSunTimes).appending(days: 1),
+                                for: location) { result in
+                                    if case .failure (let error) = result { completion(.failure(error)) }
+                                    if case .success (let remoteLocation) = result {
+                                        localSunTimes.append(contentsOf: remoteLocation)
+                                        completion(.success(localSunTimes))
+                                    }
+                                    
+            }
             
         case .failure(let error):
             log(error.localizedDescription)

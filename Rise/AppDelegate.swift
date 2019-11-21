@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = UserDefaults.welcomeScreenBeenShowed
             ? UIStoryboard.mainAppController
-            : UIStoryboard.welcomeScreenController
+            : UIStoryboard.mainAppController
         window?.makeKeyAndVisible()
     }
     

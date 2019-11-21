@@ -15,7 +15,10 @@ class PersistentContainer<ObjectType: NSManagedObject>: NSPersistentContainer {
         let fetchRequest = NSFetchRequest<ObjectType>(entityName: entityName)
         do {
             fetchRequest.predicate = predicate
-            return .success(try viewContext.fetch(fetchRequest)) }
+            let objects = try viewContext.fetch(fetchRequest)
+            if objects.isEmpty { return .failure(RiseError.errorNoDataFound()) }
+            return .success(objects)
+        }
         catch { return .failure(error) }
     }
     
