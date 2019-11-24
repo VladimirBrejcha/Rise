@@ -17,10 +17,10 @@ protocol MainScreenViewInput: AnyObject {
 
 protocol MainScreenViewOutput: AnyObject {
     func viewDidLoad()
+    func viewDidAppear()
 }
 
 final class MainScreenViewController: UIViewController, MainScreenViewInput {
-
     @IBOutlet weak var mainContainerView: CollectionViewWithSegmentedControl!
     var presenter: MainScreenViewOutput!
     
@@ -28,6 +28,12 @@ final class MainScreenViewController: UIViewController, MainScreenViewInput {
         super.viewDidLoad()
         presenter = MainScreenPresenter(view: self)
         presenter.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        presenter.viewDidAppear()
     }
     
     @IBAction func sleepButtonTouch(_ sender: UIButton) {

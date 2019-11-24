@@ -45,17 +45,12 @@ class TodayCollectionViewCell: UICollectionViewCell {
         return cellModel.planTime != nil
     }
     
-    private var sunError: String?
-    private var planError: String?
-    
     var cellModel: TodayCellModel! {
         didSet {
             sunriseTimeLabel.text = cellModel.sunTime?.sunrise
             sunsetTimeLabel.text = cellModel.sunTime?.sunset
             wakeUpTimeLabel.text = cellModel.planTime?.wake
             toSleepTimeLabel.text = cellModel.planTime?.sleep
-            sunError = cellModel.sunErrorMessage
-            planError = cellModel.sunErrorMessage
         }
     }
     
@@ -65,7 +60,7 @@ class TodayCollectionViewCell: UICollectionViewCell {
         sunLoadingView.setupAnimationLayer()
         planLoadingView.setupAnimationLayer()
         
-        if let error = sunError {
+        if let error = cellModel.sunErrorMessage {
             sunLoadingView.showInfo(with: error)
         } else {
             sunLoadingView.hideInfo()
@@ -75,7 +70,7 @@ class TodayCollectionViewCell: UICollectionViewCell {
                 : sunLoadingView.showLoading()
         }
         
-        if let error = planError {
+        if let error = cellModel.planErrorMessage {
             planLoadingView.showInfo(with: error)
         } else {
             planLoadingView.hideInfo()
