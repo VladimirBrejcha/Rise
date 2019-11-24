@@ -11,38 +11,55 @@ import Foundation
 class PersonalPlanPresenter: PersonalPlanViewOutput {
     weak var view: PersonalPlanViewInput?
     
-    var personalPlanHelper: PersonalPlanHelper?
-//    private var coreDataManager: CoreDataManager! { return sharedCoreDataManager }
+    private var requestPersonalPlanUseCase: RequestPersonalPlanUseCase = sharedUseCaseManager
+    
+    var personalPlan: PersonalPlan? {
+        get {
+            let result = requestPersonalPlanUseCase.request()
+            if case .success (let plan) = result { return plan }
+            return nil
+        }
+    }
+    
+    var sleepDurationHours: Double? {
+        guard let plan = personalPlan else { return nil }
+        return plan.sleepDuration / 3600
+    }
+    
+    private let dateFormatter: DateFormatter = {
+       let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        return dateFormatter
+    }()
     
     init(view: PersonalPlanViewInput) { self.view = view }
     
     // MARK: - PersonalPlanViewOutput
     func viewDidLoad() {
-
     }
     
     func viewDidAppear() {
-//        if coreDataManager.currentPlan != nil {
-//            
-//        } else {
-//            view?.showPlanDoesntExistInfo()
-//        }
+        updateViewWithPlan()
     }
     
     func changeButtonPressed() {
+        
     }
     
-    // MARK: - PersonalPlanDelegate
-    func newPlanCreated(_ plan: PersonalPlan) {
-        personalPlanHelper = PersonalPlanHelper(plan: plan)
-        let durationText = "\(personalPlanHelper!.sleepDurationHours) hours of sleep daily"
-        let wakeUpText = "Will wake up at \(personalPlanHelper!.wakeUpAt)"
-        let toSleepText = "Will sleep at \(personalPlanHelper!.willSleep)"
-        let syncText = "Synchronized with sunrise"
-        
-        view?.updateProgressView(with: 0.7, maxProgress: personalPlanHelper!.planDurationDays.description)
-
-        view?.updatePlanInfo(with: [durationText, wakeUpText, toSleepText, syncText])
-        view?.hidePlanDoesntExistInfo()
+    // MARK: - Private
+    private func updateViewWithPlan() {
+        if let plan = personalPlan {
+            let durationText = "\(plan.sleepDurationHours) hours of sleep daily"
+            let wakeUpText = "Will wake up at \(plan.wakeUpAt)"
+            let toSleepText = "Will sleep at \(plan.willSleep)"
+            let syncText = "Synchronized with sunrise"
+            
+            view?.updateProgressView(with: 0.7, maxProgress: plan.planDurationDays.description)
+            
+            view?.updatePlanInfo(with: [durationText, wakeUpText, toSleepText, syncText])
+            view?.hidePlanDoesntExistInfo()
+        } else {
+            view?.showPlanDoesntExistInfo()
+        }
     }
 }

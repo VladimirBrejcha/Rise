@@ -9,7 +9,7 @@
 import Foundation
 
 protocol RequestPersonalPlanUseCase {
-    func request(completion: @escaping (Result<PersonalPlan, Error>) -> Void)
+    func request() -> Result<PersonalPlan, Error>
 }
 
 protocol UpdatePersonalPlanUseCase {
@@ -34,8 +34,8 @@ class UseCaseManager {
 }
 
 extension UseCaseManager: RequestPersonalPlanUseCase {
-    func request(completion: @escaping (Result<PersonalPlan, Error>) -> Void) {
-        personalPlanRepository.requestPersonalPlan(completion: completion)
+    func request() -> Result<PersonalPlan, Error> {
+        return personalPlanRepository.requestPersonalPlan()
     }
 }
 

@@ -57,11 +57,10 @@ class MainScreenPresenter: MainScreenViewOutput, TodayCollectionViewCellDelegate
     }
     
     private func requestPlan() {
-        requestPersonalPlanUseCase.request { [weak self] result in
-            guard let self = self else { return }
-            if case .success (let plan) = result { self.updateView(with: plan) }
-            if case .failure (let error) = result { self.updatePlanView(with: error) }
-        }
+        let result = requestPersonalPlanUseCase.request()
+        
+        if case .success (let plan) = result { updateView(with: plan) }
+        if case .failure (let error) = result { updatePlanView(with: error) }
     }
     
     private func updateView(with sunModelArray: [DailySunTime]) {

@@ -8,18 +8,15 @@
 
 import Foundation
 
-class PersonalPlanHelper {
-    private var plan: PersonalPlan
-    var sleepDurationHours: Double { return plan.sleepDuration / 3600 }
-    var wakeUpAt: String { return dateFormatter.string(from: plan.finalWakeTime) }
-    var willSleep: String { return dateFormatter.string(from: plan.finalSleepTime) }
-    var planDurationDays: Int { return Int(plan.planDuration / 24 / 60 / 60) }
-    
-    private let dateFormatter: DateFormatter = {
-       let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        return dateFormatter
-    }()
-    
-    init(plan: PersonalPlan) { self.plan = plan }
+fileprivate let dateFormatter: DateFormatter = {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "HH:mm"
+    return dateFormatter
+}()
+
+extension PersonalPlan {
+    var sleepDurationHours: Double { return self.sleepDuration / 3600 }
+    var wakeUpAt: String { return dateFormatter.string(from: self.finalWakeTime) }
+    var willSleep: String { return dateFormatter.string(from: self.finalSleepTime) }
+    var planDurationDays: Int { return Int(self.planDuration / 24 / 60 / 60) }
 }

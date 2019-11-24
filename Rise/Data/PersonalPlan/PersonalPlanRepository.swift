@@ -11,8 +11,8 @@ import Foundation
 class PersonalPlanRepository {
     private let local = PersonalPlanLocalDataSource()
     
-    func requestPersonalPlan(completion: @escaping (Result<PersonalPlan, Error>) -> Void) {
-        completion(local.requestPersonalPlan())
+    func requestPersonalPlan() -> Result<PersonalPlan, Error> {
+        return local.requestPersonalPlan()
     }
     
     @discardableResult func update(personalPlan: PersonalPlan) -> Bool {

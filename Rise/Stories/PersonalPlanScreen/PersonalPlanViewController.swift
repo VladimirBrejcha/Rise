@@ -57,6 +57,7 @@ class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         loadingView.setupAnimationLayer()
         output.viewDidAppear()
     }
