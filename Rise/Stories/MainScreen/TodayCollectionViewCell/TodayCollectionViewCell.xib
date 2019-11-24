@@ -17,6 +17,7 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b8Z-Gu-TIM" customClass="LoadingView" customModule="Rise" customModuleProvider="target">
                         <rect key="frame" x="5" y="0.0" width="270" height="95"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U93-Yo-WF6" customClass="LoadingView" customModule="Rise" customModuleProvider="target">
                         <rect key="frame" x="5" y="103" width="270" height="95"/>
@@ -74,6 +75,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="R3E-WT-WRJ" secondAttribute="bottom" constant="9" id="0BN-fP-yHR"/>
                             <constraint firstAttribute="bottom" secondItem="BG1-fS-ZwQ" secondAttribute="bottom" constant="9" id="10m-gu-sVG"/>
@@ -88,9 +90,12 @@
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                 <real key="value" value="12"/>
                             </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="background">
+                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0lH-Mc-ICP">
+                    <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0lH-Mc-ICP" customClass="DesignableContainerView" customModule="Rise" customModuleProvider="target">
                         <rect key="frame" x="5" y="103" width="270" height="95"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jeV-0j-REA">
@@ -142,7 +147,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="0.050000000000000003" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="ibv-w2-D8R" secondAttribute="bottom" constant="9" id="5Ap-gQ-7Bd"/>
                             <constraint firstItem="ibv-w2-D8R" firstAttribute="width" secondItem="0lH-Mc-ICP" secondAttribute="height" multiplier="54:95" id="EMw-jV-1cY"/>
@@ -156,6 +161,9 @@
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                 <real key="value" value="12"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="background">
+                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
