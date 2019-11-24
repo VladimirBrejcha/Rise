@@ -92,10 +92,6 @@ class ModelBuilder: Builder {
 //        }
     }
     
-    private func buildDailySunTimeModel(with sunTimeModel: DailySunTime, and planTimeModel: DailyPlanTime) -> DailyTimeModel {
-        return DailyTimeModel(day: sunTimeModel.day, sunrise: sunTimeModel.sunrise, sunset: sunTimeModel.sunset, wake: planTimeModel.wake, sleep: planTimeModel.sleep)
-    }
-    
     private func buildFinalSleepTime(from wakeUp: Date, and sleepDuration: Double) -> Date {
         return Date(timeInterval: -sleepDuration, since: wakeUp)
     }
