@@ -10,6 +10,7 @@ import UIKit
 
 struct PickerDataModel {
     var tag: Int
+    var headerText: String
     var labelText: String
     var type: SectionedTableViewCellType
     var titleForRowArray: [String]? // only for pickerView

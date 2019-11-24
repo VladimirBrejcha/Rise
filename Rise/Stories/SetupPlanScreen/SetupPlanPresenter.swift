@@ -6,7 +6,7 @@
 //  Copyright © 2019 VladimirBrejcha. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct DataForPicker { // TODO: - Picker input and output need refactoring
     static let daysArray = ["Hardcore - 10 days", "Normal - 15 days", "Recommended - 30 days", "Calm - 50 days"]
@@ -21,11 +21,15 @@ class SetupPlanPresenter: SetupPlanViewOutput {
     private let savePersonalPlanUseCase: SavePersonalPlanUseCase = sharedUseCaseManager
     
     private var dataSource: SectionedTableViewDataSource!
-    private let datePickerModel = PickerDataModel(tag: 0, labelText: "Choose time", type: .datePicker)
-    private let hoursPickerModel = PickerDataModel(tag: 1, labelText: "Choose hours", type: .pickerView,
+    private let datePickerModel = PickerDataModel(tag: 0, headerText: "What time do you wish to wake up?",
+                                                  labelText: "Choose time", type: .datePicker)
+    private let hoursPickerModel = PickerDataModel(tag: 1, headerText: "How long do you wish to sleep?",
+                                                   labelText: "Choose hours", type: .pickerView,
                                                    titleForRowArray: DataForPicker.hoursArray, defaultRow: 2)
-    private let secondDatePickerModel = PickerDataModel(tag: 2, labelText: "Choose time", type: .datePicker)
-    private let durationPickerModel = PickerDataModel(tag: 3, labelText: "Choose duration", type: .pickerView,
+    private let secondDatePickerModel = PickerDataModel(tag: 2, headerText: "When did you fall asleep yesterday?",
+                                                        labelText: "Choose time", type: .datePicker)
+    private let durationPickerModel = PickerDataModel(tag: 3, headerText: "Duration", labelText: "Choose duration",
+                                                      type: .pickerView,
                                                       titleForRowArray: DataForPicker.daysArray, defaultRow: 2)
     
     private var wakeUpForModel: Date?
@@ -37,6 +41,10 @@ class SetupPlanPresenter: SetupPlanViewOutput {
     
     // MARK: - SetupPlanViewOutput
     func viewDidLoad() {
+
+    }
+    
+    func viewWillAppear() {
         dataSource = SectionedTableViewDataSource(dataSources:
             [TableViewDataSource.make(for: [datePickerModel], output: self),
              TableViewDataSource.make(for: [hoursPickerModel], output: self),

@@ -9,9 +9,9 @@
 import UIKit
 
 class SectionedTableViewDataSource: NSObject {
-    let dataSources: [UITableViewDataSource]
+    let dataSources: [TableViewDataSource<PickerDataModel>]
 
-    init(dataSources: [UITableViewDataSource]) { self.dataSources = dataSources }
+    init(dataSources: [TableViewDataSource<PickerDataModel>]) { self.dataSources = dataSources }
 }
 
 class TableViewDataSource<Model>: NSObject, UITableViewDataSource {

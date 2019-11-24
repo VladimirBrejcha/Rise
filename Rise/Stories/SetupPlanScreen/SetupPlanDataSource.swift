@@ -31,12 +31,15 @@ extension SectionedTableViewDataSource: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let dataSource = dataSources[section]
-        return dataSource.tableView(tableView, numberOfRowsInSection: 0)
+        return dataSource.tableView(tableView, numberOfRowsInSection: section)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let dataSource = dataSources[indexPath.section]
-        let indexPath = IndexPath(row: indexPath.row, section: 0)
         return dataSource.tableView(tableView, cellForRowAt: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return dataSources[section].models.first?.headerText
     }
 }
