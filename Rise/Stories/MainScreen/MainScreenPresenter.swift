@@ -36,8 +36,9 @@ class MainScreenPresenter: MainScreenViewOutput {
                 self.updateView(with: sunTime)
             }
             if case .failure (let error) = result {
-                log(error.localizedDescription)
-                UIHelper.showError(errorMessage: error.localizedDescription)
+                self.updateSunView(with: error)
+//                log(error.localizedDescription)
+//                UIHelper.showError(errorMessage: error.localizedDescription)
             }
         }
     }
@@ -46,7 +47,7 @@ class MainScreenPresenter: MainScreenViewOutput {
         requestPersonalPlanUseCase.request { [weak self] result in
             guard let self = self else { return }
             if case .success (let plan) = result { self.updateView(with: plan) }
-            if case .failure (let error) = result { self.updateView(with: error) }
+            if case .failure (let error) = result { self.updatePlanView(with: error) }
         }
     }
     
@@ -77,12 +78,23 @@ class MainScreenPresenter: MainScreenViewOutput {
         view.refreshCollectionView()
     }
     
-    private func updateView(with planError: Error) {
+    private func updatePlanView(with planError: Error) {
         guard let view = view else { return }
         
         log(planError.localizedDescription)
         for index in self.cellModels.enumerated() {
             self.cellModels[index.offset].planErrorMessage = "You have no Rise plan yet"
+        }
+        
+        view.refreshCollectionView()
+    }
+    
+    private func updateSunView(with sunTimeError: Error) {
+        guard let view = view else { return }
+        
+        log(sunTimeError.localizedDescription)
+        for index in self.cellModels.enumerated() {
+            self.cellModels[index.offset].sunErrorMessage = "Failed to load data"
         }
         
         view.refreshCollectionView()

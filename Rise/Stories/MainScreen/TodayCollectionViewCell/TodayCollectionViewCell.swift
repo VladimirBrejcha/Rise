@@ -61,7 +61,7 @@ class TodayCollectionViewCell: UICollectionViewCell {
         planLoadingView.setupAnimationLayer()
         
         if let error = cellModel.sunErrorMessage {
-            sunLoadingView.showInfo(with: error)
+            sunLoadingView.showLoadingError()
         } else {
             sunLoadingView.hideInfo()
             isSunDataLoaded
