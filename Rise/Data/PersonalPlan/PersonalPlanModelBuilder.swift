@@ -20,14 +20,20 @@ class PersonalPlanModelBuilder {
                                  latestConfirmedDay: object.latestConfirmedDay)
     }
     
-    func update(object: RisePersonalPlan, with model: PersonalPlan) {
+    func update(object: RisePersonalPlan, with model: PersonalPlan, and planTime: [RiseDailyPlanTime]) {
         object.planStartDay = model.planStartDay
         object.planDuration = Int64(model.planDuration)
         object.finalSleepTime = model.finalSleepTime
         object.finalWakeTime = model.finalWakeTime
         object.sleepDuration = model.sleepDuration
-        object.addToDaliyPlanTime(NSSet(array: model.dailyTimes))
+        object.addToDaliyPlanTime(NSSet(array: planTime))
         object.latestConfirmedDay = model.latestConfirmedDay
+    }
+    
+    func update(object: RiseDailyPlanTime, with model: DailyPlanTime) {
+        object.day = model.day
+        object.sleep = model.sleep
+        object.wake = model.wake
     }
     
     private func buildDailyTimeModel(from object: RiseDailyPlanTime) -> DailyPlanTime {

@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 
 fileprivate typealias ObjectType = RisePersonalPlan
+fileprivate typealias DailyTimeObjectType = RiseDailyPlanTime
 fileprivate let containerName = "PersonalPlanData"
 
 class PersonalPlanLocalDataSource {
@@ -23,7 +24,8 @@ class PersonalPlanLocalDataSource {
     private let builder = PersonalPlanModelBuilder()
     
     private var context: NSManagedObjectContext { return container.viewContext }
-    private let entityName = String(describing: ObjectType.self)
+    private let planEntityName = String(describing: ObjectType.self)
+    private let planTimeEntityName = String(describing: DailyTimeObjectType.self)
     
     func requestPersonalPlan() -> Result<PersonalPlan, Error> {
         switch container.fetch() {
@@ -35,15 +37,18 @@ class PersonalPlanLocalDataSource {
     }
     
     @discardableResult func create(personalPlan: PersonalPlan) -> Bool {
-        let personalPlanObject = NSEntityDescription.insertNewObject(forEntityName: entityName, into: context) as! ObjectType
-        builder.update(object: personalPlanObject, with: personalPlan)
+        let personalPlanObject = NSEntityDescription.insertNewObject(forEntityName: planEntityName,
+                                                                     into: context) as! ObjectType
+        let planTimeObjects = personalPlan.dailyTimes.map { create(planTime: $0) }
+        builder.update(object: personalPlanObject, with: personalPlan, and: planTimeObjects)
         return container.saveContext()
     }
     
     @discardableResult func update(personalPlan: PersonalPlan) -> Bool {
         switch container.fetch() {
         case .success (let personalPlanObject):
-            builder.update(object: personalPlanObject[0], with: personalPlan)
+            let planTimeObjects = personalPlan.dailyTimes.map { create(planTime: $0) }
+            builder.update(object: personalPlanObject[0], with: personalPlan, and: planTimeObjects)
             return container.saveContext()
         case .failure(let error):
             log(error.localizedDescription)
@@ -52,7 +57,7 @@ class PersonalPlanLocalDataSource {
     }
     
     @discardableResult func deleteAll() -> Bool {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: planEntityName)
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         do {
             try context.execute(deleteRequest)
@@ -62,5 +67,12 @@ class PersonalPlanLocalDataSource {
         catch {
             return false
         }
+    }
+    
+    private func create(planTime: DailyPlanTime) -> DailyTimeObjectType {
+        let dailyPlanTimeObject = NSEntityDescription.insertNewObject(forEntityName: planTimeEntityName,
+                                                                      into: context) as! DailyTimeObjectType
+        builder.update(object: dailyPlanTimeObject, with: planTime)
+        return dailyPlanTimeObject
     }
 }
