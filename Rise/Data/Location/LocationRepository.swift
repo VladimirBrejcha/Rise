@@ -10,7 +10,7 @@ import Foundation
 
 class LocationRepository {
     private let local = LocationLocalDataSource()
-    private let remote = LocationRemoteDataSource()
+    private lazy var remote = LocationRemoteDataSource()
     
     func requestLocation(completion: @escaping (Result<Location, Error>) -> Void) {
         switch local.requestLocation() {
