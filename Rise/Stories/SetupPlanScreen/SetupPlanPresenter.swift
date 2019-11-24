@@ -18,6 +18,8 @@ struct DataForPicker { // TODO: - Picker input and output need refactoring
 class SetupPlanPresenter: SetupPlanViewOutput {
     weak var view: SetupPlanViewInput!
     
+    private let savePersonalPlanUseCase: SavePersonalPlanUseCase = sharedUseCaseManager
+    
     private var dataSource: SectionedTableViewDataSource!
     private let datePickerModel = PickerDataModel(tag: 0, labelText: "Choose time", type: .datePicker)
     private let hoursPickerModel = PickerDataModel(tag: 1, labelText: "Choose hours", type: .pickerView,
@@ -26,13 +28,6 @@ class SetupPlanPresenter: SetupPlanViewOutput {
     private let durationPickerModel = PickerDataModel(tag: 3, labelText: "Choose duration", type: .pickerView,
                                                       titleForRowArray: DataForPicker.daysArray, defaultRow: 2)
     
-//    private let coreDataManager = sharedCoreDataManager
-    private var personalPlanModel: PersonalPlan? {
-        didSet {
-            guard let model = personalPlanModel else { return }
-//            coreDataManager.createPersonalPlanObject(with: model)
-        }
-    }
     private var wakeUpForModel: Date?
     private var sleepDurationForModel: String?
     private var lastTimeWentSleepForModel: Date?
@@ -72,8 +67,8 @@ class SetupPlanPresenter: SetupPlanViewOutput {
         
         view?.changeScheduleButtonEnableState(true)
         
-//        PersonalPlanBuilder.buildNewPlan(with: wakeUp, sleepDuration, planDuration, wentSleep) { result in
-//            print(result)
-//        }
+        let personalPlan = PersonalPlanConfigurator.configure(wakeUpTime: wakeUp, sleepDuration: sleepDuration,
+                                                              planDuration: planDuration, wentSleepTime: wentSleep)
+        savePersonalPlanUseCase.save(plan: personalPlan)
     }
 }

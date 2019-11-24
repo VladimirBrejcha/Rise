@@ -16,6 +16,10 @@ protocol UpdatePersonalPlanUseCase {
     func update(plan: PersonalPlan) -> Bool
 }
 
+protocol SavePersonalPlanUseCase {
+    func save(plan: PersonalPlan) -> Bool
+}
+
 protocol RemovePersonalPlanUseCase {
     func remove(plan: PersonalPlan) -> Bool
 }
@@ -31,6 +35,12 @@ class UseCaseManager {
     fileprivate let personalPlanRepository = PersonalPlanRepository()
     fileprivate let sunTimeRepository = SunTimeRepository()
     fileprivate let locationRepository = LocationRepository()
+}
+
+extension UseCaseManager: SavePersonalPlanUseCase {
+    func save(plan: PersonalPlan) -> Bool {
+        return personalPlanRepository.create(personalPlan: plan)
+    }
 }
 
 extension UseCaseManager: RequestPersonalPlanUseCase {
