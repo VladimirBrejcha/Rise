@@ -6,7 +6,7 @@
 //  Copyright © 2019 VladimirBrejcha. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreLocation
 
 final class LocationRemoteDataSource: NSObject, CLLocationManagerDelegate {
@@ -52,10 +52,32 @@ final class LocationRemoteDataSource: NSObject, CLLocationManagerDelegate {
         guard let completion = requestPermissionsCompletion else { return }
         
         switch status {
-        case .authorizedAlways, .authorizedWhenInUse : completion(true)
-        case .notDetermined : requestPermissions(with: completion); return
+        case .authorizedAlways, .authorizedWhenInUse: completion(true)
+        case .notDetermined: requestPermissions(with: completion); return
+        case .denied, .restricted: askForLocationPermissions(completion: completion)
         default: completion(false)
         }
+    }
+    
+    private func askForLocationPermissions(completion: @escaping (Bool) -> Void) {
+        let alertController = UIAlertController(title: "Location access denied", message: "Please go to Settings and turn on the permissions", preferredStyle: .alert)
         
+        let settingsAction = UIAlertAction(title: "Settings", style: .default) { _ in
+            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                return
+            }
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in })
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default) { _ in
+            completion(false)
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(settingsAction)
+        
+        UIHelper.show(alertController: alertController)
     }
 }

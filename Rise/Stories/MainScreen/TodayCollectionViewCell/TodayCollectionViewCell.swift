@@ -78,7 +78,7 @@ class TodayCollectionViewCell: UICollectionViewCell, LoadingViewDelegate {
         if let error = cellModel.sunErrorMessage {
             sunLoadingView.showLoadingError()
         } else {
-            sunLoadingView.hideInfo()
+            sunLoadingView.hideError()
             isSunDataLoaded
                 ? sunLoadingView.hideLoading { UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction,
                                                               animations: { self.sunContainerView.alpha = 1 }) }

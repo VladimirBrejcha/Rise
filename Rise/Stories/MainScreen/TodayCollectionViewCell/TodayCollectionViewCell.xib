@@ -15,14 +15,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="280" height="198"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b8Z-Gu-TIM" customClass="LoadingView" customModule="Rise" customModuleProvider="target">
-                        <rect key="frame" x="5" y="0.0" width="270" height="95"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U93-Yo-WF6" customClass="LoadingView" customModule="Rise" customModuleProvider="target">
-                        <rect key="frame" x="5" y="103" width="270" height="95"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
                     <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ska-F4-EGl" customClass="DesignableContainerView" customModule="Rise" customModuleProvider="target">
                         <rect key="frame" x="5" y="0.0" width="270" height="95"/>
                         <subviews>
@@ -166,6 +158,14 @@
                                 <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b8Z-Gu-TIM" customClass="LoadingView" customModule="Rise" customModuleProvider="target">
+                        <rect key="frame" x="5" y="0.0" width="270" height="95"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U93-Yo-WF6" customClass="LoadingView" customModule="Rise" customModuleProvider="target">
+                        <rect key="frame" x="5" y="103" width="270" height="95"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </subviews>
             </view>

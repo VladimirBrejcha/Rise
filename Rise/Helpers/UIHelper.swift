@@ -18,6 +18,11 @@ class UIHelper {
         if let alertAction = action { alert.addAction(alertAction) }
         controller.present(alert, animated: true, completion: nil)
     }
+    
+    class func show(alertController: UIAlertController) {
+        guard let controller = UIApplication.shared.keyWindow?.rootViewController?.toppestViewController else { return }
+        controller.present(alertController, animated: true, completion: nil)
+    }
 }
 
 extension UIViewController {
