@@ -23,6 +23,7 @@ class LocationRepository {
                     self.remote.requestLocation { result in
                         if case .failure (let error) = result { completion(.failure(error)) }
                         if case .success (let location) = result {
+                            self.removeLocation()
                             self.create(location: location)
                             completion(.success(location))
                         }
