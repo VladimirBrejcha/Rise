@@ -79,6 +79,10 @@ class MainScreenPresenter: MainScreenViewOutput, TodayCollectionViewCellDelegate
     private func updateView(with plan: PersonalPlan) {
         guard let view = view else { return }
         
+        for index in cellModels.enumerated() {
+            cellModels[index.offset].planErrorMessage = "No Rise plan for the day"
+        }
+        
         plan.dailyTimes.forEach { dailyTime in
             if let index = cellModels.firstIndex(where: { cellModel in
                 return Calendar.current.isDate(cellModel.day, inSameDayAs: dailyTime.day)

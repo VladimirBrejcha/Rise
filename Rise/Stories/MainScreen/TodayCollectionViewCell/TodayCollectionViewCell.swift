@@ -75,25 +75,25 @@ class TodayCollectionViewCell: UICollectionViewCell, LoadingViewDelegate {
         sunLoadingView.setupAnimationLayer()
         planLoadingView.setupAnimationLayer()
         
-        if let error = cellModel.sunErrorMessage {
-            sunLoadingView.showLoadingError()
-        } else {
-            sunLoadingView.hideError()
-            isSunDataLoaded
-                ? sunLoadingView.hideLoading { UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction,
-                                                              animations: { self.sunContainerView.alpha = 1 }) }
-                : sunLoadingView.showLoading()
-        }
-        
-        if let error = cellModel.planErrorMessage {
-            planLoadingView.showInfo(with: error)
-        } else {
-            planLoadingView.hideInfo()
+        cellModel.sunErrorMessage != nil
+            ? { sunLoadingView.showLoadingError() }()
+
+            : { sunLoadingView.hideError()
+                isSunDataLoaded
+                    ? sunLoadingView.hideLoading { UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction,
+                                                                  animations: { self.sunContainerView.alpha = 1 })}
+                    : sunLoadingView.showLoading { UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction,
+                                                                  animations: { self.sunContainerView.alpha = 0 })} }()
             
-            isPlanDataLoaded
-                ? planLoadingView.hideLoading { UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction,
-                                                               animations: { self.planContainerView.alpha = 1 }) }
-                : planLoadingView.showLoading()
-        }
+        cellModel.planErrorMessage != nil
+            ? { self.planContainerView.alpha = 0
+                planLoadingView.showInfo(with: cellModel.planErrorMessage!) }()
+                
+            : { planLoadingView.hideInfo()
+                isPlanDataLoaded
+                    ? planLoadingView.hideLoading { UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction,
+                                                                   animations: { self.planContainerView.alpha = 1 }) }
+                    : planLoadingView.showLoading { UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction,
+                                                                   animations: { self.planContainerView.alpha = 0 })} }()
     }
 }
