@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MainScreenPresenter: MainScreenViewOutput {
+class MainScreenPresenter: MainScreenViewOutput, TodayCollectionViewCellDelegate {
     weak var view: MainScreenViewInput?
     
     private let requestSunTimeUseCase: RequestSunTimeUseCase = sharedUseCaseManager
@@ -18,32 +18,45 @@ class MainScreenPresenter: MainScreenViewOutput {
         get { return collectionViewDataSource.models }
         set { collectionViewDataSource.models = newValue }
     }
-    private let collectionViewDataSource: CollectionViewDataSource<TodayCellModel>
-        = .make(for: [TodayCellModel(day: Date().appending(days: -1)),
-                      TodayCellModel(day: Date()),
-                      TodayCellModel(day: Date().appending(days: 1))])
+    private var collectionViewDataSource: CollectionViewDataSource<TodayCellModel>!
     
-    init(view: MainScreenViewInput) {
-        self.view = view
-        view.setupCollectionView(with: collectionViewDataSource)
-    }
+    init(view: MainScreenViewInput) { self.view = view }
     
     // MARK: - MainScreenViewOutput
     func viewDidLoad() {
-        requestSunTimeUseCase.request(for: 3, since: Date().appending(days: -1)) { [weak self] result in
-            guard let self = self else { return }
-            if case .success (let sunTime) = result {
-                self.updateView(with: sunTime)
-            }
-            if case .failure (let error) = result {
-                self.updateSunView(with: error)
-//                log(error.localizedDescription)
-//                UIHelper.showError(errorMessage: error.localizedDescription)
-            }
-        }
+        collectionViewDataSource = .make(for: [TodayCellModel(day: Date().appending(days: -1)),
+                                               TodayCellModel(day: Date()),
+                                               TodayCellModel(day: Date().appending(days: 1))],
+                                         cellDelegate: self)
+        view?.setupCollectionView(with: collectionViewDataSource)
     }
     
     func viewDidAppear() {
+        requestSunTime()
+        requestPlan()
+    }
+    
+    // MARK: - TodayCollectionViewCellDelegate
+    func repeatButtonPressed(on cell: TodayCollectionViewCell) {
+        if let index = cellModels.firstIndex(where: { cellModel in
+            return Calendar.current.isDate(cellModel.day, inSameDayAs: cell.cellModel.day)
+        }) {
+            cellModels[index].sunErrorMessage = nil
+            view?.refreshCollectionView()
+            requestSunTime()
+        }
+    }
+    
+    // MARK: - Private Methods
+    private func requestSunTime() {
+        requestSunTimeUseCase.request(for: 3, since: Date().appending(days: -1)) { [weak self] result in
+            guard let self = self else { return }
+            if case .success (let sunTime) = result { self.updateView(with: sunTime) }
+            if case .failure (let error) = result { self.updateSunView(with: error) }
+        }
+    }
+    
+    private func requestPlan() {
         requestPersonalPlanUseCase.request { [weak self] result in
             guard let self = self else { return }
             if case .success (let plan) = result { self.updateView(with: plan) }
@@ -51,7 +64,6 @@ class MainScreenPresenter: MainScreenViewOutput {
         }
     }
     
-    // MARK: - Private Methods
     private func updateView(with sunModelArray: [DailySunTime]) {
         guard let view = view else { return }
         

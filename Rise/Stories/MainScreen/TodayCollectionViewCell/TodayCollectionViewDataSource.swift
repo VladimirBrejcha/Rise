@@ -17,9 +17,12 @@ class TodayCollectionView: ColectionView {
 }
 
 extension CollectionViewDataSource where Model == TodayCellModel {
-    static func make(for cellModels: [TodayCellModel], reuseIdentifier: String = todayCellID) -> CollectionViewDataSource {
+    static func make(for cellModels: [TodayCellModel], reuseIdentifier: String = todayCellID,
+                     cellDelegate: TodayCollectionViewCellDelegate) -> CollectionViewDataSource {
+        
         return CollectionViewDataSource (models: cellModels, reuseIdentifier: reuseIdentifier) { (model, cell) in
             (cell as! TodayCollectionViewCell).cellModel = model
+            (cell as! TodayCollectionViewCell).delegate = cellDelegate
         }
     }
 }

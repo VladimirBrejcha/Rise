@@ -28,7 +28,13 @@ struct TodayCellModel {
     }
 }
 
-class TodayCollectionViewCell: UICollectionViewCell {
+protocol TodayCollectionViewCellDelegate: AnyObject {
+    func repeatButtonPressed(on cell: TodayCollectionViewCell)
+}
+
+class TodayCollectionViewCell: UICollectionViewCell, LoadingViewDelegate {
+    weak var delegate: TodayCollectionViewCellDelegate?
+    
     @IBOutlet weak var sunriseTimeLabel: UILabel!
     @IBOutlet weak var sunsetTimeLabel: UILabel!
     @IBOutlet weak var wakeUpTimeLabel: UILabel!
@@ -45,6 +51,11 @@ class TodayCollectionViewCell: UICollectionViewCell {
         return cellModel.planTime != nil
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        sunLoadingView.delegate = self
+    }
+    
     var cellModel: TodayCellModel! {
         didSet {
             sunriseTimeLabel.text = cellModel.sunTime?.sunrise
@@ -52,6 +63,10 @@ class TodayCollectionViewCell: UICollectionViewCell {
             wakeUpTimeLabel.text = cellModel.planTime?.wake
             toSleepTimeLabel.text = cellModel.planTime?.sleep
         }
+    }
+    
+    func repeatButtonPressed() {
+        delegate?.repeatButtonPressed(on: self)
     }
     
     override func draw(_ rect: CGRect) {

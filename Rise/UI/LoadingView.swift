@@ -8,8 +8,13 @@
 
 import UIKit
 
+protocol LoadingViewDelegate: AnyObject {
+    func repeatButtonPressed()
+}
+
 @IBDesignable
 class LoadingView: UIButton, NibLoadable {
+    weak var delegate: LoadingViewDelegate?
 
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var errorContainerView: UIView!
@@ -44,7 +49,7 @@ class LoadingView: UIButton, NibLoadable {
     }
 
     @IBAction func errorButtonPressed(_ sender: Button) {
-        
+        delegate?.repeatButtonPressed()
     }
     
     // MARK: - Error
