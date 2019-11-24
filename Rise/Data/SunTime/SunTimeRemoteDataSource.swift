@@ -25,7 +25,7 @@ class SunTimeRemoteDataSource {
         DispatchQueue.concurrentPerform(iterations: numberOfDays) { dayNumber in
             group.enter()
 
-            guard let date = Calendar.current.date(byAdding: .day, value: dayNumber - 1, to: day)
+            guard let date = Calendar.current.date(byAdding: .day, value: dayNumber, to: day)
                 else {
                     completion(.failure(RiseError.errorCantFormatDate()))
                     group.leave()

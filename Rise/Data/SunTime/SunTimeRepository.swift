@@ -22,11 +22,10 @@ class SunTimeRepository {
                                 since: calculateLatestDay(from: localSunTimes).appending(days: 1),
                                 for: location) { result in
                                     if case .failure (let error) = result { completion(.failure(error)) }
-                                    if case .success (let remoteLocation) = result {
-                                        localSunTimes.append(contentsOf: remoteLocation)
+                                    if case .success (let remoteSunTimes) = result {
+                                        localSunTimes.append(contentsOf: remoteSunTimes)
                                         completion(.success(localSunTimes))
                                     }
-                                    
             }
             
         case .failure(let error):
@@ -58,7 +57,7 @@ class SunTimeRepository {
     }
     
     private func calculateLatestDay(from sunTimes: [DailySunTime]) -> Date {
-        return sunTimes.sorted { $0.day > $1.day }.last!.day
+        return sunTimes.sorted { $0.day < $1.day }.last!.day
     }
     
     private func calculateMissingDays(from sunTimes: [DailySunTime], and numberOfDays: Int) -> Int {

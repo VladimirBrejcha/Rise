@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -188,7 +188,7 @@
                 <outlet property="sunLoadingView" destination="b8Z-Gu-TIM" id="7lR-MA-aIf"/>
                 <outlet property="sunriseTimeLabel" destination="W3a-as-p6Y" id="ybx-Va-wJi"/>
                 <outlet property="sunsetTimeLabel" destination="MgN-sD-dqT" id="7ep-t4-AS4"/>
-                <outlet property="toSleepTimeSleep" destination="n5E-k2-rRw" id="9xj-LV-uMp"/>
+                <outlet property="toSleepTimeLabel" destination="n5E-k2-rRw" id="9xj-LV-uMp"/>
                 <outlet property="wakeUpTimeLabel" destination="ZgW-re-V6q" id="n3s-oI-Yd4"/>
             </connections>
             <point key="canvasLocation" x="-362.31884057971018" y="-221.65178571428569"/>

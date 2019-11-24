@@ -12,15 +12,16 @@ class MainScreenPresenter: MainScreenViewOutput {
     weak var view: MainScreenViewInput?
     
     private let requestSunTimeUseCase: RequestSunTimeUseCase = sharedUseCaseManager
+    private let requestPersonalPlanUseCase: RequestPersonalPlanUseCase = sharedUseCaseManager
     
     private var cellModels: [TodayCellModel] {
         get { return collectionViewDataSource.models }
         set { collectionViewDataSource.models = newValue }
     }
     private let collectionViewDataSource: CollectionViewDataSource<TodayCellModel>
-        = .make(for: [TodayCellModel(isDataLoaded: false, sunriseTime: "", sunsetTime: ""),
-                      TodayCellModel(isDataLoaded: false, sunriseTime: "", sunsetTime: ""),
-                      TodayCellModel(isDataLoaded: false, sunriseTime: "", sunsetTime: "")])
+        = .make(for: [TodayCellModel(day: Date().appending(days: -1)),
+                      TodayCellModel(day: Date()),
+                      TodayCellModel(day: Date().appending(days: 1))])
     
     init(view: MainScreenViewInput) {
         self.view = view
@@ -44,15 +45,14 @@ class MainScreenPresenter: MainScreenViewOutput {
     // MARK: - Private Methods
     private func updateView(with sunModelArray: [DailySunTime]) {
         guard let view = view else { return }
-        var models: [TodayCellModel] = []
-        sunModelArray.forEach { sunModel in models.append(buildCellModel(from: sunModel)) }
-        cellModels = models
+        
+        sunModelArray.forEach { sunModel in
+            if let index = cellModels.firstIndex(where: { cellModel in
+                return Calendar.current.isDate(cellModel.day, inSameDayAs: sunModel.day)
+            }) {
+                cellModels[index].update(sunTime: sunModel)
+            }
+        }
         view.refreshCollectionView()
-    }
-    
-    private func buildCellModel(from sunModel: DailySunTime) -> TodayCellModel {
-        return TodayCellModel(isDataLoaded: true,
-                              sunriseTime: DatesConverter.formatDateToHHmm(date: sunModel.sunrise),
-                              sunsetTime: DatesConverter.formatDateToHHmm(date: sunModel.sunset))
     }
 }

@@ -47,6 +47,7 @@ class LoadingView: UIButton, NibLoadable {
         
     }
     
+    // MARK: - Error
     func showLoadingError() {
         toggleViewAppearance(show: true, errorContainerView)
     }
@@ -55,33 +56,39 @@ class LoadingView: UIButton, NibLoadable {
         toggleViewAppearance(show: false, errorContainerView)
     }
     
+    // MARK: - Loadiing
     func showLoading() {
         animationManager?.startAnimating()
         toggleViewAppearance(show: true, animationView)
     }
     
-    func hideLoading(completion: @escaping () -> Void) {
-        hideSelf {
+    func hideLoading(completion: (() -> Void)? = nil) {
+        toggleViewAppearance(show: false, animationView) {
             self.animationManager?.stopAnimating()
-            completion()
+            completion?()
         }
     }
     
+    // MARK: - Info
     func showInfo(with text: String) {
         infoLabel.text = text
         toggleViewAppearance(show: true, infoLabel)
     }
     
-    func hideInfo() { toggleViewAppearance(show: false, infoLabel) }
+    func hideInfo() {
+        toggleViewAppearance(show: false, infoLabel)
+    }
     
-    func hideSelf(completion: @escaping () -> Void) {
+    // MARK: - Private
+    private func hideSelf(completion: @escaping () -> Void) {
         UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction, animations: {
             self.alpha = 0
         }) { _ in  completion() }
     }
     
-    // MARK: - Private
-    private func toggleViewAppearance(show: Bool, _ view: UIView) {
-        UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction, animations: { view.alpha = show ? 1 : 0 })
+    private func toggleViewAppearance(show: Bool, _ view: UIView, completion: (() -> Void)? = nil) {
+        UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction, animations: {
+            view.alpha = show ? 1 : 0
+        }) { _ in completion?() }
     }
 }
