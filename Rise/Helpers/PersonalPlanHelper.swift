@@ -18,7 +18,7 @@ extension PersonalPlan {
     var sleepDurationHours: String { return (self.sleepDuration / 3600).stringWithoutZeroFraction }
     var wakeUpAt: String { return dateFormatter.string(from: self.finalWakeTime) }
     var willSleep: String { return dateFormatter.string(from: self.finalSleepTime) }
-    var planDurationDays: Int { return Int(self.planDuration / 24 / 60) }
+    var planDurationDays: String { return "\(self.planDuration)" }
 }
 
 extension Double {
