@@ -86,6 +86,9 @@ class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITable
     
     func hidePlanDoesntExistInfo() {
         loadingView.hideInfo()
+        UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction, animations: {
+            self.mainContainerView.alpha = 1
+        })
     }
     
     func showLoading() {
@@ -124,24 +127,8 @@ extension PersonalPlanViewController {
 }
 
 // MARK: - TableViewControllerDelegate
-extension PersonalPlanViewController {
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat { return tableView == infoTableView ? 0 : 1 }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { return tableView == infoTableView ? 0 : 1 }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = .clear
-        return view
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = .clear
-        return view
-    }
-    
+extension PersonalPlanViewController {    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView == progressTableView ? tableView.frame.size.height : tableView.frame.size.height / 4 - 2.5
+        return tableView == progressTableView ? tableView.frame.size.height : tableView.frame.size.height / 4
     }
 }
