@@ -15,8 +15,14 @@ fileprivate let dateFormatter: DateFormatter = {
 }()
 
 extension PersonalPlan {
-    var sleepDurationHours: Double { return self.sleepDuration / 3600 }
+    var sleepDurationHours: String { return (self.sleepDuration / 3600).stringWithoutZeroFraction }
     var wakeUpAt: String { return dateFormatter.string(from: self.finalWakeTime) }
     var willSleep: String { return dateFormatter.string(from: self.finalSleepTime) }
-    var planDurationDays: Int { return Int(self.planDuration / 24 / 60 / 60) }
+    var planDurationDays: Int { return Int(self.planDuration / 24 / 60) }
+}
+
+extension Double {
+    var stringWithoutZeroFraction: String {
+        return truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", self) : String(self)
+    }
 }
