@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9i-c1-Zds" customClass="Button" customModule="Rise" customModuleProvider="target">
-                                <rect key="frame" x="10" y="749" width="394" height="44"/>
+                                <rect key="frame" x="10" y="743" width="394" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="5Zs-BB-wyl"/>
                                 </constraints>
@@ -406,7 +406,7 @@
                                     <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7m-Jx-GLK">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="355"/>
                                         <subviews>
-                                            <tableView clipsSubviews="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="IaP-qe-KSL">
+                                            <tableView clipsSubviews="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="IaP-qe-KSL">
                                                 <rect key="frame" x="10" y="10" width="374" height="74"/>
                                                 <color key="backgroundColor" white="1" alpha="0.070000000000000007" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
@@ -478,7 +478,9 @@
                         <outlet property="infomationLabel" destination="l6b-Je-AIM" id="1cG-LH-SB3"/>
                         <outlet property="loadingView" destination="fcl-0z-OKT" id="YDj-pl-iJC"/>
                         <outlet property="mainContainerView" destination="h7m-Jx-GLK" id="r1u-wN-qb5"/>
+                        <outlet property="pauseButton" destination="HDb-8i-BaK" id="tJR-Z1-sat"/>
                         <outlet property="planButton" destination="hRZ-Gb-VtP" id="ywd-o7-v4z"/>
+                        <outlet property="planManageButtonsStackView" destination="QRB-lf-jzj" id="8DK-yl-yux"/>
                         <outlet property="progressTableView" destination="IaP-qe-KSL" id="8P0-MY-JbL"/>
                     </connections>
                 </viewController>

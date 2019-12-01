@@ -64,9 +64,7 @@ class LoadingView: UIButton, NibLoadable {
     // MARK: - Loadiing
     func showLoading(completion: (() -> Void)? = nil) {
         animationManager?.startAnimating()
-        toggleViewAppearance(show: true, animationView) {
-            completion?()
-        }
+        toggleViewAppearance(show: true, animationView, completion: completion)
     }
     
     func hideLoading(completion: (() -> Void)? = nil) {
@@ -82,8 +80,8 @@ class LoadingView: UIButton, NibLoadable {
         toggleViewAppearance(show: true, infoLabel)
     }
     
-    func hideInfo() {
-        toggleViewAppearance(show: false, infoLabel)
+    func hideInfo(completion: (() -> Void)? = nil) {
+        toggleViewAppearance(show: false, infoLabel, completion: completion)
     }
     
     // MARK: - Private

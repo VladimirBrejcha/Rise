@@ -16,8 +16,8 @@ protocol PersonalPlanViewInput: AnyObject {
     func updatePlanInfo(with info: [String])
     func showLoading()
     func hideLoading()
-    func showPlanDoesntExistInfo()
-    func hidePlanDoesntExistInfo()
+    func updateUI(doesPlanExist: Bool)
+    func updateStackViewButtons(doesPlanExist: Bool)
 }
 
 protocol PersonalPlanViewOutput: AnyObject {
@@ -29,6 +29,8 @@ protocol PersonalPlanViewOutput: AnyObject {
 class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PersonalPlanViewInput {
     var output: PersonalPlanViewOutput!
     
+    @IBOutlet weak var planManageButtonsStackView: UIStackView!
+    @IBOutlet weak var pauseButton: Button!
     @IBOutlet weak var planButton: UIButton!
     @IBOutlet weak var infomationLabel: UILabel!
     
@@ -43,7 +45,7 @@ class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITable
     private let infoCellImageArray: [UIImage] = [#imageLiteral(resourceName: "Clock"), #imageLiteral(resourceName: "wakeup"), #imageLiteral(resourceName: "fallasleep"), #imageLiteral(resourceName: "sun")]
     private var infoCellLabelTextArray: [String]?
     
-    // MARK: - LifeCycle
+    // MARK: - LifeCycle -
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,13 +64,7 @@ class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITable
         output.viewDidAppear()
     }
     
-    private func configureTableView(tableView: UITableView, info: (nib: UINib, cellID: String)) {
-        tableView.register(info.nib, forCellReuseIdentifier: info.cellID)
-        tableView.delegate = self
-        tableView.dataSource = self
-    }
-    
-    // MARK: - PersonalPlanViewInput
+    // MARK: - PersonalPlanViewInput -
     func updatePlanInfo(with info: [String]) {
         infoCellLabelTextArray = info
         infoTableView.reloadData()
@@ -80,15 +76,18 @@ class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITable
         progressTableView.reloadData()
     }
     
-    func showPlanDoesntExistInfo() {
-        loadingView.showInfo(with: "You don't have sleep plan yet, go and create one!")
+    func updateUI(doesPlanExist: Bool) {
+        doesPlanExist
+            ? hidePlanDoesntExistInfo()
+            : showPlanDoesntExistInfo()
     }
     
-    func hidePlanDoesntExistInfo() {
-        loadingView.hideInfo()
-        UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction, animations: {
-            self.mainContainerView.alpha = 1
-        })
+    func updateStackViewButtons(doesPlanExist: Bool) {
+        doesPlanExist
+            ? { planButton.setTitle("Change", for: .normal)
+                planManageButtonsStackView.addArrangedSubview(pauseButton) }()
+            : { planButton.setTitle("Create", for: .normal)
+                pauseButton.removeFromSuperview() }()
     }
     
     func showLoading() {
@@ -97,6 +96,26 @@ class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITable
     
     func hideLoading() {
         loadingView.hideLoading {
+            UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction, animations: {
+                self.mainContainerView.alpha = 1
+            })
+        }
+    }
+    
+    // MARK: - Private -
+    private func configureTableView(tableView: UITableView, info: (nib: UINib, cellID: String)) {
+        tableView.register(info.nib, forCellReuseIdentifier: info.cellID)
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    private func showPlanDoesntExistInfo() {
+        mainContainerView.alpha = 0
+        loadingView.showInfo(with: "You don't have sleep plan yet, go and create one!")
+    }
+    
+    private func hidePlanDoesntExistInfo() {
+        loadingView.hideInfo() {
             UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction, animations: {
                 self.mainContainerView.alpha = 1
             })

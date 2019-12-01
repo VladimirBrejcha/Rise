@@ -34,8 +34,9 @@ class PersonalPlanPresenter: PersonalPlanViewOutput {
     
     init(view: PersonalPlanViewInput) { self.view = view }
     
-    // MARK: - PersonalPlanViewOutput
+    // MARK: - PersonalPlanViewOutput -
     func viewDidLoad() {
+        view?.updateStackViewButtons(doesPlanExist: personalPlan != nil)
     }
     
     func viewDidAppear() {
@@ -46,20 +47,21 @@ class PersonalPlanPresenter: PersonalPlanViewOutput {
         
     }
     
-    // MARK: - Private
+    // MARK: - Private -
     private func updateViewWithPlan() {
+        guard let view = view else { return }
+        
         if let plan = personalPlan {
             let durationText = "\(plan.sleepDurationHours) hours of sleep daily"
             let wakeUpText = "Will wake up at \(plan.wakeUpAt)"
             let toSleepText = "Will sleep at \(plan.willSleep)"
             let syncText = "Synchronized with sunrise"
             
-            view?.updateProgressView(with: plan.planProgress, maxProgress: plan.planDurationDays)
-            
-            view?.updatePlanInfo(with: [durationText, wakeUpText, toSleepText, syncText])
-            view?.hidePlanDoesntExistInfo()
+            view.updateProgressView(with: plan.planProgress, maxProgress: plan.planDurationDays)
+            view.updatePlanInfo(with: [durationText, wakeUpText, toSleepText, syncText])
+            view.updateUI(doesPlanExist: true)
         } else {
-            view?.showPlanDoesntExistInfo()
+            view.updateUI(doesPlanExist: false)
         }
     }
 }
