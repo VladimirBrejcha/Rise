@@ -54,7 +54,7 @@ class PersonalPlanPresenter: PersonalPlanViewOutput {
             let toSleepText = "Will sleep at \(plan.willSleep)"
             let syncText = "Synchronized with sunrise"
             
-            view?.updateProgressView(with: 0.7, maxProgress: plan.planDurationDays)
+            view?.updateProgressView(with: plan.planProgress, maxProgress: plan.planDurationDays)
             
             view?.updatePlanInfo(with: [durationText, wakeUpText, toSleepText, syncText])
             view?.hidePlanDoesntExistInfo()

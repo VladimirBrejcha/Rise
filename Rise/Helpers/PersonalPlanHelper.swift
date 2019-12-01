@@ -19,6 +19,16 @@ extension PersonalPlan {
     var wakeUpAt: String { return dateFormatter.string(from: self.finalWakeTime) }
     var willSleep: String { return dateFormatter.string(from: self.finalSleepTime) }
     var planDurationDays: String { return "\(self.planDuration)" }
+    var planProgress: Double {
+        let calendar = Calendar.current
+
+        let date1 = calendar.startOfDay(for: self.planStartDay)
+        let date2 = calendar.startOfDay(for: self.latestConfirmedDay)
+
+        let daysBetween = calendar.dateComponents([.day], from: date1, to: date2).day!
+        
+        return (Double(self.planDuration - (self.planDuration - daysBetween)) / Double(self.planDuration))
+    }
 }
 
 extension Double {
