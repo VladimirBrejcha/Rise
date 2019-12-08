@@ -55,12 +55,7 @@ extension UIViewController {
     }
 }
 
-extension UIStoryboard { // used to call controllers with same id as a view controller type
-    func instantiateViewController(withIdentifier typeIdentifier: UIViewController.Type) -> UIViewController {
-        return instantiateViewController(withIdentifier: String(describing: typeIdentifier))
-    }
-}
-extension UIViewController { // used to call segues with same id as a view controller type
+extension UIViewController {
     func performSegue(withIdentifier typeIdentifier: UIViewController.Type, sender: Any?) {
         return performSegue(withIdentifier: String(describing: typeIdentifier), sender: sender)
     }
