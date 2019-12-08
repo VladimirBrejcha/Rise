@@ -1,5 +1,5 @@
 //
-//  CollectionViewWithSegmentedControl.swift
+//  DaysCollectionView.swift
 //  Rise
 //
 //  Created by Владимир Королев on 08/09/2019.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class CollectionViewWithSegmentedControl: DesignableContainerView, SegmentedControlViewDelegate, UICollectionViewDelegateFlowLayout {
-    @IBOutlet weak var segmentedControl: SegmentedControlView!
-    @IBOutlet weak var collectionView: TodayCollectionView!
+final class DaysView: DesignableContainerView, DaysSegmentedControlViewDelegate, UICollectionViewDelegateFlowLayout {
+    @IBOutlet weak var segmentedControl: DaysSegmentedControlView!
+    @IBOutlet weak var collectionView: DaysCollectionView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,12 +35,12 @@ class CollectionViewWithSegmentedControl: DesignableContainerView, SegmentedCont
         let w = scrollView.bounds.size.width
         let currentPage = Int(ceil(x/w))
         if currentPage > 2 || currentPage < 0 { return }
-        segmentedControl.selectButton(SegmentedControlViewButtons(rawValue: currentPage)!)
+        segmentedControl.selectButton(DaysSegmentedControlViewButtonDay(rawValue: currentPage)!)
     }
     
     // MARK: SegmentedControlViewDelegate
-    func userDidSelect(segment: SegmentedControlViewButtons) {
-        collectionView?.scrollToItem(at: IndexPath(item: segment.row, section: 0), at: .centeredHorizontally, animated: true)
+    func didSelect(segment: DaysSegmentedControlViewButtonDay) {
+        collectionView?.scrollToItem(at: IndexPath(item: segment.rawValue, section: 0), at: .centeredHorizontally, animated: true)
     }
     
 }

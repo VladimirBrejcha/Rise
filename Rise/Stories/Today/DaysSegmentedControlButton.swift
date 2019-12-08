@@ -8,13 +8,13 @@
 
 import UIKit
 
-class SegmentedControlButton: UIButton {
-    var day = SegmentedControlViewButtons.today
+final class DaysSegmentedControlButton: UIButton {
+    var day = DaysSegmentedControlViewButton.today
     
     @available(*, unavailable, message: "This property is reserved for Interface Builder. Use 'day' instead.")
     @IBInspectable var buttonIndex: NSNumber? {
         willSet {
-            if let newDay = SegmentedControlViewButtons(rawValue: Int(truncating: newValue ?? NSNumber(integerLiteral: 1))) {
+            if let newDay = DaysSegmentedControlViewButton(rawValue: Int(truncating: newValue ?? NSNumber(integerLiteral: 1))) {
                 if newDay == day {
                     isSelected = true
                 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct TodayCellModel {
+struct DaysCollectionViewCellModel {
     var day: Date
     var sunTime: (sunrise: String, sunset: String)?
     var planTime: (wake: String, sleep: String)?
@@ -28,12 +28,12 @@ struct TodayCellModel {
     }
 }
 
-protocol TodayCollectionViewCellDelegate: AnyObject {
-    func repeatButtonPressed(on cell: TodayCollectionViewCell)
+protocol DaysCollectionViewCellDelegate: AnyObject {
+    func repeatButtonPressed(on cell: DaysCollectionViewCell)
 }
 
-class TodayCollectionViewCell: UICollectionViewCell, LoadingViewDelegate {
-    weak var delegate: TodayCollectionViewCellDelegate?
+class DaysCollectionViewCell: UICollectionViewCell, LoadingViewDelegate {
+    weak var delegate: DaysCollectionViewCellDelegate?
     
     @IBOutlet weak var sunriseTimeLabel: UILabel!
     @IBOutlet weak var sunsetTimeLabel: UILabel!
@@ -56,7 +56,7 @@ class TodayCollectionViewCell: UICollectionViewCell, LoadingViewDelegate {
         sunLoadingView.delegate = self
     }
     
-    var cellModel: TodayCellModel! {
+    var cellModel: DaysCollectionViewCellModel! {
         didSet {
             sunriseTimeLabel.text = cellModel.sunTime?.sunrise
             sunsetTimeLabel.text = cellModel.sunTime?.sunset
