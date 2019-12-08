@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Upr-F1-t92">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main Screen View Controller-->
+        <scene sceneID="x3b-qG-Bv2">
+            <objects>
+                <viewController storyboardIdentifier="MainScreenViewController" definesPresentationContext="YES" id="zaJ-cb-1ng" customClass="MainScreenViewController" customModule="Rise" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CxZ-qH-yJ3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9i-c1-Zds" customClass="Button" customModule="Rise" customModuleProvider="target">
+                                <rect key="frame" x="10" y="792" width="394" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="5Zs-BB-wyl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Sleep">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="sleepButtonTouch:" destination="zaJ-cb-1ng" eventType="touchUpInside" id="A4E-A1-azt"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="Rgr-bX-Dxg"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GMJ-xI-VUX" customClass="CollectionViewWithSegmentedControl" customModule="Rise" customModuleProvider="target">
+                                <rect key="frame" x="10" y="286" width="394" height="324"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="always" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="K58-rc-BMQ" customClass="TodayCollectionView" customModule="Rise" customModuleProvider="target">
+                                        <rect key="frame" x="5" y="10" width="384" height="276"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="BBl-EY-aQt">
+                                            <size key="itemSize" width="0.0" height="0.0"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="GMJ-xI-VUX" id="QLj-tH-lgM"/>
+                                            <outlet property="delegate" destination="GMJ-xI-VUX" id="THC-Jc-HLE"/>
+                                        </connections>
+                                    </collectionView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="1So-Po-EsV" customClass="SegmentedControlView" customModule="Rise" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="296" width="374" height="18"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xKc-rS-Ifx" customClass="SegmentedControlButton" customModule="Rise" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="124.5" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <state key="normal" title="yesterday">
+                                                    <color key="titleColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <state key="selected">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="buttonIndex">
+                                                        <integer key="value" value="0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="didPressButton:" destination="1So-Po-EsV" eventType="touchUpInside" id="ObQ-bg-fBM"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ROw-AF-K5u" customClass="SegmentedControlButton" customModule="Rise" customModuleProvider="target">
+                                                <rect key="frame" x="124.5" y="0.0" width="125" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <state key="normal" title="today">
+                                                    <color key="titleColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <state key="selected">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="buttonIndex">
+                                                        <integer key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="didPressButton:" destination="1So-Po-EsV" eventType="touchUpInside" id="ugY-67-Gg8"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SaR-h9-8iw" customClass="SegmentedControlButton" customModule="Rise" customModuleProvider="target">
+                                                <rect key="frame" x="249.5" y="0.0" width="124.5" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <state key="normal" title="tomorrow">
+                                                    <color key="titleColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <state key="selected">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="buttonIndex">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="didPressButton:" destination="1So-Po-EsV" eventType="touchUpInside" id="OK1-4l-SoL"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <connections>
+                                            <outletCollection property="buttons" destination="xKc-rS-Ifx" collectionClass="NSMutableArray" id="12p-kJ-uLs"/>
+                                            <outletCollection property="buttons" destination="ROw-AF-K5u" collectionClass="NSMutableArray" id="LCk-g6-6bc"/>
+                                            <outletCollection property="buttons" destination="SaR-h9-8iw" collectionClass="NSMutableArray" id="5XJ-zS-LqE"/>
+                                        </connections>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.070000000000000007" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="K58-rc-BMQ" secondAttribute="trailing" constant="5" id="7Rg-00-oBL"/>
+                                    <constraint firstItem="1So-Po-EsV" firstAttribute="top" secondItem="K58-rc-BMQ" secondAttribute="bottom" constant="10" id="Naz-dG-2X2"/>
+                                    <constraint firstAttribute="width" secondItem="GMJ-xI-VUX" secondAttribute="height" multiplier="28:23" id="cUR-zf-KqQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="K58-rc-BMQ" secondAttribute="bottom" constant="38" id="cjA-F8-BQy"/>
+                                    <constraint firstAttribute="trailing" secondItem="1So-Po-EsV" secondAttribute="trailing" constant="10" id="haw-gY-Chf"/>
+                                    <constraint firstAttribute="bottom" secondItem="1So-Po-EsV" secondAttribute="bottom" constant="10" id="hjO-9Y-V5k"/>
+                                    <constraint firstItem="K58-rc-BMQ" firstAttribute="top" secondItem="GMJ-xI-VUX" secondAttribute="top" constant="10" id="k9P-Us-Rbu"/>
+                                    <constraint firstItem="K58-rc-BMQ" firstAttribute="leading" secondItem="GMJ-xI-VUX" secondAttribute="leading" constant="5" id="n9I-qV-0DL"/>
+                                    <constraint firstItem="1So-Po-EsV" firstAttribute="leading" secondItem="GMJ-xI-VUX" secondAttribute="leading" constant="10" id="o32-vG-Jqp"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="collectionView" destination="K58-rc-BMQ" id="Y3x-az-iqN"/>
+                                    <outlet property="segmentedControl" destination="1So-Po-EsV" id="jZK-hc-emJ"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q7C-TX-der" customClass="DesignableContainerView" customModule="Rise" customModuleProvider="target">
+                                <rect key="frame" x="10" y="54" width="394" height="79"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Rise! " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuw-uY-MJR">
+                                        <rect key="frame" x="10" y="10" width="374" height="59"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.070000000000000007" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="yuw-uY-MJR" firstAttribute="leading" secondItem="Q7C-TX-der" secondAttribute="leading" constant="10" id="BKk-Wx-110"/>
+                                    <constraint firstAttribute="bottom" secondItem="yuw-uY-MJR" secondAttribute="bottom" constant="10" id="Boa-SX-2Wd"/>
+                                    <constraint firstAttribute="trailing" secondItem="yuw-uY-MJR" secondAttribute="trailing" constant="10" id="Pil-2P-aCt"/>
+                                    <constraint firstItem="yuw-uY-MJR" firstAttribute="top" secondItem="Q7C-TX-der" secondAttribute="top" constant="10" id="b0y-Ty-kLA"/>
+                                    <constraint firstAttribute="width" secondItem="Q7C-TX-der" secondAttribute="height" multiplier="300:60" id="yOd-c5-HIX"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Q7C-TX-der" firstAttribute="top" secondItem="ury-MB-qCt" secondAttribute="top" constant="10" id="MwH-OO-f3I"/>
+                            <constraint firstItem="ury-MB-qCt" firstAttribute="bottom" secondItem="x9i-c1-Zds" secondAttribute="bottom" constant="20" id="UVS-UY-qcw"/>
+                            <constraint firstItem="x9i-c1-Zds" firstAttribute="leading" secondItem="ury-MB-qCt" secondAttribute="leading" constant="10" id="aCj-Xr-esR"/>
+                            <constraint firstItem="ury-MB-qCt" firstAttribute="trailing" secondItem="Q7C-TX-der" secondAttribute="trailing" constant="10" id="bxb-Nb-AUq"/>
+                            <constraint firstItem="ury-MB-qCt" firstAttribute="trailing" secondItem="x9i-c1-Zds" secondAttribute="trailing" constant="10" id="iIe-eJ-TZh"/>
+                            <constraint firstItem="Q7C-TX-der" firstAttribute="leading" secondItem="ury-MB-qCt" secondAttribute="leading" constant="10" id="jgE-Xd-89i"/>
+                            <constraint firstItem="GMJ-xI-VUX" firstAttribute="leading" secondItem="ury-MB-qCt" secondAttribute="leading" constant="10" id="qP2-US-sfI"/>
+                            <constraint firstItem="ury-MB-qCt" firstAttribute="trailing" secondItem="GMJ-xI-VUX" secondAttribute="trailing" constant="10" id="qdR-kL-hgo"/>
+                            <constraint firstItem="GMJ-xI-VUX" firstAttribute="centerY" secondItem="CxZ-qH-yJ3" secondAttribute="centerY" id="wnz-Qf-8LT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ury-MB-qCt"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" id="TXr-v4-zcJ"/>
+                    <connections>
+                        <outlet property="mainContainerView" destination="GMJ-xI-VUX" id="b40-8L-O7w"/>
+                        <segue destination="Uqz-co-Ocr" kind="presentation" identifier="ConfirmationPopUpViewController" modalPresentationStyle="currentContext" modalTransitionStyle="crossDissolve" id="TVE-Ei-dBZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jGW-AY-dG7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="993" y="-155"/>
+        </scene>
+        <!--Custom Tab Bar Controller-->
+        <scene sceneID="WYa-Sz-OrB">
+            <objects>
+                <tabBarController id="Upr-F1-t92" customClass="CustomTabBarController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CMZ-Wo-9Jp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.95460249352331605" green="0.95460249352331605" blue="0.95460249352331605" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </tabBar>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R8c-Vt-iqj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="993" y="-818"/>
+        </scene>
+        <!--Sleep View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="sleep" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="SleepViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="mZz-2e-izX">
+                                <rect key="frame" x="0.0" y="313" width="414" height="216"/>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
+                                    <!--1970-01-01 11:00:00 +0000-->
+                                </date>
+                                <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
+                                    <!--2037-12-31 11:00:00 +0000-->
+                                </date>
+                                <locale key="locale" localeIdentifier="ru"/>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MrQ-3v-obf">
+                                <rect key="frame" x="100" y="538" width="214" height="48"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
+                                <state key="normal" title="Sleep">
+                                    <color key="titleColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="sleepButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Ly-ov-mnB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mZz-2e-izX" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="E2F-tt-Int"/>
+                            <constraint firstItem="mZz-2e-izX" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="HT2-PZ-OTI"/>
+                            <constraint firstItem="MrQ-3v-obf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="HUD-XG-HXz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MrQ-3v-obf" secondAttribute="trailing" constant="100" id="JPc-T8-Q6y"/>
+                            <constraint firstItem="mZz-2e-izX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TUa-Vh-hZC"/>
+                            <constraint firstItem="MrQ-3v-obf" firstAttribute="top" secondItem="mZz-2e-izX" secondAttribute="bottom" constant="9" id="XUd-yf-3AQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" tag="1" title="" id="edc-CA-hqr"/>
+                    <navigationItem key="navigationItem" id="8Pz-oN-BJP"/>
+                    <connections>
+                        <outlet property="sleepButton" destination="MrQ-3v-obf" id="x1v-BX-TcC"/>
+                        <outlet property="timePicker" destination="mZz-2e-izX" id="K2e-nv-7eF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1723" y="-155"/>
+        </scene>
+        <!--ConfirmationPopUpViewController-->
+        <scene sceneID="p3K-k4-aHi">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="ConfirmationPopUpViewController" storyboardName="ConfirmationPopUp" referencedIdentifier="ConfirmationPopUpViewController" id="Uqz-co-Ocr" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="0ph-JL-Egn"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zbk-br-Bj9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="993" y="331"/>
+        </scene>
+    </scenes>
+    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+</document>
