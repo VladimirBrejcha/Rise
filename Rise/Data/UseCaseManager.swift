@@ -31,7 +31,7 @@ protocol RequestSunTimeUseCase {
 
 let sharedUseCaseManager = UseCaseManager()
 
-class UseCaseManager {
+final class UseCaseManager {
     fileprivate let personalPlanRepository = PersonalPlanRepository()
     fileprivate let sunTimeRepository = SunTimeRepository()
     fileprivate let locationRepository = LocationRepository()
