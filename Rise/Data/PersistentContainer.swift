@@ -35,4 +35,3 @@ class PersistentContainer<ObjectType: NSManagedObject>: NSPersistentContainer {
         }
     }
 }
-

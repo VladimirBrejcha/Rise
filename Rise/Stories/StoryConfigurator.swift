@@ -18,17 +18,20 @@ final class StoryConfigurator {
     class func createAndConfigure(module: PresentationStory) -> UIViewController {
         switch module {
         case .main:
-            let controller = Storyboard.main.get().instantiateViewController(withIdentifier: MainScreenViewController.self) as! MainScreenViewController
-            let presenter = MainScreenPresenter(view: controller)
+            let controller = Storyboard.main.get().instantiateViewController(withIdentifier: TodayStoryViewController.self)
+                as! TodayStoryViewController
+            let presenter = TodayStoryPresenter(view: controller)
             controller.output = presenter
             return controller
         case .plan:
-            let controller = Storyboard.plan.get().instantiateViewController(withIdentifier: PersonalPlanViewController.self) as! PersonalPlanViewController
+            let controller = Storyboard.plan.get().instantiateViewController(withIdentifier: PersonalPlanViewController.self)
+                as! PersonalPlanViewController
             let presenter = PersonalPlanPresenter(view: controller)
             controller.output = presenter
             return controller
         case .settings:
-            let controller = Storyboard.settings.get().instantiateViewController(withIdentifier: SettingsViewController.self) as! SettingsViewController
+            let controller = Storyboard.settings.get().instantiateViewController(withIdentifier: SettingsViewController.self)
+                as! SettingsViewController
             let presenter = SettingsPresenter(view: controller)
             controller.output = presenter
             return controller
