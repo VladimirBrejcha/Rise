@@ -9,7 +9,7 @@
 import UIKit
 
 enum PresentationStory {
-    case main
+    case today
     case plan
     case settings
 }
@@ -17,10 +17,12 @@ enum PresentationStory {
 final class StoryConfigurator {
     class func createAndConfigure(module: PresentationStory) -> UIViewController {
         switch module {
-        case .main:
+        case .today:
             let controller = Storyboard.main.get().instantiateViewController(withIdentifier: TodayStoryViewController.self)
                 as! TodayStoryViewController
             let presenter = TodayStoryPresenter(view: controller)
+            presenter.requestSunTimeUseCase = sharedUseCaseManager
+            presenter.requestPersonalPlanUseCase = sharedUseCaseManager
             controller.output = presenter
             return controller
         case .plan:
