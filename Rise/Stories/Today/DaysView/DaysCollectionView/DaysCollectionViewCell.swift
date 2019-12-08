@@ -8,41 +8,24 @@
 
 import UIKit
 
-struct DaysCollectionViewCellModel {
-    var day: Date
-    var sunTime: (sunrise: String, sunset: String)?
-    var planTime: (wake: String, sleep: String)?
-    var sunErrorMessage: String?
-    var planErrorMessage: String?
-    
-    mutating func update(sunTime: DailySunTime) {
-        self.sunTime = (sunrise: DatesConverter.formatDateToHHmm(date: sunTime.sunrise),
-                        sunset: DatesConverter.formatDateToHHmm(date: sunTime.sunset))
-        sunErrorMessage = nil
-    }
-    
-    mutating func update(planTime: DailyPlanTime) {
-        self.planTime = (wake: DatesConverter.formatDateToHHmm(date: planTime.wake),
-                         sleep: DatesConverter.formatDateToHHmm(date: planTime.sleep))
-        planErrorMessage = nil
-    }
-}
-
 protocol DaysCollectionViewCellDelegate: AnyObject {
     func repeatButtonPressed(on cell: DaysCollectionViewCell)
 }
 
-class DaysCollectionViewCell: UICollectionViewCell, LoadingViewDelegate {
+final class DaysCollectionViewCell: UICollectionViewCell, LoadingViewDelegate {
     weak var delegate: DaysCollectionViewCellDelegate?
     
-    @IBOutlet weak var sunriseTimeLabel: UILabel!
-    @IBOutlet weak var sunsetTimeLabel: UILabel!
-    @IBOutlet weak var wakeUpTimeLabel: UILabel!
-    @IBOutlet weak var toSleepTimeLabel: UILabel!
-    @IBOutlet weak var sunLoadingView: LoadingView!
-    @IBOutlet weak var sunContainerView: UIView!
-    @IBOutlet weak var planContainerView: UIView!
-    @IBOutlet weak var planLoadingView: LoadingView!
+    @IBOutlet private weak var sunriseTimeLabel: UILabel!
+    @IBOutlet private weak var sunsetTimeLabel: UILabel!
+    
+    @IBOutlet private weak var wakeUpTimeLabel: UILabel!
+    @IBOutlet private weak var toSleepTimeLabel: UILabel!
+    
+    @IBOutlet private weak var sunContainerView: UIView!
+    @IBOutlet private weak var sunLoadingView: LoadingView!
+    
+    @IBOutlet private weak var planContainerView: UIView!
+    @IBOutlet private weak var planLoadingView: LoadingView!
     
     private var isSunDataLoaded: Bool {
         return cellModel.sunTime != nil
@@ -53,7 +36,9 @@ class DaysCollectionViewCell: UICollectionViewCell, LoadingViewDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         sunLoadingView.delegate = self
+        planLoadingView.delegate = self
     }
     
     var cellModel: DaysCollectionViewCellModel! {

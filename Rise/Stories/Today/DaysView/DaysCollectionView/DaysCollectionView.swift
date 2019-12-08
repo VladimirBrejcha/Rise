@@ -16,15 +16,3 @@ final class DaysCollectionView: CollectionView {
         return String(describing: DaysCollectionViewCell.self)
     }
 }
-
-extension CollectionViewDataSource where Model == DaysCollectionViewCellModel {
-    static func make(for cellModels: [DaysCollectionViewCellModel],
-                     reuseIdentifier: String = String(describing: DaysCollectionViewCell.self),
-                     cellDelegate: DaysCollectionViewCellDelegate) -> CollectionViewDataSource {
-        
-        return CollectionViewDataSource (models: cellModels, reuseIdentifier: reuseIdentifier) { (model, cell) in
-            (cell as! DaysCollectionViewCell).cellModel = model
-            (cell as! DaysCollectionViewCell).delegate = cellDelegate
-        }
-    }
-}
