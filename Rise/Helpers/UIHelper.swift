@@ -9,14 +9,19 @@
 import UIKit
 
 class UIHelper {
-    class func showError(errorMessage: String, customTitle: String? = nil, action: UIAlertAction? = nil) {
+    class func showAlert(with message: String,
+                   and customTitle: String? = nil,
+                   customAction: UIAlertAction? = nil,
+                   cancelHandler: (() -> Void)? = nil) {
         guard let controller = UIApplication.shared.keyWindow?.rootViewController?.toppestViewController else { return }
         
-        let alert = UIAlertController(title: customTitle ?? "Error", message: errorMessage, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
+        let alert = UIAlertController(title: customTitle ?? "Error", message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { _ in cancelHandler?() }
+        alert.addAction(cancelAction)
         
-        if let alertAction = action { alert.addAction(alertAction) }
-        controller.present(alert, animated: true, completion: nil)
+        if let customAction = customAction { alert.addAction(customAction) }
+        
+        controller.present(alert, animated: true)
     }
     
     class func show(alertController: UIAlertController) {
@@ -25,7 +30,7 @@ class UIHelper {
     }
 }
 
-extension UIViewController {
+fileprivate extension UIViewController {
     var topPresentedController: UIViewController {
         if let presentedViewController = self.presentedViewController {
             return presentedViewController.topPresentedController
@@ -33,6 +38,7 @@ extension UIViewController {
             return self
         }
     }
+    
     var toppestViewController: UIViewController {
         if let navigationvc = self as? UINavigationController {
             if let navigationsTopViewController = navigationvc.topViewController {
@@ -55,13 +61,7 @@ extension UIViewController {
     }
 }
 
-extension UIViewController {
-    func performSegue(withIdentifier typeIdentifier: UIViewController.Type, sender: Any?) {
-        return performSegue(withIdentifier: String(describing: typeIdentifier), sender: sender)
-    }
-}
-
-extension UIColor { //allows to create UIImage from UIColor
+extension UIColor {
     func image(_ size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
         return UIGraphicsImageRenderer(size: size).image { rendererContext in
             self.setFill()
