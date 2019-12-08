@@ -6,4 +6,16 @@
 //  Copyright © 2019 VladimirBrejcha. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class ConfirmationPopUpViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    
+    @IBAction func skipTouchUp(_ sender: Button) {
+        self.dismiss(animated: true, completion: nil)
+    }
+}
