@@ -55,7 +55,7 @@
 		7EA38AE92378526F0007919B /* LocationData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7EA38AE72378526F0007919B /* LocationData.xcdatamodeld */; };
 		7EA38AEC237853230007919B /* LocationLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA38AEB237853230007919B /* LocationLocalDataSource.swift */; };
 		7EA38AF22378589E0007919B /* LocationModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA38AF12378589E0007919B /* LocationModelBuilder.swift */; };
-		7EA7BA082354EBFD0051A92D /* MainScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA7BA072354EBFD0051A92D /* MainScreenPresenter.swift */; };
+		7EA7BA082354EBFD0051A92D /* TodayStoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA7BA072354EBFD0051A92D /* TodayStoryPresenter.swift */; };
 		7EA7BA0A2354F1810051A92D /* TodayCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA7BA092354F1810051A92D /* TodayCollectionViewDataSource.swift */; };
 		7EA7BA0C2354F2510051A92D /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA7BA0B2354F2510051A92D /* CollectionView.swift */; };
 		7EB1C0332340F9550028237E /* PersonalPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE939162340F68800FE9954 /* PersonalPlanViewController.swift */; };
@@ -95,7 +95,7 @@
 		92D7D6682296F298009321AE /* RiseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6672296F298009321AE /* RiseTests.swift */; };
 		92D7D6732296F298009321AE /* RiseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6722296F298009321AE /* RiseUITests.swift */; };
 		92E77AF822A5303400E5E21C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E77AF722A5303400E5E21C /* SettingsViewController.swift */; };
-		92E77AFA22A5304400E5E21C /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E77AF922A5304400E5E21C /* MainScreenViewController.swift */; };
+		92E77AFA22A5304400E5E21C /* TodayStoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E77AF922A5304400E5E21C /* TodayStoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,7 +164,7 @@
 		7EA38AE82378526F0007919B /* LocationData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocationData.xcdatamodel; sourceTree = "<group>"; };
 		7EA38AEB237853230007919B /* LocationLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationLocalDataSource.swift; sourceTree = "<group>"; };
 		7EA38AF12378589E0007919B /* LocationModelBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModelBuilder.swift; sourceTree = "<group>"; };
-		7EA7BA072354EBFD0051A92D /* MainScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenPresenter.swift; sourceTree = "<group>"; };
+		7EA7BA072354EBFD0051A92D /* TodayStoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayStoryPresenter.swift; sourceTree = "<group>"; };
 		7EA7BA092354F1810051A92D /* TodayCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		7EA7BA0B2354F2510051A92D /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		7EB1C0362340FC6B0028237E /* PersonalPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPlan.swift; sourceTree = "<group>"; };
@@ -210,7 +210,7 @@
 		92D7D6722296F298009321AE /* RiseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiseUITests.swift; sourceTree = "<group>"; };
 		92D7D6742296F298009321AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92E77AF722A5303400E5E21C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		92E77AF922A5304400E5E21C /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
+		92E77AF922A5304400E5E21C /* TodayStoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayStoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,17 +242,17 @@
 			isa = PBXGroup;
 			children = (
 				7E0A2E37239D5AFC00E39C83 /* StoryConfigurator.swift */,
+				7E4901882340F3BE0034521E /* Today */,
 				7E84EB28239D1A6100E02050 /* ConfirmationPopUp */,
 				7EF3EE172340F794003BE978 /* SetupPlanScreen */,
 				7E49018B2340F4460034521E /* PersonalPlanScreen */,
-				7E4901882340F3BE0034521E /* MainScreen */,
 				7E4901892340F3D90034521E /* SleepScreen */,
 				7E49018A2340F4190034521E /* SettingsScreen */,
 			);
 			path = Stories;
 			sourceTree = "<group>";
 		};
-		7E4901882340F3BE0034521E /* MainScreen */ = {
+		7E4901882340F3BE0034521E /* Today */ = {
 			isa = PBXGroup;
 			children = (
 				7E41982323254C36007867AB /* SegmentedControlView.swift */,
@@ -260,10 +260,10 @@
 				7EB9003F23256BF3006EB9A8 /* CollectionViewWithSegmentedControl.swift */,
 				7E0A8F3B231F04BA0036105C /* DatesManager.swift */,
 				7EF3EE182340F875003BE978 /* TodayCollectionViewCell */,
-				92E77AF922A5304400E5E21C /* MainScreenViewController.swift */,
-				7EA7BA072354EBFD0051A92D /* MainScreenPresenter.swift */,
+				92E77AF922A5304400E5E21C /* TodayStoryViewController.swift */,
+				7EA7BA072354EBFD0051A92D /* TodayStoryPresenter.swift */,
 			);
-			path = MainScreen;
+			path = Today;
 			sourceTree = "<group>";
 		};
 		7E4901892340F3D90034521E /* SleepScreen */ = {
@@ -698,7 +698,7 @@
 				7EB26953234F99AE008AEB3D /* Button.swift in Sources */,
 				7EB1C0332340F9550028237E /* PersonalPlanViewController.swift in Sources */,
 				7EA38AE623783FFD0007919B /* LocationRemoteDataSource.swift in Sources */,
-				92E77AFA22A5304400E5E21C /* MainScreenViewController.swift in Sources */,
+				92E77AFA22A5304400E5E21C /* TodayStoryViewController.swift in Sources */,
 				7E4798F5239D894B007FB8F2 /* Storyboard.swift in Sources */,
 				7E31497F23425D3700941606 /* SetupPlanDataSource.swift in Sources */,
 				7E91D95D2371E4080087436F /* RiseDailyPlanTime+CoreDataClass.swift in Sources */,
@@ -707,7 +707,7 @@
 				7EA7BA0A2354F1810051A92D /* TodayCollectionViewDataSource.swift in Sources */,
 				7E98FE63231C2F8C0065FB09 /* Location.swift in Sources */,
 				92D7D6552296F297009321AE /* SleepViewController.swift in Sources */,
-				7EA7BA082354EBFD0051A92D /* MainScreenPresenter.swift in Sources */,
+				7EA7BA082354EBFD0051A92D /* TodayStoryPresenter.swift in Sources */,
 				7E052A40235236F1005D7FAD /* DailySunTime.swift in Sources */,
 				7EB26951234F9972008AEB3D /* NibLoadable.swift in Sources */,
 				7E0A2E38239D5AFC00E39C83 /* StoryConfigurator.swift in Sources */,
