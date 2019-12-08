@@ -19,7 +19,7 @@ final class CustomTabBarController: UITabBarController {
         super.viewDidLoad()
         
         viewControllers = [StoryConfigurator.createAndConfigure(module: .plan),
-                           StoryConfigurator.createAndConfigure(module: .main),
+                           StoryConfigurator.createAndConfigure(module: .today),
                            StoryConfigurator.createAndConfigure(module: .settings)]
         
         delegate = self
