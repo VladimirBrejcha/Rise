@@ -10,6 +10,8 @@
 		7E052A40235236F1005D7FAD /* DailySunTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E052A3F235236F1005D7FAD /* DailySunTime.swift */; };
 		7E052A422352377E005D7FAD /* RiseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E052A412352377E005D7FAD /* RiseError.swift */; };
 		7E0834AC2387351400BA1AE8 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0834AB2387351400BA1AE8 /* DateExtensions.swift */; };
+		7E0A2E38239D5AFC00E39C83 /* StoryConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0A2E37239D5AFC00E39C83 /* StoryConfigurator.swift */; };
+		7E0A2E3A239D831F00E39C83 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0A2E39239D831F00E39C83 /* SettingsPresenter.swift */; };
 		7E0A8F3C231F04BA0036105C /* DatesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0A8F3B231F04BA0036105C /* DatesManager.swift */; };
 		7E31497D23425CA600941606 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31497C23425CA600941606 /* TableViewDataSource.swift */; };
 		7E31497F23425D3700941606 /* SetupPlanDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31497E23425D3700941606 /* SetupPlanDataSource.swift */; };
@@ -19,11 +21,16 @@
 		7E41982423254C36007867AB /* SegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E41982323254C36007867AB /* SegmentedControlView.swift */; };
 		7E41982623254F1A007867AB /* SegmentedControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E41982523254F1A007867AB /* SegmentedControlButton.swift */; };
 		7E438916235230800059DF1C /* PrivateKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E438915235230800059DF1C /* PrivateKeys.swift */; };
+		7E4798F3239D85D5007FB8F2 /* Plan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E4798F2239D85D5007FB8F2 /* Plan.storyboard */; };
+		7E4798F5239D894B007FB8F2 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4798F4239D894B007FB8F2 /* Storyboard.swift */; };
+		7E4798F7239D8A33007FB8F2 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E4798F6239D8A33007FB8F2 /* Settings.storyboard */; };
 		7E4901862340DD810034521E /* PersonalPlanData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E4901842340DD810034521E /* PersonalPlanData.xcdatamodeld */; };
 		7E5BDADE2371F08400E43F37 /* RiseLocation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5BDADC2371F08400E43F37 /* RiseLocation+CoreDataClass.swift */; };
 		7E5BDADF2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5BDADD2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift */; };
 		7E695A34234A675F0098213D /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E695A33234A675F0098213D /* CollectionViewDataSource.swift */; };
 		7E7413BC2349069500BF4416 /* AnimatedLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7413BB2349069500BF4416 /* AnimatedLoadingView.swift */; };
+		7E84EB25239D19CF00E02050 /* ConfirmationPopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E84EB24239D19CF00E02050 /* ConfirmationPopUp.storyboard */; };
+		7E84EB27239D1A5700E02050 /* ConfirmationPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E84EB26239D1A5700E02050 /* ConfirmationPopUpViewController.swift */; };
 		7E8C6B982350FB9C0086162F /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8C6B972350FB9C0086162F /* TableView.swift */; };
 		7E91D95B2371E4080087436F /* RiseDailySunTime+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E91D9552371E4080087436F /* RiseDailySunTime+CoreDataClass.swift */; };
 		7E91D95C2371E4080087436F /* RiseDailySunTime+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E91D9562371E4080087436F /* RiseDailySunTime+CoreDataProperties.swift */; };
@@ -39,12 +46,9 @@
 		7E97656C23786B5600E3AEF2 /* PersonalPlanModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E97656B23786B5600E3AEF2 /* PersonalPlanModelBuilder.swift */; };
 		7E97656E2378813700E3AEF2 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E97656D2378813700E3AEF2 /* Log.swift */; };
 		7E976572237C7A2C00E3AEF2 /* UseCaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E976571237C7A2C00E3AEF2 /* UseCaseManager.swift */; };
-		7E98FE5E231C2EAD0065FB09 /* WelcomeButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE5D231C2EAD0065FB09 /* WelcomeButtonViewController.swift */; };
 		7E98FE63231C2F8C0065FB09 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE62231C2F8C0065FB09 /* Location.swift */; };
 		7E98FE65231C30C10065FB09 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE64231C30C10065FB09 /* UIHelper.swift */; };
 		7E98FE67231C3D5C0065FB09 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE66231C3D5C0065FB09 /* UserDefaultsManager.swift */; };
-		7E98FE6A231C481D0065FB09 /* WelcomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE69231C481D0065FB09 /* WelcomePageViewController.swift */; };
-		7E98FE6C231C482B0065FB09 /* LocationPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE6B231C482B0065FB09 /* LocationPermissionsViewController.swift */; };
 		7EA0924222C8CF820019F2E9 /* CustomTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA0924122C8CF820019F2E9 /* CustomTransition.swift */; };
 		7EA38AE423783EFC0007919B /* LocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA38AE323783EFC0007919B /* LocationRepository.swift */; };
 		7EA38AE623783FFD0007919B /* LocationRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA38AE523783FFD0007919B /* LocationRemoteDataSource.swift */; };
@@ -115,6 +119,8 @@
 		7E052A3F235236F1005D7FAD /* DailySunTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySunTime.swift; sourceTree = "<group>"; };
 		7E052A412352377E005D7FAD /* RiseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiseError.swift; sourceTree = "<group>"; };
 		7E0834AB2387351400BA1AE8 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		7E0A2E37239D5AFC00E39C83 /* StoryConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryConfigurator.swift; sourceTree = "<group>"; };
+		7E0A2E39239D831F00E39C83 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		7E0A8F3B231F04BA0036105C /* DatesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatesManager.swift; sourceTree = "<group>"; };
 		7E31497C23425CA600941606 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		7E31497E23425D3700941606 /* SetupPlanDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPlanDataSource.swift; sourceTree = "<group>"; };
@@ -124,11 +130,16 @@
 		7E41982323254C36007867AB /* SegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlView.swift; sourceTree = "<group>"; };
 		7E41982523254F1A007867AB /* SegmentedControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlButton.swift; sourceTree = "<group>"; };
 		7E438915235230800059DF1C /* PrivateKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKeys.swift; sourceTree = "<group>"; };
+		7E4798F2239D85D5007FB8F2 /* Plan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Plan.storyboard; sourceTree = "<group>"; };
+		7E4798F4239D894B007FB8F2 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
+		7E4798F6239D8A33007FB8F2 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		7E4901852340DD810034521E /* PersonalPlanData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonalPlanData.xcdatamodel; sourceTree = "<group>"; };
 		7E5BDADC2371F08400E43F37 /* RiseLocation+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RiseLocation+CoreDataClass.swift"; path = "Rise/Data/Location/Entity/RiseLocation+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		7E5BDADD2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RiseLocation+CoreDataProperties.swift"; path = "Rise/Data/Location/Entity/RiseLocation+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		7E695A33234A675F0098213D /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		7E7413BB2349069500BF4416 /* AnimatedLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedLoadingView.swift; sourceTree = "<group>"; };
+		7E84EB24239D19CF00E02050 /* ConfirmationPopUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConfirmationPopUp.storyboard; sourceTree = "<group>"; };
+		7E84EB26239D1A5700E02050 /* ConfirmationPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationPopUpViewController.swift; sourceTree = "<group>"; };
 		7E8C6B972350FB9C0086162F /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		7E91D9552371E4080087436F /* RiseDailySunTime+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RiseDailySunTime+CoreDataClass.swift"; path = "Rise/Data/SunTime/Entity/RiseDailySunTime+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		7E91D9562371E4080087436F /* RiseDailySunTime+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RiseDailySunTime+CoreDataProperties.swift"; path = "Rise/Data/SunTime/Entity/RiseDailySunTime+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
@@ -144,12 +155,9 @@
 		7E97656B23786B5600E3AEF2 /* PersonalPlanModelBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPlanModelBuilder.swift; sourceTree = "<group>"; };
 		7E97656D2378813700E3AEF2 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		7E976571237C7A2C00E3AEF2 /* UseCaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseManager.swift; sourceTree = "<group>"; };
-		7E98FE5D231C2EAD0065FB09 /* WelcomeButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeButtonViewController.swift; sourceTree = "<group>"; };
 		7E98FE62231C2F8C0065FB09 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		7E98FE64231C30C10065FB09 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		7E98FE66231C3D5C0065FB09 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
-		7E98FE69231C481D0065FB09 /* WelcomePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomePageViewController.swift; sourceTree = "<group>"; };
-		7E98FE6B231C482B0065FB09 /* LocationPermissionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPermissionsViewController.swift; sourceTree = "<group>"; };
 		7EA0924122C8CF820019F2E9 /* CustomTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTransition.swift; sourceTree = "<group>"; };
 		7EA38AE323783EFC0007919B /* LocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepository.swift; sourceTree = "<group>"; };
 		7EA38AE523783FFD0007919B /* LocationRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRemoteDataSource.swift; sourceTree = "<group>"; };
@@ -233,9 +241,10 @@
 		7E4901872340F3970034521E /* Stories */ = {
 			isa = PBXGroup;
 			children = (
+				7E0A2E37239D5AFC00E39C83 /* StoryConfigurator.swift */,
+				7E84EB28239D1A6100E02050 /* ConfirmationPopUp */,
 				7EF3EE172340F794003BE978 /* SetupPlanScreen */,
 				7E49018B2340F4460034521E /* PersonalPlanScreen */,
-				7E98FE5F231C2EEC0065FB09 /* WelcomeScreen */,
 				7E4901882340F3BE0034521E /* MainScreen */,
 				7E4901892340F3D90034521E /* SleepScreen */,
 				7E49018A2340F4190034521E /* SettingsScreen */,
@@ -269,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				92E77AF722A5303400E5E21C /* SettingsViewController.swift */,
+				7E0A2E39239D831F00E39C83 /* SettingsPresenter.swift */,
 			);
 			path = SettingsScreen;
 			sourceTree = "<group>";
@@ -283,6 +293,14 @@
 				7EE939142340F5F600FE9954 /* PlanInfoCell */,
 			);
 			path = PersonalPlanScreen;
+			sourceTree = "<group>";
+		};
+		7E84EB28239D1A6100E02050 /* ConfirmationPopUp */ = {
+			isa = PBXGroup;
+			children = (
+				7E84EB26239D1A5700E02050 /* ConfirmationPopUpViewController.swift */,
+			);
+			path = ConfirmationPopUp;
 			sourceTree = "<group>";
 		};
 		7E97656123786AED00E3AEF2 /* PersonalPlan */ = {
@@ -309,16 +327,6 @@
 				7E91D9612371E4850087436F /* DailyPlanTime.swift */,
 			);
 			path = Entity;
-			sourceTree = "<group>";
-		};
-		7E98FE5F231C2EEC0065FB09 /* WelcomeScreen */ = {
-			isa = PBXGroup;
-			children = (
-				7E98FE69231C481D0065FB09 /* WelcomePageViewController.swift */,
-				7E98FE6B231C482B0065FB09 /* LocationPermissionsViewController.swift */,
-				7E98FE5D231C2EAD0065FB09 /* WelcomeButtonViewController.swift */,
-			);
-			path = WelcomeScreen;
 			sourceTree = "<group>";
 		};
 		7EA38AEA237852FD0007919B /* Location */ = {
@@ -379,6 +387,20 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
+		7EE71BFD239D8AF0005ABE1A /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				7E4798F4239D894B007FB8F2 /* Storyboard.swift */,
+				92D7D65B2296F298009321AE /* LaunchScreen.storyboard */,
+				7E3980D42360D0020059C592 /* Intro.storyboard */,
+				92D7D6562296F297009321AE /* Main.storyboard */,
+				7E4798F2239D85D5007FB8F2 /* Plan.storyboard */,
+				7E4798F6239D8A33007FB8F2 /* Settings.storyboard */,
+				7E84EB24239D19CF00E02050 /* ConfirmationPopUp.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		7EE939142340F5F600FE9954 /* PlanInfoCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -401,10 +423,8 @@
 			isa = PBXGroup;
 			children = (
 				92D7D65E2296F298009321AE /* Info.plist */,
-				92D7D65B2296F298009321AE /* LaunchScreen.storyboard */,
 				92D7D6592296F298009321AE /* Assets.xcassets */,
 				7E438915235230800059DF1C /* PrivateKeys.swift */,
-				7E3980D42360D0020059C592 /* Intro.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -484,7 +504,7 @@
 			isa = PBXGroup;
 			children = (
 				92D7D6522296F297009321AE /* AppDelegate.swift */,
-				92D7D6562296F297009321AE /* Main.storyboard */,
+				7EE71BFD239D8AF0005ABE1A /* Storyboards */,
 				7E4901872340F3970034521E /* Stories */,
 				7EB1C0342340FA6E0028237E /* Data */,
 				7EF3EE192340F8A5003BE978 /* Helpers */,
@@ -642,11 +662,14 @@
 				7EB9004523298902006EB9A8 /* ProgressTableViewCell.xib in Resources */,
 				7EB26959234FA6F7008AEB3D /* LoadingView.xib in Resources */,
 				7E3980D52360D0020059C592 /* Intro.storyboard in Resources */,
+				7E4798F7239D8A33007FB8F2 /* Settings.storyboard in Resources */,
 				92D7D65D2296F298009321AE /* LaunchScreen.storyboard in Resources */,
 				7ED962B02336649E00CD2408 /* PlanInfoTableViewCell.xib in Resources */,
 				92B78CFB229FAF6C0087240B /* SectionedTableViewCell.xib in Resources */,
 				92D7D65A2296F298009321AE /* Assets.xcassets in Resources */,
 				7E4198222323CA7F007867AB /* TodayCollectionViewCell.xib in Resources */,
+				7E4798F3239D85D5007FB8F2 /* Plan.storyboard in Resources */,
+				7E84EB25239D19CF00E02050 /* ConfirmationPopUp.storyboard in Resources */,
 				92D7D6582296F297009321AE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -676,10 +699,10 @@
 				7EB1C0332340F9550028237E /* PersonalPlanViewController.swift in Sources */,
 				7EA38AE623783FFD0007919B /* LocationRemoteDataSource.swift in Sources */,
 				92E77AFA22A5304400E5E21C /* MainScreenViewController.swift in Sources */,
+				7E4798F5239D894B007FB8F2 /* Storyboard.swift in Sources */,
 				7E31497F23425D3700941606 /* SetupPlanDataSource.swift in Sources */,
 				7E91D95D2371E4080087436F /* RiseDailyPlanTime+CoreDataClass.swift in Sources */,
 				7EB9004423298902006EB9A8 /* ProgressTableViewCell.swift in Sources */,
-				7E98FE6A231C481D0065FB09 /* WelcomePageViewController.swift in Sources */,
 				7E97656023786AB000E3AEF2 /* SunTimeData.xcdatamodeld in Sources */,
 				7EA7BA0A2354F1810051A92D /* TodayCollectionViewDataSource.swift in Sources */,
 				7E98FE63231C2F8C0065FB09 /* Location.swift in Sources */,
@@ -687,8 +710,8 @@
 				7EA7BA082354EBFD0051A92D /* MainScreenPresenter.swift in Sources */,
 				7E052A40235236F1005D7FAD /* DailySunTime.swift in Sources */,
 				7EB26951234F9972008AEB3D /* NibLoadable.swift in Sources */,
+				7E0A2E38239D5AFC00E39C83 /* StoryConfigurator.swift in Sources */,
 				7EB90047232AB9EB006EB9A8 /* ProgressBar.swift in Sources */,
-				7E98FE6C231C482B0065FB09 /* LocationPermissionsViewController.swift in Sources */,
 				7EA38AE423783EFC0007919B /* LocationRepository.swift in Sources */,
 				7EB1C0372340FC6B0028237E /* PersonalPlan.swift in Sources */,
 				7EE640492378665D005BE355 /* SunTimeRepository.swift in Sources */,
@@ -704,6 +727,7 @@
 				92BC919422AB24D800BB1D19 /* GradientManager.swift in Sources */,
 				7E052A422352377E005D7FAD /* RiseError.swift in Sources */,
 				92D12FDD22A44B3B0093B0A3 /* CustomTabBarController.swift in Sources */,
+				7E84EB27239D1A5700E02050 /* ConfirmationPopUpViewController.swift in Sources */,
 				7E5BDADF2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift in Sources */,
 				7EE6404F23786693005BE355 /* PersistentContainer.swift in Sources */,
 				7E97656623786B2800E3AEF2 /* PersonalPlanLocalDataSource.swift in Sources */,
@@ -719,7 +743,6 @@
 				7E91D95C2371E4080087436F /* RiseDailySunTime+CoreDataProperties.swift in Sources */,
 				7E91D9662371E5150087436F /* PersonalPlanConfigurator.swift in Sources */,
 				7EA0924222C8CF820019F2E9 /* CustomTransition.swift in Sources */,
-				7E98FE5E231C2EAD0065FB09 /* WelcomeButtonViewController.swift in Sources */,
 				7E41982623254F1A007867AB /* SegmentedControlButton.swift in Sources */,
 				7EB1C0392340FDB00028237E /* SetupPlanPresenter.swift in Sources */,
 				7EE6404D23786678005BE355 /* SunTimeRemoteDataSource.swift in Sources */,
@@ -732,6 +755,7 @@
 				7EB1C03B23411FFD0028237E /* PersonalPlanPresenter.swift in Sources */,
 				7EE6404B2378666F005BE355 /* SunTimeLocalDataSource.swift in Sources */,
 				7E0A8F3C231F04BA0036105C /* DatesManager.swift in Sources */,
+				7E0A2E3A239D831F00E39C83 /* SettingsPresenter.swift in Sources */,
 				7E98FE67231C3D5C0065FB09 /* UserDefaultsManager.swift in Sources */,
 				922032EA22998F3D0006F92B /* SetupPlanTableViewController.swift in Sources */,
 				7E31497D23425CA600941606 /* TableViewDataSource.swift in Sources */,
