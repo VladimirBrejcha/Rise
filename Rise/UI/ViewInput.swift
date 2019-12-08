@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+protocol ViewInput: AnyObject {
+    func performSegue(withIdentifier: String, sender: Any?)
+    func showError(with message: String)
+}

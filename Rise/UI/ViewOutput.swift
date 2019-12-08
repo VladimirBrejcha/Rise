@@ -7,3 +7,17 @@
 //
 
 import Foundation
+
+protocol ViewOutput: AnyObject {
+    func viewDidLoad()
+    func viewWillAppear()
+    func viewDidAppear()
+    func viewWillDisappear()
+}
+
+extension ViewOutput {
+    func viewDidLoad() { }
+    func viewWillAppear() { }
+    func viewDidAppear() { }
+    func viewWillDisappear() { }
+}
