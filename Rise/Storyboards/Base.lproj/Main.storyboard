@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main Screen View Controller-->
+        <!--Today Story View Controller-->
         <scene sceneID="x3b-qG-Bv2">
             <objects>
-                <viewController storyboardIdentifier="MainScreenViewController" definesPresentationContext="YES" id="zaJ-cb-1ng" customClass="MainScreenViewController" customModule="Rise" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainScreenViewController" definesPresentationContext="YES" id="zaJ-cb-1ng" customClass="TodayStoryViewController" customModule="Rise" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CxZ-qH-yJ3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
