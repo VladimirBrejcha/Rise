@@ -13,6 +13,8 @@ protocol MainScreenViewInput: AnyObject {
     func refreshCollectionView()
     func showSunTimeLoadingError()
     func showError(with text: String)
+    func presentPopOver(controllerID: String)
+    func showTabBar(_ show: Bool)
 }
 
 protocol MainScreenViewOutput: AnyObject {
@@ -22,21 +24,28 @@ protocol MainScreenViewOutput: AnyObject {
 
 final class MainScreenViewController: UIViewController, MainScreenViewInput {
     @IBOutlet weak var mainContainerView: CollectionViewWithSegmentedControl!
-    var presenter: MainScreenViewOutput!
+    var output: MainScreenViewOutput!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = MainScreenPresenter(view: self)
-        presenter.viewDidLoad()
+        
+        output.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        presenter.viewDidAppear()
+        output.viewDidAppear()
     }
     
     @IBAction func sleepButtonTouch(_ sender: UIButton) {
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     }
     
     // MARK: - MainScreenViewInput
@@ -45,12 +54,25 @@ final class MainScreenViewController: UIViewController, MainScreenViewInput {
         mainContainerView.collectionView.delegate = mainContainerView
     }
     
-    func refreshCollectionView() { mainContainerView.collectionView.reloadData() }
+    func refreshCollectionView() {
+        mainContainerView.collectionView.reloadData()
+    }
     
     func showSunTimeLoadingError() {
         
     }
     
-    func showError(with text: String) { UIHelper.showError(errorMessage: text) }
+    func showError(with text: String) {
+        UIHelper.showError(errorMessage: text)
+    }
     
+    func showTabBar(_ show: Bool) {
+        UIView.animate(withDuration: 0.1) {
+            self.tabBarController?.tabBar.isHidden = !show
+        }
+    }
+    
+    func presentPopOver(controllerID: String) {
+        performSegue(withIdentifier: controllerID, sender: self)
+    }
 }

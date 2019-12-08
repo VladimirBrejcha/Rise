@@ -49,8 +49,6 @@ class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        output = PersonalPlanPresenter(view: self)
-        
         configureTableView(tableView: infoTableView, info: infoTableViewInfo)
         configureTableView(tableView: progressTableView, info: progressTableViewInfo)
         
