@@ -9,18 +9,6 @@
 import UIKit
 import CoreData
 
-fileprivate let mainAppScreenIdentifier = "mainAppScreen"
-fileprivate let welcomeScreenIdentifier = "welcomeScreen"
-
-extension UIStoryboard {
-    class var welcomeScreenController: UIViewController {
-        return UIStoryboard.main.instantiateViewController(withIdentifier: welcomeScreenIdentifier)
-    }
-    class var mainAppController: UIViewController {
-        return UIStoryboard.main.instantiateViewController(withIdentifier: mainAppScreenIdentifier)
-    }
-}
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -30,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: LifeCycle
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        setupInitialController()
+//        setupInitialController()
         
         return true
     }
@@ -41,9 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func setupInitialController() {
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = UserDefaults.welcomeScreenBeenShowed
-            ? UIStoryboard.mainAppController
-            : UIStoryboard.mainAppController
+//        window?.rootViewController = UserDefaults.welcomeScreenBeenShowed
+//            ? UIStoryboard.mainAppController
+//            : UIStoryboard.mainAppController
         window?.makeKeyAndVisible()
     }
     
