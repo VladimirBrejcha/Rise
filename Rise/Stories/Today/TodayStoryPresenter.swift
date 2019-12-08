@@ -8,27 +8,28 @@
 
 import Foundation
 
-final class TodayStoryPresenter: TodayStoryViewOutput, TodayCollectionViewCellDelegate {
-    weak var view: TodayStoryViewInput?
+final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDelegate {
+    unowned var view: TodayStoryViewInput
     
-    private let requestSunTimeUseCase: RequestSunTimeUseCase = sharedUseCaseManager
-    private let requestPersonalPlanUseCase: RequestPersonalPlanUseCase = sharedUseCaseManager
+    var requestSunTimeUseCase: RequestSunTimeUseCase!
+    var requestPersonalPlanUseCase: RequestPersonalPlanUseCase!
     
-    private var cellModels: [TodayCellModel] {
+    private var cellModels: [DaysCollectionViewCellModel] {
         get { return collectionViewDataSource.models }
         set { collectionViewDataSource.models = newValue }
     }
-    private var collectionViewDataSource: CollectionViewDataSource<TodayCellModel>!
+    
+    private var collectionViewDataSource: CollectionViewDataSource<DaysCollectionViewCellModel>!
     
     init(view: TodayStoryViewInput) { self.view = view }
     
-    // MARK: - MainScreenViewOutput
+    // MARK: - TodayStoryViewOutput -
     func viewDidLoad() {
-        collectionViewDataSource = .make(for: [TodayCellModel(day: Date().appending(days: -1)),
-                                               TodayCellModel(day: Date()),
-                                               TodayCellModel(day: Date().appending(days: 1))],
+        collectionViewDataSource = .make(for: [DaysCollectionViewCellModel(day: Date().appending(days: -1)),
+                                               DaysCollectionViewCellModel(day: Date()),
+                                               DaysCollectionViewCellModel(day: Date().appending(days: 1))],
                                          cellDelegate: self)
-        view?.setupCollectionView(with: collectionViewDataSource)
+        view.setupCollectionView(with: collectionViewDataSource)
     }
     
     func viewDidAppear() {
@@ -36,18 +37,19 @@ final class TodayStoryPresenter: TodayStoryViewOutput, TodayCollectionViewCellDe
         requestPlan()
     }
     
-    // MARK: - TodayCollectionViewCellDelegate
-    func repeatButtonPressed(on cell: TodayCollectionViewCell) {
+    // MARK: - DaysCollectionViewCellDelegate -
+    func repeatButtonPressed(on cell: DaysCollectionViewCell) {
+        
         if let index = cellModels.firstIndex(where: { cellModel in
             return Calendar.current.isDate(cellModel.day, inSameDayAs: cell.cellModel.day)
         }) {
             cellModels[index].sunErrorMessage = nil
-            view?.refreshCollectionView()
+            view.refreshCollectionView()
             requestSunTime()
         }
     }
     
-    // MARK: - Private Methods
+    // MARK: - Private Methods -
     private func requestSunTime() {
         requestSunTimeUseCase.request(for: 3, since: Date().appending(days: -1)) { [weak self] result in
             guard let self = self else { return }
@@ -64,8 +66,6 @@ final class TodayStoryPresenter: TodayStoryViewOutput, TodayCollectionViewCellDe
     }
     
     private func updateView(with sunModelArray: [DailySunTime]) {
-        guard let view = view else { return }
-        
         sunModelArray.forEach { sunModel in
             if let index = cellModels.firstIndex(where: { cellModel in
                 return Calendar.current.isDate(cellModel.day, inSameDayAs: sunModel.day)
@@ -77,8 +77,6 @@ final class TodayStoryPresenter: TodayStoryViewOutput, TodayCollectionViewCellDe
     }
     
     private func updateView(with plan: PersonalPlan) {
-        guard let view = view else { return }
-        
         for index in cellModels.enumerated() {
             cellModels[index.offset].planErrorMessage = "No Rise plan for the day"
         }
@@ -94,8 +92,6 @@ final class TodayStoryPresenter: TodayStoryViewOutput, TodayCollectionViewCellDe
     }
     
     private func updatePlanView(with planError: Error) {
-        guard let view = view else { return }
-        
         log(planError.localizedDescription)
         for index in self.cellModels.enumerated() {
             self.cellModels[index.offset].planErrorMessage = "You have no Rise plan yet"
@@ -105,8 +101,6 @@ final class TodayStoryPresenter: TodayStoryViewOutput, TodayCollectionViewCellDe
     }
     
     private func updateSunView(with sunTimeError: Error) {
-        guard let view = view else { return }
-        
         log(sunTimeError.localizedDescription)
         for index in self.cellModels.enumerated() {
             self.cellModels[index.offset].sunErrorMessage = "Failed to load data"

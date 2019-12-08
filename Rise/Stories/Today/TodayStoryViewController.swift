@@ -8,23 +8,21 @@
 
 import UIKit
 
-protocol TodayStoryViewInput: AnyObject {
+protocol TodayStoryViewInput: ViewInput {
     func setupCollectionView(with dataSource: UICollectionViewDataSource)
     func refreshCollectionView()
-    func showSunTimeLoadingError()
-    func showError(with text: String)
-    func presentPopOver(controllerID: String)
-    func showTabBar(_ show: Bool)
+    
+    func makeTabBar(visible: Bool)
 }
 
-protocol TodayStoryViewOutput: AnyObject {
-    func viewDidLoad()
-    func viewDidAppear()
+protocol TodayStoryViewOutput: ViewOutput {
+
 }
 
-final class TodayStoryViewController: UIViewController, TodayStoryViewInput {
-    @IBOutlet weak var mainContainerView: CollectionViewWithSegmentedControl!
+final class TodayStoryViewController: ViewController, TodayStoryViewInput {
     var output: TodayStoryViewOutput!
+    
+    @IBOutlet private weak var mainContainerView: DaysView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +32,8 @@ final class TodayStoryViewController: UIViewController, TodayStoryViewInput {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        output.viewWillAppear()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -42,13 +42,13 @@ final class TodayStoryViewController: UIViewController, TodayStoryViewInput {
         output.viewDidAppear()
     }
     
-    @IBAction func sleepButtonTouch(_ sender: UIButton) {
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        output.viewWillDisappear()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    }
-    
-    // MARK: - MainScreenViewInput
+    // MARK: - TodayStoryViewInput -
     func setupCollectionView(with dataSource: UICollectionViewDataSource) {
         mainContainerView.collectionView.dataSource = dataSource
         mainContainerView.collectionView.delegate = mainContainerView
@@ -58,21 +58,9 @@ final class TodayStoryViewController: UIViewController, TodayStoryViewInput {
         mainContainerView.collectionView.reloadData()
     }
     
-    func showSunTimeLoadingError() {
-        
-    }
-    
-    func showError(with text: String) {
-        UIHelper.showError(errorMessage: text)
-    }
-    
-    func showTabBar(_ show: Bool) {
+    func makeTabBar(visible: Bool) {
         UIView.animate(withDuration: 0.1) {
-            self.tabBarController?.tabBar.isHidden = !show
+            self.tabBarController?.tabBar.isHidden = !visible
         }
-    }
-    
-    func presentPopOver(controllerID: String) {
-        performSegue(withIdentifier: controllerID, sender: self)
     }
 }
