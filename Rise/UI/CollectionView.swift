@@ -8,12 +8,14 @@
 
 import UIKit
 
-class ColectionView: UICollectionView {
-    var cellID: String { return "" }
-    var nibName: String { return "" }
-    
-    var nib: UINib { return UINib(nibName: nibName, bundle: nil) }
-    
+class CollectionView: UICollectionView {
+    var cellID: String {
+        return String()
+    }
+    var nibName: String {
+        return String()
+    }
+
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
         sharedInit()
@@ -24,5 +26,7 @@ class ColectionView: UICollectionView {
         sharedInit()
     }
     
-    private func sharedInit() { register(nib, forCellWithReuseIdentifier: cellID) }
+    private func sharedInit() {
+        register(UINib(nibName: nibName, bundle: nil), forCellWithReuseIdentifier: cellID)
+    }
 }
