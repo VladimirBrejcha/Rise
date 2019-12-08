@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol MainScreenViewInput: AnyObject {
+protocol TodayStoryViewInput: AnyObject {
     func setupCollectionView(with dataSource: UICollectionViewDataSource)
     func refreshCollectionView()
     func showSunTimeLoadingError()
@@ -17,14 +17,14 @@ protocol MainScreenViewInput: AnyObject {
     func showTabBar(_ show: Bool)
 }
 
-protocol MainScreenViewOutput: AnyObject {
+protocol TodayStoryViewOutput: AnyObject {
     func viewDidLoad()
     func viewDidAppear()
 }
 
-final class MainScreenViewController: UIViewController, MainScreenViewInput {
+final class TodayStoryViewController: UIViewController, TodayStoryViewInput {
     @IBOutlet weak var mainContainerView: CollectionViewWithSegmentedControl!
-    var output: MainScreenViewOutput!
+    var output: TodayStoryViewOutput!
     
     override func viewDidLoad() {
         super.viewDidLoad()

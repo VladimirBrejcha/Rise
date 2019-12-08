@@ -8,8 +8,8 @@
 
 import Foundation
 
-class MainScreenPresenter: MainScreenViewOutput, TodayCollectionViewCellDelegate {
-    weak var view: MainScreenViewInput?
+final class TodayStoryPresenter: TodayStoryViewOutput, TodayCollectionViewCellDelegate {
+    weak var view: TodayStoryViewInput?
     
     private let requestSunTimeUseCase: RequestSunTimeUseCase = sharedUseCaseManager
     private let requestPersonalPlanUseCase: RequestPersonalPlanUseCase = sharedUseCaseManager
@@ -20,7 +20,7 @@ class MainScreenPresenter: MainScreenViewOutput, TodayCollectionViewCellDelegate
     }
     private var collectionViewDataSource: CollectionViewDataSource<TodayCellModel>!
     
-    init(view: MainScreenViewInput) { self.view = view }
+    init(view: TodayStoryViewInput) { self.view = view }
     
     // MARK: - MainScreenViewOutput
     func viewDidLoad() {
