@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+final class SettingsPresenter: SettingsViewOutput {
+    weak var view: SettingsViewInput?
+    
+    required init(view: SettingsViewInput) {
+        self.view = view
+    }
+}
