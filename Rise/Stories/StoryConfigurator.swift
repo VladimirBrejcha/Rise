@@ -8,22 +8,6 @@
 
 import UIKit
 
-enum Story {
-    // main
-    case today
-    case plan
-    case settings
-    
-    // setup plan
-    case setupPlan
-    case welcomeSetupPlan
-    case sleepDurationSetupPlan(sleepDurationOutput: (Int) -> Void)
-    case wakeUpTimeSetupPlan(wakeUpTimeOutput: (Date) -> Void)
-    case planDurationSetupPlan(planDurationOutput: (Int) -> Void)
-    case wentSleepSetupPlan(wentSleepOutput: (Date) -> Void)
-    case planCreatedSetupPlan
-}
-
 final class StoryConfigurator {
     class func configure(story: Story) -> UIViewController {
         switch story {
@@ -35,7 +19,7 @@ final class StoryConfigurator {
             controller.output = presenter
             return controller
         case .plan:
-            let controller = Storyboard.plan.get().instantiateViewController(of: PersonalPlanViewController.self)
+            let controller = Storyboard.main.get().instantiateViewController(of: PersonalPlanViewController.self)
             let presenter = PersonalPlanPresenter(view: controller)
             controller.output = presenter
             return controller

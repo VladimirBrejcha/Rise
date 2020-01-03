@@ -7,3 +7,19 @@
 //
 
 import Foundation
+
+enum Story {
+    // main
+    case today
+    case plan
+    case settings
+    
+    // setup plan
+    case setupPlan
+    case welcomeSetupPlan
+    case sleepDurationSetupPlan(sleepDurationOutput: (Int) -> Void)
+    case wakeUpTimeSetupPlan(wakeUpTimeOutput: (Date) -> Void)
+    case planDurationSetupPlan(planDurationOutput: (Int) -> Void)
+    case wentSleepSetupPlan(wentSleepOutput: (Date) -> Void)
+    case planCreatedSetupPlan
+}
