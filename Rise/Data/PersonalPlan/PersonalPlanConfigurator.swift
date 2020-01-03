@@ -9,11 +9,10 @@
 import Foundation
 
 class PersonalPlanConfigurator {
-    class func configure(wakeUpTime: Date, sleepDuration: String, planDuration: String, wentSleepTime: Date) -> PersonalPlan {
+    class func configure(sleepDuration: Int, wakeUpTime: Date, planDuration: Int, wentSleepTime: Date) -> PersonalPlan {
         let today = Date()
-        let planDuration = buildPlanDuration(from: planDuration)
         
-        let sleepDurationTime = buildSleepDuration(from: sleepDuration)
+        let sleepDurationTime = Double(sleepDuration * 60)
         let finalSleepTime = buildFinalSleepTime(from: wakeUpTime, and: sleepDurationTime)
         
         let timeBetweenNeededSleepAndActualSleep = Int(wentSleepTime.timeIntervalSince(finalSleepTime) / 60)
@@ -40,27 +39,27 @@ class PersonalPlanConfigurator {
         return Date(timeInterval: -sleepDuration, since: wakeUp)
     }
     
-    private class func buildSleepDuration(from string: String) -> Double {
-        switch string
-        {
-        case DataForPicker.hoursArray[0]: return 420 * 60
-        case DataForPicker.hoursArray[1]: return 450 * 60
-        case DataForPicker.hoursArray[2]: return 480 * 60
-        case DataForPicker.hoursArray[3]: return 510 * 60
-        case DataForPicker.hoursArray[4]: return 540 * 60
-        default: fatalError("index doesnt exist")
-        }
-    }
-    
-    private class func buildPlanDuration(from string: String) -> Int {
-        switch string {
-        case DataForPicker.daysArray[0]: return 10
-        case DataForPicker.daysArray[1]: return 15
-        case DataForPicker.daysArray[2]: return 30
-        case DataForPicker.daysArray[3]: return 50
-        default: fatalError("index doesnt exist")
-        }
-    }
+//    private class func buildSleepDuration(from string: String) -> Double {
+//        switch string
+//        {
+//        case DataForPicker.hoursArray[0]: return 420 * 60
+//        case DataForPicker.hoursArray[1]: return 450 * 60
+//        case DataForPicker.hoursArray[2]: return 480 * 60
+//        case DataForPicker.hoursArray[3]: return 510 * 60
+//        case DataForPicker.hoursArray[4]: return 540 * 60
+//        default: fatalError("index doesnt exist")
+//        }
+//    }
+//    
+//    private class func buildPlanDuration(from string: String) -> Int {
+//        switch string {
+//        case DataForPicker.daysArray[0]: return 10
+//        case DataForPicker.daysArray[1]: return 15
+//        case DataForPicker.daysArray[2]: return 30
+//        case DataForPicker.daysArray[3]: return 50
+//        default: fatalError("index doesnt exist")
+//        }
+//    }
     
     private class func buildPlanEndDate(since today: Date, with planDuration: Double) -> Date {
         return Date(timeInterval: planDuration, since: today)
