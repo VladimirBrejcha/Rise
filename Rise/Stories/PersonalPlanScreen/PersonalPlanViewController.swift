@@ -62,6 +62,11 @@ class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITable
         output.viewDidAppear()
     }
     
+    @IBAction func firstStackButtonTouchUp(_ sender: Button) {
+        let story = StoryConfigurator.configure(story: .setupPlan)
+        StoryPresenter.present(story: story, with: .modal, presentingController: self)
+    }
+    
     // MARK: - PersonalPlanViewInput -
     func updatePlanInfo(with info: [String]) {
         infoCellLabelTextArray = info
