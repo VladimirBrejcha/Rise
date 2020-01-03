@@ -8,12 +8,4 @@
 
 import UIKit
 
-class SetupPlanPageViewController: UIPageViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-}
+final class SetupPlanPageViewController: UIPageViewController { }

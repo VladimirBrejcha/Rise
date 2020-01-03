@@ -8,9 +8,4 @@
 
 import UIKit
 
-final class WelcomeSetuplPlanViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-}
+final class WelcomeSetuplPlanViewController: UIViewController { }

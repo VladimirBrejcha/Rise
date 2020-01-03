@@ -1,5 +1,5 @@
 //
-//  SleepDurationSetuplPlanViewController.swift
+//  PlanDurationSetupPlanViewController.swift
 //  Rise
 //
 //  Created by Владимир Королев on 03.01.2020.
@@ -8,23 +8,29 @@
 
 import UIKit
 
-class PlanDurationSetupPlanViewController: UIViewController {
+final class PlanDurationSetupPlanViewController: UIViewController {
 
+    var planDurationOutput: ((Int) -> Void)!
+    
+    @IBOutlet weak var planDurationLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func planDurationChanged(_ sender: UISlider) {
+        let value = Int(sender.value)
+        
+        switch value {
+        case Int.min...20:
+            planDurationLabel.text = "\(value) days (hardcore)"
+        case 20...40:
+            planDurationLabel.text = "\(value) days (recommented)"
+        case 40...Int.max:
+            planDurationLabel.text = "\(value) days (peacefully)"
+        default: break
+        }
+        planDurationOutput(value)
     }
-    */
-
 }

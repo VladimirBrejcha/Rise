@@ -9,21 +9,21 @@
 import UIKit
 
 protocol SetupPlanViewInput: AnyObject {
+    func showStory(story: Story, forwardDirection: Bool)
+    
+    func updateBackButtonText(_ text: String)
+    func updateNextButtonText(_ text: String)
+    func updateBackButtonVisibility(visible: Bool)
+    func updateNextButtonVisibility(visible: Bool)
+    func enableNextButton(_ enabled: Bool)
+    
     func endStory()
 }
 
 protocol SetupPlanViewOutput: ViewOutput {
-    func schedulePressed()
-    
-}
-
-enum ChangePlanViewType {
-    case info
-    case planDuration
-    case sleepDuration
-    case lastSleepTime
-    case preferedWakeUpTime
-    case syncWithSun
+    func backTouchUp()
+    func nextTouchUp()
+    func closeTouchUp()
 }
 
 final class SetupPlanViewController:
@@ -31,25 +31,13 @@ final class SetupPlanViewController:
     SetupPlanViewInput,
     UIAdaptivePresentationControllerDelegate
 {
-    private var pageController: SetupPlanPageViewController!
-    
     var output: SetupPlanViewOutput!
     
+    private var pageController: SetupPlanPageViewController!
+    
     @IBOutlet private weak var buttonsStackView: UIStackView!
-    @IBOutlet private weak var firstStackButton: Button!
+    @IBOutlet private weak var backButton: Button!
     @IBOutlet private weak var nextButton: Button!
-    
-    var stories: [Story]!
-    private var currentPageIndex = 0
-    
-    private let viewControllers: [UIViewController] = [
-        Storyboard.plan.get().instantiateViewController(of: WelcomeSetuplPlanViewController.self),
-        Storyboard.plan.get().instantiateViewController(of: WakeUpTimeSetupPlanViewController.self),
-        Storyboard.plan.get().instantiateViewController(of: WakeUpTimeSetupPlanViewController.self),
-        Storyboard.plan.get().instantiateViewController(of: WakeUpTimeSetupPlanViewController.self),
-        Storyboard.plan.get().instantiateViewController(of: WakeUpTimeSetupPlanViewController.self),
-        Storyboard.plan.get().instantiateViewController(of: WakeUpTimeSetupPlanViewController.self)
-    ]
     
     private lazy var gradientManager: GradientManager = {
         return GradientManager(frame: view.bounds)
@@ -69,64 +57,60 @@ final class SetupPlanViewController:
         
         presentationController?.delegate = self
         
-        updateButtons(pageNumber: currentPageIndex)
+        output.viewDidLoad()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let pageController = segue.destination as? SetupPlanPageViewController else { return }
-        pageController.setViewControllers([viewControllers[currentPageIndex]], direction: .forward, animated: true, completion: nil)
-        self.pageController = pageController
+        if let pageController = segue.destination as? SetupPlanPageViewController {
+            self.pageController = pageController
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        output.viewWillAppear()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-//        output.viewDidAppear()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-//        output.viewWillDisappear()
+        output.viewWillAppear()
     }
     
     @IBAction func closeTouchUp(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        output.closeTouchUp()
     }
     
     @IBAction func backTouchUp(_ sender: Button) {
-        if viewControllers.indices.contains(currentPageIndex - 1) {
-            currentPageIndex -= 1
-            updateButtons(pageNumber: currentPageIndex)
-            pageController.setViewControllers([viewControllers[currentPageIndex]], direction: .reverse, animated: true, completion: nil)
-        }
+        output.backTouchUp()
     }
     
     @IBAction func nextTouchUp(_ sender: Button) {
-        if viewControllers.indices.contains(currentPageIndex + 1) {
-            currentPageIndex += 1
-            updateButtons(pageNumber: currentPageIndex)
-            pageController.setViewControllers([viewControllers[currentPageIndex]], direction: .forward, animated: true, completion: nil)
-        }
+        output.nextTouchUp()
     }
     
     // MARK: - SetupPlanViewInput -
-    func changeFirstButtonVisibility(visible: Bool) {
-        changeViewVisibility(view: firstStackButton, visible: visible)
+    func updateBackButtonText(_ text: String) {
+        backButton.setTitle(text, for: .normal)
     }
     
-    func changeFirstButtonText(_ text: String) {
-        firstStackButton.setTitle(text, for: .normal)
+    func enableNextButton(_ enabled: Bool) {
+        nextButton.isEnabled = enabled
     }
     
-    func changeSecondButtonText(_ text: String) {
+    func updateNextButtonText(_ text: String) {
         nextButton.setTitle(text, for: .normal)
+    }
+    
+    func updateBackButtonVisibility(visible: Bool) {
+        changeViewVisibility(view: backButton, visible: visible)
+    }
+    
+    func updateNextButtonVisibility(visible: Bool) {
+        changeViewVisibility(view: nextButton, visible: visible)
+    }
+    
+    func showStory(story: Story, forwardDirection: Bool) {
+        pageController.setViewControllers([StoryConfigurator.configure(story: story)],
+                                          direction: forwardDirection
+                                            ? .forward
+                                            : .reverse,
+                                          animated: true, completion: nil)
     }
     
     func endStory() {
@@ -143,42 +127,5 @@ final class SetupPlanViewController:
         UIView.animate(withDuration: 0.3, delay: 0, options: .allowUserInteraction, animations: {
             view.isHidden = !visible
         })
-    }
-    
-    private func updateButtons(pageNumber: Int) {
-        switch pageNumber {
-        case 0:
-            firstStackButton.setTitle("", for: .normal)
-            nextButton.setTitle("Start", for: .normal)
-            changeViewVisibility(view: firstStackButton, visible: false)
-            changeViewVisibility(view: nextButton, visible: true)
-        case 1:
-            firstStackButton.setTitle("", for: .normal)
-            nextButton.setTitle("Next", for: .normal)
-            changeViewVisibility(view: firstStackButton, visible: false)
-            changeViewVisibility(view: nextButton, visible: true)
-        case 2:
-            firstStackButton.setTitle("Previous", for: .normal)
-            nextButton.setTitle("Next", for: .normal)
-            changeViewVisibility(view: firstStackButton, visible: true)
-            changeViewVisibility(view: nextButton, visible: true)
-        case 3:
-            firstStackButton.setTitle("Previous", for: .normal)
-            nextButton.setTitle("Next", for: .normal)
-            changeViewVisibility(view: firstStackButton, visible: true)
-            changeViewVisibility(view: nextButton, visible: true)
-        case 4:
-            firstStackButton.setTitle("Previous", for: .normal)
-            nextButton.setTitle("Next", for: .normal)
-            changeViewVisibility(view: firstStackButton, visible: true)
-            changeViewVisibility(view: nextButton, visible: true)
-        case 5:
-            firstStackButton.setTitle("Previous", for: .normal)
-            nextButton.setTitle("Create", for: .normal)
-            changeViewVisibility(view: firstStackButton, visible: true)
-            changeViewVisibility(view: nextButton, visible: true)
-        default:
-            break
-        }
     }
 }
