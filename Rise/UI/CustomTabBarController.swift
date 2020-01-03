@@ -18,11 +18,12 @@ final class CustomTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewControllers = [StoryConfigurator.createAndConfigure(module: .plan),
-                           StoryConfigurator.createAndConfigure(module: .today),
-                           StoryConfigurator.createAndConfigure(module: .settings)]
-        
         delegate = self
+        
+        viewControllers = [StoryConfigurator.configure(story: .plan),
+                           StoryConfigurator.configure(story: .today),
+                           StoryConfigurator.configure(story: .settings)]
+        
         selectedIndex = 1
     }
     
