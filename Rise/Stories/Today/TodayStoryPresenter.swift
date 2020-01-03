@@ -22,7 +22,7 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
     private var collectionViewDataSource: CollectionViewDataSource<DaysCollectionViewCellModel>!
     
     required init(view: TodayStoryViewInput) { self.view = view Rise.xcodeproj/project.pbxproj
-        g
+        
     }
     
     // MARK: - TodayStoryViewOutput -
