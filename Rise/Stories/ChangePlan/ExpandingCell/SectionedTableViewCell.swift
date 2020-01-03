@@ -91,12 +91,15 @@ final class SectionedTableViewCell: UITableViewCell, UIPickerViewDataSource, UIP
     @objc func dateChanged(sender: UIDatePicker) { pickerValueDidSet(sender.date) }
     
     private func setupConstraints(for picker: Picker) {
-        pickerContainer.addSubview(picker)
-        picker.translatesAutoresizingMaskIntoConstraints = false
-        picker.heightAnchor.constraint(equalToConstant: 130).isActive = true
-        picker.topAnchor.constraint(equalTo: pickerContainer.topAnchor, constant: 5).isActive = true
-        picker.leftAnchor.constraint(equalTo: pickerContainer.leftAnchor).isActive = true
-        picker.rightAnchor.constraint(equalTo: pickerContainer.rightAnchor).isActive = true
+        if pickerContainer.subviews.isEmpty {
+            pickerContainer.addSubview(picker)
+            picker.translatesAutoresizingMaskIntoConstraints = false
+            picker.heightAnchor.constraint(equalToConstant: 130).isActive = true
+            picker.topAnchor.constraint(equalTo: pickerContainer.topAnchor, constant: 5).isActive = true
+            picker.leftAnchor.constraint(equalTo: pickerContainer.leftAnchor).isActive = true
+            picker.rightAnchor.constraint(equalTo: pickerContainer.rightAnchor).isActive = true
+        }
+
     }
     
     private func pickerValueDidSet(_ value: PickerOutputValue) {

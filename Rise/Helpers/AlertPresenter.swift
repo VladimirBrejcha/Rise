@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UIHelper {
+class AlertPresenter {
     class func showAlert(with message: String,
                    and customTitle: String? = nil,
                    customAction: UIAlertAction? = nil,

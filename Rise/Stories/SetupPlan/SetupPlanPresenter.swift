@@ -15,7 +15,7 @@ struct DataForPicker { // TODO: - Picker input and output need refactoring
     private init() { }
 }
 
-class SetupPlanPresenter: SetupPlanViewOutput {
+class SetupPlanPresenter: SetupPlanViewOutput, SectionedTableViewCellDelegate {
     weak var view: SetupPlanViewInput!
     
     private let savePersonalPlanUseCase: SavePersonalPlanUseCase = sharedUseCaseManager
@@ -50,11 +50,11 @@ class SetupPlanPresenter: SetupPlanViewOutput {
              TableViewDataSource.make(for: [hoursPickerModel], output: self),
              TableViewDataSource.make(for: [secondDatePickerModel], output: self),
              TableViewDataSource.make(for: [durationPickerModel], output: self)])
-        view?.configureTableView(with: dataSource)
+//        view?.configureTableView(with: dataSource)
     }
     
-    func scheduleTapped() {
-        view.dismiss()
+    func schedulePressed() {
+        view.endStory()
     }
     
     // MARK: - ExpandingCellDelegate
@@ -73,7 +73,7 @@ class SetupPlanPresenter: SetupPlanViewOutput {
             let wentSleep = lastTimeWentSleepForModel,
             let planDuration = planDurationForModel else { return }
         
-        view?.changeScheduleButtonEnableState(true)
+//        view?.enableScheduleButton(true)
         
         let personalPlan = PersonalPlanConfigurator.configure(wakeUpTime: wakeUp, sleepDuration: sleepDuration,
                                                               planDuration: planDuration, wentSleepTime: wentSleep)

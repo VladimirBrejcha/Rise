@@ -14,10 +14,21 @@ fileprivate let sectionedNibName = "SectionedTableViewCell"
 class SectionedTableView: TableView {
     override var cellID: String { return sectionedCellID }
     override var nibName: String { return sectionedNibName }
+     
+    override var contentSize:CGSize {
+        didSet {
+            invalidateIntrinsicContentSize()
+        }
+    }
+
+    override var intrinsicContentSize: CGSize {
+        layoutIfNeeded()
+        return CGSize(width: UIView.noIntrinsicMetric, height: contentSize.height)
+    }
 }
 
 extension TableViewDataSource where Model == PickerDataModel {
-    static func make(for pickerData: [PickerDataModel], reuseIdentifier: String = sectionedCellID, output: SetupPlanViewOutput) -> TableViewDataSource {
+    static func make(for pickerData: [PickerDataModel], reuseIdentifier: String = sectionedCellID, output: SectionedTableViewCellDelegate?) -> TableViewDataSource {
         return TableViewDataSource(models: pickerData, reuseIdentifier: reuseIdentifier) { (model, cell) in
             guard let cell = cell as? SectionedTableViewCell else { return }
             cell.cellModel = model
