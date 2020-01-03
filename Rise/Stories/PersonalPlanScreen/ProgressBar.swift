@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProgressBar: UIView {
+final class ProgressBar: UIView {
 
     let progressView = UIView()
     
@@ -25,7 +25,9 @@ class ProgressBar: UIView {
     private func sharedInit() {
         layer.cornerRadius = frame.height / 2
         clipsToBounds = true
+        
         addSubview(progressView)
+        
         progressView.layer.cornerRadius = (frame.height / 2)
         progressView.translatesAutoresizingMaskIntoConstraints = false
         progressView.leftAnchor.constraint(equalTo: leftAnchor, constant: -frame.width).isActive = true
