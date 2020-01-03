@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol TodayStoryViewInput: ViewInput {
+protocol TodayStoryViewInput: AnyObject {
     func setupCollectionView(with dataSource: UICollectionViewDataSource)
     func refreshCollectionView()
     
@@ -19,7 +19,7 @@ protocol TodayStoryViewOutput: ViewOutput {
 
 }
 
-final class TodayStoryViewController: ViewController, TodayStoryViewInput {
+final class TodayStoryViewController: UIViewController, TodayStoryViewInput {
     var output: TodayStoryViewOutput!
     
     @IBOutlet private weak var mainContainerView: DaysView!
