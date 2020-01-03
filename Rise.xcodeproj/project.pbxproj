@@ -274,7 +274,7 @@
 				7EF3EE172340F794003BE978 /* SetupPlan */,
 				7E708A3C23BFD8F2003B5702 /* ChangePlan */,
 				7E49018B2340F4460034521E /* PersonalPlanScreen */,
-				7E4901892340F3D90034521E /* SleepScreen */,
+				7E4901892340F3D90034521E /* Sleep */,
 				7E49018A2340F4190034521E /* SettingsScreen */,
 			);
 			path = Stories;
@@ -290,12 +290,12 @@
 			path = Today;
 			sourceTree = "<group>";
 		};
-		7E4901892340F3D90034521E /* SleepScreen */ = {
+		7E4901892340F3D90034521E /* Sleep */ = {
 			isa = PBXGroup;
 			children = (
 				92D7D6542296F297009321AE /* SleepViewController.swift */,
 			);
-			path = SleepScreen;
+			path = Sleep;
 			sourceTree = "<group>";
 		};
 		7E49018A2340F4190034521E /* SettingsScreen */ = {
