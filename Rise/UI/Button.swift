@@ -24,11 +24,10 @@ class Button: UIButton {
     private func sharedInit() {
         backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.07)
         layer.cornerRadius = 12
-        addTarget(self, action: #selector(backToNormalSize(_:)), for: .touchCancel)
-        addTarget(self, action: #selector(backToNormalSize(_:)), for: .touchDragOutside)
-        addTarget(self, action: #selector(backToNormalSize(_:)), for: .touchUpInside)
-        addTarget(self, action: #selector(decreaseButtonSize(_:)), for: .touchDown)
-        addTarget(self, action: #selector(decreaseButtonSize(_:)), for: .touchDragInside)
+        setTitleColor(UIColor.white, for: .normal)
+        setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.5), for: .disabled)
+        addTarget(self, action: #selector(backToNormalSize(_:)), for: [.touchDragOutside, .touchCancel, .touchUpInside])
+        addTarget(self, action: #selector(decreaseButtonSize(_:)), for: [.touchDown, .touchDragInside])
     }
     
     @objc func decreaseButtonSize(_ sender: UIButton) {
@@ -38,5 +37,4 @@ class Button: UIButton {
     @objc func backToNormalSize(_ sender: UIButton) {
         UIView.animate(withDuration: 0.1) { sender.transform = CGAffineTransform.identity }
     }
-
 }

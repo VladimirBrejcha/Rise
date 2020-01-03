@@ -18,9 +18,4 @@ protocol SettingsViewOutput: AnyObject {
 
 final class SettingsViewController: UIViewController, SettingsViewInput {
     var output: SettingsViewOutput!
-    
-    // MARK: LifeCycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
 }

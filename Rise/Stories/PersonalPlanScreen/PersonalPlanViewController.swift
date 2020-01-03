@@ -20,13 +20,16 @@ protocol PersonalPlanViewInput: AnyObject {
     func updateStackViewButtons(doesPlanExist: Bool)
 }
 
-protocol PersonalPlanViewOutput: AnyObject {
-    func viewDidLoad()
-    func viewDidAppear()
+protocol PersonalPlanViewOutput: ViewOutput {
     func changeButtonPressed()
 }
 
-class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PersonalPlanViewInput {
+final class PersonalPlanViewController:
+    UIViewController,
+    UITableViewDelegate,
+    UITableViewDataSource,
+    PersonalPlanViewInput
+{
     var output: PersonalPlanViewOutput!
     
     @IBOutlet weak var planManageButtonsStackView: UIStackView!
@@ -124,32 +127,30 @@ class PersonalPlanViewController: UIViewController, UITableViewDelegate, UITable
             })
         }
     }
-}
-
-// MARK: - TableViewControllerDataSource
-extension PersonalPlanViewController {
+    
+    // MARK: - UITableViewDataSource -
     func numberOfSections(in tableView: UITableView) -> Int { return 1 }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return tableView == progressTableView ? 1 : 4 }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == progressTableView
-        { let cell = tableView.dequeueReusableCell(withIdentifier: progressTableViewInfo.cellID, for: indexPath) as! ProgressTableViewCell
+        if tableView == progressTableView {
+            let cell = tableView.dequeueReusableCell(withIdentifier: progressTableViewInfo.cellID, for: indexPath) as! ProgressTableViewCell
             cell.centerProgressLabel.text = "Perfomance"
             cell.startProgressLabel.text = "0"
             cell.endProgressLabel.text = progressCellMaxValue
             cell.progress = CGFloat(progressCellValue)
-            return cell }
-        else
-        { let cell = tableView.dequeueReusableCell(withIdentifier: infoTableViewInfo.cellID, for: indexPath) as! PlanInfoTableViewCell
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: infoTableViewInfo.cellID, for: indexPath) as! PlanInfoTableViewCell
             cell.infoImageView.image = infoCellImageArray[indexPath.row]
             cell.infoLabel.text = infoCellLabelTextArray?[indexPath.row]
-            return cell }
+            return cell
+        }
     }
-}
-
-// MARK: - TableViewControllerDelegate
-extension PersonalPlanViewController {    
+    
+    // MARK: - UITableViewDelegate -
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView == progressTableView ? tableView.frame.size.height : tableView.frame.size.height / 4
     }

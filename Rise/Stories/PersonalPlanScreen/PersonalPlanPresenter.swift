@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PersonalPlanPresenter: PersonalPlanViewOutput {
+final class PersonalPlanPresenter: PersonalPlanViewOutput {
     weak var view: PersonalPlanViewInput?
     
     private var requestPersonalPlanUseCase: RequestPersonalPlanUseCase = sharedUseCaseManager
@@ -32,7 +32,7 @@ class PersonalPlanPresenter: PersonalPlanViewOutput {
         return dateFormatter
     }()
     
-    init(view: PersonalPlanViewInput) { self.view = view }
+    required init(view: PersonalPlanViewInput) { self.view = view }
     
     // MARK: - PersonalPlanViewOutput -
     func viewDidLoad() {

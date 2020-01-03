@@ -23,7 +23,7 @@ final class SetupPlanPresenter: SetupPlanViewOutput {
     private var currentPage = 0
     private var currentStory: Story { stories[currentPage] }
     
-    init(view: SetupPlanViewInput) { self.view = view }
+    required init(view: SetupPlanViewInput) { self.view = view }
     
     // MARK: - SetupPlanViewOutput -
     func viewDidLoad() {
