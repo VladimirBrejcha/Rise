@@ -45,7 +45,7 @@ final class LocationRemoteDataSource: NSObject, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         log(error.localizedDescription)
-        UIHelper.showAlert(with: error.localizedDescription)
+        AlertPresenter.showAlert(with: error.localizedDescription)
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -78,6 +78,6 @@ final class LocationRemoteDataSource: NSObject, CLLocationManagerDelegate {
         alertController.addAction(cancelAction)
         alertController.addAction(settingsAction)
         
-        UIHelper.show(alertController: alertController)
+        AlertPresenter.show(alertController: alertController)
     }
 }
