@@ -15,6 +15,8 @@ final class LocationRemoteDataSource: NSObject, CLLocationManagerDelegate {
     private var requestLocationCompletion: ((Result<Location, Error>) -> Void)?
     private var requestPermissionsCompletion: ((Bool) -> Void)?
 
+    private var authorisationStatus: CLAuthorizationStatus?
+    
     override init() {
         super.init()
         locationManager.delegate = self
@@ -26,8 +28,14 @@ final class LocationRemoteDataSource: NSObject, CLLocationManagerDelegate {
     }
     
     func requestPermissions(with completion: @escaping (Bool) -> Void) {
-        requestPermissionsCompletion = completion
-        locationManager.requestWhenInUseAuthorization()
+        if     authorisationStatus == .notDetermined
+            || authorisationStatus == .denied
+            || authorisationStatus == .restricted {
+            askForLocationPermissions(completion: completion)
+        } else {
+            requestPermissionsCompletion = completion
+            locationManager.requestWhenInUseAuthorization()
+        }
     }
     
     //MARK: - CLLocationManagerDelegate
@@ -57,6 +65,7 @@ final class LocationRemoteDataSource: NSObject, CLLocationManagerDelegate {
         case .denied, .restricted: askForLocationPermissions(completion: completion)
         default: completion(false)
         }
+        authorisationStatus = status
     }
     
     private func askForLocationPermissions(completion: @escaping (Bool) -> Void) {
