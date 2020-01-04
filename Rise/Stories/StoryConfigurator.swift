@@ -30,7 +30,7 @@ final class StoryConfigurator {
             controller.output = presenter
             return controller
         case .setupPlan:
-            let controller = Storyboard.plan.get().instantiateViewController(of: SetupPlanViewController.self)
+            let controller = Storyboard.setupPlan.get().instantiateViewController(of: SetupPlanViewController.self)
             let presenter = SetupPlanPresenter(view: controller)
             presenter.stories = [.welcomeSetupPlan,
                                  .sleepDurationSetupPlan(sleepDurationOutput: presenter.sleepDurationValueChanged(_:)),
@@ -41,26 +41,26 @@ final class StoryConfigurator {
             controller.output = presenter
             return controller
         case .welcomeSetupPlan:
-            let controller = Storyboard.plan.get().instantiateViewController(of: WelcomeSetuplPlanViewController.self)
+            let controller = Storyboard.setupPlan.get().instantiateViewController(of: WelcomeSetuplPlanViewController.self)
             return controller
         case .sleepDurationSetupPlan(let sleepDurationOutput):
-            let controller = Storyboard.plan.get().instantiateViewController(of: SleepDurationSetupPlanViewController.self)
+            let controller = Storyboard.setupPlan.get().instantiateViewController(of: SleepDurationSetupPlanViewController.self)
             controller.sleepDurationOutput = sleepDurationOutput
             return controller
         case .wakeUpTimeSetupPlan(let wakeUpTimeOutput):
-            let controller = Storyboard.plan.get().instantiateViewController(of: WakeUpTimeSetupPlanViewController.self)
+            let controller = Storyboard.setupPlan.get().instantiateViewController(of: WakeUpTimeSetupPlanViewController.self)
             controller.wakeUpTimeOutput = wakeUpTimeOutput
             return controller
         case .planDurationSetupPlan(let planDurationOutput):
-            let controller = Storyboard.plan.get().instantiateViewController(of: PlanDurationSetupPlanViewController.self)
+            let controller = Storyboard.setupPlan.get().instantiateViewController(of: PlanDurationSetupPlanViewController.self)
             controller.planDurationOutput = planDurationOutput
             return controller
         case .wentSleepSetupPlan(let wentSleepOutput):
-            let controller = Storyboard.plan.get().instantiateViewController(of: WentSleepSetupPlanViewController.self)
+            let controller = Storyboard.setupPlan.get().instantiateViewController(of: WentSleepSetupPlanViewController.self)
             controller.wentSleepTimeOutput = wentSleepOutput
             return controller
         case .planCreatedSetupPlan:
-            let controller = Storyboard.plan.get().instantiateViewController(of: PlanCreatedSetupPlanViewController.self)
+            let controller = Storyboard.setupPlan.get().instantiateViewController(of: PlanCreatedSetupPlanViewController.self)
             return controller
         }
     }

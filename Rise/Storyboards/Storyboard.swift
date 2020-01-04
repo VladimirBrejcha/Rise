@@ -10,7 +10,7 @@ import UIKit
 
 enum Storyboard {
     case main
-    case plan
+    case setupPlan
     case settings
     case popUp
     
@@ -18,8 +18,8 @@ enum Storyboard {
         switch self {
         case .main:
             return UIStoryboard(name: "Main", bundle: nil)
-        case .plan:
-            return UIStoryboard(name: "Plan", bundle: nil)
+        case .setupPlan:
+            return UIStoryboard(name: "SetupPlan", bundle: nil)
         case .settings:
             return UIStoryboard(name: "Settings", bundle: nil)
         case .popUp:
