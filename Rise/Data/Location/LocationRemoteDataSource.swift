@@ -38,7 +38,7 @@ final class LocationRemoteDataSource: NSObject, CLLocationManagerDelegate {
         }
     }
     
-    //MARK: - CLLocationManagerDelegate
+    //MARK: - CLLocationManagerDelegate -
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let completion = requestLocationCompletion else { return }
         
@@ -68,6 +68,7 @@ final class LocationRemoteDataSource: NSObject, CLLocationManagerDelegate {
         authorisationStatus = status
     }
     
+    // MARK: - Private -
     private func askForLocationPermissions(completion: @escaping (Bool) -> Void) {
         let alertController = UIAlertController(title: "Location access denied", message: "Please go to Settings and turn on the permissions", preferredStyle: .alert)
         
