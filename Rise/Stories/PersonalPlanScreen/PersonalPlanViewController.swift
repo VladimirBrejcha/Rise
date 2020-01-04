@@ -8,8 +8,10 @@
 
 import UIKit
 
-fileprivate let infoTableViewInfo = (nib: UINib(nibName: "PlanInfoTableViewCell", bundle: nil), cellID: "infoCell")
-fileprivate let progressTableViewInfo = (nib: UINib(nibName: "ProgressTableViewCell", bundle: nil), cellID: "progressCell")
+fileprivate let infoTableViewInfo = (nib: UINib(nibName: "PlanInfoTableViewCell", bundle: nil),
+                                     cellID: "infoCell")
+fileprivate let progressTableViewInfo = (nib: UINib(nibName: "ProgressTableViewCell", bundle: nil),
+                                         cellID: "progressCell")
 
 protocol PersonalPlanViewInput: AnyObject {
     func updateProgressView(with progress: Double, maxProgress: String)
@@ -33,7 +35,7 @@ final class PersonalPlanViewController:
     var output: PersonalPlanViewOutput!
     
     @IBOutlet weak var planManageButtonsStackView: UIStackView!
-    @IBOutlet weak var pauseButton: Button!
+    @IBOutlet var pauseButton: Button!
     @IBOutlet weak var planButton: UIButton!
     @IBOutlet weak var infomationLabel: UILabel!
     

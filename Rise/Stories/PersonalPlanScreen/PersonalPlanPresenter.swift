@@ -11,17 +11,16 @@ import Foundation
 final class PersonalPlanPresenter: PersonalPlanViewOutput {
     weak var view: PersonalPlanViewInput?
     
-    private var requestPersonalPlanUseCase: RequestPersonalPlanUseCase = sharedUseCaseManager
+    private let requestPersonalPlanUseCase: RequestPersonalPlanUseCase = sharedUseCaseManager
+    private let receivePersonalPlanUpdates: ReceivePersonalPlanUpdatesUseCase = sharedUseCaseManager
     
-    var personalPlan: PersonalPlan? {
-        get {
-            let result = requestPersonalPlanUseCase.request()
-            if case .success (let plan) = result { return plan }
-            return nil
-        }
+    private var personalPlan: PersonalPlan? {
+        let result = requestPersonalPlanUseCase.request()
+        if case .success (let plan) = result { return plan }
+        return nil
     }
     
-    var sleepDurationHours: Double? {
+    private var sleepDurationHours: Double? {
         guard let plan = personalPlan else { return nil }
         return plan.sleepDuration / 3600
     }
@@ -36,11 +35,10 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
     
     // MARK: - PersonalPlanViewOutput -
     func viewDidLoad() {
-        view?.updateStackViewButtons(doesPlanExist: personalPlan != nil)
-    }
-    
-    func viewDidAppear() {
-        updateViewWithPlan()
+        self.updateView(with: personalPlan)
+        receivePersonalPlanUpdates.receive { [weak self] personalPlan in
+            self?.updateView(with: personalPlan)
+        }
     }
     
     func changeButtonPressed() {
@@ -48,10 +46,10 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
     }
     
     // MARK: - Private -
-    private func updateViewWithPlan() {
+    private func updateView(with plan: PersonalPlan?) {
         guard let view = view else { return }
         
-        if let plan = personalPlan {
+        if let plan = plan {
             let durationText = "\(plan.sleepDurationHours) hours of sleep daily"
             let wakeUpText = "Will wake up at \(plan.wakeUpAt)"
             let toSleepText = "Will sleep at \(plan.willSleep)"
@@ -59,9 +57,9 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
             
             view.updateProgressView(with: plan.planProgress, maxProgress: plan.planDurationDays)
             view.updatePlanInfo(with: [durationText, wakeUpText, toSleepText, syncText])
-            view.updateUI(doesPlanExist: true)
-        } else {
-            view.updateUI(doesPlanExist: false)
         }
+        
+        view.updateUI(doesPlanExist: plan != nil)
+        view.updateStackViewButtons(doesPlanExist: plan != nil)
     }
 }
