@@ -10,20 +10,39 @@ import Foundation
 
 class PersonalPlanRepository {
     private let local = PersonalPlanLocalDataSource()
+    var personalPlanUpdateOutput: ((PersonalPlan?) -> Void)?
     
     func requestPersonalPlan() -> Result<PersonalPlan, Error> {
         return local.requestPersonalPlan()
     }
     
     @discardableResult func update(personalPlan: PersonalPlan) -> Bool {
-        local.update(personalPlan: personalPlan)
+        let result = local.update(personalPlan: personalPlan)
+        
+        if result {
+            personalPlanUpdateOutput?(personalPlan)
+        }
+        
+        return result
     }
     
     @discardableResult func create(personalPlan: PersonalPlan) -> Bool {
-        local.create(personalPlan: personalPlan)
+        let result = local.create(personalPlan: personalPlan)
+        
+        if result {
+            personalPlanUpdateOutput?(personalPlan)
+        }
+        
+        return result
     }
     
     @discardableResult func removePersonalPlan() -> Bool {
-        local.deleteAll()
+        let result = local.deleteAll()
+        
+        if result {
+            personalPlanUpdateOutput?(nil)
+        }
+        
+        return result
     }
 }
