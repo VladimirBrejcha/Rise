@@ -29,6 +29,10 @@ protocol RequestSunTimeUseCase {
                  completion: @escaping (Result<[DailySunTime], Error>) -> Void)
 }
 
+protocol ReceivePersonalPlanUpdatesUseCase {
+    func receive(_ updateCompletion: @escaping (PersonalPlan?) -> Void)
+}
+
 let sharedUseCaseManager = UseCaseManager()
 
 final class UseCaseManager {
@@ -58,6 +62,12 @@ extension UseCaseManager: UpdatePersonalPlanUseCase {
 extension UseCaseManager: RemovePersonalPlanUseCase {
     func remove(plan: PersonalPlan) -> Bool {
         personalPlanRepository.removePersonalPlan()
+    }
+}
+
+extension UseCaseManager: ReceivePersonalPlanUpdatesUseCase {
+    func receive(_ updateCompletion: @escaping (PersonalPlan?) -> Void) {
+        personalPlanRepository.personalPlanUpdateOutput = updateCompletion
     }
 }
 
