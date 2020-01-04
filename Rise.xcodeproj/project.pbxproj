@@ -21,7 +21,7 @@
 		7E4198222323CA7F007867AB /* DaysCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E4198202323CA7F007867AB /* DaysCollectionViewCell.xib */; };
 		7E41982423254C36007867AB /* DaysSegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E41982323254C36007867AB /* DaysSegmentedControlView.swift */; };
 		7E438916235230800059DF1C /* PrivateKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E438915235230800059DF1C /* PrivateKeys.swift */; };
-		7E4798F3239D85D5007FB8F2 /* Plan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E4798F2239D85D5007FB8F2 /* Plan.storyboard */; };
+		7E4798F3239D85D5007FB8F2 /* SetupPlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E4798F2239D85D5007FB8F2 /* SetupPlan.storyboard */; };
 		7E4798F5239D894B007FB8F2 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4798F4239D894B007FB8F2 /* Storyboard.swift */; };
 		7E4798F7239D8A33007FB8F2 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E4798F6239D8A33007FB8F2 /* Settings.storyboard */; };
 		7E4901862340DD810034521E /* PersonalPlanData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E4901842340DD810034521E /* PersonalPlanData.xcdatamodeld */; };
@@ -85,6 +85,7 @@
 		7EB9004423298902006EB9A8 /* ProgressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9004223298902006EB9A8 /* ProgressTableViewCell.swift */; };
 		7EB9004523298902006EB9A8 /* ProgressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB9004323298902006EB9A8 /* ProgressTableViewCell.xib */; };
 		7EB90047232AB9EB006EB9A8 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */; };
+		7EB9F33823C12DC9002A6DD3 /* PersonalPlanState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9F33723C12DC9002A6DD3 /* PersonalPlanState.swift */; };
 		7ED8E59723BFFD5100A1E96F /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8E59623BFFD5100A1E96F /* Story.swift */; };
 		7ED962AC2336334A00CD2408 /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED962AB2336334A00CD2408 /* AnimationManager.swift */; };
 		7ED962AF2336649E00CD2408 /* PlanInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED962AD2336649E00CD2408 /* PlanInfoTableViewCell.swift */; };
@@ -144,7 +145,7 @@
 		7E4198202323CA7F007867AB /* DaysCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DaysCollectionViewCell.xib; sourceTree = "<group>"; };
 		7E41982323254C36007867AB /* DaysSegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysSegmentedControlView.swift; sourceTree = "<group>"; };
 		7E438915235230800059DF1C /* PrivateKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKeys.swift; sourceTree = "<group>"; };
-		7E4798F2239D85D5007FB8F2 /* Plan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Plan.storyboard; sourceTree = "<group>"; };
+		7E4798F2239D85D5007FB8F2 /* SetupPlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetupPlan.storyboard; sourceTree = "<group>"; };
 		7E4798F4239D894B007FB8F2 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		7E4798F6239D8A33007FB8F2 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		7E4901852340DD810034521E /* PersonalPlanData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonalPlanData.xcdatamodel; sourceTree = "<group>"; };
@@ -207,6 +208,7 @@
 		7EB9004223298902006EB9A8 /* ProgressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTableViewCell.swift; sourceTree = "<group>"; };
 		7EB9004323298902006EB9A8 /* ProgressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressTableViewCell.xib; sourceTree = "<group>"; };
 		7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		7EB9F33723C12DC9002A6DD3 /* PersonalPlanState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPlanState.swift; sourceTree = "<group>"; };
 		7ED8E59623BFFD5100A1E96F /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		7ED962AB2336334A00CD2408 /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
 		7ED962AD2336649E00CD2408 /* PlanInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanInfoTableViewCell.swift; sourceTree = "<group>"; };
@@ -276,9 +278,9 @@
 				7E84EB28239D1A6100E02050 /* ConfirmationPopUp */,
 				7EF3EE172340F794003BE978 /* SetupPlan */,
 				7E708A3C23BFD8F2003B5702 /* ChangePlan */,
-				7E49018B2340F4460034521E /* PersonalPlanScreen */,
+				7E49018B2340F4460034521E /* PersonalPlan */,
 				7E4901892340F3D90034521E /* Sleep */,
-				7E49018A2340F4190034521E /* SettingsScreen */,
+				7E49018A2340F4190034521E /* Settings */,
 			);
 			path = Stories;
 			sourceTree = "<group>";
@@ -301,16 +303,16 @@
 			path = Sleep;
 			sourceTree = "<group>";
 		};
-		7E49018A2340F4190034521E /* SettingsScreen */ = {
+		7E49018A2340F4190034521E /* Settings */ = {
 			isa = PBXGroup;
 			children = (
 				92E77AF722A5303400E5E21C /* SettingsViewController.swift */,
 				7E0A2E39239D831F00E39C83 /* SettingsPresenter.swift */,
 			);
-			path = SettingsScreen;
+			path = Settings;
 			sourceTree = "<group>";
 		};
-		7E49018B2340F4460034521E /* PersonalPlanScreen */ = {
+		7E49018B2340F4460034521E /* PersonalPlan */ = {
 			isa = PBXGroup;
 			children = (
 				7EE939162340F68800FE9954 /* PersonalPlanViewController.swift */,
@@ -319,7 +321,7 @@
 				7EE939152340F60B00FE9954 /* ProgressCell */,
 				7EE939142340F5F600FE9954 /* PlanInfoCell */,
 			);
-			path = PersonalPlanScreen;
+			path = PersonalPlan;
 			sourceTree = "<group>";
 		};
 		7E708A3523BF666F003B5702 /* ContentViewControllers */ = {
@@ -375,6 +377,7 @@
 				7E91D9572371E4080087436F /* RiseDailyPlanTime+CoreDataClass.swift */,
 				7E91D9582371E4080087436F /* RiseDailyPlanTime+CoreDataProperties.swift */,
 				7EB1C0362340FC6B0028237E /* PersonalPlan.swift */,
+				7EB9F33723C12DC9002A6DD3 /* PersonalPlanState.swift */,
 				7E91D9612371E4850087436F /* DailyPlanTime.swift */,
 			);
 			path = Entity;
@@ -464,7 +467,7 @@
 				92D7D65B2296F298009321AE /* LaunchScreen.storyboard */,
 				7E3980D42360D0020059C592 /* Intro.storyboard */,
 				92D7D6562296F297009321AE /* Main.storyboard */,
-				7E4798F2239D85D5007FB8F2 /* Plan.storyboard */,
+				7E4798F2239D85D5007FB8F2 /* SetupPlan.storyboard */,
 				7E4798F6239D8A33007FB8F2 /* Settings.storyboard */,
 				7E84EB24239D19CF00E02050 /* ConfirmationPopUp.storyboard */,
 			);
@@ -742,7 +745,7 @@
 				92B78CFB229FAF6C0087240B /* SectionedTableViewCell.xib in Resources */,
 				92D7D65A2296F298009321AE /* Assets.xcassets in Resources */,
 				7E4198222323CA7F007867AB /* DaysCollectionViewCell.xib in Resources */,
-				7E4798F3239D85D5007FB8F2 /* Plan.storyboard in Resources */,
+				7E4798F3239D85D5007FB8F2 /* SetupPlan.storyboard in Resources */,
 				7E84EB25239D19CF00E02050 /* ConfirmationPopUp.storyboard in Resources */,
 				92D7D6582296F297009321AE /* Main.storyboard in Resources */,
 			);
@@ -833,6 +836,7 @@
 				7EE6404D23786678005BE355 /* SunTimeRemoteDataSource.swift in Sources */,
 				7E91D9622371E4850087436F /* DailyPlanTime.swift in Sources */,
 				7EE640512378669F005BE355 /* SunTimeModelBuilder.swift in Sources */,
+				7EB9F33823C12DC9002A6DD3 /* PersonalPlanState.swift in Sources */,
 				92B78CFA229FAF6C0087240B /* SectionedTableViewCell.swift in Sources */,
 				7E97656C23786B5600E3AEF2 /* PersonalPlanModelBuilder.swift in Sources */,
 				7ED962AF2336649E00CD2408 /* PlanInfoTableViewCell.swift in Sources */,
