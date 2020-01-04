@@ -29,6 +29,12 @@
                                     <action selector="closeTouchUp:" destination="tb3-MT-84x" eventType="touchUpInside" id="VPH-eA-AQ7"/>
                                 </connections>
                             </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="laz-fg-JOl">
+                                <rect key="frame" x="0.0" y="104" width="414" height="688"/>
+                                <connections>
+                                    <segue destination="fxt-dk-StR" kind="embed" identifier="SetupPlanPageViewController" id="mXt-a5-Ryw"/>
+                                </connections>
+                            </containerView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qus-zp-R0h">
                                 <rect key="frame" x="10" y="802" width="394" height="50"/>
                                 <subviews>
@@ -59,12 +65,6 @@
                                     <constraint firstAttribute="height" constant="50" id="lO2-d1-WJK"/>
                                 </constraints>
                             </stackView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="laz-fg-JOl">
-                                <rect key="frame" x="0.0" y="104" width="414" height="688"/>
-                                <connections>
-                                    <segue destination="fxt-dk-StR" kind="embed" identifier="SetupPlanPageViewController" id="mXt-a5-Ryw"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
