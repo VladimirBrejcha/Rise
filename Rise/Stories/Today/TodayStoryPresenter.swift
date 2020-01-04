@@ -13,6 +13,7 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
     
     var requestSunTimeUseCase: RequestSunTimeUseCase!
     var requestPersonalPlanUseCase: RequestPersonalPlanUseCase!
+    var receivePersonalPlanUpdates: ReceivePersonalPlanUpdatesUseCase!
     
     private var cellModels: [DaysCollectionViewCellModel] {
         get { return collectionViewDataSource.models }
@@ -30,16 +31,17 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
                                                DaysCollectionViewCellModel(day: Date().appending(days: 1))],
                                          cellDelegate: self)
         view.setupCollectionView(with: collectionViewDataSource)
-    }
-    
-    func viewDidAppear() {
-        requestSunTime()
+        
         requestPlan()
+        requestSunTime()
+        
+        receivePersonalPlanUpdates.receive { [weak self] plan in
+            self?.updatePlanView(with: plan)
+        }
     }
     
     // MARK: - DaysCollectionViewCellDelegate -
     func repeatButtonPressed(on cell: DaysCollectionViewCell) {
-        
         if let index = cellModels.firstIndex(where: { cellModel in
             return Calendar.current.isDate(cellModel.day, inSameDayAs: cell.cellModel.day)
         }) {
@@ -61,8 +63,11 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
     private func requestPlan() {
         let result = requestPersonalPlanUseCase.request()
         
-        if case .success (let plan) = result { updateView(with: plan) }
-        if case .failure (let error) = result { updatePlanView(with: error) }
+        if case .success (let plan) = result { updatePlanView(with: plan) }
+        if case .failure (let error) = result {
+            log(error.localizedDescription)
+            updatePlanView(with: nil)
+        }
     }
     
     private func updateView(with sunModelArray: [DailySunTime]) {
@@ -76,27 +81,23 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
         view.refreshCollectionView()
     }
     
-    private func updateView(with plan: PersonalPlan) {
-        for index in cellModels.enumerated() {
-            cellModels[index.offset].planErrorMessage = "No Rise plan for the day"
-        }
-        
-        plan.dailyTimes.forEach { dailyTime in
-            if let index = cellModels.firstIndex(where: { cellModel in
-                return Calendar.current.isDate(cellModel.day, inSameDayAs: dailyTime.day)
-            }) {
-                cellModels[index].update(planTime: dailyTime)
+    private func updatePlanView(with plan: PersonalPlan?) {
+        if let plan = plan {
+            for index in cellModels.enumerated() {
+                cellModels[index.offset].planErrorMessage = "No Rise plan for the day"
+            }
+            plan.dailyTimes.forEach { dailyTime in
+                if let index = cellModels.firstIndex(where: { cellModel in
+                    return Calendar.current.isDate(cellModel.day, inSameDayAs: dailyTime.day)
+                }) {
+                    cellModels[index].update(planTime: dailyTime)
+                }
+            }
+        } else {
+            for index in self.cellModels.enumerated() {
+                self.cellModels[index.offset].planErrorMessage = "You have no Rise plan yet"
             }
         }
-        view.refreshCollectionView()
-    }
-    
-    private func updatePlanView(with planError: Error) {
-        log(planError.localizedDescription)
-        for index in self.cellModels.enumerated() {
-            self.cellModels[index.offset].planErrorMessage = "You have no Rise plan yet"
-        }
-        
         view.refreshCollectionView()
     }
     

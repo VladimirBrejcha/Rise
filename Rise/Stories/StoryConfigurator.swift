@@ -16,6 +16,7 @@ final class StoryConfigurator {
             let presenter = TodayStoryPresenter(view: controller)
             presenter.requestSunTimeUseCase = sharedUseCaseManager
             presenter.requestPersonalPlanUseCase = sharedUseCaseManager
+            presenter.receivePersonalPlanUpdates = sharedUseCaseManager
             controller.output = presenter
             return controller
         case .plan:
