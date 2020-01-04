@@ -30,7 +30,8 @@ class PersonalPlanConfigurator {
             let dailyPlanModel = DailyPlanTime(day: dayDate, wake: wakeDate, sleep: sleepDate)
             dailyPlanTimesArray.append(dailyPlanModel)
         }
-        return PersonalPlan(planStartDay: today, planDuration: planDuration, finalSleepTime: finalSleepTime,
+        return PersonalPlan(state: .confirmed, planStartDay: today,
+                            planDuration: planDuration, finalSleepTime: finalSleepTime,
                             finalWakeTime: wakeUpTime, sleepDuration: sleepDurationTime,
                             dailyTimes: dailyPlanTimesArray, latestConfirmedDay: today)
     }

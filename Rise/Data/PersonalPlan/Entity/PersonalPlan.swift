@@ -9,6 +9,7 @@
 import Foundation
 
 struct PersonalPlan {
+    var state: PersonalPlanState
     let planStartDay: Date
     var planDuration: Int
     var finalSleepTime: Date

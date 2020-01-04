@@ -14,13 +14,14 @@ class PersonalPlanModelBuilder {
             .sorted { $0.day < $1.day }
             .map { buildDailyTimeModel(from: $0) }
         
-        return PersonalPlan(planStartDay: object.planStartDay, planDuration: Int(object.planDuration),
-                                 finalSleepTime: object.finalSleepTime, finalWakeTime: object.finalWakeTime,
-                                 sleepDuration: object.sleepDuration, dailyTimes: dailyTimes,
-                                 latestConfirmedDay: object.latestConfirmedDay)
+        return PersonalPlan(state: object.state, planStartDay: object.planStartDay,
+                            planDuration: Int(object.planDuration), finalSleepTime: object.finalSleepTime,
+                            finalWakeTime: object.finalWakeTime, sleepDuration: object.sleepDuration,
+                            dailyTimes: dailyTimes, latestConfirmedDay: object.latestConfirmedDay)
     }
     
     func update(object: RisePersonalPlan, with model: PersonalPlan, and planTime: [RiseDailyPlanTime]) {
+        object.state = model.state
         object.planStartDay = model.planStartDay
         object.planDuration = Int64(model.planDuration)
         object.finalSleepTime = model.finalSleepTime
