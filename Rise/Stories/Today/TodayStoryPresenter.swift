@@ -11,9 +11,9 @@ import Foundation
 final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDelegate {
     unowned var view: TodayStoryViewInput
     
-    var requestSunTimeUseCase: RequestSunTimeUseCase!
-    var requestPersonalPlanUseCase: RequestPersonalPlanUseCase!
-    var receivePersonalPlanUpdates: ReceivePersonalPlanUpdatesUseCase!
+    private let getSunTime: GetSunTime
+    private let getPlan: GetPlan
+    private let observePlan: ObservePlan
     
     private var cellModels: [DaysCollectionViewCellModel] {
         get { return collectionViewDataSource.models }
@@ -22,7 +22,17 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
     
     private var collectionViewDataSource: CollectionViewDataSource<DaysCollectionViewCellModel>!
     
-    required init(view: TodayStoryViewInput) { self.view = view }
+    required init(
+        view: TodayStoryViewInput,
+        getSunTime: GetSunTime,
+        getPlan: GetPlan,
+        observePlan: ObservePlan
+    ) {
+        self.view = view
+        self.getSunTime = getSunTime
+        self.getPlan = getPlan
+        self.observePlan = observePlan
+    }
     
     // MARK: - TodayStoryViewOutput -
     func viewDidLoad() {
@@ -35,9 +45,10 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
         requestPlan()
         requestSunTime()
         
-        receivePersonalPlanUpdates.receive { [weak self] plan in
-            self?.updatePlanView(with: plan)
-        }
+        observePlan.execute(
+            { [weak self] plan in
+                self?.updatePlanView(with: plan)
+            }, completion: ())
     }
     
     // MARK: - DaysCollectionViewCellDelegate -
@@ -53,7 +64,9 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
     
     // MARK: - Private Methods -
     private func requestSunTime() {
-        requestSunTimeUseCase.request(for: 3, since: Date().appending(days: -1)) { [weak self] result in
+        getSunTime.execute((numberOfDays: 3,
+                            day: Date().appending(days: -1)))
+        { [weak self] result in
             guard let self = self else { return }
             if case .success (let sunTime) = result { self.updateView(with: sunTime) }
             if case .failure (let error) = result { self.updateSunView(with: error) }
@@ -61,13 +74,7 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
     }
     
     private func requestPlan() {
-        let result = requestPersonalPlanUseCase.request()
-        
-        if case .success (let plan) = result { updatePlanView(with: plan) }
-        if case .failure (let error) = result {
-            log(error.localizedDescription)
-            updatePlanView(with: nil)
-        }
+        updatePlanView(with: getPlan.execute((), completion: ()))
     }
     
     private func updateView(with sunModelArray: [DailySunTime]) {

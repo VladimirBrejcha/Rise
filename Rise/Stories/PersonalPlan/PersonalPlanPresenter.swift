@@ -11,13 +11,11 @@ import Foundation
 final class PersonalPlanPresenter: PersonalPlanViewOutput {
     weak var view: PersonalPlanViewInput?
     
-    private let requestPersonalPlanUseCase: RequestPersonalPlanUseCase = sharedUseCaseManager
-    private let receivePersonalPlanUpdates: ReceivePersonalPlanUpdatesUseCase = sharedUseCaseManager
+    private let getPlan: GetPlan
+    private let observePlan: ObservePlan
     
     private var personalPlan: PersonalPlan? {
-        let result = requestPersonalPlanUseCase.request()
-        if case .success (let plan) = result { return plan }
-        return nil
+        getPlan.execute((), completion: ())
     }
     
     private var sleepDurationHours: Double? {
@@ -31,14 +29,22 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
         return dateFormatter
     }()
     
-    required init(view: PersonalPlanViewInput) { self.view = view }
+    required init(
+        view: PersonalPlanViewInput,
+        getPlan: GetPlan,
+        observePlan: ObservePlan
+    ) {
+        self.view = view
+        self.getPlan = getPlan
+        self.observePlan = observePlan
+    }
     
     // MARK: - PersonalPlanViewOutput -
     func viewDidLoad() {
         self.updateView(with: personalPlan)
-        receivePersonalPlanUpdates.receive { [weak self] personalPlan in
-            self?.updateView(with: personalPlan)
-        }
+        observePlan.execute({ [weak self] plan in
+             self?.updateView(with: plan)
+        }, completion: ())
     }
     
     func changeButtonPressed() {

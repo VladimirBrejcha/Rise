@@ -6,12 +6,12 @@
 //  Copyright © 2019 VladimirBrejcha. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 final class SetupPlanPresenter: SetupPlanViewOutput {
     weak var view: SetupPlanViewInput!
     
-    private let savePersonalPlanUseCase: SavePersonalPlanUseCase = sharedUseCaseManager
+    private let createPlan: CreatePlan
     
     private var choosenSleepDuration: Int?
     private var choosenWakeUpTime: Date?
@@ -23,19 +23,25 @@ final class SetupPlanPresenter: SetupPlanViewOutput {
     private var currentPage = 0
     private var currentStory: Story { stories[currentPage] }
     
-    required init(view: SetupPlanViewInput) { self.view = view }
+    required init(
+        view: SetupPlanViewInput,
+        createPlan: CreatePlan
+    ) {
+        self.view = view
+        self.createPlan = createPlan
+    }
     
     // MARK: - SetupPlanViewOutput -
     func viewDidLoad() {
         updateButtons(story: currentStory)
-        view.showStory(story: currentStory, forwardDirection: true)
+        view.show(views: [currentStory.configure()], forwardDirection: true)
     }
     
     func backTouchUp() {
         if stories.indices.contains(currentPage - 1) {
             currentPage -= 1
             updateButtons(story: currentStory)
-            view.showStory(story: currentStory, forwardDirection: false)
+            view.show(views: [currentStory.configure()], forwardDirection: false)
         }
     }
     
@@ -54,7 +60,7 @@ final class SetupPlanPresenter: SetupPlanViewOutput {
         if stories.indices.contains(currentPage + 1) {
             currentPage += 1
             updateButtons(story: currentStory)
-            view.showStory(story: currentStory, forwardDirection: true)
+            view.show(views: [currentStory.configure()], forwardDirection: true)
         }
     }
     
@@ -137,6 +143,6 @@ final class SetupPlanPresenter: SetupPlanViewOutput {
                                                       wakeUpTime: choosenWakeUpTime,
                                                       planDuration: choosenPlanDuration,
                                                       wentSleepTime: choosenLastTimeWentSleep)
-        return savePersonalPlanUseCase.save(plan: plan)
+        return createPlan.execute(plan, completion: ())
     }
 }

@@ -1,5 +1,5 @@
 //
-//  TodayAssebler.swift
+//  TodayAssembler.swift
 //  Rise
 //
 //  Created by Владимир Королев on 05.01.2020.
@@ -8,13 +8,13 @@
 
 import Foundation
 
-final class TodayStoryAssembler: StoryAssembler {
+final class TodayAssembler: StoryAssembler {
     typealias View = TodayStoryViewController
     typealias ViewInput = TodayStoryViewInput
     typealias ViewOutput = TodayStoryViewOutput
     
     func assemble() -> TodayStoryViewController {
-        let controller = Storyboard.main.get().instantiateViewController(of: TodayStoryViewController.self)
+        let controller = Storyboard.main.instantiateViewController(of: TodayStoryViewController.self)
         controller.output = assemble(view: controller)
         return controller
     }
@@ -26,16 +26,16 @@ final class TodayStoryAssembler: StoryAssembler {
                                    observePlan: assemble())
     }
     
-    func asseble() -> GetSunTime {
+    private func asseble() -> GetSunTime {
         return GetSunTime(locationRepository: DataLayer.locationRepository,
                           sunTimeRepository: DataLayer.sunTimeRepository)
     }
     
-    func asseble() -> GetPlan {
+    private func asseble() -> GetPlan {
         return GetPlan(repository: DataLayer.personalPlanRepository)
     }
     
-    func assemble() -> ObservePlan {
+    private func assemble() -> ObservePlan {
         return ObservePlan(repository: DataLayer.personalPlanRepository)
     }
 }

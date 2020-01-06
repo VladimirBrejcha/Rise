@@ -13,7 +13,7 @@ fileprivate typealias ObjectType = RisePersonalPlan
 fileprivate typealias DailyTimeObjectType = RiseDailyPlanTime
 fileprivate let containerName = "PersonalPlanData"
 
-class PersonalPlanLocalDataSource {
+final class PersonalPlanLocalDataSource {
     private lazy var container: PersistentContainer<ObjectType> = {
         let container = PersistentContainer<ObjectType>(name: containerName)
         container.loadPersistentStores { description, error in

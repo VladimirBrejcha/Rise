@@ -20,9 +20,9 @@ final class CustomTabBarController: UITabBarController {
         
         delegate = self
         
-        viewControllers = [StoryConfigurator.configure(story: .plan),
-                           StoryConfigurator.configure(story: .today),
-                           StoryConfigurator.configure(story: .settings)]
+        viewControllers = [Story.plan.configure(),
+                           Story.today.configure(),
+                           Story.settings.configure()]
         
         selectedIndex = 1
     }

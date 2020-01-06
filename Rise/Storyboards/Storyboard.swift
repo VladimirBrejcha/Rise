@@ -8,22 +8,19 @@
 
 import UIKit
 
-enum Storyboard {
-    case main
-    case setupPlan
-    case settings
-    case popUp
+struct Storyboard {
+    static let main: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+    static let setupPlan: UIStoryboard = UIStoryboard(name: "SetupPlan", bundle: nil)
+    static let settings: UIStoryboard = UIStoryboard(name: "Settings", bundle: nil)
+    static let popUp: UIStoryboard = UIStoryboard(name: "ConfirmationPopUp", bundle: nil)
+}
+
+extension UIStoryboard {
+    func instantiateViewController(withIdentifier typeIdentifier: UIViewController.Type) -> UIViewController {
+        return instantiateViewController(withIdentifier: String(describing: typeIdentifier))
+    }
     
-    func get() -> UIStoryboard {
-        switch self {
-        case .main:
-            return UIStoryboard(name: "Main", bundle: nil)
-        case .setupPlan:
-            return UIStoryboard(name: "SetupPlan", bundle: nil)
-        case .settings:
-            return UIStoryboard(name: "Settings", bundle: nil)
-        case .popUp:
-            return UIStoryboard(name: "ConfirmationPopUp", bundle: nil)
-        }
+    func instantiateViewController<Type: UIViewController>(of type: Type.Type) -> Type {
+        return instantiateViewController(withIdentifier: String(describing: type)) as! Type
     }
 }

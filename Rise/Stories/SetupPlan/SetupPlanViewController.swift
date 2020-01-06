@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SetupPlanViewInput: AnyObject {
-    func showStory(story: Story, forwardDirection: Bool)
+    func show(views: [UIViewController], forwardDirection: Bool)
     
     func updateBackButtonText(_ text: String)
     func updateNextButtonText(_ text: String)
@@ -105,8 +105,8 @@ final class SetupPlanViewController:
         changeViewVisibility(view: nextButton, visible: visible)
     }
     
-    func showStory(story: Story, forwardDirection: Bool) {
-        pageController.setViewControllers([StoryConfigurator.configure(story: story)],
+    func show(views: [UIViewController], forwardDirection: Bool) {
+        pageController.setViewControllers(views,
                                           direction: forwardDirection
                                             ? .forward
                                             : .reverse,

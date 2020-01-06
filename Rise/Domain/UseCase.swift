@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+protocol UseCase {
+    associatedtype InputValue
+    associatedtype CompletionHandler
+    associatedtype OutputValue
+    
+    func execute(_ requestValue: InputValue, completion: CompletionHandler) -> OutputValue
+}

@@ -7,3 +7,19 @@
 //
 
 import Foundation
+
+final class UpdatePlan: UseCase {
+    typealias InputValue = PersonalPlan
+    typealias CompletionHandler = Void
+    typealias OutputValue = Bool
+    
+    private let planRepository: PersonalPlanRepository
+    
+    init(planRepository: PersonalPlanRepository) {
+        self.planRepository = planRepository
+    }
+    
+    func execute(_ requestValue: PersonalPlan, completion: Void) -> Bool {
+        planRepository.update(personalPlan: requestValue)
+    }
+}

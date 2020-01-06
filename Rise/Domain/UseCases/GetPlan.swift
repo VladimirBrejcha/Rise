@@ -7,3 +7,26 @@
 //
 
 import Foundation
+
+final class GetPlan: UseCase {
+    typealias InputValue = Void
+    typealias CompletionHandler = Void
+    typealias OutputValue = PersonalPlan?
+    
+    private let planRepository: PersonalPlanRepository
+    
+    required init(repository: PersonalPlanRepository) {
+        self.planRepository = repository
+    }
+    
+    func execute(_ requestValue: Void, completion: Void) -> PersonalPlan? {
+        let result = planRepository.requestPersonalPlan()
+        switch result {
+        case .success(let plan):
+            return plan
+        case .failure(let error):
+            log(error.localizedDescription)
+            return nil
+        }
+    }
+}

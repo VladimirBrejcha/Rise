@@ -8,6 +8,22 @@
 
 import Foundation
 
+struct DataLayer {
+    static let personalPlanRepository: PersonalPlanRepository = {
+        return PersonalPlanRepository()
+    }()
+    
+    static let sunTimeRepository: SunTimeRepository = {
+        return SunTimeRepository()
+    }()
+    
+    static let locationRepository: LocationRepository = {
+        return LocationRepository()
+    }()
+}
+
+
+
 protocol RequestPersonalPlanUseCase {
     func request() -> Result<PersonalPlan, Error>
 }
