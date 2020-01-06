@@ -15,7 +15,7 @@ enum PresentationStyle {
     case none
 }
 
-final class StoryPresenter {
+final class Presenter {
     class func present(story: UIViewController,
                        with style: PresentationStyle,
                        presentingController: UIViewController,
