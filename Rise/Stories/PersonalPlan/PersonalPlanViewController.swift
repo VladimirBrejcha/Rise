@@ -68,8 +68,7 @@ final class PersonalPlanViewController:
     }
     
     @IBAction func firstStackButtonTouchUp(_ sender: Button) {
-        let story = Story.setupPlan.configure()
-        StoryPresenter.present(story: story, with: .modal, presentingController: self)
+        Presenter.present(controller: Story.setupPlan.configure(), with: .modal, presentingController: self)
     }
     
     // MARK: - PersonalPlanViewInput -
