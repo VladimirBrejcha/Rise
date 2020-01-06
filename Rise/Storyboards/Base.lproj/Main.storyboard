@@ -309,7 +309,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="planButtonTouchUp:" destination="smg-BM-jT2" eventType="touchUpInside" id="enY-Yh-p69"/>
+                                            <action selector="planTouchUp:" destination="smg-BM-jT2" eventType="touchUpInside" id="enY-Yh-p69"/>
                                         </connections>
                                     </button>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhh-zc-Kkz" customClass="Button" customModule="Rise" customModuleProvider="target">
@@ -319,6 +319,9 @@
                                         <state key="normal" title="Pause">
                                             <color key="titleColor" name="Pink"/>
                                         </state>
+                                        <connections>
+                                            <action selector="pauseTouchUp:" destination="smg-BM-jT2" eventType="touchUpInside" id="ydu-bT-iFB"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
