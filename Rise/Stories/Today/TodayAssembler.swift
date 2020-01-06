@@ -32,10 +32,10 @@ final class TodayAssembler: StoryAssembler {
     }
     
     private func asseble() -> GetPlan {
-        return GetPlan(repository: DataLayer.personalPlanRepository)
+        return GetPlan(planRepository: DataLayer.personalPlanRepository)
     }
     
     private func assemble() -> ObservePlan {
-        return ObservePlan(repository: DataLayer.personalPlanRepository)
+        return ObservePlan(planRepository: DataLayer.personalPlanRepository)
     }
 }
