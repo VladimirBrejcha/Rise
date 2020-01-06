@@ -23,10 +23,12 @@ protocol PersonalPlanViewInput: AnyObject {
     
     func updateUI(doesPlanExist: Bool)
     func updateStackViewButtons(doesPlanExist: Bool)
+    func updatePauseTitle(with text: String)
 }
 
 protocol PersonalPlanViewOutput: ViewOutput {
     func planPressed()
+    func pausePressed()
 }
 
 final class PersonalPlanViewController:
@@ -70,15 +72,19 @@ final class PersonalPlanViewController:
         output.viewDidAppear()
     }
     
-    @IBAction func planButtonTouchUp(_ sender: Button) {
+    @IBAction func planTouchUp(_ sender: Button) {
         output.planPressed()
     }
     
+    @IBAction func pauseTouchUp(_ sender: Button) {
+        output.pausePressed()
+    }
+    
+    // MARK: - PersonalPlanViewInput -
     func present(controller: UIViewController) {
          Presenter.present(controller: controller, with: .modal, presentingController: self)
     }
     
-    // MARK: - PersonalPlanViewInput -
     func updatePlanInfo(with info: [String]) {
         infoCellLabelTextArray = info
         infoTableView.reloadData()
@@ -112,6 +118,10 @@ final class PersonalPlanViewController:
                     self.mainContainerView.alpha = 1
                 })
         }
+    }
+    
+    func updatePauseTitle(with text: String) {
+        pauseButton.setTitle(text, for: .normal)
     }
     
     // MARK: - Private -

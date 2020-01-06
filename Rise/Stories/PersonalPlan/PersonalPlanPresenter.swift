@@ -12,6 +12,7 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
     weak var view: PersonalPlanViewInput?
     
     private let getPlan: GetPlan
+    private let updatePlan: UpdatePlan
     private let observePlan: ObservePlan
     
     private var personalPlan: PersonalPlan? {
@@ -32,10 +33,12 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
     required init(
         view: PersonalPlanViewInput,
         getPlan: GetPlan,
+        updatePlan: UpdatePlan,
         observePlan: ObservePlan
     ) {
         self.view = view
         self.getPlan = getPlan
+        self.updatePlan = updatePlan
         self.observePlan = observePlan
     }
     
@@ -49,6 +52,16 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
     
     func planPressed() {
         view?.present(controller: Story.setupPlan.configure())
+    }
+    
+    func pausePressed() {
+        guard var plan = personalPlan else { return }
+        plan.state = plan.state == .paused
+            ? .confirmed
+            : .paused
+        if updatePlan.execute(plan, completion: ()) {
+            view?.updatePauseTitle(with: plan.state == .paused ? "Resume" : "Pause")
+        }
     }
     
     // MARK: - Private -

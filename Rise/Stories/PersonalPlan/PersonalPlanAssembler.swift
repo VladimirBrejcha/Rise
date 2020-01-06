@@ -23,15 +23,20 @@ final class PersonalPlanAssembler: StoryAssembler {
         return PersonalPlanPresenter(
             view: view,
             getPlan: assemble(),
+            updatePlan: assemble(),
             observePlan: assemble()
         )
     }
     
     private func assemble() -> GetPlan  {
-        return GetPlan(repository: DataLayer.personalPlanRepository)
+        return GetPlan(planRepository: DataLayer.personalPlanRepository)
     }
     
     private func assemble() -> ObservePlan {
-        return ObservePlan(repository: DataLayer.personalPlanRepository)
+        return ObservePlan(planRepository: DataLayer.personalPlanRepository)
+    }
+    
+    private func assemble() -> UpdatePlan {
+        return UpdatePlan(planRepository: DataLayer.personalPlanRepository)
     }
 }
