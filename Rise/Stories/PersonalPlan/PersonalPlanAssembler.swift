@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PersonalPlanAssembler: StoryAssembler {
+final class PersonalPlanAssembler: StoryAssembler {
     typealias View = PersonalPlanViewController
     typealias ViewInput = PersonalPlanViewInput
     typealias ViewOutput = PersonalPlanViewOutput
