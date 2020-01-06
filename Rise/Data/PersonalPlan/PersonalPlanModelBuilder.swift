@@ -27,6 +27,7 @@ class PersonalPlanModelBuilder {
         object.finalSleepTime = model.finalSleepTime
         object.finalWakeTime = model.finalWakeTime
         object.sleepDuration = model.sleepDuration
+        object.removeFromDaliyPlanTime(object.daliyPlanTime)
         object.addToDaliyPlanTime(NSSet(array: planTime))
         object.latestConfirmedDay = model.latestConfirmedDay
     }

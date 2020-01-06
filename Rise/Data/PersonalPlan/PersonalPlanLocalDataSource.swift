@@ -69,6 +69,23 @@ final class PersonalPlanLocalDataSource {
         }
     }
     
+    private func update(dailyPlanTime: [DailyPlanTime]) -> Bool {
+        let fetchRequest: NSFetchRequest<DailyTimeObjectType> = DailyTimeObjectType.fetchRequest()
+        
+        do {
+            let objects = try fetchRequest.execute()
+            for index in objects.enumerated() {
+                builder.update(object: objects[index.offset],
+                               with: dailyPlanTime[index.offset])
+            }
+            return container.saveContext()
+        }
+        catch {
+            log(error.localizedDescription)
+            return false
+        }
+    }
+    
     private func create(planTime: DailyPlanTime) -> DailyTimeObjectType {
         let dailyPlanTimeObject = NSEntityDescription.insertNewObject(forEntityName: planTimeEntityName,
                                                                       into: context) as! DailyTimeObjectType

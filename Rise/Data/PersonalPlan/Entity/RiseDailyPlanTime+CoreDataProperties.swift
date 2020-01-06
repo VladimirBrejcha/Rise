@@ -12,7 +12,7 @@ import CoreData
 
 extension RiseDailyPlanTime {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<RiseDailyPlanTime> {
-        return NSFetchRequest<RiseDailyPlanTime>(entityName: String(describing: RiseDailyPlanTime.self))
+        return NSFetchRequest<RiseDailyPlanTime>(entityName: String(describing: Self.self))
     }
 
     @NSManaged public var day: Date
