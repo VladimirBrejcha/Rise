@@ -8,9 +8,9 @@
 
 import Foundation
 
-class PersonalPlanRepository {
+final class PersonalPlanRepository {
     private let local = PersonalPlanLocalDataSource()
-    var personalPlanUpdateOutput: ((PersonalPlan?) -> Void)?
+    var personalPlanUpdateOutput: [((PersonalPlan?) -> Void)] = []
     
     func requestPersonalPlan() -> Result<PersonalPlan, Error> {
         return local.requestPersonalPlan()
@@ -20,7 +20,11 @@ class PersonalPlanRepository {
         let result = local.update(personalPlan: personalPlan)
         
         if result {
-            personalPlanUpdateOutput?(personalPlan)
+            if !personalPlanUpdateOutput.isEmpty {
+                personalPlanUpdateOutput.forEach { output in
+                    output(personalPlan)
+                }
+            }
         }
         
         return result
@@ -30,7 +34,11 @@ class PersonalPlanRepository {
         let result = local.create(personalPlan: personalPlan)
         
         if result {
-            personalPlanUpdateOutput?(personalPlan)
+            if !personalPlanUpdateOutput.isEmpty {
+                personalPlanUpdateOutput.forEach { output in
+                    output(personalPlan)
+                }
+            }
         }
         
         return result
@@ -40,7 +48,11 @@ class PersonalPlanRepository {
         let result = local.deleteAll()
         
         if result {
-            personalPlanUpdateOutput?(nil)
+            if !personalPlanUpdateOutput.isEmpty {
+                personalPlanUpdateOutput.forEach { output in
+                    output(nil)
+                }
+            }
         }
         
         return result

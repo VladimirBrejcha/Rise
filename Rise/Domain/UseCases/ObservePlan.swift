@@ -20,6 +20,6 @@ final class ObservePlan: UseCase {
     }
     
     func execute(_ requestValue: @escaping (PersonalPlan?) -> Void, completion: Void) -> Void {
-        planRepository.personalPlanUpdateOutput = requestValue
+        planRepository.personalPlanUpdateOutput.append(requestValue)
     }
 }
