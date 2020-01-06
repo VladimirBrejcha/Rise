@@ -47,8 +47,8 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
         }, completion: ())
     }
     
-    func changeButtonPressed() {
-        
+    func planPressed() {
+        view?.present(controller: Story.setupPlan.configure())
     }
     
     // MARK: - Private -

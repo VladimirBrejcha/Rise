@@ -14,16 +14,19 @@ fileprivate let progressTableViewInfo = (nib: UINib(nibName: "ProgressTableViewC
                                          cellID: "progressCell")
 
 protocol PersonalPlanViewInput: AnyObject {
+    func present(controller: UIViewController)
+    
     func updateProgressView(with progress: Double, maxProgress: String)
     func updatePlanInfo(with info: [String])
-    func showLoading()
-    func hideLoading()
+    
+    func showLoading(_ show: Bool)
+    
     func updateUI(doesPlanExist: Bool)
     func updateStackViewButtons(doesPlanExist: Bool)
 }
 
 protocol PersonalPlanViewOutput: ViewOutput {
-    func changeButtonPressed()
+    func planPressed()
 }
 
 final class PersonalPlanViewController:
@@ -67,8 +70,12 @@ final class PersonalPlanViewController:
         output.viewDidAppear()
     }
     
-    @IBAction func firstStackButtonTouchUp(_ sender: Button) {
-        StoryPresenter.present(story: Story.setupPlan, with: .modal, presentingController: self)
+    @IBAction func planButtonTouchUp(_ sender: Button) {
+        output.planPressed()
+    }
+    
+    func present(controller: UIViewController) {
+         Presenter.present(controller: controller, with: .modal, presentingController: self)
     }
     
     // MARK: - PersonalPlanViewInput -
@@ -97,15 +104,13 @@ final class PersonalPlanViewController:
                 pauseButton.removeFromSuperview() }()
     }
     
-    func showLoading() {
-        loadingView.showLoading()
-    }
-    
-    func hideLoading() {
-        loadingView.hideLoading {
-            UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction, animations: {
-                self.mainContainerView.alpha = 1
-            })
+    func showLoading(_ show: Bool) {
+        show
+            ? loadingView.showLoading()
+            : loadingView.hideLoading {
+                UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction, animations: {
+                    self.mainContainerView.alpha = 1
+                })
         }
     }
     
