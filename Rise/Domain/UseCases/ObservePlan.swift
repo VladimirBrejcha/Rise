@@ -15,8 +15,8 @@ final class ObservePlan: UseCase {
     
     private let planRepository: PersonalPlanRepository
     
-    required init(repository: PersonalPlanRepository) {
-        self.planRepository = repository
+    required init(planRepository: PersonalPlanRepository) {
+        self.planRepository = planRepository
     }
     
     func execute(_ requestValue: @escaping (PersonalPlan?) -> Void, completion: Void) -> Void {
