@@ -309,7 +309,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="firstStackButtonTouchUp:" destination="smg-BM-jT2" eventType="touchUpInside" id="enY-Yh-p69"/>
+                                            <action selector="planButtonTouchUp:" destination="smg-BM-jT2" eventType="touchUpInside" id="enY-Yh-p69"/>
                                         </connections>
                                     </button>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhh-zc-Kkz" customClass="Button" customModule="Rise" customModuleProvider="target">
