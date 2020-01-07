@@ -11,7 +11,7 @@
         <!--Confirmation View Controller-->
         <scene sceneID="b6j-6B-Exp">
             <objects>
-                <viewController storyboardIdentifier="ConfirmationPopUpViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="currentContext" id="2AF-jQ-OVM" customClass="ConfirmationViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConfirmationViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="currentContext" id="2AF-jQ-OVM" customClass="ConfirmationViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="my1-mn-SZj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

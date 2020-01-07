@@ -182,7 +182,6 @@
                     <tabBarItem key="tabBarItem" title="" id="TXr-v4-zcJ"/>
                     <connections>
                         <outlet property="mainContainerView" destination="GMJ-xI-VUX" id="b40-8L-O7w"/>
-                        <segue destination="Uqz-co-Ocr" kind="presentation" identifier="ConfirmationPopUpViewController" modalPresentationStyle="currentContext" modalTransitionStyle="crossDissolve" id="TVE-Ei-dBZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jGW-AY-dG7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -255,17 +254,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1723" y="-155"/>
-        </scene>
-        <!--ConfirmationPopUpViewController-->
-        <scene sceneID="p3K-k4-aHi">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="ConfirmationPopUpViewController" storyboardName="ConfirmationPopUp" referencedIdentifier="ConfirmationPopUpViewController" id="Uqz-co-Ocr" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="0ph-JL-Egn"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zbk-br-Bj9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="993" y="331"/>
+            <point key="canvasLocation" x="993" y="534"/>
         </scene>
         <!--Item-->
         <scene sceneID="h2v-11-WTS">
