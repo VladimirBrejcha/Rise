@@ -37,8 +37,8 @@
 		7E708A3E23BFD917003B5702 /* ChangePlanPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3D23BFD917003B5702 /* ChangePlanPresenter.swift */; };
 		7E708A4023BFD92D003B5702 /* ChangePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3F23BFD92D003B5702 /* ChangePlanViewController.swift */; };
 		7E7413BC2349069500BF4416 /* AnimatedLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7413BB2349069500BF4416 /* AnimatedLoadingView.swift */; };
-		7E84EB25239D19CF00E02050 /* ConfirmationPopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E84EB24239D19CF00E02050 /* ConfirmationPopUp.storyboard */; };
-		7E84EB27239D1A5700E02050 /* ConfirmationPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E84EB26239D1A5700E02050 /* ConfirmationPopUpViewController.swift */; };
+		7E84EB25239D19CF00E02050 /* Confirmation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E84EB24239D19CF00E02050 /* Confirmation.storyboard */; };
+		7E84EB27239D1A5700E02050 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E84EB26239D1A5700E02050 /* ConfirmationViewController.swift */; };
 		7E8AB6CE23A18D27009CE41A /* WakeUpTimeSetupPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8AB6CD23A18D27009CE41A /* WakeUpTimeSetupPlanViewController.swift */; };
 		7E8C6B982350FB9C0086162F /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8C6B972350FB9C0086162F /* TableView.swift */; };
 		7E91D95B2371E4080087436F /* RiseDailySunTime+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E91D9552371E4080087436F /* RiseDailySunTime+CoreDataClass.swift */; };
@@ -97,6 +97,8 @@
 		7EB9F35423C36B54002A6DD3 /* SetupPlanAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9F35323C36B54002A6DD3 /* SetupPlanAssembler.swift */; };
 		7EB9F35623C37733002A6DD3 /* StoryAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9F35523C37733002A6DD3 /* StoryAssembler.swift */; };
 		7EB9F35A23C389BF002A6DD3 /* DataLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9F35923C389BF002A6DD3 /* DataLayer.swift */; };
+		7EC7392323C4ED2100C484B8 /* ConfirmationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC7392223C4ED2100C484B8 /* ConfirmationPresenter.swift */; };
+		7EC7392523C4EF5B00C484B8 /* ConfirmationAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC7392423C4EF5B00C484B8 /* ConfirmationAssembler.swift */; };
 		7ED8E59723BFFD5100A1E96F /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8E59623BFFD5100A1E96F /* Story.swift */; };
 		7ED962AC2336334A00CD2408 /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED962AB2336334A00CD2408 /* AnimationManager.swift */; };
 		7ED962AF2336649E00CD2408 /* PlanInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED962AD2336649E00CD2408 /* PlanInfoTableViewCell.swift */; };
@@ -172,8 +174,8 @@
 		7E708A3D23BFD917003B5702 /* ChangePlanPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanPresenter.swift; sourceTree = "<group>"; };
 		7E708A3F23BFD92D003B5702 /* ChangePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanViewController.swift; sourceTree = "<group>"; };
 		7E7413BB2349069500BF4416 /* AnimatedLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedLoadingView.swift; sourceTree = "<group>"; };
-		7E84EB24239D19CF00E02050 /* ConfirmationPopUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConfirmationPopUp.storyboard; sourceTree = "<group>"; };
-		7E84EB26239D1A5700E02050 /* ConfirmationPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationPopUpViewController.swift; sourceTree = "<group>"; };
+		7E84EB24239D19CF00E02050 /* Confirmation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Confirmation.storyboard; sourceTree = "<group>"; };
+		7E84EB26239D1A5700E02050 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
 		7E8AB6CD23A18D27009CE41A /* WakeUpTimeSetupPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUpTimeSetupPlanViewController.swift; sourceTree = "<group>"; };
 		7E8C6B972350FB9C0086162F /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		7E91D9552371E4080087436F /* RiseDailySunTime+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RiseDailySunTime+CoreDataClass.swift"; path = "Rise/Data/SunTime/Entity/RiseDailySunTime+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
@@ -231,6 +233,8 @@
 		7EB9F35323C36B54002A6DD3 /* SetupPlanAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPlanAssembler.swift; sourceTree = "<group>"; };
 		7EB9F35523C37733002A6DD3 /* StoryAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryAssembler.swift; sourceTree = "<group>"; };
 		7EB9F35923C389BF002A6DD3 /* DataLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLayer.swift; sourceTree = "<group>"; };
+		7EC7392223C4ED2100C484B8 /* ConfirmationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationPresenter.swift; sourceTree = "<group>"; };
+		7EC7392423C4EF5B00C484B8 /* ConfirmationAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationAssembler.swift; sourceTree = "<group>"; };
 		7ED8E59623BFFD5100A1E96F /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		7ED962AB2336334A00CD2408 /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
 		7ED962AD2336649E00CD2408 /* PlanInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanInfoTableViewCell.swift; sourceTree = "<group>"; };
@@ -297,7 +301,7 @@
 				7EB9F35523C37733002A6DD3 /* StoryAssembler.swift */,
 				7EEA217823B6A3B400354BEA /* Presenter.swift */,
 				7E4901882340F3BE0034521E /* Today */,
-				7E84EB28239D1A6100E02050 /* ConfirmationPopUp */,
+				7E84EB28239D1A6100E02050 /* Confirmation */,
 				7E49018B2340F4460034521E /* PersonalPlan */,
 				7EF3EE172340F794003BE978 /* SetupPlan */,
 				7E708A3C23BFD8F2003B5702 /* ChangePlan */,
@@ -373,12 +377,14 @@
 			path = ChangePlan;
 			sourceTree = "<group>";
 		};
-		7E84EB28239D1A6100E02050 /* ConfirmationPopUp */ = {
+		7E84EB28239D1A6100E02050 /* Confirmation */ = {
 			isa = PBXGroup;
 			children = (
-				7E84EB26239D1A5700E02050 /* ConfirmationPopUpViewController.swift */,
+				7EC7392423C4EF5B00C484B8 /* ConfirmationAssembler.swift */,
+				7E84EB26239D1A5700E02050 /* ConfirmationViewController.swift */,
+				7EC7392223C4ED2100C484B8 /* ConfirmationPresenter.swift */,
 			);
-			path = ConfirmationPopUp;
+			path = Confirmation;
 			sourceTree = "<group>";
 		};
 		7E97656123786AED00E3AEF2 /* PersonalPlan */ = {
@@ -516,7 +522,7 @@
 				92D7D6562296F297009321AE /* Main.storyboard */,
 				7E4798F2239D85D5007FB8F2 /* SetupPlan.storyboard */,
 				7E4798F6239D8A33007FB8F2 /* Settings.storyboard */,
-				7E84EB24239D19CF00E02050 /* ConfirmationPopUp.storyboard */,
+				7E84EB24239D19CF00E02050 /* Confirmation.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -795,7 +801,7 @@
 				92D7D65A2296F298009321AE /* Assets.xcassets in Resources */,
 				7E4198222323CA7F007867AB /* DaysCollectionViewCell.xib in Resources */,
 				7E4798F3239D85D5007FB8F2 /* SetupPlan.storyboard in Resources */,
-				7E84EB25239D19CF00E02050 /* ConfirmationPopUp.storyboard in Resources */,
+				7E84EB25239D19CF00E02050 /* Confirmation.storyboard in Resources */,
 				92D7D6582296F297009321AE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -869,7 +875,7 @@
 				92BC919422AB24D800BB1D19 /* GradientManager.swift in Sources */,
 				7E052A422352377E005D7FAD /* RiseError.swift in Sources */,
 				92D12FDD22A44B3B0093B0A3 /* CustomTabBarController.swift in Sources */,
-				7E84EB27239D1A5700E02050 /* ConfirmationPopUpViewController.swift in Sources */,
+				7E84EB27239D1A5700E02050 /* ConfirmationViewController.swift in Sources */,
 				7EB9F34223C2028D002A6DD3 /* CreatePlan.swift in Sources */,
 				7E5BDADF2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift in Sources */,
 				7EE6404F23786693005BE355 /* PersistentContainer.swift in Sources */,
@@ -908,6 +914,7 @@
 				7E31497D23425CA600941606 /* TableViewDataSource.swift in Sources */,
 				7EB9F34C23C20504002A6DD3 /* GetSunTime.swift in Sources */,
 				7EB26957234FA6EB008AEB3D /* LoadingView.swift in Sources */,
+				7EC7392323C4ED2100C484B8 /* ConfirmationPresenter.swift in Sources */,
 				7E708A3223BF527B003B5702 /* SetupPlanPageViewController.swift in Sources */,
 				7EB9F34823C203E6002A6DD3 /* GetPlan.swift in Sources */,
 				92E77AF822A5303400E5E21C /* SettingsViewController.swift in Sources */,
@@ -918,6 +925,7 @@
 				7EA38AF22378589E0007919B /* LocationModelBuilder.swift in Sources */,
 				7E91D95E2371E4080087436F /* RiseDailyPlanTime+CoreDataProperties.swift in Sources */,
 				7EB9004023256BF3006EB9A8 /* DaysView.swift in Sources */,
+				7EC7392523C4EF5B00C484B8 /* ConfirmationAssembler.swift in Sources */,
 				7E438916235230800059DF1C /* PrivateKeys.swift in Sources */,
 				7ED962AC2336334A00CD2408 /* AnimationManager.swift in Sources */,
 				7E98FE65231C30C10065FB09 /* AlertPresenter.swift in Sources */,
