@@ -29,6 +29,10 @@ extension PersonalPlan {
         
         return (Double(self.planDuration - (self.planDuration - daysBetween)) / Double(self.planDuration))
     }
+    
+    var isConfirmedForToday: Bool {
+        return Calendar.current.isDate(Date(), inSameDayAs: self.latestConfirmedDay)
+    }
 }
 
 fileprivate extension Double {

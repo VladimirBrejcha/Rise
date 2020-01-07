@@ -56,11 +56,9 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
     
     func pausePressed() {
         guard var plan = personalPlan else { return }
-        plan.state = plan.state == .paused
-            ? .confirmed
-            : .paused
+        plan.paused.toggle()
         if updatePlan.execute(plan) {
-            view?.updatePauseTitle(with: plan.state == .paused ? "Resume" : "Pause")
+            view?.updatePauseTitle(with: plan.paused ? "Resume" : "Pause")
         }
     }
     
