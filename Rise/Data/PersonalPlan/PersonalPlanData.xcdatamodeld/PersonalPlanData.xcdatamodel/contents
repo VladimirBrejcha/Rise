@@ -10,10 +10,10 @@
         <attribute name="finalSleepTime" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="finalWakeTime" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="latestConfirmedDay" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="paused" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="planDuration" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="planStartDay" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="sleepDuration" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="state" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="daliyPlanTime" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RiseDailyPlanTime" inverseName="personalPlan" inverseEntity="RiseDailyPlanTime"/>
     </entity>
     <elements>

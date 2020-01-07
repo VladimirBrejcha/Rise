@@ -15,7 +15,7 @@ extension RisePersonalPlan {
         return NSFetchRequest<RisePersonalPlan>(entityName: String(describing: RisePersonalPlan.self))
     }
 
-    @NSManaged public var state: PersonalPlanState
+    @NSManaged public var paused: Bool
     @NSManaged public var planStartDay: Date
     @NSManaged public var planDuration: Int64
     @NSManaged public var finalSleepTime: Date

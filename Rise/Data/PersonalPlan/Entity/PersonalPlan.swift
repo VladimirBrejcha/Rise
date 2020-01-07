@@ -9,7 +9,7 @@
 import Foundation
 
 struct PersonalPlan {
-    var state: PersonalPlanState
+    var paused: Bool
     let planStartDay: Date
     var planDuration: Int
     var finalSleepTime: Date
