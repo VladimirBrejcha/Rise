@@ -8,14 +8,20 @@
 
 import UIKit
 
-class ConfirmationPopUpViewController: UIViewController {
+final class ConfirmationViewController: UIViewController {
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
     
-    @IBAction func skipTouchUp(_ sender: Button) {
+    @IBAction func resheduleTouchUp(_ sender: Button) {
+    }
+    
+    @IBAction func confirmTouchUp(_ sender: Button) {
         self.dismiss(animated: true, completion: nil)
     }
 }
