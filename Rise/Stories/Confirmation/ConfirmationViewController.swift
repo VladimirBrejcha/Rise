@@ -12,6 +12,8 @@ protocol ConfirmationViewInput: AnyObject {
     func updateTitle(with text: String)
     func updateDescription(with text: String)
     
+    func showDatePicker(_ show: Bool)
+    
     func dismiss()
 }
 
@@ -25,6 +27,8 @@ final class ConfirmationViewController: UIViewController, ConfirmationViewInput 
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var datePickerHeightConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,5 +67,16 @@ final class ConfirmationViewController: UIViewController, ConfirmationViewInput 
     
     func dismiss() {
         dismiss(animated: true)
+    }
+    
+    func showDatePicker(_ show: Bool) {
+        UIView.animate(withDuration: 0.06, animations: {
+            self.datePicker.alpha = show ? 1 : 0
+        }) { _ in
+            UIView.animate(withDuration: 0.3) {
+                self.datePickerHeightConstraint.constant = show ? 200 : 0
+                self.view.layoutIfNeeded()
+            }
+        }
     }
 }
