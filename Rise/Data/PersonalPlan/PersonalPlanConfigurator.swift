@@ -10,7 +10,8 @@ import Foundation
 
 class PersonalPlanConfigurator {
     class func configure(sleepDuration: Int, wakeUpTime: Date, planDuration: Int, wentSleepTime: Date) -> PersonalPlan {
-        let today = Date()
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
         
         let sleepDurationTime = Double(sleepDuration * 60)
         let finalSleepTime = buildFinalSleepTime(from: wakeUpTime, and: sleepDurationTime)
@@ -23,14 +24,14 @@ class PersonalPlanConfigurator {
         
         var dailyPlanTimesArray: [DailyPlanTime] = []
         
-        for day in 1 ..< planDuration + 1 {
-            let dayDate = Calendar.current.date(byAdding: .day, value: day, to: today)!
-            let sleepDate = Calendar.current.date(byAdding: .minute, value: dailyShiftMin * day, to: wentSleepTime)!
+        for day in 0 ..< planDuration {
+            let dayDate = calendar.date(byAdding: .day, value: day, to: today)!
+            let sleepDate = calendar.date(byAdding: .minute, value: dailyShiftMin * day, to: wentSleepTime)!
             let wakeDate = sleepDate.addingTimeInterval(sleepDurationTime)
             let dailyPlanModel = DailyPlanTime(day: dayDate, wake: wakeDate, sleep: sleepDate)
             dailyPlanTimesArray.append(dailyPlanModel)
         }
-        return PersonalPlan(state: .confirmed, planStartDay: today,
+        return PersonalPlan(paused: false, planStartDay: today,
                             planDuration: planDuration, finalSleepTime: finalSleepTime,
                             finalWakeTime: wakeUpTime, sleepDuration: sleepDurationTime,
                             dailyTimes: dailyPlanTimesArray, latestConfirmedDay: today)
