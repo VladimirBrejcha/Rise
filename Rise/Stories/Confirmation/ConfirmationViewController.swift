@@ -11,8 +11,11 @@ import UIKit
 protocol ConfirmationViewInput: AnyObject {
     func updateTitle(with text: String)
     func updateDescription(with text: String)
+    func updateResheduleTitle(with text: String)
     
+    func setDatePicker(value: Date)
     func showDatePicker(_ show: Bool)
+    func enableConfirmButton(_ enable: Bool)
     
     func dismiss()
 }
@@ -20,6 +23,7 @@ protocol ConfirmationViewInput: AnyObject {
 protocol ConfirmationViewOutput: ViewOutput {
     func reshedulePressed()
     func confirmPressed()
+    func timeValueUpdated(_ value: Date)
 }
 
 final class ConfirmationViewController: UIViewController, ConfirmationViewInput {
@@ -27,6 +31,8 @@ final class ConfirmationViewController: UIViewController, ConfirmationViewInput 
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var resheduleButton: Button!
+    @IBOutlet weak var confirmButton: Button!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var datePickerHeightConstraint: NSLayoutConstraint!
     
@@ -56,17 +62,35 @@ final class ConfirmationViewController: UIViewController, ConfirmationViewInput 
         output.confirmPressed()
     }
     
+    @IBAction func datePickerValueUpdated(_ sender: UIDatePicker) {
+        output.timeValueUpdated(sender.date)
+    }
+    
     // MARK: - ConfirmationViewInput -
     func updateTitle(with text: String) {
         titleLabel.text = text
     }
     
     func updateDescription(with text: String) {
-        descriptionLabel.text = text
+        UIView.transition(with: descriptionLabel,
+                          duration: 0.36,
+                          options: .transitionCrossDissolve,
+                          animations: {
+                            self.descriptionLabel.text = text
+        },
+                          completion: nil)
     }
     
-    func dismiss() {
-        dismiss(animated: true)
+    func updateResheduleTitle(with text: String) {
+        resheduleButton.setTitle(text, for: .normal)
+    }
+    
+    func enableConfirmButton(_ enable: Bool) {
+        confirmButton.isEnabled = enable
+    }
+    
+    func setDatePicker(value: Date) {
+        datePicker.setDate(value, animated: true)
     }
     
     func showDatePicker(_ show: Bool) {
@@ -78,5 +102,9 @@ final class ConfirmationViewController: UIViewController, ConfirmationViewInput 
                 self.view.layoutIfNeeded()
             }
         }
+    }
+    
+    func dismiss() {
+        dismiss(animated: true)
     }
 }
