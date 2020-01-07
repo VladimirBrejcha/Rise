@@ -42,7 +42,7 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
                                          cellDelegate: self)
         view.setupCollectionView(with: collectionViewDataSource)
         
-        requestPlan()
+        updatePlanView(with: getPlan.execute())
         requestSunTime()
         
         observePlan.execute({ [weak self] plan in
@@ -65,21 +65,26 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
     private func requestSunTime() {
         getSunTime.execute((numberOfDays: 3, day: Date().appending(days: -1))) { [weak self] result in
             guard let self = self else { return }
-            if case .success (let sunTime) = result { self.updateView(with: sunTime) }
-            if case .failure (let error) = result { self.updateSunView(with: error) }
+            if case .success (let sunTime) = result { self.updateSunTimeView(with: sunTime) }
+            if case .failure (let error) = result {
+                log(error.localizedDescription)
+                self.updateSunTimeView(with: nil)
+            }
         }
     }
     
-    private func requestPlan() {
-        updatePlanView(with: getPlan.execute())
-    }
-    
-    private func updateView(with sunModelArray: [DailySunTime]) {
-        sunModelArray.forEach { sunModel in
-            if let index = cellModels.firstIndex(where: { cellModel in
-                return Calendar.current.isDate(cellModel.day, inSameDayAs: sunModel.day)
-            }) {
-                cellModels[index].update(sunTime: sunModel)
+    private func updateSunTimeView(with sunModelArray: [DailySunTime]?) {
+        if let models = sunModelArray {
+            models.forEach { model in
+                if let index = cellModels.firstIndex(where: { model in
+                    return Calendar.current.isDate(model.day, inSameDayAs: model.day)
+                }) {
+                    cellModels[index].update(sunTime: model)
+                }
+            }
+        } else {
+            for index in cellModels.enumerated() {
+                cellModels[index.offset].sunErrorMessage = "Failed to load data"
             }
         }
         view.refreshCollectionView()
@@ -102,15 +107,6 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
                 self.cellModels[index.offset].planErrorMessage = "You have no Rise plan yet"
             }
         }
-        view.refreshCollectionView()
-    }
-    
-    private func updateSunView(with sunTimeError: Error) {
-        log(sunTimeError.localizedDescription)
-        for index in self.cellModels.enumerated() {
-            self.cellModels[index.offset].sunErrorMessage = "Failed to load data"
-        }
-        
         view.refreshCollectionView()
     }
 }
