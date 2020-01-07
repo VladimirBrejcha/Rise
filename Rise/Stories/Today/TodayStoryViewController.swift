@@ -9,6 +9,8 @@
 import UIKit
 
 protocol TodayStoryViewInput: AnyObject {
+    func present(controller: UIViewController)
+    
     func setupCollectionView(with dataSource: UICollectionViewDataSource)
     func refreshCollectionView()
     
@@ -49,6 +51,10 @@ final class TodayStoryViewController: UIViewController, TodayStoryViewInput {
     }
     
     // MARK: - TodayStoryViewInput -
+    func present(controller: UIViewController) {
+        Presenter.present(controller: controller, with: .overContext, presentingController: self)
+    }
+    
     func setupCollectionView(with dataSource: UICollectionViewDataSource) {
         mainContainerView.collectionView.dataSource = dataSource
         mainContainerView.collectionView.delegate = mainContainerView

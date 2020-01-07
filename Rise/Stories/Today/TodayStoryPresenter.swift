@@ -15,6 +15,10 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
     private let getPlan: GetPlan
     private let observePlan: ObservePlan
     
+    private var personalPlan: PersonalPlan? {
+        return getPlan.execute()
+    }
+    
     private var cellModels: [DaysCollectionViewCellModel] {
         get { return collectionViewDataSource.models }
         set { collectionViewDataSource.models = newValue }
@@ -48,6 +52,16 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
         observePlan.execute({ [weak self] plan in
             self?.updatePlanView(with: plan)
         })
+    }
+    
+    func viewDidAppear() {
+        guard let plan = personalPlan else { return }
+        
+        view.makeTabBar(visible: false)
+        view.present(controller: Story.confirmation.configure())
+//        if !plan.isConfirmedForToday {
+//            view.present(controller: Story.confirmationPopUp.configure())
+//        }
     }
     
     // MARK: - DaysCollectionViewCellDelegate -
