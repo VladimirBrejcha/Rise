@@ -17,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1CN-Nj-H2c" customClass="DesignableContainerView" customModule="Rise" customModuleProvider="target">
-                                <rect key="frame" x="10" y="332.5" width="394" height="231"/>
+                                <rect key="frame" x="10" y="327.5" width="394" height="241"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="RRi-hd-6Dt">
-                                        <rect key="frame" x="10" y="171" width="374" height="50"/>
+                                        <rect key="frame" x="10" y="181" width="374" height="50"/>
                                         <subviews>
                                             <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WHD-tR-u4h" customClass="Button" customModule="Rise" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="182" height="50"/>
@@ -50,27 +50,27 @@
                                         </constraints>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You did not show up last day" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ur-nU-zko">
-                                        <rect key="frame" x="10" y="80" width="374" height="24"/>
+                                        <rect key="frame" x="10" y="90" width="374" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm if you went sleep in the right time yesterday" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qox-KD-r3e">
-                                        <rect key="frame" x="10" y="114" width="374" height="17"/>
+                                        <rect key="frame" x="10" y="124" width="374" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time" translatesAutoresizingMaskIntoConstraints="NO" id="zcd-pa-5NF">
-                                        <rect key="frame" x="172" y="10" width="50" height="50"/>
+                                        <rect key="frame" x="172" y="20" width="50" height="50"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="zcd-pa-5NF" secondAttribute="height" multiplier="1:1" id="J1G-X4-U1o"/>
                                             <constraint firstAttribute="width" constant="50" id="pUS-pU-aT7"/>
                                         </constraints>
                                     </imageView>
-                                    <datePicker clipsSubviews="YES" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="xru-X0-xRV">
-                                        <rect key="frame" x="20" y="151" width="354" height="0.0"/>
+                                    <datePicker clipsSubviews="YES" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="xru-X0-xRV">
+                                        <rect key="frame" x="20" y="161" width="354" height="0.0"/>
                                         <constraints>
                                             <constraint firstAttribute="height" id="pxn-Q6-UAO"/>
                                         </constraints>
@@ -79,6 +79,9 @@
                                                 <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="datePickerValueUpdated:" destination="2AF-jQ-OVM" eventType="valueChanged" id="xmI-3d-s7x"/>
+                                        </connections>
                                     </datePicker>
                                 </subviews>
                                 <constraints>
@@ -91,7 +94,7 @@
                                     <constraint firstItem="8ur-nU-zko" firstAttribute="top" secondItem="zcd-pa-5NF" secondAttribute="bottom" constant="20" id="Uqv-7i-vLN"/>
                                     <constraint firstAttribute="trailing" secondItem="8ur-nU-zko" secondAttribute="trailing" constant="10" id="Ve9-fK-n1A"/>
                                     <constraint firstItem="Qox-KD-r3e" firstAttribute="top" secondItem="8ur-nU-zko" secondAttribute="bottom" constant="10" id="Zdj-3E-zjR"/>
-                                    <constraint firstItem="zcd-pa-5NF" firstAttribute="top" secondItem="1CN-Nj-H2c" secondAttribute="top" constant="10" id="ZuL-AC-JMm"/>
+                                    <constraint firstItem="zcd-pa-5NF" firstAttribute="top" secondItem="1CN-Nj-H2c" secondAttribute="top" constant="20" id="ZuL-AC-JMm"/>
                                     <constraint firstItem="xru-X0-xRV" firstAttribute="leading" secondItem="1CN-Nj-H2c" secondAttribute="leading" constant="20" symbolic="YES" id="eLO-uL-luW"/>
                                     <constraint firstItem="zcd-pa-5NF" firstAttribute="centerX" secondItem="1CN-Nj-H2c" secondAttribute="centerX" id="gV8-sv-0HH"/>
                                     <constraint firstItem="8ur-nU-zko" firstAttribute="leading" secondItem="1CN-Nj-H2c" secondAttribute="leading" constant="10" id="rvq-lA-MKb"/>
@@ -114,9 +117,11 @@
                         <viewLayoutGuide key="safeArea" id="Rmv-Kk-P7W"/>
                     </view>
                     <connections>
+                        <outlet property="confirmButton" destination="G6C-XR-Plh" id="0pz-xE-U38"/>
                         <outlet property="datePicker" destination="xru-X0-xRV" id="Hvi-EX-zTb"/>
                         <outlet property="datePickerHeightConstraint" destination="pxn-Q6-UAO" id="JBu-b5-1AN"/>
                         <outlet property="descriptionLabel" destination="Qox-KD-r3e" id="dg6-Hl-PV3"/>
+                        <outlet property="resheduleButton" destination="WHD-tR-u4h" id="kfP-wP-gUU"/>
                         <outlet property="titleLabel" destination="8ur-nU-zko" id="qIy-aT-KpF"/>
                     </connections>
                 </viewController>
