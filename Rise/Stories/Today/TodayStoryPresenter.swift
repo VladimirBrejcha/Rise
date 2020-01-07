@@ -45,10 +45,9 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
         requestPlan()
         requestSunTime()
         
-        observePlan.execute(
-            { [weak self] plan in
-                self?.updatePlanView(with: plan)
-            }, completion: ())
+        observePlan.execute({ [weak self] plan in
+            self?.updatePlanView(with: plan)
+        })
     }
     
     // MARK: - DaysCollectionViewCellDelegate -
@@ -64,9 +63,7 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
     
     // MARK: - Private Methods -
     private func requestSunTime() {
-        getSunTime.execute((numberOfDays: 3,
-                            day: Date().appending(days: -1)))
-        { [weak self] result in
+        getSunTime.execute((numberOfDays: 3, day: Date().appending(days: -1))) { [weak self] result in
             guard let self = self else { return }
             if case .success (let sunTime) = result { self.updateView(with: sunTime) }
             if case .failure (let error) = result { self.updateSunView(with: error) }
@@ -74,7 +71,7 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
     }
     
     private func requestPlan() {
-        updatePlanView(with: getPlan.execute((), completion: ()))
+        updatePlanView(with: getPlan.execute())
     }
     
     private func updateView(with sunModelArray: [DailySunTime]) {

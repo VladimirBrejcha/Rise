@@ -143,6 +143,6 @@ final class SetupPlanPresenter: SetupPlanViewOutput {
                                                       wakeUpTime: choosenWakeUpTime,
                                                       planDuration: choosenPlanDuration,
                                                       wentSleepTime: choosenLastTimeWentSleep)
-        return createPlan.execute(plan, completion: ())
+        return createPlan.execute(plan)
     }
 }

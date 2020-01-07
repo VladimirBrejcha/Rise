@@ -21,8 +21,7 @@ final class GetSunTime: UseCase {
         self.sunTimeRepository = sunTimeRepository
     }
     
-    func execute(_ requestValue: (numberOfDays: Int, day: Date),
-                 completion: @escaping (Result<[DailySunTime], Error>) -> Void) -> Void {
+    func execute(_ requestValue: (numberOfDays: Int, day: Date), completion: @escaping (Result<[DailySunTime], Error>) -> Void) {
         locationRepository
             .requestLocation {
                 [weak self] result in

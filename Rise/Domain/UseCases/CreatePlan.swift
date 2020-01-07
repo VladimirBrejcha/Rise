@@ -19,7 +19,7 @@ final class CreatePlan: UseCase {
         self.planRepository = planRepository
     }
     
-    func execute(_ requestValue: PersonalPlan, completion: Void) -> Bool {
+    func execute(_ requestValue: PersonalPlan, completion: Void = ()) -> Bool {
         planRepository.create(personalPlan: requestValue)
     }
 }

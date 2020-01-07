@@ -16,7 +16,7 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
     private let observePlan: ObservePlan
     
     private var personalPlan: PersonalPlan? {
-        getPlan.execute((), completion: ())
+        getPlan.execute()
     }
     
     private var sleepDurationHours: Double? {
@@ -47,7 +47,7 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
         self.updateView(with: personalPlan)
         observePlan.execute({ [weak self] plan in
              self?.updateView(with: plan)
-        }, completion: ())
+        })
     }
     
     func planPressed() {
@@ -59,7 +59,7 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
         plan.state = plan.state == .paused
             ? .confirmed
             : .paused
-        if updatePlan.execute(plan, completion: ()) {
+        if updatePlan.execute(plan) {
             view?.updatePauseTitle(with: plan.state == .paused ? "Resume" : "Pause")
         }
     }

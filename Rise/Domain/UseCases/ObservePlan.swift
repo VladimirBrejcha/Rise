@@ -19,7 +19,7 @@ final class ObservePlan: UseCase {
         self.planRepository = planRepository
     }
     
-    func execute(_ requestValue: @escaping (PersonalPlan?) -> Void, completion: Void) -> Void {
+    func execute(_ requestValue: @escaping (PersonalPlan?) -> Void, completion: Void = ()) {
         planRepository.personalPlanUpdateOutput.append(requestValue)
     }
 }

@@ -19,7 +19,7 @@ final class GetPlan: UseCase {
         self.planRepository = planRepository
     }
     
-    func execute(_ requestValue: Void, completion: Void) -> PersonalPlan? {
+    func execute(_ requestValue: Void = (), completion: Void = ()) -> PersonalPlan? {
         let result = planRepository.requestPersonalPlan()
         switch result {
         case .success(let plan):

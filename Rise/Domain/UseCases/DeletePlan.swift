@@ -15,11 +15,11 @@ final class DeletePlan: UseCase {
     
     private let planRepository: PersonalPlanRepository
     
-    init(planRepository: PersonalPlanRepository) {
+    required init(planRepository: PersonalPlanRepository) {
         self.planRepository = planRepository
     }
     
-    func execute(_ requestValue: PersonalPlan, completion: Void) -> Bool {
+    func execute(_ requestValue: PersonalPlan, completion: Void = ()) -> Bool {
         planRepository.removePersonalPlan()
     }
 }
