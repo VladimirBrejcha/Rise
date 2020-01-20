@@ -19,17 +19,6 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
         getPlan.execute()
     }
     
-    private var sleepDurationHours: Double? {
-        guard let plan = personalPlan else { return nil }
-        return plan.sleepDuration / 3600
-    }
-    
-    private let dateFormatter: DateFormatter = {
-       let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        return dateFormatter
-    }()
-    
     required init(
         view: PersonalPlanViewInput,
         getPlan: GetPlan,
@@ -67,12 +56,12 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
         guard let view = view else { return }
         
         if let plan = plan {
-            let durationText = "\(plan.sleepDurationHours) hours of sleep daily"
-            let wakeUpText = "Will wake up at \(plan.wakeUpAt)"
-            let toSleepText = "Will sleep at \(plan.willSleep)"
+            let durationText = "\(PersonalPlanHelper.StringRepresentation.getSleepDurationHours(for: plan)) hours of sleep daily"
+            let wakeUpText = "Will wake up at \(PersonalPlanHelper.StringRepresentation.getWakeTime(for: plan))"
+            let toSleepText = "Will sleep at \(PersonalPlanHelper.StringRepresentation.getFallAsleepTime(for: plan))"
             let syncText = "Synchronized with sunrise"
             
-            view.updateProgressView(with: plan.planProgress, maxProgress: plan.planDurationDays)
+            view.updateProgressView(with: PersonalPlanHelper.getProgress(for: plan), maxProgress: PersonalPlanHelper.StringRepresentation.getPlanDuration(for: plan))
             view.updatePlanInfo(with: [durationText, wakeUpText, toSleepText, syncText])
         }
         
