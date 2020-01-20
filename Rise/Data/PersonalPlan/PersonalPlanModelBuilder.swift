@@ -10,35 +10,23 @@ import Foundation
 
 class PersonalPlanModelBuilder {
     func buildModel(from object: RisePersonalPlan) -> PersonalPlan {
-        let dailyTimes = (Array(object.daliyPlanTime) as! Array<RiseDailyPlanTime>)
-            .sorted { $0.day < $1.day }
-            .map { buildDailyTimeModel(from: $0) }
-        
-        return PersonalPlan(paused: object.paused, planStartDay: object.planStartDay,
-                            planDuration: Int(object.planDuration), finalSleepTime: object.finalSleepTime,
-                            finalWakeTime: object.finalWakeTime, sleepDuration: object.sleepDuration,
-                            dailyTimes: dailyTimes, latestConfirmedDay: object.latestConfirmedDay)
+        return PersonalPlan(
+            paused: object.paused,
+            dailyShiftMin: Int(object.dailyShiftMin),
+            dateInterval: DateInterval(start: object.planStartDay, end: object.planEndDay),
+            sleepDurationSec: object.sleepDurationSec,
+            wakeTime: object.wakeTime,
+            latestConfirmedDay: object.latestConfirmedDay
+        ) 
     }
     
-    func update(object: RisePersonalPlan, with model: PersonalPlan, and planTime: [RiseDailyPlanTime]) {
+    func update(object: RisePersonalPlan, with model: PersonalPlan) {
         object.paused = model.paused
-        object.planStartDay = model.planStartDay
-        object.planDuration = Int64(model.planDuration)
-        object.finalSleepTime = model.finalSleepTime
-        object.finalWakeTime = model.finalWakeTime
-        object.sleepDuration = model.sleepDuration
-        object.removeFromDaliyPlanTime(object.daliyPlanTime)
-        object.addToDaliyPlanTime(NSSet(array: planTime))
+        object.dailyShiftMin = Int64(model.dailyShiftMin)
+        object.planStartDay = model.dateInterval.start
+        object.planEndDay = model.dateInterval.end
+        object.wakeTime = model.wakeTime
+        object.sleepDurationSec = model.sleepDurationSec
         object.latestConfirmedDay = model.latestConfirmedDay
-    }
-    
-    func update(object: RiseDailyPlanTime, with model: DailyPlanTime) {
-        object.day = model.day
-        object.sleep = model.sleep
-        object.wake = model.wake
-    }
-    
-    private func buildDailyTimeModel(from object: RiseDailyPlanTime) -> DailyPlanTime {
-        return DailyPlanTime(day: object.day, wake: object.wake, sleep: object.sleep)
     }
 }

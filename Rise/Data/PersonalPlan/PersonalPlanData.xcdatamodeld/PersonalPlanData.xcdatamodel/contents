@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19C57" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="RiseDailyPlanTime" representedClassName="RiseDailyPlanTime" syncable="YES">
-        <attribute name="day" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="sleep" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="wake" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="personalPlan" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RisePersonalPlan" inverseName="daliyPlanTime" inverseEntity="RisePersonalPlan"/>
-    </entity>
     <entity name="RisePersonalPlan" representedClassName="RisePersonalPlan" syncable="YES">
-        <attribute name="finalSleepTime" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="finalWakeTime" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dailyShiftMin" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="latestConfirmedDay" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="paused" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="planDuration" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="paused" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="planEndDay" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="planStartDay" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="sleepDuration" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="daliyPlanTime" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RiseDailyPlanTime" inverseName="personalPlan" inverseEntity="RiseDailyPlanTime"/>
+        <attribute name="sleepDurationSec" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="wakeTime" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="RiseDailyPlanTime" positionX="-119.234375" positionY="-75.94921875" width="128" height="103"/>
-        <element name="RisePersonalPlan" positionX="-300.60546875" positionY="-156.91015625" width="128" height="163"/>
+        <element name="RisePersonalPlan" positionX="-300.60546875" positionY="-156.91015625" width="128" height="148"/>
     </elements>
 </model>

@@ -10,7 +10,6 @@ import Foundation
 import CoreData
 
 fileprivate typealias ObjectType = RisePersonalPlan
-fileprivate typealias DailyTimeObjectType = RiseDailyPlanTime
 fileprivate let containerName = "PersonalPlanData"
 
 final class PersonalPlanLocalDataSource {
@@ -25,7 +24,6 @@ final class PersonalPlanLocalDataSource {
     
     private var context: NSManagedObjectContext { return container.viewContext }
     private let planEntityName = String(describing: ObjectType.self)
-    private let planTimeEntityName = String(describing: DailyTimeObjectType.self)
     
     func requestPersonalPlan() -> Result<PersonalPlan, Error> {
         switch container.fetch() {
@@ -39,16 +37,14 @@ final class PersonalPlanLocalDataSource {
     @discardableResult func create(personalPlan: PersonalPlan) -> Bool {
         let personalPlanObject = NSEntityDescription.insertNewObject(forEntityName: planEntityName,
                                                                      into: context) as! ObjectType
-        let planTimeObjects = personalPlan.dailyTimes.map { create(planTime: $0) }
-        builder.update(object: personalPlanObject, with: personalPlan, and: planTimeObjects)
+        builder.update(object: personalPlanObject, with: personalPlan)
         return container.saveContext()
     }
     
     @discardableResult func update(personalPlan: PersonalPlan) -> Bool {
         switch container.fetch() {
         case .success (let personalPlanObject):
-            let planTimeObjects = personalPlan.dailyTimes.map { create(planTime: $0) }
-            builder.update(object: personalPlanObject[0], with: personalPlan, and: planTimeObjects)
+            builder.update(object: personalPlanObject[0], with: personalPlan)
             return container.saveContext()
         case .failure(let error):
             log(error.localizedDescription)
@@ -67,29 +63,5 @@ final class PersonalPlanLocalDataSource {
         catch {
             return false
         }
-    }
-    
-    private func update(dailyPlanTime: [DailyPlanTime]) -> Bool {
-        let fetchRequest: NSFetchRequest<DailyTimeObjectType> = DailyTimeObjectType.fetchRequest()
-        
-        do {
-            let objects = try fetchRequest.execute()
-            for index in objects.enumerated() {
-                builder.update(object: objects[index.offset],
-                               with: dailyPlanTime[index.offset])
-            }
-            return container.saveContext()
-        }
-        catch {
-            log(error.localizedDescription)
-            return false
-        }
-    }
-    
-    private func create(planTime: DailyPlanTime) -> DailyTimeObjectType {
-        let dailyPlanTimeObject = NSEntityDescription.insertNewObject(forEntityName: planTimeEntityName,
-                                                                      into: context) as! DailyTimeObjectType
-        builder.update(object: dailyPlanTimeObject, with: planTime)
-        return dailyPlanTimeObject
     }
 }

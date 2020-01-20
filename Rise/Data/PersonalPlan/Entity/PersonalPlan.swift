@@ -10,11 +10,9 @@ import Foundation
 
 struct PersonalPlan {
     var paused: Bool
-    let planStartDay: Date
-    var planDuration: Int
-    var finalSleepTime: Date
-    var finalWakeTime: Date
-    var sleepDuration: TimeInterval
-    var dailyTimes: [DailyPlanTime]
+    var dailyShiftMin: Int
+    var dateInterval: DateInterval
+    var sleepDurationSec: TimeInterval
+    var wakeTime: Date
     var latestConfirmedDay: Date
 }

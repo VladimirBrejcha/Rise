@@ -16,27 +16,10 @@ extension RisePersonalPlan {
     }
 
     @NSManaged public var paused: Bool
+    @NSManaged public var dailyShiftMin: Int64
     @NSManaged public var planStartDay: Date
-    @NSManaged public var planDuration: Int64
-    @NSManaged public var finalSleepTime: Date
-    @NSManaged public var finalWakeTime: Date
-    @NSManaged public var sleepDuration: Double
+    @NSManaged public var planEndDay: Date
+    @NSManaged public var wakeTime: Date
+    @NSManaged public var sleepDurationSec: Double
     @NSManaged public var latestConfirmedDay: Date
-    @NSManaged public var daliyPlanTime: NSSet
-}
-
-// MARK: Generated accessors for daliyPlanTime
-extension RisePersonalPlan {
-
-    @objc(addDaliyPlanTimeObject:)
-    @NSManaged public func addToDaliyPlanTime(_ value: RiseDailyPlanTime)
-
-    @objc(removeDaliyPlanTimeObject:)
-    @NSManaged public func removeFromDaliyPlanTime(_ value: RiseDailyPlanTime)
-
-    @objc(addDaliyPlanTime:)
-    @NSManaged public func addToDaliyPlanTime(_ values: NSSet)
-
-    @objc(removeDaliyPlanTime:)
-    @NSManaged public func removeFromDaliyPlanTime(_ values: NSSet)
 }
