@@ -58,7 +58,7 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
         guard let plan = personalPlan else { return }
         
         view.makeTabBar(visible: false)
-        view.present(controller: Story.confirmation.configure())
+//        view.present(controller: Story.confirmation.configure())
 //        if !plan.isConfirmedForToday {
 //            view.present(controller: Story.confirmationPopUp.configure())
 //        }
@@ -106,14 +106,20 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
     
     private func updatePlanView(with plan: PersonalPlan?) {
         if let plan = plan {
-            for index in cellModels.enumerated() {
+            for index in celRise/Data/PersonalPlan/PersonalPlanModelBuilder.swiftlModels.enumerated() {
                 cellModels[index.offset].planErrorMessage = "No Rise plan for the day"
             }
-            plan.dailyTimes.forEach { dailyTime in
-                if let index = cellModels.firstIndex(where: { cellModel in
-                    return Calendar.current.isDate(cellModel.day, inSameDayAs: dailyTime.day)
-                }) {
-                    cellModels[index].update(planTime: dailyTime)
+            
+            let calendar = Calendar.autoupdatingCurrent
+            let today = Date()
+            let yesterday = calendar.date(byAdding: .day, value: -1, to: today)
+            let tomorrow = calendar.date(byAdding: .day, value: 1, to: today)
+            
+            let datesArray = [yesterday, today, tomorrow]
+            
+            for index in datesArray.enumerated() {
+                if let dailyTime = PersonalPlanHelper.getDailyTime(for: plan, and: datesArray[index.offset]!) {
+                    cellModels[index.offset].update(planTime: dailyTime)
                 }
             }
         } else {
