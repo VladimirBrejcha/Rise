@@ -43,12 +43,9 @@
 		7E8C6B982350FB9C0086162F /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8C6B972350FB9C0086162F /* TableView.swift */; };
 		7E91D95B2371E4080087436F /* RiseDailySunTime+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E91D9552371E4080087436F /* RiseDailySunTime+CoreDataClass.swift */; };
 		7E91D95C2371E4080087436F /* RiseDailySunTime+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E91D9562371E4080087436F /* RiseDailySunTime+CoreDataProperties.swift */; };
-		7E91D95D2371E4080087436F /* RiseDailyPlanTime+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E91D9572371E4080087436F /* RiseDailyPlanTime+CoreDataClass.swift */; };
-		7E91D95E2371E4080087436F /* RiseDailyPlanTime+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E91D9582371E4080087436F /* RiseDailyPlanTime+CoreDataProperties.swift */; };
 		7E91D95F2371E4080087436F /* RisePersonalPlan+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E91D9592371E4080087436F /* RisePersonalPlan+CoreDataClass.swift */; };
 		7E91D9602371E4080087436F /* RisePersonalPlan+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E91D95A2371E4080087436F /* RisePersonalPlan+CoreDataProperties.swift */; };
 		7E91D9622371E4850087436F /* DailyPlanTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E91D9612371E4850087436F /* DailyPlanTime.swift */; };
-		7E91D9662371E5150087436F /* PersonalPlanConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E91D9652371E5150087436F /* PersonalPlanConfigurator.swift */; };
 		7E97656023786AB000E3AEF2 /* SunTimeData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E97655E23786AB000E3AEF2 /* SunTimeData.xcdatamodeld */; };
 		7E97656423786B1800E3AEF2 /* PersonalPlanRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E97656323786B1800E3AEF2 /* PersonalPlanRepository.swift */; };
 		7E97656623786B2800E3AEF2 /* PersonalPlanLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E97656523786B2800E3AEF2 /* PersonalPlanLocalDataSource.swift */; };
@@ -83,7 +80,6 @@
 		7EB9004423298902006EB9A8 /* ProgressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9004223298902006EB9A8 /* ProgressTableViewCell.swift */; };
 		7EB9004523298902006EB9A8 /* ProgressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB9004323298902006EB9A8 /* ProgressTableViewCell.xib */; };
 		7EB90047232AB9EB006EB9A8 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */; };
-		7EB9F33823C12DC9002A6DD3 /* PersonalPlanState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9F33723C12DC9002A6DD3 /* PersonalPlanState.swift */; };
 		7EB9F34023C20264002A6DD3 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9F33F23C20264002A6DD3 /* UseCase.swift */; };
 		7EB9F34223C2028D002A6DD3 /* CreatePlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9F34123C2028D002A6DD3 /* CreatePlan.swift */; };
 		7EB9F34423C20347002A6DD3 /* UpdatePlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9F34323C20347002A6DD3 /* UpdatePlan.swift */; };
@@ -97,6 +93,7 @@
 		7EB9F35423C36B54002A6DD3 /* SetupPlanAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9F35323C36B54002A6DD3 /* SetupPlanAssembler.swift */; };
 		7EB9F35623C37733002A6DD3 /* StoryAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9F35523C37733002A6DD3 /* StoryAssembler.swift */; };
 		7EB9F35A23C389BF002A6DD3 /* DataLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9F35923C389BF002A6DD3 /* DataLayer.swift */; };
+		7EBE900723C9231200043651 /* RisePlanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBE900623C9231200043651 /* RisePlanTests.swift */; };
 		7EC7392323C4ED2100C484B8 /* ConfirmationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC7392223C4ED2100C484B8 /* ConfirmationPresenter.swift */; };
 		7EC7392523C4EF5B00C484B8 /* ConfirmationAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC7392423C4EF5B00C484B8 /* ConfirmationAssembler.swift */; };
 		7ED8E59723BFFD5100A1E96F /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8E59623BFFD5100A1E96F /* Story.swift */; };
@@ -120,14 +117,13 @@
 		92D7D6582296F297009321AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92D7D6562296F297009321AE /* Main.storyboard */; };
 		92D7D65A2296F298009321AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92D7D6592296F298009321AE /* Assets.xcassets */; };
 		92D7D65D2296F298009321AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92D7D65B2296F298009321AE /* LaunchScreen.storyboard */; };
-		92D7D6682296F298009321AE /* RiseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6672296F298009321AE /* RiseTests.swift */; };
 		92D7D6732296F298009321AE /* RiseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6722296F298009321AE /* RiseUITests.swift */; };
 		92E77AF822A5303400E5E21C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E77AF722A5303400E5E21C /* SettingsViewController.swift */; };
 		92E77AFA22A5304400E5E21C /* TodayStoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E77AF922A5304400E5E21C /* TodayStoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		92D7D6642296F298009321AE /* PBXContainerItemProxy */ = {
+		7EBE900923C9231200043651 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 92D7D6472296F297009321AE /* Project object */;
 			proxyType = 1;
@@ -180,12 +176,9 @@
 		7E8C6B972350FB9C0086162F /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		7E91D9552371E4080087436F /* RiseDailySunTime+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RiseDailySunTime+CoreDataClass.swift"; path = "Rise/Data/SunTime/Entity/RiseDailySunTime+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		7E91D9562371E4080087436F /* RiseDailySunTime+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RiseDailySunTime+CoreDataProperties.swift"; path = "Rise/Data/SunTime/Entity/RiseDailySunTime+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		7E91D9572371E4080087436F /* RiseDailyPlanTime+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RiseDailyPlanTime+CoreDataClass.swift"; path = "Rise/Data/PersonalPlan/Entity/RiseDailyPlanTime+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		7E91D9582371E4080087436F /* RiseDailyPlanTime+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RiseDailyPlanTime+CoreDataProperties.swift"; path = "Rise/Data/PersonalPlan/Entity/RiseDailyPlanTime+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		7E91D9592371E4080087436F /* RisePersonalPlan+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RisePersonalPlan+CoreDataClass.swift"; path = "Rise/Data/PersonalPlan/Entity/RisePersonalPlan+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		7E91D95A2371E4080087436F /* RisePersonalPlan+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RisePersonalPlan+CoreDataProperties.swift"; path = "Rise/Data/PersonalPlan/Entity/RisePersonalPlan+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		7E91D9612371E4850087436F /* DailyPlanTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyPlanTime.swift; sourceTree = "<group>"; };
-		7E91D9652371E5150087436F /* PersonalPlanConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPlanConfigurator.swift; sourceTree = "<group>"; };
 		7E97655F23786AB000E3AEF2 /* SunTimeData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SunTimeData.xcdatamodel; sourceTree = "<group>"; };
 		7E97656323786B1800E3AEF2 /* PersonalPlanRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPlanRepository.swift; sourceTree = "<group>"; };
 		7E97656523786B2800E3AEF2 /* PersonalPlanLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPlanLocalDataSource.swift; sourceTree = "<group>"; };
@@ -219,7 +212,6 @@
 		7EB9004223298902006EB9A8 /* ProgressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTableViewCell.swift; sourceTree = "<group>"; };
 		7EB9004323298902006EB9A8 /* ProgressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressTableViewCell.xib; sourceTree = "<group>"; };
 		7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
-		7EB9F33723C12DC9002A6DD3 /* PersonalPlanState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPlanState.swift; sourceTree = "<group>"; };
 		7EB9F33F23C20264002A6DD3 /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
 		7EB9F34123C2028D002A6DD3 /* CreatePlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlan.swift; sourceTree = "<group>"; };
 		7EB9F34323C20347002A6DD3 /* UpdatePlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePlan.swift; sourceTree = "<group>"; };
@@ -233,6 +225,9 @@
 		7EB9F35323C36B54002A6DD3 /* SetupPlanAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPlanAssembler.swift; sourceTree = "<group>"; };
 		7EB9F35523C37733002A6DD3 /* StoryAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryAssembler.swift; sourceTree = "<group>"; };
 		7EB9F35923C389BF002A6DD3 /* DataLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLayer.swift; sourceTree = "<group>"; };
+		7EBE900423C9231200043651 /* RiseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RiseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7EBE900623C9231200043651 /* RisePlanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RisePlanTests.swift; sourceTree = "<group>"; };
+		7EBE900823C9231200043651 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7EC7392223C4ED2100C484B8 /* ConfirmationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationPresenter.swift; sourceTree = "<group>"; };
 		7EC7392423C4EF5B00C484B8 /* ConfirmationAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationAssembler.swift; sourceTree = "<group>"; };
 		7ED8E59623BFFD5100A1E96F /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
@@ -259,9 +254,6 @@
 		92D7D6592296F298009321AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92D7D65C2296F298009321AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		92D7D65E2296F298009321AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		92D7D6632296F298009321AE /* RiseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RiseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		92D7D6672296F298009321AE /* RiseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiseTests.swift; sourceTree = "<group>"; };
-		92D7D6692296F298009321AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92D7D66E2296F298009321AE /* RiseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RiseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D7D6722296F298009321AE /* RiseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiseUITests.swift; sourceTree = "<group>"; };
 		92D7D6742296F298009321AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -270,14 +262,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		92D7D64C2296F297009321AE /* Frameworks */ = {
+		7EBE900123C9231200043651 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		92D7D6602296F298009321AE /* Frameworks */ = {
+		92D7D64C2296F297009321AE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -395,7 +387,6 @@
 				7E97656523786B2800E3AEF2 /* PersonalPlanLocalDataSource.swift */,
 				7E4901842340DD810034521E /* PersonalPlanData.xcdatamodeld */,
 				7E97656B23786B5600E3AEF2 /* PersonalPlanModelBuilder.swift */,
-				7E91D9652371E5150087436F /* PersonalPlanConfigurator.swift */,
 			);
 			path = PersonalPlan;
 			sourceTree = "<group>";
@@ -405,10 +396,7 @@
 			children = (
 				7E91D9592371E4080087436F /* RisePersonalPlan+CoreDataClass.swift */,
 				7E91D95A2371E4080087436F /* RisePersonalPlan+CoreDataProperties.swift */,
-				7E91D9572371E4080087436F /* RiseDailyPlanTime+CoreDataClass.swift */,
-				7E91D9582371E4080087436F /* RiseDailyPlanTime+CoreDataProperties.swift */,
 				7EB1C0362340FC6B0028237E /* PersonalPlan.swift */,
-				7EB9F33723C12DC9002A6DD3 /* PersonalPlanState.swift */,
 				7E91D9612371E4850087436F /* DailyPlanTime.swift */,
 			);
 			path = Entity;
@@ -478,6 +466,15 @@
 				7EB9F34B23C20504002A6DD3 /* GetSunTime.swift */,
 			);
 			path = UseCases;
+			sourceTree = "<group>";
+		};
+		7EBE900523C9231200043651 /* RiseTests */ = {
+			isa = PBXGroup;
+			children = (
+				7EBE900623C9231200043651 /* RisePlanTests.swift */,
+				7EBE900823C9231200043651 /* Info.plist */,
+			);
+			path = RiseTests;
 			sourceTree = "<group>";
 		};
 		7EE6404723786617005BE355 /* SunTime */ = {
@@ -613,8 +610,8 @@
 			isa = PBXGroup;
 			children = (
 				92D7D6512296F297009321AE /* Rise */,
-				92D7D6662296F298009321AE /* RiseTests */,
 				92D7D6712296F298009321AE /* RiseUITests */,
+				7EBE900523C9231200043651 /* RiseTests */,
 				92D7D6502296F297009321AE /* Products */,
 				D2124982893C2715CAD825C5 /* Pods */,
 			);
@@ -624,8 +621,8 @@
 			isa = PBXGroup;
 			children = (
 				92D7D64F2296F297009321AE /* Rise.app */,
-				92D7D6632296F298009321AE /* RiseTests.xctest */,
 				92D7D66E2296F298009321AE /* RiseUITests.xctest */,
+				7EBE900423C9231200043651 /* RiseTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -643,15 +640,6 @@
 				7EF3EE162340F75A003BE978 /* Resources */,
 			);
 			path = Rise;
-			sourceTree = "<group>";
-		};
-		92D7D6662296F298009321AE /* RiseTests */ = {
-			isa = PBXGroup;
-			children = (
-				92D7D6672296F298009321AE /* RiseTests.swift */,
-				92D7D6692296F298009321AE /* Info.plist */,
-			);
-			path = RiseTests;
 			sourceTree = "<group>";
 		};
 		92D7D6712296F298009321AE /* RiseUITests */ = {
@@ -690,6 +678,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		7EBE900323C9231200043651 /* RiseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7EBE900B23C9231200043651 /* Build configuration list for PBXNativeTarget "RiseTests" */;
+			buildPhases = (
+				7EBE900023C9231200043651 /* Sources */,
+				7EBE900123C9231200043651 /* Frameworks */,
+				7EBE900223C9231200043651 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7EBE900A23C9231200043651 /* PBXTargetDependency */,
+			);
+			name = RiseTests;
+			productName = RiseTests;
+			productReference = 7EBE900423C9231200043651 /* RiseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		92D7D64E2296F297009321AE /* Rise */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 92D7D6772296F298009321AE /* Build configuration list for PBXNativeTarget "Rise" */;
@@ -706,24 +712,6 @@
 			productName = Rise;
 			productReference = 92D7D64F2296F297009321AE /* Rise.app */;
 			productType = "com.apple.product-type.application";
-		};
-		92D7D6622296F298009321AE /* RiseTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 92D7D67A2296F298009321AE /* Build configuration list for PBXNativeTarget "RiseTests" */;
-			buildPhases = (
-				92D7D65F2296F298009321AE /* Sources */,
-				92D7D6602296F298009321AE /* Frameworks */,
-				92D7D6612296F298009321AE /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				92D7D6652296F298009321AE /* PBXTargetDependency */,
-			);
-			name = RiseTests;
-			productName = RiseTests;
-			productReference = 92D7D6632296F298009321AE /* RiseTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		92D7D66D2296F298009321AE /* RiseUITests */ = {
 			isa = PBXNativeTarget;
@@ -749,16 +737,16 @@
 		92D7D6472296F297009321AE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1020;
+				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = VladimirBrejcha;
 				TargetAttributes = {
+					7EBE900323C9231200043651 = {
+						CreatedOnToolsVersion = 11.3;
+						TestTargetID = 92D7D64E2296F297009321AE;
+					};
 					92D7D64E2296F297009321AE = {
 						CreatedOnToolsVersion = 10.2.1;
-					};
-					92D7D6622296F298009321AE = {
-						CreatedOnToolsVersion = 10.2.1;
-						TestTargetID = 92D7D64E2296F297009321AE;
 					};
 					92D7D66D2296F298009321AE = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -780,13 +768,20 @@
 			projectRoot = "";
 			targets = (
 				92D7D64E2296F297009321AE /* Rise */,
-				92D7D6622296F298009321AE /* RiseTests */,
 				92D7D66D2296F298009321AE /* RiseUITests */,
+				7EBE900323C9231200043651 /* RiseTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7EBE900223C9231200043651 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		92D7D64D2296F297009321AE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -806,13 +801,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		92D7D6612296F298009321AE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		92D7D66C2296F298009321AE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -823,6 +811,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7EBE900023C9231200043651 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7EBE900723C9231200043651 /* RisePlanTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		92D7D64B2296F297009321AE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -841,7 +837,6 @@
 				92E77AFA22A5304400E5E21C /* TodayStoryViewController.swift in Sources */,
 				7E4798F5239D894B007FB8F2 /* Storyboard.swift in Sources */,
 				7E31497F23425D3700941606 /* ChangePlanTableView.swift in Sources */,
-				7E91D95D2371E4080087436F /* RiseDailyPlanTime+CoreDataClass.swift in Sources */,
 				7E708A3B23BFD0C7003B5702 /* PlanCreatedSetupPlanViewController.swift in Sources */,
 				7EB9004423298902006EB9A8 /* ProgressTableViewCell.swift in Sources */,
 				7E97656023786AB000E3AEF2 /* SunTimeData.xcdatamodeld in Sources */,
@@ -893,14 +888,12 @@
 				7E91D9602371E4080087436F /* RisePersonalPlan+CoreDataProperties.swift in Sources */,
 				7E5BDADE2371F08400E43F37 /* RiseLocation+CoreDataClass.swift in Sources */,
 				7E91D95C2371E4080087436F /* RiseDailySunTime+CoreDataProperties.swift in Sources */,
-				7E91D9662371E5150087436F /* PersonalPlanConfigurator.swift in Sources */,
 				7EA0924222C8CF820019F2E9 /* CustomTransition.swift in Sources */,
 				7EB1C0392340FDB00028237E /* SetupPlanPresenter.swift in Sources */,
 				7EE6404D23786678005BE355 /* SunTimeRemoteDataSource.swift in Sources */,
 				7E91D9622371E4850087436F /* DailyPlanTime.swift in Sources */,
 				7EE640512378669F005BE355 /* SunTimeModelBuilder.swift in Sources */,
 				7EB9F34A23C2045A002A6DD3 /* ObservePlan.swift in Sources */,
-				7EB9F33823C12DC9002A6DD3 /* PersonalPlanState.swift in Sources */,
 				92B78CFA229FAF6C0087240B /* SectionedTableViewCell.swift in Sources */,
 				7E97656C23786B5600E3AEF2 /* PersonalPlanModelBuilder.swift in Sources */,
 				7ED962AF2336649E00CD2408 /* PlanInfoTableViewCell.swift in Sources */,
@@ -923,21 +916,12 @@
 				7E9B739C239DA8F3007067A6 /* DaysSegmentedControlViewButton.swift in Sources */,
 				7E41982423254C36007867AB /* DaysSegmentedControlView.swift in Sources */,
 				7EA38AF22378589E0007919B /* LocationModelBuilder.swift in Sources */,
-				7E91D95E2371E4080087436F /* RiseDailyPlanTime+CoreDataProperties.swift in Sources */,
 				7EB9004023256BF3006EB9A8 /* DaysView.swift in Sources */,
 				7EC7392523C4EF5B00C484B8 /* ConfirmationAssembler.swift in Sources */,
 				7E438916235230800059DF1C /* PrivateKeys.swift in Sources */,
 				7ED962AC2336334A00CD2408 /* AnimationManager.swift in Sources */,
 				7E98FE65231C30C10065FB09 /* AlertPresenter.swift in Sources */,
 				7E708A3423BF635B003B5702 /* SleepDurationSetupPlanViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		92D7D65F2296F298009321AE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				92D7D6682296F298009321AE /* RiseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -952,10 +936,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		92D7D6652296F298009321AE /* PBXTargetDependency */ = {
+		7EBE900A23C9231200043651 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 92D7D64E2296F297009321AE /* Rise */;
-			targetProxy = 92D7D6642296F298009321AE /* PBXContainerItemProxy */;
+			targetProxy = 7EBE900923C9231200043651 /* PBXContainerItemProxy */;
 		};
 		92D7D6702296F298009321AE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -984,6 +968,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		7EBE900C23C9231200043651 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 29UN6WTSCZ;
+				INFOPLIST_FILE = RiseTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vladimirBrejcha.RiseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rise.app/Rise";
+			};
+			name = Debug;
+		};
+		7EBE900D23C9231200043651 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 29UN6WTSCZ;
+				INFOPLIST_FILE = RiseTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.vladimirBrejcha.RiseTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rise.app/Rise";
+			};
+			name = Release;
+		};
 		92D7D6752296F298009321AE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1140,48 +1166,6 @@
 			};
 			name = Release;
 		};
-		92D7D67B2296F298009321AE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 29UN6WTSCZ;
-				INFOPLIST_FILE = RiseTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = VladimirBrejcha.RiseTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rise.app/Rise";
-			};
-			name = Debug;
-		};
-		92D7D67C2296F298009321AE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 29UN6WTSCZ;
-				INFOPLIST_FILE = RiseTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = VladimirBrejcha.RiseTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rise.app/Rise";
-			};
-			name = Release;
-		};
 		92D7D67E2296F298009321AE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1225,6 +1209,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7EBE900B23C9231200043651 /* Build configuration list for PBXNativeTarget "RiseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7EBE900C23C9231200043651 /* Debug */,
+				7EBE900D23C9231200043651 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		92D7D64A2296F297009321AE /* Build configuration list for PBXProject "Rise" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1239,15 +1232,6 @@
 			buildConfigurations = (
 				92D7D6782296F298009321AE /* Debug */,
 				92D7D6792296F298009321AE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		92D7D67A2296F298009321AE /* Build configuration list for PBXNativeTarget "RiseTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				92D7D67B2296F298009321AE /* Debug */,
-				92D7D67C2296F298009321AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
