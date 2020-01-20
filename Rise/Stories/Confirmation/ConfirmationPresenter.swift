@@ -42,25 +42,27 @@ final class ConfirmationPresenter: ConfirmationViewOutput {
     
     // MARK: - ConfirmationViewOutput -
     func viewDidLoad() {
-        guard let plan = personalPlan else {
-            dismiss = { [weak self] in self?.view.dismiss() }
-            return
+        guard let plan = personalPlan
+            else {
+                dismiss = { [weak self] in self?.view.dismiss() }
+                return
         }
 
-        if plan.isConfirmedForToday {
+        if PersonalPlanHelper.checkIfConfirmedForToday(plan: plan) {
             dismiss = { [weak self] in self?.view.dismiss() }
             return
         }
 
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: Date())
-        guard let yesterday = calendar.date(byAdding: .day, value: -1, to: today) else {
-            dismiss = { [weak self] in self?.view.dismiss() }
-            return
+        
+        guard let yesterday = calendar.date(byAdding: .day, value: -1, to: today)
+            else {
+                dismiss = { [weak self] in self?.view.dismiss() }
+                return
         }
         
-        guard let yesterdayPlanToSleepTime = plan.dailyTimes.first(where:
-            { calendar.isDate($0.day, inSameDayAs: today) })?.sleep
+        guard let yesterdayPlanToSleepTime = PersonalPlanHelper.getDailyTime(for: plan, and:today)?.sleep
             else {
                 dismiss = { [weak self] in self?.view.dismiss() }
                 return
