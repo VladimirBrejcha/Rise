@@ -9,6 +9,29 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>RiseTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>7EBE8FF523C922A600043651</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>92D7D64E2296F297009321AE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>92D7D6622296F298009321AE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 	</dict>
 </dict>
 </plist>

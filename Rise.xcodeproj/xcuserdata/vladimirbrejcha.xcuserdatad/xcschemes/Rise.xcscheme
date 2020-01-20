@@ -27,6 +27,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "92D7D66D2296F298009321AE"
+               BuildableName = "RiseUITests.xctest"
+               BlueprintName = "RiseUITests"
+               ReferencedContainer = "container:Rise.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7EBE8FE723C9224D00043651"
+               BuildableName = "RiseTests.xctest"
+               BlueprintName = "RiseTests"
+               ReferencedContainer = "container:Rise.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -60,6 +80,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "92D7D64E2296F297009321AE"
+            BuildableName = "Rise.app"
+            BlueprintName = "Rise"
+            ReferencedContainer = "container:Rise.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
