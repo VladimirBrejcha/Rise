@@ -40,9 +40,15 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
     
     // MARK: - TodayStoryViewOutput -
     func viewDidLoad() {
-        collectionViewDataSource = .make(for: [DaysCollectionViewCellModel(day: Date().appending(days: -1)),
+        guard let yesterday = Date().appending(days: -1),
+            let tomorrow = Date().appending(days: 1)
+            else {
+                return
+        }
+        
+        collectionViewDataSource = .make(for: [DaysCollectionViewCellModel(day: yesterday),
                                                DaysCollectionViewCellModel(day: Date()),
-                                               DaysCollectionViewCellModel(day: Date().appending(days: 1))],
+                                               DaysCollectionViewCellModel(day: tomorrow)],
                                          cellDelegate: self)
         view.setupCollectionView(with: collectionViewDataSource)
         
@@ -77,7 +83,10 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
     
     // MARK: - Private Methods -
     private func requestSunTime() {
-        getSunTime.execute((numberOfDays: 3, day: Date().appending(days: -1))) { [weak self] result in
+        guard let yesterday = Date().appending(days: -1)
+            else { return }
+        
+        getSunTime.execute((numberOfDays: 3, day: yesterday)) { [weak self] result in
             guard let self = self else { return }
             if case .success (let sunTime) = result { self.updateSunTimeView(with: sunTime) }
             if case .failure (let error) = result {
@@ -106,7 +115,7 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
     
     private func updatePlanView(with plan: PersonalPlan?) {
         if let plan = plan {
-            for index in celRise/Data/PersonalPlan/PersonalPlanModelBuilder.swiftlModels.enumerated() {
+            for index in cellModels.enumerated() {
                 cellModels[index.offset].planErrorMessage = "No Rise plan for the day"
             }
             
