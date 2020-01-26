@@ -1,5 +1,5 @@
 //
-//  PersonalPlanModel.swift
+//  PersonalPlan.swift
 //  Rise
 //
 //  Created by Владимир Королев on 29/09/2019.
@@ -15,4 +15,5 @@ struct PersonalPlan {
     var sleepDurationSec: TimeInterval
     var wakeTime: Date
     var latestConfirmedDay: Date
+    var daysMissed: Int = 0
 }
