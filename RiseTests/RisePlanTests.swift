@@ -33,16 +33,18 @@ class RisePlanTests: XCTestCase {
         
         let wentSleepTime = calendar.date(from: wentSleepTimeDateComponents)
         
-        risePlan = PersonalPlan(sleepDuration: 600,
-                                wakeUpTime: wakeUpTime!,
-                                planDuration: 30,
-                                wentSleepTime: wentSleepTime!)
+        risePlan = PersonalPlanHelper.makePlan(
+            sleepDurationMin: 600,
+            wakeUpTime: wakeUpTime!,
+            planDuration: 30,
+            wentSleepTime: wentSleepTime!
+        )
     }
 
     override func tearDown() { }
     
     // MARK: - Tests -
-    func testfinalSleepTime() {
+    func testSleepTime() {
         super.tearDown()
         
         guard let plan = risePlan
@@ -51,20 +53,161 @@ class RisePlanTests: XCTestCase {
                 return
         }
         
-        let wakeUpTime = plan.finalWakeTime
+        let sleepTime = PersonalPlanHelper.getPlannedSleepTime(for: plan)
         
-        guard let finalSleepTime = calendar.date(byAdding: .second,
-                                                 value: -Int(plan.sleepDuration),
-                                                 to: wakeUpTime)
+        XCTAssertEqual(plan.wakeTime.timeIntervalSince(sleepTime), plan.sleepDurationSec)
+    }
+    
+    func testPlanDuration() {
+        super.tearDown()
+        
+        guard let plan = risePlan
             else {
                 XCTAssert(false)
                 return
         }
         
-        let componentsOfFinalSleepTime = calendar.dateComponents([.hour, .minute, .second], from: plan.finalSleepTime)
-        let componentsOfCorrectFinalSleepTime = calendar.dateComponents([.hour, .minute, .second], from: finalSleepTime)
+        let planDuration = PersonalPlanHelper.getPlanDuration(for: plan)
         
-        XCTAssertEqual(componentsOfFinalSleepTime, componentsOfCorrectFinalSleepTime)
+        guard let daysBetweenPlanStartAndEnd = calendar.dateComponents([.day],
+                                                                       from: plan.dateInterval.start,
+                                                                       to: plan.dateInterval.end).day
+            else {
+                XCTAssert(false)
+                return
+        }
+        
+        XCTAssertEqual(planDuration, daysBetweenPlanStartAndEnd)
+    }
+    
+    func testDailyTime() {
+        super.tearDown()
+        
+        guard let plan = risePlan
+            else {
+                XCTAssert(false)
+                return
+        }
+        
+        let planDuration = PersonalPlanHelper.getPlanDuration(for: plan)
+        let dailyShiftSec = plan.dailyShiftMin * 60
+        
+        for dayNumber in 0...planDuration {
+            guard let previousPlanDayDate = plan.dateInterval.start.appending(days: dayNumber - 1)
+                else {
+                    XCTAssert(false)
+                    return
+            }
+            guard let thisPlanDayDate = plan.dateInterval.start.appending(days: dayNumber)
+                else {
+                    XCTAssert(false)
+                    return
+            }
+            guard let nextPlanDayDate = plan.dateInterval.start.appending(days: dayNumber + 1)
+                else {
+                    XCTAssert(false)
+                    return
+            }
+            guard let thisDayDailyTime = PersonalPlanHelper.getDailyTime(for: plan, and: thisPlanDayDate)
+                else {
+                    XCTAssert(false)
+                    return
+            }
+            
+            if dayNumber == 0 {
+                XCTAssert(PersonalPlanHelper.getDailyTime(for: plan, and: previousPlanDayDate) == nil)
+                
+                guard let nextDayDailyTime = PersonalPlanHelper.getDailyTime(for: plan, and: nextPlanDayDate)
+                    else {
+                        XCTAssert(false)
+                        return
+                }
+                XCTAssertEqual(nextDayDailyTime.day, thisDayDailyTime.day.appending(days: 1))
+                XCTAssertEqual(thisDayDailyTime.wake.addingTimeInterval(TimeInterval(dailyShiftSec)), nextDayDailyTime.wake)
+                XCTAssertEqual(thisDayDailyTime.sleep.addingTimeInterval(TimeInterval(dailyShiftSec)), nextDayDailyTime.sleep)
+                
+            } else if dayNumber == planDuration {
+                XCTAssertEqual(PersonalPlanHelper.getDailyTime(for: plan, and: thisPlanDayDate)?.wake,
+                               PersonalPlanHelper.getDailyTime(for: plan, and: nextPlanDayDate)?.wake)
+                XCTAssertEqual(PersonalPlanHelper.getDailyTime(for: plan, and: thisPlanDayDate)?.sleep,
+                               PersonalPlanHelper.getDailyTime(for: plan, and: nextPlanDayDate)?.sleep)
+                
+                guard let previuosDayDailyTime = PersonalPlanHelper.getDailyTime(for: plan, and: previousPlanDayDate)
+                    else {
+                        XCTAssert(false)
+                        return
+                }
+                XCTAssertEqual(previuosDayDailyTime.day, thisDayDailyTime.day.appending(days: -1))
+                XCTAssertEqual(previuosDayDailyTime.wake.addingTimeInterval(TimeInterval(dailyShiftSec)), thisDayDailyTime.wake)
+                XCTAssertEqual(previuosDayDailyTime.sleep.addingTimeInterval(TimeInterval(dailyShiftSec)), thisDayDailyTime.sleep)
+                
+            } else {
+                guard let nextDayDailyTime = PersonalPlanHelper.getDailyTime(for: plan, and: nextPlanDayDate)
+                    else {
+                        XCTAssert(false)
+                        return
+                }
+                XCTAssertEqual(nextDayDailyTime.day, thisDayDailyTime.day.appending(days: 1))
+                XCTAssertEqual(thisDayDailyTime.wake.addingTimeInterval(TimeInterval(dailyShiftSec)), nextDayDailyTime.wake)
+                XCTAssertEqual(thisDayDailyTime.sleep.addingTimeInterval(TimeInterval(dailyShiftSec)), nextDayDailyTime.sleep)
+                
+                guard let previuosDayDailyTime = PersonalPlanHelper.getDailyTime(for: plan, and: previousPlanDayDate)
+                    else {
+                        XCTAssert(false)
+                        return
+                }
+                XCTAssertEqual(previuosDayDailyTime.day, thisDayDailyTime.day.appending(days: -1))
+                XCTAssertEqual(previuosDayDailyTime.wake.addingTimeInterval(TimeInterval(dailyShiftSec)), thisDayDailyTime.wake)
+                XCTAssertEqual(previuosDayDailyTime.sleep.addingTimeInterval(TimeInterval(dailyShiftSec)), thisDayDailyTime.sleep)
+            }
+        }
+    }
+    
+    func testChangePlan() {
+        super.tearDown()
+        
+        guard let plan = risePlan
+            else {
+                XCTAssert(false)
+                return
+        }
+        
+        let wentSleepLastTimeDateComponents = DateComponents(hour: 23, minute: 30)
+        guard let wentSleepLastTimeDate = calendar.date(from: wentSleepLastTimeDateComponents)
+            else {
+                XCTAssert(false)
+                return
+        }
+        let changedPlan = PersonalPlanHelper.reshedule(plan: plan, with: wentSleepLastTimeDate)
+        
+        let today = Date()
+        guard let yesterday = today.appending(days: -1)
+            else {
+                XCTAssert(false)
+                return
+        }
+        XCTAssert(calendar.isDate(yesterday, inSameDayAs: changedPlan.latestConfirmedDay))
+        
+        let changedPlanEndDay = changedPlan.dateInterval.end
+        guard let missedDays = calendar.dateComponents([.day],
+                                                       from: plan.latestConfirmedDay,
+                                                       to: yesterday).day
+            else {
+                XCTAssert(false)
+                return
+        }
+        guard let neededPlanEndDay = plan.dateInterval.end.appending(days: missedDays)
+            else {
+                XCTAssert(false)
+                return
+        }
+        XCTAssert(calendar.isDate(changedPlanEndDay, inSameDayAs: neededPlanEndDay))
+        
+        let planDuration = PersonalPlanHelper.getPlanDuration(for: plan)
+        let changedPlanDuration = PersonalPlanHelper.getPlanDuration(for: changedPlan)
+        let diffBetweenDuration = changedPlanDuration - planDuration
+        
+        XCTAssertEqual(diffBetweenDuration, missedDays)
     }
     
 //    func testPlanDailyTimes() {
@@ -104,12 +247,5 @@ class RisePlanTests: XCTestCase {
 //            XCTAssertEqual(sleepTimeComponents, correctSleepTimeComponents)
 //        }
 //    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
 
 }
