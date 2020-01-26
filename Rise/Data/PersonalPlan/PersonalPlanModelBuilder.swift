@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PersonalPlanModelBuilder {
+final class PersonalPlanModelBuilder {
     func buildModel(from object: RisePersonalPlan) -> PersonalPlan {
         return PersonalPlan(
             paused: object.paused,
@@ -16,7 +16,8 @@ class PersonalPlanModelBuilder {
             dateInterval: DateInterval(start: object.planStartDay, end: object.planEndDay),
             sleepDurationSec: object.sleepDurationSec,
             wakeTime: object.wakeTime,
-            latestConfirmedDay: object.latestConfirmedDay
+            latestConfirmedDay: object.latestConfirmedDay,
+            daysMissed: Int(object.daysMissed)
         ) 
     }
     
@@ -28,5 +29,6 @@ class PersonalPlanModelBuilder {
         object.wakeTime = model.wakeTime
         object.sleepDurationSec = model.sleepDurationSec
         object.latestConfirmedDay = model.latestConfirmedDay
+        object.daysMissed = Int64(model.daysMissed)
     }
 }
