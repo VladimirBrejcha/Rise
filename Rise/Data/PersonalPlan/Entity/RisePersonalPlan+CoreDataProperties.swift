@@ -22,4 +22,5 @@ extension RisePersonalPlan {
     @NSManaged public var wakeTime: Date
     @NSManaged public var sleepDurationSec: Double
     @NSManaged public var latestConfirmedDay: Date
+    @NSManaged public var daysMissed: Int64
 }
