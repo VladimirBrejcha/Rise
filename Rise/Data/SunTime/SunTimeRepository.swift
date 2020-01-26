@@ -19,7 +19,7 @@ class SunTimeRepository {
             localSunTimes.count == numberOfDays
                 ? completion(.success(localSunTimes))
                 : remoteRequest(for: calculateMissingDays(from: localSunTimes, and: numberOfDays),
-                                since: calculateLatestDay(from: localSunTimes).appending(days: 1),
+                                since: calculateLatestDay(from: localSunTimes).appending(days: 1)!, // todo force unwrap
                                 for: location) { result in
                                     if case .failure (let error) = result { completion(.failure(error)) }
                                     if case .success (let remoteSunTimes) = result {
