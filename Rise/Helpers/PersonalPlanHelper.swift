@@ -17,10 +17,7 @@ fileprivate let hoursMinutesDateFormatter: DateFormatter = {
 
 final class PersonalPlanHelper {
     static func makePlan(
-        sleepDurationMin: Int,
-        wakeUpTime: Date,
-        planDuration: Int,
-        wentSleepTime: Date
+        sleepDurationMin: Int, wakeUpTime: Date, planDuration: Int, wentSleepTime: Date
     ) -> PersonalPlan {
         let sleepDurationSec = Double(sleepDurationMin * 60)
         var todayComponents = calendar.dateComponents([.year, .month, .day], from: Date())
@@ -46,11 +43,21 @@ final class PersonalPlanHelper {
         )
     }
     
+    static func reshedule(plan: PersonalPlan, with wentSleepDate: Date) -> PersonalPlan {
+//        let lastestConfirmedDay = plan.latestConfirmedDay
+        
+        
+        return plan
+    }
+    
     static func getDailyTime(for plan: PersonalPlan, and date: Date) -> DailyPlanTime? {
         let daysSincePlanStart = getDaysSincePlanStart(for: plan, and: date)
         if daysSincePlanStart < 0 { return nil }
-        let timeShift = plan.dailyShiftMin * daysSincePlanStart
-        let sleepTime = plan.dateInterval.start.addingTimeInterval(Double(timeShift * 60))
+        if daysSincePlanStart > getPlanDuration(for: plan) {
+            return getDailyTime(for: plan, and: plan.dateInterval.end)
+        }
+        let timeShiftSec = Double(plan.dailyShiftMin * (daysSincePlanStart - plan.daysMissed) * 60)
+        let sleepTime = plan.dateInterval.start.addingTimeInterval(timeShiftSec)
         let wakeTime = sleepTime.addingTimeInterval(plan.sleepDurationSec)
         
         return DailyPlanTime(
