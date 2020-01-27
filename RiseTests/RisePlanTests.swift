@@ -166,86 +166,77 @@ class RisePlanTests: XCTestCase {
     func testChangePlan() {
         super.tearDown()
         
-        guard let plan = risePlan
+        guard var plan = risePlan
             else {
                 XCTAssert(false)
                 return
         }
-        
-        let wentSleepLastTimeDateComponents = DateComponents(hour: 23, minute: 30)
-        guard let wentSleepLastTimeDate = calendar.date(from: wentSleepLastTimeDateComponents)
-            else {
-                XCTAssert(false)
-                return
-        }
-        let changedPlan = PersonalPlanHelper.reshedule(plan: plan, with: wentSleepLastTimeDate)
-        
-        let today = Date()
-        guard let yesterday = today.appending(days: -1)
-            else {
-                XCTAssert(false)
-                return
-        }
-        XCTAssert(calendar.isDate(yesterday, inSameDayAs: changedPlan.latestConfirmedDay))
-        
-        let changedPlanEndDay = changedPlan.dateInterval.end
-        guard let missedDays = calendar.dateComponents([.day],
-                                                       from: plan.latestConfirmedDay,
-                                                       to: yesterday).day
-            else {
-                XCTAssert(false)
-                return
-        }
-        guard let neededPlanEndDay = plan.dateInterval.end.appending(days: missedDays)
-            else {
-                XCTAssert(false)
-                return
-        }
-        XCTAssert(calendar.isDate(changedPlanEndDay, inSameDayAs: neededPlanEndDay))
         
         let planDuration = PersonalPlanHelper.getPlanDuration(for: plan)
-        let changedPlanDuration = PersonalPlanHelper.getPlanDuration(for: changedPlan)
-        let diffBetweenDuration = changedPlanDuration - planDuration
         
-        XCTAssertEqual(diffBetweenDuration, missedDays)
+        guard let fakePlanStartDay = plan.dateInterval.start.appending(days: -planDuration)
+            else {
+                XCTAssert(false)
+                return
+        }
+        
+        guard let fakePlanEndDay = plan.dateInterval.end.appending(days: -planDuration)
+            else {
+                XCTAssert(false)
+                return
+        }
+        
+        plan.dateInterval = DateInterval(start: fakePlanStartDay, end: fakePlanEndDay)
+        
+        for day in 0...planDuration {
+            guard let confirmedDay = plan.dateInterval.start.appending(days: day)
+                else {
+                    XCTAssert(false)
+                    return
+            }
+            
+            plan.latestConfirmedDay = confirmedDay
+            
+            guard let changedPlan = PersonalPlanHelper.reshedule(plan: plan)
+                else {
+                    XCTAssert(false)
+                    return
+            }
+            
+            let today = Date()
+            guard let yesterday = today.appending(days: -1)
+                else {
+                    XCTAssert(false)
+                    return
+            }
+            // check if changedPlan lastestConfirmedDay set to yesterday
+            XCTAssert(calendar.isDate(yesterday, inSameDayAs: changedPlan.latestConfirmedDay))
+            
+            guard let missedDays = calendar.dateComponents([.day],
+                                                           from: yesterday,
+                                                           to: plan.latestConfirmedDay).day
+                else {
+                    XCTAssert(false)
+                    return
+            }
+            
+            if missedDays <= 0 {
+                XCTAssertEqual(plan.dateInterval, changedPlan.dateInterval)
+            }
+            
+            if missedDays > 0 {
+                // check if daysMissed calculated correctly
+                XCTAssertEqual(plan.daysMissed + missedDays, changedPlan.daysMissed)
+                
+                let changedPlanEndDay = changedPlan.dateInterval.end
+                guard let neededPlanEndDay = plan.dateInterval.end.appending(days: missedDays)
+                    else {
+                        XCTAssert(false)
+                        return
+                }
+                // check if planEnd day calculated correctly
+                XCTAssert(calendar.isDate(changedPlanEndDay, inSameDayAs: neededPlanEndDay))
+            }
+        }
     }
-    
-//    func testPlanDailyTimes() {
-//        super.tearDown()
-//        
-//        guard let plan = risePlan
-//            else {
-//                XCTAssert(false)
-//                return
-//        }
-//
-//        let dailyShiftTime = Int(plan.sleepDuration) / plan.planDuration
-//
-//        plan.dailyTimes.forEach { dailyTime in
-//            guard let daysBetweenPlanEndAndDailyTime = calendar.dateComponents([.day],
-//                                                                               from: plan.planEndDate,
-//                                                                               to: dailyTime.day).day
-//                else {
-//                    XCTAssert(false)
-//                    return
-//            }
-//
-//            calendar.dateInterval(of: <#T##Calendar.Component#>, for: <#T##Date#>)
-//
-//            let shiftForToday = daysBetweenPlanEndAndDailyTime * dailyShiftTime
-//
-//            let wakeUpTime = plan.finalWakeTime.addingTimeInterval(Double(shiftForToday))
-//            let sleepTime = plan.finalSleepTime.addingTimeInterval(Double(shiftForToday))
-//
-//            let wakeUpTimeComponents = calendar.component(.minute, from: dailyTime.wake)
-//            let sleepTimeComponents = calendar.component(.minute, from: dailyTime.sleep)
-//
-//            let correctWakeUpTimeComponents = calendar.component(.minute, from: wakeUpTime)
-//            let correctSleepTimeComponents = calendar.component(.minute, from: sleepTime)
-//
-//            XCTAssertEqual(wakeUpTimeComponents, correctWakeUpTimeComponents)
-//            XCTAssertEqual(sleepTimeComponents, correctSleepTimeComponents)
-//        }
-//    }
-
 }
