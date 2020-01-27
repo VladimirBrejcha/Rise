@@ -18,15 +18,21 @@ fileprivate let hoursMinutesDateFormatter: DateFormatter = {
 final class PersonalPlanHelper {
     static func makePlan(
         sleepDurationMin: Int, wakeUpTime: Date, planDuration: Int, wentSleepTime: Date
-    ) -> PersonalPlan {
+    ) -> PersonalPlan? {
         let sleepDurationSec = Double(sleepDurationMin * 60)
         var todayComponents = calendar.dateComponents([.year, .month, .day], from: Date())
         let wentSleepComponents = calendar.dateComponents([.hour, .minute], from: wentSleepTime)
         todayComponents.hour = wentSleepComponents.hour
         todayComponents.minute = wentSleepComponents.minute
-        let planStartDate = calendar.date(from: todayComponents)
-        let planEndDate = calendar.date(byAdding: .day, value: planDuration, to: planStartDate!)
-        let planDateInterval = DateInterval(start: planStartDate!, end: planEndDate!)
+        guard let planStartDate = calendar.date(from: todayComponents)
+            else {
+                return nil
+        }
+        guard let planEndDate = planStartDate.appending(days: planDuration)
+            else {
+                return nil
+        }
+        let planDateInterval = DateInterval(start: planStartDate, end: planEndDate)
         let sleepTime = wakeUpTime.addingTimeInterval(-sleepDurationSec)
         let timeBetweenNeededSleepAndActualSleep = Int(wentSleepTime.timeIntervalSince(sleepTime) / 60)
         let dailyShiftMin = timeBetweenNeededSleepAndActualSleep > 1440
@@ -39,7 +45,7 @@ final class PersonalPlanHelper {
             dateInterval: planDateInterval,
             sleepDurationSec: sleepDurationSec,
             wakeTime: wakeUpTime,
-            latestConfirmedDay: planStartDate!
+            latestConfirmedDay: planStartDate
         )
     }
     
