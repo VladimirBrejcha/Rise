@@ -16,6 +16,8 @@ fileprivate let hoursMinutesDateFormatter: DateFormatter = {
 }()
 
 final class PersonalPlanHelper {
+    
+    // MARK: - Actions with plan -
     static func makePlan(
         sleepDurationMin: Int, wakeUpTime: Date, planDuration: Int, wentSleepTime: Date
     ) -> PersonalPlan? {
@@ -76,6 +78,14 @@ final class PersonalPlanHelper {
         return updatedPlan
     }
     
+    static func confirm(plan: PersonalPlan) -> PersonalPlan {
+        var plan = plan
+        plan.latestConfirmedDay = Date()
+        
+        return plan
+    }
+    
+    // MARK: - Additional plan info -
     static func getDailyTime(for plan: PersonalPlan, and date: Date) -> DailyPlanTime? {
         let daysSincePlanStart = getDaysSincePlanStart(for: plan, and: date)
         if daysSincePlanStart < 0 { return nil }
@@ -150,44 +160,3 @@ fileprivate extension Double {
         truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", self) : String(self)
     }
 }
-
-
-//
-//    mutating func reschedule(wentSleepTime: Date) {
-//        let calendar = Calendar.current
-//        let today = calendar.startOfDay(for: Date())
-//        guard let yesterday = calendar.date(byAdding: .day, value: -1, to: today)
-//            else {
-//                fatalError()
-//        }
-//        // 1. найти точку с которой пропали конфирмы
-//        // 2. найти точку последнего конфирма
-//        // 3. посчитать количество пропущенных дней
-//        let missedDays = calendar.dateComponents([.day], from: latestConfirmedDay, to: yesterday).day
-//        // 4. скопировать dailyTime с точки последнего конфирма до конца плана
-//        let dailyTimesSinceLastConfirmedDay = dailyTimes[completedDays...]
-//        // 5. увеличить длительность плана на количество пропущенных дней
-//        planDuration += missedDays ?? 0
-//        // 6. заполнить часть плана ДО пропущенных дней теми же dailyTime что там и были
-//        var updatedDailyTimes: [DailyPlanTime] = []
-//        updatedDailyTimes.append(contentsOf: dailyTimes[0...completedDays])
-//        // 7. заполнить пропущенные дни dailyTime одним и тем же dailyTime (таким же как dailyTime в последний подтвержденный день)
-//        for _ in 1...(missedDays ?? 0) {
-//            updatedDailyTimes.append(dailyTimes[completedDays])
-//        }
-//        // 8. заполнить все dailyTime последнегго пропущенного до конца плана, скопированными daily time из пункта 4)
-//        updatedDailyTimes.append(contentsOf: dailyTimesSinceLastConfirmedDay)
-//        updatedDailyTimes.sort { $0.day < $1.day }
-//
-//        dailyTimes = updatedDailyTimes
-//
-//        // 1. найти точку с которой пропали конфирмы
-//        // 2. найти точку последнего конфирма
-//        // 3. посчитать количество пропущенных дней
-//        // 4. скопировать dailyTime с точки последнего конфирма до конца плана
-//        // 5. увеличить длительность плана на количество пропущенных дней
-//        // 6. заполнить часть плана ДО пропущенных дней теми же dailyTime что там и были
-//        // 7. заполнить пропущенные дни dailyTime одним и тем же dailyTime (таким же как dailyTime в последний подтвержденный день)
-//        // 8. заполнить все dailyTime последнегго пропущенного до конца плана, скопированными daily time из пункта 4)
-//    }
-//}
