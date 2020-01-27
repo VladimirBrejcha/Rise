@@ -137,7 +137,9 @@ final class SetupPlanPresenter: SetupPlanViewOutput {
             let choosenWakeUpTime = choosenWakeUpTime,
             let choosenPlanDuration = choosenPlanDuration,
             let choosenLastTimeWentSleep = choosenLastTimeWentSleep
-            else { return false }
+            else {
+                return false
+        }
         
         guard let plan = PersonalPlanHelper.makePlan(sleepDurationMin: choosenSleepDuration,
                                                      wakeUpTime: choosenWakeUpTime,
