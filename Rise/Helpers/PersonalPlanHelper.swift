@@ -43,11 +43,31 @@ final class PersonalPlanHelper {
         )
     }
     
-    static func reshedule(plan: PersonalPlan, with wentSleepDate: Date) -> PersonalPlan {
-//        let lastestConfirmedDay = plan.latestConfirmedDay
+    static func reshedule(plan: PersonalPlan) -> PersonalPlan? {
+        let today = Date()
+        guard let yesterday = today.appending(days: -1)
+            else { return nil }
         
+        var updatedPlan = plan
         
-        return plan
+        guard let missingDays = calendar.dateComponents([.day],
+                                                        from: yesterday,
+                                                        to: plan.latestConfirmedDay).day
+            else { return nil }
+        
+        updatedPlan.latestConfirmedDay = yesterday
+        
+        if missingDays <= 0 {
+            return updatedPlan
+        }
+
+        updatedPlan.daysMissed += missingDays
+        
+        guard let newPlanEndDate = plan.dateInterval.end.appending(days: missingDays)
+            else { return nil }
+        updatedPlan.dateInterval.end = newPlanEndDate
+        
+        return updatedPlan
     }
     
     static func getDailyTime(for plan: PersonalPlan, and date: Date) -> DailyPlanTime? {
