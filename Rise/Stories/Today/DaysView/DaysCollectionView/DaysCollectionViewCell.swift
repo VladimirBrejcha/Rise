@@ -62,7 +62,7 @@ final class DaysCollectionViewCell: UICollectionViewCell {
                 sunLoadingView.showError(true) }()
             : { sunLoadingView.showError(false)
                 sunLoadingView.showLoading(!isSunDataLoaded) {
-                    UIView.animate(withDuration:Rise/Helpers/AnimationManager.swift 0.6, delay: 0,
+                    UIView.animate(withDuration: 0.6, delay: 0,
                                    options: .allowUserInteraction,
                                    animations:
                         { self.sunContainerView.alpha = self.isSunDataLoaded ? 1 : 0 })
