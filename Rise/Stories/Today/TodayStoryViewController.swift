@@ -64,9 +64,9 @@ final class TodayStoryViewController: UIViewController, TodayStoryViewInput {
         mainContainerView.collectionView.reloadData()
     }
     
-    func makeTabBar(visible: Bool) {
-        UIView.animate(withDuration: 0.1) {
-            self.tabBarController?.tabBar.isHidden = !visible
+    func makeTabBar(visible: Bool) {        
+        UIView.animate(withDuration: 0.15) {
+            self.tabBarController?.tabBar.alpha = visible ? 1 : 0
         }
     }
 }
