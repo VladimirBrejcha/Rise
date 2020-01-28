@@ -68,7 +68,6 @@ final class PersonalPlanViewController:
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        loadingView.setupAnimationLayer()
         output.viewDidAppear()
     }
     
@@ -112,11 +111,10 @@ final class PersonalPlanViewController:
     
     func showLoading(_ show: Bool) {
         show
-            ? loadingView.showLoading()
-            : loadingView.hideLoading {
-                UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction, animations: {
-                    self.mainContainerView.alpha = 1
-                })
+            ? loadingView.showLoading(true)
+            : loadingView.showLoading(false) {
+                UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction, animations:
+                    { self.mainContainerView.alpha = 1 })
         }
     }
     
