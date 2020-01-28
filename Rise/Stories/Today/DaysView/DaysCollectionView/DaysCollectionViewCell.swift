@@ -12,7 +12,7 @@ protocol DaysCollectionViewCellDelegate: AnyObject {
     func repeatButtonPressed(on cell: DaysCollectionViewCell)
 }
 
-final class DaysCollectionViewCell: UICollectionViewCell, LoadingViewDelegate {
+final class DaysCollectionViewCell: UICollectionViewCell {
     weak var delegate: DaysCollectionViewCellDelegate?
     
     @IBOutlet private weak var sunriseTimeLabel: UILabel!
@@ -37,8 +37,8 @@ final class DaysCollectionViewCell: UICollectionViewCell, LoadingViewDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        sunLoadingView.delegate = self
-        planLoadingView.delegate = self
+        sunLoadingView.repeatButtonHandler = repeatButtonPressed
+        planLoadingView.repeatButtonHandler = repeatButtonPressed
     }
     
     var cellModel: DaysCollectionViewCellModel! {
@@ -50,35 +50,36 @@ final class DaysCollectionViewCell: UICollectionViewCell, LoadingViewDelegate {
         }
     }
     
-    func repeatButtonPressed() {
+    private func repeatButtonPressed() {
         delegate?.repeatButtonPressed(on: self)
     }
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         
-        sunLoadingView.setupAnimationLayer()
-        planLoadingView.setupAnimationLayer()
-        
         cellModel.sunErrorMessage != nil
-            ? { sunLoadingView.showLoadingError() }()
-
-            : { sunLoadingView.hideError()
-                isSunDataLoaded
-                    ? sunLoadingView.hideLoading { UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction,
-                                                                  animations: { self.sunContainerView.alpha = 1 })}
-                    : sunLoadingView.showLoading { UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction,
-                                                                  animations: { self.sunContainerView.alpha = 0 })} }()
-            
+            ? { self.sunContainerView.alpha = 0
+                sunLoadingView.showError(true) }()
+            : { sunLoadingView.showError(false)
+                sunLoadingView.showLoading(!isSunDataLoaded) {
+                    UIView.animate(withDuration:Rise/Helpers/AnimationManager.swift 0.6, delay: 0,
+                                   options: .allowUserInteraction,
+                                   animations:
+                        { self.sunContainerView.alpha = self.isSunDataLoaded ? 1 : 0 })
+                }
+            }()
+        
         cellModel.planErrorMessage != nil
             ? { self.planContainerView.alpha = 0
                 planLoadingView.showInfo(with: cellModel.planErrorMessage!) }()
-                
-            : { planLoadingView.hideInfo()
-                isPlanDataLoaded
-                    ? planLoadingView.hideLoading { UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction,
-                                                                   animations: { self.planContainerView.alpha = 1 }) }
-                    : planLoadingView.showLoading { UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction,
-                                                                   animations: { self.planContainerView.alpha = 0 })} }()
+            : { self.planContainerView.alpha = 1
+                planLoadingView.hideInfo()
+                planLoadingView.showLoading(!isPlanDataLoaded) {
+                    UIView.animate(withDuration: 0.6, delay: 0,
+                                   options: .allowUserInteraction,
+                                   animations:
+                        { self.planLoadingView.alpha = self.isPlanDataLoaded ? 1 : 0 })
+                }
+            }()
     }
 }
