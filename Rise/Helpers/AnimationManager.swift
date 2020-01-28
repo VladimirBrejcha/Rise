@@ -8,79 +8,76 @@
 
 import UIKit
 
-class AnimationManager {
+enum AnimationType {
+    case pulsingCircles
+}
+
+final class AnimationManager {
     private let scaleKeyPath = "transform.scale"
     private let opacityKeyPath = "opacity"
     private let animationKey = "animation"
     
-    private let animationLayer: CALayer
-    private let animationTintColor: UIColor
-    private let defaultSize = 40.0
+    var animationLayer: CALayer?
+    var animationTintColor: UIColor = .white
+    var animationSize = CGSize(width: 40.0, height: 40.0)
     
-    init(layer: CALayer, tintColor: UIColor) {
+    private let type: AnimationType
+    
+    init(with type: AnimationType) {
+        self.type = type
+    }
+    
+    func animate(_ animated: Bool) {
+        animationLayer?.isHidden = !animated
+        animationLayer?.speed = animated ? 1 : 0
+    }
+    
+    func setupAnimation(on layer: CALayer) {
         self.animationLayer = layer
-        self.animationTintColor = tintColor
-    }
-    
-    // MARK: - control animations
-    func startAnimating() {
-        animationLayer.isHidden = false
-        animationLayer.speed = 1
-    }
-    
-    func stopAnimating() {
-        animationLayer.speed = 0
-        animationLayer.isHidden = true
-    }
-    
-    // MARK: - setup
-    func setupAnimation() {
-        animationLayer.sublayers = nil
-        animationLayer.speed = 0
-        animationLayer.isHidden = true
-        setupAnimation(layer: animationLayer, size: CGSize(width: defaultSize, height: defaultSize), tintColor: animationTintColor)
-    }
-    
-    private func setupAnimation(layer: CALayer, size: CGSize, tintColor: UIColor) {
-        let duration = 1.0
-        let beginTimes = [0, 0.2, 0.4]
+        animationLayer?.sublayers = nil
         
-        // Scale animation
-        let scaleAnimation = createBasicAnimation(keyPath: scaleKeyPath)
-        scaleAnimation.duration = duration
-        scaleAnimation.fromValue = 0
-        scaleAnimation.toValue = 1
-        
-        // Opacity animation
-        let opacityAnimation = createKeyFrameAnimation(keyPath: opacityKeyPath)
-        opacityAnimation.duration = duration
-        opacityAnimation.keyTimes = [0, 0.05, 1]
-        opacityAnimation.values = [0, 1, 0]
-        
-        // Animation
-        let animation = createAnimationGroup()
-        animation.animations = [scaleAnimation, opacityAnimation]
-        animation.duration = duration
-        animation.repeatCount = .infinity
-        animation.timingFunction = CAMediaTimingFunction(name: .linear)
-        
-        for i in 0...2 {
-            let circle = CAShapeLayer()
-            let circlePath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: size.width, height: size.height),
-                                          cornerRadius: size.width / 2)
-            animation.beginTime = beginTimes[i]
-            circle.fillColor = tintColor.cgColor
-            circle.path = circlePath.cgPath
-            circle.opacity = 0
-            circle.add(animation, forKey: animationKey)
-            circle.frame = CGRect(x: (layer.frame.size.width - size.width) / 2,
-                                  y: (layer.frame.size.height - size.height) / 2,
-                                  width: size.width, height: size.height)
-            layer.addSublayer(circle)
+        switch type {
+        case .pulsingCircles:
+            let duration = 1.0
+            let beginTimes = [0, 0.2, 0.4]
+            
+            let scaleAnimation = createBasicAnimation(keyPath: scaleKeyPath)
+            scaleAnimation.duration = duration
+            scaleAnimation.fromValue = 0
+            scaleAnimation.toValue = 1
+            
+            let opacityAnimation = createKeyFrameAnimation(keyPath: opacityKeyPath)
+            opacityAnimation.duration = duration
+            opacityAnimation.keyTimes = [0, 0.05, 1]
+            opacityAnimation.values = [0, 1, 0]
+            
+            let animation = createAnimationGroup()
+            animation.animations = [scaleAnimation, opacityAnimation]
+            animation.duration = duration
+            animation.repeatCount = .infinity
+            animation.timingFunction = CAMediaTimingFunction(name: .linear)
+            
+            for i in 0...2 {
+                let circle = CAShapeLayer()
+                let circlePath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0,
+                                                                  width: animationSize.width,
+                                                                  height: animationSize.height),
+                                              cornerRadius: animationSize.width / 2)
+                animation.beginTime = beginTimes[i]
+                circle.fillColor = animationTintColor.cgColor
+                circle.path = circlePath.cgPath
+                circle.opacity = 0
+                circle.add(animation, forKey: animationKey)
+                circle.frame = CGRect(x: (layer.frame.size.width - animationSize.width) / 2,
+                                      y: (layer.frame.size.height - animationSize.height) / 2,
+                                      width: animationSize.width,
+                                      height: animationSize.height)
+                layer.addSublayer(circle)
+            }
         }
     }
     
-    // MARK: - create animations
+    // MARK: - Private -
     private func createBasicAnimation(keyPath: String) -> CABasicAnimation {
         let animation = CABasicAnimation(keyPath: keyPath)
         animation.isRemovedOnCompletion = false
