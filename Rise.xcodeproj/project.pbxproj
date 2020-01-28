@@ -36,7 +36,6 @@
 		7E708A3B23BFD0C7003B5702 /* PlanCreatedSetupPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3A23BFD0C7003B5702 /* PlanCreatedSetupPlanViewController.swift */; };
 		7E708A3E23BFD917003B5702 /* ChangePlanPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3D23BFD917003B5702 /* ChangePlanPresenter.swift */; };
 		7E708A4023BFD92D003B5702 /* ChangePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3F23BFD92D003B5702 /* ChangePlanViewController.swift */; };
-		7E7413BC2349069500BF4416 /* AnimatedLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7413BB2349069500BF4416 /* AnimatedLoadingView.swift */; };
 		7E84EB25239D19CF00E02050 /* Confirmation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E84EB24239D19CF00E02050 /* Confirmation.storyboard */; };
 		7E84EB27239D1A5700E02050 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E84EB26239D1A5700E02050 /* ConfirmationViewController.swift */; };
 		7E8AB6CE23A18D27009CE41A /* WakeUpTimeSetupPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8AB6CD23A18D27009CE41A /* WakeUpTimeSetupPlanViewController.swift */; };
@@ -169,7 +168,6 @@
 		7E708A3A23BFD0C7003B5702 /* PlanCreatedSetupPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCreatedSetupPlanViewController.swift; sourceTree = "<group>"; };
 		7E708A3D23BFD917003B5702 /* ChangePlanPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanPresenter.swift; sourceTree = "<group>"; };
 		7E708A3F23BFD92D003B5702 /* ChangePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanViewController.swift; sourceTree = "<group>"; };
-		7E7413BB2349069500BF4416 /* AnimatedLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedLoadingView.swift; sourceTree = "<group>"; };
 		7E84EB24239D19CF00E02050 /* Confirmation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Confirmation.storyboard; sourceTree = "<group>"; };
 		7E84EB26239D1A5700E02050 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
 		7E8AB6CD23A18D27009CE41A /* WakeUpTimeSetupPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUpTimeSetupPlanViewController.swift; sourceTree = "<group>"; };
@@ -657,7 +655,6 @@
 				7EB9003D23256AC9006EB9A8 /* DesignableContainerView.swift */,
 				92D12FDC22A44B3B0093B0A3 /* CustomTabBarController.swift */,
 				7EA0924122C8CF820019F2E9 /* CustomTransition.swift */,
-				7E7413BB2349069500BF4416 /* AnimatedLoadingView.swift */,
 				7EB26952234F99AE008AEB3D /* Button.swift */,
 				7EB26956234FA6EB008AEB3D /* LoadingView.swift */,
 				7EB26958234FA6F7008AEB3D /* LoadingView.xib */,
@@ -880,7 +877,6 @@
 				7E97656E2378813700E3AEF2 /* Log.swift in Sources */,
 				7EB196DA23A01B8F00E6C40B /* SetupPlanViewController.swift in Sources */,
 				92D7D6532296F297009321AE /* AppDelegate.swift in Sources */,
-				7E7413BC2349069500BF4416 /* AnimatedLoadingView.swift in Sources */,
 				7EA7BA0C2354F2510051A92D /* CollectionView.swift in Sources */,
 				7E91D95B2371E4080087436F /* RiseDailySunTime+CoreDataClass.swift in Sources */,
 				7E4901862340DD810034521E /* PersonalPlanData.xcdatamodeld in Sources */,
