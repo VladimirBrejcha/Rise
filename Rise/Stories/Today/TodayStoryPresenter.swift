@@ -60,14 +60,22 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
         })
     }
     
+    var someFakeCheck = true
+    
+    func viewWillAppear() {
+        if !someFakeCheck {
+            view.makeTabBar(visible: true)
+        }
+    }
+    
     func viewDidAppear() {
         guard let plan = personalPlan else { return }
-        
-        view.makeTabBar(visible: false)
-//        view.present(controller: Story.confirmation.configure())
-//        if !plan.isConfirmedForToday {
-//            view.present(controller: Story.confirmationPopUp.configure())
-//        }
+
+        if someFakeCheck {
+            view.makeTabBar(visible: false)
+            view.present(controller: Story.confirmation.configure())
+            someFakeCheck = false
+        }
     }
     
     // MARK: - DaysCollectionViewCellDelegate -
@@ -84,7 +92,9 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
     // MARK: - Private Methods -
     private func requestSunTime() {
         guard let yesterday = Date().appending(days: -1)
-            else { return }
+            else {
+                return
+        }
         
         getSunTime.execute((numberOfDays: 3, day: yesterday)) { [weak self] result in
             guard let self = self else { return }
@@ -99,8 +109,8 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
     private func updateSunTimeView(with sunModelArray: [DailySunTime]?) {
         if let models = sunModelArray {
             models.forEach { model in
-                if let index = cellModels.firstIndex(where: { model in
-                    return Calendar.current.isDate(model.day, inSameDayAs: model.day)
+                if let index = cellModels.firstIndex(where: { cellModel in
+                    return Calendar.current.isDate(cellModel.day, inSameDayAs: model.day)
                 }) {
                     cellModels[index].update(sunTime: model)
                 }
