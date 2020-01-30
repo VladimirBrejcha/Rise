@@ -99,6 +99,8 @@
 		7ED962AC2336334A00CD2408 /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED962AB2336334A00CD2408 /* AnimationManager.swift */; };
 		7ED962AF2336649E00CD2408 /* PlanInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED962AD2336649E00CD2408 /* PlanInfoTableViewCell.swift */; };
 		7ED962B02336649E00CD2408 /* PlanInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ED962AE2336649E00CD2408 /* PlanInfoTableViewCell.xib */; };
+		7EE1399323E36C5C003895D4 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 7EE1399223E36C5C003895D4 /* SwiftPackageProductDependency */; };
+		7EE1399523E36C75003895D4 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 7EE1399423E36C75003895D4 /* SwiftPackageProductDependency */; };
 		7EE640492378665D005BE355 /* SunTimeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE640482378665D005BE355 /* SunTimeRepository.swift */; };
 		7EE6404B2378666F005BE355 /* SunTimeLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6404A2378666F005BE355 /* SunTimeLocalDataSource.swift */; };
 		7EE6404D23786678005BE355 /* SunTimeRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6404C23786678005BE355 /* SunTimeRemoteDataSource.swift */; };
@@ -232,6 +234,9 @@
 		7ED962AB2336334A00CD2408 /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
 		7ED962AD2336649E00CD2408 /* PlanInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanInfoTableViewCell.swift; sourceTree = "<group>"; };
 		7ED962AE2336649E00CD2408 /* PlanInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanInfoTableViewCell.xib; sourceTree = "<group>"; };
+		7EE1397E23E36944003895D4 /* AIFlatSwitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AIFlatSwitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7EE1398523E36AF6003895D4 /* AIFlatSwitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AIFlatSwitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7EE1398923E36B01003895D4 /* AnimatedGradientView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AnimatedGradientView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EE640482378665D005BE355 /* SunTimeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeRepository.swift; sourceTree = "<group>"; };
 		7EE6404A2378666F005BE355 /* SunTimeLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeLocalDataSource.swift; sourceTree = "<group>"; };
 		7EE6404C23786678005BE355 /* SunTimeRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeRemoteDataSource.swift; sourceTree = "<group>"; };
@@ -271,6 +276,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EE1399323E36C5C003895D4 /* BuildFile in Frameworks */,
+				7EE1399523E36C75003895D4 /* BuildFile in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +291,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		58118E3FFAF9EC6FD86AEFC7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7EE1398923E36B01003895D4 /* AnimatedGradientView.framework */,
+				7EE1398523E36AF6003895D4 /* AIFlatSwitch.framework */,
+				7EE1397E23E36944003895D4 /* AIFlatSwitch.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7E4901872340F3970034521E /* Stories */ = {
 			isa = PBXGroup;
 			children = (
@@ -612,6 +629,7 @@
 				7EBE900523C9231200043651 /* RiseTests */,
 				92D7D6502296F297009321AE /* Products */,
 				D2124982893C2715CAD825C5 /* Pods */,
+				58118E3FFAF9EC6FD86AEFC7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -706,6 +724,10 @@
 			dependencies = (
 			);
 			name = Rise;
+			packageProductDependencies = (
+				7EE1399223E36C5C003895D4 /* SwiftPackageProductDependency */,
+				7EE1399423E36C75003895D4 /* SwiftPackageProductDependency */,
+			);
 			productName = Rise;
 			productReference = 92D7D64F2296F297009321AE /* Rise.app */;
 			productType = "com.apple.product-type.application";
@@ -760,6 +782,10 @@
 				Base,
 			);
 			mainGroup = 92D7D6462296F297009321AE;
+			packageReferences = (
+				7EE1398C23E36B97003895D4 /* RemoteSwiftPackageReference */,
+				7EE1398F23E36BD5003895D4 /* RemoteSwiftPackageReference */,
+			);
 			productRefGroup = 92D7D6502296F297009321AE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1057,7 +1083,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1112,7 +1138,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1242,6 +1268,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7EE1398C23E36B97003895D4 /* RemoteSwiftPackageReference */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rwbutler/AnimatedGradientView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
+		7EE1398F23E36BD5003895D4 /* RemoteSwiftPackageReference */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cocoatoucher/AIFlatSwitch";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7EE1399223E36C5C003895D4 /* SwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7EE1398C23E36B97003895D4 /* RemoteSwiftPackageReference */;
+			productName = AnimatedGradientView;
+		};
+		7EE1399423E36C75003895D4 /* SwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7EE1398F23E36BD5003895D4 /* RemoteSwiftPackageReference */;
+			productName = AIFlatSwitch;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		7E4901842340DD810034521E /* PersonalPlanData.xcdatamodeld */ = {
