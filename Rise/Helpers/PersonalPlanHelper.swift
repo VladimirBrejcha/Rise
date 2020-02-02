@@ -51,27 +51,32 @@ final class PersonalPlanHelper {
     }
     
     static func reshedule(plan: PersonalPlan) -> PersonalPlan? {
-        let today = Date()
-        guard let yesterday = today.appending(days: -1)
-            else { return nil }
+        let yesterday = Day.yesterday.date
         
         var updatedPlan = plan
         
         guard let missingDays = calendar.dateComponents([.day],
                                                         from: yesterday,
                                                         to: plan.latestConfirmedDay).day
-            else { return nil }
-        
-        updatedPlan.latestConfirmedDay = yesterday
+            else {
+                log("Plan reshedule failed, returning nil")
+                return nil
+        }
         
         if missingDays <= 0 {
             return updatedPlan
         }
+        
+        updatedPlan.latestConfirmedDay = yesterday
 
         updatedPlan.daysMissed += missingDays
         
         guard let newPlanEndDate = plan.dateInterval.end.appending(days: missingDays)
-            else { return nil }
+            else {
+                log("Plan reshedule failed, returning nil")
+                return nil
+        }
+        
         updatedPlan.dateInterval.end = newPlanEndDate
         
         return updatedPlan
@@ -90,10 +95,18 @@ final class PersonalPlanHelper {
         plan.paused = pause
         
         if pause {
-            plan.latestConfirmedDay = Date() // todo: - yesterday?
+            if !(calendar.isDate(plan.latestConfirmedDay, inSameDayAs: Day.yesterday.date)
+                || calendar.isDate(plan.latestConfirmedDay, inSameDayAs: Day.today.date)) {
+                plan.latestConfirmedDay = Day.yesterday.date
+            }
             return plan
         } else {
-            return reshedule(plan: plan) ?? plan // todo: - should reshedule happen here?
+            guard let resheduledPlan = reshedule(plan: plan)
+                else {
+                    log("reshedule(plan:) returned nil, returning not resheduled plan")
+                    return plan
+            }
+            return resheduledPlan
         }
     }
     
