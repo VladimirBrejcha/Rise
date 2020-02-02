@@ -24,6 +24,7 @@ protocol PersonalPlanViewInput: AnyObject {
     func updateUI(doesPlanExist: Bool)
     func updateStackViewButtons(doesPlanExist: Bool)
     func updatePauseTitle(with text: String)
+    func pausePerformance(_ pause: Bool)
 }
 
 protocol PersonalPlanViewOutput: ViewOutput {
@@ -107,6 +108,15 @@ final class PersonalPlanViewController:
                 planManageButtonsStackView.addArrangedSubview(pauseButton) }()
             : { planButton.setTitle("Create", for: .normal)
                 pauseButton.removeFromSuperview() }()
+    }
+    
+    func pausePerformance(_ pause: Bool) {
+        guard let cell = progressTableView.cellForRow(at: IndexPath(row: 0, section: 0))
+            as? ProgressTableViewCell
+            else {
+                return
+        }
+        cell.paused = pause
     }
     
     func showLoading(_ show: Bool) {
