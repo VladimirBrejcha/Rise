@@ -40,14 +40,18 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
     }
     
     func planPressed() {
-        view?.present(controller: Story.setupPlan.configure())
+        if personalPlan == nil {
+            view?.present(controller: Story.setupPlan.configure())
+        }
     }
     
     func pausePressed() {
-        guard var plan = personalPlan else { return }
-        plan.paused.toggle()
-        if updatePlan.execute(plan) {
-            view?.updatePauseTitle(with: plan.paused ? "Resume" : "Pause")
+        guard let plan = personalPlan else { return }
+        
+        let pausedPlan = PersonalPlanHelper.pause(!plan.paused, plan: plan)
+        
+        if updatePlan.execute(pausedPlan) {
+            updateView(with: pausedPlan)
         }
     }
     
@@ -64,8 +68,9 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
             
             view.updateProgressView(with: PersonalPlanHelper.getProgress(for: plan), maxProgress: PersonalPlanHelper.StringRepresentation.getPlanDuration(for: plan))
             view.updatePlanInfo(with: [durationText, wakeUpText, toSleepText, syncText])
+            view.updatePauseTitle(with: plan.paused ? "Resume" : "Pause")
+            view.pausePerformance(plan.paused)
         }
-        
         view.updateUI(doesPlanExist: plan != nil)
         view.updateStackViewButtons(doesPlanExist: plan != nil)
     }
