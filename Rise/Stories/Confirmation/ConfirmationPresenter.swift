@@ -9,7 +9,7 @@
 import Foundation
 
 final class ConfirmationPresenter: ConfirmationViewOutput {
-    unowned let view: ConfirmationViewInput
+    private unowned let view: ConfirmationViewInput
     
     private let getPlan: GetPlan
     private let updatePlan: UpdatePlan
