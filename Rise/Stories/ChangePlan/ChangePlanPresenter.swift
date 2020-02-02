@@ -14,6 +14,20 @@ struct DataForPicker { // TODO: - Picker input and output need refactoring
 
     private init() { }
 }
+
+final class ChangePlanPresenter: ChangePlanViewOutput {
+    private weak var view: ChangePlanViewInput?
+    
+    private let updatePlan: UpdatePlan
+    
+    required init(
+        view: ChangePlanViewInput,
+        updatePlan: UpdatePlan
+    ) {
+        self.view = view
+        self.updatePlan = updatePlan
+    }
+}
 //
 //class ChangePlanPresenter: SetupPlanViewOutput, SectionedTableViewCellDelegate {
 //    weak var view: SetupPlanViewInput!
