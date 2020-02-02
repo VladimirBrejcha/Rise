@@ -24,11 +24,13 @@ final class ProgressTableViewCell: UITableViewCell {
     
     var paused: Bool = true {
         didSet {
-            // TODO: - animation doesnt work
-            UIView.animate(withDuration: 0.15) {
-                self.cellContentView.alpha = self.paused ? 0 : 1
-                self.loadingView.alpha = self.paused ? 1 : 0
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.5) {
+                    self.cellContentView.alpha = self.paused ? 0 : 1
+                    self.loadingView.alpha = self.paused ? 1 : 0
+                }
             }
+
             if paused {
                 loadingView.showInfo(with: "Your plan is paused")
             }
@@ -44,6 +46,5 @@ final class ProgressTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
 }
 
