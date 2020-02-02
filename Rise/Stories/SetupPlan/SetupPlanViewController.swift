@@ -38,20 +38,11 @@ final class SetupPlanViewController:
     @IBOutlet private weak var buttonsStackView: UIStackView!
     @IBOutlet private weak var backButton: Button!
     @IBOutlet private weak var nextButton: Button!
-    
-    private lazy var gradientManager: GradientManager = {
-        return GradientManager(frame: view.bounds)
-    }()
-    
-    private lazy var backgroundView: UIView = {
-        return gradientManager.createStaticGradient(colors: [#colorLiteral(red: 0.1254607141, green: 0.1326543987, blue: 0.2668849528, alpha: 1), #colorLiteral(red: 0.34746629, green: 0.1312789619, blue: 0.2091784477, alpha: 1)],
-                                                    direction: .up,
-                                                    alpha: 1)
-    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let backgroundView = GradientHelper.makeDefaultStaticGradient(for: view.bounds)
         view.addSubview(backgroundView)
         view.sendSubviewToBack(backgroundView)
         
