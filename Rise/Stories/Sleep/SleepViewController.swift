@@ -12,9 +12,6 @@ import UserNotifications
 final class SleepViewController: UIViewController {
     
     // MARK: Properties
-    private var gradientManager: GradientManager? {
-        return GradientManager(frame: view.bounds)
-    }
     private let textColor = "textColor"
     
     // MARK: IBOutlets
@@ -36,11 +33,9 @@ final class SleepViewController: UIViewController {
     }
     
     private func createBackground() {
-        guard let gradientView = gradientManager?.createStaticGradient(colors: [#colorLiteral(red: 0.1254607141, green: 0.1326543987, blue: 0.2668849528, alpha: 1), #colorLiteral(red: 0.34746629, green: 0.1312789619, blue: 0.2091784477, alpha: 1)],
-                                                                       direction: .up,
-                                                                       alpha: 1) else { return }
-        view.addSubview(gradientView)
-        view.sendSubviewToBack(gradientView)
+        let backgroundView = GradientHelper.makeDefaultStaticGradient(for: view.bounds)
+        view.addSubview(backgroundView)
+        view.sendSubviewToBack(backgroundView)
     }
     
     // MARK: Notification center methods
