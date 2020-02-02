@@ -9,7 +9,7 @@
 import Foundation
 
 final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDelegate {
-    unowned var view: TodayStoryViewInput
+    private unowned var view: TodayStoryViewInput
     
     private let getSunTime: GetSunTime
     private let getPlan: GetPlan
