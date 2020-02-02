@@ -36,6 +36,8 @@
 		7E708A3B23BFD0C7003B5702 /* PlanCreatedSetupPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3A23BFD0C7003B5702 /* PlanCreatedSetupPlanViewController.swift */; };
 		7E708A3E23BFD917003B5702 /* ChangePlanPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3D23BFD917003B5702 /* ChangePlanPresenter.swift */; };
 		7E708A4023BFD92D003B5702 /* ChangePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3F23BFD92D003B5702 /* ChangePlanViewController.swift */; };
+		7E76E5A923E734C200CC4E6D /* ChangePlanAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E76E5A823E734C200CC4E6D /* ChangePlanAssembler.swift */; };
+		7E76E5AB23E734F500CC4E6D /* ChangePlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E76E5AA23E734F500CC4E6D /* ChangePlan.storyboard */; };
 		7E84EB25239D19CF00E02050 /* Confirmation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E84EB24239D19CF00E02050 /* Confirmation.storyboard */; };
 		7E84EB27239D1A5700E02050 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E84EB26239D1A5700E02050 /* ConfirmationViewController.swift */; };
 		7E8AB6CE23A18D27009CE41A /* WakeUpTimeSetupPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8AB6CD23A18D27009CE41A /* WakeUpTimeSetupPlanViewController.swift */; };
@@ -99,8 +101,8 @@
 		7ED962AC2336334A00CD2408 /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED962AB2336334A00CD2408 /* AnimationManager.swift */; };
 		7ED962AF2336649E00CD2408 /* PlanInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED962AD2336649E00CD2408 /* PlanInfoTableViewCell.swift */; };
 		7ED962B02336649E00CD2408 /* PlanInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ED962AE2336649E00CD2408 /* PlanInfoTableViewCell.xib */; };
-		7EE1399323E36C5C003895D4 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 7EE1399223E36C5C003895D4 /* SwiftPackageProductDependency */; };
-		7EE1399523E36C75003895D4 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 7EE1399423E36C75003895D4 /* SwiftPackageProductDependency */; };
+		7EE1399323E36C5C003895D4 /* AnimatedGradientView in Frameworks */ = {isa = PBXBuildFile; productRef = 7EE1399223E36C5C003895D4 /* AnimatedGradientView */; };
+		7EE1399523E36C75003895D4 /* AIFlatSwitch in Frameworks */ = {isa = PBXBuildFile; productRef = 7EE1399423E36C75003895D4 /* AIFlatSwitch */; };
 		7EE640492378665D005BE355 /* SunTimeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE640482378665D005BE355 /* SunTimeRepository.swift */; };
 		7EE6404B2378666F005BE355 /* SunTimeLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6404A2378666F005BE355 /* SunTimeLocalDataSource.swift */; };
 		7EE6404D23786678005BE355 /* SunTimeRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6404C23786678005BE355 /* SunTimeRemoteDataSource.swift */; };
@@ -109,10 +111,9 @@
 		7EEA217923B6A3B400354BEA /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEA217823B6A3B400354BEA /* Presenter.swift */; };
 		92B78CFA229FAF6C0087240B /* SectionedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B78CF8229FAF6C0087240B /* SectionedTableViewCell.swift */; };
 		92B78CFB229FAF6C0087240B /* SectionedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 92B78CF9229FAF6C0087240B /* SectionedTableViewCell.xib */; };
-		92BC919422AB24D800BB1D19 /* GradientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BC919322AB24D800BB1D19 /* GradientManager.swift */; };
+		92BC919422AB24D800BB1D19 /* GradientHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BC919322AB24D800BB1D19 /* GradientHelper.swift */; };
 		92D12FD622A4045E0093B0A3 /* PickerDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D12FD522A4045E0093B0A3 /* PickerDataModel.swift */; };
 		92D12FDD22A44B3B0093B0A3 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D12FDC22A44B3B0093B0A3 /* CustomTabBarController.swift */; };
-		92D41C2622AC04DF00706CD3 /* ArrayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D41C2522AC04DF00706CD3 /* ArrayManager.swift */; };
 		92D7D6532296F297009321AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6522296F297009321AE /* AppDelegate.swift */; };
 		92D7D6552296F297009321AE /* SleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6542296F297009321AE /* SleepViewController.swift */; };
 		92D7D6582296F297009321AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92D7D6562296F297009321AE /* Main.storyboard */; };
@@ -170,6 +171,8 @@
 		7E708A3A23BFD0C7003B5702 /* PlanCreatedSetupPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCreatedSetupPlanViewController.swift; sourceTree = "<group>"; };
 		7E708A3D23BFD917003B5702 /* ChangePlanPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanPresenter.swift; sourceTree = "<group>"; };
 		7E708A3F23BFD92D003B5702 /* ChangePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanViewController.swift; sourceTree = "<group>"; };
+		7E76E5A823E734C200CC4E6D /* ChangePlanAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanAssembler.swift; sourceTree = "<group>"; };
+		7E76E5AA23E734F500CC4E6D /* ChangePlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChangePlan.storyboard; sourceTree = "<group>"; };
 		7E84EB24239D19CF00E02050 /* Confirmation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Confirmation.storyboard; sourceTree = "<group>"; };
 		7E84EB26239D1A5700E02050 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
 		7E8AB6CD23A18D27009CE41A /* WakeUpTimeSetupPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUpTimeSetupPlanViewController.swift; sourceTree = "<group>"; };
@@ -246,10 +249,9 @@
 		7EEA217823B6A3B400354BEA /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		92B78CF8229FAF6C0087240B /* SectionedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionedTableViewCell.swift; sourceTree = "<group>"; };
 		92B78CF9229FAF6C0087240B /* SectionedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionedTableViewCell.xib; sourceTree = "<group>"; };
-		92BC919322AB24D800BB1D19 /* GradientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientManager.swift; sourceTree = "<group>"; };
+		92BC919322AB24D800BB1D19 /* GradientHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientHelper.swift; sourceTree = "<group>"; };
 		92D12FD522A4045E0093B0A3 /* PickerDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerDataModel.swift; sourceTree = "<group>"; };
 		92D12FDC22A44B3B0093B0A3 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
-		92D41C2522AC04DF00706CD3 /* ArrayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayManager.swift; sourceTree = "<group>"; };
 		92D7D64F2296F297009321AE /* Rise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D7D6522296F297009321AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92D7D6542296F297009321AE /* SleepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepViewController.swift; sourceTree = "<group>"; };
@@ -276,8 +278,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7EE1399323E36C5C003895D4 /* BuildFile in Frameworks */,
-				7EE1399523E36C75003895D4 /* BuildFile in Frameworks */,
+				7EE1399323E36C5C003895D4 /* AnimatedGradientView in Frameworks */,
+				7EE1399523E36C75003895D4 /* AIFlatSwitch in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,9 +378,10 @@
 		7E708A3C23BFD8F2003B5702 /* ChangePlan */ = {
 			isa = PBXGroup;
 			children = (
+				7E76E5A823E734C200CC4E6D /* ChangePlanAssembler.swift */,
 				92D12FD722A4237C0093B0A3 /* ExpandingCell */,
-				7E708A3D23BFD917003B5702 /* ChangePlanPresenter.swift */,
 				7E708A3F23BFD92D003B5702 /* ChangePlanViewController.swift */,
+				7E708A3D23BFD917003B5702 /* ChangePlanPresenter.swift */,
 				7E31497E23425D3700941606 /* ChangePlanTableView.swift */,
 			);
 			path = ChangePlan;
@@ -473,10 +476,10 @@
 		7EB9F33E23C20252002A6DD3 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				7EB9F34723C203E6002A6DD3 /* GetPlan.swift */,
 				7EB9F34123C2028D002A6DD3 /* CreatePlan.swift */,
 				7EB9F34323C20347002A6DD3 /* UpdatePlan.swift */,
 				7EB9F34523C20379002A6DD3 /* DeletePlan.swift */,
-				7EB9F34723C203E6002A6DD3 /* GetPlan.swift */,
 				7EB9F34923C2045A002A6DD3 /* ObservePlan.swift */,
 				7EB9F34B23C20504002A6DD3 /* GetSunTime.swift */,
 			);
@@ -532,6 +535,7 @@
 				92D7D65B2296F298009321AE /* LaunchScreen.storyboard */,
 				7E3980D42360D0020059C592 /* Intro.storyboard */,
 				92D7D6562296F297009321AE /* Main.storyboard */,
+				7E76E5AA23E734F500CC4E6D /* ChangePlan.storyboard */,
 				7E4798F2239D85D5007FB8F2 /* SetupPlan.storyboard */,
 				7E4798F6239D8A33007FB8F2 /* Settings.storyboard */,
 				7E84EB24239D19CF00E02050 /* Confirmation.storyboard */,
@@ -598,8 +602,7 @@
 				7EB1C03C23412A9C0028237E /* PersonalPlanHelper.swift */,
 				7E98FE66231C3D5C0065FB09 /* UserDefaultsManager.swift */,
 				7ED962AB2336334A00CD2408 /* AnimationManager.swift */,
-				92D41C2522AC04DF00706CD3 /* ArrayManager.swift */,
-				92BC919322AB24D800BB1D19 /* GradientManager.swift */,
+				92BC919322AB24D800BB1D19 /* GradientHelper.swift */,
 				7E98FE64231C30C10065FB09 /* AlertPresenter.swift */,
 				7E31497C23425CA600941606 /* TableViewDataSource.swift */,
 				7E695A33234A675F0098213D /* CollectionViewDataSource.swift */,
@@ -725,8 +728,8 @@
 			);
 			name = Rise;
 			packageProductDependencies = (
-				7EE1399223E36C5C003895D4 /* SwiftPackageProductDependency */,
-				7EE1399423E36C75003895D4 /* SwiftPackageProductDependency */,
+				7EE1399223E36C5C003895D4 /* AnimatedGradientView */,
+				7EE1399423E36C75003895D4 /* AIFlatSwitch */,
 			);
 			productName = Rise;
 			productReference = 92D7D64F2296F297009321AE /* Rise.app */;
@@ -783,8 +786,8 @@
 			);
 			mainGroup = 92D7D6462296F297009321AE;
 			packageReferences = (
-				7EE1398C23E36B97003895D4 /* RemoteSwiftPackageReference */,
-				7EE1398F23E36BD5003895D4 /* RemoteSwiftPackageReference */,
+				7EE1398C23E36B97003895D4 /* XCRemoteSwiftPackageReference "AnimatedGradientView" */,
+				7EE1398F23E36BD5003895D4 /* XCRemoteSwiftPackageReference "AIFlatSwitch" */,
 			);
 			productRefGroup = 92D7D6502296F297009321AE /* Products */;
 			projectDirPath = "";
@@ -815,6 +818,7 @@
 				7E4798F7239D8A33007FB8F2 /* Settings.storyboard in Resources */,
 				92D7D65D2296F298009321AE /* LaunchScreen.storyboard in Resources */,
 				7ED962B02336649E00CD2408 /* PlanInfoTableViewCell.xib in Resources */,
+				7E76E5AB23E734F500CC4E6D /* ChangePlan.storyboard in Resources */,
 				92B78CFB229FAF6C0087240B /* SectionedTableViewCell.xib in Resources */,
 				92D7D65A2296F298009321AE /* Assets.xcassets in Resources */,
 				7E4198222323CA7F007867AB /* DaysCollectionViewCell.xib in Resources */,
@@ -886,11 +890,10 @@
 				7EB9F35423C36B54002A6DD3 /* SetupPlanAssembler.swift in Sources */,
 				7EB9003E23256AC9006EB9A8 /* DesignableContainerView.swift in Sources */,
 				7E0834AC2387351400BA1AE8 /* DateExtensions.swift in Sources */,
-				92D41C2622AC04DF00706CD3 /* ArrayManager.swift in Sources */,
 				7E695A34234A675F0098213D /* CollectionViewDataSource.swift in Sources */,
 				7EB1C03D23412A9C0028237E /* PersonalPlanHelper.swift in Sources */,
 				7E708A3923BFD09B003B5702 /* WentSleepSetupPlanViewController.swift in Sources */,
-				92BC919422AB24D800BB1D19 /* GradientManager.swift in Sources */,
+				92BC919422AB24D800BB1D19 /* GradientHelper.swift in Sources */,
 				7E052A422352377E005D7FAD /* RiseError.swift in Sources */,
 				92D12FDD22A44B3B0093B0A3 /* CustomTabBarController.swift in Sources */,
 				7E84EB27239D1A5700E02050 /* ConfirmationViewController.swift in Sources */,
@@ -914,6 +917,7 @@
 				7EB1C0392340FDB00028237E /* SetupPlanPresenter.swift in Sources */,
 				7EE6404D23786678005BE355 /* SunTimeRemoteDataSource.swift in Sources */,
 				7E91D9622371E4850087436F /* DailyPlanTime.swift in Sources */,
+				7E76E5A923E734C200CC4E6D /* ChangePlanAssembler.swift in Sources */,
 				7EE640512378669F005BE355 /* SunTimeModelBuilder.swift in Sources */,
 				7EB9F34A23C2045A002A6DD3 /* ObservePlan.swift in Sources */,
 				92B78CFA229FAF6C0087240B /* SectionedTableViewCell.swift in Sources */,
@@ -1270,7 +1274,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7EE1398C23E36B97003895D4 /* RemoteSwiftPackageReference */ = {
+		7EE1398C23E36B97003895D4 /* XCRemoteSwiftPackageReference "AnimatedGradientView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rwbutler/AnimatedGradientView";
 			requirement = {
@@ -1278,7 +1282,7 @@
 				minimumVersion = 2.1.0;
 			};
 		};
-		7EE1398F23E36BD5003895D4 /* RemoteSwiftPackageReference */ = {
+		7EE1398F23E36BD5003895D4 /* XCRemoteSwiftPackageReference "AIFlatSwitch" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/cocoatoucher/AIFlatSwitch";
 			requirement = {
@@ -1289,14 +1293,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7EE1399223E36C5C003895D4 /* SwiftPackageProductDependency */ = {
+		7EE1399223E36C5C003895D4 /* AnimatedGradientView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7EE1398C23E36B97003895D4 /* RemoteSwiftPackageReference */;
+			package = 7EE1398C23E36B97003895D4 /* XCRemoteSwiftPackageReference "AnimatedGradientView" */;
 			productName = AnimatedGradientView;
 		};
-		7EE1399423E36C75003895D4 /* SwiftPackageProductDependency */ = {
+		7EE1399423E36C75003895D4 /* AIFlatSwitch */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7EE1398F23E36BD5003895D4 /* RemoteSwiftPackageReference */;
+			package = 7EE1398F23E36BD5003895D4 /* XCRemoteSwiftPackageReference "AIFlatSwitch" */;
 			productName = AIFlatSwitch;
 		};
 /* End XCSwiftPackageProductDependency section */
