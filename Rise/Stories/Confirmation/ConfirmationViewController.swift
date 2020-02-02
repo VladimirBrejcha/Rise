@@ -11,11 +11,11 @@ import UIKit
 protocol ConfirmationViewInput: AnyObject {
     func updateTitle(with text: String)
     func updateDescription(with text: String)
-    func updateResheduleTitle(with text: String)
-    
-    func setDatePicker(value: Date)
-    func showDatePicker(_ show: Bool)
-    func enableConfirmButton(_ enable: Bool)
+
+    func showButtons(_ show: Bool)
+    func showRescheduleButton(_ show: Bool)
+    func updateConfirmButtonTitle(with text: String)
+    func showLoadingView(_ show: Bool)
     
     func dismiss()
 }
@@ -23,22 +23,24 @@ protocol ConfirmationViewInput: AnyObject {
 protocol ConfirmationViewOutput: ViewOutput {
     func reshedulePressed()
     func confirmPressed()
-    func timeValueUpdated(_ value: Date)
 }
 
 final class ConfirmationViewController: UIViewController, ConfirmationViewInput {
     var output: ConfirmationViewOutput!
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var resheduleButton: Button!
-    @IBOutlet weak var confirmButton: Button!
-    @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var datePickerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var buttonsStackView: UIStackView!
+    @IBOutlet private weak var buttonsStackViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var resheduleButton: Button!
+    @IBOutlet private weak var confirmButton: Button!
+    @IBOutlet private weak var loadingView: LoadingView!
+    @IBOutlet private weak var loadingViewHeightConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadingView.containerView.background = .clear
         output.viewDidLoad()
     }
     
@@ -62,44 +64,42 @@ final class ConfirmationViewController: UIViewController, ConfirmationViewInput 
         output.confirmPressed()
     }
     
-    @IBAction func datePickerValueUpdated(_ sender: UIDatePicker) {
-        output.timeValueUpdated(sender.date)
-    }
-    
     // MARK: - ConfirmationViewInput -
     func updateTitle(with text: String) {
         titleLabel.text = text
     }
     
     func updateDescription(with text: String) {
-        UIView.transition(with: descriptionLabel,
-                          duration: 0.36,
+        UIView.transition(with: descriptionLabel, duration: 0.36,
                           options: .transitionCrossDissolve,
-                          animations: {
-                            self.descriptionLabel.text = text
-        },
+                          animations:
+            { self.descriptionLabel.text = text },
                           completion: nil)
     }
     
-    func updateResheduleTitle(with text: String) {
-        resheduleButton.setTitle(text, for: .normal)
+    func showButtons(_ show: Bool) {
+        UIView.animate(withDuration: 0.1) {
+            self.buttonsStackView.isHidden = !show
+            self.buttonsStackViewHeightConstraint.constant = show ? 50 : 0
+        }
     }
     
-    func enableConfirmButton(_ enable: Bool) {
-        confirmButton.isEnabled = enable
+    func showRescheduleButton(_ show: Bool) {
+        resheduleButton.isHidden = !show
     }
     
-    func setDatePicker(value: Date) {
-        datePicker.setDate(value, animated: true)
+    func updateConfirmButtonTitle(with text: String) {
+        confirmButton.setTitle(text, for: .normal)
     }
-    
-    func showDatePicker(_ show: Bool) {
+        
+    func showLoadingView(_ show: Bool) {
         UIView.animate(withDuration: 0.06, animations: {
-            self.datePicker.alpha = show ? 1 : 0
+            self.loadingView.alpha = show ? 1 : 0
         }) { _ in
             UIView.animate(withDuration: 0.3) {
-                self.datePickerHeightConstraint.constant = show ? 200 : 0
+                self.loadingViewHeightConstraint.constant = show ? 100 : 0
                 self.view.layoutIfNeeded()
+                self.loadingView.showLoading(show)
             }
         }
     }

@@ -25,9 +25,6 @@ final class ConfirmationPresenter: ConfirmationViewOutput {
             : "Confirm if you went sleep at the planned time yesterday or reshedule Rise plan to match your current sleep schedule"
     }
     
-    private var pickedTime: Date?
-    private var isResheduling: Bool = false
-    
     private var dismiss: (() -> Void)?
     
     required init(
@@ -48,7 +45,7 @@ final class ConfirmationPresenter: ConfirmationViewOutput {
                 return
         }
 
-        if PersonalPlanHelper.checkIfConfirmedForToday(plan: plan) {
+        if PersonalPlanHelper.isConfirmedForToday(plan: plan) {
             dismiss = { [weak self] in self?.view.dismiss() }
             return
         }
@@ -84,7 +81,6 @@ final class ConfirmationPresenter: ConfirmationViewOutput {
         } else {
             view.updateTitle(with: "You did not show up previous days")
         }
-        view.setDatePicker(value: yesterdayPlanToSleepTime)
         view.updateDescription(with: descriptionString)
     }
     
@@ -92,37 +88,55 @@ final class ConfirmationPresenter: ConfirmationViewOutput {
         dismiss?()
     }
     
-    func reshedulePressed() {
-        isResheduling.toggle()
-        view.showDatePicker(isResheduling)
-        view.updateResheduleTitle(with: isResheduling ? "Cancel" : "Reshedule")
-        view.enableConfirmButton(!isResheduling)
-        
-        view.updateDescription(
-            with:
-            isResheduling
-                ? "Let's update Rise plan to match your current sleep schedule! Enter the time you went sleep last time"
-                : descriptionString
-        )
-    }
+    private var isResheduled: Bool = false
     
-    func confirmPressed() {
-        guard var plan = personalPlan else { return }
-        
-        if isResheduling {
-            
+    func reshedulePressed() {
+        guard let plan = personalPlan else {
+            view.dismiss()
+            return
         }
         
-        plan.latestConfirmedDay = Date()
-        if (updatePlan.execute(plan)) {
+        guard let resheduledPlan = PersonalPlanHelper.reshedule(plan: plan) else {
             view.dismiss()
+            return
+        }
+        
+        isResheduled = true
+        
+        if (updatePlan.execute(resheduledPlan)) {
+            view.showLoadingView(true)
+            view.showButtons(false)
+            view.updateTitle(with: "Resheduling")
+            view.updateDescription(with: "Rise plan is being updated...")
+            view.showRescheduleButton(false)
+            
+            Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
+                self.view.showLoadingView(false)
+                self.view.showButtons(true)
+                self.view.updateConfirmButtonTitle(with: "Continue")
+                self.view.updateDescription(with: "Successfully completed")
+            }
         } else {
             view.dismiss()
         }
     }
     
-    func timeValueUpdated(_ value: Date) {
-        view.enableConfirmButton(true)
-        pickedTime = value
+    func confirmPressed() {
+        guard let plan = personalPlan else {
+            view.dismiss()
+            return
+        }
+        
+        if isResheduled {
+            view.dismiss()
+            return
+        }
+        
+        let confirmedPlan = PersonalPlanHelper.confirm(plan: plan)
+        if (updatePlan.execute(confirmedPlan)) {
+            view.dismiss()
+        } else {
+            view.dismiss()
+        }
     }
 }
