@@ -23,6 +23,9 @@ enum Story {
     case wentSleepSetupPlan(wentSleepOutput: (Date) -> Void)
     case planCreatedSetupPlan
     
+    // change plan
+    case changePlan
+    
     // confirmation
     case confirmation
     
@@ -58,6 +61,8 @@ enum Story {
         case .planCreatedSetupPlan:
             let controller = Storyboard.setupPlan.instantiateViewController(of: PlanCreatedSetupPlanViewController.self)
             return controller
+        case .changePlan:
+            return ChangePlanAssembler().assemble()
         case .confirmation:
             return ConfirmationAssembler().assemble()
         }
