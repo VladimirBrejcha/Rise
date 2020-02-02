@@ -132,7 +132,7 @@ final class PersonalPlanHelper {
         return (Double(duration - (duration - getDaysCompletedNumber(for: plan))) / Double(duration))
     }
     
-    static func checkIfConfirmedForToday(plan: PersonalPlan) -> Bool {
+    static func isConfirmedForToday(plan: PersonalPlan) -> Bool {
         return calendar.isDate(Date(), inSameDayAs: plan.latestConfirmedDay)
     }
     
