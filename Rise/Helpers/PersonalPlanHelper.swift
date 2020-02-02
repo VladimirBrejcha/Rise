@@ -84,12 +84,17 @@ final class PersonalPlanHelper {
         return plan
     }
     
-    static func pause(_ paused: Bool, plan: PersonalPlan) -> PersonalPlan {
+    static func pause(_ pause: Bool, plan: PersonalPlan) -> PersonalPlan {
         var plan = plan
-        plan.latestConfirmedDay = Date()
-        plan.paused = paused
         
-        return plan
+        plan.paused = pause
+        
+        if pause {
+            plan.latestConfirmedDay = Date() // todo: - yesterday?
+            return plan
+        } else {
+            return reshedule(plan: plan) ?? plan // todo: - should reshedule happen here?
+        }
     }
     
     // MARK: - Additional plan info -
