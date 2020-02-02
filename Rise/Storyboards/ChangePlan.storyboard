@@ -1,7 +1,68 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Change Plan View Controller-->
+        <scene sceneID="d4i-Qk-B7b">
+            <objects>
+                <viewController storyboardIdentifier="ChangePlanViewController" id="leG-iY-493" customClass="ChangePlanViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wos-9B-kFo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sS2-kg-BzT" customClass="Button" customModule="Rise" customModuleProvider="target">
+                                <rect key="frame" x="10" y="842" width="394" height="30"/>
+                                <state key="normal" title="Save"/>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="T54-d5-rcW">
+                                <rect key="frame" x="0.0" y="104" width="414" height="728"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e8M-Xk-MCJ">
+                                <rect key="frame" x="367" y="59" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="g78-IX-cGo"/>
+                                    <constraint firstAttribute="height" constant="35" id="ipG-tf-0eo"/>
+                                </constraints>
+                                <color key="tintColor" name="LightPink"/>
+                                <state key="normal" image="cancel"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="T54-d5-rcW" firstAttribute="leading" secondItem="UlE-Na-PZm" secondAttribute="leading" id="CIj-kz-9P7"/>
+                            <constraint firstItem="UlE-Na-PZm" firstAttribute="trailing" secondItem="T54-d5-rcW" secondAttribute="trailing" id="Fc3-ef-RLu"/>
+                            <constraint firstItem="sS2-kg-BzT" firstAttribute="leading" secondItem="UlE-Na-PZm" secondAttribute="leading" constant="10" id="LFZ-1y-DE1"/>
+                            <constraint firstItem="sS2-kg-BzT" firstAttribute="bottom" secondItem="UlE-Na-PZm" secondAttribute="bottom" constant="10" id="TO0-yL-iVt"/>
+                            <constraint firstAttribute="trailing" secondItem="e8M-Xk-MCJ" secondAttribute="trailing" constant="12" id="VnG-VK-7vU"/>
+                            <constraint firstItem="UlE-Na-PZm" firstAttribute="trailing" secondItem="sS2-kg-BzT" secondAttribute="trailing" constant="10" id="flS-bW-GQo"/>
+                            <constraint firstItem="T54-d5-rcW" firstAttribute="top" secondItem="e8M-Xk-MCJ" secondAttribute="bottom" constant="10" id="qOh-6i-LmY"/>
+                            <constraint firstItem="e8M-Xk-MCJ" firstAttribute="top" secondItem="UlE-Na-PZm" secondAttribute="top" constant="15" id="v83-iB-gNH"/>
+                            <constraint firstItem="sS2-kg-BzT" firstAttribute="top" secondItem="T54-d5-rcW" secondAttribute="bottom" constant="10" id="xoq-g8-QoF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UlE-Na-PZm"/>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="e8M-Xk-MCJ" id="wdB-Jg-V1u"/>
+                        <outlet property="saveButton" destination="sS2-kg-BzT" id="bTU-hm-KpT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dSI-RP-2RS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="119"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cancel" width="75" height="75"/>
+        <namedColor name="LightPink">
+            <color red="0.71764705882352942" green="0.61568627450980395" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
