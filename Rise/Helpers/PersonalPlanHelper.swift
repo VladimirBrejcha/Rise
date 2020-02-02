@@ -8,7 +8,6 @@
 
 import Foundation
 
-fileprivate let calendar = Calendar.autoupdatingCurrent
 fileprivate let hoursMinutesDateFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "HH:mm"
@@ -81,6 +80,14 @@ final class PersonalPlanHelper {
     static func confirm(plan: PersonalPlan) -> PersonalPlan {
         var plan = plan
         plan.latestConfirmedDay = Date()
+        
+        return plan
+    }
+    
+    static func pause(_ paused: Bool, plan: PersonalPlan) -> PersonalPlan {
+        var plan = plan
+        plan.latestConfirmedDay = Date()
+        plan.paused = paused
         
         return plan
     }

@@ -23,7 +23,7 @@ enum Story {
     case wentSleepSetupPlan(wentSleepOutput: (Date) -> Void)
     case planCreatedSetupPlan
     
-    // popUp
+    // confirmation
     case confirmation
     
     func configure() -> UIViewController {

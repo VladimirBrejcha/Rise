@@ -12,9 +12,6 @@ import XCTest
 class RisePlanTests: XCTestCase {
     
     var risePlan: PersonalPlan?
-    var calendar: Calendar {
-        return Calendar.current
-    }
 
     override func setUp() {
         let wakeUpTimeDateComponents = DateComponents(

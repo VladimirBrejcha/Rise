@@ -8,8 +8,10 @@
 
 import Foundation
 
+let calendar = Calendar.autoupdatingCurrent
+
 extension Date {
     func appending(days: Int) -> Date? {
-        return Calendar.current.date(byAdding: .day, value: days, to: self)
+        return calendar.date(byAdding: .day, value: days, to: self)
     }
 }

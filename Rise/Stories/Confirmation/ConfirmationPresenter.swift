@@ -50,7 +50,6 @@ final class ConfirmationPresenter: ConfirmationViewOutput {
             return
         }
 
-        let calendar = Calendar.current
         let today = calendar.startOfDay(for: Date())
         
         guard let yesterday = calendar.date(byAdding: .day, value: -1, to: today)

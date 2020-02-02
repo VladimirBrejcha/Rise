@@ -59,7 +59,8 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
             let durationText = "\(PersonalPlanHelper.StringRepresentation.getSleepDurationHours(for: plan)) hours of sleep daily"
             let wakeUpText = "Will wake up at \(PersonalPlanHelper.StringRepresentation.getWakeTime(for: plan))"
             let toSleepText = "Will sleep at \(PersonalPlanHelper.StringRepresentation.getFallAsleepTime(for: plan))"
-            let syncText = "Synchronized with sunrise"
+//            let syncText = "Synchronized with sunrise"
+            let syncText = "Coming soon"
             
             view.updateProgressView(with: PersonalPlanHelper.getProgress(for: plan), maxProgress: PersonalPlanHelper.StringRepresentation.getPlanDuration(for: plan))
             view.updatePlanInfo(with: [durationText, wakeUpText, toSleepText, syncText])

@@ -70,7 +70,7 @@ final class SleepViewController: UIViewController {
         
         let date = timePicker.date
         
-        let components = Calendar.current.dateComponents([.hour, .minute], from: date)
+        let components = calendar.dateComponents([.hour, .minute], from: date)
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
         

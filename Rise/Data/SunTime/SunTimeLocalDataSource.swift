@@ -29,7 +29,7 @@ class SunTimeLocalDataSource {
         var returnArray = [DailySunTime]()
 
         for iteration in 0...numberOfDays - 1 {
-            guard let date = Calendar.current.date(byAdding: .day, value: iteration, to: day)
+            guard let date = calendar.date(byAdding: .day, value: iteration, to: day)
                 else {
                     return .failure(RiseError.errorCantFormatDate())
             }
@@ -81,7 +81,6 @@ class SunTimeLocalDataSource {
 
 fileprivate extension Date {
     func makeDayPredicate() -> NSPredicate {
-        let calendar = Calendar.current
         var components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: self)
         components.hour = 00
         components.minute = 00

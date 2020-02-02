@@ -76,7 +76,7 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
     // MARK: - DaysCollectionViewCellDelegate -
     func repeatButtonPressed(on cell: DaysCollectionViewCell) {
         if let index = cellModels.firstIndex(where: { cellModel in
-            return Calendar.current.isDate(cellModel.day, inSameDayAs: cell.cellModel.day)
+            return calendar.isDate(cellModel.day, inSameDayAs: cell.cellModel.day)
         }) {
             cellModels[index].sunErrorMessage = nil
             view.refreshCollectionView()
@@ -124,7 +124,6 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
                 cellModels[index.offset].planErrorMessage = "No Rise plan for the day"
             }
             
-            let calendar = Calendar.autoupdatingCurrent
             let today = Date()
             let yesterday = calendar.date(byAdding: .day, value: -1, to: today)
             let tomorrow = calendar.date(byAdding: .day, value: 1, to: today)
