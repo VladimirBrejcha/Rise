@@ -15,6 +15,7 @@ final class LoadingView: UIButton, NibLoadable {
     @IBOutlet private weak var repeatButton: Button!
     @IBOutlet private weak var errorLabel: UILabel!
     @IBOutlet private weak var animationView: UIView!
+    @IBOutlet var containerView: DesignableContainerView!
     
     private var animationManager: AnimationManager?
     private var animationLayer: CALayer?
