@@ -12,7 +12,6 @@ final class CustomTabBarController: UITabBarController {
     
     // MARK: Properties
     private var middleButtonBackgroundImageView = UIImageView()
-    private var gradientManager: GradientManager?
     
     // MARK: Life cycle
     override func viewDidLoad() {
@@ -30,22 +29,13 @@ final class CustomTabBarController: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setupBackground()
+        let backgroundView = GradientHelper.makeDefaultAnimatedGradient(for: view.bounds)
+        view.addSubview(backgroundView)
+        view.sendSubviewToBack(backgroundView)
         setupTabBarItems()
     }
     
     // MARK: UISetup Methods
-    private func setupBackground() {
-        gradientManager = GradientManager(frame: view.bounds)
-        gradientManager?.frame = view.bounds
-        let gradientView = gradientManager?.createAnimatedGradient(colors: [[#colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1), #colorLiteral(red: 0.4588235294, green: 0.168627451, blue: 0.2705882353, alpha: 1)],
-                                                                            [#colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1), #colorLiteral(red: 0.1490196078, green: 0.1568627451, blue: 0.3137254902, alpha: 1)],
-                                                                            [#colorLiteral(red: 0.1490196078, green: 0.1568627451, blue: 0.3137254902, alpha: 1), #colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1)],
-                                                                            [#colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1), #colorLiteral(red: 0.4588235294, green: 0.168627451, blue: 0.2705882353, alpha: 1)]], directions: [.up, .upLeft, .upRight, .up])
-        view.addSubview(gradientView ?? UIView())
-        view.sendSubviewToBack(gradientView ?? UIView())
-    }
-    
     private func setupTabBarItems() {
         
         tabBar.items![1].image = #imageLiteral(resourceName: "sleepIcon").withRenderingMode(.alwaysOriginal)
