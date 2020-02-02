@@ -57,18 +57,18 @@ final class GradientHelper {
     }
     
     // MARK: - Private -
-    private typealias GradientParameters = [(colors: [String], AnimatedGradientViewDirection, CAGradientLayerType)]
+    private typealias GradientParameters = (colors: [String], AnimatedGradientViewDirection, CAGradientLayerType)
+    
     private static func makeGradientParameters(
         from colors: [[UIColor]],
         with directions: [AnimatedGradientViewDirection],
-        and type: CAGradientLayerType) -> GradientParameters
+        and type: CAGradientLayerType) -> [GradientParameters]
     {
         let colorStringsArray = convertColorsToHexes(colors)
         
         return colorStringsArray
             .enumerated()
-            .map {
-                (index, array) -> (colors: [String], AnimatedGradientViewDirection, CAGradientLayerType) in
+            .map { (index, array) -> GradientParameters in
                 (colors: array, directions[index], type)
         }
     }
