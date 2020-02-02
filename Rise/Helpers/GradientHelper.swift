@@ -50,10 +50,56 @@ final class GradientHelper {
                 return UIView()
         }
         
-        let arrayManager = ArrayManager(colors: colors, directions: directions, type: .axial)
         let gradientView = AnimatedGradientView(frame: frame)
-        gradientView.animationValues = arrayManager.createGradientParameters()
+        gradientView.animationValues = makeGradientParameters(from: colors, with: directions, and: .axial)
         
         return gradientView
+    }
+    
+    // MARK: - Private -
+    private typealias GradientParameters = [(colors: [String], AnimatedGradientViewDirection, CAGradientLayerType)]
+    private static func makeGradientParameters(
+        from colors: [[UIColor]],
+        with directions: [AnimatedGradientViewDirection],
+        and type: CAGradientLayerType) -> GradientParameters
+    {
+        let colorStringsArray = convertColorsToHexes(colors)
+        
+        return colorStringsArray
+            .enumerated()
+            .map {
+                (index, array) -> (colors: [String], AnimatedGradientViewDirection, CAGradientLayerType) in
+                (colors: array, directions[index], type)
+        }
+    }
+    
+    private static func convertColorsToHexes(_ colors: [[UIColor]]) -> [[String]] {
+        return colors.map { $0.map { $0.hexString } }
+    }
+}
+
+fileprivate extension UIColor {
+    var hexString: String {
+        let colorRef = cgColor.components
+        let colorR = colorRef?[0] ?? 0
+        let colorG = colorRef?[1] ?? 0
+        let colorB = ((colorRef?.count ?? 0) > 2
+            ? colorRef?[2]
+            : colorG) ?? 0
+        
+        let colorA = cgColor.alpha
+        
+        var color = String(
+            format: "#%02lX%02lX%02lX",
+            lroundf(Float(colorR * 255)),
+            lroundf(Float(colorG * 255)),
+            lroundf(Float(colorB * 255))
+        )
+        
+        if colorA < 1 {
+            color += String(format: "%02lX", lroundf(Float(colorA)))
+        }
+        
+        return color
     }
 }
