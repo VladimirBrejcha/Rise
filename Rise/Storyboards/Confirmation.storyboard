@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -69,37 +69,30 @@
                                             <constraint firstAttribute="width" constant="50" id="pUS-pU-aT7"/>
                                         </constraints>
                                     </imageView>
-                                    <datePicker clipsSubviews="YES" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="xru-X0-xRV">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXp-8r-IzJ" customClass="LoadingView" customModule="Rise" customModuleProvider="target">
                                         <rect key="frame" x="20" y="161" width="354" height="0.0"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" id="pxn-Q6-UAO"/>
+                                            <constraint firstAttribute="height" id="7jE-zz-pdn"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="datePickerValueUpdated:" destination="2AF-jQ-OVM" eventType="valueChanged" id="xmI-3d-s7x"/>
-                                        </connections>
-                                    </datePicker>
+                                    </view>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="RRi-hd-6Dt" firstAttribute="top" secondItem="aXp-8r-IzJ" secondAttribute="bottom" constant="20" id="3eP-gX-ARR"/>
+                                    <constraint firstItem="aXp-8r-IzJ" firstAttribute="leading" secondItem="1CN-Nj-H2c" secondAttribute="leading" constant="20" symbolic="YES" id="5xa-1P-VJD"/>
                                     <constraint firstAttribute="trailing" secondItem="RRi-hd-6Dt" secondAttribute="trailing" constant="10" id="CjC-Sz-joq"/>
                                     <constraint firstItem="RRi-hd-6Dt" firstAttribute="leading" secondItem="1CN-Nj-H2c" secondAttribute="leading" constant="10" id="Ehh-iw-O6a"/>
                                     <constraint firstAttribute="bottom" secondItem="RRi-hd-6Dt" secondAttribute="bottom" constant="10" id="Ft3-Jy-gtd"/>
-                                    <constraint firstItem="RRi-hd-6Dt" firstAttribute="top" secondItem="xru-X0-xRV" secondAttribute="bottom" constant="20" id="KRJ-GE-i5p"/>
                                     <constraint firstAttribute="trailing" secondItem="Qox-KD-r3e" secondAttribute="trailing" constant="10" id="KsT-pe-8Kp"/>
                                     <constraint firstItem="Qox-KD-r3e" firstAttribute="leading" secondItem="1CN-Nj-H2c" secondAttribute="leading" constant="10" id="LSj-99-DXR"/>
                                     <constraint firstItem="8ur-nU-zko" firstAttribute="top" secondItem="zcd-pa-5NF" secondAttribute="bottom" constant="20" id="Uqv-7i-vLN"/>
                                     <constraint firstAttribute="trailing" secondItem="8ur-nU-zko" secondAttribute="trailing" constant="10" id="Ve9-fK-n1A"/>
+                                    <constraint firstAttribute="trailing" secondItem="aXp-8r-IzJ" secondAttribute="trailing" constant="20" symbolic="YES" id="Wg5-E6-XUu"/>
                                     <constraint firstItem="Qox-KD-r3e" firstAttribute="top" secondItem="8ur-nU-zko" secondAttribute="bottom" constant="10" id="Zdj-3E-zjR"/>
                                     <constraint firstItem="zcd-pa-5NF" firstAttribute="top" secondItem="1CN-Nj-H2c" secondAttribute="top" constant="20" id="ZuL-AC-JMm"/>
-                                    <constraint firstItem="xru-X0-xRV" firstAttribute="leading" secondItem="1CN-Nj-H2c" secondAttribute="leading" constant="20" symbolic="YES" id="eLO-uL-luW"/>
+                                    <constraint firstItem="aXp-8r-IzJ" firstAttribute="top" secondItem="Qox-KD-r3e" secondAttribute="bottom" constant="20" id="b3N-7R-Jeo"/>
                                     <constraint firstItem="zcd-pa-5NF" firstAttribute="centerX" secondItem="1CN-Nj-H2c" secondAttribute="centerX" id="gV8-sv-0HH"/>
                                     <constraint firstItem="8ur-nU-zko" firstAttribute="leading" secondItem="1CN-Nj-H2c" secondAttribute="leading" constant="10" id="rvq-lA-MKb"/>
-                                    <constraint firstItem="xru-X0-xRV" firstAttribute="top" secondItem="Qox-KD-r3e" secondAttribute="bottom" constant="20" id="vDB-Me-Da4"/>
-                                    <constraint firstAttribute="trailing" secondItem="xru-X0-xRV" secondAttribute="trailing" constant="20" symbolic="YES" id="vLD-rS-f8c"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -117,10 +110,12 @@
                         <viewLayoutGuide key="safeArea" id="Rmv-Kk-P7W"/>
                     </view>
                     <connections>
+                        <outlet property="buttonsStackView" destination="RRi-hd-6Dt" id="sNy-qg-hUu"/>
+                        <outlet property="buttonsStackViewHeightConstraint" destination="YOe-mw-iLV" id="Nhv-MZ-YTm"/>
                         <outlet property="confirmButton" destination="G6C-XR-Plh" id="0pz-xE-U38"/>
-                        <outlet property="datePicker" destination="xru-X0-xRV" id="Hvi-EX-zTb"/>
-                        <outlet property="datePickerHeightConstraint" destination="pxn-Q6-UAO" id="JBu-b5-1AN"/>
                         <outlet property="descriptionLabel" destination="Qox-KD-r3e" id="dg6-Hl-PV3"/>
+                        <outlet property="loadingView" destination="aXp-8r-IzJ" id="7Bu-RS-Kdx"/>
+                        <outlet property="loadingViewHeightConstraint" destination="7jE-zz-pdn" id="QBP-eX-vsT"/>
                         <outlet property="resheduleButton" destination="WHD-tR-u4h" id="kfP-wP-gUU"/>
                         <outlet property="titleLabel" destination="8ur-nU-zko" id="qIy-aT-KpF"/>
                     </connections>
