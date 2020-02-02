@@ -60,21 +60,16 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
         })
     }
     
-    var someFakeCheck = true
-    
     func viewWillAppear() {
-        if !someFakeCheck {
-            view.makeTabBar(visible: true)
-        }
+        view.makeTabBar(visible: true)
     }
     
     func viewDidAppear() {
         guard let plan = personalPlan else { return }
-
-        if someFakeCheck {
+        
+        if !PersonalPlanHelper.isConfirmedForToday(plan: plan) {
             view.makeTabBar(visible: false)
             view.present(controller: Story.confirmation.configure())
-            someFakeCheck = false
         }
     }
     
