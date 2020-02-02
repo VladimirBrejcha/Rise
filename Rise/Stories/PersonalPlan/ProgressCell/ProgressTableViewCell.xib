@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,44 +16,64 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="158"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Perfomance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pMf-uV-sxv">
-                        <rect key="frame" x="10" y="8" width="300" height="122"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcf-3R-uHC">
-                        <rect key="frame" x="20" y="116" width="8.5" height="16"/>
-                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
-                        <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="33" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dlh-YG-2ko">
-                        <rect key="frame" x="284" y="116" width="16" height="16"/>
-                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
-                        <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lhx-WI-zwX" customClass="ProgressBar" customModule="Rise" customModuleProvider="target">
-                        <rect key="frame" x="16" y="138" width="288" height="8"/>
-                        <color key="backgroundColor" white="1" alpha="0.050000000000000003" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uMx-89-yBS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="158"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Perfomance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pMf-uV-sxv">
+                                <rect key="frame" x="10" y="8" width="300" height="122"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcf-3R-uHC">
+                                <rect key="frame" x="20" y="114" width="8.5" height="16"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="33" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dlh-YG-2ko">
+                                <rect key="frame" x="284" y="114" width="16" height="16"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lhx-WI-zwX" customClass="ProgressBar" customModule="Rise" customModuleProvider="target">
+                                <rect key="frame" x="16" y="138" width="288" height="8"/>
+                                <color key="backgroundColor" white="1" alpha="0.050000000000000003" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="8" id="wv1-BG-bOm"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="8" id="wv1-BG-bOm"/>
+                            <constraint firstItem="lhx-WI-zwX" firstAttribute="top" secondItem="hcf-3R-uHC" secondAttribute="bottom" constant="8" id="Ayy-YB-Hes"/>
+                            <constraint firstAttribute="bottom" secondItem="lhx-WI-zwX" secondAttribute="bottom" constant="12" id="Bvw-Ul-fXP"/>
+                            <constraint firstItem="lhx-WI-zwX" firstAttribute="leading" secondItem="uMx-89-yBS" secondAttribute="leading" constant="16" id="KGV-Vv-mq6"/>
+                            <constraint firstAttribute="trailing" secondItem="dlh-YG-2ko" secondAttribute="trailing" constant="20" id="NEJ-Sb-IA6"/>
+                            <constraint firstItem="pMf-uV-sxv" firstAttribute="leading" secondItem="uMx-89-yBS" secondAttribute="leading" constant="10" id="ONl-92-ASE"/>
+                            <constraint firstItem="pMf-uV-sxv" firstAttribute="top" secondItem="uMx-89-yBS" secondAttribute="top" constant="8" id="dpj-px-Cj8"/>
+                            <constraint firstItem="lhx-WI-zwX" firstAttribute="top" secondItem="dlh-YG-2ko" secondAttribute="bottom" constant="8" id="eDp-Sf-X45"/>
+                            <constraint firstAttribute="trailing" secondItem="pMf-uV-sxv" secondAttribute="trailing" constant="10" id="fS2-bP-Nqo"/>
+                            <constraint firstItem="hcf-3R-uHC" firstAttribute="leading" secondItem="uMx-89-yBS" secondAttribute="leading" constant="20" id="lx2-L7-ZCu"/>
+                            <constraint firstItem="lhx-WI-zwX" firstAttribute="top" secondItem="pMf-uV-sxv" secondAttribute="bottom" constant="8" id="oqt-54-qrX"/>
+                            <constraint firstAttribute="trailing" secondItem="lhx-WI-zwX" secondAttribute="trailing" constant="16" id="s5B-OE-8oi"/>
                         </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qRa-VX-Ppw" customClass="LoadingView" customModule="Rise" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="158"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="lhx-WI-zwX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="0la-jG-rCy"/>
-                    <constraint firstAttribute="trailing" secondItem="pMf-uV-sxv" secondAttribute="trailing" constant="10" id="2Fv-j2-0H1"/>
-                    <constraint firstAttribute="trailing" secondItem="lhx-WI-zwX" secondAttribute="trailing" constant="16" id="5fz-yg-1vP"/>
-                    <constraint firstItem="pMf-uV-sxv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="7mN-xF-6UU"/>
-                    <constraint firstItem="lhx-WI-zwX" firstAttribute="top" secondItem="hcf-3R-uHC" secondAttribute="bottom" constant="6" id="9aT-gp-tD5"/>
-                    <constraint firstItem="lhx-WI-zwX" firstAttribute="top" secondItem="dlh-YG-2ko" secondAttribute="bottom" constant="6" id="DhL-Ch-WFG"/>
-                    <constraint firstAttribute="trailing" secondItem="dlh-YG-2ko" secondAttribute="trailing" constant="20" id="Jf9-dU-ojg"/>
-                    <constraint firstAttribute="bottom" secondItem="lhx-WI-zwX" secondAttribute="bottom" constant="12" id="MPe-I8-eSo"/>
-                    <constraint firstItem="hcf-3R-uHC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="eTg-WW-7sG"/>
-                    <constraint firstItem="lhx-WI-zwX" firstAttribute="top" secondItem="pMf-uV-sxv" secondAttribute="bottom" constant="8" id="l5i-Vk-wUv"/>
-                    <constraint firstItem="pMf-uV-sxv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="skI-9e-Xui"/>
+                    <constraint firstAttribute="bottom" secondItem="uMx-89-yBS" secondAttribute="bottom" id="D9l-RK-NiI"/>
+                    <constraint firstAttribute="trailing" secondItem="uMx-89-yBS" secondAttribute="trailing" id="PHP-H5-8MO"/>
+                    <constraint firstItem="qRa-VX-Ppw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="QL6-Gu-gD0"/>
+                    <constraint firstAttribute="trailing" secondItem="qRa-VX-Ppw" secondAttribute="trailing" id="aPF-Er-ypb"/>
+                    <constraint firstItem="uMx-89-yBS" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="g0v-wr-YDo"/>
+                    <constraint firstAttribute="bottom" secondItem="qRa-VX-Ppw" secondAttribute="bottom" id="lgz-Mo-iw6"/>
+                    <constraint firstItem="qRa-VX-Ppw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="uFv-U8-VoY"/>
+                    <constraint firstItem="uMx-89-yBS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="vAT-Vj-dva"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -64,8 +84,10 @@
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="cellContentView" destination="uMx-89-yBS" id="8p4-3z-xfR"/>
                 <outlet property="centerProgressLabel" destination="pMf-uV-sxv" id="2Ib-Up-zs6"/>
                 <outlet property="endProgressLabel" destination="dlh-YG-2ko" id="6Rf-q0-AHF"/>
+                <outlet property="loadingView" destination="qRa-VX-Ppw" id="W8e-yA-HSG"/>
                 <outlet property="progressBarView" destination="lhx-WI-zwX" id="zXM-Mc-j9N"/>
                 <outlet property="startProgressLabel" destination="hcf-3R-uHC" id="j5F-hO-oVu"/>
             </connections>
