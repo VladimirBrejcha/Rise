@@ -10,8 +10,32 @@ import Foundation
 
 let calendar = Calendar.autoupdatingCurrent
 
+enum Day {
+    case yesterday
+    case today
+    case tomorrow
+    
+    var date: Date {
+        guard let date = Date().appending(days: numberOfDaysFromToday)
+            else {
+                log("Failed to append \(numberOfDaysFromToday) days to today")
+                return Date()
+        }
+        return date
+    }
+    
+    private var numberOfDaysFromToday: Int {
+        switch self {
+        case .yesterday: return -1
+        case .today: return 0
+        case .tomorrow: return -1
+        }
+    }
+}
+
 extension Date {
     func appending(days: Int) -> Date? {
+        if days == 0 { return self }
         return calendar.date(byAdding: .day, value: days, to: self)
     }
 }
