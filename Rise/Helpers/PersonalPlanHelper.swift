@@ -112,9 +112,19 @@ final class PersonalPlanHelper {
     
     // MARK: - Additional plan info -
     static func getDailyTime(for plan: PersonalPlan, and date: Date) -> DailyPlanTime? {
+        var date = date
+        if plan.paused {
+            log("plan is paused, returning dailyTime for latest confirmed day")
+            date = plan.latestConfirmedDay
+        }
+        
         let daysSincePlanStart = getDaysSincePlanStart(for: plan, and: date)
-        if daysSincePlanStart < 0 { return nil }
+        if daysSincePlanStart < 0 {
+            log("daysSincePlanStart < 0, returning nil")
+            return nil
+        }
         if daysSincePlanStart > getPlanDuration(for: plan) {
+            log("daysSincePlanStart > planDuration, returning dailyTime for latest plan day")
             return getDailyTime(for: plan, and: plan.dateInterval.end)
         }
         let timeShiftSec = Double(plan.dailyShiftMin * (daysSincePlanStart - plan.daysMissed) * 60)
