@@ -9,7 +9,7 @@
 import Foundation
 
 final class SetupPlanPresenter: SetupPlanViewOutput {
-    weak var view: SetupPlanViewInput!
+    private weak var view: SetupPlanViewInput!
     
     private let createPlan: CreatePlan
     
