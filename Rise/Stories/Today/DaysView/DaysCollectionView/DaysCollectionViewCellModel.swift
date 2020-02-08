@@ -16,14 +16,14 @@ struct DaysCollectionViewCellModel {
     var planErrorMessage: String?
     
     mutating func update(sunTime: DailySunTime) {
-        self.sunTime = (sunrise: DatesConverter.formatDateToHHmm(date: sunTime.sunrise),
-                        sunset: DatesConverter.formatDateToHHmm(date: sunTime.sunset))
+        self.sunTime = (sunrise: sunTime.sunrise.HHmmString,
+                        sunset: sunTime.sunset.HHmmString)
         sunErrorMessage = nil
     }
     
     mutating func update(planTime: DailyPlanTime) {
-        self.planTime = (wake: DatesConverter.formatDateToHHmm(date: planTime.wake),
-                         sleep: DatesConverter.formatDateToHHmm(date: planTime.sleep))
+        self.planTime = (wake: planTime.wake.HHmmString,
+                         sleep: planTime.sleep.HHmmString)
         planErrorMessage = nil
     }
 }
