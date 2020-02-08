@@ -168,6 +168,7 @@ final class PersonalPlanHelper {
     }
     
     static func isConfirmedForToday(plan: PersonalPlan) -> Bool {
+        if plan.paused { return true }
         return calendar.isDate(Date(), inSameDayAs: plan.latestConfirmedDay)
     }
     
