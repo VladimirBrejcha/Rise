@@ -39,3 +39,11 @@ extension Date {
         return calendar.date(byAdding: .day, value: days, to: self)
     }
 }
+
+extension Date {
+    var HHmmString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        return dateFormatter.string(from: self)
+    }
+}
