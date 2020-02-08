@@ -16,7 +16,7 @@ enum PresentationStyle {
 }
 
 final class Presenter {
-    class func present(controller: UIViewController,
+    static func present(controller: UIViewController,
                        with style: PresentationStyle,
                        presentingController: UIViewController,
                        animated: Bool = true,

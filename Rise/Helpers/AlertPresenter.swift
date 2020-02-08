@@ -8,8 +8,8 @@
 
 import UIKit
 
-class AlertPresenter {
-    class func showAlert(with message: String,
+final class AlertPresenter {
+    static func showAlert(with message: String,
                    and customTitle: String? = nil,
                    customAction: UIAlertAction? = nil,
                    cancelHandler: (() -> Void)? = nil) {
@@ -24,7 +24,7 @@ class AlertPresenter {
         controller.present(alert, animated: true)
     }
     
-    class func show(alertController: UIAlertController) {
+    static func show(alertController: UIAlertController) {
         guard let controller = UIApplication.shared.keyWindow?.rootViewController?.toppestViewController else { return }
         controller.present(alertController, animated: true, completion: nil)
     }
@@ -57,24 +57,6 @@ fileprivate extension UIViewController {
             return firstChild.topPresentedController
         } else {
             return self.topPresentedController
-        }
-    }
-}
-
-extension UIColor {
-    func image(_ size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
-        return UIGraphicsImageRenderer(size: size).image { rendererContext in
-            self.setFill()
-            rendererContext.fill(CGRect(origin: .zero, size: size))
-        }
-    }
-}
-
-extension UIView {
-    func asImage() -> UIImage {
-        let renderer = UIGraphicsImageRenderer(bounds: bounds)
-        return renderer.image { rendererContext in
-            layer.render(in: rendererContext.cgContext)
         }
     }
 }
