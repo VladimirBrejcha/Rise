@@ -8,16 +8,18 @@
 
 import UIKit
 
-final class CustomTabBarController: UITabBarController {
+final class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
     
-    // MARK: Properties
-    private var middleButtonBackgroundImageView = UIImageView()
-    
-    // MARK: Life cycle
+    private let middleButtonBackgroundImageView = UIImageView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         delegate = self
+        
+        let backgroundView = GradientHelper.makeDefaultAnimatedGradient(for: view.bounds)
+        view.addSubview(backgroundView)
+        view.sendSubviewToBack(backgroundView)
         
         viewControllers = [Story.plan.configure(),
                            Story.today.configure(),
@@ -28,15 +30,6 @@ final class CustomTabBarController: UITabBarController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        let backgroundView = GradientHelper.makeDefaultAnimatedGradient(for: view.bounds)
-        view.addSubview(backgroundView)
-        view.sendSubviewToBack(backgroundView)
-        setupTabBarItems()
-    }
-    
-    // MARK: UISetup Methods
-    private func setupTabBarItems() {
         
         tabBar.items![1].image = #imageLiteral(resourceName: "sleepIcon").withRenderingMode(.alwaysOriginal)
         tabBar.items![1].selectedImage = #imageLiteral(resourceName: "sleepIconPressed").withRenderingMode(.alwaysOriginal)
@@ -50,7 +43,6 @@ final class CustomTabBarController: UITabBarController {
         UITabBar.appearance().shadowImage = UIImage()
     }
     
-    // MARK: TabBar UI setup
     override func viewSafeAreaInsetsDidChange() {
         super.viewSafeAreaInsetsDidChange()
         
@@ -74,12 +66,21 @@ final class CustomTabBarController: UITabBarController {
             :  #imageLiteral(resourceName: "Union")
     }
     
-}
-
-extension CustomTabBarController: UITabBarControllerDelegate  {
-    func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return CustomTransition(viewControllers: tabBarController.viewControllers)
+    // MARK: - UITabBarControllerDelegate -
+    func tabBarController(
+        _ tabBarController: UITabBarController,
+        animationControllerForTransitionFrom fromVC: UIViewController,
+        to toVC: UIViewController
+    ) -> UIViewControllerAnimatedTransitioning? {
+        CustomTransition(viewControllers: tabBarController.viewControllers)
     }
 }
 
-
+fileprivate extension UIColor {
+    func image(_ size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
+        return UIGraphicsImageRenderer(size: size).image { rendererContext in
+            self.setFill()
+            rendererContext.fill(CGRect(origin: .zero, size: size))
+        }
+    }
+}
