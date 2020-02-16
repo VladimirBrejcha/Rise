@@ -143,7 +143,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q7C-TX-der" customClass="DesignableContainerView" customModule="Rise" customModuleProvider="target">
                                 <rect key="frame" x="10" y="54" width="394" height="79"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Rise! " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuw-uY-MJR">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Rise! " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuw-uY-MJR">
                                         <rect key="frame" x="10" y="10" width="374" height="59"/>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -154,9 +154,9 @@
                                 <constraints>
                                     <constraint firstItem="yuw-uY-MJR" firstAttribute="leading" secondItem="Q7C-TX-der" secondAttribute="leading" constant="10" id="BKk-Wx-110"/>
                                     <constraint firstAttribute="bottom" secondItem="yuw-uY-MJR" secondAttribute="bottom" constant="10" id="Boa-SX-2Wd"/>
+                                    <constraint firstAttribute="width" secondItem="Q7C-TX-der" secondAttribute="height" multiplier="300:60" id="H6b-SE-Bdt"/>
                                     <constraint firstAttribute="trailing" secondItem="yuw-uY-MJR" secondAttribute="trailing" constant="10" id="Pil-2P-aCt"/>
                                     <constraint firstItem="yuw-uY-MJR" firstAttribute="top" secondItem="Q7C-TX-der" secondAttribute="top" constant="10" id="b0y-Ty-kLA"/>
-                                    <constraint firstAttribute="width" secondItem="Q7C-TX-der" secondAttribute="height" multiplier="300:60" id="yOd-c5-HIX"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -164,24 +164,36 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sleep planned in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4H-GS-uQy">
+                                <rect key="frame" x="10" y="767" width="394" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="A4H-GS-uQy" firstAttribute="leading" secondItem="ury-MB-qCt" secondAttribute="leading" constant="10" id="C5e-in-xlc"/>
                             <constraint firstItem="Q7C-TX-der" firstAttribute="top" secondItem="ury-MB-qCt" secondAttribute="top" constant="10" id="MwH-OO-f3I"/>
                             <constraint firstItem="ury-MB-qCt" firstAttribute="bottom" secondItem="x9i-c1-Zds" secondAttribute="bottom" constant="20" id="UVS-UY-qcw"/>
                             <constraint firstItem="x9i-c1-Zds" firstAttribute="leading" secondItem="ury-MB-qCt" secondAttribute="leading" constant="10" id="aCj-Xr-esR"/>
                             <constraint firstItem="ury-MB-qCt" firstAttribute="trailing" secondItem="Q7C-TX-der" secondAttribute="trailing" constant="10" id="bxb-Nb-AUq"/>
+                            <constraint firstItem="ury-MB-qCt" firstAttribute="trailing" secondItem="A4H-GS-uQy" secondAttribute="trailing" constant="10" id="g7h-MM-uiU"/>
                             <constraint firstItem="ury-MB-qCt" firstAttribute="trailing" secondItem="x9i-c1-Zds" secondAttribute="trailing" constant="10" id="iIe-eJ-TZh"/>
                             <constraint firstItem="Q7C-TX-der" firstAttribute="leading" secondItem="ury-MB-qCt" secondAttribute="leading" constant="10" id="jgE-Xd-89i"/>
                             <constraint firstItem="GMJ-xI-VUX" firstAttribute="leading" secondItem="ury-MB-qCt" secondAttribute="leading" constant="10" id="qP2-US-sfI"/>
                             <constraint firstItem="ury-MB-qCt" firstAttribute="trailing" secondItem="GMJ-xI-VUX" secondAttribute="trailing" constant="10" id="qdR-kL-hgo"/>
                             <constraint firstItem="GMJ-xI-VUX" firstAttribute="centerY" secondItem="CxZ-qH-yJ3" secondAttribute="centerY" id="wnz-Qf-8LT"/>
+                            <constraint firstItem="x9i-c1-Zds" firstAttribute="top" secondItem="A4H-GS-uQy" secondAttribute="bottom" constant="8" id="zrb-Jq-6Fq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ury-MB-qCt"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" id="TXr-v4-zcJ"/>
                     <connections>
+                        <outlet property="descriptionLabel" destination="yuw-uY-MJR" id="zUl-yD-4hh"/>
                         <outlet property="mainContainerView" destination="GMJ-xI-VUX" id="b40-8L-O7w"/>
+                        <outlet property="timeToSleepBottomConstraint" destination="zrb-Jq-6Fq" id="nMc-Zk-On8"/>
+                        <outlet property="timeToSleepLabel" destination="A4H-GS-uQy" id="TTE-If-lhY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jGW-AY-dG7" userLabel="First Responder" sceneMemberID="firstResponder"/>
