@@ -8,20 +8,13 @@
 
 import Foundation
 
-fileprivate let hoursMinutesDateFormatter: DateFormatter = {
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "HH:mm"
-    return dateFormatter
-}()
-
 final class PersonalPlanHelper {
-    
-    // MARK: - Actions with plan -
+    // MARK: - Actions with the plan -
     static func makePlan(
-        sleepDurationMin: Int, wakeUpTime: Date, planDuration: Int, wentSleepTime: Date
+        sleepDurationMin: Minutes, wakeUpTime: Date, planDuration: Days, wentSleepTime: Date
     ) -> PersonalPlan? {
-        let sleepDurationSec = Double(sleepDurationMin * 60)
-        var todayComponents = calendar.dateComponents([.year, .month, .day], from: Date())
+        let sleepDurationSec = Seconds(with: sleepDurationMin)
+        var todayComponents = calendar.dateComponents([.year, .month, .day], from: Day.today.date)
         let wentSleepComponents = calendar.dateComponents([.hour, .minute], from: wentSleepTime)
         todayComponents.hour = wentSleepComponents.hour
         todayComponents.minute = wentSleepComponents.minute
@@ -56,10 +49,10 @@ final class PersonalPlanHelper {
         var updatedPlan = plan
         
         guard let missingDays = calendar.dateComponents([.day],
-                                                        from: yesterday,
-                                                        to: plan.latestConfirmedDay).day
+                                                        from: plan.latestConfirmedDay,
+                                                        to: yesterday).day
             else {
-                log("Plan reshedule failed, returning nil")
+                log(.error, with: "Plan reshedule failed, returning nil")
                 return nil
         }
         
@@ -73,13 +66,26 @@ final class PersonalPlanHelper {
         
         guard let newPlanEndDate = plan.dateInterval.end.appending(days: missingDays)
             else {
-                log("Plan reshedule failed, returning nil")
+                log(.error, with: "Plan reshedule failed, returning nil")
                 return nil
         }
         
         updatedPlan.dateInterval.end = newPlanEndDate
         
         return updatedPlan
+    }
+    
+    static func getDaysMissedIncludingCurrentPeriod(for plan: PersonalPlan) -> Int {
+        guard let daysBetweenTodayAndLatestConfirmed = calendar.dateComponents([.day],
+                                                                               from: plan.latestConfirmedDay,
+                                                                               to: Day.today.date).day
+            else {
+                return plan.daysMissed
+        }
+        
+        if daysBetweenTodayAndLatestConfirmed <= 0 { return plan.daysMissed }
+        
+        return plan.daysMissed + daysBetweenTodayAndLatestConfirmed
     }
     
     static func confirm(plan: PersonalPlan) -> PersonalPlan {
@@ -103,7 +109,7 @@ final class PersonalPlanHelper {
         } else {
             guard let resheduledPlan = reshedule(plan: plan)
                 else {
-                    log("reshedule(plan:) returned nil, returning not resheduled plan")
+                    log(.warning, with: "reshedule(plan:) returned nil, returning not resheduled plan")
                     return plan
             }
             return resheduledPlan
@@ -114,20 +120,34 @@ final class PersonalPlanHelper {
     static func getDailyTime(for plan: PersonalPlan, and date: Date) -> DailyPlanTime? {
         var date = date
         if plan.paused {
-            log("plan is paused, returning dailyTime for latest confirmed day")
+            log(.info, with: "plan is paused, returning dailyTime for latest confirmed day")
             date = plan.latestConfirmedDay
         }
         
         let daysSincePlanStart = getDaysSincePlanStart(for: plan, and: date)
+        
         if daysSincePlanStart < 0 {
-            log("daysSincePlanStart < 0, returning nil")
+            log(.info, with: "daysSincePlanStart < 0, returning nil")
             return nil
         }
+        if daysSincePlanStart == 0 {
+            log(.info, with: "daysSincePlanStart == 0, returning nil")
+            
+            guard let sleepTime = plan.dateInterval.start.appending(days: 1) else { return nil }
+            let wakeTime = sleepTime.addingTimeInterval(plan.sleepDurationSec)
+            
+            return DailyPlanTime(
+                day: date,
+                wake: wakeTime,
+                sleep: sleepTime
+            )
+        }
         if daysSincePlanStart > getPlanDuration(for: plan) {
-            log("daysSincePlanStart > planDuration, returning dailyTime for latest plan day")
+            log(.info, with: "daysSincePlanStart > planDuration, returning dailyTime for latest plan day")
             return getDailyTime(for: plan, and: plan.dateInterval.end)
         }
-        let timeShiftSec = Double(plan.dailyShiftMin * (daysSincePlanStart - plan.daysMissed) * 60)
+        
+        let timeShiftSec = Seconds(plan.dailyShiftMin * (daysSincePlanStart - plan.daysMissed) * 60)
         let sleepTime = plan.dateInterval.start.addingTimeInterval(timeShiftSec)
         let wakeTime = sleepTime.addingTimeInterval(plan.sleepDurationSec)
         
@@ -139,7 +159,11 @@ final class PersonalPlanHelper {
     }
     
     static func getDaysSincePlanStart(for plan: PersonalPlan, and date: Date) -> Int {
-        return calendar.dateComponents([.day], from: calendar.startOfDay(for: plan.dateInterval.start), to: calendar.startOfDay(for:date)).day ?? 0
+        return calendar.dateComponents(
+            [.day],
+            from: calendar.startOfDay(for: plan.dateInterval.start),
+            to: calendar.startOfDay(for:date)
+        ).day ?? 0
     }
     
     static func getPlanDuration(for plan: PersonalPlan) -> Int {
@@ -167,32 +191,52 @@ final class PersonalPlanHelper {
         return (Double(duration - (duration - getDaysCompletedNumber(for: plan))) / Double(duration))
     }
     
-    static func isConfirmedForToday(plan: PersonalPlan) -> Bool {
+    static func isConfirmed(for day: Day, plan: PersonalPlan) -> Bool {
         if plan.paused { return true }
-        return calendar.isDate(Date(), inSameDayAs: plan.latestConfirmedDay)
+        let latestConfirmedDay = calendar.component(.day, from: plan.latestConfirmedDay)
+        let day = calendar.component(.day, from: day.date)
+        return latestConfirmedDay >= day
+    }
+    
+    static func minutesUntilSleepToday(for plan: PersonalPlan) -> Minutes? {
+        let today = Day.today.date
+        guard let sleepTime = getDailyTime(for: plan, and: today)?.sleep
+            else {
+                return nil
+        }
+        
+        guard let sleepTimeCorrectedDate = sleepTime
+            .appending(days: getDaysMissedIncludingCurrentPeriod(for: plan))
+            else {
+                return nil
+        }
+        
+        return calendar.dateComponents([.minute], from: today, to: sleepTimeCorrectedDate).minute
     }
     
     class StringRepresentation {
-        static func getSleepDurationHours(for plan: PersonalPlan) -> String {
-            return (plan.sleepDurationSec / 60 / 60).stringWithoutZeroFraction
+        static func getSleepDuration(for plan: PersonalPlan) -> String {
+            return plan.sleepDurationSec.HHmmString
         }
         
         static func getWakeTime(for plan: PersonalPlan) -> String {
-            return hoursMinutesDateFormatter.string(from: plan.wakeTime)
+            return plan.wakeTime.HHmmString
         }
         
         static func getFallAsleepTime(for plan: PersonalPlan) -> String {
-            return hoursMinutesDateFormatter.string(from: getPlannedSleepTime(for: plan))
+            return getPlannedSleepTime(for: plan).HHmmString
         }
         
         static func getPlanDuration(for plan: PersonalPlan) -> String {
             return "\(PersonalPlanHelper.getPlanDuration(for: plan))"
         }
-    }
-}
-
-fileprivate extension Double {
-    var stringWithoutZeroFraction: String {
-        truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", self) : String(self)
+        
+        static func getTimeUntilSleepString(for plan: PersonalPlan) -> String? {
+            guard let minutesUntilSleep = PersonalPlanHelper.minutesUntilSleepToday(for: plan)
+                else {
+                    return nil
+            }
+            return minutesUntilSleep.HHmmString
+        }
     }
 }
