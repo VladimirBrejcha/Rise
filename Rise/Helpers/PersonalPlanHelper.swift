@@ -130,9 +130,7 @@ final class PersonalPlanHelper {
             log(.info, with: "daysSincePlanStart < 0, returning nil")
             return nil
         }
-        if daysSincePlanStart == 0 {
-            log(.info, with: "daysSincePlanStart == 0, returning nil")
-            
+        if daysSincePlanStart == 0 {            
             guard let sleepTime = plan.dateInterval.start.appending(days: 1) else { return nil }
             let wakeTime = sleepTime.addingTimeInterval(plan.sleepDurationSec)
             
@@ -229,14 +227,6 @@ final class PersonalPlanHelper {
         
         static func getPlanDuration(for plan: PersonalPlan) -> String {
             return "\(PersonalPlanHelper.getPlanDuration(for: plan))"
-        }
-        
-        static func getTimeUntilSleepString(for plan: PersonalPlan) -> String? {
-            guard let minutesUntilSleep = PersonalPlanHelper.minutesUntilSleepToday(for: plan)
-                else {
-                    return nil
-            }
-            return minutesUntilSleep.HHmmString
         }
     }
 }
