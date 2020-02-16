@@ -20,6 +20,8 @@ final class FloatingLabel: UILabel {
                     return
             }
             
+            if timer != nil { timer?.invalidate() }
+            
             timer = Timer.scheduledTimer(
                 withTimeInterval: 2,
                 repeats: true
