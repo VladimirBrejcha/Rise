@@ -26,6 +26,7 @@
 		7E4901862340DD810034521E /* PersonalPlanData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E4901842340DD810034521E /* PersonalPlanData.xcdatamodeld */; };
 		7E5BDADE2371F08400E43F37 /* RiseLocation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5BDADC2371F08400E43F37 /* RiseLocation+CoreDataClass.swift */; };
 		7E5BDADF2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5BDADD2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift */; };
+		7E5F292A23F9638C0050DFD3 /* FloatingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5F292923F9638C0050DFD3 /* FloatingLabel.swift */; };
 		7E5F34A5239DB1A9004B3A68 /* DaysCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5F34A4239DB1A9004B3A68 /* DaysCollectionViewDataSource.swift */; };
 		7E5F34A7239DB24A004B3A68 /* DaysCollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5F34A6239DB24A004B3A68 /* DaysCollectionViewCellModel.swift */; };
 		7E695A34234A675F0098213D /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E695A33234A675F0098213D /* CollectionViewDataSource.swift */; };
@@ -162,6 +163,7 @@
 		7E4901852340DD810034521E /* PersonalPlanData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonalPlanData.xcdatamodel; sourceTree = "<group>"; };
 		7E5BDADC2371F08400E43F37 /* RiseLocation+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RiseLocation+CoreDataClass.swift"; path = "Rise/Data/Location/Entity/RiseLocation+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		7E5BDADD2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RiseLocation+CoreDataProperties.swift"; path = "Rise/Data/Location/Entity/RiseLocation+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		7E5F292923F9638C0050DFD3 /* FloatingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabel.swift; sourceTree = "<group>"; };
 		7E5F34A4239DB1A9004B3A68 /* DaysCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		7E5F34A6239DB24A004B3A68 /* DaysCollectionViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCollectionViewCellModel.swift; sourceTree = "<group>"; };
 		7E695A33234A675F0098213D /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
@@ -693,6 +695,7 @@
 				7E8C6B972350FB9C0086162F /* TableView.swift */,
 				7EA7BA0B2354F2510051A92D /* CollectionView.swift */,
 				7EB196D7239DBA9900E6C40B /* ViewOutput.swift */,
+				7E5F292923F9638C0050DFD3 /* FloatingLabel.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -939,6 +942,7 @@
 				7ED962AF2336649E00CD2408 /* PlanInfoTableViewCell.swift in Sources */,
 				7EA38AEC237853230007919B /* LocationLocalDataSource.swift in Sources */,
 				7EB1C03B23411FFD0028237E /* PersonalPlanPresenter.swift in Sources */,
+				7E5F292A23F9638C0050DFD3 /* FloatingLabel.swift in Sources */,
 				7EE6404B2378666F005BE355 /* SunTimeLocalDataSource.swift in Sources */,
 				7EEA217923B6A3B400354BEA /* Presenter.swift in Sources */,
 				7E0A2E3A239D831F00E39C83 /* SettingsPresenter.swift in Sources */,
