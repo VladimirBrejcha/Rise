@@ -49,6 +49,7 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
         requestSunTime()
 
         observePlan.execute({ [weak self] plan in
+            self?.view.setupTimeToSleepLabel(dataSource: self?.floatingLabelDataSource)
             self?.updatePlanView(with: plan)
         })
     }
@@ -59,6 +60,8 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
     
     func viewDidAppear() {
         guard let plan = personalPlan else { return }
+        
+        view.setupTimeToSleepLabel(dataSource: floatingLabelDataSource)
         
         if !PersonalPlanHelper.isConfirmed(for: .yesterday, plan: plan) {
             view.makeTabBar(visible: false)
@@ -134,7 +137,7 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
         view.refreshCollectionView()
     }
     
-    func floatingLabelDataSource() -> (text: String, alpha: Float) {
+    private func floatingLabelDataSource() -> (text: String, alpha: Float) {
         guard let plan = self.getPlan.execute() else {
             return (text: "", alpha: 0)
         }

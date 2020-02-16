@@ -14,14 +14,14 @@ protocol TodayStoryViewInput: AnyObject {
     func setupCollectionView(with dataSource: UICollectionViewDataSource)
     func refreshCollectionView()
     
+    func setupTimeToSleepLabel(dataSource: (() -> (text: String, alpha: Float))?)
+    
     func updateDescription(with text: String)
     
     func makeTabBar(visible: Bool)
 }
 
-protocol TodayStoryViewOutput: ViewOutput {
-    func floatingLabelDataSource() -> (text: String, alpha: Float)
-}
+protocol TodayStoryViewOutput: ViewOutput { }
 
 final class TodayStoryViewController: UIViewController, TodayStoryViewInput {
     var output: TodayStoryViewOutput!
@@ -45,10 +45,6 @@ final class TodayStoryViewController: UIViewController, TodayStoryViewInput {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if timeToSleepLabel.dataSource == nil {
-            timeToSleepLabel.dataSource = output.floatingLabelDataSource
-        }
-        
         output.viewDidAppear()
     }
     
@@ -70,6 +66,10 @@ final class TodayStoryViewController: UIViewController, TodayStoryViewInput {
     
     func refreshCollectionView() {
         mainContainerView.collectionView.reloadData()
+    }
+    
+    func setupTimeToSleepLabel(dataSource: (() -> (text: String, alpha: Float))?) {
+        timeToSleepLabel.dataSource = dataSource
     }
     
     func updateDescription(with text: String) {
