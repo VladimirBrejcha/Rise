@@ -18,8 +18,8 @@ enum Day {
     var date: Date {
         guard let date = Date().appending(days: numberOfDaysFromToday)
             else {
-                log("Failed to append \(numberOfDaysFromToday) days to today")
-                return Date()
+                log(.error, with: "Failed to append \(numberOfDaysFromToday) days to today, returning today")
+                return Day.today.date
         }
         return date
     }
@@ -28,7 +28,7 @@ enum Day {
         switch self {
         case .yesterday: return -1
         case .today: return 0
-        case .tomorrow: return -1
+        case .tomorrow: return 1
         }
     }
 }
@@ -45,5 +45,36 @@ extension Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         return dateFormatter.string(from: self)
+    }
+}
+
+typealias Days = Int
+
+typealias Minutes = Int
+
+extension Minutes {
+    init(with seconds: Seconds) {
+        self = Int(seconds / 60)
+    }
+    
+    var HHmmString: String {
+        let hours = self / 60
+        let minutes = self % 60
+        
+        return minutes == 0
+        ? "\(hours) hours"
+        : "\(hours) h \(minutes) m"
+    }
+}
+
+typealias Seconds = TimeInterval
+
+extension Seconds {
+    init(with minutes: Minutes) {
+        self = TimeInterval(minutes * 60)
+    }
+    
+    var HHmmString: String {
+        Minutes(with: self).HHmmString
     }
 }
