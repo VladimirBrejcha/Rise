@@ -40,16 +40,16 @@ final class PersonalPlanViewController:
 {
     var output: PersonalPlanViewOutput!
     
-    @IBOutlet weak var planManageButtonsStackView: UIStackView!
-    @IBOutlet var pauseButton: Button!
-    @IBOutlet weak var planButton: UIButton!
-    @IBOutlet weak var infomationLabel: UILabel!
+    @IBOutlet private weak var planManageButtonsStackView: UIStackView!
+    @IBOutlet private var pauseButton: Button!
+    @IBOutlet private weak var planButton: UIButton!
+    @IBOutlet private weak var infomationLabel: UILabel!
     
-    @IBOutlet weak var infoTableView: UITableView!
-    @IBOutlet weak var progressTableView: UITableView!
+    @IBOutlet private weak var infoTableView: UITableView!
+    @IBOutlet private weak var progressTableView: UITableView!
     
-    @IBOutlet weak var mainContainerView: UIView!
-    @IBOutlet weak var loadingView: LoadingView!
+    @IBOutlet private weak var mainContainerView: UIView!
+    @IBOutlet private weak var loadingView: LoadingView!
     
     private var progressCellMaxValue: String?
     private var progressCellValue: Double = 0.0
@@ -105,7 +105,9 @@ final class PersonalPlanViewController:
     func updateStackViewButtons(doesPlanExist: Bool) {
         doesPlanExist
             ? { planButton.setTitle("Change", for: .normal)
-                planManageButtonsStackView.addArrangedSubview(pauseButton) }()
+                planManageButtonsStackView.addArrangedSubview(pauseButton)
+                pauseButton.setTitleColor(#colorLiteral(red: 0.9143119454, green: 0.3760060668, blue: 0.4745617509, alpha: 1), for: .normal)
+                }()
             : { planButton.setTitle("Create", for: .normal)
                 pauseButton.removeFromSuperview() }()
     }
