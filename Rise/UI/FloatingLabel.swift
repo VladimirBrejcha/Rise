@@ -21,7 +21,7 @@ final class FloatingLabel: UILabel {
             }
             
             timer = Timer.scheduledTimer(
-                withTimeInterval: 30,
+                withTimeInterval: 2,
                 repeats: true
             ) { [weak self] timer in
                 guard let self = self
