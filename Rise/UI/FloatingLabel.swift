@@ -21,7 +21,7 @@ final class FloatingLabel: UILabel {
             }
             
             timer = Timer.scheduledTimer(
-                withTimeInterval: 1,
+                withTimeInterval: 30,
                 repeats: true
             ) { [weak self] timer in
                 guard let self = self
@@ -33,6 +33,7 @@ final class FloatingLabel: UILabel {
                 self.textToShow = data.text
                 self.alphaToUse = CGFloat(data.alpha)
             }
+            timer?.fire()
             animation = VerticalPositionMoveAnimation(with: layer, from: 4, to: 0, duration: 2.4)
             animation?.animate(true)
         }
