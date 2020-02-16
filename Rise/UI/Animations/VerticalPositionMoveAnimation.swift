@@ -9,7 +9,7 @@
 import UIKit
 
 final class VerticalPositionMoveAnimation: Animation {
-    private let animationLayer: CALayer
+    private weak var animationLayer: CALayer?
     private var animationKey: String {
         String(describing: Self.self)
     }
@@ -29,23 +29,27 @@ final class VerticalPositionMoveAnimation: Animation {
     }
     
     deinit {
-        animationLayer.sublayers = nil
-        animationLayer.removeAllAnimations()
+        animationLayer?.sublayers = nil
+        animationLayer?.removeAllAnimations()
     }
     
     func animate(_ animate: Bool) {
         if animate {
-            animationLayer.add(makeBasicAnimation(), forKey: animationKey)
+            animationLayer?.add(makeBasicAnimation(), forKey: animationKey)
         }
-        animationLayer.isHidden = !animate
-        animationLayer.speed = animate ? 1 : 0
+        animationLayer?.isHidden = !animate
+        animationLayer?.speed = animate ? 1 : 0
     }
     
     private func makeBasicAnimation() -> CABasicAnimation {
+        guard let layer = animationLayer
+            else {
+                return CABasicAnimation()
+        }
         let basicAnimation = CABasicAnimation(keyPath: AnimationKeys.positionY)
         basicAnimation.isRemovedOnCompletion = false
-        basicAnimation.fromValue = animationLayer.frame.midY + from
-        basicAnimation.toValue = animationLayer.frame.midY + to
+        basicAnimation.fromValue = layer.frame.midY + from
+        basicAnimation.toValue = layer.frame.midY + to
         basicAnimation.duration = duration
         basicAnimation.autoreverses = true
         basicAnimation.repeatCount = Float.greatestFiniteMagnitude
