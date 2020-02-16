@@ -14,6 +14,9 @@ protocol TodayStoryViewInput: AnyObject {
     func setupCollectionView(with dataSource: UICollectionViewDataSource)
     func refreshCollectionView()
     
+    func updateDescription(with text: String)
+    func updateTimeToSleep(with text: String)
+    
     func makeTabBar(visible: Bool)
 }
 
@@ -25,6 +28,11 @@ final class TodayStoryViewController: UIViewController, TodayStoryViewInput {
     var output: TodayStoryViewOutput!
     
     @IBOutlet private weak var mainContainerView: DaysView!
+    @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var timeToSleepLabel: UILabel!
+    @IBOutlet private weak var timeToSleepBottomConstraint: NSLayoutConstraint!
+    
+    private var timeToSleepLabelAnimation: Animation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +48,13 @@ final class TodayStoryViewController: UIViewController, TodayStoryViewInput {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        
+        if timeToSleepLabelAnimation == nil {
+            timeToSleepLabelAnimation = VerticalPositionMoveAnimation(with: timeToSleepLabel.layer,
+                                                                      to: 4, duration: 2.4)
+            timeToSleepLabelAnimation?.animate(true)
+        }
         
         output.viewDidAppear()
     }
@@ -62,6 +77,14 @@ final class TodayStoryViewController: UIViewController, TodayStoryViewInput {
     
     func refreshCollectionView() {
         mainContainerView.collectionView.reloadData()
+    }
+    
+    func updateDescription(with text: String) {
+        descriptionLabel.text = text
+    }
+    
+    func updateTimeToSleep(with text: String) {
+        timeToSleepLabel.text = text
     }
     
     func makeTabBar(visible: Bool) {        

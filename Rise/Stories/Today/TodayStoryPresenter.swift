@@ -40,23 +40,20 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
     
     // MARK: - TodayStoryViewOutput -
     func viewDidLoad() {
-        guard let yesterday = Date().appending(days: -1),
-            let tomorrow = Date().appending(days: 1)
-            else {
-                return
-        }
-        
-        collectionViewDataSource = .make(for: [DaysCollectionViewCellModel(day: yesterday),
-                                               DaysCollectionViewCellModel(day: Date()),
-                                               DaysCollectionViewCellModel(day: tomorrow)],
+        collectionViewDataSource = .make(for: [DaysCollectionViewCellModel(day: .yesterday),
+                                               DaysCollectionViewCellModel(day: .today),
+                                               DaysCollectionViewCellModel(day: .tomorrow)],
                                          cellDelegate: self)
         view.setupCollectionView(with: collectionViewDataSource)
-        
         updatePlanView(with: getPlan.execute())
         requestSunTime()
-        
+
         observePlan.execute({ [weak self] plan in
             self?.updatePlanView(with: plan)
+            if let plan = plan {
+                self?.updateTimeToSleep(with: plan)
+                self?.updateDescription(with: plan)
+            }
         })
     }
     
@@ -67,7 +64,9 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
     func viewDidAppear() {
         guard let plan = personalPlan else { return }
         
-        if !PersonalPlanHelper.isConfirmedForToday(plan: plan) {
+        updateTimeToSleep(with: plan)
+        
+        if !PersonalPlanHelper.isConfirmed(for: .yesterday, plan: plan) {
             view.makeTabBar(visible: false)
             view.present(controller: Story.confirmation.configure())
         }
@@ -76,7 +75,7 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
     // MARK: - DaysCollectionViewCellDelegate -
     func repeatButtonPressed(on cell: DaysCollectionViewCell) {
         if let index = cellModels.firstIndex(where: { cellModel in
-            return calendar.isDate(cellModel.day, inSameDayAs: cell.cellModel.day)
+            return calendar.isDate(cellModel.day.date, inSameDayAs: cell.cellModel.day.date) // TODO try to compare days
         }) {
             cellModels[index].sunErrorMessage = nil
             view.refreshCollectionView()
@@ -95,7 +94,7 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
             guard let self = self else { return }
             if case .success (let sunTime) = result { self.updateSunTimeView(with: sunTime) }
             if case .failure (let error) = result {
-                log(error.localizedDescription)
+                log(.error, with: error.localizedDescription)
                 self.updateSunTimeView(with: nil)
             }
         }
@@ -105,7 +104,7 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
         if let models = sunModelArray {
             models.forEach { model in
                 if let index = cellModels.firstIndex(where: { cellModel in
-                    return Calendar.current.isDate(cellModel.day, inSameDayAs: model.day)
+                    return Calendar.current.isDate(cellModel.day.date, inSameDayAs: model.day)
                 }) {
                     cellModels[index].update(sunTime: model)
                 }
@@ -115,7 +114,9 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
                 cellModels[index.offset].sunErrorMessage = "Failed to load data"
             }
         }
-        view.refreshCollectionView()
+        DispatchQueue.main.async {
+            self.view.refreshCollectionView()
+        }
     }
     
     private func updatePlanView(with plan: PersonalPlan?) {
@@ -124,14 +125,10 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
                 cellModels[index.offset].planErrorMessage = "No Rise plan for the day"
             }
             
-            let today = Date()
-            let yesterday = calendar.date(byAdding: .day, value: -1, to: today)
-            let tomorrow = calendar.date(byAdding: .day, value: 1, to: today)
-            
-            let datesArray = [yesterday, today, tomorrow]
+            let datesArray: [Day] = [.yesterday, .today, .tomorrow]
             
             for index in datesArray.enumerated() {
-                if let dailyTime = PersonalPlanHelper.getDailyTime(for: plan, and: datesArray[index.offset]!) {
+                if let dailyTime = PersonalPlanHelper.getDailyTime(for: plan, and: datesArray[index.offset].date) {
                     cellModels[index.offset].update(planTime: dailyTime)
                 }
             }
@@ -141,5 +138,34 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
             }
         }
         view.refreshCollectionView()
+    }
+    
+    private func updateDescription(with plan: PersonalPlan?) {
+//        let welcomeText = "Welcome to Rise!"
+        
+//        if let plan = plan {
+//            plan.paused
+//                ? { view.updateDescription(with: "\(welcomeText) \nYour personal plan is on pause") }()
+//                : { guard let timeUntilSleep = PersonalPlanHelper.StringRepresentation.getTimeUntilSleepString(for: plan)
+//                    else {
+//                        view.updateDescription(with: welcomeText)
+//                        return
+//                    }
+//                    view.updateDescription(with: "\(welcomeText) \nSleep planned in \(timeUntilSleep)") }()
+//
+//        } else {
+//            view.updateDescription(with: welcomeText)
+//        }
+    }
+    
+    private func updateTimeToSleep(with plan: PersonalPlan) {
+        plan.paused
+            ? { view.updateTimeToSleep(with: "Your personal plan is on pause") }()
+            : { guard let timeUntilSleep = PersonalPlanHelper.StringRepresentation.getTimeUntilSleepString(for: plan)
+                else {
+                    view.updateTimeToSleep(with: "")
+                    return
+                }
+                view.updateTimeToSleep(with: "Sleep planned in \(timeUntilSleep)") }()
     }
 }
