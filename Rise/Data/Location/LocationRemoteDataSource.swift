@@ -52,7 +52,7 @@ final class LocationRemoteDataSource: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        log(error.localizedDescription)
+        log(.error, with: error.localizedDescription)
         AlertPresenter.showAlert(with: error.localizedDescription)
     }
     

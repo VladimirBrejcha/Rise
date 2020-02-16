@@ -47,7 +47,7 @@ final class PersonalPlanLocalDataSource {
             builder.update(object: personalPlanObject[0], with: personalPlan)
             return container.saveContext()
         case .failure(let error):
-            log(error.localizedDescription)
+            log(.error, with: error.localizedDescription)
             return false
         }
     }

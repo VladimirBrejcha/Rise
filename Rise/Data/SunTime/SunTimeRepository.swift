@@ -29,7 +29,7 @@ class SunTimeRepository {
             }
             
         case .failure(let error):
-            log(error.localizedDescription)
+            log(.error, with: error.localizedDescription)
             remoteRequest(for: numberOfDays, since: day, for: location, completion: completion)
         }
     }

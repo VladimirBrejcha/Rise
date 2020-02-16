@@ -9,7 +9,7 @@
 import Foundation
 
 struct DaysCollectionViewCellModel {
-    let day: Date
+    let day: Day
     var sunTime: (sunrise: String, sunset: String)?
     var planTime: (wake: String, sleep: String)?
     var sunErrorMessage: String?

@@ -17,7 +17,7 @@ final class LocationRepository {
         case .success(let location):
             completion(.success(location))
         case .failure(let error):
-            log(error.localizedDescription)
+            log(.error, with: error.localizedDescription)
             remote.requestPermissions { granted in
                 if granted {
                     self.remote.requestLocation { result in

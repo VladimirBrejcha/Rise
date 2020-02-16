@@ -45,7 +45,7 @@ final class ConfirmationPresenter: ConfirmationViewOutput {
                 return
         }
 
-        if PersonalPlanHelper.isConfirmedForToday(plan: plan) {
+        if PersonalPlanHelper.isConfirmed(for: .yesterday, plan: plan) {
             dismiss = { [weak self] in self?.view.dismiss() }
             return
         }

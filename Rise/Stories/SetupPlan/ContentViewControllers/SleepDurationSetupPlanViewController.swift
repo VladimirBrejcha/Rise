@@ -29,13 +29,7 @@ final class SleepDurationSetupPlanViewController: UIViewController {
     
     @IBAction func sleepDurationChanged(_ sender: UISlider) {
         let chosenDuration = Int(sender.value)
-        let hours = chosenDuration / 60
-        let minutes = chosenDuration % 60
-        
-        sleepDurationLabel.text = minutes == 0
-            ? "\(hours) hours"
-            : "\(hours) h \(minutes) m"
-        
+        sleepDurationLabel.text = chosenDuration.HHmmString
         sleepDurationOutput(chosenDuration)
     }
 }

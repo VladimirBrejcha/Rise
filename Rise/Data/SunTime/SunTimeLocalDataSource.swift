@@ -41,7 +41,7 @@ class SunTimeLocalDataSource {
             }
 
             if case .failure (let error) = fetchResult {
-                log(error.localizedDescription)
+                log(.error, with: error.localizedDescription)
             }
             
             if iteration == numberOfDays - 1 {

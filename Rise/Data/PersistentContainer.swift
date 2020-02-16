@@ -30,7 +30,7 @@ class PersistentContainer<ObjectType: NSManagedObject>: NSPersistentContainer {
             return true
         }
         catch {
-            log(error.localizedDescription)
+            log(.error, with: error.localizedDescription)
             return false
         }
     }

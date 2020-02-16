@@ -62,7 +62,7 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
         guard let view = view else { return }
         
         if let plan = plan {
-            let durationText = "\(PersonalPlanHelper.StringRepresentation.getSleepDurationHours(for: plan)) hours of sleep daily"
+            let durationText = "\(PersonalPlanHelper.StringRepresentation.getSleepDuration(for: plan)) of sleep daily"
             let wakeUpText = "Will wake up at \(PersonalPlanHelper.StringRepresentation.getWakeTime(for: plan))"
             let toSleepText = "Will sleep at \(PersonalPlanHelper.StringRepresentation.getFallAsleepTime(for: plan))"
 //            let syncText = "Synchronized with sunrise"

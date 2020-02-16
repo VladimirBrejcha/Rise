@@ -10,10 +10,10 @@ import Foundation
 
 struct PersonalPlan {
     var paused: Bool
-    var dailyShiftMin: Int
+    var dailyShiftMin: Minutes
     var dateInterval: DateInterval
-    var sleepDurationSec: TimeInterval
+    var sleepDurationSec: Seconds
     var wakeTime: Date
     var latestConfirmedDay: Date
-    var daysMissed: Int = 0
+    var daysMissed: Days = 0
 }

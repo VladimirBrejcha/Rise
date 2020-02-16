@@ -25,7 +25,7 @@ final class GetPlan: UseCase {
         case .success(let plan):
             return plan
         case .failure(let error):
-            log(error.localizedDescription)
+            log(.error, with: error.localizedDescription)
             return nil
         }
     }
