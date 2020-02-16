@@ -50,10 +50,6 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
 
         observePlan.execute({ [weak self] plan in
             self?.updatePlanView(with: plan)
-            if let plan = plan {
-                self?.updateTimeToSleep(with: plan)
-                self?.updateDescription(with: plan)
-            }
         })
     }
     
@@ -63,8 +59,6 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
     
     func viewDidAppear() {
         guard let plan = personalPlan else { return }
-        
-        updateTimeToSleep(with: plan)
         
         if !PersonalPlanHelper.isConfirmed(for: .yesterday, plan: plan) {
             view.makeTabBar(visible: false)
@@ -140,32 +134,32 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
         view.refreshCollectionView()
     }
     
-    private func updateDescription(with plan: PersonalPlan?) {
-//        let welcomeText = "Welcome to Rise!"
+    func floatingLabelDataSource() -> (text: String, alpha: Float) {
+        guard let plan = self.getPlan.execute() else {
+            return (text: "", alpha: 0)
+        }
         
-//        if let plan = plan {
-//            plan.paused
-//                ? { view.updateDescription(with: "\(welcomeText) \nYour personal plan is on pause") }()
-//                : { guard let timeUntilSleep = PersonalPlanHelper.StringRepresentation.getTimeUntilSleepString(for: plan)
-//                    else {
-//                        view.updateDescription(with: welcomeText)
-//                        return
-//                    }
-//                    view.updateDescription(with: "\(welcomeText) \nSleep planned in \(timeUntilSleep)") }()
-//
-//        } else {
-//            view.updateDescription(with: welcomeText)
-//        }
-    }
-    
-    private func updateTimeToSleep(with plan: PersonalPlan) {
-        plan.paused
-            ? { view.updateTimeToSleep(with: "Your personal plan is on pause") }()
-            : { guard let timeUntilSleep = PersonalPlanHelper.StringRepresentation.getTimeUntilSleepString(for: plan)
+        if plan.paused {
+            return (text: "Your personal plan is on pause", alpha: 0.85)
+        } else {
+            guard let minutesUntilSleep = PersonalPlanHelper.minutesUntilSleepToday(for: plan)
                 else {
-                    view.updateTimeToSleep(with: "")
-                    return
-                }
-                view.updateTimeToSleep(with: "Sleep planned in \(timeUntilSleep)") }()
+                    return (text: "", alpha: 0)
+            }
+            
+            let minutesInDay: Float = 24 * 60
+            
+            let sleepDuration = plan.sleepDurationSec
+            if Float(minutesUntilSleep) >= minutesInDay - Float(sleepDuration / 60) {
+                return (text: "It's time to sleep!", alpha: 1)
+            }
+            
+            var alpha: Float = (minutesInDay - Float(minutesUntilSleep)) / minutesInDay
+            if alpha < 0.3 { alpha = 0.3 }
+            if alpha > 0.9 { alpha = 0.9 }
+            let timeString = minutesUntilSleep.HHmmString
+            
+            return (text: "Sleep planned in \(timeString)", alpha: alpha)
+        }
     }
 }
