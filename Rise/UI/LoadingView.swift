@@ -17,8 +17,7 @@ final class LoadingView: UIButton, NibLoadable {
     @IBOutlet private weak var animationView: UIView!
     @IBOutlet var containerView: DesignableContainerView!
     
-    private var animationManager: AnimationManager?
-    private var animationLayer: CALayer?
+    private var loadingAnimation: Animation?
     
     var repeatButtonHandler: (() -> Void)?
     
@@ -43,32 +42,17 @@ final class LoadingView: UIButton, NibLoadable {
     
     // MARK: - Loadiing animation -
     func showLoading(_ show: Bool, completion: (() -> Void)? = nil) {
-        if animationLayer == nil {
-            setupAnimationLayer()
-        }
+        loadingAnimation = PulsingCircleAnimation(with: animationView.layer)
         
         if show {
-            animationManager?.animate(true)
+            loadingAnimation?.animate(true)
             showView(true, view: animationView, completion: completion)
         } else {
             showView(false, view: animationView) {
-                 self.animationManager?.animate(false)
-                 completion?()
-             }
+                self.loadingAnimation?.animate(false)
+                completion?()
+            }
         }
-    }
-    
-    private func setupAnimationLayer() {
-        animationView.layer.sublayers = nil
-        let layer = CALayer()
-        layer.backgroundColor = UIColor.clear.cgColor
-        layer.frame = animationView.bounds
-        animationView.layer.addSublayer(layer)
-        
-        self.animationLayer = layer
-        animationManager = AnimationManager(with: .pulsingCircles)
-        animationManager?.setupAnimation(on: layer)
-        setNeedsDisplay()
     }
     
     // MARK: - Info label -
