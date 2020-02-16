@@ -151,12 +151,12 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
             
             let sleepDuration = plan.sleepDurationSec
             if Float(minutesUntilSleep) >= minutesInDay - Float(sleepDuration / 60) {
-                return (text: "It's time to sleep!", alpha: 1)
+                return (text: "It's time to sleep!", alpha: 0.85)
             }
             
             var alpha: Float = (minutesInDay - Float(minutesUntilSleep)) / minutesInDay
             if alpha < 0.3 { alpha = 0.3 }
-            if alpha > 0.9 { alpha = 0.9 }
+            if alpha > 0.85 { alpha = 0.85 }
             let timeString = minutesUntilSleep.HHmmString
             
             return (text: "Sleep planned in \(timeString)", alpha: alpha)
