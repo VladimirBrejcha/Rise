@@ -15,20 +15,24 @@
 		7E25756723F8749A007AE4B5 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E25756623F8749A007AE4B5 /* Animation.swift */; };
 		7E31497D23425CA600941606 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31497C23425CA600941606 /* TableViewDataSource.swift */; };
 		7E31497F23425D3700941606 /* ChangePlanTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31497E23425D3700941606 /* ChangePlanTableView.swift */; };
+		7E36D99D2401AF6E00C16AEE /* DaysCollectionCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E36D99C2401AF6E00C16AEE /* DaysCollectionCellModel.swift */; };
 		7E3980D52360D0020059C592 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E3980D42360D0020059C592 /* Intro.storyboard */; };
-		7E4198212323CA7F007867AB /* DaysCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E41981F2323CA7F007867AB /* DaysCollectionViewCell.swift */; };
-		7E4198222323CA7F007867AB /* DaysCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E4198202323CA7F007867AB /* DaysCollectionViewCell.xib */; };
 		7E41982423254C36007867AB /* DaysSegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E41982323254C36007867AB /* DaysSegmentedControlView.swift */; };
 		7E438916235230800059DF1C /* PrivateKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E438915235230800059DF1C /* PrivateKeys.swift */; };
 		7E4798F3239D85D5007FB8F2 /* SetupPlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E4798F2239D85D5007FB8F2 /* SetupPlan.storyboard */; };
 		7E4798F5239D894B007FB8F2 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4798F4239D894B007FB8F2 /* Storyboard.swift */; };
 		7E4798F7239D8A33007FB8F2 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E4798F6239D8A33007FB8F2 /* Settings.storyboard */; };
 		7E4901862340DD810034521E /* PersonalPlanData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E4901842340DD810034521E /* PersonalPlanData.xcdatamodeld */; };
+		7E541AF423FB259400BAD710 /* DaysCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E541AF223FB259400BAD710 /* DaysCollectionCell.swift */; };
+		7E541AF523FB259400BAD710 /* DaysCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E541AF323FB259400BAD710 /* DaysCollectionCell.xib */; };
+		7E541AF723FB384F00BAD710 /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E541AF623FB384F00BAD710 /* ConfigurableCell.swift */; };
+		7E541AF923FB386B00BAD710 /* CellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E541AF823FB386B00BAD710 /* CellConfigurator.swift */; };
+		7E541AFB23FB388D00BAD710 /* CollectionCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E541AFA23FB388D00BAD710 /* CollectionCellConfigurator.swift */; };
+		7E541AFD23FB393400BAD710 /* CollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E541AFC23FB393400BAD710 /* CollectionDataSource.swift */; };
+		7E541AFF23FB3A0F00BAD710 /* NewCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E541AFE23FB3A0F00BAD710 /* NewCollectionView.swift */; };
 		7E5BDADE2371F08400E43F37 /* RiseLocation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5BDADC2371F08400E43F37 /* RiseLocation+CoreDataClass.swift */; };
 		7E5BDADF2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5BDADD2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift */; };
 		7E5F292A23F9638C0050DFD3 /* FloatingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5F292923F9638C0050DFD3 /* FloatingLabel.swift */; };
-		7E5F34A5239DB1A9004B3A68 /* DaysCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5F34A4239DB1A9004B3A68 /* DaysCollectionViewDataSource.swift */; };
-		7E5F34A7239DB24A004B3A68 /* DaysCollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5F34A6239DB24A004B3A68 /* DaysCollectionViewCellModel.swift */; };
 		7E695A34234A675F0098213D /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E695A33234A675F0098213D /* CollectionViewDataSource.swift */; };
 		7E708A3223BF527B003B5702 /* SetupPlanPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3123BF527B003B5702 /* SetupPlanPageViewController.swift */; };
 		7E708A3423BF635B003B5702 /* SleepDurationSetupPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3323BF635B003B5702 /* SleepDurationSetupPlanViewController.swift */; };
@@ -152,20 +156,24 @@
 		7E25756623F8749A007AE4B5 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		7E31497C23425CA600941606 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		7E31497E23425D3700941606 /* ChangePlanTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanTableView.swift; sourceTree = "<group>"; };
+		7E36D99C2401AF6E00C16AEE /* DaysCollectionCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCollectionCellModel.swift; sourceTree = "<group>"; };
 		7E3980D42360D0020059C592 /* Intro.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
-		7E41981F2323CA7F007867AB /* DaysCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCollectionViewCell.swift; sourceTree = "<group>"; };
-		7E4198202323CA7F007867AB /* DaysCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DaysCollectionViewCell.xib; sourceTree = "<group>"; };
 		7E41982323254C36007867AB /* DaysSegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysSegmentedControlView.swift; sourceTree = "<group>"; };
 		7E438915235230800059DF1C /* PrivateKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKeys.swift; sourceTree = "<group>"; };
 		7E4798F2239D85D5007FB8F2 /* SetupPlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetupPlan.storyboard; sourceTree = "<group>"; };
 		7E4798F4239D894B007FB8F2 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		7E4798F6239D8A33007FB8F2 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		7E4901852340DD810034521E /* PersonalPlanData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonalPlanData.xcdatamodel; sourceTree = "<group>"; };
+		7E541AF223FB259400BAD710 /* DaysCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCollectionCell.swift; sourceTree = "<group>"; };
+		7E541AF323FB259400BAD710 /* DaysCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DaysCollectionCell.xib; sourceTree = "<group>"; };
+		7E541AF623FB384F00BAD710 /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
+		7E541AF823FB386B00BAD710 /* CellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurator.swift; sourceTree = "<group>"; };
+		7E541AFA23FB388D00BAD710 /* CollectionCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCellConfigurator.swift; sourceTree = "<group>"; };
+		7E541AFC23FB393400BAD710 /* CollectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDataSource.swift; sourceTree = "<group>"; };
+		7E541AFE23FB3A0F00BAD710 /* NewCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCollectionView.swift; sourceTree = "<group>"; };
 		7E5BDADC2371F08400E43F37 /* RiseLocation+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RiseLocation+CoreDataClass.swift"; path = "Rise/Data/Location/Entity/RiseLocation+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		7E5BDADD2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RiseLocation+CoreDataProperties.swift"; path = "Rise/Data/Location/Entity/RiseLocation+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		7E5F292923F9638C0050DFD3 /* FloatingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabel.swift; sourceTree = "<group>"; };
-		7E5F34A4239DB1A9004B3A68 /* DaysCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCollectionViewDataSource.swift; sourceTree = "<group>"; };
-		7E5F34A6239DB24A004B3A68 /* DaysCollectionViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCollectionViewCellModel.swift; sourceTree = "<group>"; };
 		7E695A33234A675F0098213D /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		7E708A3123BF527B003B5702 /* SetupPlanPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupPlanPageViewController.swift; sourceTree = "<group>"; };
 		7E708A3323BF635B003B5702 /* SleepDurationSetupPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepDurationSetupPlanViewController.swift; sourceTree = "<group>"; };
@@ -600,11 +608,10 @@
 		7EF3EE182340F875003BE978 /* DaysCollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				7E5F34A6239DB24A004B3A68 /* DaysCollectionViewCellModel.swift */,
-				7E41981F2323CA7F007867AB /* DaysCollectionViewCell.swift */,
-				7E4198202323CA7F007867AB /* DaysCollectionViewCell.xib */,
 				7EA7BA092354F1810051A92D /* DaysCollectionView.swift */,
-				7E5F34A4239DB1A9004B3A68 /* DaysCollectionViewDataSource.swift */,
+				7E541AF223FB259400BAD710 /* DaysCollectionCell.swift */,
+				7E541AF323FB259400BAD710 /* DaysCollectionCell.xib */,
+				7E36D99C2401AF6E00C16AEE /* DaysCollectionCellModel.swift */,
 			);
 			path = DaysCollectionView;
 			sourceTree = "<group>";
@@ -696,6 +703,11 @@
 				7EA7BA0B2354F2510051A92D /* CollectionView.swift */,
 				7EB196D7239DBA9900E6C40B /* ViewOutput.swift */,
 				7E5F292923F9638C0050DFD3 /* FloatingLabel.swift */,
+				7E541AF623FB384F00BAD710 /* ConfigurableCell.swift */,
+				7E541AF823FB386B00BAD710 /* CellConfigurator.swift */,
+				7E541AFA23FB388D00BAD710 /* CollectionCellConfigurator.swift */,
+				7E541AFC23FB393400BAD710 /* CollectionDataSource.swift */,
+				7E541AFE23FB3A0F00BAD710 /* NewCollectionView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -835,7 +847,7 @@
 				7E76E5AB23E734F500CC4E6D /* ChangePlan.storyboard in Resources */,
 				92B78CFB229FAF6C0087240B /* SectionedTableViewCell.xib in Resources */,
 				92D7D65A2296F298009321AE /* Assets.xcassets in Resources */,
-				7E4198222323CA7F007867AB /* DaysCollectionViewCell.xib in Resources */,
+				7E541AF523FB259400BAD710 /* DaysCollectionCell.xib in Resources */,
 				7E4798F3239D85D5007FB8F2 /* SetupPlan.storyboard in Resources */,
 				7E84EB25239D19CF00E02050 /* Confirmation.storyboard in Resources */,
 				92D7D6582296F297009321AE /* Main.storyboard in Resources */,
@@ -870,13 +882,14 @@
 				7EB9F34423C20347002A6DD3 /* UpdatePlan.swift in Sources */,
 				7EB9F34623C20379002A6DD3 /* DeletePlan.swift in Sources */,
 				7EB9F35623C37733002A6DD3 /* StoryAssembler.swift in Sources */,
-				7E5F34A5239DB1A9004B3A68 /* DaysCollectionViewDataSource.swift in Sources */,
 				7EB26953234F99AE008AEB3D /* Button.swift in Sources */,
 				7EB1C0332340F9550028237E /* PersonalPlanViewController.swift in Sources */,
 				7EA38AE623783FFD0007919B /* LocationRemoteDataSource.swift in Sources */,
 				7EB9F35A23C389BF002A6DD3 /* DataLayer.swift in Sources */,
 				7EB9F35023C35CA9002A6DD3 /* PersonalPlanAssembler.swift in Sources */,
 				92E77AFA22A5304400E5E21C /* TodayStoryViewController.swift in Sources */,
+				7E541AF923FB386B00BAD710 /* CellConfigurator.swift in Sources */,
+				7E541AF423FB259400BAD710 /* DaysCollectionCell.swift in Sources */,
 				7E4798F5239D894B007FB8F2 /* Storyboard.swift in Sources */,
 				7E31497F23425D3700941606 /* ChangePlanTableView.swift in Sources */,
 				7E708A3B23BFD0C7003B5702 /* PlanCreatedSetupPlanViewController.swift in Sources */,
@@ -887,6 +900,7 @@
 				7E708A4023BFD92D003B5702 /* ChangePlanViewController.swift in Sources */,
 				92D7D6552296F297009321AE /* SleepViewController.swift in Sources */,
 				7EA7BA082354EBFD0051A92D /* TodayStoryPresenter.swift in Sources */,
+				7E541AF723FB384F00BAD710 /* ConfigurableCell.swift in Sources */,
 				7E052A40235236F1005D7FAD /* DailySunTime.swift in Sources */,
 				7EB26951234F9972008AEB3D /* NibLoadable.swift in Sources */,
 				7EB90047232AB9EB006EB9A8 /* ProgressBar.swift in Sources */,
@@ -896,12 +910,10 @@
 				7EB1C0372340FC6B0028237E /* PersonalPlan.swift in Sources */,
 				7E07A10123AFBEE300B9D61A /* WelcomeSetuplPlanViewController.swift in Sources */,
 				7ED8E59723BFFD5100A1E96F /* Story.swift in Sources */,
-				7E5F34A7239DB24A004B3A68 /* DaysCollectionViewCellModel.swift in Sources */,
 				7EE640492378665D005BE355 /* SunTimeRepository.swift in Sources */,
 				7EB9F34023C20264002A6DD3 /* UseCase.swift in Sources */,
 				7EA38AE92378526F0007919B /* LocationData.xcdatamodeld in Sources */,
 				92D12FD622A4045E0093B0A3 /* PickerDataModel.swift in Sources */,
-				7E4198212323CA7F007867AB /* DaysCollectionViewCell.swift in Sources */,
 				7E91D95F2371E4080087436F /* RisePersonalPlan+CoreDataClass.swift in Sources */,
 				7EB9F35423C36B54002A6DD3 /* SetupPlanAssembler.swift in Sources */,
 				7EB9003E23256AC9006EB9A8 /* DesignableContainerView.swift in Sources */,
@@ -913,6 +925,7 @@
 				7E052A422352377E005D7FAD /* RiseError.swift in Sources */,
 				92D12FDD22A44B3B0093B0A3 /* CustomTabBarController.swift in Sources */,
 				7E84EB27239D1A5700E02050 /* ConfirmationViewController.swift in Sources */,
+				7E541AFB23FB388D00BAD710 /* CollectionCellConfigurator.swift in Sources */,
 				7EB9F34223C2028D002A6DD3 /* CreatePlan.swift in Sources */,
 				7E88A35323F8B35E00E792CA /* PulsingCircleAnimation.swift in Sources */,
 				7E5BDADF2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift in Sources */,
@@ -925,6 +938,7 @@
 				92D7D6532296F297009321AE /* AppDelegate.swift in Sources */,
 				7EA7BA0C2354F2510051A92D /* CollectionView.swift in Sources */,
 				7E91D95B2371E4080087436F /* RiseDailySunTime+CoreDataClass.swift in Sources */,
+				7E36D99D2401AF6E00C16AEE /* DaysCollectionCellModel.swift in Sources */,
 				7E4901862340DD810034521E /* PersonalPlanData.xcdatamodeld in Sources */,
 				7EB9F34E23C229F2002A6DD3 /* TodayAssembler.swift in Sources */,
 				7E91D9602371E4080087436F /* RisePersonalPlan+CoreDataProperties.swift in Sources */,
@@ -934,10 +948,12 @@
 				7EB1C0392340FDB00028237E /* SetupPlanPresenter.swift in Sources */,
 				7EE6404D23786678005BE355 /* SunTimeRemoteDataSource.swift in Sources */,
 				7E91D9622371E4850087436F /* DailyPlanTime.swift in Sources */,
+				7E541AFD23FB393400BAD710 /* CollectionDataSource.swift in Sources */,
 				7E76E5A923E734C200CC4E6D /* ChangePlanAssembler.swift in Sources */,
 				7EE640512378669F005BE355 /* SunTimeModelBuilder.swift in Sources */,
 				7EB9F34A23C2045A002A6DD3 /* ObservePlan.swift in Sources */,
 				92B78CFA229FAF6C0087240B /* SectionedTableViewCell.swift in Sources */,
+				7E541AFF23FB3A0F00BAD710 /* NewCollectionView.swift in Sources */,
 				7E97656C23786B5600E3AEF2 /* PersonalPlanModelBuilder.swift in Sources */,
 				7ED962AF2336649E00CD2408 /* PlanInfoTableViewCell.swift in Sources */,
 				7EA38AEC237853230007919B /* LocationLocalDataSource.swift in Sources */,
