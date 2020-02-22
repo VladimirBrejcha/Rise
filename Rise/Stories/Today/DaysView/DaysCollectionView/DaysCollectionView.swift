@@ -8,11 +8,8 @@
 
 import Foundation
 
-final class DaysCollectionView: CollectionView {
-    override var cellID: String {
-        return String(describing: DaysCollectionViewCell.self)
-    }
-    override var nibName: String {
-        return String(describing: DaysCollectionViewCell.self)
-    }
+final class DaysCollectionView: NewCollectionView {
+    private let cellTypes = [DaysCollectionCell.self]
+    
+    override var cellIDs: [String] { cellTypes.compactMap { String(describing: $0) } }
 }

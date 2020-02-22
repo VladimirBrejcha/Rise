@@ -123,8 +123,8 @@ final class PersonalPlanViewController:
     
     func showLoading(_ show: Bool) {
         show
-            ? loadingView.showLoading(true)
-            : loadingView.showLoading(false) {
+            ? loadingView.show(state: .showingLoading)
+            : loadingView.show(state: .hidden) {
                 UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction, animations:
                     { self.mainContainerView.alpha = 1 })
         }
@@ -143,11 +143,11 @@ final class PersonalPlanViewController:
     
     private func showPlanDoesntExistInfo() {
         mainContainerView.alpha = 0
-        loadingView.showInfo(with: "You don't have sleep plan yet, go and create one!")
+        loadingView.show(state: .showingInfo(info: "You don't have sleep plan yet, go and create one!"))
     }
     
     private func hidePlanDoesntExistInfo() {
-        loadingView.hideInfo() {
+        loadingView.show(state: .hidden) {
             UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction, animations: {
                 self.mainContainerView.alpha = 1
             })

@@ -1,5 +1,5 @@
 //
-//  DaysCollectionView.swift
+//  DaysView.swift
 //  Rise
 //
 //  Created by Владимир Королев on 08/09/2019.
@@ -8,27 +8,42 @@
 
 import UIKit
 
-final class DaysView: DesignableContainerView, DaysSegmentedControlViewDelegate, UICollectionViewDelegateFlowLayout {
-    @IBOutlet weak var segmentedControl: DaysSegmentedControlView!
+final class DaysView:
+    DesignableContainerView,
+    UICollectionViewDelegateFlowLayout
+{
+    @IBOutlet private weak var segmentedControl: DaysSegmentedControlView!
     @IBOutlet weak var collectionView: DaysCollectionView!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        segmentedControl.delegate = self
+        segmentedControl.onSegmentTouch = { segment in
+            self.collectionView?.scrollToItem(
+                at: IndexPath(item: segment.rawValue, section: 0),
+                at: .centeredHorizontally,
+                animated: true
+            )
+        }
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        collectionView.scrollToItem(at: IndexPath(row: 1, section: 0), at: .centeredHorizontally, animated: false)
+        collectionView.scrollToItem(at: IndexPath(row: 1, section: 0),
+                                    at: .centeredHorizontally,
+                                    animated: false)
     }
     
     // MARK: - UICollectionViewDelegateFlowLayout -
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = collectionView.bounds.height
-        let width  = collectionView.bounds.width
-        return CGSize(width: width, height: height)
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: collectionView.bounds.width,
+               height: (collectionView.bounds.height / 2) - 5)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        10
     }
     
     // MARK: - UIScrollViewDelegate -
@@ -36,13 +51,8 @@ final class DaysView: DesignableContainerView, DaysSegmentedControlViewDelegate,
         let x = scrollView.contentOffset.x
         let w = scrollView.bounds.size.width
         let currentPage = Int(ceil(x/w))
-        if currentPage > 2 || currentPage < 0 { return }
-        
-        segmentedControl.selectButton(DaysSegmentedControlViewButtonDay(rawValue: currentPage)!)
-    }
-    
-    // MARK: - DaysSegmentedControlViewDelegate -
-    func didSelect(segment: DaysSegmentedControlViewButtonDay) {
-        collectionView?.scrollToItem(at: IndexPath(item: segment.rawValue, section: 0), at: .centeredHorizontally, animated: true)
+        if !(currentPage > 2 || currentPage < 0) {
+            segmentedControl.selectButton(DaysSegmentedControlViewButtonDay(rawValue: currentPage)!)
+        }
     }
 }

@@ -14,26 +14,24 @@ enum DaysSegmentedControlViewButtonDay: Int {
     case tomorrow = 2
 }
 
-protocol DaysSegmentedControlViewDelegate: AnyObject {
-    func didSelect(segment: DaysSegmentedControlViewButtonDay)
-}
-
 final class DaysSegmentedControlView: UIStackView {
-    weak var delegate: DaysSegmentedControlViewDelegate?
+    var onSegmentTouch: ((DaysSegmentedControlViewButtonDay) -> Void)?
     
     @IBOutlet private var buttons: [DaysSegmentedControlButton]!
     
     @IBAction private func buttonTouchUp(_ sender: DaysSegmentedControlButton) {
         selectButton(sender.day)
-        delegate?.didSelect(segment: sender.day)
+        onSegmentTouch?(sender.day)
     }
     
     func selectButton(_ selectedButton: DaysSegmentedControlViewButtonDay) {
         for button in buttons {
-            UIView.transition(with: button,
-                              duration: 0.35,
-                              options: .transitionCrossDissolve,
-                              animations: { button.isSelected = button.day == selectedButton ? true : false })
+            UIView.transition(
+                with: button,
+                duration: 0.35,
+                options: .transitionCrossDissolve,
+                animations: { button.isSelected = button.day == selectedButton ? true : false }
+            )
         }
     }
 }

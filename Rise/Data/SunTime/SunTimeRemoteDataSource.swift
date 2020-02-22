@@ -73,7 +73,7 @@ class SunTimeRemoteDataSource {
             else {
                 guard let httpResponse = response as? HTTPURLResponse else { fatalError() } // TODO: - completion - error
                 guard let data = data else { fatalError() } // TODO: - completion - error
-                print(httpResponse)
+//                print(httpResponse)
                 completion(.success(data))
             }
         }

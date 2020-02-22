@@ -19,6 +19,8 @@ protocol TodayStoryViewInput: AnyObject {
     func updateDescription(with text: String)
     
     func makeTabBar(visible: Bool)
+    
+    func getIndexOf(cell: DaysCollectionCell) -> Int?
 }
 
 protocol TodayStoryViewOutput: ViewOutput { }
@@ -62,6 +64,10 @@ final class TodayStoryViewController: UIViewController, TodayStoryViewInput {
     func setupCollectionView(with dataSource: UICollectionViewDataSource) {
         mainContainerView.collectionView.dataSource = dataSource
         mainContainerView.collectionView.delegate = mainContainerView
+    }
+    
+    func getIndexOf(cell: DaysCollectionCell) -> Int? {
+        mainContainerView.collectionView.indexPath(for: cell)?.row
     }
     
     func refreshCollectionView() {

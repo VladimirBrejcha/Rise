@@ -99,7 +99,7 @@ final class ConfirmationViewController: UIViewController, ConfirmationViewInput 
             UIView.animate(withDuration: 0.3) {
                 self.loadingViewHeightConstraint.constant = show ? 100 : 0
                 self.view.layoutIfNeeded()
-                self.loadingView.showLoading(show)
+                self.loadingView.show(state: .showingLoading)
             }
         }
     }

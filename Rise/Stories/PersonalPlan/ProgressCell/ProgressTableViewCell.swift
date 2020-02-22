@@ -32,7 +32,7 @@ final class ProgressTableViewCell: UITableViewCell {
             }
 
             if paused {
-                loadingView.showInfo(with: "Your plan is paused")
+                loadingView.show(state: .showingInfo(info: "Your plan is paused"))
             }
         }
     }

@@ -1,5 +1,5 @@
 //
-//  NewDaysCollectionViewCell.swift
+//  DaysCollectionCell.swift
 //  Rise
 //
 //  Created by Владимир Королев on 17.02.2020.
@@ -7,19 +7,6 @@
 //
 
 import UIKit
-
-enum DaysCollectionViewCellState {
-    case loading
-    case showingInfo (info: String)
-    case showingError (error: String)
-    case showingContent (left: String, right: String)
-}
-
-struct DaysCollectionCellModel {
-    let state: DaysCollectionViewCellState
-    let imageName: (left: String, right: String)
-    let repeatButtonHandler: ((DaysCollectionCell) -> Void)?
-}
 
 final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
     typealias Model = DaysCollectionCellModel
@@ -37,11 +24,9 @@ final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        loadingView.repeatButtonHandler = repeatButtonPressed
-    }
-    
-    func repeatButtonPressed() {
-        repeatButtonHandler?(self)
+        loadingView.repeatButtonHandler = {
+            self.repeatButtonHandler?(self)
+        }
     }
     
     override func draw(_ rect: CGRect) {

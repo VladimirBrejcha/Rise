@@ -7,3 +7,16 @@
 //
 
 import Foundation
+
+enum DaysCollectionCellState {
+    case loading
+    case showingInfo (info: String)
+    case showingError (error: String)
+    case showingContent (left: String, right: String)
+}
+
+struct DaysCollectionCellModel {
+    var state: DaysCollectionCellState
+    let imageName: (left: String, right: String)
+    let repeatButtonHandler: ((DaysCollectionCell) -> Void)?
+}

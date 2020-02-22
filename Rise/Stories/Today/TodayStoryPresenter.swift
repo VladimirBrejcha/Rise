@@ -8,7 +8,9 @@
 
 import Foundation
 
-final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDelegate {
+typealias TodayCollectionCellConfigurator = CollectionCellConfigurator<DaysCollectionCell, DaysCollectionCellModel>
+
+final class TodayStoryPresenter: TodayStoryViewOutput {
     private unowned var view: TodayStoryViewInput
     
     private let getSunTime: GetSunTime
@@ -19,12 +21,30 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
         return getPlan.execute()
     }
     
-    private var cellModels: [DaysCollectionViewCellModel] {
-        get { return collectionViewDataSource.models }
-        set { collectionViewDataSource.models = newValue }
-    }
+    private var collectionDataSource: CollectionDataSource?
     
-    private var collectionViewDataSource: CollectionViewDataSource<DaysCollectionViewCellModel>!
+    private var cellModels: [DaysCollectionCellModel] {
+        get {
+            guard let dataSource = collectionDataSource
+                else {
+                    return []
+            }
+            return dataSource
+                .items
+                .compactMap { $0 as? TodayCollectionCellConfigurator }
+                .map { $0.model }
+            
+        }
+        set {
+            guard let dataSource = collectionDataSource
+                else {
+                    return
+            }
+            dataSource.items
+                = newValue
+                    .map { TodayCollectionCellConfigurator(model: $0) }
+        }
+    }
     
     required init(
         view: TodayStoryViewInput,
@@ -40,11 +60,16 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
     
     // MARK: - TodayStoryViewOutput -
     func viewDidLoad() {
-        collectionViewDataSource = .make(for: [DaysCollectionViewCellModel(day: .yesterday),
-                                               DaysCollectionViewCellModel(day: .today),
-                                               DaysCollectionViewCellModel(day: .tomorrow)],
-                                         cellDelegate: self)
-        view.setupCollectionView(with: collectionViewDataSource)
+        collectionDataSource = CollectionDataSource(items: [
+            TodayCollectionCellConfigurator(model: makeEmptySunCellModel()),
+            TodayCollectionCellConfigurator(model: makeEmptyPlanCellModel()),
+            TodayCollectionCellConfigurator(model: makeEmptySunCellModel()),
+            TodayCollectionCellConfigurator(model: makeEmptyPlanCellModel()),
+            TodayCollectionCellConfigurator(model: makeEmptySunCellModel()),
+            TodayCollectionCellConfigurator(model: makeEmptyPlanCellModel())
+        ])
+
+        view.setupCollectionView(with: collectionDataSource!)
         updatePlanView(with: getPlan.execute())
         requestSunTime()
 
@@ -69,25 +94,9 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
         }
     }
     
-    // MARK: - DaysCollectionViewCellDelegate -
-    func repeatButtonPressed(on cell: DaysCollectionViewCell) {
-        if let index = cellModels.firstIndex(where: { cellModel in
-            return calendar.isDate(cellModel.day.date, inSameDayAs: cell.cellModel.day.date) // TODO try to compare days
-        }) {
-            cellModels[index].sunErrorMessage = nil
-            view.refreshCollectionView()
-            requestSunTime()
-        }
-    }
-    
     // MARK: - Private Methods -
     private func requestSunTime() {
-        guard let yesterday = Date().appending(days: -1)
-            else {
-                return
-        }
-        
-        getSunTime.execute((numberOfDays: 3, day: yesterday)) { [weak self] result in
+        getSunTime.execute((numberOfDays: 3, day: Day.yesterday.date)) { [weak self] result in
             guard let self = self else { return }
             if case .success (let sunTime) = result { self.updateSunTimeView(with: sunTime) }
             if case .failure (let error) = result {
@@ -99,16 +108,25 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
     
     private func updateSunTimeView(with sunModelArray: [DailySunTime]?) {
         if let models = sunModelArray {
-            models.forEach { model in
-                if let index = cellModels.firstIndex(where: { cellModel in
-                    return Calendar.current.isDate(cellModel.day.date, inSameDayAs: model.day)
-                }) {
-                    cellModels[index].update(sunTime: model)
+            for index in cellModels.enumerated() {
+                if index.offset % 2 == 0 {
+                    let sunTime = models[(index.offset) / 2]
+                    cellModels[index.offset] = DaysCollectionCellModel(
+                        state: .showingContent(left: sunTime.sunrise.HHmmString, right: sunTime.sunset.HHmmString),
+                        imageName: (left: "sunrise", right: "sunset"),
+                        repeatButtonHandler: repeatButtonPressed(on:)
+                    )
                 }
             }
         } else {
             for index in cellModels.enumerated() {
-                cellModels[index.offset].sunErrorMessage = "Failed to load data"
+                if index.offset % 2 == 0 {
+                    cellModels[index.offset] = DaysCollectionCellModel(
+                        state: .showingError(error: "Failed to load data"),
+                        imageName: (left: "sunrise", right: "sunset"),
+                        repeatButtonHandler: repeatButtonPressed(on:)
+                    )
+                }
             }
         }
         DispatchQueue.main.async {
@@ -117,28 +135,33 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
     }
     
     private func updatePlanView(with plan: PersonalPlan?) {
-        if let plan = plan {
-            for index in cellModels.enumerated() {
-                cellModels[index.offset].planErrorMessage = "No Rise plan for the day"
-            }
-            
-            let datesArray: [Day] = [.yesterday, .today, .tomorrow]
-            
-            for index in datesArray.enumerated() {
-                if let dailyTime = PersonalPlanHelper.getDailyTime(for: plan, and: datesArray[index.offset].date) {
-                    cellModels[index.offset].update(planTime: dailyTime)
+        guard let plan = plan
+            else {
+                return
+        }
+        
+        let datesArray: [Day] = [.yesterday, .today, .tomorrow]
+        
+        for index in cellModels.enumerated() {
+            if index.offset % 2 != 0 {
+                if let dailyTime = PersonalPlanHelper.getDailyTime(for: plan,
+                                                                   and: datesArray[(index.offset / 2)].date) {
+                    cellModels[index.offset] = DaysCollectionCellModel(
+                        state: .showingContent(left: dailyTime.wake.HHmmString, right: dailyTime.sleep.HHmmString),
+                        imageName: (left: "wakeup", right: "bed"),
+                        repeatButtonHandler: repeatButtonPressed(on:)
+                    )
                 }
             }
-        } else {
-            for index in self.cellModels.enumerated() {
-                self.cellModels[index.offset].planErrorMessage = "You have no Rise plan yet"
-            }
         }
-        view.refreshCollectionView()
+        
+        DispatchQueue.main.async {
+            self.view.refreshCollectionView()
+        }
     }
     
     private func floatingLabelDataSource() -> (text: String, alpha: Float) {
-        guard let plan = self.getPlan.execute() else {
+        guard let plan = personalPlan else {
             return (text: "", alpha: 0)
         }
         
@@ -163,6 +186,30 @@ final class TodayStoryPresenter: TodayStoryViewOutput, DaysCollectionViewCellDel
             let timeString = minutesUntilSleep.HHmmString
             
             return (text: "Sleep planned in \(timeString)", alpha: alpha)
+        }
+    }
+    
+    private func makeEmptySunCellModel() -> DaysCollectionCellModel {
+        return DaysCollectionCellModel(state: .loading,
+                                              imageName: (left: "sunrise", right: "sunset"),
+                                              repeatButtonHandler: repeatButtonPressed(on:))
+    }
+    
+    private func makeEmptyPlanCellModel() -> DaysCollectionCellModel {
+        return DaysCollectionCellModel(state: .showingInfo(info: "No plan for the day"),
+                                              imageName: (left: "wakeup", right: "bed"),
+                                              repeatButtonHandler: repeatButtonPressed(on:))
+    }
+    
+    
+    private func repeatButtonPressed(on cell: DaysCollectionCell) {
+        guard let index = view.getIndexOf(cell: cell) else { fatalError() }
+        cellModels[index].state = .loading
+        view.refreshCollectionView()
+        if index % 2 == 0 {
+            requestSunTime()
+        } else {
+            updatePlanView(with: personalPlan)
         }
     }
 }

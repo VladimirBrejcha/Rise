@@ -8,6 +8,13 @@
 
 import UIKit
 
+enum LoadingViewState: Equatable {
+    case hidden
+    case showingLoading
+    case showingInfo (info: String)
+    case showingError (error: String)
+}
+
 @IBDesignable
 final class LoadingView: UIButton, NibLoadable {
     @IBOutlet private weak var infoLabel: UILabel!
@@ -17,7 +24,12 @@ final class LoadingView: UIButton, NibLoadable {
     @IBOutlet private weak var animationView: UIView!
     @IBOutlet var containerView: DesignableContainerView!
     
+    private lazy var animator: UIViewPropertyAnimator = {
+        return UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut)
+    }()
+    
     private var loadingAnimation: Animation?
+    private var viewState: LoadingViewState = .hidden
     
     var repeatButtonHandler: (() -> Void)?
     
@@ -35,40 +47,61 @@ final class LoadingView: UIButton, NibLoadable {
         repeatButtonHandler?()
     }
     
-    // MARK: - Error view -
-    func showError(_ show: Bool) {
-        showView(show, view: errorContainerView)
-    }
-    
-    // MARK: - Loadiing animation -
-    func showLoading(_ show: Bool, completion: (() -> Void)? = nil) {
-        loadingAnimation = PulsingCircleAnimation(with: animationView.layer)
+    // MARK: - Private -
+    func show(state: LoadingViewState, completion: (() -> Void)? = nil) {
+        if viewState == state { return }
         
-        if show {
-            loadingAnimation?.animate(true)
-            showView(true, view: animationView, completion: completion)
-        } else {
-            showView(false, view: animationView) {
-                self.loadingAnimation?.animate(false)
+        show(state: viewState, false) { [weak self] in
+            self?.show(state: state, true) { [weak self] in
+                self?.viewState = state
                 completion?()
             }
         }
     }
     
-    // MARK: - Info label -
-    func showInfo(with text: String) {
-        infoLabel.text = text
-        showView(true, view: infoLabel)
+    private func show(state: LoadingViewState, _ show: Bool, completion: (() -> Void)? = nil) {
+        if show == false && state == .hidden { completion?(); return }
+        
+        if show {
+            switch state {
+            case .showingLoading:
+                loadingAnimation = PulsingCircleAnimation(with: animationView.layer)
+                loadingAnimation?.animate(true)
+            case .showingInfo(let info):
+                infoLabel.text = info
+            case .showingError(let error):
+                errorLabel.text = error
+            default:
+                break
+            }
+        }
+        
+        showView(show, view: chooseView(for: state), completion: completion)
     }
     
-    func hideInfo(completion: (() -> Void)? = nil) {
-        showView(false, view: infoLabel, completion: completion)
+    private func chooseView(for state: LoadingViewState) -> UIView {
+        switch state {
+        case .hidden:
+            return self
+        case .showingError:
+            return errorContainerView
+        case .showingInfo:
+            return infoLabel
+        case .showingLoading:
+            return animationView
+        }
     }
     
-    // MARK: - Private -
     private func showView(_ show: Bool, view: UIView, completion: (() -> Void)? = nil) {
-        UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction, animations: {
+        if animator.isRunning {
+            animator.stopAnimation(false)
+            animator.finishAnimation(at: .end)
+        }
+        animator.addAnimations {
             view.alpha = show ? 1 : 0
-        }) { _ in completion?() }
+        }
+        animator.startAnimation()
+        completion?()
     }
 }
+
