@@ -29,7 +29,6 @@
 		7E541AF923FB386B00BAD710 /* CellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E541AF823FB386B00BAD710 /* CellConfigurator.swift */; };
 		7E541AFB23FB388D00BAD710 /* CollectionCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E541AFA23FB388D00BAD710 /* CollectionCellConfigurator.swift */; };
 		7E541AFD23FB393400BAD710 /* CollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E541AFC23FB393400BAD710 /* CollectionDataSource.swift */; };
-		7E541AFF23FB3A0F00BAD710 /* NewCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E541AFE23FB3A0F00BAD710 /* NewCollectionView.swift */; };
 		7E5BDADE2371F08400E43F37 /* RiseLocation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5BDADC2371F08400E43F37 /* RiseLocation+CoreDataClass.swift */; };
 		7E5BDADF2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5BDADD2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift */; };
 		7E5F292A23F9638C0050DFD3 /* FloatingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5F292923F9638C0050DFD3 /* FloatingLabel.swift */; };
@@ -170,7 +169,6 @@
 		7E541AF823FB386B00BAD710 /* CellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurator.swift; sourceTree = "<group>"; };
 		7E541AFA23FB388D00BAD710 /* CollectionCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCellConfigurator.swift; sourceTree = "<group>"; };
 		7E541AFC23FB393400BAD710 /* CollectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDataSource.swift; sourceTree = "<group>"; };
-		7E541AFE23FB3A0F00BAD710 /* NewCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCollectionView.swift; sourceTree = "<group>"; };
 		7E5BDADC2371F08400E43F37 /* RiseLocation+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RiseLocation+CoreDataClass.swift"; path = "Rise/Data/Location/Entity/RiseLocation+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		7E5BDADD2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RiseLocation+CoreDataProperties.swift"; path = "Rise/Data/Location/Entity/RiseLocation+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		7E5F292923F9638C0050DFD3 /* FloatingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabel.swift; sourceTree = "<group>"; };
@@ -707,7 +705,6 @@
 				7E541AF823FB386B00BAD710 /* CellConfigurator.swift */,
 				7E541AFA23FB388D00BAD710 /* CollectionCellConfigurator.swift */,
 				7E541AFC23FB393400BAD710 /* CollectionDataSource.swift */,
-				7E541AFE23FB3A0F00BAD710 /* NewCollectionView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -953,7 +950,6 @@
 				7EE640512378669F005BE355 /* SunTimeModelBuilder.swift in Sources */,
 				7EB9F34A23C2045A002A6DD3 /* ObservePlan.swift in Sources */,
 				92B78CFA229FAF6C0087240B /* SectionedTableViewCell.swift in Sources */,
-				7E541AFF23FB3A0F00BAD710 /* NewCollectionView.swift in Sources */,
 				7E97656C23786B5600E3AEF2 /* PersonalPlanModelBuilder.swift in Sources */,
 				7ED962AF2336649E00CD2408 /* PlanInfoTableViewCell.swift in Sources */,
 				7EA38AEC237853230007919B /* LocationLocalDataSource.swift in Sources */,
