@@ -8,8 +8,6 @@
 
 import Foundation
 
-struct DailySunTime {
-    let day: Date
-    let sunrise: Date
-    let sunset: Date
+struct SunTime: Codable {
+    let sunrise, sunset: Date
 }

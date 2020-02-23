@@ -9,12 +9,11 @@
 import Foundation
 
 struct SunTimeModelBuilder {
-    func buildModel(from object: RiseDailySunTime) -> DailySunTime {
-        return DailySunTime(day: object.day, sunrise: object.sunrise, sunset: object.sunset)
+    func buildModel(from object: RiseSunTime) -> SunTime {
+        return SunTime(sunrise: object.sunrise, sunset: object.sunset)
     }
     
-    func update(object: RiseDailySunTime, with model: DailySunTime) {
-        object.day = model.day
+    func update(object: RiseSunTime, with model: SunTime) {
         object.sunrise = model.sunrise
         object.sunset = model.sunset
     }

@@ -106,7 +106,7 @@ final class TodayStoryPresenter: TodayStoryViewOutput {
         }
     }
     
-    private func updateSunTimeView(with sunModelArray: [DailySunTime]?) {
+    private func updateSunTimeView(with sunModelArray: [SunTime]?) {
         if let models = sunModelArray {
             for index in cellModels.enumerated() {
                 if index.offset % 2 == 0 {

@@ -10,7 +10,5 @@
 import Foundation
 import CoreData
 
-@objc(RiseDailySunTime)
-public class RiseDailySunTime: NSManagedObject {
-
-}
+@objc(RiseSunTime)
+public class RiseSunTime: NSManagedObject { }

@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-fileprivate typealias ObjectType = RiseDailySunTime
+fileprivate typealias ObjectType = RiseSunTime
 fileprivate let containerName = "SunTimeData"
 
 class SunTimeLocalDataSource {
@@ -25,11 +25,11 @@ class SunTimeLocalDataSource {
     private var context: NSManagedObjectContext { return container.viewContext }
     private let entityName = String(describing: ObjectType.self)
     
-    func requestSunTime(for numberOfDays: Int, since day: Date) -> Result<[DailySunTime], Error> {
-        var returnArray = [DailySunTime]()
+    func requestSunTime(for numberOfDays: Int, since day: Date) -> Result<[SunTime], Error> {
+        var returnArray = [SunTime]()
 
         for iteration in 0...numberOfDays - 1 {
-            guard let date = calendar.date(byAdding: .day, value: iteration, to: day)
+            guard let date = day.appending(days: iteration)
                 else {
                     return .failure(RiseError.errorCantFormatDate())
             }
@@ -53,7 +53,7 @@ class SunTimeLocalDataSource {
         return .failure(RiseError.errorNoDataFound())
     }
 
-    @discardableResult func create(sunTimes: [DailySunTime]) -> Bool {
+    @discardableResult func create(sunTimes: [SunTime]) -> Bool {
         var correctlySaved = false
         
         sunTimes.forEach { sunTime in
@@ -90,6 +90,6 @@ fileprivate extension Date {
         components.minute = 59
         components.second = 59
         let endDate = calendar.date(from: components)
-        return NSPredicate(format: "day >= %@ AND day =< %@", argumentArray: [startDate!, endDate!])
+        return NSPredicate(format: "sunrise >= %@ AND sunrise =< %@", argumentArray: [startDate!, endDate!])
     }
 }

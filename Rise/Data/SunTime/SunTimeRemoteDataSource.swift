@@ -8,24 +8,27 @@
 
 import Foundation
 
-fileprivate typealias JSON = [[String: Any]]
+fileprivate let requestURLString = "https://api.sunrise-sunset.org/json"
 
-fileprivate let host = "sun.p.rapidapi.com"
-fileprivate let requestURLString = "https://sun.p.rapidapi.com/api/sun/"
-fileprivate let headers = ["x-rapidapi-host": host, "x-rapidapi-key": SunAPIKey]
+struct SunTimeJSONAdapter: Codable {
+    let results: SunTime
+}
 
-class SunTimeRemoteDataSource {
-    func requestSunTime(for numberOfDays: Int, since day: Date, for location: Location,
-                        completion: @escaping (Result<[DailySunTime], Error>) -> Void) {
-
-        var returnArray = [DailySunTime]()
+final class SunTimeRemoteDataSource {
+    func requestSunTime(
+        for numberOfDays: Int,
+        since day: Date,
+        for location: Location,
+        completion: @escaping (Result<[SunTime], Error>) -> Void
+    ) {
+        var returnArray = [SunTime]()
 
         let group = DispatchGroup()
 
         DispatchQueue.concurrentPerform(iterations: numberOfDays) { dayNumber in
             group.enter()
 
-            guard let date = calendar.date(byAdding: .day, value: dayNumber, to: day)
+            guard let date = day.appending(days: dayNumber)
                 else {
                     completion(.failure(RiseError.errorCantFormatDate()))
                     group.leave()
@@ -46,8 +49,7 @@ class SunTimeRemoteDataSource {
                 }
 
                 if case .success (let data) = result {
-                    let sunModelResult = self.buildSunModel(from: data, and: date)
-
+                    let sunModelResult = self.decode(data: data)
                     if case .failure (let error) = sunModelResult {
                         completion(.failure(error))
                         group.leave()
@@ -61,30 +63,27 @@ class SunTimeRemoteDataSource {
         }
 
         group.notify(queue: .main) {
-            if returnArray.isEmpty { completion(.failure(RiseError.errorNoDataReceived())) }
-            else { completion(.success(returnArray)) }
+            if returnArray.isEmpty {
+                completion(.failure(RiseError.errorNoDataReceived()))
+            }
+            else {
+                completion(.success(returnArray))
+            }
         }
     }
     
     private func makeSingleRequest(with url: URL, completion: @escaping (Result<Data,Error>) -> Void) {
-        let dataTask = URLSession.shared.dataTask(with: buildRequest(with: url))
-        { (data, response, error) in
-            if let error = error { completion(.failure(error)) }
-            else {
-                guard let httpResponse = response as? HTTPURLResponse else { fatalError() } // TODO: - completion - error
-                guard let data = data else { fatalError() } // TODO: - completion - error
-//                print(httpResponse)
-                completion(.success(data))
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                completion(.failure(error))
+                return
             }
-        }
-        dataTask.resume()
-    }
-    
-    private func buildRequest(with url: URL) -> URLRequest {
-        let request = NSMutableURLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
-        request.httpMethod = "GET"
-        request.allHTTPHeaderFields = headers
-        return request as URLRequest
+            if let data = data {
+                completion(.success(data))
+            } else {
+                completion(.failure(RiseError.errorNoDataReceived()))
+            }
+        }.resume()
     }
     
     private func buildURL(with location: Location, and date: Date) -> URL? {
@@ -96,41 +95,18 @@ class SunTimeRemoteDataSource {
 
         let formattedDateString = dateFormatter.string(from: date)
         
-        return URL(string:"\(requestURLString)?latitude=\(latitude)&longitude=\(longitude)&date=\(formattedDateString)")
+        return URL(string:"\(requestURLString)?lat=\(latitude)&lng=\(longitude)&date=\(formattedDateString)&formatted=0")
     }
     
-    private func buildSunModel(from data: Data, and date: Date) -> Result<DailySunTime, Error> {
-        let jsonResult = buildJSON(from: data)
-        if case .failure (let error) = jsonResult { return .failure(error) }
-        else if case .success (let json) = jsonResult
-        {
-            let jsonValues = parseJSON(json)
-            guard let jsonSunrise = jsonValues.sunrise,
-                let jsonSunset = jsonValues.sunset else { return .failure(RiseError.errorCantParseJSON()) }
-            guard let sunrise = buildDate(from: jsonSunrise),
-                let sunset = buildDate(from: jsonSunset) else { return .failure(RiseError.errorCantFormatDate()) }
-            
-            return .success(DailySunTime(day: date, sunrise: sunrise, sunset: sunset))
-        }
-        else { return .failure(RiseError.unknownError()) }
-    }
-    
-    private func parseJSON(_ json: JSON) -> (sunrise: String?, sunset: String?) {
-        let sunset = json[1]["sunset"] as? String
-        let sunrise = json[3]["sunrise"] as? String
-        return (sunrise: sunrise, sunset: sunset)
-    }
-    
-    private func buildJSON(from data: Data) -> Result<JSON, Error> {
+    private func decode(data: Data) -> Result<SunTime, Error> {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
         do {
-            guard let json = try JSONSerialization.jsonObject(with: data, options: [])
-                as? JSON else { return .failure(RiseError.errorCantBuildJSON()) }
-            return .success(json) }
-        catch { return .failure(error) }
-    }
-    
-    private func buildDate(from string: String) -> Date? {
-        let formatter = ISO8601DateFormatter()
-        return formatter.date(from: string)
+            let json = try decoder.decode(SunTimeJSONAdapter.self, from: data)
+            return .success(json.results)
+        }
+        catch {
+            return .failure(RiseError.errorCantParseJSON())
+        }
     }
 }

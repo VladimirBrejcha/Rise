@@ -10,7 +10,7 @@ import Foundation
 
 final class GetSunTime: UseCase {
     typealias InputValue = (numberOfDays: Int, day: Date)
-    typealias CompletionHandler = (Result<[DailySunTime], Error>) -> Void
+    typealias CompletionHandler = (Result<[SunTime], Error>) -> Void
     typealias OutputValue = Void
     
     private let locationRepository: LocationRepository
@@ -21,7 +21,7 @@ final class GetSunTime: UseCase {
         self.sunTimeRepository = sunTimeRepository
     }
     
-    func execute(_ requestValue: (numberOfDays: Int, day: Date), completion: @escaping (Result<[DailySunTime], Error>) -> Void) {
+    func execute(_ requestValue: (numberOfDays: Int, day: Date), completion: @escaping (Result<[SunTime], Error>) -> Void) {
         locationRepository
             .requestLocation {
                 [weak self] result in
@@ -37,7 +37,7 @@ final class GetSunTime: UseCase {
                                             
                                             if case .failure (let error) = result { completion(.failure(error)) }
                                             if case .success (let sunTimes) = result {
-                                                completion(.success(sunTimes.sorted  {$0.day < $1.day }))
+                                                completion(.success(sunTimes.sorted  {$0.sunrise < $1.sunrise }))
                                             }
                     }
                 }

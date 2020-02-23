@@ -1,5 +1,5 @@
 //
-//  LocationModel.swift
+//  Location.swift
 //  Rise
 //
 //  Created by Владимир Королев on 01/09/2019.
@@ -9,6 +9,5 @@
 import Foundation
 
 struct Location {    
-    let latitude: String
-    let longitude: String
+    let latitude, longitude: String
 }
