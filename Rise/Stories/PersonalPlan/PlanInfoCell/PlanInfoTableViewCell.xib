@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,10 +18,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TlI-k5-fhr">
-                        <rect key="frame" x="0.0" y="0.0" width="51" height="58"/>
+                        <rect key="frame" x="0.0" y="0.0" width="55" height="58"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Clock" translatesAutoresizingMaskIntoConstraints="NO" id="vac-sR-9MH">
-                                <rect key="frame" x="15" y="16" width="26" height="26"/>
+                                <rect key="frame" x="15" y="14" width="30" height="30"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="vac-sR-9MH" secondAttribute="height" multiplier="1:1" id="BZ7-j2-YGb"/>
@@ -31,16 +31,16 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="vac-sR-9MH" firstAttribute="leading" secondItem="TlI-k5-fhr" secondAttribute="leading" constant="15" id="3QI-L8-Pgz"/>
-                            <constraint firstAttribute="bottom" secondItem="vac-sR-9MH" secondAttribute="bottom" constant="16" id="Nj7-9z-eHc"/>
+                            <constraint firstAttribute="bottom" secondItem="vac-sR-9MH" secondAttribute="bottom" constant="14" id="Nj7-9z-eHc"/>
                             <constraint firstAttribute="trailing" secondItem="vac-sR-9MH" secondAttribute="trailing" constant="10" id="bs5-YD-487"/>
-                            <constraint firstItem="vac-sR-9MH" firstAttribute="top" secondItem="TlI-k5-fhr" secondAttribute="top" constant="16" id="fqK-WH-ew2"/>
+                            <constraint firstItem="vac-sR-9MH" firstAttribute="top" secondItem="TlI-k5-fhr" secondAttribute="top" constant="14" id="fqK-WH-ew2"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OkK-zb-k4m" customClass="DesignableContainerView" customModule="Rise" customModuleProvider="target">
-                        <rect key="frame" x="51" y="5" width="259" height="48"/>
+                        <rect key="frame" x="55" y="5" width="255" height="48"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8 hours of sleep" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VyK-c6-0Rr">
-                                <rect key="frame" x="0.0" y="0.0" width="259" height="48"/>
+                                <rect key="frame" x="0.0" y="0.0" width="255" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
