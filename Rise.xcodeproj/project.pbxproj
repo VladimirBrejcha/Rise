@@ -18,7 +18,6 @@
 		7E36D99D2401AF6E00C16AEE /* DaysCollectionCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E36D99C2401AF6E00C16AEE /* DaysCollectionCellModel.swift */; };
 		7E3980D52360D0020059C592 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E3980D42360D0020059C592 /* Intro.storyboard */; };
 		7E41982423254C36007867AB /* DaysSegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E41982323254C36007867AB /* DaysSegmentedControlView.swift */; };
-		7E438916235230800059DF1C /* PrivateKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E438915235230800059DF1C /* PrivateKeys.swift */; };
 		7E4798F3239D85D5007FB8F2 /* SetupPlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E4798F2239D85D5007FB8F2 /* SetupPlan.storyboard */; };
 		7E4798F5239D894B007FB8F2 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4798F4239D894B007FB8F2 /* Storyboard.swift */; };
 		7E4798F7239D8A33007FB8F2 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E4798F6239D8A33007FB8F2 /* Settings.storyboard */; };
@@ -158,7 +157,6 @@
 		7E36D99C2401AF6E00C16AEE /* DaysCollectionCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCollectionCellModel.swift; sourceTree = "<group>"; };
 		7E3980D42360D0020059C592 /* Intro.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
 		7E41982323254C36007867AB /* DaysSegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysSegmentedControlView.swift; sourceTree = "<group>"; };
-		7E438915235230800059DF1C /* PrivateKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateKeys.swift; sourceTree = "<group>"; };
 		7E4798F2239D85D5007FB8F2 /* SetupPlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetupPlan.storyboard; sourceTree = "<group>"; };
 		7E4798F4239D894B007FB8F2 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		7E4798F6239D8A33007FB8F2 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
@@ -586,7 +584,6 @@
 			children = (
 				92D7D65E2296F298009321AE /* Info.plist */,
 				92D7D6592296F298009321AE /* Assets.xcassets */,
-				7E438915235230800059DF1C /* PrivateKeys.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -973,7 +970,6 @@
 				7EA38AF22378589E0007919B /* LocationModelBuilder.swift in Sources */,
 				7EB9004023256BF3006EB9A8 /* DaysView.swift in Sources */,
 				7EC7392523C4EF5B00C484B8 /* ConfirmationAssembler.swift in Sources */,
-				7E438916235230800059DF1C /* PrivateKeys.swift in Sources */,
 				7E98FE65231C30C10065FB09 /* AlertPresenter.swift in Sources */,
 				7E708A3423BF635B003B5702 /* SleepDurationSetupPlanViewController.swift in Sources */,
 			);
