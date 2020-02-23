@@ -19,6 +19,8 @@ final class DaysView:
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        collectionView.delegate = self
+        
         segmentedControl.onSegmentTouch = { segment in
             let item = segment.rawValue * 2
             self.collectionView?.scrollToItem(
