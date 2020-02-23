@@ -31,7 +31,7 @@ class DesignableContainerView: UIView {
     }
     
     private func sharedInit() {
-        background = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.07)
+        background = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.03)
         cornerRadius = 12
         clipsToBounds = true
     }
