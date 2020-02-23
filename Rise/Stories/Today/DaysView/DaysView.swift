@@ -15,23 +15,33 @@ final class DaysView:
     @IBOutlet private weak var segmentedControl: DaysSegmentedControlView!
     @IBOutlet weak var collectionView: DaysCollectionView!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         segmentedControl.onSegmentTouch = { segment in
+            let item = segment.rawValue * 2
             self.collectionView?.scrollToItem(
-                at: IndexPath(item: segment.rawValue, section: 0),
+                at: IndexPath(item: item, section: 0),
                 at: .centeredHorizontally,
                 animated: true
             )
         }
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    private var shouldCenter = true
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
         
-        collectionView.scrollToItem(at: IndexPath(row: 1, section: 0),
-                                    at: .centeredHorizontally,
-                                    animated: false)
+        if shouldCenter {
+            collectionView.scrollToItem(
+                at: IndexPath(item: 2, section: 0),
+                at: .centeredHorizontally,
+                animated: false
+            )
+            shouldCenter = false
+        }
     }
     
     // MARK: - UICollectionViewDelegateFlowLayout -
