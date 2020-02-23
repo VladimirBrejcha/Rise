@@ -148,9 +148,12 @@ final class PersonalPlanViewController:
     
     private func hidePlanDoesntExistInfo() {
         loadingView.show(state: .hidden) {
-            UIView.animate(withDuration: 0.6, delay: 0, options: .allowUserInteraction, animations: {
-                self.mainContainerView.alpha = 1
-            })
+            UIView.animate(
+                withDuration: 0.6,
+                delay: 0,
+                options: .allowUserInteraction,
+                animations: { self.mainContainerView.alpha = 1 }
+            )
         }
     }
     

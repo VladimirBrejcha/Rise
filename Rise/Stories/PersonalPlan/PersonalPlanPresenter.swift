@@ -15,9 +15,7 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
     private let updatePlan: UpdatePlan
     private let observePlan: ObservePlan
     
-    private var personalPlan: PersonalPlan? {
-        getPlan.execute()
-    }
+    private var personalPlan: PersonalPlan? { getPlan.execute() }
     
     required init(
         view: PersonalPlanViewInput,
@@ -68,7 +66,8 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
 //            let syncText = "Synchronized with sunrise"
             let syncText = "Coming soon"
             
-            view.updateProgressView(with: PersonalPlanHelper.getProgress(for: plan), maxProgress: PersonalPlanHelper.StringRepresentation.getPlanDuration(for: plan))
+            view.updateProgressView(with: PersonalPlanHelper.getProgress(for: plan),
+                                    maxProgress: PersonalPlanHelper.StringRepresentation.getPlanDuration(for: plan))
             view.updatePlanInfo(with: [durationText, wakeUpText, toSleepText, syncText])
             view.updatePauseTitle(with: plan.paused ? "Resume" : "Pause")
             view.pausePerformance(plan.paused)

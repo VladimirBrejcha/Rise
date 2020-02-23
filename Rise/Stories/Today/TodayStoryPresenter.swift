@@ -86,7 +86,7 @@ final class TodayStoryPresenter: TodayStoryViewOutput {
     func viewDidAppear() {
         guard let plan = personalPlan else { return }
         
-        view?.timeToSleepDataSource = floatingLabelDataSource // todo
+        view?.timeToSleepDataSource = floatingLabelDataSource
         
         if !PersonalPlanHelper.isConfirmed(for: .yesterday, plan: plan) {
             view?.makeTabBar(visible: false)

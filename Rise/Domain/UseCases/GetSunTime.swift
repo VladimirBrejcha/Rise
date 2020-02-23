@@ -44,5 +44,4 @@ final class GetSunTime: UseCase {
             if case .failure (let error) = result { completion(.failure(error)) }
         }
     }
-    
 }

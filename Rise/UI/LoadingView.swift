@@ -49,7 +49,7 @@ final class LoadingView: UIButton, NibLoadable {
     
     // MARK: - Private -
     func show(state: LoadingViewState, completion: (() -> Void)? = nil) {
-        if viewState == state { return }
+        if viewState == state { completion?(); return }
         
         show(state: viewState, false) { [weak self] in
             self?.show(state: state, true) { [weak self] in
