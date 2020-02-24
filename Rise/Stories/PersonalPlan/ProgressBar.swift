@@ -9,8 +9,7 @@
 import UIKit
 
 final class ProgressBar: UIView {
-
-    let progressView = UIView()
+    private let progressView = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,7 +29,7 @@ final class ProgressBar: UIView {
         
         progressView.layer.cornerRadius = (frame.height / 2)
         progressView.translatesAutoresizingMaskIntoConstraints = false
-        progressView.leftAnchor.constraint(equalTo: leftAnchor, constant: -frame.width).isActive = true
+        progressView.leftAnchor.constraint(equalTo: leftAnchor, constant: -frame.width + 25).isActive = true
         progressView.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
         progressView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
         progressView.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
