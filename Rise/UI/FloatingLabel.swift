@@ -20,11 +20,11 @@ final class FloatingLabel: UILabel {
                     return
             }
             
-            if timer != nil { timer?.invalidate() }
+            let data = source()
             
-            if textToShow == source().text && Float(alphaToUse) == source().alpha {
-                return
-            }
+            if textToShow == data.text { return }
+            
+            if timer != nil { timer?.invalidate() }
             
             timer = Timer.scheduledTimer(
                 withTimeInterval: 2,
@@ -35,7 +35,6 @@ final class FloatingLabel: UILabel {
                         timer.invalidate()
                         return
                 }
-                let data = source()
                 self.textToShow = data.text
                 self.alphaToUse = CGFloat(data.alpha)
             }
