@@ -11,11 +11,11 @@ import UIKit
 final class CollectionCellConfigurator<CellType: ConfigurableCell, Model>: CellConfigurator
     where CellType.Model == Model, CellType: UICollectionViewCell
 {
-    static var reuseId: String { return String(describing: CellType.self) }
+    static var reuseId: String { String(describing: CellType.self) }
     
     var model: Model
 
-    init(model: Model) {
+    required init(model: Model) {
         self.model = model
     }
 

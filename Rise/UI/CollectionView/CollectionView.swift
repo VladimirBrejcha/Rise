@@ -9,10 +9,10 @@
 import UIKit
 
 class CollectionView: UICollectionView {
-    var cellIDs: [String] { [] }
+    var cellTypes: [UICollectionViewCell.Type] { [] }
     
+    private var cellIDs: [String] { cellTypes.map { String(describing: $0) } }
     private var nibNames: [String] { cellIDs }
-    
     private var nibs: [UINib] {
         nibNames.map {
             UINib(nibName: $0, bundle: nil)

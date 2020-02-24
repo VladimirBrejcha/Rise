@@ -6,10 +6,8 @@
 //  Copyright © 2019 VladimirBrejcha. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 final class DaysCollectionView: CollectionView {
-    private let cellTypes = [DaysCollectionCell.self]
-    
-    override var cellIDs: [String] { cellTypes.compactMap { String(describing: $0) } }
+    override var cellTypes: [UICollectionViewCell.Type] { [DaysCollectionCell.self] }
 }

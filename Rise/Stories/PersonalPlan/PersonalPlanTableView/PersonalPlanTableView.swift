@@ -9,5 +9,5 @@
 import UIKit
 
 final class PersonalPlanTableView: TableView {
-    override var cellTypes: [UITableViewCell.Type] { [ProgressTableViewCell.self] }
+    override var cellTypes: [UITableViewCell.Type] { [ProgressTableViewCell.self, PlanInfoTableViewCell.self] }
 }

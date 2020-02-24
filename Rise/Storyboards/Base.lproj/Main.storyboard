@@ -328,58 +328,37 @@
                                     <constraint firstAttribute="height" constant="50" id="VfT-cW-UaB"/>
                                 </constraints>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ToI-RY-h9n">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ToI-RY-h9n" customClass="DesignableContainerView" customModule="Rise" customModuleProvider="target">
                                 <rect key="frame" x="10" y="270.5" width="394" height="355"/>
                                 <subviews>
-                                    <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tJK-3e-mBM">
-                                        <rect key="frame" x="0.0" y="0.0" width="394" height="355"/>
-                                        <subviews>
-                                            <tableView clipsSubviews="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="4dp-ye-f5U">
-                                                <rect key="frame" x="10" y="10" width="374" height="74"/>
-                                                <color key="backgroundColor" white="1" alpha="0.040000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <integer key="value" value="12"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </tableView>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="svV-EI-Lt1">
-                                                <rect key="frame" x="0.0" y="89" width="394" height="261"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <integer key="value" value="12"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </tableView>
-                                        </subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="svV-EI-Lt1" customClass="PersonalPlanTableView" customModule="Rise" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="5" width="394" height="345"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="4dp-ye-f5U" firstAttribute="top" secondItem="tJK-3e-mBM" secondAttribute="top" constant="10" id="1XU-Ot-fab"/>
-                                            <constraint firstAttribute="trailing" secondItem="svV-EI-Lt1" secondAttribute="trailing" id="4Yh-F0-PgB"/>
-                                            <constraint firstItem="svV-EI-Lt1" firstAttribute="leading" secondItem="tJK-3e-mBM" secondAttribute="leading" id="Exi-5H-MDj"/>
-                                            <constraint firstAttribute="trailing" secondItem="4dp-ye-f5U" secondAttribute="trailing" constant="10" id="Q0D-lj-GqK"/>
-                                            <constraint firstItem="svV-EI-Lt1" firstAttribute="top" secondItem="4dp-ye-f5U" secondAttribute="bottom" constant="5" id="TDI-kS-a3d"/>
-                                            <constraint firstAttribute="bottom" secondItem="svV-EI-Lt1" secondAttribute="bottom" constant="5" id="l6g-z1-B35"/>
-                                            <constraint firstItem="4dp-ye-f5U" firstAttribute="leading" secondItem="tJK-3e-mBM" secondAttribute="leading" constant="10" id="qYv-8H-KLJ"/>
-                                        </constraints>
-                                    </view>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nkn-IX-tf9" customClass="LoadingView" customModule="Rise" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="355"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="contentView" destination="svV-EI-Lt1" id="2XQ-fe-ld0"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="tJK-3e-mBM" secondAttribute="bottom" id="AVa-8n-OQy"/>
+                                    <constraint firstItem="svV-EI-Lt1" firstAttribute="leading" secondItem="ToI-RY-h9n" secondAttribute="leading" id="8jd-FI-aL4"/>
                                     <constraint firstAttribute="bottom" secondItem="nkn-IX-tf9" secondAttribute="bottom" id="EiY-VP-AZO"/>
                                     <constraint firstItem="nkn-IX-tf9" firstAttribute="leading" secondItem="ToI-RY-h9n" secondAttribute="leading" id="FFX-Cm-yJb"/>
-                                    <constraint firstItem="tJK-3e-mBM" firstAttribute="leading" secondItem="ToI-RY-h9n" secondAttribute="leading" id="YwS-RH-Grg"/>
+                                    <constraint firstAttribute="trailing" secondItem="svV-EI-Lt1" secondAttribute="trailing" id="Hoh-yB-VYn"/>
+                                    <constraint firstAttribute="bottom" secondItem="svV-EI-Lt1" secondAttribute="bottom" constant="5" id="MR0-Kv-MSd"/>
+                                    <constraint firstItem="svV-EI-Lt1" firstAttribute="top" secondItem="ToI-RY-h9n" secondAttribute="top" constant="5" id="U6h-2p-njh"/>
                                     <constraint firstAttribute="width" secondItem="ToI-RY-h9n" secondAttribute="height" multiplier="1:0.9" id="ar2-ik-c2s"/>
-                                    <constraint firstItem="tJK-3e-mBM" firstAttribute="top" secondItem="ToI-RY-h9n" secondAttribute="top" id="gz4-rO-1rh"/>
                                     <constraint firstItem="nkn-IX-tf9" firstAttribute="top" secondItem="ToI-RY-h9n" secondAttribute="top" id="mbt-DK-qqg"/>
                                     <constraint firstAttribute="trailing" secondItem="nkn-IX-tf9" secondAttribute="trailing" id="oox-tU-ZzZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="tJK-3e-mBM" secondAttribute="trailing" id="qdZ-4H-WuP"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -391,9 +370,7 @@
                             <constraint firstItem="r7c-42-hy2" firstAttribute="width" secondItem="r7c-42-hy2" secondAttribute="height" multiplier="300:60" id="AfP-KD-ZYn"/>
                             <constraint firstItem="r7c-42-hy2" firstAttribute="top" secondItem="Cn5-HU-DMT" secondAttribute="top" constant="10" id="Fgo-Hp-354"/>
                             <constraint firstItem="ToI-RY-h9n" firstAttribute="leading" secondItem="Cn5-HU-DMT" secondAttribute="leading" constant="10" id="GB1-oW-83z"/>
-                            <constraint firstItem="4dp-ye-f5U" firstAttribute="height" secondItem="r7c-42-hy2" secondAttribute="height" constant="-5" id="JtA-UG-vha"/>
                             <constraint firstItem="Cn5-HU-DMT" firstAttribute="trailing" secondItem="r7c-42-hy2" secondAttribute="trailing" constant="10" id="Lvj-Qa-otl"/>
-                            <constraint firstItem="4dp-ye-f5U" firstAttribute="width" secondItem="r7c-42-hy2" secondAttribute="width" constant="-20" id="Ulp-BX-YYX"/>
                             <constraint firstItem="r7c-42-hy2" firstAttribute="leading" secondItem="Cn5-HU-DMT" secondAttribute="leading" constant="10" id="ViT-Vx-Rsm"/>
                             <constraint firstItem="Cn5-HU-DMT" firstAttribute="trailing" secondItem="ToI-RY-h9n" secondAttribute="trailing" constant="10" id="XY9-Bc-MyQ"/>
                             <constraint firstItem="Cn5-HU-DMT" firstAttribute="trailing" secondItem="2de-YZ-iQU" secondAttribute="trailing" constant="10" id="zfX-iY-ccC"/>
@@ -402,19 +379,17 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" image="alarm" selectedImage="alarmPressed" id="kUu-Cm-Xqv"/>
                     <connections>
-                        <outlet property="infoTableView" destination="svV-EI-Lt1" id="coj-uq-7gd"/>
                         <outlet property="infomationLabel" destination="B5U-B7-LIm" id="eE2-eK-KbQ"/>
                         <outlet property="loadingView" destination="nkn-IX-tf9" id="xxw-NI-2VX"/>
-                        <outlet property="mainContainerView" destination="tJK-3e-mBM" id="ZFn-zM-wQy"/>
                         <outlet property="pauseButton" destination="yhh-zc-Kkz" id="IRW-oc-n4r"/>
                         <outlet property="planButton" destination="dHd-Ec-x4z" id="yQc-RX-BJP"/>
                         <outlet property="planManageButtonsStackView" destination="2de-YZ-iQU" id="MN5-JK-tuX"/>
-                        <outlet property="progressTableView" destination="4dp-ye-f5U" id="RBK-XO-0We"/>
+                        <outlet property="tableView" destination="svV-EI-Lt1" id="1dT-S8-XUj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0AU-OJ-Grg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="299" y="-155"/>
+            <point key="canvasLocation" x="298.55072463768118" y="-155.35714285714286"/>
         </scene>
     </scenes>
     <resources>

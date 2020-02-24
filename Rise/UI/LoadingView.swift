@@ -9,10 +9,10 @@
 import UIKit
 
 enum LoadingViewState: Equatable {
-    case hidden
-    case showingLoading
-    case showingInfo (info: String)
-    case showingError (error: String)
+    case content
+    case loading
+    case info (message: String)
+    case error (message: String)
 }
 
 @IBDesignable
@@ -22,6 +22,7 @@ final class LoadingView: UIButton, NibLoadable {
     @IBOutlet private weak var repeatButton: Button!
     @IBOutlet private weak var errorLabel: UILabel!
     @IBOutlet private weak var animationView: UIView!
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet var containerView: DesignableContainerView!
     
     private lazy var animator: UIViewPropertyAnimator = {
@@ -29,7 +30,7 @@ final class LoadingView: UIButton, NibLoadable {
     }()
     
     private var loadingAnimation: Animation?
-    private var viewState: LoadingViewState = .hidden
+    private var viewState: LoadingViewState = .content
     
     var repeatButtonHandler: (() -> Void)?
     
@@ -47,61 +48,60 @@ final class LoadingView: UIButton, NibLoadable {
         repeatButtonHandler?()
     }
     
+    func changeState(to state: LoadingViewState) {
+        if viewState == state {
+            log(.info, with: "changeState cancelled, because view is in the same state already")
+            return
+        }
+        
+        crossDisolve(from: chooseView(for: viewState), to: prepareView(for: state))
+        self.viewState = state
+    }
+    
+    
     // MARK: - Private -
-    func show(state: LoadingViewState, completion: (() -> Void)? = nil) {
-        if viewState == state { completion?(); return }
-        
-        show(state: viewState, false) { [weak self] in
-            self?.show(state: state, true) { [weak self] in
-                self?.viewState = state
-                completion?()
-            }
-        }
-    }
-    
-    private func show(state: LoadingViewState, _ show: Bool, completion: (() -> Void)? = nil) {
-        if show == false && state == .hidden { completion?(); return }
-        
-        if show {
-            switch state {
-            case .showingLoading:
-                loadingAnimation = PulsingCircleAnimation(with: animationView.layer)
-                loadingAnimation?.animate(true)
-            case .showingInfo(let info):
-                infoLabel.text = info
-            case .showingError(let error):
-                errorLabel.text = error
-            default:
-                break
-            }
-        }
-        
-        showView(show, view: chooseView(for: state), completion: completion)
-    }
-    
-    private func chooseView(for state: LoadingViewState) -> UIView {
+    private func prepareView(for state: LoadingViewState) -> UIView {
         switch state {
-        case .hidden:
-            return self
-        case .showingError:
+        case .content:
+            return contentView
+        case .error(let error):
+            errorLabel.text = error
             return errorContainerView
-        case .showingInfo:
+        case .info(let info):
+            infoLabel.text = info
             return infoLabel
-        case .showingLoading:
+        case .loading:
+            loadingAnimation = PulsingCircleAnimation(with: animationView.layer)
+            loadingAnimation?.animate(true)
             return animationView
         }
     }
     
-    private func showView(_ show: Bool, view: UIView, completion: (() -> Void)? = nil) {
-        if animator.isRunning {
+    private func chooseView(for state: LoadingViewState) -> UIView {
+        switch state {
+        case .content:
+            return contentView
+        case .error:
+            return errorContainerView
+        case .info:
+            return infoLabel
+        case .loading:
+            return animationView
+        }
+    }
+    
+    private func crossDisolve(from oldView: UIView, to newView: UIView) {
+        if animator.state != .inactive {
             animator.stopAnimation(false)
             animator.finishAnimation(at: .end)
         }
+        
         animator.addAnimations {
-            view.alpha = show ? 1 : 0
+            oldView.alpha = 0
+            newView.alpha = 1
         }
+        
         animator.startAnimation()
-        completion?()
     }
 }
 

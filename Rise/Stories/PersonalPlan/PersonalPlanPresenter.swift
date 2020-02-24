@@ -8,14 +8,34 @@
 
 import Foundation
 
+fileprivate typealias ProgressCellConfigurator = TableCellConfigurator<ProgressTableViewCell, ProgressTableCellModel>
+fileprivate typealias InfoCellConfigurator = TableCellConfigurator<PlanInfoTableViewCell, PlanInfoTableCellModel>
+
 final class PersonalPlanPresenter: PersonalPlanViewOutput {
     private weak var view: PersonalPlanViewInput?
     
+    private var personalPlan: PersonalPlan? { getPlan.execute() }
     private let getPlan: GetPlan
     private let updatePlan: UpdatePlan
     private let observePlan: ObservePlan
-    
-    private var personalPlan: PersonalPlan? { getPlan.execute() }
+
+    private var tableDataSource: TableDataSource?
+    private var cellConfigurators: [[CellConfigurator]] {
+        get {
+            guard let dataSource = tableDataSource
+                else {
+                    return []
+            }
+            return dataSource.items
+        }
+        set {
+            guard let dataSource = tableDataSource
+                else {
+                    return
+            }
+            dataSource.items = newValue
+        }
+    }
     
     required init(
         view: PersonalPlanViewInput,
@@ -31,10 +51,25 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
     
     // MARK: - PersonalPlanViewOutput -
     func viewDidLoad() {
-        self.updateView(with: personalPlan)
+        tableDataSource = TableDataSource(
+            items: [
+                [makeEmptyProgressCellConfigurator()],
+                [makeEmptyInfoCellConfigurator(),
+                 makeEmptyInfoCellConfigurator(),
+                 makeEmptyInfoCellConfigurator(),
+                 makeEmptyInfoCellConfigurator()]
+            ]
+        )
+        
+        view?.setTableView(dataSource: tableDataSource!)
+        
         observePlan.execute({ [weak self] plan in
              self?.updateView(with: plan)
         })
+    }
+    
+    func viewDidAppear() {
+        updateView(with: personalPlan)
     }
     
     func planPressed() {
@@ -59,20 +94,43 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
     private func updateView(with plan: PersonalPlan?) {
         guard let view = view else { return }
         
-        if let plan = plan {
+//        view.showLoading()
+        
+        if let plan = plan {            
             let durationText = "\(PersonalPlanHelper.StringRepresentation.getSleepDuration(for: plan)) of sleep daily"
             let wakeUpText = "Will wake up at \(PersonalPlanHelper.StringRepresentation.getWakeTime(for: plan))"
             let toSleepText = "Will sleep at \(PersonalPlanHelper.StringRepresentation.getFallAsleepTime(for: plan))"
-//            let syncText = "Synchronized with sunrise"
+            //            let syncText = "Synchronized with sunrise"
             let syncText = "Coming soon"
+            let planDuration = PersonalPlanHelper.StringRepresentation.getPlanDuration(for: plan)
+            let progress = PersonalPlanHelper.getProgress(for: plan)
+            let cellModel = ProgressTableCellModel(text: (left: "0", center: "Progress", right: planDuration), progress: progress)
             
-            view.updateProgressView(with: PersonalPlanHelper.getProgress(for: plan),
-                                    maxProgress: PersonalPlanHelper.StringRepresentation.getPlanDuration(for: plan))
-            view.updatePlanInfo(with: [durationText, wakeUpText, toSleepText, syncText])
-            view.updatePauseTitle(with: plan.paused ? "Resume" : "Pause")
-            view.pausePerformance(plan.paused)
+            cellConfigurators = [
+                    [ProgressCellConfigurator(model: cellModel)],
+                    [InfoCellConfigurator(model: PlanInfoTableCellModel(imageName: "time", text: durationText)),
+                    InfoCellConfigurator(model: PlanInfoTableCellModel(imageName: "wakeup", text: wakeUpText)),
+                    InfoCellConfigurator(model: PlanInfoTableCellModel(imageName: "fallasleep", text: toSleepText)),
+                    InfoCellConfigurator(model: PlanInfoTableCellModel(imageName: "sun", text: syncText))]
+                ]
+            
+            view.reloadTable()
+            view.showContent()
+            view.showRightButton(true)
+            view.setRightButton(with: plan.paused ? "Resume" : "Pause",
+                                and: plan.paused ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.9143119454, green: 0.3760060668, blue: 0.4745617509, alpha: 1))
+        } else {
+            view.showLoadingInfo(with: "You don't have sleep plan yet, go and create one!")
+            view.showRightButton(false)
+            view.setLeftButton(with: "Create Rise plan")
         }
-        view.updateUI(doesPlanExist: plan != nil)
-        view.updateStackViewButtons(doesPlanExist: plan != nil)
+    }
+    
+    private func makeEmptyInfoCellConfigurator() -> CellConfigurator {
+        InfoCellConfigurator(model: PlanInfoTableCellModel(imageName: "", text: ""))
+    }
+    
+    private func makeEmptyProgressCellConfigurator() -> CellConfigurator {
+        ProgressCellConfigurator(model: ProgressTableCellModel(text: (left: "", center: "", right: ""), progress: nil))
     }
 }

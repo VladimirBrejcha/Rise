@@ -20,6 +20,8 @@ final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
     
     private var repeatButtonHandler: ((DaysCollectionCell) -> Void)?
     
+    private var processModelUpdate: (() -> Void)?
+    
     // MARK: - LifeCycle -
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,25 +49,16 @@ final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
             
             switch model.state {
             case .loading:
-                self.containerView.alpha = 0
-                self.loadingView.show(state: .showingLoading)
-                self.loadingView.alpha = 1
+                self.loadingView.changeState(to: .loading)
             case .showingInfo(let info):
-                self.containerView.alpha = 0
-                self.loadingView.show(state: .showingInfo(info: info))
-                self.loadingView.alpha = 1
+                self.loadingView.changeState(to: .info(message: info))
             case .showingError(let error):
-                self.containerView.alpha = 0
-                self.loadingView.show(state: .showingError(error: error))
-                self.loadingView.alpha = 1
+                self.loadingView.changeState(to: .error(message: error))
             case .showingContent(let left, let right):
-                self.loadingView.alpha = 0
-                self.containerView.alpha = 1
                 self.leftLabel.text = left
                 self.rightLabel.text = right
+                self.loadingView.changeState(to: .content)
             }
         }
     }
-    
-    private var processModelUpdate: (() -> Void)?
 }

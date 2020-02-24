@@ -39,14 +39,10 @@ final class ProgressTableViewCell: UITableViewCell, ConfigurableCell {
             self.centerProgressLabel.text = model.text.center
             self.endProgressLabel.text = model.text.right
             if let progress = model.progress {
-                self.loadingView.show(state: .hidden) {
-                    self.cellContentView.alpha = 1
-                    self.progressBarView.showProgress(progress: CGFloat(progress))
-                }
+                self.loadingView.changeState(to: .content)
+                self.progressBarView.showProgress(progress: CGFloat(progress))
             } else {
-                self.loadingView.execute({
-                    self.cellContentView.alpha = 0
-                }, thenShow: .showingInfo(info: "Your plan is paused"))
+                self.loadingView.changeState(to: .info(message: "Your plan is paused"))
             }
         }
     }

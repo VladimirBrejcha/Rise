@@ -8,7 +8,16 @@
 
 import UIKit
 
-final class PlanInfoTableViewCell: UITableViewCell:  {
-    @IBOutlet weak var infoImageView: UIImageView!
-    @IBOutlet weak var infoLabel: UILabel!
+final class PlanInfoTableViewCell: UITableViewCell, ConfigurableCell {
+    typealias Model = PlanInfoTableCellModel
+    
+    @IBOutlet private weak var infoImageView: UIImageView!
+    @IBOutlet private weak var infoLabel: UILabel!
+    
+    func configure(with model: PlanInfoTableCellModel) {
+        if !model.imageName.isEmpty {
+            infoImageView.image = UIImage(named: model.imageName)
+        }
+        infoLabel.text = model.text
+    }
 }

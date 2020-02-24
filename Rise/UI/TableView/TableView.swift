@@ -9,10 +9,15 @@
 import UIKit
 
 class TableView: UITableView {
-    var cellID: String { return "" }
-    var nibName: String { return "" }
+    var cellTypes: [UITableViewCell.Type] { [] }
     
-    var nib: UINib { return UINib(nibName: nibName, bundle: nil) }
+    private var cellIDs: [String] { cellTypes.map { String(describing: $0) } }
+    private var nibNames: [String] { cellIDs }
+    private var nibs: [UINib] {
+        nibNames.map {
+            UINib(nibName: $0, bundle: nil)
+        }
+    }
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -24,5 +29,9 @@ class TableView: UITableView {
         sharedInit()
     }
     
-    private func sharedInit() { register(nib, forCellReuseIdentifier: cellID) }
+    private func sharedInit() {
+        for index in cellIDs.indices {
+            register(nibs[index], forCellReuseIdentifier: cellIDs[index])
+        }
+    }
 }

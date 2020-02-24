@@ -184,9 +184,9 @@ final class PersonalPlanHelper {
         ).day ?? 0
     }
     
-    static func getProgress(for plan: PersonalPlan) -> Double {
+    static func getProgress(for plan: PersonalPlan) -> Float {
         let duration = getPlanDuration(for: plan)
-        return (Double(duration - (duration - getDaysCompletedNumber(for: plan))) / Double(duration))
+        return (Float(duration - (duration - getDaysCompletedNumber(for: plan))) / Float(duration))
     }
     
     static func isConfirmed(for day: Day, plan: PersonalPlan) -> Bool {

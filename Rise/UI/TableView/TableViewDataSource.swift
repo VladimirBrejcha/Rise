@@ -8,41 +8,37 @@
 
 import UIKit
 
-class SectionedTableViewDataSource: NSObject {
-    let dataSources: [TableViewDataSource<PickerDataModel>]
+//class SectionedTableViewDataSource: NSObject {
+//    let dataSources: [TableViewDataSource<PickerDataModel>]
+//
+//    init(dataSources: [TableViewDataSource<PickerDataModel>]) { self.dataSources = dataSources }
+//}
 
-    init(dataSources: [TableViewDataSource<PickerDataModel>]) { self.dataSources = dataSources }
-}
-
-class TableViewDataSource<Model>: NSObject, UITableViewDataSource {
-    typealias CellConfigurator = (Model, UITableViewCell) -> Void
-
-    var models: [Model]
-
-    private let reuseIdentifier: String
-    private let cellConfigurator: CellConfigurator
-
-    init(models: [Model], reuseIdentifier: String, cellConfigurator: @escaping CellConfigurator) {
-        self.models = models
-        self.reuseIdentifier = reuseIdentifier
-        self.cellConfigurator = cellConfigurator
+class TableDataSource: NSObject, UITableViewDataSource {
+    var items: [[CellConfigurator]]
+    
+    required init(items: [[CellConfigurator]]) {
+        self.items = items
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        items.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return models.count
+        items[section].count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = models[indexPath.row]
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: reuseIdentifier,
-            for: indexPath
-        )
-
-        cellConfigurator(model, cell)
-
+        let section = items[indexPath.section]
+        let item = section[indexPath.row]
+        
+        let reuseID = type(of: item).reuseId
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseID, for: indexPath)
+        
+        item.configure(cell: cell)
+        
         return cell
     }
 }
-
-
