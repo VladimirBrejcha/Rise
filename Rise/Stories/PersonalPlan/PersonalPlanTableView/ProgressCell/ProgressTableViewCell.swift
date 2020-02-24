@@ -35,9 +35,9 @@ final class ProgressTableViewCell: UITableViewCell, ConfigurableCell {
     // MARK: - ConfigurableCell -
     func configure(with model: ProgressTableCellModel) {
         processModelUpdate = {
-            self.startProgressLabel.text = model.text.left
+            self.startProgressLabel.text = ""
             self.centerProgressLabel.text = model.text.center
-            self.endProgressLabel.text = model.text.right
+            self.endProgressLabel.text = ""
             if let progress = model.progress {
                 self.loadingView.changeState(to: .content)
                 self.progressBarView.showProgress(progress: CGFloat(progress))

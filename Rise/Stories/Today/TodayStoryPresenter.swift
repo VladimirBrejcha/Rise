@@ -184,14 +184,14 @@ final class TodayStoryPresenter: TodayStoryViewOutput {
     // MARK: - Make empty model
     private func makeEmptySunCellModel() -> DaysCollectionCellModel {
         return DaysCollectionCellModel(state: .loading,
-                                              imageName: sunImages,
-                                              repeatButtonHandler: repeatButtonPressed(on:))
+                                       imageName: sunImages,
+                                       repeatButtonHandler: repeatButtonPressed(on:))
     }
     
     private func makeEmptyPlanCellModel() -> DaysCollectionCellModel {
-        return DaysCollectionCellModel(state: .showingInfo(info: "No plan for the day"),
-                                              imageName: planImages,
-                                              repeatButtonHandler: repeatButtonPressed(on:))
+        return DaysCollectionCellModel(state: .loading,
+                                       imageName: planImages,
+                                       repeatButtonHandler: repeatButtonPressed(on:))
     }
     
     

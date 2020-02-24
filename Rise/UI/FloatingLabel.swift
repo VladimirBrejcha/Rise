@@ -22,6 +22,10 @@ final class FloatingLabel: UILabel {
             
             if timer != nil { timer?.invalidate() }
             
+            if textToShow == source().text && Float(alphaToUse) == source().alpha {
+                return
+            }
+            
             timer = Timer.scheduledTimer(
                 withTimeInterval: 2,
                 repeats: true

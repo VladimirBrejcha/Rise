@@ -22,7 +22,6 @@ protocol TodayStoryViewInput: AnyObject {
     func updateDescription(with text: String)
     
     func makeTabBar(visible: Bool)
-    
 }
 
 protocol TodayStoryViewOutput: ViewOutput { }
