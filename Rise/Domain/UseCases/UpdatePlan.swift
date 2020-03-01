@@ -19,7 +19,7 @@ final class UpdatePlan: UseCase {
         self.planRepository = planRepository
     }
     
-    func execute(_ requestValue: PersonalPlan, completion: Void = ()) -> Bool {
+    @discardableResult func execute(_ requestValue: PersonalPlan, completion: Void = ()) -> Bool {
         planRepository.update(personalPlan: requestValue)
     }
 }
