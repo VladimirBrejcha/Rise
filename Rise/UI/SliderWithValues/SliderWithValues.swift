@@ -8,6 +8,26 @@
 
 import UIKit
 
-final class SliderWithValues: UIView {
-
+@IBDesignable
+final class SliderWithValues: UIView, NibLoadable {
+    @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var leftLabel: UILabel!
+    @IBOutlet weak var rightLabel: UILabel!
+    @IBOutlet weak var centerLabel: UILabel!
+    
+    var centerLabelDataSource: ((Float) -> String)?
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupFromNib()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupFromNib()
+    }
+    
+    @IBAction func valueChanged(_ sender: UISlider) {
+        centerLabel.text = centerLabelDataSource?(sender.value)
+    }
 }
