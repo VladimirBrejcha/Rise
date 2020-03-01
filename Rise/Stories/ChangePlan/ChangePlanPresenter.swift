@@ -8,89 +8,133 @@
 
 import Foundation
 
-struct DataForPicker { // TODO: - Picker input and output need refactoring
-    static let daysArray = ["Hardcore - 10 days", "Normal - 15 days", "Recommended - 30 days", "Calm - 50 days"]
-    static let hoursArray = ["7 hours", "7.5 hours", "Recommended - 8 hours", "8.5 hours", "9 hours"]
-
-    private init() { }
-}
+fileprivate typealias DatePickerCellConfigurator = TableCellConfigurator<ChangePlanDatePickerTableCell, ChangePlanDatePickerTableCellModel>
+fileprivate typealias SliderCellConfigurator = TableCellConfigurator<ChangePlanSliderTableCell, ChangePlanSliderTableCellModel>
 
 final class ChangePlanPresenter: ChangePlanViewOutput {
     private weak var view: ChangePlanViewInput?
     
+    private var tableDataSource: TableDataSource?
+    private var cellConfigurators: [[CellConfigurator]] {
+        get { tableDataSource?.items ?? [] }
+        set { tableDataSource?.items = newValue }
+    }
+    
+    private var personalPlan: PersonalPlan? { getPlan.execute() }
+    private let getPlan: GetPlan
     private let updatePlan: UpdatePlan
+    
+    private var pickedWakeUp: Date?
+    private var pickedSleepDuration: Minutes?
+    private var pickedPlanDuration: Int?
     
     required init(
         view: ChangePlanViewInput,
+        getPlan: GetPlan,
         updatePlan: UpdatePlan
     ) {
         self.view = view
+        self.getPlan = getPlan
         self.updatePlan = updatePlan
     }
+    
+    func viewDidLoad() {
+        guard let plan = personalPlan
+            else {
+                log(.info, with: "Plan is nil - dismissing")
+                view?.dismiss()
+                return
+        }
+        
+        let plannedWakeUpTime = plan.dateInterval.end
+        
+        let minimumDurationMin: Float = 6 * 60
+        let maximumDurationMin: Float = 10 * 60
+        let plannedDurationMin: Float = Float(Minutes(with: plan.sleepDurationSec))
+        
+        let sleepDurationString = plan.sleepDurationSec.HHmmString
+        
+        let plannedPlanDuration = PersonalPlanHelper.getPlanDuration(for: plan)
+        let minimunPlanDuration: Float = 15
+        let maximumPlanDuration: Float = 45
+        
+        let planDurationString = "\(plannedPlanDuration.description) days"
+        
+        tableDataSource = TableDataSource(items: [
+            [DatePickerCellConfigurator(model: ChangePlanDatePickerTableCellModel(
+                initialValue: plannedWakeUpTime,
+                text: "Wake up time",
+                datePickerDelegate: datePickerCellDelegate(picked:))
+            )],
+            [SliderCellConfigurator(model: ChangePlanSliderTableCellModel(
+                title: "Sleep duration",
+                text: (left: "6", center: sleepDurationString, right: "10"),
+                sliderMinValue: minimumDurationMin,
+                sliderValue: plannedDurationMin,
+                sliderMaxValue: maximumDurationMin,
+                centerLabelDataSource: sliderCellCenterLabelDataSource(_:for:))
+            )],
+            [SliderCellConfigurator(model: ChangePlanSliderTableCellModel(
+                title: "Plan duration",
+                text: (left: "15", center: planDurationString, right: "45"),
+                sliderMinValue: minimunPlanDuration,
+                sliderValue: Float(plannedPlanDuration),
+                sliderMaxValue: maximumPlanDuration,
+                centerLabelDataSource: sliderCellCenterLabelDataSource(_:for:))
+            )]
+        ])
+        view?.setTableView(with: tableDataSource!)
+        view?.reloadTable()
+    }
+    
+    private func datePickerCellDelegate(picked value: Date) {
+        pickedWakeUp = value
+    }
+    
+    private func sliderCellCenterLabelDataSource(_ cell: ChangePlanSliderTableCell, for value: Float) -> String {
+        guard let indexPath = view?.getIndexPath(of: cell)
+            else {
+                return ""
+        }
+        
+        let value = Int(value)
+        switch indexPath.section {
+        case 1:
+            pickedSleepDuration = value
+            return value.HHmmString
+        case 2:
+            pickedPlanDuration = value
+            return "\(value.description) days"
+        default:
+            return ""
+        }
+    }
+    
+    // MARK: - ChangePlanViewOutput -
+    func save() {
+        guard let plan = personalPlan else {
+            view?.dismiss()
+            return
+        }
+        
+        guard let updatedPlan = PersonalPlanHelper.update(plan: plan,
+                                                          with: pickedWakeUp,
+                                                          and: pickedSleepDuration,
+                                                          and: pickedPlanDuration)
+            else {
+                view?.dismiss() // TODO: - handle with error
+                return
+        }
+        
+        if !updatePlan.execute(updatedPlan) {
+            // TODO: - handle with error
+        }
+        // TODO: - handle success
+        
+        view?.dismiss()
+    }
+    
+    func close() {
+        view?.dismiss()
+    }
 }
-//
-//class ChangePlanPresenter: SetupPlanViewOutput, SectionedTableViewCellDelegate {
-//    weak var view: SetupPlanViewInput!
-//
-//    private let savePersonalPlanUseCase: SavePersonalPlanUseCase = sharedUseCaseManager
-//
-//    private var dataSource: SectionedTableViewDataSource!
-//    private let datePickerModel = PickerDataModel(tag: 0, headerText: "What time do you wish to wake up?",
-//                                                  labelText: "Choose time", type: .datePicker)
-//    private let hoursPickerModel = PickerDataModel(tag: 1, headerText: "How long do you wish to sleep?",
-//                                                   labelText: "Choose hours", type: .pickerView,
-//                                                   titleForRowArray: DataForPicker.hoursArray, defaultRow: 2)
-//    private let secondDatePickerModel = PickerDataModel(tag: 2, headerText: "When did you fall asleep yesterday?",
-//                                                        labelText: "Choose time", type: .datePicker)
-//    private let durationPickerModel = PickerDataModel(tag: 3, headerText: "Duration", labelText: "Choose duration",
-//                                                      type: .pickerView,
-//                                                      titleForRowArray: DataForPicker.daysArray, defaultRow: 2)
-//
-//    private var wakeUpForModel: Date?
-//    private var sleepDurationForModel: String?
-//    private var lastTimeWentSleepForModel: Date?
-//    private var planDurationForModel: String?
-//
-//    init(view: SetupPlanViewInput) { self.view = view }
-//
-//    // MARK: - SetupPlanViewOutput
-//    func viewDidLoad() {
-//
-//    }
-//
-//    func viewWillAppear() {
-//        dataSource = SectionedTableViewDataSource(dataSources:
-//            [TableViewDataSource.make(for: [datePickerModel], output: self),
-//             TableViewDataSource.make(for: [hoursPickerModel], output: self),
-//             TableViewDataSource.make(for: [secondDatePickerModel], output: self),
-//             TableViewDataSource.make(for: [durationPickerModel], output: self)])
-////        view?.configureTableView(with: dataSource)
-//    }
-//
-//    func schedulePressed() {
-//        view.endStory()
-//    }
-//
-//    // MARK: - ExpandingCellDelegate
-//    func cellValueUpdated(with value: PickerOutputValue, cell: SectionedTableViewCell) {
-//        switch cell.tag
-//        {
-//        case 0: wakeUpForModel = value.dateValue
-//        case 1: sleepDurationForModel = value.stringValue
-//        case 2: lastTimeWentSleepForModel = value.dateValue
-//        case 3: planDurationForModel = value.stringValue
-//        default: fatalError("cell with this tag doesnt exist")
-//        }
-//
-//        guard let wakeUp = wakeUpForModel,
-//            let sleepDuration = sleepDurationForModel,
-//            let wentSleep = lastTimeWentSleepForModel,
-//            let planDuration = planDurationForModel else { return }
-//
-////        view?.enableScheduleButton(true)
-//
-//        let personalPlan = PersonalPlanConfigurator.configure(wakeUpTime: wakeUp, sleepDuration: sleepDuration,
-//                                                              planDuration: planDuration, wentSleepTime: wentSleep)
-//        savePersonalPlanUseCase.save(plan: personalPlan)
-//    }
-//}

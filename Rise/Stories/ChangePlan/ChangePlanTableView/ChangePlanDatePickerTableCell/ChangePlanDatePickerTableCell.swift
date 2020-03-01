@@ -14,17 +14,16 @@ final class ChangePlanDatePickerTableCell: UITableViewCell, ConfigurableCell {
     @IBOutlet private weak var datePicker: UIDatePicker!
     @IBOutlet private weak var label: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    private var datePickerDelegate: ((Date) -> Void)?
+    
+    @IBAction private func datePickerValueChanged(_ sender: UIDatePicker) {
+        datePickerDelegate?(sender.date)
     }
     
+    // MARK: - ConfigurableCell -
     func configure(with model: ChangePlanDatePickerTableCellModel) {
         label.text = model.text
         datePicker.setDate(model.initialValue, animated: false)
+        datePickerDelegate = model.datePickerDelegate
     }
 }

@@ -11,6 +11,6 @@ import Foundation
 struct ChangePlanSliderTableCellModel {
     let title: String
     let text: (left: String, center: String, right: String)
-    let sliderValue: Float
-    var sliderValueChanged: (Float) -> Void
+    let sliderMinValue, sliderValue, sliderMaxValue: Float
+    var centerLabelDataSource: (ChangePlanSliderTableCell, Float) -> String
 }

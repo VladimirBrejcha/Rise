@@ -12,26 +12,20 @@ final class ChangePlanSliderTableCell: UITableViewCell, ConfigurableCell {
     typealias Model = ChangePlanSliderTableCellModel
     
     @IBOutlet private weak var title: UILabel!
-    @IBOutlet private weak var centerLabel: UILabel!
-    @IBOutlet private weak var leftLabel: UILabel!
-    @IBOutlet private weak var rightLabel: UILabel!
-    @IBOutlet private weak var slider: UISlider!
+    @IBOutlet private weak var sliderWithValues: SliderWithValues!
     
-    private var sliderValueChanged: ((Float) -> Void)?
+    private var centerLabelDataSource: ((ChangePlanSliderTableCell, Float) -> String)?
     
     func configure(with model: ChangePlanSliderTableCellModel) {
         title.text = model.title
-        leftLabel.text = model.text.left
-        centerLabel.text = model.text.center
-        rightLabel.text = model.text.right
-        slider.minimumValue = model.sliderMinValue
-        slider.maximumValue = model.sliderMaxValue
-        slider.setValue(model.sliderValue, animated: true)
-        sliderValueChanged = model.sliderValueChanged
-    }
-    
-    @IBAction func sliderValueChanged(_ sender: UISlider) {
-        centerLabel.text = Double(sender.value).HHmmString
-        sliderValueChanged?(sender.value)
+        sliderWithValues.leftLabel.text = model.text.left
+        sliderWithValues.centerLabel.text = model.text.center
+        sliderWithValues.rightLabel.text = model.text.right
+        sliderWithValues.slider.minimumValue = model.sliderMinValue
+        sliderWithValues.slider.maximumValue = model.sliderMaxValue
+        sliderWithValues.slider.setValue(model.sliderValue, animated: true)
+        sliderWithValues.centerLabelDataSource = {
+            model.centerLabelDataSource(self, $0)
+        }
     }
 }

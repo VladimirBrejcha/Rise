@@ -20,11 +20,15 @@ final class ChangePlanAssembler: StoryAssembler {
     }
     
     func assemble(view: ChangePlanViewInput) -> ChangePlanViewOutput {
-        let presenter = ChangePlanPresenter(view: view, updatePlan: assemble())
+        let presenter = ChangePlanPresenter(view: view, getPlan: assemble(), updatePlan: assemble())
         return presenter
     }
     
     private func assemble() -> UpdatePlan {
         return UpdatePlan(planRepository: DataLayer.personalPlanRepository)
+    }
+    
+    private func assemble() -> GetPlan {
+        return GetPlan(planRepository: DataLayer.personalPlanRepository)
     }
 }

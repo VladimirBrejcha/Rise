@@ -11,4 +11,5 @@ import Foundation
 struct ChangePlanDatePickerTableCellModel {
     let initialValue: Date
     let text: String
+    let datePickerDelegate: ((Date) -> Void)
 }
