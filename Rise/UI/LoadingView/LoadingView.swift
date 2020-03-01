@@ -80,7 +80,7 @@ final class LoadingView: UIButton, NibLoadable {
     private func chooseView(for state: LoadingViewState) -> UIView {
         switch state {
         case .content:
-            return contentView
+            return contentView //todo crash because of nil
         case .error:
             return errorContainerView
         case .info:
