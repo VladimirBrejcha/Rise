@@ -17,10 +17,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1CN-Nj-H2c" customClass="DesignableContainerView" customModule="Rise" customModuleProvider="target">
-                                <rect key="frame" x="10" y="327.5" width="394" height="241"/>
+                                <rect key="frame" x="10" y="337.5" width="394" height="221"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXp-8r-IzJ" customClass="LoadingView" customModule="Rise" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="161" width="354" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="contentView" destination="RRi-hd-6Dt" id="Sv1-72-h0Q"/>
+                                        </connections>
+                                    </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="RRi-hd-6Dt">
-                                        <rect key="frame" x="10" y="181" width="374" height="50"/>
+                                        <rect key="frame" x="10" y="161" width="374" height="50"/>
                                         <subviews>
                                             <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WHD-tR-u4h" customClass="Button" customModule="Rise" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="182" height="50"/>
@@ -69,16 +76,9 @@
                                             <constraint firstAttribute="width" constant="50" id="pUS-pU-aT7"/>
                                         </constraints>
                                     </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXp-8r-IzJ" customClass="LoadingView" customModule="Rise" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="161" width="354" height="0.0"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" id="7jE-zz-pdn"/>
-                                        </constraints>
-                                    </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="RRi-hd-6Dt" firstAttribute="top" secondItem="aXp-8r-IzJ" secondAttribute="bottom" constant="20" id="3eP-gX-ARR"/>
+                                    <constraint firstItem="RRi-hd-6Dt" firstAttribute="bottom" secondItem="aXp-8r-IzJ" secondAttribute="bottom" id="3eP-gX-ARR"/>
                                     <constraint firstItem="aXp-8r-IzJ" firstAttribute="leading" secondItem="1CN-Nj-H2c" secondAttribute="leading" constant="20" symbolic="YES" id="5xa-1P-VJD"/>
                                     <constraint firstAttribute="trailing" secondItem="RRi-hd-6Dt" secondAttribute="trailing" constant="10" id="CjC-Sz-joq"/>
                                     <constraint firstItem="RRi-hd-6Dt" firstAttribute="leading" secondItem="1CN-Nj-H2c" secondAttribute="leading" constant="10" id="Ehh-iw-O6a"/>
@@ -88,11 +88,12 @@
                                     <constraint firstItem="8ur-nU-zko" firstAttribute="top" secondItem="zcd-pa-5NF" secondAttribute="bottom" constant="20" id="Uqv-7i-vLN"/>
                                     <constraint firstAttribute="trailing" secondItem="8ur-nU-zko" secondAttribute="trailing" constant="10" id="Ve9-fK-n1A"/>
                                     <constraint firstAttribute="trailing" secondItem="aXp-8r-IzJ" secondAttribute="trailing" constant="20" symbolic="YES" id="Wg5-E6-XUu"/>
+                                    <constraint firstItem="RRi-hd-6Dt" firstAttribute="top" secondItem="Qox-KD-r3e" secondAttribute="bottom" constant="20" id="YmA-iB-dbx"/>
                                     <constraint firstItem="Qox-KD-r3e" firstAttribute="top" secondItem="8ur-nU-zko" secondAttribute="bottom" constant="10" id="Zdj-3E-zjR"/>
                                     <constraint firstItem="zcd-pa-5NF" firstAttribute="top" secondItem="1CN-Nj-H2c" secondAttribute="top" constant="20" id="ZuL-AC-JMm"/>
-                                    <constraint firstItem="aXp-8r-IzJ" firstAttribute="top" secondItem="Qox-KD-r3e" secondAttribute="bottom" constant="20" id="b3N-7R-Jeo"/>
                                     <constraint firstItem="zcd-pa-5NF" firstAttribute="centerX" secondItem="1CN-Nj-H2c" secondAttribute="centerX" id="gV8-sv-0HH"/>
                                     <constraint firstItem="8ur-nU-zko" firstAttribute="leading" secondItem="1CN-Nj-H2c" secondAttribute="leading" constant="10" id="rvq-lA-MKb"/>
+                                    <constraint firstItem="aXp-8r-IzJ" firstAttribute="top" secondItem="RRi-hd-6Dt" secondAttribute="top" id="uxq-f5-7cx"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -115,7 +116,6 @@
                         <outlet property="confirmButton" destination="G6C-XR-Plh" id="0pz-xE-U38"/>
                         <outlet property="descriptionLabel" destination="Qox-KD-r3e" id="dg6-Hl-PV3"/>
                         <outlet property="loadingView" destination="aXp-8r-IzJ" id="7Bu-RS-Kdx"/>
-                        <outlet property="loadingViewHeightConstraint" destination="7jE-zz-pdn" id="QBP-eX-vsT"/>
                         <outlet property="resheduleButton" destination="WHD-tR-u4h" id="kfP-wP-gUU"/>
                         <outlet property="titleLabel" destination="8ur-nU-zko" id="qIy-aT-KpF"/>
                     </connections>

@@ -29,8 +29,8 @@
                                     <action selector="closeTouchUp:" destination="tb3-MT-84x" eventType="touchUpInside" id="VPH-eA-AQ7"/>
                                 </connections>
                             </button>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="laz-fg-JOl">
-                                <rect key="frame" x="2" y="104" width="414" height="688"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="laz-fg-JOl">
+                                <rect key="frame" x="0.0" y="104" width="414" height="688"/>
                                 <connections>
                                     <segue destination="fxt-dk-StR" kind="embed" identifier="SetupPlanPageViewController" id="mXt-a5-Ryw"/>
                                 </connections>
@@ -100,7 +100,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rr0-u4-HGS" customClass="DesignableContainerView" customModule="Rise" customModuleProvider="target">
                                 <rect key="frame" x="10" y="310.5" width="394" height="275"/>
                                 <subviews>
-                                    <slider opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="80" minValue="60" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="u10-Gt-ZVI">
+                                    <slider opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="u10-Gt-ZVI">
                                         <rect key="frame" x="48" y="225" width="298" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="7LO-fy-Nuy"/>
