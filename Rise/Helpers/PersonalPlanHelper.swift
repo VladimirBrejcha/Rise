@@ -9,9 +9,12 @@
 import Foundation
 
 final class PersonalPlanHelper {
-    // MARK: - Actions with the plan -
+    // MARK: - Make plan -
     static func makePlan(
-        sleepDurationMin: Minutes, wakeUpTime: Date, planDuration: Days, wentSleepTime: Date
+        sleepDurationMin: Minutes,
+        wakeUpTime: Date,
+        planDuration: Days,
+        wentSleepTime: Date
     ) -> PersonalPlan? {
         let sleepDurationSec = Seconds(with: sleepDurationMin)
         var todayComponents = calendar.dateComponents([.year, .month, .day], from: Day.today.date)
@@ -43,6 +46,7 @@ final class PersonalPlanHelper {
         )
     }
     
+    // MARK: - Reshedule plan -
     static func reshedule(plan: PersonalPlan) -> PersonalPlan? {
         let yesterday = Day.yesterday.date
         
@@ -75,19 +79,56 @@ final class PersonalPlanHelper {
         return updatedPlan
     }
     
-    static func getDaysMissedIncludingCurrentPeriod(for plan: PersonalPlan) -> Int {
-        guard let daysBetweenTodayAndLatestConfirmed = calendar.dateComponents([.day],
-                                                                               from: plan.latestConfirmedDay,
-                                                                               to: Day.today.date).day
-            else {
-                return plan.daysMissed
+    // MARK: - Update plan -
+    static func update(
+        plan: PersonalPlan,
+        with wakeUpDate: Date?,
+        and sleepDuration: Minutes?,
+        and planDuration: Int?
+    ) -> PersonalPlan? {
+        
+        var newPlan = plan
+        
+        if let newWakeUp = wakeUpDate {
+            let oldWakeUp = plan.wakeTime
+            var oldWakeUpComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: oldWakeUp)
+            let newWakeUpComponents = calendar.dateComponents([.hour, .minute], from: newWakeUp)
+            if oldWakeUpComponents.hour != newWakeUpComponents.hour || oldWakeUpComponents.minute != newWakeUpComponents.minute {
+                oldWakeUpComponents.hour = newWakeUpComponents.hour
+                oldWakeUpComponents.minute = newWakeUpComponents.minute
+                if let newWakeUpDate = calendar.date(from: oldWakeUpComponents) {
+                    newPlan.wakeTime = newWakeUpDate
+                } else {
+                    log(.warning, with: "Could build wakeUp date, skipping wake up update")
+                }
+            }
         }
         
-        if daysBetweenTodayAndLatestConfirmed <= 0 { return plan.daysMissed }
+        if let newSleepDuration = sleepDuration {
+            let newSleepDurationSec = Seconds(with: newSleepDuration)
+            if newPlan.sleepDurationSec != newSleepDurationSec {
+                newPlan.sleepDurationSec = newSleepDurationSec
+            }
+        }
         
-        return plan.daysMissed + daysBetweenTodayAndLatestConfirmed
+        if let newPlanDuration = planDuration {
+            let oldPlanDuration = getPlanDuration(for: plan)
+            let numberOfDaysCompleted = getDaysCompleted(for: plan)
+            if oldPlanDuration != newPlanDuration && numberOfDaysCompleted < newPlanDuration {
+                let planDurationDiff = oldPlanDuration - newPlanDuration
+                let oldPlanEndDate = plan.dateInterval.end
+                if let newPlanEndDate = oldPlanEndDate.appending(days: planDurationDiff) {
+                    newPlan.dateInterval.end = newPlanEndDate
+                } else {
+                    log(.warning, with: "Could not append \(planDurationDiff) days to date, skipping planDuration update")
+                }
+            }
+        }
+        
+        return newPlan
     }
     
+    // MARK: - Confirm plan -
     static func confirm(plan: PersonalPlan) -> PersonalPlan {
         var plan = plan
         plan.latestConfirmedDay = Date()
@@ -95,6 +136,7 @@ final class PersonalPlanHelper {
         return plan
     }
     
+    // MARK: - Pause plan -
     static func pause(_ pause: Bool, plan: PersonalPlan) -> PersonalPlan {
         var plan = plan
         
@@ -116,7 +158,7 @@ final class PersonalPlanHelper {
         }
     }
     
-    // MARK: - Additional plan info -
+    // MARK: - Get plan info -
     static func getDailyTime(for plan: PersonalPlan, and date: Date) -> DailyPlanTime? {
         var date = date
         if plan.paused {
@@ -156,6 +198,19 @@ final class PersonalPlanHelper {
         )
     }
     
+    static func getDaysMissedIncludingCurrentPeriod(for plan: PersonalPlan) -> Int {
+        guard let daysBetweenTodayAndLatestConfirmed = calendar.dateComponents([.day],
+                                                                               from: plan.latestConfirmedDay,
+                                                                               to: Day.today.date).day
+            else {
+                return plan.daysMissed
+        }
+        
+        if daysBetweenTodayAndLatestConfirmed <= 0 { return plan.daysMissed }
+        
+        return plan.daysMissed + daysBetweenTodayAndLatestConfirmed
+    }
+    
     static func getDaysSincePlanStart(for plan: PersonalPlan, and date: Date) -> Int {
         return calendar.dateComponents(
             [.day],
@@ -176,7 +231,7 @@ final class PersonalPlanHelper {
         return plan.wakeTime.addingTimeInterval(-plan.sleepDurationSec)
     }
     
-    static func getDaysCompletedNumber(for plan: PersonalPlan) -> Int {
+    static func getDaysCompleted(for plan: PersonalPlan) -> Int {
         calendar.dateComponents(
             [.day],
             from: calendar.startOfDay(for: plan.dateInterval.start),
@@ -186,14 +241,12 @@ final class PersonalPlanHelper {
     
     static func getProgress(for plan: PersonalPlan) -> Float {
         let duration = getPlanDuration(for: plan)
-        return (Float(duration - (duration - getDaysCompletedNumber(for: plan))) / Float(duration))
+        return (Float(duration - (duration - getDaysCompleted(for: plan))) / Float(duration))
     }
     
     static func isConfirmed(for day: Day, plan: PersonalPlan) -> Bool {
         if plan.paused { return true }
-        let latestConfirmedDay = calendar.component(.day, from: plan.latestConfirmedDay)
-        let day = calendar.component(.day, from: day.date)
-        return latestConfirmedDay >= day
+        return plan.latestConfirmedDay >= day.date
     }
     
     static func minutesUntilSleepToday(for plan: PersonalPlan) -> Minutes? {
@@ -212,6 +265,7 @@ final class PersonalPlanHelper {
         return calendar.dateComponents([.minute], from: today, to: sleepTimeCorrectedDate).minute
     }
     
+    // MARK: - Get plan info as String -
     class StringRepresentation {
         static func getSleepDuration(for plan: PersonalPlan) -> String {
             return plan.sleepDurationSec.HHmmString
