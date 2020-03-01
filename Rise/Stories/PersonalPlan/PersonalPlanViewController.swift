@@ -79,11 +79,6 @@ final class PersonalPlanViewController:
         tableView.reloadData()
     }
     
-//    func showLoading() {
-//        loadingView.crossDisolve(from: <#T##UIView#>, to: <#T##LoadingViewState#>)
-//        showTableView(false) { self.loadingView.show(state: .showingLoading) }
-//    }
-    
     func showLoadingInfo(with text: String) {
         loadingView.changeState(to: .info(message: text))
     }

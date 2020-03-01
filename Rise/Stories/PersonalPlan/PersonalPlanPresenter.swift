@@ -94,8 +94,6 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
     private func updateView(with plan: PersonalPlan?) {
         guard let view = view else { return }
         
-//        view.showLoading()
-        
         if let plan = plan {            
             let durationText = "\(PersonalPlanHelper.StringRepresentation.getSleepDuration(for: plan)) of sleep daily"
             let wakeUpText = "Will wake up at \(PersonalPlanHelper.StringRepresentation.getWakeTime(for: plan))"
