@@ -8,13 +8,7 @@
 
 import UIKit
 
-//class SectionedTableViewDataSource: NSObject {
-//    let dataSources: [TableViewDataSource<PickerDataModel>]
-//
-//    init(dataSources: [TableViewDataSource<PickerDataModel>]) { self.dataSources = dataSources }
-//}
-
-class TableDataSource: NSObject, UITableViewDataSource {
+final class TableDataSource: NSObject, UITableViewDataSource {
     var items: [[CellConfigurator]]
     
     required init(items: [[CellConfigurator]]) {
