@@ -12,7 +12,6 @@ protocol ConfirmationViewInput: AnyObject {
     func updateTitle(with text: String)
     func updateDescription(with text: String)
 
-    func showButtons(_ show: Bool)
     func showRescheduleButton(_ show: Bool)
     func updateConfirmButtonTitle(with text: String)
     func showLoadingView(_ show: Bool)
@@ -77,13 +76,6 @@ final class ConfirmationViewController: UIViewController, ConfirmationViewInput 
                           completion: nil)
     }
     
-    func showButtons(_ show: Bool) {
-        UIView.animate(withDuration: 0.1) {
-            self.buttonsStackView.isHidden = !show
-            self.buttonsStackViewHeightConstraint.constant = show ? 50 : 0
-        }
-    }
-    
     func showRescheduleButton(_ show: Bool) {
         resheduleButton.isHidden = !show
     }
@@ -93,15 +85,7 @@ final class ConfirmationViewController: UIViewController, ConfirmationViewInput 
     }
         
     func showLoadingView(_ show: Bool) {
-        UIView.animate(withDuration: 0.06, animations: {
-            self.loadingView.alpha = show ? 1 : 0
-        }) { _ in
-            UIView.animate(withDuration: 0.3) {
-                self.loadingViewHeightConstraint.constant = show ? 100 : 0
-                self.view.layoutIfNeeded()
-                self.loadingView.changeState(to: .loading)
-            }
-        }
+        loadingView.changeState(to: show ? .loading : .content)
     }
     
     func dismiss() {

@@ -104,14 +104,12 @@ final class ConfirmationPresenter: ConfirmationViewOutput {
         
         if (updatePlan.execute(resheduledPlan)) {
             view.showLoadingView(true)
-            view.showButtons(false)
             view.updateTitle(with: "Resheduling")
             view.updateDescription(with: "Rise plan is being updated...")
-            view.showRescheduleButton(false)
             
             Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
+                self.view.showRescheduleButton(false)
                 self.view.showLoadingView(false)
-                self.view.showButtons(true)
                 self.view.updateConfirmButtonTitle(with: "Continue")
                 self.view.updateDescription(with: "Successfully completed")
             }
