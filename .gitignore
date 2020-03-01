@@ -111,3 +111,4 @@ iOSInjectionProject/
 # End of https://www.gitignore.io/api/swift,xcode,cocoapods
 
 PrivateKeys.swift
+.idea/
