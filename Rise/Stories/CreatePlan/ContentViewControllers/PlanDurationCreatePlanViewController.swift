@@ -1,5 +1,5 @@
 //
-//  PlanDurationSetupPlanViewController.swift
+//  PlanDurationCreatePlanViewController.swift
 //  Rise
 //
 //  Created by Владимир Королев on 03.01.2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class PlanDurationSetupPlanViewController: UIViewController {
+final class PlanDurationCreatePlanViewController: UIViewController {
 
     var planDurationOutput: ((Int) -> Void)!
     

@@ -1,5 +1,5 @@
 //
-//  PersonalTimeViewController.swift
+//  CreatePlanViewController.swift
 //  Rise
 //
 //  Created by Vladimir Korolev on 25/05/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol SetupPlanViewInput: AnyObject {
+protocol CreatePlanViewInput: AnyObject {
     func show(views: [UIViewController], forwardDirection: Bool)
     
     func updateBackButtonText(_ text: String)
@@ -20,20 +20,20 @@ protocol SetupPlanViewInput: AnyObject {
     func endStory()
 }
 
-protocol SetupPlanViewOutput: ViewOutput {
+protocol CreatePlanViewOutput: ViewOutput {
     func backTouchUp()
     func nextTouchUp()
     func closeTouchUp()
 }
 
-final class SetupPlanViewController:
+final class CreatePlanViewController:
     UIViewController,
-    SetupPlanViewInput,
+    CreatePlanViewInput,
     UIAdaptivePresentationControllerDelegate
 {
-    var output: SetupPlanViewOutput!
+    var output: CreatePlanViewOutput!
     
-    private var pageController: SetupPlanPageViewController!
+    private var pageController: CreatePlanPageViewController!
     
     @IBOutlet private weak var buttonsStackView: UIStackView!
     @IBOutlet private weak var backButton: Button!
@@ -52,7 +52,7 @@ final class SetupPlanViewController:
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let pageController = segue.destination as? SetupPlanPageViewController {
+        if let pageController = segue.destination as? CreatePlanPageViewController {
             self.pageController = pageController
         }
     }

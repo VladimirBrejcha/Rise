@@ -1,5 +1,5 @@
 //
-//  SetupPlanPresenter.swift
+//  CreatePlanPresenter.swift
 //  Rise
 //
 //  Created by Владимир Королев on 29/09/2019.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-final class SetupPlanPresenter: SetupPlanViewOutput {
-    private weak var view: SetupPlanViewInput!
+final class CreatePlanPresenter: CreatePlanViewOutput {
+    private weak var view: CreatePlanViewInput!
     
     private let createPlan: CreatePlan
     
@@ -24,7 +24,7 @@ final class SetupPlanPresenter: SetupPlanViewOutput {
     private var currentStory: Story { stories[currentPage] }
     
     required init(
-        view: SetupPlanViewInput,
+        view: CreatePlanViewInput,
         createPlan: CreatePlan
     ) {
         self.view = view
@@ -51,7 +51,7 @@ final class SetupPlanPresenter: SetupPlanViewOutput {
             return
         }
         
-        if case .wentSleepSetupPlan = currentStory {
+        if case .wentSleepCreatePlan = currentStory {
             if !planGenerated {
                 planGenerated = generatePlan()
             }
@@ -91,31 +91,31 @@ final class SetupPlanPresenter: SetupPlanViewOutput {
     // MARK: - Private -
     private func updateButtons(story: Story) {
         switch story {
-        case .welcomeSetupPlan:
+        case .welcomeCreatePlan:
             view.updateBackButtonText("")
             view.updateNextButtonText("Start")
             view.updateBackButtonVisibility(visible: false)
             view.updateNextButtonVisibility(visible: true)
             view.enableNextButton(true)
-        case .sleepDurationSetupPlan:
+        case .sleepDurationCreatePlan:
             view.updateBackButtonText("")
             view.updateNextButtonText("Next")
             view.updateBackButtonVisibility(visible: false)
             view.updateNextButtonVisibility(visible: true)
             view.enableNextButton(choosenSleepDuration != nil)
-        case .wakeUpTimeSetupPlan:
+        case .wakeUpTimeCreatePlan:
             view.updateBackButtonText("Previous")
             view.updateNextButtonText("Next")
             view.updateBackButtonVisibility(visible: true)
             view.updateNextButtonVisibility(visible: true)
             view.enableNextButton(choosenWakeUpTime != nil)
-        case .planDurationSetupPlan:
+        case .planDurationCreatePlan:
             view.updateBackButtonText("Previous")
             view.updateNextButtonText("Next")
             view.updateBackButtonVisibility(visible: true)
             view.updateNextButtonVisibility(visible: true)
             view.enableNextButton(choosenPlanDuration != nil)
-        case .wentSleepSetupPlan:
+        case .wentSleepCreatePlan:
             view.updateBackButtonText("Previous")
             view.updateNextButtonText("Create")
             view.updateBackButtonVisibility(visible: true)

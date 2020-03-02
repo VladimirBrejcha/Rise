@@ -74,7 +74,7 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
     
     func planPressed() {
         if personalPlan == nil {
-            view?.present(controller: Story.setupPlan.configure())
+            view?.present(controller: Story.createPlan.configure())
         } else {
             view?.present(controller: Story.changePlan.configure())
         }

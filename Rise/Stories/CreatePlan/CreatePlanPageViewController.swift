@@ -1,5 +1,5 @@
 //
-//  SetupPlanPageViewController.swift
+//  CreatePlanPageViewController.swift
 //  Rise
 //
 //  Created by Владимир Королев on 03.01.2020.
@@ -8,4 +8,4 @@
 
 import UIKit
 
-final class SetupPlanPageViewController: UIPageViewController { }
+final class CreatePlanPageViewController: UIPageViewController { }

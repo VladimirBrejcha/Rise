@@ -1,5 +1,5 @@
 //
-//  WelcomeSetuplPlanViewController.swift
+//  WelcomeCreatelPlanViewController.swift
 //  Rise
 //
 //  Created by Владимир Королев on 22.12.2019.
@@ -8,4 +8,4 @@
 
 import UIKit
 
-final class WelcomeSetuplPlanViewController: UIViewController { }
+final class WelcomeCreatelPlanViewController: UIViewController { }

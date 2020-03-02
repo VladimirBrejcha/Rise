@@ -1,5 +1,5 @@
 //
-//  CreatePlanFirstContentViewController.swift
+//  WakeUpTimeCreatePlanViewController.swift
 //  Rise
 //
 //  Created by Владимир Королев on 11.12.2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class WakeUpTimeSetupPlanViewController: UIViewController {
+final class WakeUpTimeCreatePlanViewController: UIViewController {
     
     var wakeUpTimeOutput: ((Date) -> Void)!
     

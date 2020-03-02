@@ -1,5 +1,5 @@
 //
-//  SleepDurationSetupPlanViewController.swift
+//  SleepDurationCreatePlanViewController.swift
 //  Rise
 //
 //  Created by Владимир Королев on 03.01.2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class SleepDurationSetupPlanViewController: UIViewController {
+final class SleepDurationCreatePlanViewController: UIViewController {
 
     @IBOutlet weak var sleepDurationLabel: UILabel!
     @IBOutlet weak var sleepDurationSlider: UISlider!

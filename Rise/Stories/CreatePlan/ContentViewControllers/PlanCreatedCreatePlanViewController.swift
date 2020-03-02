@@ -1,5 +1,5 @@
 //
-//  PlanCreatedSetupPlanViewController.swift
+//  PlanCreatedCreatePlanViewController.swift
 //  Rise
 //
 //  Created by Владимир Королев on 03.01.2020.
@@ -8,4 +8,4 @@
 
 import UIKit
 
-final class PlanCreatedSetupPlanViewController: UIViewController { }
+final class PlanCreatedCreatePlanViewController: UIViewController { }
