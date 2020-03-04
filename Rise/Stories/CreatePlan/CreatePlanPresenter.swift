@@ -149,6 +149,6 @@ final class CreatePlanPresenter: CreatePlanViewOutput {
                 return false
         }
         
-        return createPlan.execute(plan)
+        return createPlan.execute(with: plan)
     }
 }

@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class PersistentContainer<ObjectType: NSManagedObject>: NSPersistentContainer {
+final class PersistentContainer<ObjectType: NSManagedObject>: NSPersistentContainer {
     func fetch(with predicate: NSPredicate? = nil) -> Result<[ObjectType], Error> {
         let entityName = String(describing: ObjectType.self)
         let fetchRequest = NSFetchRequest<ObjectType>(entityName: entityName)

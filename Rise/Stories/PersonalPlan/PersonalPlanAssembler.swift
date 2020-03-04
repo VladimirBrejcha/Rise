@@ -10,33 +10,15 @@ import Foundation
 
 final class PersonalPlanAssembler: StoryAssembler {
     typealias View = PersonalPlanViewController
-    typealias ViewInput = PersonalPlanViewInput
-    typealias ViewOutput = PersonalPlanViewOutput
     
     func assemble() -> PersonalPlanViewController {
         let controller = Storyboard.main.instantiateViewController(of: PersonalPlanViewController.self)
-        controller.output = assemble(view: controller)
-        return controller
-    }
-    
-    func assemble(view: PersonalPlanViewInput) -> PersonalPlanViewOutput {
-        return PersonalPlanPresenter(
-            view: view,
-            getPlan: assemble(),
-            updatePlan: assemble(),
-            observePlan: assemble()
+        controller.output = PersonalPlanPresenter(
+            view: controller,
+            getPlan: DomainLayer.getPlan,
+            updatePlan: DomainLayer.updatePlan,
+            observePlan: DomainLayer.observePlan
         )
-    }
-    
-    private func assemble() -> GetPlan  {
-        return GetPlan(planRepository: DataLayer.personalPlanRepository)
-    }
-    
-    private func assemble() -> ObservePlan {
-        return ObservePlan(planRepository: DataLayer.personalPlanRepository)
-    }
-    
-    private func assemble() -> UpdatePlan {
-        return UpdatePlan(planRepository: DataLayer.personalPlanRepository)
+        return controller
     }
 }

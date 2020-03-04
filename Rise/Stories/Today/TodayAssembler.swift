@@ -10,32 +10,13 @@ import Foundation
 
 final class TodayAssembler: StoryAssembler {
     typealias View = TodayStoryViewController
-    typealias ViewInput = TodayStoryViewInput
-    typealias ViewOutput = TodayStoryViewOutput
     
     func assemble() -> TodayStoryViewController {
         let controller = Storyboard.main.instantiateViewController(of: TodayStoryViewController.self)
-        controller.output = assemble(view: controller)
+        controller.output = TodayStoryPresenter(view: controller,
+                                                getSunTime: DomainLayer.getSunTime,
+                                                getPlan: DomainLayer.getPlan,
+                                                observePlan: DomainLayer.observePlan)
         return controller
-    }
-    
-    func assemble(view: TodayStoryViewInput) -> TodayStoryViewOutput {
-        return TodayStoryPresenter(view: view,
-                                   getSunTime: asseble(),
-                                   getPlan: asseble(),
-                                   observePlan: assemble())
-    }
-    
-    private func asseble() -> GetSunTime {
-        return GetSunTime(locationRepository: DataLayer.locationRepository,
-                          sunTimeRepository: DataLayer.sunTimeRepository)
-    }
-    
-    private func asseble() -> GetPlan {
-        return GetPlan(planRepository: DataLayer.personalPlanRepository)
-    }
-    
-    private func assemble() -> ObservePlan {
-        return ObservePlan(planRepository: DataLayer.personalPlanRepository)
     }
 }

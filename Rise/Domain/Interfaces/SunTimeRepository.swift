@@ -7,3 +7,12 @@
 //
 
 import Foundation
+
+protocol SunTimeRepository {
+    func get(for numberOfDays: Int,
+             since day: Date,
+             for location: Location,
+             completion: @escaping (Result<[SunTime], Error>) -> Void)
+    @discardableResult func save(sunTime: [SunTime]) -> Bool
+    @discardableResult func deleteAll() -> Bool
+}

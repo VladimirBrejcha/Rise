@@ -8,22 +8,18 @@
 
 import Foundation
 
-protocol GetPla {
-    <#requirements#>
+protocol GetPlan {
+    func execute() -> PersonalPlan?
 }
 
-final class GetPlanUseCase: UseCase {
-    typealias InputValue = Void
-    typealias CompletionHandler = Void
-    typealias OutputValue = PersonalPlan?
+final class GetPlanUseCase: GetPlan {
+    private let planRepository: PersonalPlanRepository
     
-    private let planRepository: DefaultPersonalPlanRepository
-    
-    required init(planRepository: DefaultPersonalPlanRepository) {
+    required init(planRepository: PersonalPlanRepository) {
         self.planRepository = planRepository
     }
     
-    func execute(_ requestValue: Void = (), completion: Void = ()) -> PersonalPlan? {
+    func execute() -> PersonalPlan? {
         let result = planRepository.get()
         switch result {
         case .success(let plan):

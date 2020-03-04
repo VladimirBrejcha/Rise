@@ -8,11 +8,11 @@
 
 import Foundation
 
-final class DefaultLocationRepository {
+final class DefaultLocationRepository: LocationRepository {
     private let local = LocationLocalDataSource()
     private lazy var remote = LocationRemoteDataSource()
     
-    func requestLocation(completion: @escaping (Result<Location, Error>) -> Void) {
+    func get(_ completion: @escaping (Result<Location, Error>) -> Void) {
         switch local.requestLocation() {
         case .success(let location):
             completion(.success(location))
@@ -23,8 +23,8 @@ final class DefaultLocationRepository {
                     self.remote.requestLocation { result in
                         if case .failure (let error) = result { completion(.failure(error)) }
                         if case .success (let location) = result {
-                            self.removeLocation()
-                            self.create(location: location)
+                            self.deleteAll()
+                            self.save(location: location)
                             completion(.success(location))
                         }
                     }
@@ -35,11 +35,11 @@ final class DefaultLocationRepository {
         }
     }
     
-    @discardableResult func create(location: Location) -> Bool {
+    @discardableResult func save(location: Location) -> Bool {
         local.create(location: location)
     }
     
-    @discardableResult func removeLocation() -> Bool {
+    @discardableResult func deleteAll() -> Bool {
         local.deleteAll()
     }
 }

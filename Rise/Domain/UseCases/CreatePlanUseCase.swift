@@ -8,18 +8,18 @@
 
 import Foundation
 
-final class CreatePlanUseCase: UseCase {
-    typealias InputValue = PersonalPlan
-    typealias CompletionHandler = Void
-    typealias OutputValue = Bool
+protocol CreatePlan {
+    @discardableResult func execute(with plan: PersonalPlan) -> Bool
+}
+
+final class CreatePlanUseCase: CreatePlan {
+    private let planRepository: PersonalPlanRepository
     
-    private let planRepository: DefaultPersonalPlanRepository
-    
-    required init(planRepository: DefaultPersonalPlanRepository) {
+    required init(planRepository: PersonalPlanRepository) {
         self.planRepository = planRepository
     }
     
-    func execute(_ requestValue: PersonalPlan, completion: Void = ()) -> Bool {
-        planRepository.create(personalPlan: requestValue)
+    @discardableResult func execute(with plan: PersonalPlan) -> Bool {
+        planRepository.save(personalPlan: plan)
     }
 }

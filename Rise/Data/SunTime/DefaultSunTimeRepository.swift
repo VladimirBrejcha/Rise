@@ -8,26 +8,14 @@
 
 import Foundation
 
-protocol SunTimeRepositoryInterface {
-    func requestSunTime(
-        for numberOfDays: Int,
-        since day: Date,
-        for location: Location,
-        completion: @escaping (Result<[SunTime], Error>) -> Void
-    )
-    
-    @discardableResult func save(sunTime: [SunTime]) -> Bool
-    @discardableResult func deleteAll() -> Bool
-}
-
-final class DefaultSunTimeRepository {
+final class DefaultSunTimeRepository: SunTimeRepository {
     private let local = SunTimeLocalDataSource()
     private let remote = SunTimeRemoteDataSource()
     
-    func requestSunTime(for numberOfDays: Int,
-                        since day: Date,
-                        for location: Location,
-                        completion: @escaping (Result<[SunTime], Error>) -> Void
+    func get(for numberOfDays: Days,
+             since day: Date,
+             for location: Location,
+             completion: @escaping (Result<[SunTime], Error>) -> Void
     ) {
         let localResult = local.requestSunTime(for: numberOfDays, since: day)
         
@@ -51,11 +39,11 @@ final class DefaultSunTimeRepository {
         }
     }
     
-    @discardableResult func create(sunTime: [SunTime]) -> Bool {
+    @discardableResult func save(sunTime: [SunTime]) -> Bool {
         local.create(sunTimes: sunTime)
     }
     
-    @discardableResult func removeSunTime() -> Bool {
+    @discardableResult func deleteAll() -> Bool {
         local.deleteAll()
     }
     
@@ -68,7 +56,7 @@ final class DefaultSunTimeRepository {
         remote.requestSunTime(for: numberOfDays, since: day, for: location) { result in
             if case .success (let remoteSunTimes) = result {
                 completion(.success(remoteSunTimes))
-                self.create(sunTime: remoteSunTimes)
+                self.save(sunTime: remoteSunTimes)
             }
             if case .failure (let error) = result {
                 completion(.failure(error))

@@ -73,10 +73,10 @@ final class TodayStoryPresenter: TodayStoryViewOutput {
         updateDaysPlanView(with: personalPlan)
         requestSunTime()
 
-        observePlan.execute({ [weak self] plan in
+        observePlan.observe { [weak self] plan in
             self?.view?.timeToSleepDataSource = self?.floatingLabelDataSource
             self?.updateDaysPlanView(with: plan)
-        })
+        }
     }
     
     func viewWillAppear() {
@@ -96,7 +96,7 @@ final class TodayStoryPresenter: TodayStoryViewOutput {
     
     // MARK: - Private -
     private func requestSunTime() {
-        getSunTime.execute((numberOfDays: 3, day: Day.yesterday.date)) { [weak self] result in
+        getSunTime.execute(for: (numberOfDays: 3, day: Day.yesterday.date)) { [weak self] result in
             if case .success (let sunTime) = result { self?.updateDaysSunView(with: sunTime) }
             if case .failure = result { self?.updateDaysSunView(with: nil) }
         }

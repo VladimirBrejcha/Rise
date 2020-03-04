@@ -8,25 +8,31 @@
 
 import Foundation
 
-protocol <#name#> {
-    <#requirements#>
-}
+typealias PlanObserver = (PersonalPlan?) -> Void
 
-final class DefaultPersonalPlanRepository {
+final class DefaultPersonalPlanRepository: PersonalPlanRepository {    
     private let local = PersonalPlanLocalDataSource()
-    var personalPlanUpdateOutput: [((PersonalPlan?) -> Void)] = []
+    private var observers: [UUID: PlanObserver] = [:]
     
-    func requestPersonalPlan() -> Result<PersonalPlan, Error> {
-        return local.requestPersonalPlan()
+    func add(observer: @escaping PlanObserver, with uuid: UUID) {
+        observers[uuid] = observer
+    }
+    
+    func removeObserver(with uuid: UUID) {
+        observers.removeValue(forKey: uuid)
+    }
+    
+    func get() -> Result<PersonalPlan, Error> {
+        local.requestPersonalPlan()
     }
     
     @discardableResult func update(personalPlan: PersonalPlan) -> Bool {
         let result = local.update(personalPlan: personalPlan)
         
         if result {
-            if !personalPlanUpdateOutput.isEmpty {
-                personalPlanUpdateOutput.forEach { output in
-                    output(personalPlan)
+            if !observers.isEmpty {
+                observers.forEach { observer in
+                    observer.value(personalPlan)
                 }
             }
         }
@@ -34,13 +40,13 @@ final class DefaultPersonalPlanRepository {
         return result
     }
     
-    @discardableResult func create(personalPlan: PersonalPlan) -> Bool {
+    @discardableResult func save(personalPlan: PersonalPlan) -> Bool {
         let result = local.create(personalPlan: personalPlan)
         
         if result {
-            if !personalPlanUpdateOutput.isEmpty {
-                personalPlanUpdateOutput.forEach { output in
-                    output(personalPlan)
+            if !observers.isEmpty {
+                observers.forEach { observer in
+                    observer.value(personalPlan)
                 }
             }
         }
@@ -48,13 +54,13 @@ final class DefaultPersonalPlanRepository {
         return result
     }
     
-    @discardableResult func removePersonalPlan() -> Bool {
+    @discardableResult func removeAll() -> Bool {
         let result = local.deleteAll()
         
         if result {
-            if !personalPlanUpdateOutput.isEmpty {
-                personalPlanUpdateOutput.forEach { output in
-                    output(nil)
+            if !observers.isEmpty {
+                observers.forEach { observer in
+                    observer.value(nil)
                 }
             }
         }

@@ -7,3 +7,12 @@
 //
 
 import Foundation
+
+protocol PersonalPlanRepository {
+    func get() -> Result<PersonalPlan, Error>
+    @discardableResult func update(personalPlan: PersonalPlan) -> Bool
+    @discardableResult func save(personalPlan: PersonalPlan) -> Bool
+    @discardableResult func removeAll() -> Bool
+    func add(observer: @escaping PlanObserver, with uuid: UUID)
+    func removeObserver(with uuid: UUID)
+}

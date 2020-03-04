@@ -8,28 +8,28 @@
 
 import Foundation
 
-//protocol GetSunTime {
-//
-//}
+protocol GetSunTime {
+    func execute(for requestValue: (numberOfDays: Int, day: Date),
+                  completion: @escaping (Result<[SunTime], Error>) -> Void)
+}
 
-final class GetSunTimeUseCase: UseCase {
-    typealias InputValue = (numberOfDays: Int, day: Date)
-    typealias CompletionHandler = (Result<[SunTime], Error>) -> Void
-    typealias OutputValue = Void
-    
+final class GetSunTimeUseCase: GetSunTime {
     private let locationRepository: LocationRepository
-    private let sunTimeRepository: DefaultSunTimeRepository
+    private let sunTimeRepository: SunTimeRepository
     
-    required init(locationRepository: LocationRepository, sunTimeRepository: DefaultSunTimeRepository) {
+    required init(
+        with locationRepository: LocationRepository,
+        and sunTimeRepository: SunTimeRepository
+    ) {
         self.locationRepository = locationRepository
         self.sunTimeRepository = sunTimeRepository
     }
     
     func execute(
-        _ requestValue: (numberOfDays: Int, day: Date),
+        for requestValue: (numberOfDays: Int, day: Date),
         completion: @escaping (Result<[SunTime], Error>) -> Void
     ) {
-        locationRepository.requestLocation { [weak self] result in
+        locationRepository.get { [weak self] result in
             guard let self = self else { return }
             
             if case .success (let location) = result {

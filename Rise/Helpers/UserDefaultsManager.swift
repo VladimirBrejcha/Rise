@@ -12,7 +12,7 @@ fileprivate let userDefaults = UserDefaults.standard
 fileprivate let welcomeScreenBeenShowedKey = "welcomeScreenBeenShowed"
 
 extension UserDefaults {
-    class var welcomeScreenBeenShowed: Bool {
+    static var welcomeScreenBeenShowed: Bool {
         get { return userDefaults.bool(forKey: welcomeScreenBeenShowedKey) }
         set { userDefaults.set(newValue, forKey: welcomeScreenBeenShowedKey) }
     }

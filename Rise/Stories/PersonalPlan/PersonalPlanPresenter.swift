@@ -63,9 +63,9 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
         
         view?.setTableView(dataSource: tableDataSource!)
         
-        observePlan.execute({ [weak self] plan in
+        observePlan.observe { [weak self] plan in
              self?.updateView(with: plan)
-        })
+        }
     }
     
     func viewDidAppear() {
@@ -85,7 +85,7 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
         
         let pausedPlan = PersonalPlanHelper.pause(!plan.paused, plan: plan)
         
-        if updatePlan.execute(pausedPlan) {
+        if updatePlan.execute(with: pausedPlan) {
             updateView(with: pausedPlan)
         }
     }

@@ -10,25 +10,12 @@ import Foundation
 
 final class ChangePlanAssembler: StoryAssembler {
     typealias View = ChangePlanViewController
-    typealias ViewInput = ChangePlanViewInput
-    typealias ViewOutput = ChangePlanViewOutput
     
     func assemble() -> ChangePlanViewController {
         let controller = Storyboard.changePlan.instantiateViewController(of: ChangePlanViewController.self)
-        controller.output = assemble(view: controller)
+        controller.output = ChangePlanPresenter(view: controller,
+                                                getPlan: DomainLayer.getPlan,
+                                                updatePlan: DomainLayer.updatePlan)
         return controller
-    }
-    
-    func assemble(view: ChangePlanViewInput) -> ChangePlanViewOutput {
-        let presenter = ChangePlanPresenter(view: view, getPlan: assemble(), updatePlan: assemble())
-        return presenter
-    }
-    
-    private func assemble() -> UpdatePlan {
-        return UpdatePlan(planRepository: DataLayer.personalPlanRepository)
-    }
-    
-    private func assemble() -> GetPlan {
-        return GetPlan(planRepository: DataLayer.personalPlanRepository)
     }
 }

@@ -20,7 +20,8 @@ final class Presenter {
                        with style: PresentationStyle,
                        presentingController: UIViewController,
                        animated: Bool = true,
-                       completion: (() -> Void)? = nil) {
+                       completion: (() -> Void)? = nil
+    ) {
         switch style {
         case .fullScreen:
             presentingController.modalPresentationStyle = .fullScreen

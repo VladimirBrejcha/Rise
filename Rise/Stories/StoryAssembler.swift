@@ -10,9 +10,6 @@ import Foundation
 
 protocol StoryAssembler {
     associatedtype View
-    associatedtype ViewInput
-    associatedtype ViewOutput
     
     func assemble() -> View
-    func assemble(view: ViewInput) -> ViewOutput
 }

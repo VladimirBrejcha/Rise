@@ -8,18 +8,18 @@
 
 import Foundation
 
-final class DeletePlanUseCase: UseCase {
-    typealias InputValue = PersonalPlan
-    typealias CompletionHandler = Void
-    typealias OutputValue = Bool
+protocol DeletePlan {
+    @discardableResult func execute() -> Bool
+}
+
+final class DeletePlanUseCase: DeletePlan {
+    private let planRepository: PersonalPlanRepository
     
-    private let planRepository: DefaultPersonalPlanRepository
-    
-    required init(planRepository: DefaultPersonalPlanRepository) {
+    required init(planRepository: PersonalPlanRepository) {
         self.planRepository = planRepository
     }
     
-    func execute(_ requestValue: PersonalPlan, completion: Void = ()) -> Bool {
-        planRepository.removePersonalPlan()
+    func execute() -> Bool {
+        planRepository.removeAll()
     }
 }

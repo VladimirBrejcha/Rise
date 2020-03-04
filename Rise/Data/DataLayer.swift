@@ -9,7 +9,7 @@
 import Foundation
 
 struct DataLayer {
-    static let personalPlanRepository: PersonalPlanRepository = PersonalPlanRepository()
-    static let sunTimeRepository: SunTimeRepository = SunTimeRepository()
-    static let locationRepository: LocationRepository = LocationRepository()
+    static let personalPlanRepository: PersonalPlanRepository = DefaultPersonalPlanRepository()
+    static let sunTimeRepository: SunTimeRepository = DefaultSunTimeRepository()
+    static let locationRepository: LocationRepository = DefaultLocationRepository()
 }

@@ -8,18 +8,25 @@
 
 import Foundation
 
-final class ObservePlanUseCase: UseCase {
-    typealias InputValue = (PersonalPlan?) -> Void
-    typealias CompletionHandler = Void
-    typealias OutputValue = Void
+protocol ObservePlan {
+    func observe(_ observer: @escaping PlanObserver)
+    func cancel()
+}
+
+final class ObservePlanUseCase: ObservePlan {
+    private let planRepository: PersonalPlanRepository
     
-    private let planRepository: DefaultPersonalPlanRepository
+    private let observerUUID = UUID()
     
-    required init(planRepository: DefaultPersonalPlanRepository) {
+    required init(planRepository: PersonalPlanRepository) {
         self.planRepository = planRepository
     }
     
-    func execute(_ requestValue: @escaping (PersonalPlan?) -> Void, completion: Void = ()) {
-        planRepository.personalPlanUpdateOutput.append(requestValue)
+    func observe(_ observer: @escaping PlanObserver) {
+        planRepository.add(observer: observer, with: observerUUID)
+    }
+    
+    func cancel() {
+        planRepository.removeObserver(with: observerUUID)
     }
 }

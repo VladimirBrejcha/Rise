@@ -126,7 +126,7 @@ final class ChangePlanPresenter: ChangePlanViewOutput {
                 return
         }
         
-        if !updatePlan.execute(updatedPlan) {
+        if !updatePlan.execute(with: updatedPlan) {
             // TODO: - handle with error
         }
         // TODO: - handle success

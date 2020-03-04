@@ -102,7 +102,7 @@ final class ConfirmationPresenter: ConfirmationViewOutput {
         
         isResheduled = true
         
-        if (updatePlan.execute(resheduledPlan)) {
+        if (updatePlan.execute(with: resheduledPlan)) {
             view.showLoadingView(true)
             view.updateTitle(with: "Resheduling")
             view.updateDescription(with: "Rise plan is being updated...")
@@ -130,7 +130,7 @@ final class ConfirmationPresenter: ConfirmationViewOutput {
         }
         
         let confirmedPlan = PersonalPlanHelper.confirm(plan: plan)
-        if (updatePlan.execute(confirmedPlan)) {
+        if (updatePlan.execute(with: confirmedPlan)) {
             view.dismiss()
         } else {
             view.dismiss()
