@@ -8,15 +8,19 @@
 
 import Foundation
 
-final class GetSunTime: UseCase {
+//protocol GetSunTime {
+//
+//}
+
+final class GetSunTimeUseCase: UseCase {
     typealias InputValue = (numberOfDays: Int, day: Date)
     typealias CompletionHandler = (Result<[SunTime], Error>) -> Void
     typealias OutputValue = Void
     
     private let locationRepository: LocationRepository
-    private let sunTimeRepository: SunTimeRepository
+    private let sunTimeRepository: DefaultSunTimeRepository
     
-    required init(locationRepository: LocationRepository, sunTimeRepository: SunTimeRepository) {
+    required init(locationRepository: LocationRepository, sunTimeRepository: DefaultSunTimeRepository) {
         self.locationRepository = locationRepository
         self.sunTimeRepository = sunTimeRepository
     }
@@ -29,7 +33,7 @@ final class GetSunTime: UseCase {
             guard let self = self else { return }
             
             if case .success (let location) = result {
-                self.sunTimeRepository.requestSunTime(
+                self.sunTimeRepository.get(
                     for: requestValue.numberOfDays,
                     since: requestValue.day,
                     for: location

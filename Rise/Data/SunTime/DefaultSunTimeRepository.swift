@@ -8,7 +8,19 @@
 
 import Foundation
 
-final class SunTimeRepository {
+protocol SunTimeRepositoryInterface {
+    func requestSunTime(
+        for numberOfDays: Int,
+        since day: Date,
+        for location: Location,
+        completion: @escaping (Result<[SunTime], Error>) -> Void
+    )
+    
+    @discardableResult func save(sunTime: [SunTime]) -> Bool
+    @discardableResult func deleteAll() -> Bool
+}
+
+final class DefaultSunTimeRepository {
     private let local = SunTimeLocalDataSource()
     private let remote = SunTimeRemoteDataSource()
     

@@ -8,14 +8,14 @@
 
 import Foundation
 
-final class DeletePlan: UseCase {
+final class DeletePlanUseCase: UseCase {
     typealias InputValue = PersonalPlan
     typealias CompletionHandler = Void
     typealias OutputValue = Bool
     
-    private let planRepository: PersonalPlanRepository
+    private let planRepository: DefaultPersonalPlanRepository
     
-    required init(planRepository: PersonalPlanRepository) {
+    required init(planRepository: DefaultPersonalPlanRepository) {
         self.planRepository = planRepository
     }
     

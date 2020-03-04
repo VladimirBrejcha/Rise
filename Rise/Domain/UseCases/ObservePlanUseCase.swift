@@ -8,14 +8,14 @@
 
 import Foundation
 
-final class ObservePlan: UseCase {
+final class ObservePlanUseCase: UseCase {
     typealias InputValue = (PersonalPlan?) -> Void
     typealias CompletionHandler = Void
     typealias OutputValue = Void
     
-    private let planRepository: PersonalPlanRepository
+    private let planRepository: DefaultPersonalPlanRepository
     
-    required init(planRepository: PersonalPlanRepository) {
+    required init(planRepository: DefaultPersonalPlanRepository) {
         self.planRepository = planRepository
     }
     

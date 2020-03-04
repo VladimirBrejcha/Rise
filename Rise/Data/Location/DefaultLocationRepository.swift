@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class LocationRepository {
+final class DefaultLocationRepository {
     private let local = LocationLocalDataSource()
     private lazy var remote = LocationRemoteDataSource()
     

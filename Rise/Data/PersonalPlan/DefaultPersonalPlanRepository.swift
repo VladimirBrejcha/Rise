@@ -8,7 +8,11 @@
 
 import Foundation
 
-final class PersonalPlanRepository {
+protocol <#name#> {
+    <#requirements#>
+}
+
+final class DefaultPersonalPlanRepository {
     private let local = PersonalPlanLocalDataSource()
     var personalPlanUpdateOutput: [((PersonalPlan?) -> Void)] = []
     
