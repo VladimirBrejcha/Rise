@@ -9,7 +9,11 @@
 import UIKit
 import CoreLocation
 
-final class LocationRemoteDataSource: NSObject, CLLocationManagerDelegate {
+protocol Locatio {
+    <#requirements#>
+}
+
+final class DefaultLocationRemoteDataSource: NSObject, CLLocationManagerDelegate {
     private let locationManager = CLLocationManager()
     
     private var requestLocationCompletion: ((Result<Location, Error>) -> Void)?

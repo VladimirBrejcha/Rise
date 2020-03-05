@@ -12,7 +12,11 @@ import CoreData
 fileprivate typealias ObjectType = RiseSunTime
 fileprivate let containerName = "SunTimeData"
 
-class SunTimeLocalDataSource {
+protocol <#name#> {
+    <#requirements#>
+}
+
+class DefaultSunTimeLocalDataSource {
     private lazy var container: PersistentContainer<ObjectType> = {
         let container = PersistentContainer<ObjectType>(name: containerName)
         container.loadPersistentStores { description, error in

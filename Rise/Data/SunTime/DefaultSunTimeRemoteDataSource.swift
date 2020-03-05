@@ -10,11 +10,15 @@ import Foundation
 
 fileprivate let requestURLString = "https://api.sunrise-sunset.org/json"
 
-struct SunTimeJSONAdapter: Codable {
+fileprivate struct SunTimeJSONAdapter: Codable {
     let results: SunTime
 }
 
-final class SunTimeRemoteDataSource {
+protocol Su {
+    <#requirements#>
+}
+
+final class DefaultSunTimeRemoteDataSource {
     func requestSunTime(
         for numberOfDays: Int,
         since day: Date,
