@@ -22,6 +22,7 @@
 		7E2CA81024032A0F000CEFA5 /* TableCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CA80F24032A0F000CEFA5 /* TableCellConfigurator.swift */; };
 		7E31497D23425CA600941606 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31497C23425CA600941606 /* TableViewDataSource.swift */; };
 		7E31497F23425D3700941606 /* ChangePlanTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31497E23425D3700941606 /* ChangePlanTableView.swift */; };
+		7E354E3024119B1C0036FF3F /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E354E2F24119B1C0036FF3F /* LocalDataSource.swift */; };
 		7E36D99D2401AF6E00C16AEE /* DaysCollectionCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E36D99C2401AF6E00C16AEE /* DaysCollectionCellModel.swift */; };
 		7E3980D52360D0020059C592 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E3980D42360D0020059C592 /* Intro.storyboard */; };
 		7E41982423254C36007867AB /* DaysSegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E41982323254C36007867AB /* DaysSegmentedControlView.swift */; };
@@ -61,8 +62,7 @@
 		7E91D9622371E4850087436F /* DailyPlanTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E91D9612371E4850087436F /* DailyPlanTime.swift */; };
 		7E97656023786AB000E3AEF2 /* SunTimeData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E97655E23786AB000E3AEF2 /* SunTimeData.xcdatamodeld */; };
 		7E97656423786B1800E3AEF2 /* DefaultPersonalPlanRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E97656323786B1800E3AEF2 /* DefaultPersonalPlanRepository.swift */; };
-		7E97656623786B2800E3AEF2 /* PersonalPlanLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E97656523786B2800E3AEF2 /* PersonalPlanLocalDataSource.swift */; };
-		7E97656C23786B5600E3AEF2 /* PersonalPlanModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E97656B23786B5600E3AEF2 /* PersonalPlanModelBuilder.swift */; };
+		7E97656623786B2800E3AEF2 /* DefaultPersonalPlanLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E97656523786B2800E3AEF2 /* DefaultPersonalPlanLocalDataSource.swift */; };
 		7E97656E2378813700E3AEF2 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E97656D2378813700E3AEF2 /* Log.swift */; };
 		7E98FE63231C2F8C0065FB09 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE62231C2F8C0065FB09 /* Location.swift */; };
 		7E98FE65231C30C10065FB09 /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE64231C30C10065FB09 /* AlertPresenter.swift */; };
@@ -70,10 +70,9 @@
 		7E9B739C239DA8F3007067A6 /* DaysSegmentedControlViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9B739B239DA8F3007067A6 /* DaysSegmentedControlViewButton.swift */; };
 		7EA0924222C8CF820019F2E9 /* CustomTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA0924122C8CF820019F2E9 /* CustomTransition.swift */; };
 		7EA38AE423783EFC0007919B /* DefaultLocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA38AE323783EFC0007919B /* DefaultLocationRepository.swift */; };
-		7EA38AE623783FFD0007919B /* LocationRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA38AE523783FFD0007919B /* LocationRemoteDataSource.swift */; };
+		7EA38AE623783FFD0007919B /* DefaultLocationRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA38AE523783FFD0007919B /* DefaultLocationRemoteDataSource.swift */; };
 		7EA38AE92378526F0007919B /* LocationData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7EA38AE72378526F0007919B /* LocationData.xcdatamodeld */; };
-		7EA38AEC237853230007919B /* LocationLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA38AEB237853230007919B /* LocationLocalDataSource.swift */; };
-		7EA38AF22378589E0007919B /* LocationModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA38AF12378589E0007919B /* LocationModelBuilder.swift */; };
+		7EA38AEC237853230007919B /* DefaultLocationLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA38AEB237853230007919B /* DefaultLocationLocalDataSource.swift */; };
 		7EA7BA082354EBFD0051A92D /* TodayStoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA7BA072354EBFD0051A92D /* TodayStoryPresenter.swift */; };
 		7EA7BA0A2354F1810051A92D /* DaysCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA7BA092354F1810051A92D /* DaysCollectionView.swift */; };
 		7EA7BA0C2354F2510051A92D /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA7BA0B2354F2510051A92D /* CollectionView.swift */; };
@@ -113,10 +112,9 @@
 		7ED962B02336649E00CD2408 /* PlanInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ED962AE2336649E00CD2408 /* PlanInfoTableViewCell.xib */; };
 		7EE1399323E36C5C003895D4 /* AnimatedGradientView in Frameworks */ = {isa = PBXBuildFile; productRef = 7EE1399223E36C5C003895D4 /* AnimatedGradientView */; };
 		7EE640492378665D005BE355 /* DefaultSunTimeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE640482378665D005BE355 /* DefaultSunTimeRepository.swift */; };
-		7EE6404B2378666F005BE355 /* SunTimeLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6404A2378666F005BE355 /* SunTimeLocalDataSource.swift */; };
-		7EE6404D23786678005BE355 /* SunTimeRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6404C23786678005BE355 /* SunTimeRemoteDataSource.swift */; };
+		7EE6404B2378666F005BE355 /* DefaultSunTimeLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6404A2378666F005BE355 /* DefaultSunTimeLocalDataSource.swift */; };
+		7EE6404D23786678005BE355 /* DefaultSunTimeRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6404C23786678005BE355 /* DefaultSunTimeRemoteDataSource.swift */; };
 		7EE6404F23786693005BE355 /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6404E23786693005BE355 /* PersistentContainer.swift */; };
-		7EE640512378669F005BE355 /* SunTimeModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE640502378669F005BE355 /* SunTimeModelBuilder.swift */; };
 		7EEA217923B6A3B400354BEA /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEA217823B6A3B400354BEA /* Presenter.swift */; };
 		7EF0B2E024032CD20079F72C /* ProgressTableCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF0B2DF24032CD20079F72C /* ProgressTableCellModel.swift */; };
 		7EF0B2E2240330F90079F72C /* PersonalPlanTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF0B2E1240330F90079F72C /* PersonalPlanTableView.swift */; };
@@ -171,6 +169,7 @@
 		7E2CA80F24032A0F000CEFA5 /* TableCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCellConfigurator.swift; sourceTree = "<group>"; };
 		7E31497C23425CA600941606 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		7E31497E23425D3700941606 /* ChangePlanTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanTableView.swift; sourceTree = "<group>"; };
+		7E354E2F24119B1C0036FF3F /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
 		7E36D99C2401AF6E00C16AEE /* DaysCollectionCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCollectionCellModel.swift; sourceTree = "<group>"; };
 		7E3980D42360D0020059C592 /* Intro.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
 		7E41982323254C36007867AB /* DaysSegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysSegmentedControlView.swift; sourceTree = "<group>"; };
@@ -210,8 +209,7 @@
 		7E91D9612371E4850087436F /* DailyPlanTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyPlanTime.swift; sourceTree = "<group>"; };
 		7E97655F23786AB000E3AEF2 /* SunTimeData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SunTimeData.xcdatamodel; sourceTree = "<group>"; };
 		7E97656323786B1800E3AEF2 /* DefaultPersonalPlanRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPersonalPlanRepository.swift; sourceTree = "<group>"; };
-		7E97656523786B2800E3AEF2 /* PersonalPlanLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPlanLocalDataSource.swift; sourceTree = "<group>"; };
-		7E97656B23786B5600E3AEF2 /* PersonalPlanModelBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPlanModelBuilder.swift; sourceTree = "<group>"; };
+		7E97656523786B2800E3AEF2 /* DefaultPersonalPlanLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPersonalPlanLocalDataSource.swift; sourceTree = "<group>"; };
 		7E97656D2378813700E3AEF2 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		7E98FE62231C2F8C0065FB09 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		7E98FE64231C30C10065FB09 /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenter.swift; sourceTree = "<group>"; };
@@ -219,10 +217,9 @@
 		7E9B739B239DA8F3007067A6 /* DaysSegmentedControlViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysSegmentedControlViewButton.swift; sourceTree = "<group>"; };
 		7EA0924122C8CF820019F2E9 /* CustomTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTransition.swift; sourceTree = "<group>"; };
 		7EA38AE323783EFC0007919B /* DefaultLocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLocationRepository.swift; sourceTree = "<group>"; };
-		7EA38AE523783FFD0007919B /* LocationRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRemoteDataSource.swift; sourceTree = "<group>"; };
+		7EA38AE523783FFD0007919B /* DefaultLocationRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLocationRemoteDataSource.swift; sourceTree = "<group>"; };
 		7EA38AE82378526F0007919B /* LocationData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocationData.xcdatamodel; sourceTree = "<group>"; };
-		7EA38AEB237853230007919B /* LocationLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationLocalDataSource.swift; sourceTree = "<group>"; };
-		7EA38AF12378589E0007919B /* LocationModelBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModelBuilder.swift; sourceTree = "<group>"; };
+		7EA38AEB237853230007919B /* DefaultLocationLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLocationLocalDataSource.swift; sourceTree = "<group>"; };
 		7EA7BA072354EBFD0051A92D /* TodayStoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayStoryPresenter.swift; sourceTree = "<group>"; };
 		7EA7BA092354F1810051A92D /* DaysCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCollectionView.swift; sourceTree = "<group>"; };
 		7EA7BA0B2354F2510051A92D /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
@@ -265,10 +262,9 @@
 		7EE1398523E36AF6003895D4 /* AIFlatSwitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AIFlatSwitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EE1398923E36B01003895D4 /* AnimatedGradientView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AnimatedGradientView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EE640482378665D005BE355 /* DefaultSunTimeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSunTimeRepository.swift; sourceTree = "<group>"; };
-		7EE6404A2378666F005BE355 /* SunTimeLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeLocalDataSource.swift; sourceTree = "<group>"; };
-		7EE6404C23786678005BE355 /* SunTimeRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeRemoteDataSource.swift; sourceTree = "<group>"; };
+		7EE6404A2378666F005BE355 /* DefaultSunTimeLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSunTimeLocalDataSource.swift; sourceTree = "<group>"; };
+		7EE6404C23786678005BE355 /* DefaultSunTimeRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSunTimeRemoteDataSource.swift; sourceTree = "<group>"; };
 		7EE6404E23786693005BE355 /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
-		7EE640502378669F005BE355 /* SunTimeModelBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeModelBuilder.swift; sourceTree = "<group>"; };
 		7EE939162340F68800FE9954 /* PersonalPlanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalPlanViewController.swift; sourceTree = "<group>"; };
 		7EEA217823B6A3B400354BEA /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		7EF0B2DF24032CD20079F72C /* ProgressTableCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTableCellModel.swift; sourceTree = "<group>"; };
@@ -506,9 +502,8 @@
 			children = (
 				7E97656223786AF600E3AEF2 /* Entity */,
 				7E97656323786B1800E3AEF2 /* DefaultPersonalPlanRepository.swift */,
-				7E97656523786B2800E3AEF2 /* PersonalPlanLocalDataSource.swift */,
+				7E97656523786B2800E3AEF2 /* DefaultPersonalPlanLocalDataSource.swift */,
 				7E4901842340DD810034521E /* PersonalPlanData.xcdatamodeld */,
-				7E97656B23786B5600E3AEF2 /* PersonalPlanModelBuilder.swift */,
 			);
 			path = PersonalPlan;
 			sourceTree = "<group>";
@@ -536,10 +531,9 @@
 			children = (
 				7EE64052237866BE005BE355 /* Entity */,
 				7EA38AE323783EFC0007919B /* DefaultLocationRepository.swift */,
-				7EA38AEB237853230007919B /* LocationLocalDataSource.swift */,
-				7EA38AE523783FFD0007919B /* LocationRemoteDataSource.swift */,
+				7EA38AEB237853230007919B /* DefaultLocationLocalDataSource.swift */,
+				7EA38AE523783FFD0007919B /* DefaultLocationRemoteDataSource.swift */,
 				7EA38AE72378526F0007919B /* LocationData.xcdatamodeld */,
-				7EA38AF12378589E0007919B /* LocationModelBuilder.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -562,6 +556,7 @@
 				7EE6404723786617005BE355 /* SunTime */,
 				7EA38AEA237852FD0007919B /* Location */,
 				7EE6404E23786693005BE355 /* PersistentContainer.swift */,
+				7E354E2F24119B1C0036FF3F /* LocalDataSource.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -604,10 +599,9 @@
 			children = (
 				7EE64053237866EE005BE355 /* Entity */,
 				7EE640482378665D005BE355 /* DefaultSunTimeRepository.swift */,
-				7EE6404A2378666F005BE355 /* SunTimeLocalDataSource.swift */,
-				7EE6404C23786678005BE355 /* SunTimeRemoteDataSource.swift */,
+				7EE6404A2378666F005BE355 /* DefaultSunTimeLocalDataSource.swift */,
+				7EE6404C23786678005BE355 /* DefaultSunTimeRemoteDataSource.swift */,
 				7E97655E23786AB000E3AEF2 /* SunTimeData.xcdatamodeld */,
-				7EE640502378669F005BE355 /* SunTimeModelBuilder.swift */,
 			);
 			path = SunTime;
 			sourceTree = "<group>";
@@ -990,7 +984,7 @@
 				7EB9F35623C37733002A6DD3 /* StoryAssembler.swift in Sources */,
 				7EB26953234F99AE008AEB3D /* Button.swift in Sources */,
 				7EB1C0332340F9550028237E /* PersonalPlanViewController.swift in Sources */,
-				7EA38AE623783FFD0007919B /* LocationRemoteDataSource.swift in Sources */,
+				7EA38AE623783FFD0007919B /* DefaultLocationRemoteDataSource.swift in Sources */,
 				7EF4C1A0240436D70098135A /* ChangePlanSliderTableCellModel.swift in Sources */,
 				7EB9F35A23C389BF002A6DD3 /* DataLayer.swift in Sources */,
 				7EB9F35023C35CA9002A6DD3 /* PersonalPlanAssembler.swift in Sources */,
@@ -1019,6 +1013,7 @@
 				7E173375241044D70028FDBE /* SunTimeRepository.swift in Sources */,
 				7EF0B2E2240330F90079F72C /* PersonalPlanTableView.swift in Sources */,
 				7E199CD2240BD41D00B702AD /* SliderWithValues.swift in Sources */,
+				7E354E3024119B1C0036FF3F /* LocalDataSource.swift in Sources */,
 				7E82C5CF24033BC500DC14CE /* PlanInfoTableCellModel.swift in Sources */,
 				7E07A10123AFBEE300B9D61A /* WelcomeCreatelPlanViewController.swift in Sources */,
 				7ED8E59723BFFD5100A1E96F /* Story.swift in Sources */,
@@ -1043,7 +1038,7 @@
 				7E88A35323F8B35E00E792CA /* PulsingCircleAnimation.swift in Sources */,
 				7E5BDADF2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift in Sources */,
 				7EE6404F23786693005BE355 /* PersistentContainer.swift in Sources */,
-				7E97656623786B2800E3AEF2 /* PersonalPlanLocalDataSource.swift in Sources */,
+				7E97656623786B2800E3AEF2 /* DefaultPersonalPlanLocalDataSource.swift in Sources */,
 				7EB196D8239DBA9900E6C40B /* ViewOutput.swift in Sources */,
 				7E708A3723BFD058003B5702 /* PlanDurationCreatePlanViewController.swift in Sources */,
 				7E97656E2378813700E3AEF2 /* Log.swift in Sources */,
@@ -1060,19 +1055,17 @@
 				7E91D95C2371E4080087436F /* RiseDailySunTime+CoreDataProperties.swift in Sources */,
 				7EA0924222C8CF820019F2E9 /* CustomTransition.swift in Sources */,
 				7EB1C0392340FDB00028237E /* CreatePlanPresenter.swift in Sources */,
-				7EE6404D23786678005BE355 /* SunTimeRemoteDataSource.swift in Sources */,
+				7EE6404D23786678005BE355 /* DefaultSunTimeRemoteDataSource.swift in Sources */,
 				7E91D9622371E4850087436F /* DailyPlanTime.swift in Sources */,
 				7E541AFD23FB393400BAD710 /* CollectionDataSource.swift in Sources */,
 				7E76E5A923E734C200CC4E6D /* ChangePlanAssembler.swift in Sources */,
-				7EE640512378669F005BE355 /* SunTimeModelBuilder.swift in Sources */,
 				7EB9F34A23C2045A002A6DD3 /* ObservePlanUseCase.swift in Sources */,
-				7E97656C23786B5600E3AEF2 /* PersonalPlanModelBuilder.swift in Sources */,
 				7ED962AF2336649E00CD2408 /* PlanInfoTableViewCell.swift in Sources */,
-				7EA38AEC237853230007919B /* LocationLocalDataSource.swift in Sources */,
+				7EA38AEC237853230007919B /* DefaultLocationLocalDataSource.swift in Sources */,
 				7EB1C03B23411FFD0028237E /* PersonalPlanPresenter.swift in Sources */,
 				7E5F292A23F9638C0050DFD3 /* FloatingLabel.swift in Sources */,
 				7E173372240D9F7A0028FDBE /* DomainLayer.swift in Sources */,
-				7EE6404B2378666F005BE355 /* SunTimeLocalDataSource.swift in Sources */,
+				7EE6404B2378666F005BE355 /* DefaultSunTimeLocalDataSource.swift in Sources */,
 				7EEA217923B6A3B400354BEA /* Presenter.swift in Sources */,
 				7E0A2E3A239D831F00E39C83 /* SettingsPresenter.swift in Sources */,
 				7E98FE67231C3D5C0065FB09 /* UserDefaultsManager.swift in Sources */,
@@ -1087,7 +1080,6 @@
 				7E8C6B982350FB9C0086162F /* TableView.swift in Sources */,
 				7E9B739C239DA8F3007067A6 /* DaysSegmentedControlViewButton.swift in Sources */,
 				7E41982423254C36007867AB /* DaysSegmentedControlView.swift in Sources */,
-				7EA38AF22378589E0007919B /* LocationModelBuilder.swift in Sources */,
 				7EB9004023256BF3006EB9A8 /* DaysView.swift in Sources */,
 				7EC7392523C4EF5B00C484B8 /* ConfirmationAssembler.swift in Sources */,
 				7E98FE65231C30C10065FB09 /* AlertPresenter.swift in Sources */,
