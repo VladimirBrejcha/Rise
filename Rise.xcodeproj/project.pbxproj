@@ -112,7 +112,6 @@
 		7ED962AF2336649E00CD2408 /* PlanInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED962AD2336649E00CD2408 /* PlanInfoTableViewCell.swift */; };
 		7ED962B02336649E00CD2408 /* PlanInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ED962AE2336649E00CD2408 /* PlanInfoTableViewCell.xib */; };
 		7EE1399323E36C5C003895D4 /* AnimatedGradientView in Frameworks */ = {isa = PBXBuildFile; productRef = 7EE1399223E36C5C003895D4 /* AnimatedGradientView */; };
-		7EE1399523E36C75003895D4 /* AIFlatSwitch in Frameworks */ = {isa = PBXBuildFile; productRef = 7EE1399423E36C75003895D4 /* AIFlatSwitch */; };
 		7EE640492378665D005BE355 /* DefaultSunTimeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE640482378665D005BE355 /* DefaultSunTimeRepository.swift */; };
 		7EE6404B2378666F005BE355 /* SunTimeLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6404A2378666F005BE355 /* SunTimeLocalDataSource.swift */; };
 		7EE6404D23786678005BE355 /* SunTimeRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6404C23786678005BE355 /* SunTimeRemoteDataSource.swift */; };
@@ -309,7 +308,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EE1399323E36C5C003895D4 /* AnimatedGradientView in Frameworks */,
-				7EE1399523E36C75003895D4 /* AIFlatSwitch in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -862,7 +860,6 @@
 			name = Rise;
 			packageProductDependencies = (
 				7EE1399223E36C5C003895D4 /* AnimatedGradientView */,
-				7EE1399423E36C75003895D4 /* AIFlatSwitch */,
 			);
 			productName = Rise;
 			productReference = 92D7D64F2296F297009321AE /* Rise.app */;
@@ -920,7 +917,6 @@
 			mainGroup = 92D7D6462296F297009321AE;
 			packageReferences = (
 				7EE1398C23E36B97003895D4 /* XCRemoteSwiftPackageReference "AnimatedGradientView" */,
-				7EE1398F23E36BD5003895D4 /* XCRemoteSwiftPackageReference "AIFlatSwitch" */,
 			);
 			productRefGroup = 92D7D6502296F297009321AE /* Products */;
 			projectDirPath = "";
@@ -1430,14 +1426,6 @@
 				minimumVersion = 2.1.0;
 			};
 		};
-		7EE1398F23E36BD5003895D4 /* XCRemoteSwiftPackageReference "AIFlatSwitch" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/cocoatoucher/AIFlatSwitch";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.7;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1445,11 +1433,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7EE1398C23E36B97003895D4 /* XCRemoteSwiftPackageReference "AnimatedGradientView" */;
 			productName = AnimatedGradientView;
-		};
-		7EE1399423E36C75003895D4 /* AIFlatSwitch */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7EE1398F23E36BD5003895D4 /* XCRemoteSwiftPackageReference "AIFlatSwitch" */;
-			productName = AIFlatSwitch;
 		};
 /* End XCSwiftPackageProductDependency section */
 
