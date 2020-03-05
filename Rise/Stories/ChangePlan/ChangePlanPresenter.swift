@@ -20,7 +20,7 @@ final class ChangePlanPresenter: ChangePlanViewOutput {
         set { tableDataSource?.items = newValue }
     }
     
-    private var personalPlan: PersonalPlan? { getPlan.execute() }
+    private var personalPlan: PersonalPlan? { try? getPlan.execute() }
     private let getPlan: GetPlan
     private let updatePlan: UpdatePlan
     
@@ -126,10 +126,11 @@ final class ChangePlanPresenter: ChangePlanViewOutput {
                 return
         }
         
-        if !updatePlan.execute(with: updatedPlan) {
-            // TODO: - handle with error
+        do {
+            try updatePlan.execute(with: updatedPlan)
+        } catch {
+            // todo handle error
         }
-        // TODO: - handle success
         
         view?.dismiss()
     }

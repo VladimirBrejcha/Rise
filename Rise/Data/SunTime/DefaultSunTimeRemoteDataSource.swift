@@ -14,17 +14,18 @@ fileprivate struct SunTimeJSONAdapter: Codable {
     let results: SunTime
 }
 
-protocol Su {
-    <#requirements#>
+protocol SunTimeRemoteDataSource {
+    func get(for numberOfDays: Int,
+             since day: Date,
+             for location: Location,
+             completion: @escaping (Result<[SunTime], Error>) -> Void)
 }
 
-final class DefaultSunTimeRemoteDataSource {
-    func requestSunTime(
-        for numberOfDays: Int,
-        since day: Date,
-        for location: Location,
-        completion: @escaping (Result<[SunTime], Error>) -> Void
-    ) {
+final class DefaultSunTimeRemoteDataSource: SunTimeRemoteDataSource {
+    func get(for numberOfDays: Int,
+             since day: Date,
+             for location: Location,
+             completion: @escaping (Result<[SunTime], Error>) -> Void) {
         var returnArray = [SunTime]()
 
         let group = DispatchGroup()

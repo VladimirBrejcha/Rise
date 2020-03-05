@@ -9,7 +9,7 @@
 import Foundation
 
 protocol DeletePlan {
-    @discardableResult func execute() -> Bool
+    func execute() throws
 }
 
 final class DeletePlanUseCase: DeletePlan {
@@ -19,7 +19,7 @@ final class DeletePlanUseCase: DeletePlan {
         self.planRepository = planRepository
     }
     
-    func execute() -> Bool {
-        planRepository.removeAll()
+    func execute() throws {
+        try planRepository.removeAll()
     }
 }

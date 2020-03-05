@@ -11,8 +11,12 @@ import Foundation
 typealias PlanObserver = (PersonalPlan?) -> Void
 
 final class DefaultPersonalPlanRepository: PersonalPlanRepository {    
-    private let local = PersonalPlanLocalDataSource()
+    private let localDataSource: PersonalPlanLocalDataSource
     private var observers: [UUID: PlanObserver] = [:]
+    
+    required init(with localDataSource: PersonalPlanLocalDataSource) {
+        self.localDataSource = localDataSource
+    }
     
     func add(observer: @escaping PlanObserver, with uuid: UUID) {
         observers[uuid] = observer
@@ -22,49 +26,37 @@ final class DefaultPersonalPlanRepository: PersonalPlanRepository {
         observers.removeValue(forKey: uuid)
     }
     
-    func get() -> Result<PersonalPlan, Error> {
-        local.requestPersonalPlan()
+    func get() throws -> PersonalPlan {
+        try localDataSource.get()
     }
     
-    @discardableResult func update(personalPlan: PersonalPlan) -> Bool {
-        let result = local.update(personalPlan: personalPlan)
+    func update(plan: PersonalPlan) throws {
+        try localDataSource.update(plan: plan)
         
-        if result {
-            if !observers.isEmpty {
-                observers.forEach { observer in
-                    observer.value(personalPlan)
-                }
+        if !observers.isEmpty {
+            observers.forEach { observer in
+                observer.value(plan)
             }
         }
-        
-        return result
     }
     
-    @discardableResult func save(personalPlan: PersonalPlan) -> Bool {
-        let result = local.create(personalPlan: personalPlan)
+    func save(plan: PersonalPlan) throws {
+        try localDataSource.save(plan: plan)
         
-        if result {
-            if !observers.isEmpty {
-                observers.forEach { observer in
-                    observer.value(personalPlan)
-                }
+        if !observers.isEmpty {
+            observers.forEach { observer in
+                observer.value(plan)
             }
         }
-        
-        return result
     }
     
-    @discardableResult func removeAll() -> Bool {
-        let result = local.deleteAll()
+    func removeAll() throws {
+        try localDataSource.deleteAll()
         
-        if result {
-            if !observers.isEmpty {
-                observers.forEach { observer in
-                    observer.value(nil)
-                }
+        if !observers.isEmpty {
+            observers.forEach { observer in
+                observer.value(nil)
             }
         }
-        
-        return result
     }
 }

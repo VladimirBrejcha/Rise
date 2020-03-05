@@ -6,14 +6,15 @@
 //  Copyright © 2019 VladimirBrejcha. All rights reserved.
 //
 
-import UIKit
+import UIKit //todo uikit dependency
 import CoreLocation
 
-protocol Locatio {
-    <#requirements#>
+protocol LocationRemoteDataSource {
+    func get(_ completion: @escaping (Result<Location, Error>) -> Void)
+    func requestPermissions(_ completion: @escaping (Bool) -> Void)
 }
 
-final class DefaultLocationRemoteDataSource: NSObject, CLLocationManagerDelegate {
+final class DefaultLocationRemoteDataSource: NSObject, CLLocationManagerDelegate, LocationRemoteDataSource {
     private let locationManager = CLLocationManager()
     
     private var requestLocationCompletion: ((Result<Location, Error>) -> Void)?
@@ -26,12 +27,12 @@ final class DefaultLocationRemoteDataSource: NSObject, CLLocationManagerDelegate
         locationManager.delegate = self
     }
     
-    func requestLocation(with completion: @escaping (Result<Location, Error>) -> Void) {
+    func get(_ completion: @escaping (Result<Location, Error>) -> Void){
         requestLocationCompletion = completion
         locationManager.requestLocation()
     }
     
-    func requestPermissions(with completion: @escaping (Bool) -> Void) {
+    func requestPermissions(_ completion: @escaping (Bool) -> Void) {
         if     authorisationStatus == .notDetermined
             || authorisationStatus == .denied
             || authorisationStatus == .restricted {
@@ -65,7 +66,7 @@ final class DefaultLocationRemoteDataSource: NSObject, CLLocationManagerDelegate
         
         switch status {
         case .authorizedAlways, .authorizedWhenInUse: completion(true)
-        case .notDetermined: requestPermissions(with: completion); return
+        case .notDetermined: requestPermissions(completion); return
         case .denied, .restricted: askForLocationPermissions(completion: completion)
         default: completion(false)
         }
@@ -74,7 +75,9 @@ final class DefaultLocationRemoteDataSource: NSObject, CLLocationManagerDelegate
     
     // MARK: - Private -
     private func askForLocationPermissions(completion: @escaping (Bool) -> Void) {
-        let alertController = UIAlertController(title: "Location access denied", message: "Please go to Settings and turn on the permissions", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Location access denied",
+                                                message: "Please go to Settings and turn on the permissions",
+                                                preferredStyle: .alert)
         
         let settingsAction = UIAlertAction(title: "Settings", style: .default) { _ in
             guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {

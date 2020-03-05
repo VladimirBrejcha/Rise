@@ -13,6 +13,6 @@ protocol SunTimeRepository {
              since day: Date,
              for location: Location,
              completion: @escaping (Result<[SunTime], Error>) -> Void)
-    @discardableResult func save(sunTime: [SunTime]) -> Bool
-    @discardableResult func deleteAll() -> Bool
+    func save(sunTime: [SunTime]) throws
+    func deleteAll() throws
 }

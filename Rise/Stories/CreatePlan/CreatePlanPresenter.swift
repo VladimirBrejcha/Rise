@@ -149,6 +149,12 @@ final class CreatePlanPresenter: CreatePlanViewOutput {
                 return false
         }
         
-        return createPlan.execute(with: plan)
+        do {
+            try createPlan.execute(with: plan)
+            return true
+        } catch {
+            // todo handle error
+            return false
+        }
     }
 }

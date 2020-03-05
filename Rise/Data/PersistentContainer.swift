@@ -10,28 +10,15 @@ import Foundation
 import CoreData
 
 final class PersistentContainer<ObjectType: NSManagedObject>: NSPersistentContainer {
-    func fetch(with predicate: NSPredicate? = nil) -> Result<[ObjectType], Error> {
+    func fetch(with predicate: NSPredicate? = nil) throws -> [ObjectType] {
         let entityName = String(describing: ObjectType.self)
         let fetchRequest = NSFetchRequest<ObjectType>(entityName: entityName)
-        do {
-            fetchRequest.predicate = predicate
-            let objects = try viewContext.fetch(fetchRequest)
-            if objects.isEmpty { return .failure(RiseError.errorNoDataFound()) }
-            return .success(objects)
-        }
-        catch { return .failure(error) }
+        return try viewContext.fetch(fetchRequest)
     }
     
-    @discardableResult func saveContext(backgroundContext: NSManagedObjectContext? = nil) -> Bool {
+    func saveContext(backgroundContext: NSManagedObjectContext? = nil) throws {
         let context = backgroundContext ?? viewContext
-        guard context.hasChanges else { return false }
-        do {
-            try context.save()
-            return true
-        }
-        catch {
-            log(.error, with: error.localizedDescription)
-            return false
-        }
+        guard context.hasChanges else { return }
+        try context.save()
     }
 }

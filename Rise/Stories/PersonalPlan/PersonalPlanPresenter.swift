@@ -14,7 +14,7 @@ fileprivate typealias InfoCellConfigurator = TableCellConfigurator<PlanInfoTable
 final class PersonalPlanPresenter: PersonalPlanViewOutput {
     private weak var view: PersonalPlanViewInput?
     
-    private var personalPlan: PersonalPlan? { getPlan.execute() }
+    private var personalPlan: PersonalPlan? { try? getPlan.execute() }
     private let getPlan: GetPlan
     private let updatePlan: UpdatePlan
     private let observePlan: ObservePlan
@@ -85,8 +85,11 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
         
         let pausedPlan = PersonalPlanHelper.pause(!plan.paused, plan: plan)
         
-        if updatePlan.execute(with: pausedPlan) {
+        do {
+            try updatePlan.execute(with: pausedPlan)
             updateView(with: pausedPlan)
+        } catch (let error) {
+            // todo handle error
         }
     }
     

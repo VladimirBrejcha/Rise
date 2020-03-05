@@ -9,42 +9,47 @@
 import Foundation
 
 final class DefaultSunTimeRepository: SunTimeRepository {
-    private let local = SunTimeLocalDataSource()
-    private let remote = SunTimeRemoteDataSource()
+    private let localDataSource: SunTimeLocalDataSource
+    private let remoteDataSource: SunTimeRemoteDataSource
+    
+    required init(with localDataSource: SunTimeLocalDataSource, and remoteDataSource: SunTimeRemoteDataSource) {
+        self.localDataSource = localDataSource
+        self.remoteDataSource = remoteDataSource
+    }
     
     func get(for numberOfDays: Days,
              since day: Date,
              for location: Location,
              completion: @escaping (Result<[SunTime], Error>) -> Void
     ) {
-        let localResult = local.requestSunTime(for: numberOfDays, since: day)
-        
-        if case .success(var localSunTimes) = localResult {
-            localSunTimes.count == numberOfDays
-                ? completion(.success(localSunTimes))
-                : remoteRequest(for: calculateMissingDays(from: localSunTimes, and: numberOfDays),
-                                since: calculateLatestDay(from: localSunTimes).appending(days: 1)!, // todo force unwrap
+        do {
+            var localResult = try localDataSource.get(for: numberOfDays, since: day)
+            if localResult.isEmpty { remoteRequest(for: numberOfDays, since: day, for: location, completion: completion) }
+            
+            localResult.count == numberOfDays
+                ? completion(.success(localResult))
+                : remoteRequest(for: calculateMissingDays(from: localResult, and: numberOfDays),
+                                since: calculateLatestDay(from: localResult).appending(days: 1)!, // todo force unwrap
                                 for: location) { result in
-                                    if case .failure (let error) = result { completion(.failure(error)) }
-                                    if case .success (let remoteSunTimes) = result {
-                                        localSunTimes.append(contentsOf: remoteSunTimes)
-                                        completion(.success(localSunTimes))
+                                    if case .success (let remotResult) = result {
+                                        localResult.append(contentsOf: remotResult)
+                                        completion(.success(localResult))
+                                    }
+                                    if case .failure (let error) = result {
+                                        completion(.failure(error))
                                     }
             }
-        }
-        
-        if case .failure(let error) = localResult {
-            log(.error, with: error.localizedDescription)
+        } catch {
             remoteRequest(for: numberOfDays, since: day, for: location, completion: completion)
         }
     }
     
-    @discardableResult func save(sunTime: [SunTime]) -> Bool {
-        local.create(sunTimes: sunTime)
+    func save(sunTime: [SunTime]) throws {
+        try localDataSource.save(sunTimes: sunTime)
     }
     
-    @discardableResult func deleteAll() -> Bool {
-        local.deleteAll()
+    func deleteAll() throws {
+        try localDataSource.deleteAll()
     }
     
     // MARK: - Private -
@@ -53,10 +58,10 @@ final class DefaultSunTimeRepository: SunTimeRepository {
                                for location: Location,
                                completion: @escaping (Result<[SunTime], Error>) -> Void
     ) {
-        remote.requestSunTime(for: numberOfDays, since: day, for: location) { result in
+        remoteDataSource.get(for: numberOfDays, since: day, for: location) { result in
             if case .success (let remoteSunTimes) = result {
                 completion(.success(remoteSunTimes))
-                self.save(sunTime: remoteSunTimes)
+                try? self.save(sunTime: remoteSunTimes)
             }
             if case .failure (let error) = result {
                 completion(.failure(error))

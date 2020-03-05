@@ -9,7 +9,7 @@
 import Foundation
 
 protocol GetPlan {
-    func execute() -> PersonalPlan?
+    func execute() throws -> PersonalPlan
 }
 
 final class GetPlanUseCase: GetPlan {
@@ -19,14 +19,7 @@ final class GetPlanUseCase: GetPlan {
         self.planRepository = planRepository
     }
     
-    func execute() -> PersonalPlan? {
-        let result = planRepository.get()
-        switch result {
-        case .success(let plan):
-            return plan
-        case .failure(let error):
-            log(.error, with: error.localizedDescription)
-            return nil
-        }
+    func execute() throws -> PersonalPlan {
+        try planRepository.get()
     }
 }

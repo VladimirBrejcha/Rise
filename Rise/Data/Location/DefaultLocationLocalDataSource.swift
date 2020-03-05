@@ -9,13 +9,13 @@
 import Foundation
 import CoreData
 
-protocol LocationDataSource {
+protocol LocationLocalDataSource {
     func get() throws -> Location
     func save(location: Location) throws
     func deleteAll() throws
 }
 
-final class DefaultLocationLocalDataSource: LocalDataSource<RiseLocation>, LocationDataSource {
+final class DefaultLocationLocalDataSource: LocalDataSource<RiseLocation>, LocationLocalDataSource {
     func get() throws -> Location {
         let fetchResult = try container.fetch()
         if fetchResult.isEmpty {

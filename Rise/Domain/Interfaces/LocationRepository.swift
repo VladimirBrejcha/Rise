@@ -10,6 +10,6 @@ import Foundation
 
 protocol LocationRepository {
     func get(_ completion: @escaping (Result<Location, Error>) -> Void)
-    @discardableResult func save(location: Location) -> Bool
-    @discardableResult func deleteAll() -> Bool
+    func save(location: Location) throws
+    func deleteAll() throws
 }

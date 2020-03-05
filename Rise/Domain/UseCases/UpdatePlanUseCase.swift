@@ -9,7 +9,7 @@
 import Foundation
 
 protocol UpdatePlan {
-    @discardableResult func execute(with plan: PersonalPlan) -> Bool
+    func execute(with plan: PersonalPlan) throws
 }
 
 final class UpdatePlanUseCase: UpdatePlan {
@@ -19,7 +19,7 @@ final class UpdatePlanUseCase: UpdatePlan {
         self.planRepository = planRepository
     }
     
-    @discardableResult func execute(with plan: PersonalPlan) -> Bool {
-        planRepository.update(personalPlan: plan)
+    func execute(with plan: PersonalPlan) throws {
+        try planRepository.update(plan: plan)
     }
 }

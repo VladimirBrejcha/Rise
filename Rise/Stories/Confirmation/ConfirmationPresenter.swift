@@ -14,9 +14,7 @@ final class ConfirmationPresenter: ConfirmationViewOutput {
     private let getPlan: GetPlan
     private let updatePlan: UpdatePlan
     
-    private var personalPlan: PersonalPlan? {
-        return getPlan.execute()
-    }
+    private var personalPlan: PersonalPlan? { try? getPlan.execute() }
     
     private var yesterdayPlanToSleepTimeString: String?
     private var descriptionString: String {
@@ -102,8 +100,8 @@ final class ConfirmationPresenter: ConfirmationViewOutput {
         
         isResheduled = true
         
-        if (updatePlan.execute(with: resheduledPlan)) {
-            view.showLoadingView(true)
+        do {
+            try updatePlan.execute(with: resheduledPlan)
             view.updateTitle(with: "Resheduling")
             view.updateDescription(with: "Rise plan is being updated...")
             
@@ -113,7 +111,8 @@ final class ConfirmationPresenter: ConfirmationViewOutput {
                 self.view.updateConfirmButtonTitle(with: "Continue")
                 self.view.updateDescription(with: "Successfully completed")
             }
-        } else {
+        } catch {
+            // todo handle error
             view.dismiss()
         }
     }
@@ -130,10 +129,11 @@ final class ConfirmationPresenter: ConfirmationViewOutput {
         }
         
         let confirmedPlan = PersonalPlanHelper.confirm(plan: plan)
-        if (updatePlan.execute(with: confirmedPlan)) {
-            view.dismiss()
-        } else {
-            view.dismiss()
+        
+        do {
+            try updatePlan.execute(with: confirmedPlan)
+        } catch {
+            // todo handle error
         }
     }
 }

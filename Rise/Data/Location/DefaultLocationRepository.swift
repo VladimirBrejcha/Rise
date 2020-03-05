@@ -9,37 +9,45 @@
 import Foundation
 
 final class DefaultLocationRepository: LocationRepository {
-    private let local = LocationLocalDataSource()
-    private lazy var remote = LocationRemoteDataSource()
+    private let localDataSource: LocationLocalDataSource
+    private let remoteDataSource: LocationRemoteDataSource
+    
+    required init(with localDataSource: LocationLocalDataSource, and remoteDataSource: LocationRemoteDataSource) {
+        self.localDataSource = localDataSource
+        self.remoteDataSource = remoteDataSource
+    }
     
     func get(_ completion: @escaping (Result<Location, Error>) -> Void) {
-        switch local.requestLocation() {
-        case .success(let location):
-            completion(.success(location))
-        case .failure(let error):
+        do {
+            completion(.success(try localDataSource.get()))
+        } catch (let error) {
             log(.error, with: error.localizedDescription)
-            remote.requestPermissions { granted in
-                if granted {
-                    self.remote.requestLocation { result in
-                        if case .failure (let error) = result { completion(.failure(error)) }
+            remoteDataSource.requestPermissions { granted in
+                granted
+                    ? self.remoteDataSource.get { result in
                         if case .success (let location) = result {
-                            self.deleteAll()
-                            self.save(location: location)
+                            do {
+                                try self.deleteAll()
+                                try self.save(location: location)
+                            } catch (let error) {
+                                log(.error, with: error.localizedDescription)
+                            }
                             completion(.success(location))
                         }
-                    }
-                } else {
-                    completion(.failure(RiseError.errorLocationAccessDenied()))
-                }
+                        if case .failure (let error) = result {
+                            completion(.failure(error))
+                        }
+                      }
+                    : completion(.failure(RiseError.errorLocationAccessDenied()))
             }
         }
     }
     
-    @discardableResult func save(location: Location) -> Bool {
-        local.create(location: location)
+    func save(location: Location) throws {
+        try localDataSource.save(location: location)
     }
     
-    @discardableResult func deleteAll() -> Bool {
-        local.deleteAll()
+    func deleteAll() throws {
+        try localDataSource.deleteAll()
     }
 }

@@ -9,10 +9,10 @@
 import Foundation
 
 protocol PersonalPlanRepository {
-    func get() -> Result<PersonalPlan, Error>
-    @discardableResult func update(personalPlan: PersonalPlan) -> Bool
-    @discardableResult func save(personalPlan: PersonalPlan) -> Bool
-    @discardableResult func removeAll() -> Bool
+    func get() throws -> PersonalPlan
+    func update(plan: PersonalPlan) throws
+    func save(plan: PersonalPlan) throws
+    func removeAll() throws
     func add(observer: @escaping PlanObserver, with uuid: UUID)
     func removeObserver(with uuid: UUID)
 }

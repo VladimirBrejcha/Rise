@@ -9,14 +9,14 @@
 import Foundation
 import CoreData
 
-protocol PersonalPlanDataSource {
+protocol PersonalPlanLocalDataSource {
     func get() throws -> PersonalPlan
     func save(plan: PersonalPlan) throws
     func update(plan: PersonalPlan) throws
     func deleteAll() throws
 }
 
-final class DefaultPersonalPlanLocalDataSource: LocalDataSource<RisePersonalPlan>, PersonalPlanDataSource {
+final class DefaultPersonalPlanLocalDataSource: LocalDataSource<RisePersonalPlan>, PersonalPlanLocalDataSource {
     func get() throws -> PersonalPlan {
         do {
             let fetchResult = try container.fetch()

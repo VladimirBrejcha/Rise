@@ -16,7 +16,7 @@ fileprivate let planImages = (left: "wakeup", right: "bed")
 final class TodayStoryPresenter: TodayStoryViewOutput {
     private weak var view: TodayStoryViewInput?
     
-    private var personalPlan: PersonalPlan? { getPlan.execute() }
+    private var personalPlan: PersonalPlan? { try? getPlan.execute() }
     private let getSunTime: GetSunTime
     private let getPlan: GetPlan
     private let observePlan: ObservePlan
