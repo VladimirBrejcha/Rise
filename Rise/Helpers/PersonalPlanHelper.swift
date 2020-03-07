@@ -30,15 +30,15 @@ final class PersonalPlanHelper {
                 return nil
         }
         let planDateInterval = DateInterval(start: planStartDate, end: planEndDate)
-        let sleepTime = wakeUpTime.addingTimeInterval(-sleepDurationSec)
-        let timeBetweenNeededSleepAndActualSleep = Int(wentSleepTime.timeIntervalSince(sleepTime) / 60)
-        let dailyShiftMin = timeBetweenNeededSleepAndActualSleep > 1440
-            ? (timeBetweenNeededSleepAndActualSleep - 1440) / planDuration
-            : timeBetweenNeededSleepAndActualSleep / planDuration
+        let toSleepTime = wakeUpTime.addingTimeInterval(-sleepDurationSec)
+        
+        let dailyShift = wentSleepTime > toSleepTime
+            ? -(Minutes(with: wentSleepTime.timeIntervalSince(toSleepTime)) / planDuration)
+            : Minutes(with: toSleepTime.timeIntervalSince(wentSleepTime)) / planDuration
         
         return PersonalPlan(
             paused: false,
-            dailyShiftMin: dailyShiftMin,
+            dailyShiftMin: dailyShift,
             dateInterval: planDateInterval,
             sleepDurationSec: sleepDurationSec,
             wakeTime: wakeUpTime,
