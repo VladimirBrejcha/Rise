@@ -12,7 +12,7 @@
         <!--Create Plan View Controller-->
         <scene sceneID="yDU-6s-60W">
             <objects>
-                <viewController storyboardIdentifier="SetupPlanViewController" id="tb3-MT-84x" customClass="CreatePlanViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreatePlanViewController" id="tb3-MT-84x" customClass="CreatePlanViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mrk-j1-Kya">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -93,7 +93,7 @@
         <!--Sleep Duration Create Plan View Controller-->
         <scene sceneID="MZS-gH-HCv">
             <objects>
-                <viewController storyboardIdentifier="SleepDurationSetupPlanViewController" id="c6i-Vc-BCs" customClass="SleepDurationCreatePlanViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SleepDurationCreatePlanViewController" id="c6i-Vc-BCs" customClass="SleepDurationCreatePlanViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e8e-9a-xg4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <subviews>
@@ -203,12 +203,12 @@
         <!--Wake Up Time Create Plan View Controller-->
         <scene sceneID="4MG-fo-6AY">
             <objects>
-                <viewController storyboardIdentifier="WakeUpTimeSetupPlanViewController" id="IqT-UZ-1E9" customClass="WakeUpTimeCreatePlanViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WakeUpTimeCreatePlanViewController" id="IqT-UZ-1E9" customClass="WakeUpTimeCreatePlanViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ck-XY-rjz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ON7-S3-9Od" customClass="DesignableContainerView" customModule="Rise" customModuleProvider="target">
-                                <rect key="frame" x="10" y="266" width="394" height="364"/>
+                                <rect key="frame" x="10" y="291" width="394" height="314"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mcu-y6-jlt">
                                         <rect key="frame" x="164" y="41" width="0.0" height="0.0"/>
@@ -224,14 +224,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" image="wakeup" translatesAutoresizingMaskIntoConstraints="NO" id="drr-71-2fR">
-                                        <rect key="frame" x="157" y="74" width="80" height="100"/>
+                                        <rect key="frame" x="157" y="74" width="80" height="50"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="QK8-QF-xeI"/>
                                         </constraints>
                                     </imageView>
                                     <datePicker contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="aHM-kz-WBT">
-                                        <rect key="frame" x="20" y="184" width="354" height="160"/>
+                                        <rect key="frame" x="20" y="134" width="354" height="160"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="160" id="Ipp-By-ZPU"/>
@@ -285,7 +285,7 @@
         <!--Welcome Createl Plan View Controller-->
         <scene sceneID="9kC-Du-Zns">
             <objects>
-                <viewController storyboardIdentifier="WelcomeSetuplPlanViewController" id="Bjd-TH-pNB" customClass="WelcomeCreatelPlanViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WelcomeCreatelPlanViewController" id="Bjd-TH-pNB" customClass="WelcomeCreatelPlanViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jkO-Es-7Bj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <subviews>
@@ -293,19 +293,19 @@
                                 <rect key="frame" x="10" y="310.5" width="394" height="275"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lets create your Rise plan!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l37-iF-LHL">
-                                        <rect key="frame" x="10" y="270" width="374" height="24"/>
+                                        <rect key="frame" x="10" y="145" width="374" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer a few questions to generate smart personilzed sleep schedule" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySm-bl-ktm">
-                                        <rect key="frame" x="10" y="302" width="374" height="33.5"/>
+                                        <rect key="frame" x="10" y="177" width="374" height="33.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="3Np-K8-yVU">
-                                        <rect key="frame" x="157" y="20" width="80" height="250"/>
+                                        <rect key="frame" x="157" y="20" width="80" height="125"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="iPe-0k-ZC8"/>
@@ -351,7 +351,7 @@
         <!--Create Plan Page View Controller-->
         <scene sceneID="g6v-gg-l3h">
             <objects>
-                <pageViewController storyboardIdentifier="SetupPlanPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="fxt-dk-StR" customClass="CreatePlanPageViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="CreatePlanPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="fxt-dk-StR" customClass="CreatePlanPageViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xYS-Ru-ipF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1587" y="23"/>
@@ -359,13 +359,13 @@
         <!--Went Sleep Create Plan View Controller-->
         <scene sceneID="NI7-9H-UrK">
             <objects>
-                <viewController storyboardIdentifier="WentSleepSetupPlanViewController" id="oLi-Ju-9Md" customClass="WentSleepCreatePlanViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WentSleepCreatePlanViewController" id="oLi-Ju-9Md" customClass="WentSleepCreatePlanViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H9Y-Rd-lFa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GbC-1Y-0tk" customClass="DesignableContainerView" customModule="Rise" customModuleProvider="target">
-                                <rect key="frame" x="10" y="266" width="394" height="364"/>
+                                <rect key="frame" x="10" y="291" width="394" height="314"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ix5-gI-bZM">
                                         <rect key="frame" x="164" y="41" width="0.0" height="0.0"/>
@@ -381,14 +381,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" image="fallasleep" translatesAutoresizingMaskIntoConstraints="NO" id="Tt0-Lb-eAw">
-                                        <rect key="frame" x="157" y="74" width="80" height="100"/>
+                                        <rect key="frame" x="157" y="74" width="80" height="50"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="Vzo-k1-Min"/>
                                         </constraints>
                                     </imageView>
                                     <datePicker contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="1Cr-rU-fwC">
-                                        <rect key="frame" x="20" y="184" width="354" height="160"/>
+                                        <rect key="frame" x="20" y="134" width="354" height="160"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="160" id="tr3-x1-UfQ"/>
@@ -442,7 +442,7 @@
         <!--Plan Duration Create Plan View Controller-->
         <scene sceneID="6KN-fb-qT0">
             <objects>
-                <viewController storyboardIdentifier="PlanDurationSetupPlanViewController" id="Ou7-kn-tNN" customClass="PlanDurationCreatePlanViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlanDurationCreatePlanViewController" id="Ou7-kn-tNN" customClass="PlanDurationCreatePlanViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Um7-tj-kqP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -545,7 +545,7 @@
         <!--Plan Created Create Plan View Controller-->
         <scene sceneID="QNg-hs-rwF">
             <objects>
-                <viewController storyboardIdentifier="PlanCreatedSetupPlanViewController" id="hwY-y5-3gQ" customClass="PlanCreatedCreatePlanViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlanCreatedCreatePlanViewController" id="hwY-y5-3gQ" customClass="PlanCreatedCreatePlanViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kCL-BO-R01">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -554,13 +554,13 @@
                                 <rect key="frame" x="10" y="310.5" width="394" height="275"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rise plan generated!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JKd-ab-MPN">
-                                        <rect key="frame" x="10" y="220" width="374" height="24"/>
+                                        <rect key="frame" x="10" y="120" width="374" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="JbU-9V-BFS">
-                                        <rect key="frame" x="157" y="20" width="80" height="200"/>
+                                        <rect key="frame" x="157" y="20" width="80" height="100"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="Dal-mE-CjH"/>
