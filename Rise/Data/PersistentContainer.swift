@@ -13,6 +13,7 @@ final class PersistentContainer<ObjectType: NSManagedObject>: NSPersistentContai
     func fetch(with predicate: NSPredicate? = nil) throws -> [ObjectType] {
         let entityName = String(describing: ObjectType.self)
         let fetchRequest = NSFetchRequest<ObjectType>(entityName: entityName)
+        fetchRequest.predicate = predicate
         return try viewContext.fetch(fetchRequest)
     }
     

@@ -24,7 +24,10 @@ final class DefaultSunTimeRepository: SunTimeRepository {
     ) {
         do {
             var localResult = try localDataSource.get(for: numberOfDays, since: day)
-            if localResult.isEmpty { remoteRequest(for: numberOfDays, since: day, for: location, completion: completion) }
+            if localResult.isEmpty {
+                remoteRequest(for: numberOfDays, since: day, for: location, completion: completion)
+                return
+            }
             
             localResult.count == numberOfDays
                 ? completion(.success(localResult))

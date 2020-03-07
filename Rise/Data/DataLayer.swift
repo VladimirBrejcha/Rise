@@ -17,7 +17,7 @@ struct DataLayer {
 }
 
 fileprivate struct DataSources {
-    static let planLocalDataSource: PersonalPlanLocalDataSource = DefaultPersonalPlanLocalDataSource(with:  "PersonalPlanData")
+    static let planLocalDataSource: PersonalPlanLocalDataSource = DefaultPersonalPlanLocalDataSource(with: "PersonalPlanData")
     static let locationLocalDataSource: LocationLocalDataSource = DefaultLocationLocalDataSource(with: "LocationData")
     static let locationRemoteDataSource: LocationRemoteDataSource = DefaultLocationRemoteDataSource()
     static let sunTimeLocalDataSource: SunTimeLocalDataSource = DefaultSunTimeLocalDataSource(with: "SunTimeData")
