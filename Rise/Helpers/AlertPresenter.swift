@@ -28,6 +28,32 @@ final class AlertPresenter {
         guard let controller = UIApplication.shared.keyWindow?.rootViewController?.toppestViewController else { return }
         controller.present(alertController, animated: true, completion: nil)
     }
+    
+    static func showLocationPermissionsAlert(completion: @escaping (Bool) -> Void) {
+        let alertController = UIAlertController(
+            title: "Location access denied",
+            message: "Please go to Settings and turn on the permissions",
+            preferredStyle: .alert
+        )
+        
+        let settingsAction = UIAlertAction(title: "Settings", style: .default) { _ in
+            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                return
+            }
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in })
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default) { _ in
+            completion(false)
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(settingsAction)
+        
+        show(alertController: alertController)
+    }
 }
 
 fileprivate extension UIViewController {
