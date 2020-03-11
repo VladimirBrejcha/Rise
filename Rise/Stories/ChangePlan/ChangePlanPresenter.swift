@@ -118,7 +118,11 @@ final class ChangePlanPresenter: ChangePlanViewOutput {
     }
     
     private func deletePlanPressed() {
-        try! deletePlan.execute()
+        do {
+         try deletePlan.execute()
+        } catch {
+            // handle error
+        }
         close()
     }
     
@@ -128,7 +132,10 @@ final class ChangePlanPresenter: ChangePlanViewOutput {
             try updatePlan.execute(wakeUpTime: pickedWakeUp,
                                    sleepDurationMin: pickedSleepDuration,
                                    planDurationDays: pickedPlanDuration)
-        } catch {
+            print("success")
+        } catch (let error) {
+            print(error)
+            print(error.localizedDescription)
             // todo handle error
         }
         

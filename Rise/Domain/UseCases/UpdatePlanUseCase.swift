@@ -42,25 +42,25 @@ final class UpdatePlanUseCase: UpdatePlan {
                                                   second: 0,
                                                   of: oldWakeUpTime)
             }
-            
-            if let newSleepDuration = sleepDurationMin {
-                let newSleepDuration: Double = Double(newSleepDuration * 60)
-                if plan.sleepDurationSec != newSleepDuration {
-                    updatedSleepDuration = newSleepDuration
-                }
+        }
+        
+        if let newSleepDuration = sleepDurationMin {
+            let newSleepDuration: Double = Double(newSleepDuration * 60)
+            if plan.sleepDurationSec != newSleepDuration {
+                updatedSleepDuration = newSleepDuration
             }
-            
-            if let newPlanDuration = planDurationDays {
-                let oldPlanDuration = plan.dateInterval.durationDays
-                let oldPlanDaysCompleted = DateInterval(start: plan.dateInterval.start,
-                                                        end: plan.latestConfirmedDay).durationDays
-                if oldPlanDuration != newPlanDuration
-                    && oldPlanDaysCompleted < newPlanDuration
-                {
-                    let durationDiff = oldPlanDuration - newPlanDuration
-                    let oldPlanEndDate = plan.dateInterval.end
-                    updatedPlanEndDay = oldPlanEndDate.appending(days: durationDiff)
-                }
+        }
+        
+        if let newPlanDuration = planDurationDays {
+            let oldPlanDuration = plan.dateInterval.durationDays
+            let oldPlanDaysCompleted = DateInterval(start: plan.dateInterval.start,
+                                                    end: plan.latestConfirmedDay).durationDays
+            if oldPlanDuration != newPlanDuration
+                && oldPlanDaysCompleted < newPlanDuration
+            {
+                let durationDiff = oldPlanDuration - newPlanDuration
+                let oldPlanEndDate = plan.dateInterval.end
+                updatedPlanEndDay = oldPlanEndDate.appending(days: durationDiff)
             }
         }
         
