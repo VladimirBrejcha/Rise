@@ -38,7 +38,7 @@ final class DefaultLocationRepository: LocationRepository {
                             completion(.failure(error))
                         }
                       }
-                    : completion(.failure(RiseError.errorLocationAccessDenied()))
+                    : completion(.failure(RiseError.locationAccessDenied))
             }
         }
     }

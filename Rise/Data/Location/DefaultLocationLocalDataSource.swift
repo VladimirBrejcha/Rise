@@ -19,7 +19,7 @@ final class DefaultLocationLocalDataSource: LocalDataSource<RiseLocation>, Locat
     func get() throws -> Location {
         let fetchResult = try container.fetch()
         if fetchResult.isEmpty {
-            throw RiseError.errorNoDataFound()
+            throw RiseError.noDataFound
         }
         return buildModel(from: fetchResult[0])
     }

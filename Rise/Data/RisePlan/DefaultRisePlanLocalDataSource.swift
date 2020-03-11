@@ -21,7 +21,7 @@ final class DefaultRisePlanLocalDataSource: LocalDataSource<RisePlanObject>, Per
         do {
             let fetchResult = try container.fetch()
             if fetchResult.isEmpty {
-                throw RiseError.errorNoDataFound()
+                throw RiseError.noDataFound
             }
             return buildModel(from: fetchResult[0])
         } catch (let error) {
@@ -39,7 +39,7 @@ final class DefaultRisePlanLocalDataSource: LocalDataSource<RisePlanObject>, Per
         do {
             let fetchResult = try container.fetch()
             if fetchResult.isEmpty {
-                throw RiseError.errorNoDataFound()
+                throw RiseError.noDataFound
             }
             update(object: fetchResult[0], with: plan)
             try container.saveContext()

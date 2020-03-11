@@ -10,18 +10,13 @@ import Foundation
 
 let calendar = Calendar.autoupdatingCurrent
 
-enum Day {
+enum NoonedDay {
     case yesterday
     case today
     case tomorrow
     
     var date: Date {
-        guard let date = Date().appending(days: numberOfDaysFromToday)?.noon
-            else {
-                log(.error, with: "Failed to append \(numberOfDaysFromToday) days to today, returning today")
-                return Day.today.date
-        }
-        return date
+        Date().appending(days: numberOfDaysFromToday).noon
     }
     
     private var numberOfDaysFromToday: Int {
@@ -35,9 +30,7 @@ enum Day {
 
 extension DateInterval {
     var durationDays: Int {
-        calendar.dateComponents([.day],
-                                from: self.start.noon,
-                                to: self.end.noon).day!
+        calendar.dateComponents([.day], from: start.noon, to: end.noon).day ?? 0
     }
 }
 
@@ -52,9 +45,10 @@ extension Date {
         calendar.date(bySettingHour: 12, minute: 00, second: 00, of: self)!
     }
     
-    func appending(days: Int) -> Date? {
-        if days == 0 { return self }
-        return calendar.date(byAdding: .day, value: days, to: self)
+    func appending(days: Int) -> Date {
+        days == 0
+            ? self
+            : calendar.date(byAdding: .day, value: days, to: self) ?? self
     }
 }
 

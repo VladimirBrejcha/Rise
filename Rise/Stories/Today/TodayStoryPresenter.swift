@@ -116,7 +116,7 @@ final class TodayStoryPresenter: TodayStoryViewOutput {
     
     // MARK: - Private -
     private func requestSunTime() {
-        getSunTime.execute(for: (numberOfDays: 3, day: Day.yesterday.date)) { [weak self] result in
+        getSunTime.execute(for: (numberOfDays: 3, day: NoonedDay.yesterday.date)) { [weak self] result in
             if case .success (let sunTime) = result { self?.updateDaysSunView(with: sunTime) }
             if case .failure = result { self?.updateDaysSunView(with: nil) }
         }
@@ -150,7 +150,7 @@ final class TodayStoryPresenter: TodayStoryViewOutput {
             if index.offset.isEven { continue }
             
             if plan != nil {
-                let datesArray: [Day] = [.yesterday, .today, .tomorrow]
+                let datesArray: [NoonedDay] = [.yesterday, .today, .tomorrow]
                 
                 if let dailyTime = try? getDailyTime.execute(for: datesArray[(index.offset / 2)].date) {
                     cellModels[index.offset].state = .showingContent(left: dailyTime.wake.HHmmString,

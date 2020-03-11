@@ -52,7 +52,7 @@ final class DefaultLocationRemoteDataSource: NSObject, CLLocationManagerDelegate
                                               longitude: newLocation.coordinate.longitude.description)
             completion(.success(locationModel))
         }
-        else { completion(.failure(RiseError.errorNoLocationArrived())) }
+        else { completion(.failure(RiseError.noDataReceived)) }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

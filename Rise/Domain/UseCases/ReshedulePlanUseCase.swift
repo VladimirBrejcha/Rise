@@ -32,7 +32,7 @@ final class ReshedulePlanUseCase: ReshedulePlan {
         try planRepository.update(plan:
             RisePlan(
                 dateInterval: DateInterval(start: plan.dateInterval.start,
-                                           end: plan.dateInterval.end.appending(days: missedDays)!),
+                                           end: plan.dateInterval.end.appending(days: missedDays)),
                 firstSleepTime: plan.firstSleepTime,
                 finalWakeUpTime: plan.finalWakeUpTime,
                 sleepDurationSec: plan.sleepDurationSec,

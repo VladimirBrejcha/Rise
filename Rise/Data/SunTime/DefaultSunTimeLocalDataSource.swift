@@ -20,11 +20,7 @@ final class DefaultSunTimeLocalDataSource: LocalDataSource<RiseSunTime>, SunTime
         var returnArray = [SunTime]()
         
         for iteration in 1...numberOfDays {
-            guard let date = day.appending(days: iteration - 1)
-                else {
-                    log(.warning, with: RiseError.errorCantFormatDate().localizedDescription)
-                    continue
-            }
+            let date = day.appending(days: iteration - 1)
             let fetchResult = try container.fetch(with: date.makeDayPredicate())
             if fetchResult.isEmpty { continue }
             returnArray.append(buildModel(from: fetchResult[0]))

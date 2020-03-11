@@ -22,13 +22,13 @@ struct Formulas {
     
     static let defaultToSleepTimeFormula: ToSleepTimeFormula = { firstSleepTime, numberOfDays, dailyShift in
         firstSleepTime
-            .appending(days: numberOfDays)!
+            .appending(days: numberOfDays)
             .addingTimeInterval(dailyShift * Double(numberOfDays))
     }
     
     static let defaultWakeUpTimeFormula: WakeUpTimeFormula = { firstSleepTime, numberOfDays, dailyShift, sleepDuration in
         firstSleepTime
-            .appending(days: numberOfDays - 1)!
+            .appending(days: numberOfDays - 1)
             .addingTimeInterval(dailyShift * Double(numberOfDays))
             .addingTimeInterval(sleepDuration)
     }
@@ -37,9 +37,9 @@ struct Formulas {
         let nightDate = calendar.date(bySettingHour: 00, minute: 0, second: 0, of: firstSleepTime)!
         let noonDate = calendar.date(bySettingHour: 12, minute: 0, second: 0, of: firstSleepTime)!
         let startDay = firstSleepTime > nightDate && firstSleepTime < noonDate
-            ? firstSleepTime.noon.appending(days: -1)!
+            ? firstSleepTime.noon.appending(days: -1)
             : firstSleepTime.noon
-        let endDay = startDay.appending(days: duration)!
+        let endDay = startDay.appending(days: duration)
         return DateInterval(start: startDay, end: endDay)
     }
 }

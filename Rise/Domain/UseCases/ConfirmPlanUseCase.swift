@@ -36,6 +36,6 @@ final class ConfirmPlanUseCase: ConfirmPlan {
     func checkIfConfirmed() throws -> Bool {
         let plan = try planRepository.get()
         if plan.paused { return true }
-        return plan.latestConfirmedDay >= Date().appending(days: -1)!.noon
+        return plan.latestConfirmedDay >= NoonedDay.yesterday.date
     }
 }

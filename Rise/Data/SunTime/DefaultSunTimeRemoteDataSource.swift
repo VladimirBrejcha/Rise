@@ -33,16 +33,11 @@ final class DefaultSunTimeRemoteDataSource: SunTimeRemoteDataSource {
         DispatchQueue.concurrentPerform(iterations: numberOfDays) { dayNumber in
             group.enter()
 
-            guard let date = day.appending(days: dayNumber)
-                else {
-                    completion(.failure(RiseError.errorCantFormatDate()))
-                    group.leave()
-                    return
-            }
+            let date = day.appending(days: dayNumber)
 
             guard let url = self.buildURL(with: location, and: date)
                 else {
-                    completion(.failure(RiseError.errorCantBuildURL()))
+                    completion(.failure(RiseError.cantBuildURL))
                     group.leave()
                     return
             }
@@ -69,7 +64,7 @@ final class DefaultSunTimeRemoteDataSource: SunTimeRemoteDataSource {
 
         group.notify(queue: .main) {
             if returnArray.isEmpty {
-                completion(.failure(RiseError.errorNoDataReceived()))
+                completion(.failure(RiseError.noDataReceived))
             }
             else {
                 completion(.success(returnArray))
@@ -86,7 +81,7 @@ final class DefaultSunTimeRemoteDataSource: SunTimeRemoteDataSource {
             if let data = data {
                 completion(.success(data))
             } else {
-                completion(.failure(RiseError.errorNoDataReceived()))
+                completion(.failure(RiseError.noDataReceived))
             }
         }.resume()
     }
@@ -111,7 +106,7 @@ final class DefaultSunTimeRemoteDataSource: SunTimeRemoteDataSource {
             return .success(json.results)
         }
         catch {
-            return .failure(RiseError.errorCantParseJSON())
+            return .failure(RiseError.cantParseJSON)
         }
     }
 }

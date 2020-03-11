@@ -54,8 +54,9 @@ final class ConfirmationPresenter: ConfirmationViewOutput {
             dismiss = { view.dismiss() }
             return
         }
+        let yesterday = NoonedDay.yesterday.date
         
-        guard let yesterdayDailyTime = try? getDailyTime.execute(for: Date().appending(days: -1)!.noon)
+        guard let yesterdayDailyTime = try? getDailyTime.execute(for: yesterday)
             else {
                 dismiss = { view.dismiss() }
                 return
@@ -65,7 +66,7 @@ final class ConfirmationPresenter: ConfirmationViewOutput {
         dateFormatter.dateFormat = "HH:mm"
         yesterdayPlanToSleepTimeString = dateFormatter.string(from: yesterdayDailyTime.sleep)
 
-        let daysMissed = DateInterval(start: plan.latestConfirmedDay, end: Date().appending(days: -1)!.noon).durationDays
+        let daysMissed = DateInterval(start: plan.latestConfirmedDay, end: yesterday).durationDays
         
         if daysMissed == 0 {
             dismiss = { view.dismiss() }
