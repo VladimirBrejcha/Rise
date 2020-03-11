@@ -15,6 +15,7 @@ enum RiseError: Error {
     case noDataFound
     case noDataReceived
     case locationAccessDenied
+    case failedToCreateDate
     
     var code: Int {
         switch self {
@@ -24,6 +25,7 @@ enum RiseError: Error {
         case .noDataFound: return 6004
         case .noDataReceived: return 6002
         case .locationAccessDenied: return 6005
+        case .failedToCreateDate: return 6006
         }
     }
     
@@ -34,7 +36,8 @@ enum RiseError: Error {
         case .noDataReceived: return "Did'nt receive any data from request"
         case .cantBuildURL: return "Could'nt build URL"
         case .noDataFound: return "Could'nt find any data"
-        case .locationAccessDenied : return "Access to location was not granted"
+        case .locationAccessDenied: return "Access to location was not granted"
+        case .failedToCreateDate: return "Calendar returned nil on attempt to create a date"
         }
     }
 }

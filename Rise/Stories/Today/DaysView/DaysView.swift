@@ -64,7 +64,7 @@ final class DaysView:
         let w = scrollView.bounds.size.width
         let currentPage = Int(ceil(x/w))
         if !(currentPage > 2 || currentPage < 0) {
-            segmentedControl.selectButton(DaysSegmentedControlViewButtonDay(rawValue: currentPage)!)
+            segmentedControl.selectButton(DaysSegmentedControlViewButtonDay(rawValue: currentPage) ?? .today)
         }
     }
 }

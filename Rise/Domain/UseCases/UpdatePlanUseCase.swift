@@ -45,7 +45,7 @@ final class UpdatePlanUseCase: UpdatePlan {
         }
         
         if let newSleepDuration = sleepDurationMin {
-            let newSleepDuration: Double = Double(newSleepDuration * 60)
+            let newSleepDuration = Double(from: newSleepDuration)
             if plan.sleepDurationSec != newSleepDuration {
                 updatedSleepDuration = newSleepDuration
             }
@@ -75,6 +75,7 @@ final class UpdatePlanUseCase: UpdatePlan {
                 latestConfirmedDay: plan.latestConfirmedDay,
                 daysMissed: plan.daysMissed,
                 paused: plan.paused
-        ))
+            )
+        )
     }
 }

@@ -25,7 +25,7 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
     
     private var latestUsedPlan: RisePlan?
 
-    private var tableDataSource: TableDataSource?
+    private var tableDataSource: TableDataSource!
     private var cellConfigurators: [[CellConfigurator]] {
         get {
             guard let dataSource = tableDataSource
@@ -72,7 +72,7 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
             ]
         )
         
-        view?.setTableView(dataSource: tableDataSource!)
+        view?.setTableView(dataSource: tableDataSource)
         
         observePlan.observe { [weak self] plan in
             guard let self = self else { return }

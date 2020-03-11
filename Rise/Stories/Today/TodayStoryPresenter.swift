@@ -24,7 +24,7 @@ final class TodayStoryPresenter: TodayStoryViewOutput {
     
     private var latestUsedPlan: RisePlan?
     
-    private var collectionDataSource: CollectionDataSource?
+    private var collectionDataSource: CollectionDataSource!
     private var cellModels: [DaysCollectionCellModel] {
         get {
             guard let dataSource = collectionDataSource
@@ -81,7 +81,7 @@ final class TodayStoryPresenter: TodayStoryViewOutput {
             TodayCollectionCellConfigurator(model: makeEmptyPlanCellModel())
         ])
 
-        view.setupCollection(with: collectionDataSource!)
+        view.setupCollection(with: collectionDataSource)
         requestSunTime()
 
         observePlan.observe { [weak self] plan in

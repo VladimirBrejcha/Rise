@@ -9,9 +9,8 @@
 import UIKit
 
 final class SleepDurationCreatePlanViewController: UIViewController {
-
-    @IBOutlet weak var sleepDurationLabel: UILabel!
-    @IBOutlet weak var sleepDurationSlider: UISlider!
+    @IBOutlet private weak var sleepDurationLabel: UILabel!
+    @IBOutlet private weak var sleepDurationSlider: UISlider!
     
     private let minimumDurationH = 6
     private let maximumDurationH = 10

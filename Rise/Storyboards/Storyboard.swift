@@ -17,11 +17,7 @@ struct Storyboard {
 }
 
 extension UIStoryboard {
-    func instantiateViewController(withIdentifier typeIdentifier: UIViewController.Type) -> UIViewController {
-        return instantiateViewController(withIdentifier: String(describing: typeIdentifier))
-    }
-    
     func instantiateViewController<Type: UIViewController>(of type: Type.Type) -> Type {
-        return instantiateViewController(withIdentifier: String(describing: type)) as! Type
+        instantiateViewController(withIdentifier: String(describing: type)) as! Type
     }
 }

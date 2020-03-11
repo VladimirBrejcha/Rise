@@ -15,7 +15,7 @@ fileprivate typealias ButtonCellConfigurator = TableCellConfigurator<ChangePlanB
 final class ChangePlanPresenter: ChangePlanViewOutput {
     private weak var view: ChangePlanViewInput?
     
-    private var tableDataSource: TableDataSource?
+    private var tableDataSource: TableDataSource!
     private var cellConfigurators: [[CellConfigurator]] {
         get { tableDataSource?.items ?? [] }
         set { tableDataSource?.items = newValue }
@@ -90,7 +90,7 @@ final class ChangePlanPresenter: ChangePlanViewOutput {
                 action: deletePlanPressed)
             )]
         ])
-        view?.setTableView(with: tableDataSource!)
+        view?.setTableView(with: tableDataSource)
         view?.reloadTable()
     }
     
