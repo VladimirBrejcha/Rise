@@ -62,7 +62,7 @@ final class DefaultRisePlanLocalDataSource: LocalDataSource<RisePlanObject>, Per
             firstSleepTime: object.firstSleepTime,
             finalWakeUpTime: object.finalWakeUpTime,
             sleepDurationSec: object.sleepDurationSec,
-            dailyShiftSec: object.dailyShiftSec,
+            dailyShiftMin: Int(object.dailyShiftMin),
             latestConfirmedDay: object.latestConfirmedDay,
             daysMissed: Int(object.daysMissed),
             paused: object.paused
@@ -71,7 +71,7 @@ final class DefaultRisePlanLocalDataSource: LocalDataSource<RisePlanObject>, Per
     
     private func update(object: RisePlanObject, with model: RisePlan) {
         object.paused = model.paused
-        object.dailyShiftSec = model.dailyShiftSec
+        object.dailyShiftMin = Int64(model.dailyShiftMin)
         object.planStartDay = model.dateInterval.start
         object.planEndDay = model.dateInterval.end
         object.firstSleepTime = model.firstSleepTime

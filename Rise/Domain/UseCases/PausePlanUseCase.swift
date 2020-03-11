@@ -39,7 +39,7 @@ final class PausePlanUseCase: PausePlan {
                                    firstSleepTime: plan.firstSleepTime,
                                    finalWakeUpTime: plan.finalWakeUpTime,
                                    sleepDurationSec: plan.sleepDurationSec,
-                                   dailyShiftSec: plan.dailyShiftSec,
+                                   dailyShiftMin: plan.dailyShiftMin,
                                    latestConfirmedDay: updatedConfirmedDay ?? plan.latestConfirmedDay,
                                    daysMissed: updatedDaysMissed ?? plan.daysMissed,
                                    paused: pause)

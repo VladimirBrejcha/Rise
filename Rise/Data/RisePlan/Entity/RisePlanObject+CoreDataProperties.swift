@@ -16,7 +16,7 @@ extension RisePlanObject {
     }
 
     @NSManaged public var paused: Bool
-    @NSManaged public var dailyShiftSec: Double
+    @NSManaged public var dailyShiftMin: Int64
     @NSManaged public var planStartDay: Date
     @NSManaged public var planEndDay: Date
     @NSManaged public var finalWakeUpTime: Date

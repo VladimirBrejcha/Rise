@@ -30,7 +30,7 @@ final class GetDailyTimeUseCase: GetDailyTime {
         let plan = try planRepository.get()
         let date = date.noon
         let daysSincePlanStart = DateInterval(start: plan.dateInterval.start, end: date).durationDays
-        let timeShiftForTheDay = plan.dailyShiftSec * Double(daysSincePlanStart - plan.daysMissed)
+        let timeShiftForTheDay = plan.dailyShiftMin * (daysSincePlanStart - plan.daysMissed)
         let toSleepTime = toSleepTimeFormula(plan.firstSleepTime, daysSincePlanStart, timeShiftForTheDay)
         let wakeUpTime = wakeUpTimeFormula(plan.firstSleepTime, daysSincePlanStart, timeShiftForTheDay, plan.sleepDurationSec)
         return DailyPlanTime(day: date, wake: wakeUpTime, sleep: toSleepTime)

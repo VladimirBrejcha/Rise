@@ -71,7 +71,7 @@ final class UpdatePlanUseCase: UpdatePlan {
                 firstSleepTime: plan.firstSleepTime,
                 finalWakeUpTime: updatedWakeUpTime ?? plan.finalWakeUpTime,
                 sleepDurationSec: updatedSleepDuration ?? plan.sleepDurationSec,
-                dailyShiftSec: plan.dailyShiftSec,
+                dailyShiftMin: plan.dailyShiftMin,
                 latestConfirmedDay: plan.latestConfirmedDay,
                 daysMissed: plan.daysMissed,
                 paused: plan.paused

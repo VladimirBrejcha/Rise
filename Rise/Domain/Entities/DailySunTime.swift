@@ -1,5 +1,5 @@
 //
-//  SunTimeModel.swift
+//  SunTime.swift
 //  Rise
 //
 //  Created by Владимир Королев on 12.10.2019.

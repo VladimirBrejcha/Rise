@@ -33,19 +33,18 @@ final class MakePlanUseCase: MakePlan {
                  planDurationDays: Int,
                  firstSleepTime: Date) throws {
         let dateInterval = dateIntervalFormula(firstSleepTime, planDurationDays)
-        let sleepDuration: Double = Double(sleepDurationMin * 60)
+        let sleepDurationSec: Double = Double(from: sleepDurationMin)
         let wakeUpTime = calendar.date(bySettingHour: calendar.component(.hour, from: wakeUpTime),
                                        minute: calendar.component(.minute, from: wakeUpTime),
                                        second: calendar.component(.second, from: wakeUpTime),
                                        of: dateInterval.end)!
-        let finalToSleepTime = wakeUpTime.addingTimeInterval(-sleepDuration)
-        let dailyShift = dailyShiftFormula(firstSleepTime, finalToSleepTime, Double(planDurationDays))
+        let dailyShift = dailyShiftFormula(firstSleepTime, sleepDurationSec, planDurationDays)
         
         try planRepository.save(plan: RisePlan(dateInterval: dateInterval,
                                                firstSleepTime: firstSleepTime,
                                                finalWakeUpTime: wakeUpTime,
-                                               sleepDurationSec: sleepDuration,
-                                               dailyShiftSec: dailyShift,
+                                               sleepDurationSec: sleepDurationSec,
+                                               dailyShiftMin: dailyShift,
                                                latestConfirmedDay: dateInterval.start,
                                                daysMissed: 0,
                                                paused: false))

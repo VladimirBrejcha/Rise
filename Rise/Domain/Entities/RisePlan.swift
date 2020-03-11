@@ -13,7 +13,7 @@ struct RisePlan: Equatable {
     let firstSleepTime: Date
     let finalWakeUpTime: Date
     let sleepDurationSec: Double
-    let dailyShiftSec: Double
+    let dailyShiftMin: Int
     let latestConfirmedDay: Date
     let daysMissed: Int
     let paused: Bool

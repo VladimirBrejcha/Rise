@@ -13,8 +13,3 @@ struct DailyPlanTime {
     var wake: Date
     var sleep: Date
 }
-
-struct NewDailyPlanTime {
-    let dayNumber: Int
-    let wakeUp, toSleep: (hours: Int, minutes: Int)
-}

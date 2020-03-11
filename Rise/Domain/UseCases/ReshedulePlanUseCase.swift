@@ -36,7 +36,7 @@ final class ReshedulePlanUseCase: ReshedulePlan {
                 firstSleepTime: plan.firstSleepTime,
                 finalWakeUpTime: plan.finalWakeUpTime,
                 sleepDurationSec: plan.sleepDurationSec,
-                dailyShiftSec: plan.dailyShiftSec,
+                dailyShiftMin: plan.dailyShiftMin,
                 latestConfirmedDay: Date().noon,
                 daysMissed: plan.daysMissed + missedDays,
                 paused: plan.paused)

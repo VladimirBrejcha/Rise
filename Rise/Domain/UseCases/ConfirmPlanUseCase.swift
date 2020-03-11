@@ -26,7 +26,7 @@ final class ConfirmPlanUseCase: ConfirmPlan {
                                      firstSleepTime: plan.firstSleepTime,
                                      finalWakeUpTime: plan.finalWakeUpTime,
                                      sleepDurationSec: plan.sleepDurationSec,
-                                     dailyShiftSec: plan.dailyShiftSec,
+                                     dailyShiftMin: plan.dailyShiftMin,
                                      latestConfirmedDay: Date().noon,
                                      daysMissed: plan.daysMissed,
                                      paused: plan.paused)

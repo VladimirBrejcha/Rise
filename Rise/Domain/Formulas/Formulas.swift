@@ -8,28 +8,29 @@
 
 import Foundation
 
-typealias DailyShiftFormula = (Date, Date, Double) -> Double
-typealias ToSleepTimeFormula = (Date, Int, Double) -> Date
-typealias WakeUpTimeFormula = (Date, Int, Double, Double) -> Date
+typealias DailyShiftFormula = (Date, Double, Int) -> Int
+typealias ToSleepTimeFormula = (Date, Int, Int) -> Date
+typealias WakeUpTimeFormula = (Date, Int, Int, Double) -> Date
 typealias DateIntervalFormula = (Date, Int) -> DateInterval
 
 struct Formulas {
-    static let defaultDailyShiftFormula: DailyShiftFormula = { firstSleepTime, finalSleepTime, duration in
-        firstSleepTime > finalSleepTime
-            ? -(firstSleepTime.timeIntervalSince(finalSleepTime) / duration)
-            : finalSleepTime.timeIntervalSince(firstSleepTime) / duration
+    static let defaultDailyShiftFormula: DailyShiftFormula = { firstSleepTime, sleepDurationSec, duration in
+        let adjustedSleepTime = firstSleepTime.addingTimeInterval(sleepDurationSec)
+        return firstSleepTime > adjustedSleepTime
+            ? -(Int(from: firstSleepTime.timeIntervalSince(adjustedSleepTime)) / duration)
+            : Int(from: adjustedSleepTime.timeIntervalSince(firstSleepTime)) / duration
     }
     
-    static let defaultToSleepTimeFormula: ToSleepTimeFormula = { firstSleepTime, numberOfDays, dailyShift in
+    static let defaultToSleepTimeFormula: ToSleepTimeFormula = { firstSleepTime, numberOfDays, dailyShiftMin in
         firstSleepTime
             .appending(days: numberOfDays)
-            .addingTimeInterval(dailyShift * Double(numberOfDays))
+            .addingTimeInterval(TimeInterval(dailyShiftMin * 60 * numberOfDays))
     }
     
-    static let defaultWakeUpTimeFormula: WakeUpTimeFormula = { firstSleepTime, numberOfDays, dailyShift, sleepDuration in
+    static let defaultWakeUpTimeFormula: WakeUpTimeFormula = { firstSleepTime, numberOfDays, dailyShiftMin, sleepDuration in
         firstSleepTime
             .appending(days: numberOfDays - 1)
-            .addingTimeInterval(dailyShift * Double(numberOfDays))
+            .addingTimeInterval(TimeInterval(dailyShiftMin * 60 * numberOfDays))
             .addingTimeInterval(sleepDuration)
     }
     
