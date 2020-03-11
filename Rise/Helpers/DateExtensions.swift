@@ -16,7 +16,7 @@ enum Day {
     case tomorrow
     
     var date: Date {
-        guard let date = Date().appending(days: numberOfDaysFromToday)
+        guard let date = Date().appending(days: numberOfDaysFromToday)?.noon
             else {
                 log(.error, with: "Failed to append \(numberOfDaysFromToday) days to today, returning today")
                 return Day.today.date
@@ -33,10 +33,11 @@ enum Day {
     }
 }
 
-extension Date {
-    func appending(days: Days) -> Date? {
-        if days == 0 { return self }
-        return calendar.date(byAdding: .day, value: days, to: self)
+extension DateInterval {
+    var durationDays: Int {
+        calendar.dateComponents([.day],
+                                from: self.start.noon,
+                                to: self.end.noon).day!
     }
 }
 
@@ -46,17 +47,21 @@ extension Date {
         dateFormatter.dateFormat = "HH:mm"
         return dateFormatter.string(from: self)
     }
-}
-
-typealias Days = Int
-
-typealias Minutes = Int
-
-extension Minutes {
-    init(with seconds: Seconds) {
-        self = Int(seconds / 60)
+    
+    var noon: Date {
+        calendar.date(bySettingHour: 12, minute: 00, second: 00, of: self)!
     }
     
+    func appending(days: Int) -> Date? {
+        if days == 0 { return self }
+        return calendar.date(byAdding: .day, value: days, to: self)
+    }
+}
+
+extension Int {
+    init(from seconds: Double) {
+        self = Int(seconds / 60)
+    }
     var HHmmString: String {
         let hours = self / 60
         let minutes = self % 60
@@ -67,28 +72,12 @@ extension Minutes {
     }
 }
 
-typealias Seconds = TimeInterval
-
-extension Seconds {
-    init(with minutes: Minutes) {
-        self = TimeInterval(minutes * 60)
+extension Double {
+    init(from minutes: Int) {
+        self = Double(minutes * 60)
     }
     
     var HHmmString: String {
-        Minutes(with: self).HHmmString
-    }
-}
-
-extension Date {
-    var noon: Date {
-        calendar.date(bySettingHour: 12, minute: 00, second: 00, of: self)!
-    }
-}
-
-extension DateInterval {
-    var durationDays: Int {
-        calendar.dateComponents([.day],
-                                from: self.start.noon,
-                                to: self.end.noon).day!
+        Int(from: self).HHmmString
     }
 }

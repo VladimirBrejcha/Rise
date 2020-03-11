@@ -24,7 +24,7 @@ final class ChangePlanPresenter: ChangePlanViewOutput {
     private let updatePlan: UpdatePlan
     
     private var pickedWakeUp: Date?
-    private var pickedSleepDuration: Minutes?
+    private var pickedSleepDuration: Int?
     private var pickedPlanDuration: Int?
     
     required init(
@@ -49,7 +49,7 @@ final class ChangePlanPresenter: ChangePlanViewOutput {
         
         let minimumDurationMin: Float = 6 * 60
         let maximumDurationMin: Float = 10 * 60
-        let plannedDurationMin: Float = Float(Minutes(with: plan.sleepDurationSec))
+        let plannedDurationMin: Float = Float(Int(from: plan.sleepDurationSec))
         
         let sleepDurationString = plan.sleepDurationSec.HHmmString
         

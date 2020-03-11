@@ -17,7 +17,7 @@ final class DefaultSunTimeRepository: SunTimeRepository {
         self.remoteDataSource = remoteDataSource
     }
     
-    func get(for numberOfDays: Days,
+    func get(for numberOfDays: Int,
              since day: Date,
              for location: Location,
              completion: @escaping (Result<[SunTime], Error>) -> Void
