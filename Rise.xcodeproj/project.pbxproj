@@ -86,7 +86,6 @@
 		7EB1C0372340FC6B0028237E /* RisePlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1C0362340FC6B0028237E /* RisePlan.swift */; };
 		7EB1C0392340FDB00028237E /* CreatePlanPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1C0382340FDB00028237E /* CreatePlanPresenter.swift */; };
 		7EB1C03B23411FFD0028237E /* PersonalPlanPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1C03A23411FFD0028237E /* PersonalPlanPresenter.swift */; };
-		7EB1C03D23412A9C0028237E /* PersonalPlanHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1C03C23412A9C0028237E /* PersonalPlanHelper.swift */; };
 		7EB26951234F9972008AEB3D /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB26950234F9972008AEB3D /* NibLoadable.swift */; };
 		7EB26953234F99AE008AEB3D /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB26952234F99AE008AEB3D /* Button.swift */; };
 		7EB26957234FA6EB008AEB3D /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB26956234FA6EB008AEB3D /* LoadingView.swift */; };
@@ -237,7 +236,6 @@
 		7EB1C0362340FC6B0028237E /* RisePlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RisePlan.swift; sourceTree = "<group>"; };
 		7EB1C0382340FDB00028237E /* CreatePlanPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlanPresenter.swift; sourceTree = "<group>"; };
 		7EB1C03A23411FFD0028237E /* PersonalPlanPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPlanPresenter.swift; sourceTree = "<group>"; };
-		7EB1C03C23412A9C0028237E /* PersonalPlanHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPlanHelper.swift; sourceTree = "<group>"; };
 		7EB26950234F9972008AEB3D /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 		7EB26952234F99AE008AEB3D /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		7EB26956234FA6EB008AEB3D /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -727,7 +725,6 @@
 		7EF3EE192340F8A5003BE978 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				7EB1C03C23412A9C0028237E /* PersonalPlanHelper.swift */,
 				7E98FE66231C3D5C0065FB09 /* UserDefaultsManager.swift */,
 				92BC919322AB24D800BB1D19 /* GradientHelper.swift */,
 				7E98FE64231C30C10065FB09 /* AlertPresenter.swift */,
@@ -1051,7 +1048,6 @@
 				7EB9F35423C36B54002A6DD3 /* CreatePlanAssembler.swift in Sources */,
 				7EB9003E23256AC9006EB9A8 /* DesignableContainerView.swift in Sources */,
 				7E0834AC2387351400BA1AE8 /* DateExtensions.swift in Sources */,
-				7EB1C03D23412A9C0028237E /* PersonalPlanHelper.swift in Sources */,
 				7E708A3923BFD09B003B5702 /* WentSleepCreatePlanViewController.swift in Sources */,
 				92BC919422AB24D800BB1D19 /* GradientHelper.swift in Sources */,
 				7E052A422352377E005D7FAD /* RiseError.swift in Sources */,
