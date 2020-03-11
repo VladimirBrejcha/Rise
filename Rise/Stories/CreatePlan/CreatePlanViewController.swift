@@ -20,7 +20,7 @@ protocol CreatePlanViewInput: AnyObject {
     func endStory()
 }
 
-protocol CreatePlanViewOutput: ViewOutput {
+protocol CreatePlanViewOutput: ViewControllerLifeCycle {
     func backTouchUp()
     func nextTouchUp()
     func closeTouchUp()

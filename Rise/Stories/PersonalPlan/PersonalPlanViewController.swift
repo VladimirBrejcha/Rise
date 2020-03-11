@@ -23,7 +23,7 @@ protocol PersonalPlanViewInput: AnyObject {
     func showRightButton(_ show: Bool)
 }
 
-protocol PersonalPlanViewOutput: ViewOutput {
+protocol PersonalPlanViewOutput: ViewControllerLifeCycle {
     func planPressed()
     func pausePressed()
 }

@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+final class PrepareToSleepPresenter: PrepareToSleepViewOutput {
+    private weak var view: PrepareToSleepViewInput?
+    
+    required init(view: PrepareToSleepViewInput) {
+        self.view = view
+    }
+}

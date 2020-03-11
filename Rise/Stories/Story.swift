@@ -29,6 +29,9 @@ enum Story {
     // Сonfirmation
     case confirmation
     
+    // Sleep
+    case prepareToSleep
+    
     func configure() -> UIViewController {
         switch self {
         case .today:
@@ -65,6 +68,8 @@ enum Story {
             return ChangePlanAssembler().assemble()
         case .confirmation:
             return ConfirmationAssembler().assemble()
+        case .prepareToSleep:
+            return PrepareToSleepAssembler().assemble()
         }
     }
 }

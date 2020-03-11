@@ -14,6 +14,7 @@ struct Storyboard {
     static let setupPlan: UIStoryboard = UIStoryboard(name: "CreatePlan", bundle: nil)
     static let settings: UIStoryboard = UIStoryboard(name: "Settings", bundle: nil)
     static let popUp: UIStoryboard = UIStoryboard(name: "Confirmation", bundle: nil)
+    static let sleep: UIStoryboard = UIStoryboard(name: "Sleep", bundle: nil)
 }
 
 extension UIStoryboard {

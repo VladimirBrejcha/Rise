@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+final class PrepareToSleepAssembler: StoryAssembler {
+    typealias View = PrepareToSleepViewController
+    
+    func assemble() -> View {
+        let controller = Storyboard.sleep.instantiateViewController(of: PrepareToSleepViewController.self)
+        controller.output = PrepareToSleepPresenter(view: controller)
+        return controller
+    }
+}

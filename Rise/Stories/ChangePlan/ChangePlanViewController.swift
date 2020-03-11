@@ -19,7 +19,7 @@ protocol ChangePlanViewInput: AnyObject {
     func dismiss()
 }
 
-protocol ChangePlanViewOutput: ViewOutput {
+protocol ChangePlanViewOutput: ViewControllerLifeCycle {
     func close()
     func save()
 }

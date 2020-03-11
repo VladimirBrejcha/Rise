@@ -19,7 +19,7 @@ protocol ConfirmationViewInput: AnyObject {
     func dismiss()
 }
 
-protocol ConfirmationViewOutput: ViewOutput {
+protocol ConfirmationViewOutput: ViewControllerLifeCycle {
     func reshedulePressed()
     func confirmPressed()
 }

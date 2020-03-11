@@ -24,7 +24,7 @@ protocol TodayStoryViewInput: AnyObject {
     func makeTabBar(visible: Bool)
 }
 
-protocol TodayStoryViewOutput: ViewOutput { }
+protocol TodayStoryViewOutput: ViewControllerLifeCycle { }
 
 final class TodayStoryViewController: UIViewController, TodayStoryViewInput {
     var output: TodayStoryViewOutput!
