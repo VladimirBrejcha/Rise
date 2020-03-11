@@ -1,5 +1,5 @@
 //
-//  PersonalPlanRepository.swift
+//  RisePlanRepository.swift
 //  Rise
 //
 //  Created by Владимир Королев on 04.03.2020.
@@ -8,10 +8,10 @@
 
 import Foundation
 
-protocol PersonalPlanRepository {
-    func get() throws -> PersonalPlan
-    func update(plan: PersonalPlan) throws
-    func save(plan: PersonalPlan) throws
+protocol RisePlanRepository {
+    func get() throws -> RisePlan
+    func update(plan: RisePlan) throws
+    func save(plan: RisePlan) throws
     func removeAll() throws
     func add(observer: @escaping PlanObserver, with uuid: UUID)
     func removeObserver(with uuid: UUID)

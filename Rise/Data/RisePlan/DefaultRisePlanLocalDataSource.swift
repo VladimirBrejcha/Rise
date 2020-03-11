@@ -10,14 +10,14 @@ import Foundation
 import CoreData
 
 protocol PersonalPlanLocalDataSource {
-    func get() throws -> PersonalPlan
-    func save(plan: PersonalPlan) throws
-    func update(plan: PersonalPlan) throws
+    func get() throws -> RisePlan
+    func save(plan: RisePlan) throws
+    func update(plan: RisePlan) throws
     func deleteAll() throws
 }
 
-final class DefaultPersonalPlanLocalDataSource: LocalDataSource<RisePersonalPlan>, PersonalPlanLocalDataSource {
-    func get() throws -> PersonalPlan {
+final class DefaultRisePlanLocalDataSource: LocalDataSource<RisePlanObject>, PersonalPlanLocalDataSource {
+    func get() throws -> RisePlan {
         do {
             let fetchResult = try container.fetch()
             if fetchResult.isEmpty {
@@ -29,13 +29,13 @@ final class DefaultPersonalPlanLocalDataSource: LocalDataSource<RisePersonalPlan
         }
     }
     
-    func save(plan: PersonalPlan) throws {
+    func save(plan: RisePlan) throws {
         let planObject = insertObject()
         update(object: planObject, with: plan)
         try container.saveContext()
     }
     
-    func update(plan: PersonalPlan) throws {
+    func update(plan: RisePlan) throws {
         do {
             let fetchResult = try container.fetch()
             if fetchResult.isEmpty {
@@ -56,24 +56,26 @@ final class DefaultPersonalPlanLocalDataSource: LocalDataSource<RisePersonalPlan
     }
     
     // MARK: - Private -
-    private func buildModel(from object: RisePersonalPlan) -> PersonalPlan {
-        return PersonalPlan(
-            paused: object.paused,
-            dailyShiftMin: Int(object.dailyShiftMin),
+    private func buildModel(from object: RisePlanObject) -> RisePlan {
+        return RisePlan(
             dateInterval: DateInterval(start: object.planStartDay, end: object.planEndDay),
+            firstSleepTime: object.firstSleepTime,
+            finalWakeUpTime: object.finalWakeUpTime,
             sleepDurationSec: object.sleepDurationSec,
-            wakeTime: object.wakeTime,
+            dailyShiftSec: object.dailyShiftSec,
             latestConfirmedDay: object.latestConfirmedDay,
-            daysMissed: Int(object.daysMissed)
+            daysMissed: Int(object.daysMissed),
+            paused: object.paused
         )
     }
     
-    private func update(object: RisePersonalPlan, with model: PersonalPlan) {
+    private func update(object: RisePlanObject, with model: RisePlan) {
         object.paused = model.paused
-        object.dailyShiftMin = Int64(model.dailyShiftMin)
+        object.dailyShiftSec = model.dailyShiftSec
         object.planStartDay = model.dateInterval.start
         object.planEndDay = model.dateInterval.end
-        object.wakeTime = model.wakeTime
+        object.firstSleepTime = model.firstSleepTime
+        object.finalWakeUpTime = model.finalWakeUpTime
         object.sleepDurationSec = model.sleepDurationSec
         object.latestConfirmedDay = model.latestConfirmedDay
         object.daysMissed = Int64(model.daysMissed)

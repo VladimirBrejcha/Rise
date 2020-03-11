@@ -1,5 +1,5 @@
 //
-//  CreatePlan.swift
+//  MakePlan.swift
 //  Rise
 //
 //  Created by Владимир Королев on 05.01.2020.
@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol CreatePlan {
+protocol MakePlan {
     func execute(with plan: PersonalPlan) throws
 }
 
-final class CreatePlanUseCase: CreatePlan {
+final class MakePlanUseCase: MakePlan {
     private let planRepository: PersonalPlanRepository
     
     required init(planRepository: PersonalPlanRepository) {

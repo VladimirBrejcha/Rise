@@ -8,9 +8,9 @@
 
 import Foundation
 
-typealias PlanObserver = (PersonalPlan?) -> Void
+typealias PlanObserver = (RisePlan?) -> Void
 
-final class DefaultPersonalPlanRepository: PersonalPlanRepository {    
+final class DefaultRisePlanRepository: PersonalPlanRepository {    
     private let localDataSource: PersonalPlanLocalDataSource
     private var observers: [UUID: PlanObserver] = [:]
     
@@ -26,11 +26,11 @@ final class DefaultPersonalPlanRepository: PersonalPlanRepository {
         observers.removeValue(forKey: uuid)
     }
     
-    func get() throws -> PersonalPlan {
+    func get() throws -> RisePlan {
         try localDataSource.get()
     }
     
-    func update(plan: PersonalPlan) throws {
+    func update(plan: RisePlan) throws {
         try localDataSource.update(plan: plan)
         
         if !observers.isEmpty {
@@ -40,7 +40,7 @@ final class DefaultPersonalPlanRepository: PersonalPlanRepository {
         }
     }
     
-    func save(plan: PersonalPlan) throws {
+    func save(plan: RisePlan) throws {
         try localDataSource.save(plan: plan)
         
         if !observers.isEmpty {
