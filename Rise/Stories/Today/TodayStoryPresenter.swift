@@ -101,12 +101,9 @@ final class TodayStoryPresenter: TodayStoryViewOutput {
             self.updateDaysPlanView(with: latestUsedPlan)
             needsUpdate = false
         }
-        let confirmed = (try? confirmPlan.checkIfConfirmed()) ?? false
-        if !confirmed {
-            view?.makeTabBar(visible: false)
-            view?.present(controller: Story.confirmation.configure())
-        } else {
-            view?.makeTabBar(visible: true)
+        if let confirmed = try? confirmPlan.checkIfConfirmed() {
+            view?.makeTabBar(visible: confirmed)
+            if !confirmed { view?.present(controller: Story.confirmation.configure()) }
         }
     }
     
