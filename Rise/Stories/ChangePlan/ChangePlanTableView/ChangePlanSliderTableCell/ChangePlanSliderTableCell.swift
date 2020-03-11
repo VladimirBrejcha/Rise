@@ -16,7 +16,7 @@ final class ChangePlanSliderTableCell: UITableViewCell, ConfigurableCell {
     
     private var centerLabelDataSource: ((ChangePlanSliderTableCell, Float) -> String)?
     
-    func configure(with model: ChangePlanSliderTableCellModel) {
+    func configure(with model: Model) {
         title.text = model.title
         sliderWithValues.leftLabel.text = model.text.left
         sliderWithValues.centerLabel.text = model.text.center

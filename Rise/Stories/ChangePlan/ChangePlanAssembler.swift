@@ -15,7 +15,8 @@ final class ChangePlanAssembler: StoryAssembler {
         let controller = Storyboard.changePlan.instantiateViewController(of: ChangePlanViewController.self)
         controller.output = ChangePlanPresenter(view: controller,
                                                 getPlan: DomainLayer.getPlan,
-                                                updatePlan: DomainLayer.updatePlan)
+                                                updatePlan: DomainLayer.updatePlan,
+                                                deletePlan: DomainLayer.deletePlan)
         return controller
     }
 }

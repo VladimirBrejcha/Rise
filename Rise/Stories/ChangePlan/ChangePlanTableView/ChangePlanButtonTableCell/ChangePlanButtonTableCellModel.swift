@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+struct ChangePlanButtonTableCellModel {
+    let title: String
+    let action: () -> Void
+}

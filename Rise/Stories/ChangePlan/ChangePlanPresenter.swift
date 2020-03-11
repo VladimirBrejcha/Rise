@@ -10,6 +10,7 @@ import Foundation
 
 fileprivate typealias DatePickerCellConfigurator = TableCellConfigurator<ChangePlanDatePickerTableCell, ChangePlanDatePickerTableCellModel>
 fileprivate typealias SliderCellConfigurator = TableCellConfigurator<ChangePlanSliderTableCell, ChangePlanSliderTableCellModel>
+fileprivate typealias ButtonCellConfigurator = TableCellConfigurator<ChangePlanButtonTableCell, ChangePlanButtonTableCellModel>
 
 final class ChangePlanPresenter: ChangePlanViewOutput {
     private weak var view: ChangePlanViewInput?
@@ -22,6 +23,7 @@ final class ChangePlanPresenter: ChangePlanViewOutput {
     
     private let getPlan: GetPlan
     private let updatePlan: UpdatePlan
+    private let deletePlan: DeletePlan
     
     private var pickedWakeUp: Date?
     private var pickedSleepDuration: Int?
@@ -30,11 +32,13 @@ final class ChangePlanPresenter: ChangePlanViewOutput {
     required init(
         view: ChangePlanViewInput,
         getPlan: GetPlan,
-        updatePlan: UpdatePlan
+        updatePlan: UpdatePlan,
+        deletePlan: DeletePlan
     ) {
         self.view = view
         self.getPlan = getPlan
         self.updatePlan = updatePlan
+        self.deletePlan = deletePlan
     }
     
     func viewDidLoad() {
@@ -80,6 +84,10 @@ final class ChangePlanPresenter: ChangePlanViewOutput {
                 sliderValue: Float(plannedPlanDuration),
                 sliderMaxValue: maximumPlanDuration,
                 centerLabelDataSource: sliderCellCenterLabelDataSource(_:for:))
+            )],
+            [ButtonCellConfigurator(model: ChangePlanButtonTableCellModel(
+                title: "Delete and stop",
+                action: deletePlanPressed)
             )]
         ])
         view?.setTableView(with: tableDataSource!)
@@ -107,6 +115,11 @@ final class ChangePlanPresenter: ChangePlanViewOutput {
         default:
             return ""
         }
+    }
+    
+    private func deletePlanPressed() {
+        try! deletePlan.execute()
+        close()
     }
     
     // MARK: - ChangePlanViewOutput -

@@ -10,5 +10,6 @@ import UIKit
 
 final class ChangePlanTableView: TableView {
     override var cellTypes: [UITableViewCell.Type] { [ChangePlanDatePickerTableCell.self,
-                                                      ChangePlanSliderTableCell.self] }
+                                                      ChangePlanSliderTableCell.self,
+                                                      ChangePlanButtonTableCell.self] }
 }

@@ -113,9 +113,11 @@ final class ChangePlanViewController:
     }()
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        indexPath.section == 0
-            ? 180
-            : 120
+        switch indexPath.section {
+        case 0: return 180
+        case 3: return 60
+        default: return 120
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
