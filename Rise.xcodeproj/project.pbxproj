@@ -111,6 +111,9 @@
 		7EC7392323C4ED2100C484B8 /* ConfirmationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC7392223C4ED2100C484B8 /* ConfirmationPresenter.swift */; };
 		7EC7392523C4EF5B00C484B8 /* ConfirmationAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC7392423C4EF5B00C484B8 /* ConfirmationAssembler.swift */; };
 		7ECD2C6F241832B300408C4B /* ReshedulePlanUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD2C6E241832B300408C4B /* ReshedulePlanUseCase.swift */; };
+		7ECD2C722419168600408C4B /* ChangePlanButtonTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD2C702419168600408C4B /* ChangePlanButtonTableCell.swift */; };
+		7ECD2C732419168600408C4B /* ChangePlanButtonTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ECD2C712419168600408C4B /* ChangePlanButtonTableCell.xib */; };
+		7ECD2C78241916C600408C4B /* ChangePlanButtonTableCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD2C77241916C600408C4B /* ChangePlanButtonTableCellModel.swift */; };
 		7ED8E59723BFFD5100A1E96F /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8E59623BFFD5100A1E96F /* Story.swift */; };
 		7ED962AF2336649E00CD2408 /* PlanInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED962AD2336649E00CD2408 /* PlanInfoTableViewCell.swift */; };
 		7ED962B02336649E00CD2408 /* PlanInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ED962AE2336649E00CD2408 /* PlanInfoTableViewCell.xib */; };
@@ -263,6 +266,9 @@
 		7EC7392223C4ED2100C484B8 /* ConfirmationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationPresenter.swift; sourceTree = "<group>"; };
 		7EC7392423C4EF5B00C484B8 /* ConfirmationAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationAssembler.swift; sourceTree = "<group>"; };
 		7ECD2C6E241832B300408C4B /* ReshedulePlanUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReshedulePlanUseCase.swift; sourceTree = "<group>"; };
+		7ECD2C702419168600408C4B /* ChangePlanButtonTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanButtonTableCell.swift; sourceTree = "<group>"; };
+		7ECD2C712419168600408C4B /* ChangePlanButtonTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePlanButtonTableCell.xib; sourceTree = "<group>"; };
+		7ECD2C77241916C600408C4B /* ChangePlanButtonTableCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanButtonTableCellModel.swift; sourceTree = "<group>"; };
 		7ED8E59623BFFD5100A1E96F /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		7ED962AD2336649E00CD2408 /* PlanInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanInfoTableViewCell.swift; sourceTree = "<group>"; };
 		7ED962AE2336649E00CD2408 /* PlanInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanInfoTableViewCell.xib; sourceTree = "<group>"; };
@@ -615,6 +621,16 @@
 			path = RiseTests;
 			sourceTree = "<group>";
 		};
+		7ECD2C742419168900408C4B /* ChangePlanButtonTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				7ECD2C77241916C600408C4B /* ChangePlanButtonTableCellModel.swift */,
+				7ECD2C702419168600408C4B /* ChangePlanButtonTableCell.swift */,
+				7ECD2C712419168600408C4B /* ChangePlanButtonTableCell.xib */,
+			);
+			path = ChangePlanButtonTableCell;
+			sourceTree = "<group>";
+		};
 		7EE6404723786617005BE355 /* SunTime */ = {
 			isa = PBXGroup;
 			children = (
@@ -762,6 +778,7 @@
 				7E31497E23425D3700941606 /* ChangePlanTableView.swift */,
 				7EF4C19A240436B40098135A /* ChangePlanSliderTableCell */,
 				7EF4C199240412F20098135A /* ChangePlanDatePickerTableCell */,
+				7ECD2C742419168900408C4B /* ChangePlanButtonTableCell */,
 			);
 			path = ChangePlanTableView;
 			sourceTree = "<group>";
@@ -958,6 +975,7 @@
 				7E199CD4240BD43400B702AD /* SliderWithValues.xib in Resources */,
 				7EB9004523298902006EB9A8 /* ProgressTableViewCell.xib in Resources */,
 				7EB26959234FA6F7008AEB3D /* LoadingView.xib in Resources */,
+				7ECD2C732419168600408C4B /* ChangePlanButtonTableCell.xib in Resources */,
 				7E3980D52360D0020059C592 /* Intro.storyboard in Resources */,
 				7E4798F7239D8A33007FB8F2 /* Settings.storyboard in Resources */,
 				92D7D65D2296F298009321AE /* LaunchScreen.storyboard in Resources */,
@@ -1046,6 +1064,7 @@
 				7E2CA81024032A0F000CEFA5 /* TableCellConfigurator.swift in Sources */,
 				7E91D95F2371E4080087436F /* RisePlanObject+CoreDataClass.swift in Sources */,
 				7EB9F35423C36B54002A6DD3 /* CreatePlanAssembler.swift in Sources */,
+				7ECD2C722419168600408C4B /* ChangePlanButtonTableCell.swift in Sources */,
 				7EB9003E23256AC9006EB9A8 /* DesignableContainerView.swift in Sources */,
 				7E0834AC2387351400BA1AE8 /* DateExtensions.swift in Sources */,
 				7E708A3923BFD09B003B5702 /* WentSleepCreatePlanViewController.swift in Sources */,
@@ -1108,6 +1127,7 @@
 				7E98FE65231C30C10065FB09 /* AlertPresenter.swift in Sources */,
 				7E8675CE2417E9AA004DAF63 /* PausePlanUseCase.swift in Sources */,
 				7E708A3423BF635B003B5702 /* SleepDurationCreatePlanViewController.swift in Sources */,
+				7ECD2C78241916C600408C4B /* ChangePlanButtonTableCellModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
