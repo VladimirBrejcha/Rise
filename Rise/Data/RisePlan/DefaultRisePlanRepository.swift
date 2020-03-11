@@ -10,7 +10,7 @@ import Foundation
 
 typealias PlanObserver = (RisePlan?) -> Void
 
-final class DefaultRisePlanRepository: PersonalPlanRepository {    
+final class DefaultRisePlanRepository: RisePlanRepository {    
     private let localDataSource: PersonalPlanLocalDataSource
     private var observers: [UUID: PlanObserver] = [:]
     

@@ -10,7 +10,7 @@
 import Foundation
 import CoreData
 
-@objc(RisePersonalPlan)
+@objc(RisePlanObject)
 public class RisePlanObject: NSManagedObject {
 
 }

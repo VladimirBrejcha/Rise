@@ -7,3 +7,39 @@
 //
 
 import Foundation
+
+protocol ReshedulePlan {
+    func execute() throws
+}
+
+final class ReshedulePlanUseCase: ReshedulePlan {
+    private let planRepository: RisePlanRepository
+    
+    required init(planRepository: RisePlanRepository) {
+        self.planRepository = planRepository
+    }
+    
+    func execute() throws {
+        let plan = try planRepository.get()
+        
+        let missedDays = DateInterval(start: plan.latestConfirmedDay,
+                                       end: Date().noon).durationDays
+        
+        if missedDays <= 0 {
+            return
+        }
+        
+        try planRepository.update(plan:
+            RisePlan(
+                dateInterval: DateInterval(start: plan.dateInterval.start,
+                                           end: plan.dateInterval.end.appending(days: missedDays)!),
+                firstSleepTime: plan.firstSleepTime,
+                finalWakeUpTime: plan.finalWakeUpTime,
+                sleepDurationSec: plan.sleepDurationSec,
+                dailyShiftSec: plan.dailyShiftSec,
+                latestConfirmedDay: Date().noon,
+                daysMissed: plan.daysMissed + missedDays,
+                paused: plan.paused)
+        )
+    }
+}

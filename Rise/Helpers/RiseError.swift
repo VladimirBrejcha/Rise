@@ -21,6 +21,7 @@ enum RiseError: Int {
     case noLocationArrived    = 6006
     case noChangesBeenMade    = 6007
     case locationAccessDenied = 6008
+    case planDoesntExist      = 6009
     
     private var description: String {
         switch self {
@@ -34,6 +35,7 @@ enum RiseError: Int {
         case .noLocationArrived    : return "Location data did'nt arrive"
         case .noChangesBeenMade    : return "No changes have been made"
         case .locationAccessDenied : return "Access to location was not granted"
+        case .planDoesntExist      : return "Rise plan doesnt exist"
         }
     }
     
@@ -92,5 +94,11 @@ extension RiseError {
     static func errorLocationAccessDenied() -> NSError {
         return NSError(domain: errorDomain, code: RiseError.locationAccessDenied.rawValue,
                        userInfo: RiseError.locationAccessDenied.localizedDescriptionInfo)
+    }
+    
+    static func errorRisePlanDoesntExist() -> NSError {
+        NSError(domain: errorDomain,
+                code: RiseError.planDoesntExist.rawValue,
+                userInfo: RiseError.planDoesntExist.localizedDescriptionInfo)
     }
 }

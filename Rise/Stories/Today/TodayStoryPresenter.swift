@@ -16,10 +16,13 @@ fileprivate let planImages = (left: "wakeup", right: "bed")
 final class TodayStoryPresenter: TodayStoryViewOutput {
     private weak var view: TodayStoryViewInput?
     
-    private var personalPlan: PersonalPlan? { try? getPlan.execute() }
     private let getSunTime: GetSunTime
     private let getPlan: GetPlan
     private let observePlan: ObservePlan
+    private let getDailyTime: GetDailyTime
+    private let confirmPlan: ConfirmPlan
+    
+    private var latestUsedPlan: RisePlan?
     
     private var collectionDataSource: CollectionDataSource?
     private var cellModels: [DaysCollectionCellModel] {
@@ -44,21 +47,30 @@ final class TodayStoryPresenter: TodayStoryViewOutput {
         }
     }
     
+    private var viewIsVisible: Bool = false
+    private var needsUpdate: Bool = true
+    
     required init(
         view: TodayStoryViewInput,
         getSunTime: GetSunTime,
         getPlan: GetPlan,
-        observePlan: ObservePlan
+        observePlan: ObservePlan,
+        getDailyTime: GetDailyTime,
+        confirmPlan: ConfirmPlan
     ) {
         self.view = view
         self.getSunTime = getSunTime
         self.getPlan = getPlan
         self.observePlan = observePlan
+        self.getDailyTime = getDailyTime
+        self.confirmPlan = confirmPlan
     }
     
     // MARK: - TodayStoryViewOutput -
     func viewDidLoad() {
         guard let view = view else { return }
+        
+        latestUsedPlan = try? getPlan.execute()
         
         collectionDataSource = CollectionDataSource(items: [
             TodayCollectionCellConfigurator(model: makeEmptySunCellModel()),
@@ -70,28 +82,36 @@ final class TodayStoryPresenter: TodayStoryViewOutput {
         ])
 
         view.setupCollection(with: collectionDataSource!)
-        updateDaysPlanView(with: personalPlan)
         requestSunTime()
 
         observePlan.observe { [weak self] plan in
-            self?.view?.timeToSleepDataSource = self?.floatingLabelDataSource
-            self?.updateDaysPlanView(with: plan)
+            guard let self = self else { return }
+            self.latestUsedPlan = plan
+            self.viewIsVisible
+                ? { self.view?.timeToSleepDataSource = self.floatingLabelDataSource
+                    self.updateDaysPlanView(with: plan)}()
+                : { self.needsUpdate = true }()
         }
-    }
-    
-    func viewWillAppear() {
-        view?.makeTabBar(visible: true)
     }
     
     func viewDidAppear() {
-        guard let plan = personalPlan else { return }
-        
-        view?.timeToSleepDataSource = floatingLabelDataSource
-        
-        if !PersonalPlanHelper.isConfirmed(for: .yesterday, plan: plan) {
+        viewIsVisible = true
+        if needsUpdate {
+            view?.timeToSleepDataSource = floatingLabelDataSource
+            self.updateDaysPlanView(with: latestUsedPlan)
+            needsUpdate = false
+        }
+        let confirmed = (try? confirmPlan.checkIfConfirmed()) ?? false
+        if !confirmed {
             view?.makeTabBar(visible: false)
             view?.present(controller: Story.confirmation.configure())
+        } else {
+            view?.makeTabBar(visible: true)
         }
+    }
+    
+    func viewWillDisappear() {
+        viewIsVisible = false
     }
     
     // MARK: - Private -
@@ -123,17 +143,16 @@ final class TodayStoryPresenter: TodayStoryViewOutput {
         view?.reloadItems(at: itemsToReload)
     }
     
-    private func updateDaysPlanView(with plan: PersonalPlan?) {
+    private func updateDaysPlanView(with plan: RisePlan?) {
         var itemsToReload = [Int]()
         
         for index in cellModels.enumerated() {
             if index.offset.isEven { continue }
             
-            if let plan = plan {
+            if plan != nil {
                 let datesArray: [Day] = [.yesterday, .today, .tomorrow]
                 
-                if let dailyTime = PersonalPlanHelper.getDailyTime(for: plan,
-                                                                   and: datesArray[(index.offset / 2)].date) {
+                if let dailyTime = try? getDailyTime.execute(for: datesArray[(index.offset / 2)].date) {
                     cellModels[index.offset].state = .showingContent(left: dailyTime.wake.HHmmString,
                                                                      right: dailyTime.sleep.HHmmString)
                 } else {
@@ -153,14 +172,19 @@ final class TodayStoryPresenter: TodayStoryViewOutput {
     
     // MARK: - Floating label data source
     private func floatingLabelDataSource() -> (text: String, alpha: Float) {
-        guard let plan = personalPlan else {
+        guard let plan = latestUsedPlan else {
             return (text: "", alpha: 0)
         }
         
         if plan.paused {
             return (text: "Your personal plan is on pause", alpha: 0.85)
         } else {
-            guard let minutesUntilSleep = PersonalPlanHelper.minutesUntilSleepToday(for: plan)
+            guard let todayDailyTime = try? getDailyTime.execute(for: Date().noon)
+                else {
+                    return (text: "", alpha: 0)
+            }
+            
+            guard let minutesUntilSleep = calendar.dateComponents([.minute], from: Date(), to: todayDailyTime.sleep).minute
                 else {
                     return (text: "", alpha: 0)
             }
@@ -208,7 +232,7 @@ final class TodayStoryPresenter: TodayStoryViewOutput {
         
         index.isEven
             ? requestSunTime()
-            : updateDaysPlanView(with: personalPlan)
+            : updateDaysPlanView(with: latestUsedPlan)
     }
 }
 

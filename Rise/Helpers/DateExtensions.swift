@@ -34,7 +34,7 @@ enum Day {
 }
 
 extension Date {
-    func appending(days: Int) -> Date? {
+    func appending(days: Days) -> Date? {
         if days == 0 { return self }
         return calendar.date(byAdding: .day, value: days, to: self)
     }
@@ -76,5 +76,19 @@ extension Seconds {
     
     var HHmmString: String {
         Minutes(with: self).HHmmString
+    }
+}
+
+extension Date {
+    var noon: Date {
+        calendar.date(bySettingHour: 12, minute: 00, second: 00, of: self)!
+    }
+}
+
+extension DateInterval {
+    var durationDays: Int {
+        calendar.dateComponents([.day],
+                                from: self.start.noon,
+                                to: self.end.noon).day!
     }
 }

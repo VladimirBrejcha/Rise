@@ -9,7 +9,7 @@
 import Foundation
 
 struct DataLayer {
-    static let personalPlanRepository: PersonalPlanRepository = DefaultPersonalPlanRepository(with: DataSources.planLocalDataSource)
+    static let defaultRisePlanRepository: RisePlanRepository = DefaultRisePlanRepository(with: DataSources.planLocalDataSource)
     static let sunTimeRepository: SunTimeRepository = DefaultSunTimeRepository(with: DataSources.sunTimeLocalDataSource,
                                                                                and: DataSources.sunTimeRemoteDataSource)
     static let locationRepository: LocationRepository = DefaultLocationRepository(with: DataSources.locationLocalDataSource,
@@ -17,7 +17,7 @@ struct DataLayer {
 }
 
 fileprivate struct DataSources {
-    static let planLocalDataSource: PersonalPlanLocalDataSource = DefaultPersonalPlanLocalDataSource(with: "PersonalPlanData")
+    static let planLocalDataSource: PersonalPlanLocalDataSource = DefaultRisePlanLocalDataSource(with: "RisePlanData")
     static let locationLocalDataSource: LocationLocalDataSource = DefaultLocationLocalDataSource(with: "LocationData")
     static let locationRemoteDataSource: LocationRemoteDataSource = DefaultLocationRemoteDataSource()
     static let sunTimeLocalDataSource: SunTimeLocalDataSource = DefaultSunTimeLocalDataSource(with: "SunTimeData")

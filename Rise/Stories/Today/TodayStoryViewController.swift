@@ -45,7 +45,7 @@ final class TodayStoryViewController: UIViewController, TodayStoryViewInput {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         output.viewDidLoad()
     }
     

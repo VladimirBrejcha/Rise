@@ -13,7 +13,7 @@ final class CreatePlanAssembler: StoryAssembler {
     
     func assemble() -> CreatePlanViewController {
         let controller = Storyboard.setupPlan.instantiateViewController(of: CreatePlanViewController.self)
-        let presenter = CreatePlanPresenter(view: controller, createPlan: DomainLayer.createPlan)
+        let presenter = CreatePlanPresenter(view: controller, makePlan: DomainLayer.makePlan)
         controller.output = presenter
         presenter.stories = [.welcomeCreatePlan,
                              .sleepDurationCreatePlan(sleepDurationOutput: presenter.sleepDurationValueChanged(_:)),

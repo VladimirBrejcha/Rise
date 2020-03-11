@@ -7,3 +7,35 @@
 //
 
 import Foundation
+
+protocol ConfirmPlan {
+    func execute() throws
+    func checkIfConfirmed() throws -> Bool
+}
+
+final class ConfirmPlanUseCase: ConfirmPlan {
+    private let planRepository: RisePlanRepository
+
+    required init(planRepository: RisePlanRepository) {
+        self.planRepository = planRepository
+    }
+    
+    func execute() throws {
+        let plan = try planRepository.get()
+        let confirmedPlan = RisePlan(dateInterval: plan.dateInterval,
+                                     firstSleepTime: plan.firstSleepTime,
+                                     finalWakeUpTime: plan.finalWakeUpTime,
+                                     sleepDurationSec: plan.sleepDurationSec,
+                                     dailyShiftSec: plan.dailyShiftSec,
+                                     latestConfirmedDay: Date().noon,
+                                     daysMissed: plan.daysMissed,
+                                     paused: plan.paused)
+        try planRepository.update(plan: confirmedPlan)
+    }
+    
+    func checkIfConfirmed() throws -> Bool {
+        let plan = try planRepository.get()
+        if plan.paused { return true }
+        return plan.latestConfirmedDay >= Date().appending(days: -1)!.noon
+    }
+}

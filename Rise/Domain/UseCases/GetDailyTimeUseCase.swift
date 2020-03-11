@@ -7,3 +7,32 @@
 //
 
 import Foundation
+
+protocol GetDailyTime {
+    func execute(for date: Date) throws -> DailyPlanTime
+}
+
+final class GetDailyTimeUseCase: GetDailyTime {
+    private let planRepository: RisePlanRepository
+    private let toSleepTimeFormula: ToSleepTimeFormula
+    private let wakeUpTimeFormula: WakeUpTimeFormula
+    
+    required init(planRepository: RisePlanRepository,
+                  toSleepTimeFormula: @escaping ToSleepTimeFormula,
+                  wakeUpTimeFormula: @escaping WakeUpTimeFormula
+    ) {
+        self.planRepository = planRepository
+        self.toSleepTimeFormula = toSleepTimeFormula
+        self.wakeUpTimeFormula = wakeUpTimeFormula
+    }
+    
+    func execute(for date: Date) throws -> DailyPlanTime {
+        let plan = try planRepository.get()
+        let date = date.noon
+        let daysSincePlanStart = DateInterval(start: plan.dateInterval.start, end: date).durationDays
+        let timeShiftForTheDay = plan.dailyShiftSec * Double(daysSincePlanStart - plan.daysMissed)
+        let toSleepTime = toSleepTimeFormula(plan.firstSleepTime, daysSincePlanStart, timeShiftForTheDay)
+        let wakeUpTime = wakeUpTimeFormula(plan.firstSleepTime, daysSincePlanStart, timeShiftForTheDay, plan.sleepDurationSec)
+        return DailyPlanTime(day: date, wake: wakeUpTime, sleep: toSleepTime)
+    }
+}

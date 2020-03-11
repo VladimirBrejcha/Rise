@@ -11,13 +11,19 @@ import Foundation
 fileprivate typealias ProgressCellConfigurator = TableCellConfigurator<ProgressTableViewCell, ProgressTableCellModel>
 fileprivate typealias InfoCellConfigurator = TableCellConfigurator<PlanInfoTableViewCell, PlanInfoTableCellModel>
 
+fileprivate enum RisePlanState: Equatable {
+    case planDoesntExist
+    case normal(plan: RisePlan)
+}
+
 final class PersonalPlanPresenter: PersonalPlanViewOutput {
     private weak var view: PersonalPlanViewInput?
     
-    private var personalPlan: PersonalPlan? { try? getPlan.execute() }
     private let getPlan: GetPlan
-    private let updatePlan: UpdatePlan
+    private let pausePlan: PausePlan
     private let observePlan: ObservePlan
+    
+    private var latestUsedPlan: RisePlan?
 
     private var tableDataSource: TableDataSource?
     private var cellConfigurators: [[CellConfigurator]] {
@@ -37,20 +43,25 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
         }
     }
     
+    private var viewIsVisible: Bool = false
+    private var needsUpdate: Bool = true
+    
     required init(
         view: PersonalPlanViewInput,
         getPlan: GetPlan,
-        updatePlan: UpdatePlan,
+        pausePlan: PausePlan,
         observePlan: ObservePlan
     ) {
         self.view = view
         self.getPlan = getPlan
-        self.updatePlan = updatePlan
+        self.pausePlan = pausePlan
         self.observePlan = observePlan
     }
     
     // MARK: - PersonalPlanViewOutput -
     func viewDidLoad() {
+        latestUsedPlan = try? getPlan.execute()
+        
         tableDataSource = TableDataSource(
             items: [
                 [makeEmptyProgressCellConfigurator()],
@@ -64,66 +75,93 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
         view?.setTableView(dataSource: tableDataSource!)
         
         observePlan.observe { [weak self] plan in
-             self?.updateView(with: plan)
+            guard let self = self else { return }
+            self.latestUsedPlan = plan
+            self.viewIsVisible
+                ? self.updateView(with: plan)
+                : { self.needsUpdate = true }()
+        }
+    }
+    
+    func viewWillAppear() {
+        if needsUpdate {
+            updateView(with: latestUsedPlan)
+            needsUpdate = false
         }
     }
     
     func viewDidAppear() {
-        updateView(with: personalPlan)
+        viewIsVisible = true
+    }
+    
+    func viewWillDisappear() {
+        viewIsVisible = false
     }
     
     func planPressed() {
-        if personalPlan == nil {
-            view?.present(controller: Story.createPlan.configure())
-        } else {
-            view?.present(controller: Story.changePlan.configure())
-        }
+        view?.present(
+            controller: latestUsedPlan == nil
+                ? Story.createPlan.configure()
+                : Story.changePlan.configure()
+        )
     }
     
     func pausePressed() {
-        guard let plan = personalPlan else { return }
-        
-        let pausedPlan = PersonalPlanHelper.pause(!plan.paused, plan: plan)
-        
-        do {
-            try updatePlan.execute(with: pausedPlan)
-            updateView(with: pausedPlan)
-        } catch (let error) {
-            // todo handle error
+        if let plan = latestUsedPlan {
+            try? pausePlan.execute(pause: !plan.paused)
         }
     }
     
     // MARK: - Private -
-    private func updateView(with plan: PersonalPlan?) {
+    private func updateView(with plan: RisePlan?) {
+        updateButtons(with: plan)
+        updateLoadingView(with: plan)
+        updateTableView(with: plan)
+    }
+    
+    private func updateButtons(with plan: RisePlan?) {
+        if let plan = plan {
+            view?.showRightButton(true)
+            view?.setRightButton(with: plan.paused ? "Resume" : "Pause",
+                                 and: plan.paused ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.9143119454, green: 0.3760060668, blue: 0.4745617509, alpha: 1))
+            view?.setLeftButton(with: "Change plan")
+        } else {
+            view?.showRightButton(false)
+            view?.setLeftButton(with: "Create Rise plan")
+        }
+    }
+    
+    private func updateLoadingView(with plan: RisePlan?) {
+        plan == nil
+            ? view?.showLoadingInfo(with: "You don't have sleep plan yet, go and create one!")
+            : view?.showContent()
+    }
+    
+    private func updateTableView(with plan: RisePlan?) {
         guard let view = view else { return }
         
-        if let plan = plan {            
-            let durationText = "\(PersonalPlanHelper.StringRepresentation.getSleepDuration(for: plan)) of sleep daily"
-            let wakeUpText = "Will wake up at \(PersonalPlanHelper.StringRepresentation.getWakeTime(for: plan))"
-            let toSleepText = "Will sleep at \(PersonalPlanHelper.StringRepresentation.getFallAsleepTime(for: plan))"
+        if let plan = plan {
+            let durationText = "\(plan.sleepDurationSec.HHmmString) of sleep daily"
+            let wakeUpText = "Will wake up at \(plan.finalWakeUpTime.HHmmString)"
+            let toSleepText = "Will sleep at \(plan.finalWakeUpTime.addingTimeInterval(-plan.sleepDurationSec).HHmmString)"
             //            let syncText = "Synchronized with sunrise"
             let syncText = "Coming soon"
-            let planDuration = PersonalPlanHelper.StringRepresentation.getPlanDuration(for: plan)
-            let progress = PersonalPlanHelper.getProgress(for: plan)
-            let cellModel = ProgressTableCellModel(text: (left: "0", center: "Progress", right: planDuration), progress: progress)
+            let planDuration = plan.dateInterval.durationDays
+            let completedDays = DateInterval(start: plan.dateInterval.start, end: plan.latestConfirmedDay).durationDays
+            let progress = (planDuration - (planDuration - completedDays)) / planDuration
+            let cellModel = ProgressTableCellModel(text: (left: "0", center: "Progress", right: "\(planDuration)"),
+                                                   progress: Float(progress))
             
             cellConfigurators = [
-                    [ProgressCellConfigurator(model: cellModel)],
-                    [InfoCellConfigurator(model: PlanInfoTableCellModel(imageName: "time", text: durationText)),
-                    InfoCellConfigurator(model: PlanInfoTableCellModel(imageName: "wakeup", text: wakeUpText)),
-                    InfoCellConfigurator(model: PlanInfoTableCellModel(imageName: "fallasleep", text: toSleepText)),
-                    InfoCellConfigurator(model: PlanInfoTableCellModel(imageName: "sun", text: syncText))]
-                ]
+                [ProgressCellConfigurator(model: cellModel)],
+                [InfoCellConfigurator(model: PlanInfoTableCellModel(imageName: "time", text: durationText)),
+                 InfoCellConfigurator(model: PlanInfoTableCellModel(imageName: "wakeup", text: wakeUpText)),
+                 InfoCellConfigurator(model: PlanInfoTableCellModel(imageName: "fallasleep", text: toSleepText)),
+                 InfoCellConfigurator(model: PlanInfoTableCellModel(imageName: "sun", text: syncText))]
+            ]
             
             view.reloadTable()
             view.showContent()
-            view.showRightButton(true)
-            view.setRightButton(with: plan.paused ? "Resume" : "Pause",
-                                and: plan.paused ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.9143119454, green: 0.3760060668, blue: 0.4745617509, alpha: 1))
-        } else {
-            view.showLoadingInfo(with: "You don't have sleep plan yet, go and create one!")
-            view.showRightButton(false)
-            view.setLeftButton(with: "Create Rise plan")
         }
     }
     

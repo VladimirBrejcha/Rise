@@ -15,7 +15,9 @@ final class ConfirmationAssembler: StoryAssembler {
         let controller = Storyboard.popUp.instantiateViewController(of: ConfirmationViewController.self)
         controller.output = ConfirmationPresenter(view: controller,
                                                   getPlan: DomainLayer.getPlan,
-                                                  updatePlan: DomainLayer.updatePlan)
+                                                  confirmPlan: DomainLayer.confirmPlan,
+                                                  getDailyTime: DomainLayer.getDailyTime,
+                                                  reshedulePlan: DomainLayer.reshedulePlan)
         return controller
     }
 }

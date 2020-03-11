@@ -16,7 +16,9 @@ final class TodayAssembler: StoryAssembler {
         controller.output = TodayStoryPresenter(view: controller,
                                                 getSunTime: DomainLayer.getSunTime,
                                                 getPlan: DomainLayer.getPlan,
-                                                observePlan: DomainLayer.observePlan)
+                                                observePlan: DomainLayer.observePlan,
+                                                getDailyTime: DomainLayer.getDailyTime,
+                                                confirmPlan: DomainLayer.confirmPlan)
         return controller
     }
 }

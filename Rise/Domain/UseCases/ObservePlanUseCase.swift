@@ -14,12 +14,16 @@ protocol ObservePlan {
 }
 
 final class ObservePlanUseCase: ObservePlan {
-    private let planRepository: PersonalPlanRepository
+    private let planRepository: RisePlanRepository
     
     private let observerUUID = UUID()
     
-    required init(planRepository: PersonalPlanRepository) {
+    required init(planRepository: RisePlanRepository) {
         self.planRepository = planRepository
+    }
+    
+    deinit {
+        cancel()
     }
     
     func observe(_ observer: @escaping PlanObserver) {

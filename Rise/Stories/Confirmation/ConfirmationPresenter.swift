@@ -9,12 +9,12 @@
 import Foundation
 
 final class ConfirmationPresenter: ConfirmationViewOutput {
-    private unowned let view: ConfirmationViewInput
+    private weak var view: ConfirmationViewInput?
     
     private let getPlan: GetPlan
-    private let updatePlan: UpdatePlan
-    
-    private var personalPlan: PersonalPlan? { try? getPlan.execute() }
+    private let confirmPlan: ConfirmPlan
+    private let getDailyTime: GetDailyTime
+    private let reshedulePlan: ReshedulePlan
     
     private var yesterdayPlanToSleepTimeString: String?
     private var descriptionString: String {
@@ -28,52 +28,50 @@ final class ConfirmationPresenter: ConfirmationViewOutput {
     required init(
         view: ConfirmationViewInput,
         getPlan: GetPlan,
-        updatePlan: UpdatePlan
+        confirmPlan: ConfirmPlan,
+        getDailyTime: GetDailyTime,
+        reshedulePlan: ReshedulePlan
     ) {
         self.view = view
         self.getPlan = getPlan
-        self.updatePlan = updatePlan
+        self.confirmPlan = confirmPlan
+        self.getDailyTime = getDailyTime
+        self.reshedulePlan = reshedulePlan
     }
     
     // MARK: - ConfirmationViewOutput -
     func viewDidLoad() {
-        guard let plan = personalPlan
+        guard let view = view else { return }
+        guard let plan = try? getPlan.execute()
             else {
-                dismiss = { [weak self] in self?.view.dismiss() }
+                dismiss = { view.dismiss() }
                 return
         }
+        
+        let confirmed = (try? confirmPlan.checkIfConfirmed()) ?? false
 
-        if PersonalPlanHelper.isConfirmed(for: .yesterday, plan: plan) {
-            dismiss = { [weak self] in self?.view.dismiss() }
+        if !confirmed {
+            dismiss = { view.dismiss() }
             return
         }
-
-        let today = calendar.startOfDay(for: Date())
         
-        guard let yesterday = calendar.date(byAdding: .day, value: -1, to: today)
+        guard let yesterdayDailyTime = try? getDailyTime.execute(for: Date().appending(days: -1)!.noon)
             else {
-                dismiss = { [weak self] in self?.view.dismiss() }
-                return
-        }
-        
-        guard let yesterdayPlanToSleepTime = PersonalPlanHelper.getDailyTime(for: plan, and:today)?.sleep
-            else {
-                dismiss = { [weak self] in self?.view.dismiss() }
+                dismiss = { view.dismiss() }
                 return
         }
 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
-        yesterdayPlanToSleepTimeString = dateFormatter.string(from: yesterdayPlanToSleepTime)
+        yesterdayPlanToSleepTimeString = dateFormatter.string(from: yesterdayDailyTime.sleep)
 
-        let lastConfirmedDay = calendar.startOfDay(for: plan.latestConfirmedDay)
-        let components = calendar.dateComponents([.day], from: lastConfirmedDay, to: yesterday)
+        let daysMissed = DateInterval(start: plan.latestConfirmedDay, end: Date().appending(days: -1)!.noon).durationDays
         
-        if components.day == 0 {
-            dismiss = { [weak self] in self?.view.dismiss() }
+        if daysMissed == 0 {
+            dismiss = { view.dismiss() }
             return
         }
-        if components.day == 1 {
+        if daysMissed == 1 {
             view.updateTitle(with: "You did not show up last day")
         } else {
             view.updateTitle(with: "You did not show up previous days")
@@ -85,31 +83,19 @@ final class ConfirmationPresenter: ConfirmationViewOutput {
         dismiss?()
     }
     
-    private var isResheduled: Bool = false
-    
     func reshedulePressed() {
-        guard let plan = personalPlan else {
-            view.dismiss()
-            return
-        }
-        
-        guard let resheduledPlan = PersonalPlanHelper.reshedule(plan: plan) else {
-            view.dismiss()
-            return
-        }
-        
-        isResheduled = true
+        guard let view = view else { return }
         
         do {
-            try updatePlan.execute(with: resheduledPlan)
+            try reshedulePlan.execute()
             view.updateTitle(with: "Resheduling")
             view.updateDescription(with: "Rise plan is being updated...")
             
             Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
-                self.view.showRescheduleButton(false)
-                self.view.showLoadingView(false)
-                self.view.updateConfirmButtonTitle(with: "Continue")
-                self.view.updateDescription(with: "Successfully completed")
+                view.showRescheduleButton(false)
+                view.showLoadingView(false)
+                view.updateConfirmButtonTitle(with: "Continue")
+                view.updateDescription(with: "Successfully completed")
             }
         } catch {
             // todo handle error
@@ -118,22 +104,11 @@ final class ConfirmationPresenter: ConfirmationViewOutput {
     }
     
     func confirmPressed() {
-        guard let plan = personalPlan else {
-            view.dismiss()
-            return
-        }
-        
-        if isResheduled {
-            view.dismiss()
-            return
-        }
-        
-        let confirmedPlan = PersonalPlanHelper.confirm(plan: plan)
-        
         do {
-            try updatePlan.execute(with: confirmedPlan)
-        } catch {
-            // todo handle error
+            try confirmPlan.execute()
+        } catch (let error) {
+            
         }
+        view?.dismiss()
     }
 }

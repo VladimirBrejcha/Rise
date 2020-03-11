@@ -13,9 +13,9 @@ protocol DeletePlan {
 }
 
 final class DeletePlanUseCase: DeletePlan {
-    private let planRepository: PersonalPlanRepository
+    private let planRepository: RisePlanRepository
     
-    required init(planRepository: PersonalPlanRepository) {
+    required init(planRepository: RisePlanRepository) {
         self.planRepository = planRepository
     }
     

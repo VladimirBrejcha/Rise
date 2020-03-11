@@ -11,7 +11,7 @@ import Foundation
 final class CreatePlanPresenter: CreatePlanViewOutput {
     private weak var view: CreatePlanViewInput!
     
-    private let createPlan: CreatePlan
+    private let makePlan: MakePlan
     
     private var choosenSleepDuration: Int?
     private var choosenWakeUpTime: Date?
@@ -25,10 +25,10 @@ final class CreatePlanPresenter: CreatePlanViewOutput {
     
     required init(
         view: CreatePlanViewInput,
-        createPlan: CreatePlan
+        makePlan: MakePlan
     ) {
         self.view = view
-        self.createPlan = createPlan
+        self.makePlan = makePlan
     }
     
     // MARK: - SetupPlanViewOutput -
@@ -141,16 +141,11 @@ final class CreatePlanPresenter: CreatePlanViewOutput {
                 return false
         }
         
-        guard let plan = PersonalPlanHelper.makePlan(sleepDurationMin: choosenSleepDuration,
-                                                     wakeUpTime: choosenWakeUpTime,
-                                                     planDuration: choosenPlanDuration,
-                                                     wentSleepTime: choosenLastTimeWentSleep)
-            else {
-                return false
-        }
-        
         do {
-            try createPlan.execute(with: plan)
+            try makePlan.execute(sleepDurationMin: choosenSleepDuration,
+                                 wakeUpTime: choosenWakeUpTime,
+                                 planDurationDays: choosenPlanDuration,
+                                 firstSleepTime: choosenLastTimeWentSleep)
             return true
         } catch {
             // todo handle error

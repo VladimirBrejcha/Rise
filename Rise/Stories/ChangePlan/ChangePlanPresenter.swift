@@ -20,7 +20,6 @@ final class ChangePlanPresenter: ChangePlanViewOutput {
         set { tableDataSource?.items = newValue }
     }
     
-    private var personalPlan: PersonalPlan? { try? getPlan.execute() }
     private let getPlan: GetPlan
     private let updatePlan: UpdatePlan
     
@@ -39,14 +38,14 @@ final class ChangePlanPresenter: ChangePlanViewOutput {
     }
     
     func viewDidLoad() {
-        guard let plan = personalPlan
+        guard let plan = try? getPlan.execute()
             else {
                 log(.info, with: "Plan is nil - dismissing")
                 view?.dismiss()
                 return
         }
         
-        let plannedWakeUpTime = plan.dateInterval.end
+        let plannedWakeUpTime = plan.finalWakeUpTime
         
         let minimumDurationMin: Float = 6 * 60
         let maximumDurationMin: Float = 10 * 60
@@ -54,7 +53,7 @@ final class ChangePlanPresenter: ChangePlanViewOutput {
         
         let sleepDurationString = plan.sleepDurationSec.HHmmString
         
-        let plannedPlanDuration = PersonalPlanHelper.getPlanDuration(for: plan)
+        let plannedPlanDuration = plan.dateInterval.durationDays
         let minimunPlanDuration: Float = 15
         let maximumPlanDuration: Float = 45
         
@@ -112,27 +111,15 @@ final class ChangePlanPresenter: ChangePlanViewOutput {
     
     // MARK: - ChangePlanViewOutput -
     func save() {
-        guard let plan = personalPlan else {
-            view?.dismiss()
-            return
-        }
-        
-        guard let updatedPlan = PersonalPlanHelper.update(plan: plan,
-                                                          with: pickedWakeUp,
-                                                          and: pickedSleepDuration,
-                                                          and: pickedPlanDuration)
-            else {
-                view?.dismiss() // TODO: - handle with error
-                return
-        }
-        
         do {
-            try updatePlan.execute(with: updatedPlan)
+            try updatePlan.execute(wakeUpTime: pickedWakeUp,
+                                   sleepDurationMin: pickedSleepDuration,
+                                   planDurationDays: pickedPlanDuration)
         } catch {
             // todo handle error
         }
         
-        view?.dismiss()
+        close()
     }
     
     func close() {

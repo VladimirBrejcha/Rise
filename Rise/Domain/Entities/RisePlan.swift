@@ -1,5 +1,5 @@
 //
-//  PersonalPlan.swift
+//  RisePlan.swift
 //  Rise
 //
 //  Created by Владимир Королев on 29/09/2019.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct RisePlan {
+struct RisePlan: Equatable {
     let dateInterval: DateInterval
     let firstSleepTime: Date
     let finalWakeUpTime: Date

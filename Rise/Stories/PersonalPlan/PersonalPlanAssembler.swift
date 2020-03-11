@@ -16,7 +16,7 @@ final class PersonalPlanAssembler: StoryAssembler {
         controller.output = PersonalPlanPresenter(
             view: controller,
             getPlan: DomainLayer.getPlan,
-            updatePlan: DomainLayer.updatePlan,
+            pausePlan: DomainLayer.pausePlan,
             observePlan: DomainLayer.observePlan
         )
         return controller
