@@ -11,18 +11,18 @@ import Foundation
 enum RiseError: Error {
     case unknownError
     case cantParseJSON
-    case noDataReceived
     case cantBuildURL
     case noDataFound
+    case noDataReceived
     case locationAccessDenied
     
     var code: Int {
         switch self {
         case .unknownError: return 6000
         case .cantParseJSON: return 6001
-        case .noDataReceived: return 6002
         case .cantBuildURL: return 6003
         case .noDataFound: return 6004
+        case .noDataReceived: return 6002
         case .locationAccessDenied: return 6005
         }
     }
