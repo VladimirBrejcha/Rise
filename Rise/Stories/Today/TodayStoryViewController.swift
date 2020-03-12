@@ -9,7 +9,7 @@
 import UIKit
 
 protocol TodayStoryViewInput: AnyObject {
-    func present(controller: UIViewController)
+    func present(controller: UIViewController, with presentationStyle: PresentationStyle) 
     
     func setupCollection(with dataSource: UICollectionViewDataSource)
     func reloadCollection()
@@ -24,7 +24,9 @@ protocol TodayStoryViewInput: AnyObject {
     func makeTabBar(visible: Bool)
 }
 
-protocol TodayStoryViewOutput: ViewControllerLifeCycle { }
+protocol TodayStoryViewOutput: ViewControllerLifeCycle {
+    func sleepPressed()
+}
 
 final class TodayStoryViewController: UIViewController, TodayStoryViewInput {
     var output: TodayStoryViewOutput!
@@ -67,9 +69,13 @@ final class TodayStoryViewController: UIViewController, TodayStoryViewInput {
         output.viewWillDisappear()
     }
     
+    @IBAction func sleepTouchUp(_ sender: Button) {
+        output.sleepPressed()
+    }
+    
     // MARK: - TodayStoryViewInput -
-    func present(controller: UIViewController) {
-        Presenter.present(controller: controller, with: .overContext, presentingController: self)
+    func present(controller: UIViewController, with presentationStyle: PresentationStyle) {
+        Presenter.present(controller: controller, with: presentationStyle, presentingController: self)
     }
     
     func setupCollection(with dataSource: UICollectionViewDataSource) {

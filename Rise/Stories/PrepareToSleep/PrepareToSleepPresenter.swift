@@ -14,4 +14,13 @@ final class PrepareToSleepPresenter: PrepareToSleepViewOutput {
     required init(view: PrepareToSleepViewInput) {
         self.view = view
     }
+    
+    // MARK: - PrepareToSleepViewOutput -
+    func startPressed() {
+        
+    }
+    
+    func closePressed() {
+        view?.close()
+    }
 }

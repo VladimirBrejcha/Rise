@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,13 +16,74 @@
                     <view key="view" contentMode="scaleToFill" id="APf-fs-GD3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jtf-Rn-AX8" customClass="Button" customModule="Rise" customModuleProvider="target">
+                                <rect key="frame" x="177" y="768" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="jtf-Rn-AX8" secondAttribute="height" multiplier="1:1" id="IKn-ui-gj7"/>
+                                    <constraint firstAttribute="height" constant="60" id="eo5-Q1-c42"/>
+                                </constraints>
+                                <state key="normal" image="beginToSleepIcon"/>
+                                <connections>
+                                    <action selector="startSleepTouchUp:" destination="oMD-wc-BXr" eventType="touchUpInside" id="CjD-Oa-yEJ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFW-pU-9p4">
+                                <rect key="frame" x="10" y="74.5" width="394" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m1Z-4p-KwJ">
+                                <rect key="frame" x="367" y="59" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="LHf-fg-MYI"/>
+                                    <constraint firstAttribute="height" constant="35" id="XdQ-0k-7od"/>
+                                </constraints>
+                                <color key="tintColor" name="LightPink"/>
+                                <state key="normal" image="cancel"/>
+                                <connections>
+                                    <action selector="closeTouchup:" destination="oMD-wc-BXr" eventType="touchUpInside" id="qSZ-Fa-tz2"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQO-cs-6vp">
+                                <rect key="frame" x="10" y="842" width="394" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xQO-cs-6vp" firstAttribute="top" secondItem="jtf-Rn-AX8" secondAttribute="bottom" constant="14" id="5Z8-3n-YcD"/>
+                            <constraint firstItem="eFW-pU-9p4" firstAttribute="leading" secondItem="tYg-Dq-Zrm" secondAttribute="leading" constant="10" id="B0C-ZI-W4b"/>
+                            <constraint firstAttribute="trailing" secondItem="m1Z-4p-KwJ" secondAttribute="trailing" constant="12" id="NOp-bd-OuH"/>
+                            <constraint firstItem="m1Z-4p-KwJ" firstAttribute="top" secondItem="tYg-Dq-Zrm" secondAttribute="top" constant="15" id="Qpc-df-ghi"/>
+                            <constraint firstItem="tYg-Dq-Zrm" firstAttribute="trailing" secondItem="eFW-pU-9p4" secondAttribute="trailing" constant="10" id="RiU-7u-UbB"/>
+                            <constraint firstItem="tYg-Dq-Zrm" firstAttribute="bottom" secondItem="xQO-cs-6vp" secondAttribute="bottom" constant="20" id="Sbi-BK-omK"/>
+                            <constraint firstItem="jtf-Rn-AX8" firstAttribute="centerX" secondItem="APf-fs-GD3" secondAttribute="centerX" id="WkN-RN-BrL"/>
+                            <constraint firstItem="xQO-cs-6vp" firstAttribute="leading" secondItem="APf-fs-GD3" secondAttribute="leading" constant="10" id="YnV-so-rHm"/>
+                            <constraint firstAttribute="trailing" secondItem="xQO-cs-6vp" secondAttribute="trailing" constant="10" id="iti-dJ-iJh"/>
+                            <constraint firstItem="eFW-pU-9p4" firstAttribute="centerY" secondItem="m1Z-4p-KwJ" secondAttribute="centerY" constant="-2" id="mhJ-Ra-QFR"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="tYg-Dq-Zrm"/>
                     </view>
+                    <connections>
+                        <outlet property="startSleepButton" destination="jtf-Rn-AX8" id="OWY-MO-Yvf"/>
+                        <outlet property="startSleepLabel" destination="xQO-cs-6vp" id="mCo-SQ-7QK"/>
+                        <outlet property="titleLabel" destination="eFW-pU-9p4" id="hCC-gT-YDn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="trn-Aa-1N7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-191" y="79"/>
+            <point key="canvasLocation" x="-191.30434782608697" y="78.348214285714278"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="beginToSleepIcon" width="111" height="111"/>
+        <image name="cancel" width="75" height="75"/>
+        <namedColor name="LightPink">
+            <color red="0.71764705882352942" green="0.61568627450980395" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

@@ -103,12 +103,16 @@ final class TodayStoryPresenter: TodayStoryViewOutput {
         }
         if let confirmed = try? confirmPlan.checkIfConfirmed() {
             view?.makeTabBar(visible: confirmed)
-            if !confirmed { view?.present(controller: Story.confirmation.configure()) }
+            if !confirmed { view?.present(controller: Story.confirmation.configure(), with: .overContext) }
         }
     }
     
     func viewWillDisappear() {
         viewIsVisible = false
+    }
+    
+    func sleepPressed() {
+        view?.present(controller: Story.prepareToSleep.configure(), with: .modal)
     }
     
     // MARK: - Private -
