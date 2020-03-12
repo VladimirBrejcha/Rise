@@ -9,8 +9,6 @@
 import Foundation
 
 typealias DailyShiftFormula = (Date, Double, Int) -> Int
-typealias ToSleepTimeFormula = (Date, Int, Int) -> Date
-typealias WakeUpTimeFormula = (Date, Int, Int, Double) -> Date
 typealias DateIntervalFormula = (Date, Int) -> DateInterval
 
 struct Formulas {
@@ -19,19 +17,6 @@ struct Formulas {
         return firstSleepTime > adjustedSleepTime
             ? -(Int(from: firstSleepTime.timeIntervalSince(adjustedSleepTime)) / duration)
             : Int(from: adjustedSleepTime.timeIntervalSince(firstSleepTime)) / duration
-    }
-    
-    static let defaultToSleepTimeFormula: ToSleepTimeFormula = { firstSleepTime, numberOfDays, dailyShiftMin in
-        firstSleepTime
-            .appending(days: numberOfDays)
-            .addingTimeInterval(TimeInterval(dailyShiftMin * 60 * numberOfDays))
-    }
-    
-    static let defaultWakeUpTimeFormula: WakeUpTimeFormula = { firstSleepTime, numberOfDays, dailyShiftMin, sleepDuration in
-        firstSleepTime
-            .appending(days: numberOfDays - 1)
-            .addingTimeInterval(TimeInterval(dailyShiftMin * 60 * numberOfDays))
-            .addingTimeInterval(sleepDuration)
     }
     
     static let defaultDateIntervalFormula: DateIntervalFormula = { firstSleepTime, duration in

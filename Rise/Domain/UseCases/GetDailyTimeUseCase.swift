@@ -14,25 +14,46 @@ protocol GetDailyTime {
 
 final class GetDailyTimeUseCase: GetDailyTime {
     private let planRepository: RisePlanRepository
-    private let toSleepTimeFormula: ToSleepTimeFormula
-    private let wakeUpTimeFormula: WakeUpTimeFormula
     
-    required init(planRepository: RisePlanRepository,
-                  toSleepTimeFormula: @escaping ToSleepTimeFormula,
-                  wakeUpTimeFormula: @escaping WakeUpTimeFormula
-    ) {
+    required init(planRepository: RisePlanRepository) {
         self.planRepository = planRepository
-        self.toSleepTimeFormula = toSleepTimeFormula
-        self.wakeUpTimeFormula = wakeUpTimeFormula
     }
     
     func execute(for date: Date) throws -> DailyPlanTime {
         let plan = try planRepository.get()
         let date = date.noon
-        let daysSincePlanStart = DateInterval(start: plan.dateInterval.start, end: date).durationDays
-        let timeShiftForTheDay = plan.dailyShiftMin * (daysSincePlanStart - plan.daysMissed)
-        let toSleepTime = toSleepTimeFormula(plan.firstSleepTime, daysSincePlanStart, timeShiftForTheDay)
-        let wakeUpTime = wakeUpTimeFormula(plan.firstSleepTime, daysSincePlanStart, timeShiftForTheDay, plan.sleepDurationSec)
+        let daysSincePlanStart = DateInterval(start: plan.dateInterval.start, end: date)
+            .durationDays - plan.daysMissed
+        let toSleepTime = calculateToSleepTime(since: plan.firstSleepTime,
+                                               days: daysSincePlanStart,
+                                               shiftMin: plan.dailyShiftMin)
+        let wakeUpTime = calculcateWakeUpTime(since: plan.firstSleepTime,
+                                              days: daysSincePlanStart,
+                                              shiftMin: plan.dailyShiftMin,
+                                              sleepDurationSec: plan.sleepDurationSec)
         return DailyPlanTime(day: date, wake: wakeUpTime, sleep: toSleepTime)
+    }
+    
+    // MARK: - Private -
+    private func calculateToSleepTime(
+        since startDate: Date,
+        days durationDays: Int,
+        shiftMin timeShiftMin: Int
+    ) -> Date {
+        startDate
+            .appending(days: durationDays)
+            .addingTimeInterval(timeShiftMin * durationDays)
+    }
+    
+    private func calculcateWakeUpTime(
+        since startDay: Date,
+        days durationDays: Int,
+        shiftMin timeShiftMin: Int,
+        sleepDurationSec: Double
+    ) -> Date {
+        startDay
+            .appending(days: durationDays - 1)
+            .addingTimeInterval(timeShiftMin * durationDays)
+            .addingTimeInterval(sleepDurationSec)
     }
 }

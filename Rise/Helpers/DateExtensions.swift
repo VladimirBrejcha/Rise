@@ -50,6 +50,10 @@ extension Date {
             ? self
             : calendar.date(byAdding: .day, value: days, to: self) ?? self
     }
+    
+    func addingTimeInterval(_ timeInterval: Int) -> Date {
+        addingTimeInterval(TimeInterval(from: timeInterval))
+    }
 }
 
 extension Int {
