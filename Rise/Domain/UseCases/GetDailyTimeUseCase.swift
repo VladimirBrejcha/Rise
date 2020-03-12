@@ -21,9 +21,10 @@ final class GetDailyTimeUseCase: GetDailyTime {
     
     func execute(for date: Date) throws -> DailyPlanTime {
         let plan = try planRepository.get()
-        let date = date.noon
-        let daysSincePlanStart = DateInterval(start: plan.dateInterval.start, end: date)
-            .durationDays - plan.daysMissed
+        let date = date.appending(days: -plan.daysMissed).noon
+        let daysSincePlanStart = plan.dateInterval.start > date
+            ? 0
+            : DateInterval(start: plan.dateInterval.start, end: date).durationDays
         let toSleepTime = calculateToSleepTime(since: plan.firstSleepTime,
                                                days: daysSincePlanStart,
                                                shiftMin: plan.dailyShiftMin)
@@ -31,7 +32,7 @@ final class GetDailyTimeUseCase: GetDailyTime {
                                               days: daysSincePlanStart,
                                               shiftMin: plan.dailyShiftMin,
                                               sleepDurationSec: plan.sleepDurationSec)
-        return DailyPlanTime(day: date, wake: wakeUpTime, sleep: toSleepTime)
+        return DailyPlanTime(wake: wakeUpTime, sleep: toSleepTime)
     }
     
     // MARK: - Private -

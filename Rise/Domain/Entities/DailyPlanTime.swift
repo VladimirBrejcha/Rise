@@ -1,5 +1,5 @@
 //
-//  DailyPlanTimeModel.swift
+//  DailyPlanTime.swift
 //  Rise
 //
 //  Created by Владимир Королев on 05.11.2019.
@@ -9,7 +9,5 @@
 import Foundation
 
 struct DailyPlanTime {
-    let day: Date
-    var wake: Date
-    var sleep: Date
+    let wake, sleep: Date
 }

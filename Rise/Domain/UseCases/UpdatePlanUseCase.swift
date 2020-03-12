@@ -27,47 +27,23 @@ final class UpdatePlanUseCase: UpdatePlan {
         var updatedPlanEndDay: Date?
         
         if let newWakeUpTime = wakeUpTime {
-            let oldWakeUpTime = plan.finalWakeUpTime
-            var oldWakeUpComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute],
-                                                              from: oldWakeUpTime)
-            let newWakeUpComponents = calendar.dateComponents([.hour, .minute],
-                                                              from: newWakeUpTime)
-            if oldWakeUpComponents.hour != newWakeUpComponents.hour
-                || oldWakeUpComponents.minute != newWakeUpComponents.minute
-            {
-                oldWakeUpComponents.hour = newWakeUpComponents.hour
-                oldWakeUpComponents.minute = newWakeUpComponents.minute
-                updatedWakeUpTime = calendar.date(bySettingHour: newWakeUpComponents.hour!,
-                                                  minute: newWakeUpComponents.minute!,
-                                                  second: 0,
-                                                  of: oldWakeUpTime)
-            }
+            updatedWakeUpTime = calculateWakeUpTime(new: newWakeUpTime, old: plan.finalWakeUpTime)
         }
-        
         if let newSleepDuration = sleepDurationMin {
             let newSleepDuration = newSleepDuration.toSeconds()
             if plan.sleepDurationSec != newSleepDuration {
                 updatedSleepDuration = newSleepDuration
             }
         }
-        
         if let newPlanDuration = planDurationDays {
-            let oldPlanDuration = plan.dateInterval.durationDays
-            let oldPlanDaysCompleted = DateInterval(start: plan.dateInterval.start,
-                                                    end: plan.latestConfirmedDay).durationDays
-            if oldPlanDuration != newPlanDuration
-                && oldPlanDaysCompleted < newPlanDuration
-            {
-                let durationDiff = oldPlanDuration - newPlanDuration
-                let oldPlanEndDate = plan.dateInterval.end
-                updatedPlanEndDay = oldPlanEndDate.appending(days: durationDiff)
-            }
+            updatedPlanEndDay = calculateEndDay(for: plan.dateInterval,
+                                                and: plan.latestConfirmedDay,
+                                                newDuration: newPlanDuration)
         }
         
         try planRepository.update(plan:
             RisePlan(
-                dateInterval: DateInterval(start: plan.dateInterval.start,
-                                           end: updatedPlanEndDay ?? plan.dateInterval.end),
+                dateInterval: DateInterval(start: plan.dateInterval.start, end: updatedPlanEndDay ?? plan.dateInterval.end),
                 firstSleepTime: plan.firstSleepTime,
                 finalWakeUpTime: updatedWakeUpTime ?? plan.finalWakeUpTime,
                 sleepDurationSec: updatedSleepDuration ?? plan.sleepDurationSec,
@@ -78,4 +54,20 @@ final class UpdatePlanUseCase: UpdatePlan {
             )
         )
     }
+}
+
+// MARK: - Private -
+private func calculateWakeUpTime(new newWakeUpTime: Date, old oldWakeUpTime: Date) -> Date? {
+    calendar.date(bySettingHour: calendar.component(.hour, from: newWakeUpTime),
+                  minute: calendar.component(.minute, from: newWakeUpTime),
+                  second: 0,
+                  of: oldWakeUpTime)
+}
+
+private func calculateEndDay(for dateInterval: DateInterval, and latestConfirmedDay: Date, newDuration: Int) -> Date {
+    let oldDuration = dateInterval.durationDays
+    let daysCompleted = DateInterval(start: dateInterval.start, end: latestConfirmedDay).durationDays
+    return newDuration == oldDuration || daysCompleted > newDuration
+        ? dateInterval.end
+        : dateInterval.end.appending(days: oldDuration - newDuration)
 }

@@ -54,6 +54,10 @@ extension Date {
     func addingTimeInterval(minutes timeInterval: Int) -> Date {
         addingTimeInterval(timeInterval.toSeconds())
     }
+    
+    var zeroSeconds: Date? {
+        calendar.date(from: calendar.dateComponents([.year, .month, .day, .hour, .minute], from: self))
+    }
 }
 
 extension Int {

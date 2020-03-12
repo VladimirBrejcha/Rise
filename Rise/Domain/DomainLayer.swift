@@ -13,9 +13,7 @@ final class DomainLayer {
         GetPlanUseCase(planRepository: DataLayer.defaultRisePlanRepository)
     }
     static var makePlan: MakePlan {
-        MakePlanUseCase(planRepository: DataLayer.defaultRisePlanRepository,
-                        dailyShiftFormula: Formulas.defaultDailyShiftFormula,
-                        dateIntervalFormula: Formulas.defaultDateIntervalFormula)
+        MakePlanUseCase(planRepository: DataLayer.defaultRisePlanRepository)
     }
     static var updatePlan: UpdatePlan {
         UpdatePlanUseCase(planRepository: DataLayer.defaultRisePlanRepository)

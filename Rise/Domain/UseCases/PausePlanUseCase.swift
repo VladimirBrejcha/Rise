@@ -22,28 +22,26 @@ final class PausePlanUseCase: PausePlan {
     
     func execute(pause: Bool) throws {
         var updatedDaysMissed: Int?
-        var updatedConfirmedDay: Date?
         var updatedPlanEndDate: Date?
         let plan = try planRepository.get()
         if !pause {
-            let missedDays = DateInterval(start: plan.latestConfirmedDay,
-                                           end: Date().noon).durationDays
-            if missedDays > 0 {
-                updatedConfirmedDay = Date().noon
-                updatedDaysMissed = plan.daysMissed + missedDays
-                updatedPlanEndDate = plan.dateInterval.end.appending(days: missedDays)
-            }
+            let pausedDays = DateInterval(start: plan.latestConfirmedDay, end: NoonedDay.today.date).durationDays
+            assert(pausedDays >= 0)
+            updatedDaysMissed = plan.daysMissed + pausedDays
+            updatedPlanEndDate = plan.dateInterval.end.appending(days: pausedDays)
         }
-        let updatedPlan = RisePlan(dateInterval: DateInterval(start: plan.dateInterval.start,
-                                                              end: updatedPlanEndDate ?? plan.dateInterval.end),
-                                   firstSleepTime: plan.firstSleepTime,
-                                   finalWakeUpTime: plan.finalWakeUpTime,
-                                   sleepDurationSec: plan.sleepDurationSec,
-                                   dailyShiftMin: plan.dailyShiftMin,
-                                   latestConfirmedDay: updatedConfirmedDay ?? plan.latestConfirmedDay,
-                                   daysMissed: updatedDaysMissed ?? plan.daysMissed,
-                                   paused: pause)
-        try planRepository.update(plan: updatedPlan)
+        try planRepository.update(plan:
+            RisePlan(
+                dateInterval: DateInterval(start: plan.dateInterval.start,
+                                           end: updatedPlanEndDate ?? plan.dateInterval.end),
+                firstSleepTime: plan.firstSleepTime,
+                finalWakeUpTime: plan.finalWakeUpTime,
+                sleepDurationSec: plan.sleepDurationSec,
+                dailyShiftMin: plan.dailyShiftMin,
+                latestConfirmedDay: NoonedDay.today.date,
+                daysMissed: updatedDaysMissed ?? plan.daysMissed,
+                paused: pause)
+        )
     }
     
     func checkIfPaused() throws -> Bool {

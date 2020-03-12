@@ -24,10 +24,7 @@ final class ReshedulePlanUseCase: ReshedulePlan {
         
         let missedDays = DateInterval(start: plan.latestConfirmedDay,
                                        end: Date().noon).durationDays
-        
-        if missedDays <= 0 {
-            return
-        }
+        assert(missedDays >= 0)
         
         try planRepository.update(plan:
             RisePlan(
@@ -37,7 +34,7 @@ final class ReshedulePlanUseCase: ReshedulePlan {
                 finalWakeUpTime: plan.finalWakeUpTime,
                 sleepDurationSec: plan.sleepDurationSec,
                 dailyShiftMin: plan.dailyShiftMin,
-                latestConfirmedDay: Date().noon,
+                latestConfirmedDay: NoonedDay.yesterday.date,
                 daysMissed: plan.daysMissed + missedDays,
                 paused: plan.paused)
         )
