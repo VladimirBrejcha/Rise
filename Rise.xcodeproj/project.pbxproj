@@ -52,7 +52,6 @@
 		7E84EB25239D19CF00E02050 /* Confirmation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E84EB24239D19CF00E02050 /* Confirmation.storyboard */; };
 		7E84EB27239D1A5700E02050 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E84EB26239D1A5700E02050 /* ConfirmationViewController.swift */; };
 		7E8675C724165F25004DAF63 /* GetDailyTimeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8675C624165F25004DAF63 /* GetDailyTimeUseCase.swift */; };
-		7E8675CA24165FE1004DAF63 /* Formulas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8675C924165FE1004DAF63 /* Formulas.swift */; };
 		7E8675CC2417E5FF004DAF63 /* ConfirmPlanUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8675CB2417E5FF004DAF63 /* ConfirmPlanUseCase.swift */; };
 		7E8675CE2417E9AA004DAF63 /* PausePlanUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8675CD2417E9AA004DAF63 /* PausePlanUseCase.swift */; };
 		7E88A35123F8B20C00E792CA /* VerticalPositionMoveAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E88A35023F8B20C00E792CA /* VerticalPositionMoveAnimation.swift */; };
@@ -210,7 +209,6 @@
 		7E84EB24239D19CF00E02050 /* Confirmation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Confirmation.storyboard; sourceTree = "<group>"; };
 		7E84EB26239D1A5700E02050 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
 		7E8675C624165F25004DAF63 /* GetDailyTimeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDailyTimeUseCase.swift; sourceTree = "<group>"; };
-		7E8675C924165FE1004DAF63 /* Formulas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formulas.swift; sourceTree = "<group>"; };
 		7E8675CB2417E5FF004DAF63 /* ConfirmPlanUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPlanUseCase.swift; sourceTree = "<group>"; };
 		7E8675CD2417E9AA004DAF63 /* PausePlanUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausePlanUseCase.swift; sourceTree = "<group>"; };
 		7E88A35023F8B20C00E792CA /* VerticalPositionMoveAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalPositionMoveAnimation.swift; sourceTree = "<group>"; };
@@ -512,14 +510,6 @@
 			path = Confirmation;
 			sourceTree = "<group>";
 		};
-		7E8675C824165FCB004DAF63 /* Formulas */ = {
-			isa = PBXGroup;
-			children = (
-				7E8675C924165FE1004DAF63 /* Formulas.swift */,
-			);
-			path = Formulas;
-			sourceTree = "<group>";
-		};
 		7E88A34F23F8B1F400E792CA /* Animations */ = {
 			isa = PBXGroup;
 			children = (
@@ -600,7 +590,6 @@
 				7E173371240D9F7A0028FDBE /* DomainLayer.swift */,
 				7E17337A241053910028FDBE /* Entities */,
 				7EB9F33E23C20252002A6DD3 /* UseCases */,
-				7E8675C824165FCB004DAF63 /* Formulas */,
 				7E173373241044BF0028FDBE /* Interfaces */,
 			);
 			path = Domain;
@@ -1061,7 +1050,6 @@
 				7EB90047232AB9EB006EB9A8 /* ProgressBar.swift in Sources */,
 				7EA38AE423783EFC0007919B /* DefaultLocationRepository.swift in Sources */,
 				7E25756723F8749A007AE4B5 /* Animation.swift in Sources */,
-				7E8675CA24165FE1004DAF63 /* Formulas.swift in Sources */,
 				7E708A3E23BFD917003B5702 /* ChangePlanPresenter.swift in Sources */,
 				7EB1C0372340FC6B0028237E /* RisePlan.swift in Sources */,
 				7E173375241044D70028FDBE /* SunTimeRepository.swift in Sources */,
