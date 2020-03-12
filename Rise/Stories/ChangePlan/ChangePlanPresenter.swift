@@ -53,7 +53,7 @@ final class ChangePlanPresenter: ChangePlanViewOutput {
         
         let minimumDurationMin: Float = 6 * 60
         let maximumDurationMin: Float = 10 * 60
-        let plannedDurationMin: Float = Float(Int(from: plan.sleepDurationSec))
+        let plannedDurationMin: Float = Float(plan.sleepDurationSec.toMinutes())
         
         let sleepDurationString = plan.sleepDurationSec.HHmmString
         

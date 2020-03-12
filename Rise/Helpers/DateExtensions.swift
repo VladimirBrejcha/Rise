@@ -51,14 +51,14 @@ extension Date {
             : calendar.date(byAdding: .day, value: days, to: self) ?? self
     }
     
-    func addingTimeInterval(_ timeInterval: Int) -> Date {
-        addingTimeInterval(TimeInterval(from: timeInterval))
+    func addingTimeInterval(minutes timeInterval: Int) -> Date {
+        addingTimeInterval(timeInterval.toSeconds())
     }
 }
 
 extension Int {
-    init(from seconds: Double) {
-        self = Int(seconds / 60)
+    func toSeconds() -> Double {
+        Double(self * 60)
     }
     var HHmmString: String {
         let hours = self / 60
@@ -71,11 +71,11 @@ extension Int {
 }
 
 extension Double {
-    init(from minutes: Int) {
-        self = Double(minutes * 60)
+    func toMinutes() -> Int {
+        Int(self / 60)
     }
     
     var HHmmString: String {
-        Int(from: self).HHmmString
+        self.toMinutes().HHmmString
     }
 }

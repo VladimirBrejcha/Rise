@@ -42,7 +42,7 @@ final class GetDailyTimeUseCase: GetDailyTime {
     ) -> Date {
         startDate
             .appending(days: durationDays)
-            .addingTimeInterval(timeShiftMin * durationDays)
+            .addingTimeInterval(minutes: timeShiftMin * durationDays)
     }
     
     private func calculcateWakeUpTime(
@@ -53,7 +53,7 @@ final class GetDailyTimeUseCase: GetDailyTime {
     ) -> Date {
         startDay
             .appending(days: durationDays - 1)
-            .addingTimeInterval(timeShiftMin * durationDays)
+            .addingTimeInterval(minutes: timeShiftMin * durationDays)
             .addingTimeInterval(sleepDurationSec)
     }
 }

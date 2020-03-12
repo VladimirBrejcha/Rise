@@ -15,8 +15,8 @@ struct Formulas {
     static let defaultDailyShiftFormula: DailyShiftFormula = { firstSleepTime, sleepDurationSec, duration in
         let adjustedSleepTime = firstSleepTime.addingTimeInterval(sleepDurationSec)
         return firstSleepTime > adjustedSleepTime
-            ? -(Int(from: firstSleepTime.timeIntervalSince(adjustedSleepTime)) / duration)
-            : Int(from: adjustedSleepTime.timeIntervalSince(firstSleepTime)) / duration
+            ? -(firstSleepTime.timeIntervalSince(adjustedSleepTime).toMinutes() / duration)
+            : adjustedSleepTime.timeIntervalSince(firstSleepTime).toMinutes() / duration
     }
     
     static let defaultDateIntervalFormula: DateIntervalFormula = { firstSleepTime, duration in

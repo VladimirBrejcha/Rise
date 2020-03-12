@@ -33,7 +33,7 @@ final class MakePlanUseCase: MakePlan {
                  planDurationDays: Int,
                  firstSleepTime: Date) throws {
         let dateInterval = dateIntervalFormula(firstSleepTime, planDurationDays)
-        let sleepDurationSec: Double = Double(from: sleepDurationMin)
+        let sleepDurationSec = sleepDurationMin.toSeconds()
         guard let wakeUpTime = calendar.date(bySettingHour: calendar.component(.hour, from: wakeUpTime),
                                              minute: calendar.component(.minute, from: wakeUpTime),
                                              second: calendar.component(.second, from: wakeUpTime),

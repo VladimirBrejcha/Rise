@@ -45,7 +45,7 @@ final class UpdatePlanUseCase: UpdatePlan {
         }
         
         if let newSleepDuration = sleepDurationMin {
-            let newSleepDuration = Double(from: newSleepDuration)
+            let newSleepDuration = newSleepDuration.toSeconds()
             if plan.sleepDurationSec != newSleepDuration {
                 updatedSleepDuration = newSleepDuration
             }
