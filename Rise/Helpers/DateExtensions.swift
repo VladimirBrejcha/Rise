@@ -69,8 +69,10 @@ extension Int {
         let minutes = self % 60
         
         return minutes == 0
-        ? "\(hours) hours"
-        : "\(hours) h \(minutes) m"
+            ? "\(hours) hours"
+            : hours == 0
+                ? "\(minutes) minutes"
+                : "\(hours) h \(minutes) m"
     }
 }
 
