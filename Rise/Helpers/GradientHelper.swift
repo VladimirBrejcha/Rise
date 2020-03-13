@@ -13,7 +13,7 @@ final class GradientHelper {
     
     // MARK: - Static -
     static func makeDefaultStaticGradient(for frame: CGRect) -> UIView {
-        makeStaticGradient(for: frame, with: [#colorLiteral(red: 0.1254607141, green: 0.1326543987, blue: 0.2668849528, alpha: 1), #colorLiteral(red: 0.34746629, green: 0.1312789619, blue: 0.2091784477, alpha: 1)], direction: .up, alpha: 1)
+        makeStaticGradient(for: frame, with: [Color.darkPurple, Color.darkPink], direction: .up, alpha: 1)
     }
     
     static func makeStaticGradient(
@@ -32,10 +32,10 @@ final class GradientHelper {
     // MARK: - Animated -
     static func makeDefaultAnimatedGradient(for frame: CGRect) -> UIView {
         makeAnimatedGradient(for: frame,
-                             with: [[#colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1), #colorLiteral(red: 0.4588235294, green: 0.168627451, blue: 0.2705882353, alpha: 1)],
-                                    [#colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1), #colorLiteral(red: 0.1490196078, green: 0.1568627451, blue: 0.3137254902, alpha: 1)],
-                                    [#colorLiteral(red: 0.1490196078, green: 0.1568627451, blue: 0.3137254902, alpha: 1), #colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1)],
-                                    [#colorLiteral(red: 0.0862745098, green: 0.07450980392, blue: 0.1568627451, alpha: 1), #colorLiteral(red: 0.4588235294, green: 0.168627451, blue: 0.2705882353, alpha: 1)]],
+                             with: [[Color.darkPurple, Color.darkPink],
+                                    [Color.darkPurple, Color.purple],
+                                    [Color.purple, Color.darkPurple],
+                                    [Color.darkPurple, Color.darkPink]],
                              and:[.up, .upLeft, .upRight, .up])
     }
     

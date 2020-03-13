@@ -29,7 +29,7 @@ final class SleepViewController: UIViewController {
     
     // MARK: UI setup methods
     private func setupTimePicker() {
-        timePicker.setValue(UIColor.white, forKeyPath: textColor)
+        timePicker.setValue(Color.normalTitle, forKeyPath: textColor)
     }
     
     private func createBackground() {

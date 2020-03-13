@@ -11,12 +11,12 @@ import UIKit
 @IBDesignable
 class DesignableContainerView: UIView {
     @IBInspectable var cornerRadius: CGFloat {
-        get { return layer.cornerRadius }
+        get { layer.cornerRadius }
         set { layer.cornerRadius = newValue }
     }
     
     @IBInspectable var background: UIColor? {
-        get { return backgroundColor }
+        get { backgroundColor }
         set { backgroundColor = newValue }
     }
     
@@ -31,7 +31,7 @@ class DesignableContainerView: UIView {
     }
     
     private func sharedInit() {
-        background = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.03)
+        background = Color.defaultContainerBackground
         cornerRadius = 12
         clipsToBounds = true
     }

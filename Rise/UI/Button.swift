@@ -22,10 +22,10 @@ class Button: UIButton {
     }
     
     private func sharedInit() {
-        backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.07)
+        backgroundColor = Color.defaultButtonBackground
         layer.cornerRadius = 12
-        setTitleColor(UIColor.white, for: .normal)
-        setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.5), for: .disabled)
+        setTitleColor(Color.normalTitle, for: .normal)
+        setTitleColor(Color.disabledTitle, for: .disabled)
         addTarget(self, action: #selector(backToNormalSize(_:)), for: [.touchDragOutside,
                                                                        .touchCancel,
                                                                        .touchUpInside,

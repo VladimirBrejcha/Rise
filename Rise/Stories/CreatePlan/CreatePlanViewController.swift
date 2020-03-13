@@ -13,8 +13,7 @@ protocol CreatePlanViewInput: AnyObject {
     
     func updateBackButtonText(_ text: String)
     func updateNextButtonText(_ text: String)
-    func updateBackButtonVisibility(visible: Bool)
-    func updateNextButtonVisibility(visible: Bool)
+    func showBackButton(_ show: Bool)
     func enableNextButton(_ enabled: Bool)
     
     func endStory()
@@ -88,19 +87,16 @@ final class CreatePlanViewController:
         nextButton.setTitle(text, for: .normal)
     }
     
-    func updateBackButtonVisibility(visible: Bool) {
-        changeViewVisibility(view: backButton, visible: visible)
-    }
-    
-    func updateNextButtonVisibility(visible: Bool) {
-        changeViewVisibility(view: nextButton, visible: visible)
+    func showBackButton(_ show: Bool) {
+        let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut) {
+            self.backButton.isHidden = !show
+        }
+        animator.startAnimation()
     }
     
     func show(views: [UIViewController], forwardDirection: Bool) {
         pageController.setViewControllers(views,
-                                          direction: forwardDirection
-                                            ? .forward
-                                            : .reverse,
+                                          direction: forwardDirection ? .forward : .reverse,
                                           animated: true, completion: nil)
     }
     
@@ -111,12 +107,5 @@ final class CreatePlanViewController:
     // MARK: - UIAdaptivePresentationControllerDelegate -
     func presentationControllerShouldDismiss(_ presentationController: UIPresentationController) -> Bool {
         return false
-    }
-    
-    // MARK: - Private -
-    private func changeViewVisibility(view: UIView, visible: Bool) {
-        UIView.animate(withDuration: 0.3, delay: 0, options: .allowUserInteraction, animations: {
-            view.isHidden = !visible
-        })
     }
 }

@@ -123,7 +123,7 @@ final class PersonalPlanPresenter: PersonalPlanViewOutput {
         if let plan = plan {
             view?.showRightButton(true)
             view?.setRightButton(with: plan.paused ? "Resume" : "Pause",
-                                 and: plan.paused ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0.9137254902, green: 0.3764705882, blue: 0.4745098039, alpha: 1))
+                                 and: plan.paused ? Color.normalTitle : Color.redTitle)
             view?.setLeftButton(with: "Change")
         } else {
             view?.showRightButton(false)

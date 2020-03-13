@@ -14,7 +14,6 @@ final class AlertPresenter {
                    customAction: UIAlertAction? = nil,
                    cancelHandler: (() -> Void)? = nil) {
         guard let controller = UIApplication.shared.keyWindow?.rootViewController?.toppestViewController else { return }
-        
         let alert = UIAlertController(title: customTitle ?? "Error", message: message, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { _ in cancelHandler?() }
         alert.addAction(cancelAction)

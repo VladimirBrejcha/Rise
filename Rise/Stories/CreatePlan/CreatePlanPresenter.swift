@@ -59,8 +59,8 @@ final class CreatePlanPresenter: CreatePlanViewOutput {
         
         if stories.indices.contains(currentPage + 1) {
             currentPage += 1
-            updateButtons(story: currentStory)
             view.show(views: [currentStory.configure()], forwardDirection: true)
+            updateButtons(story: currentStory)
         }
     }
     
@@ -94,38 +94,32 @@ final class CreatePlanPresenter: CreatePlanViewOutput {
         case .welcomeCreatePlan:
             view.updateBackButtonText("")
             view.updateNextButtonText("Start")
-            view.updateBackButtonVisibility(visible: false)
-            view.updateNextButtonVisibility(visible: true)
+            view.showBackButton(false)
             view.enableNextButton(true)
         case .sleepDurationCreatePlan:
             view.updateBackButtonText("")
             view.updateNextButtonText("Next")
-            view.updateBackButtonVisibility(visible: false)
-            view.updateNextButtonVisibility(visible: true)
+            view.showBackButton(false)
             view.enableNextButton(choosenSleepDuration != nil)
         case .wakeUpTimeCreatePlan:
             view.updateBackButtonText("Previous")
             view.updateNextButtonText("Next")
-            view.updateBackButtonVisibility(visible: true)
-            view.updateNextButtonVisibility(visible: true)
+            view.showBackButton(true)
             view.enableNextButton(choosenWakeUpTime != nil)
         case .planDurationCreatePlan:
             view.updateBackButtonText("Previous")
             view.updateNextButtonText("Next")
-            view.updateBackButtonVisibility(visible: true)
-            view.updateNextButtonVisibility(visible: true)
+            view.showBackButton(true)
             view.enableNextButton(choosenPlanDuration != nil)
         case .wentSleepCreatePlan:
             view.updateBackButtonText("Previous")
             view.updateNextButtonText("Create")
-            view.updateBackButtonVisibility(visible: true)
-            view.updateNextButtonVisibility(visible: true)
+            view.showBackButton(true)
             view.enableNextButton(choosenLastTimeWentSleep != nil)
         case .planCreatedSetupPlan:
             view.updateBackButtonText("")
             view.updateNextButtonText("Great!")
-            view.updateBackButtonVisibility(visible: false)
-            view.updateNextButtonVisibility(visible: true)
+            view.showBackButton(false)
             view.enableNextButton(true)
         default:
             break

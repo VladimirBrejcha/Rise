@@ -14,7 +14,7 @@ final class PulsingCircleAnimation: Animation {
         String(describing: Self.self)
     }
     private let animationSize = CGSize(width: 40.0, height: 40.0)
-    private let animationTintColor: UIColor = .white
+    private let animationTintColor: UIColor = Color.normalTitle
     private let from: CGFloat
     private let to: CGFloat
     private let duration: CFTimeInterval

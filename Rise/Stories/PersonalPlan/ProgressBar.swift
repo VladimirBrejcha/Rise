@@ -32,7 +32,7 @@ final class ProgressBar: UIView {
         progressView.leftAnchor.constraint(equalTo: leftAnchor, constant: -frame.width + 25).isActive = true
         progressView.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
         progressView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
-        progressView.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+        progressView.backgroundColor = Color.violet
     }
     
     func showProgress(progress: CGFloat) {
