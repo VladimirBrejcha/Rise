@@ -23,6 +23,13 @@ final class PrepareToSleepViewController: UIViewController, PrepareToSleepViewIn
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var startSleepButton: Button!
     @IBOutlet private weak var startSleepLabel: UILabel!
+    @IBOutlet private weak var wakeUpContainerheightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var wakeUpTitleLabel: UILabel!
+    @IBOutlet private weak var wakeUpDatePicker: UIDatePicker!
+    @IBOutlet private weak var timeForSleepLabel: UILabel!
+    @IBOutlet private weak var wentSleepLabel: UILabel!
+    
+    private var wakeUpExpanded: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +38,10 @@ final class PrepareToSleepViewController: UIViewController, PrepareToSleepViewIn
         view.addSubview(backgroundView)
         view.sendSubviewToBack(backgroundView)
         
+        wentSleepLabel.text = "You are just in time with the plan!"
+        wakeUpTitleLabel.text = "Alarm at 06:00"
         titleLabel.text = "Prepare to sleep"
+        timeForSleepLabel.text = "8 hours 30 minutes until wake up"
         startSleepLabel.text = "begin to sleep"
         startSleepButton.layer.cornerRadius = 0
         startSleepButton.backgroundColor = .clear
@@ -55,6 +65,15 @@ final class PrepareToSleepViewController: UIViewController, PrepareToSleepViewIn
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         output.viewWillDisappear()
+    }
+    
+    @IBAction func wakeUpContainerTouchUp(_ sender: UITapGestureRecognizer) {
+        let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut) {
+            self.wakeUpContainerheightConstraint.constant = self.wakeUpExpanded ? 50 : 200
+            self.view.layoutIfNeeded()
+        }
+        animator.startAnimation()
+        wakeUpExpanded.toggle()
     }
     
     @IBAction func startSleepTouchUp(_ sender: Button) {
