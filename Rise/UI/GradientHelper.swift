@@ -10,7 +10,6 @@ import UIKit
 import AnimatedGradientView
 
 final class GradientHelper {
-    
     // MARK: - Static -
     static func makeDefaultStaticGradient(for frame: CGRect) -> UIView {
         makeStaticGradient(for: frame, with: [Color.darkPurple, Color.darkPink], direction: .up, alpha: 1)

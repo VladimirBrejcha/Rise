@@ -633,6 +633,15 @@
 			path = ChangePlanButtonTableCell;
 			sourceTree = "<group>";
 		};
+		7EE05109241BFE39005B23B3 /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				92D12FDC22A44B3B0093B0A3 /* CustomTabBarController.swift */,
+				7EA0924122C8CF820019F2E9 /* CustomTransition.swift */,
+			);
+			path = TabBarController;
+			sourceTree = "<group>";
+		};
 		7EE6404723786617005BE355 /* SunTime */ = {
 			isa = PBXGroup;
 			children = (
@@ -744,9 +753,8 @@
 		7EF3EE192340F8A5003BE978 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				7EB196D7239DBA9900E6C40B /* ViewControllerLifeCycle.swift */,
 				7E98FE66231C3D5C0065FB09 /* UserDefaultsManager.swift */,
-				92BC919322AB24D800BB1D19 /* GradientHelper.swift */,
-				7E98FE64231C30C10065FB09 /* AlertPresenter.swift */,
 				7EB26950234F9972008AEB3D /* NibLoadable.swift */,
 				7E052A412352377E005D7FAD /* RiseError.swift */,
 				7E97656D2378813700E3AEF2 /* Log.swift */,
@@ -835,17 +843,17 @@
 		92D7D68422980138009321AE /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				92BC919322AB24D800BB1D19 /* GradientHelper.swift */,
+				7E98FE64231C30C10065FB09 /* AlertPresenter.swift */,
 				7E2CA80E24031FF8000CEFA5 /* TableView */,
 				7E2CA80D24031FDB000CEFA5 /* ConfigurableCell */,
 				7E2CA80C24031E85000CEFA5 /* CollectionView */,
 				7E88A34F23F8B1F400E792CA /* Animations */,
 				7EB9003D23256AC9006EB9A8 /* DesignableContainerView.swift */,
-				92D12FDC22A44B3B0093B0A3 /* CustomTabBarController.swift */,
-				7EA0924122C8CF820019F2E9 /* CustomTransition.swift */,
+				7EE05109241BFE39005B23B3 /* TabBarController */,
 				7EB26952234F99AE008AEB3D /* Button.swift */,
 				7E199CD6240BD44500B702AD /* LoadingView */,
 				7E199CD5240BD43C00B702AD /* SliderWithValues */,
-				7EB196D7239DBA9900E6C40B /* ViewControllerLifeCycle.swift */,
 				7E5F292923F9638C0050DFD3 /* FloatingLabel.swift */,
 				7E0EACC9241BF05800B8A0A2 /* Color.swift */,
 			);
