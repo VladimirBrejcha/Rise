@@ -135,6 +135,8 @@
 		7EF4C19D240436CD0098135A /* ChangePlanSliderTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF4C19B240436CD0098135A /* ChangePlanSliderTableCell.swift */; };
 		7EF4C19E240436CD0098135A /* ChangePlanSliderTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF4C19C240436CD0098135A /* ChangePlanSliderTableCell.xib */; };
 		7EF4C1A0240436D70098135A /* ChangePlanSliderTableCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF4C19F240436D70098135A /* ChangePlanSliderTableCellModel.swift */; };
+		7EFF58B7241C1E3400D2CCEC /* SleepPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFF58B6241C1E3400D2CCEC /* SleepPresenter.swift */; };
+		7EFF58B9241C1E3B00D2CCEC /* SleepAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFF58B8241C1E3B00D2CCEC /* SleepAssembler.swift */; };
 		92BC919422AB24D800BB1D19 /* GradientHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BC919322AB24D800BB1D19 /* GradientHelper.swift */; };
 		92D12FDD22A44B3B0093B0A3 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D12FDC22A44B3B0093B0A3 /* CustomTabBarController.swift */; };
 		92D7D6532296F297009321AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6522296F297009321AE /* AppDelegate.swift */; };
@@ -297,6 +299,8 @@
 		7EF4C19B240436CD0098135A /* ChangePlanSliderTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanSliderTableCell.swift; sourceTree = "<group>"; };
 		7EF4C19C240436CD0098135A /* ChangePlanSliderTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePlanSliderTableCell.xib; sourceTree = "<group>"; };
 		7EF4C19F240436D70098135A /* ChangePlanSliderTableCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanSliderTableCellModel.swift; sourceTree = "<group>"; };
+		7EFF58B6241C1E3400D2CCEC /* SleepPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepPresenter.swift; sourceTree = "<group>"; };
+		7EFF58B8241C1E3B00D2CCEC /* SleepAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepAssembler.swift; sourceTree = "<group>"; };
 		92BC919322AB24D800BB1D19 /* GradientHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientHelper.swift; sourceTree = "<group>"; };
 		92D12FDC22A44B3B0093B0A3 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		92D7D64F2296F297009321AE /* Rise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rise.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -429,6 +433,7 @@
 				7EF3EE172340F794003BE978 /* CreatePlan */,
 				7E708A3C23BFD8F2003B5702 /* ChangePlan */,
 				7E4901892340F3D90034521E /* PrepareToSleep */,
+				7EFF58B5241C1E1A00D2CCEC /* Sleep */,
 				7E49018A2340F4190034521E /* Settings */,
 			);
 			path = Stories;
@@ -448,7 +453,6 @@
 		7E4901892340F3D90034521E /* PrepareToSleep */ = {
 			isa = PBXGroup;
 			children = (
-				92D7D6542296F297009321AE /* SleepViewController.swift */,
 				7EB29E08241987C800116433 /* PrepareToSleepAssembler.swift */,
 				7EB29E0A241987D400116433 /* PrepareToSleepPresenter.swift */,
 				7EB29E0C241987DD00116433 /* PrepareToSleepViewController.swift */,
@@ -794,6 +798,16 @@
 			path = ChangePlanTableView;
 			sourceTree = "<group>";
 		};
+		7EFF58B5241C1E1A00D2CCEC /* Sleep */ = {
+			isa = PBXGroup;
+			children = (
+				7EFF58B8241C1E3B00D2CCEC /* SleepAssembler.swift */,
+				92D7D6542296F297009321AE /* SleepViewController.swift */,
+				7EFF58B6241C1E3400D2CCEC /* SleepPresenter.swift */,
+			);
+			path = Sleep;
+			sourceTree = "<group>";
+		};
 		92D7D6462296F297009321AE = {
 			isa = PBXGroup;
 			children = (
@@ -1027,6 +1041,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E8AB6CE23A18D27009CE41A /* WakeUpTimeCreatePlanViewController.swift in Sources */,
+				7EFF58B7241C1E3400D2CCEC /* SleepPresenter.swift in Sources */,
 				7EB9F35223C36AAE002A6DD3 /* SettingsAssembler.swift in Sources */,
 				7EF4C19D240436CD0098135A /* ChangePlanSliderTableCell.swift in Sources */,
 				7E88A35123F8B20C00E792CA /* VerticalPositionMoveAnimation.swift in Sources */,
@@ -1103,6 +1118,7 @@
 				7E91D95B2371E4080087436F /* RiseDailySunTime+CoreDataClass.swift in Sources */,
 				7E36D99D2401AF6E00C16AEE /* DaysCollectionCellModel.swift in Sources */,
 				7E4901862340DD810034521E /* RisePlanData.xcdatamodeld in Sources */,
+				7EFF58B9241C1E3B00D2CCEC /* SleepAssembler.swift in Sources */,
 				7EB9F34E23C229F2002A6DD3 /* TodayAssembler.swift in Sources */,
 				7E91D9602371E4080087436F /* RisePlanObject+CoreDataProperties.swift in Sources */,
 				7EF0B2E024032CD20079F72C /* ProgressTableCellModel.swift in Sources */,
