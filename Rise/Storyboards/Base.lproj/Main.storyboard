@@ -216,57 +216,6 @@
             </objects>
             <point key="canvasLocation" x="993" y="-818"/>
         </scene>
-        <!--Sleep View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController storyboardIdentifier="sleep" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="SleepViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="mZz-2e-izX">
-                                <rect key="frame" x="0.0" y="340" width="414" height="216"/>
-                                <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
-                                    <!--1970-01-01 11:00:00 +0000-->
-                                </date>
-                                <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
-                                    <!--2037-12-31 11:00:00 +0000-->
-                                </date>
-                                <locale key="locale" localeIdentifier="ru"/>
-                            </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MrQ-3v-obf">
-                                <rect key="frame" x="100" y="565" width="214" height="48"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
-                                <state key="normal" title="Sleep">
-                                    <color key="titleColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="sleepButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Ly-ov-mnB"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="mZz-2e-izX" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="E2F-tt-Int"/>
-                            <constraint firstItem="mZz-2e-izX" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="HT2-PZ-OTI"/>
-                            <constraint firstItem="MrQ-3v-obf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="HUD-XG-HXz"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MrQ-3v-obf" secondAttribute="trailing" constant="100" id="JPc-T8-Q6y"/>
-                            <constraint firstItem="mZz-2e-izX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TUa-Vh-hZC"/>
-                            <constraint firstItem="MrQ-3v-obf" firstAttribute="top" secondItem="mZz-2e-izX" secondAttribute="bottom" constant="9" id="XUd-yf-3AQ"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" tag="1" title="" id="edc-CA-hqr"/>
-                    <navigationItem key="navigationItem" id="8Pz-oN-BJP"/>
-                    <connections>
-                        <outlet property="sleepButton" destination="MrQ-3v-obf" id="x1v-BX-TcC"/>
-                        <outlet property="timePicker" destination="mZz-2e-izX" id="K2e-nv-7eF"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="993" y="534"/>
-        </scene>
         <!--Item-->
         <scene sceneID="h2v-11-WTS">
             <objects>
