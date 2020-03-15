@@ -31,6 +31,7 @@ enum Story {
     
     // Sleep
     case prepareToSleep
+    case sleep
     
     func configure() -> UIViewController {
         switch self {
@@ -70,6 +71,9 @@ enum Story {
             return ConfirmationAssembler().assemble()
         case .prepareToSleep:
             return PrepareToSleepAssembler().assemble()
+        case .sleep:
+            return SleepAssembler().assemble()
         }
+        
     }
 }

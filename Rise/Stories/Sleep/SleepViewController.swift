@@ -9,30 +9,22 @@
 import UIKit
 import UserNotifications
 
-final class SleepViewController: UIViewController {
+protocol SleepViewInput: AnyObject {
     
-    // MARK: Properties
-    private let textColor = "textColor"
+}
+
+protocol SleepViewOutput: ViewControllerLifeCycle { }
+
+final class SleepViewController: UIViewController, SleepViewInput {
+    var output: SleepViewOutput!
     
-    // MARK: IBOutlets
     @IBOutlet weak var sleepButton: UIButton!
-    @IBOutlet weak var timePicker: UIDatePicker!
     
-    // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupTimePicker()
-        registerLocal()
-        createBackground()
-    }
-    
-    // MARK: UI setup methods
-    private func setupTimePicker() {
-        timePicker.setValue(Color.normalTitle, forKeyPath: textColor)
-    }
-    
-    private func createBackground() {
+//        registerLocal()
+        
         let backgroundView = GradientHelper.makeDefaultStaticGradient(for: view.bounds)
         view.addSubview(backgroundView)
         view.sendSubviewToBack(backgroundView)
@@ -52,31 +44,32 @@ final class SleepViewController: UIViewController {
     }
     
     private func scheduleLocal() {
-        let center = UNUserNotificationCenter.current()
-        center.removeAllPendingNotificationRequests()
-        
-        let content = UNMutableNotificationContent()
-        
-        content.title = "Wake up"
-        content.body = "its time to rise and shine"
-        content.categoryIdentifier = "alarm"
-        content.userInfo = ["customData": "fizzbuzz"]
-        content.sound = .default
-        
-        let date = timePicker.date
-        
-        let components = calendar.dateComponents([.hour, .minute], from: date)
-        
-        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
-        
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-        center.add(request)
+//        let center = UNUserNotificationCenter.current()
+//        center.removeAllPendingNotificationRequests()
+//        
+//        let content = UNMutableNotificationContent()
+//        
+//        content.title = "Wake up"
+//        content.body = "its time to rise and shine"
+//        content.categoryIdentifier = "alarm"
+//        content.userInfo = ["customData": "fizzbuzz"]
+//        content.sound = .default
+//        
+////        let date = timePicker.date
+//        
+//        let components = calendar.dateComponents([.hour, .minute], from: date)
+//        
+//        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+//        
+//        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+//        center.add(request)
         
     }
     
     // MARK: IBActions
     @IBAction func sleepButtonPressed(_ sender: UIButton) {
-        scheduleLocal()
+//        scheduleLocal()
+        self.dismiss(animated: true)
     }
     
 }
