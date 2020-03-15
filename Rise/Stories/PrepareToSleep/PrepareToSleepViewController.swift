@@ -9,7 +9,11 @@
 import UIKit
 
 protocol PrepareToSleepViewInput: AnyObject {
+    func updatePicker(with time: Date)
+    func updateWakeUp(with text: String)
+    func updateToSleep(with text: String)
     func close()
+    func presentSleep()
 }
 
 protocol PrepareToSleepViewOutput: ViewControllerLifeCycle {
@@ -27,7 +31,7 @@ final class PrepareToSleepViewController: UIViewController, PrepareToSleepViewIn
     @IBOutlet private weak var wakeUpTitleLabel: UILabel!
     @IBOutlet private weak var wakeUpDatePicker: UIDatePicker!
     @IBOutlet private weak var timeForSleepLabel: UILabel!
-    @IBOutlet private weak var wentSleepLabel: UILabel!
+    @IBOutlet private weak var toSleepLabel: UILabel!
     
     private var wakeUpExpanded: Bool = false
     
@@ -38,8 +42,7 @@ final class PrepareToSleepViewController: UIViewController, PrepareToSleepViewIn
         view.addSubview(backgroundView)
         view.sendSubviewToBack(backgroundView)
         
-        wentSleepLabel.text = "You are just in time with the plan!"
-        wakeUpTitleLabel.text = "Alarm at 06:00"
+        toSleepLabel.text = "You are just in time with the plan!"
         titleLabel.text = "Prepare to sleep"
         timeForSleepLabel.text = "8 hours 30 minutes until wake up"
         startSleepLabel.text = "begin to sleep"
@@ -96,7 +99,23 @@ final class PrepareToSleepViewController: UIViewController, PrepareToSleepViewIn
     }
     
     // MARK: - PrepareToSleepViewInput -
+    func updatePicker(with time: Date) {
+        wakeUpDatePicker.setDate(time, animated: true)
+    }
+    
+    func updateWakeUp(with text: String) {
+        wakeUpTitleLabel.text = text
+    }
+    
+    func updateToSleep(with text: String) {
+        toSleepLabel.text = text
+    }
+    
     func close() {
         self.dismiss(animated: true)
+    }
+    
+    func presentSleep() {
+        Presenter.present(controller: Story.sleep.configure(), with: .overContext, presentingController: self.presentingViewController!)
     }
 }

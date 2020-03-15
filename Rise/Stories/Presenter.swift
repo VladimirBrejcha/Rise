@@ -25,12 +25,14 @@ final class Presenter {
         switch style {
         case .fullScreen:
             presentingController.modalPresentationStyle = .fullScreen
+            controller.modalPresentationStyle = .fullScreen
             presentingController.present(controller, animated: animated, completion: completion)
         case .modal:
             presentingController.modalPresentationStyle = .pageSheet
             presentingController.present(controller, animated: animated, completion: completion)
         case .overContext:
             presentingController.modalPresentationStyle = .overCurrentContext
+                        controller.modalPresentationStyle = .overCurrentContext
             presentingController.present(controller, animated: animated, completion: completion)
         case .none:
             presentingController.modalPresentationStyle = .none
