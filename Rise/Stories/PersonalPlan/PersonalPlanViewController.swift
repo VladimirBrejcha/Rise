@@ -73,11 +73,11 @@ final class PersonalPlanViewController:
         output.viewWillDisappear()
     }
     
-    @IBAction func planTouchUp(_ sender: Button) {
+    @IBAction private func planTouchUp(_ sender: Button) {
         output.planPressed()
     }
     
-    @IBAction func pauseTouchUp(_ sender: Button) {
+    @IBAction private func pauseTouchUp(_ sender: Button) {
         output.pausePressed()
     }
     

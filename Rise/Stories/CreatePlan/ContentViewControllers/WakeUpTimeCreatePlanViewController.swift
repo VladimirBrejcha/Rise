@@ -16,7 +16,7 @@ final class WakeUpTimeCreatePlanViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    @IBAction func wakeUpTimeChanged(_ sender: UIDatePicker) {
+    @IBAction private func wakeUpTimeChanged(_ sender: UIDatePicker) {
         wakeUpTimeOutput(sender.date)
     }
 }

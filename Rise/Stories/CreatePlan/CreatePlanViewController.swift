@@ -62,15 +62,15 @@ final class CreatePlanViewController:
         output.viewWillAppear()
     }
     
-    @IBAction func closeTouchUp(_ sender: UIButton) {
+    @IBAction private func closeTouchUp(_ sender: UIButton) {
         output.closeTouchUp()
     }
     
-    @IBAction func backTouchUp(_ sender: Button) {
+    @IBAction private func backTouchUp(_ sender: Button) {
         output.backTouchUp()
     }
     
-    @IBAction func nextTouchUp(_ sender: Button) {
+    @IBAction private func nextTouchUp(_ sender: Button) {
         output.nextTouchUp()
     }
     

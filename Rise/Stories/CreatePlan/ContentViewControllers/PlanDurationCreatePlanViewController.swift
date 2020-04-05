@@ -19,7 +19,7 @@ final class PlanDurationCreatePlanViewController: UIViewController {
 
     }
 
-    @IBAction func planDurationChanged(_ sender: UISlider) {
+    @IBAction private func planDurationChanged(_ sender: UISlider) {
         let value = Int(sender.value)
         
         switch value {

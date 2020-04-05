@@ -26,7 +26,7 @@ final class SleepDurationCreatePlanViewController: UIViewController {
         sleepDurationSlider.value = Float(recomendedDurationH * 60)
     }
     
-    @IBAction func sleepDurationChanged(_ sender: UISlider) {
+    @IBAction private func sleepDurationChanged(_ sender: UISlider) {
         let chosenDuration = Int(sender.value)
         sleepDurationLabel.text = chosenDuration.HHmmString
         sleepDurationOutput(chosenDuration)

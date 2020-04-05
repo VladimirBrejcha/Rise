@@ -65,11 +65,11 @@ final class ChangePlanViewController:
         output.viewWillDisappear()
     }
     
-    @IBAction func closeTouchUp(_ sender: UIButton) {
+    @IBAction private func closeTouchUp(_ sender: UIButton) {
         output.close()
     }
     
-    @IBAction func saveTouchUp(_ sender: Button) {
+    @IBAction private func saveTouchUp(_ sender: Button) {
         output.save()
     }
     

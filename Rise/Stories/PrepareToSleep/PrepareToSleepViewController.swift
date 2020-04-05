@@ -70,7 +70,7 @@ final class PrepareToSleepViewController: UIViewController, PrepareToSleepViewIn
         output.viewWillDisappear()
     }
     
-    @IBAction func wakeUpContainerTouchUp(_ sender: UITapGestureRecognizer) {
+    @IBAction private func wakeUpContainerTouchUp(_ sender: UITapGestureRecognizer) {
         let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut) {
             self.wakeUpContainerheightConstraint.constant = self.wakeUpExpanded ? 50 : 200
             self.view.layoutIfNeeded()
@@ -79,11 +79,11 @@ final class PrepareToSleepViewController: UIViewController, PrepareToSleepViewIn
         wakeUpExpanded.toggle()
     }
     
-    @IBAction func startSleepTouchUp(_ sender: Button) {
+    @IBAction private func startSleepTouchUp(_ sender: Button) {
         output.startPressed()
     }
     
-    @IBAction func closeTouchup(_ sender: UIButton) {
+    @IBAction private func closeTouchup(_ sender: UIButton) {
         output.closePressed()
     }
     

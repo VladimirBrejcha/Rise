@@ -27,7 +27,7 @@ final class SliderWithValues: UIView, NibLoadable {
         setupFromNib()
     }
     
-    @IBAction func valueChanged(_ sender: UISlider) {
+    @IBAction private func valueChanged(_ sender: UISlider) {
         centerLabel.text = centerLabelDataSource?(sender.value)
     }
 }

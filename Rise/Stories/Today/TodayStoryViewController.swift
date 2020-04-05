@@ -69,7 +69,7 @@ final class TodayStoryViewController: UIViewController, TodayStoryViewInput {
         output.viewWillDisappear()
     }
     
-    @IBAction func sleepTouchUp(_ sender: Button) {
+    @IBAction private func sleepTouchUp(_ sender: Button) {
         output.sleepPressed()
     }
     

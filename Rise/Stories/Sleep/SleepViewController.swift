@@ -67,7 +67,7 @@ final class SleepViewController: UIViewController, SleepViewInput {
     }
     
     // MARK: IBActions
-    @IBAction func sleepButtonPressed(_ sender: UIButton) {
+    @IBAction private func sleepButtonPressed(_ sender: UIButton) {
 //        scheduleLocal()
         self.dismiss(animated: true)
     }

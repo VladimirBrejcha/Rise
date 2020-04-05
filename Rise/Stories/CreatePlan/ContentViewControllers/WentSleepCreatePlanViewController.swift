@@ -17,7 +17,7 @@ final class WentSleepCreatePlanViewController: UIViewController {
 
     }
     
-    @IBAction func wentSleepTimeChanged(_ sender: UIDatePicker) {
+    @IBAction private func wentSleepTimeChanged(_ sender: UIDatePicker) {
         wentSleepTimeOutput(sender.date)
     }
 }

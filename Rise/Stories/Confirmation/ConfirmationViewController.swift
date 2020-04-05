@@ -61,11 +61,11 @@ final class ConfirmationViewController:
         output.viewDidAppear()
     }
     
-    @IBAction func resheduleTouchUp(_ sender: Button) {
+    @IBAction private func resheduleTouchUp(_ sender: Button) {
         output.reshedulePressed()
     }
     
-    @IBAction func confirmTouchUp(_ sender: Button) {
+    @IBAction private func confirmTouchUp(_ sender: Button) {
         output.confirmPressed()
     }
     

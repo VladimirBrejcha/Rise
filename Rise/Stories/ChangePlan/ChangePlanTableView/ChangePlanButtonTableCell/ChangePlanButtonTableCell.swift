@@ -15,7 +15,7 @@ final class ChangePlanButtonTableCell: UITableViewCell, ConfigurableCell {
     
     private var buttonHander: (() -> Void)?
     
-    @IBAction func buttonTouchUp(_ sender: Button) {
+    @IBAction private func buttonTouchUp(_ sender: Button) {
         buttonHander?()
     }
     
