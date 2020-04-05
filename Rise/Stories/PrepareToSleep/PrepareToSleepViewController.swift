@@ -11,12 +11,14 @@ import UIKit
 protocol PrepareToSleepViewInput: AnyObject {
     func updatePicker(with time: Date)
     func updateWakeUp(with text: String)
+    func updateSleepDuration(with text: String)
     func updateToSleep(with text: String)
     func close()
     func presentSleep()
 }
 
 protocol PrepareToSleepViewOutput: ViewControllerLifeCycle {
+    func pickerValueChanged(_ value: Date)
     func startPressed()
     func closePressed()
 }
@@ -87,17 +89,8 @@ final class PrepareToSleepViewController: UIViewController, PrepareToSleepViewIn
         output.closePressed()
     }
     
-    private func animate(reversed: Bool = false) {
-        DispatchQueue.main.async {
-            let animator = UIViewPropertyAnimator(duration: 2, curve: .easeInOut)
-            animator.addAnimations {
-                self.startSleepButton.transform = CGAffineTransform(translationX: 0, y: reversed ? -4 : 0) // todo bugged
-            }
-            animator.addCompletion { _ in
-                self.animate(reversed: !reversed)
-            }
-            animator.startAnimation()
-        }
+    @IBAction private func pickerValueChanged(_ sender: UIDatePicker) {
+        output.pickerValueChanged(sender.date)
     }
     
     // MARK: - PrepareToSleepViewInput -
@@ -107,6 +100,10 @@ final class PrepareToSleepViewController: UIViewController, PrepareToSleepViewIn
     
     func updateWakeUp(with text: String) {
         wakeUpTitleLabel.text = text
+    }
+    
+    func updateSleepDuration(with text: String) {
+        timeForSleepLabel.text = text
     }
     
     func updateToSleep(with text: String) {
@@ -119,5 +116,19 @@ final class PrepareToSleepViewController: UIViewController, PrepareToSleepViewIn
     
     func presentSleep() {
         Presenter.present(controller: Story.sleep.configure(), with: .overContext, presentingController: self.presentingViewController!)
+    }
+    
+    // MARK: - Private -
+    private func animate(reversed: Bool = false) {
+        DispatchQueue.main.async {
+            let animator = UIViewPropertyAnimator(duration: 2, curve: .easeInOut)
+            animator.addAnimations {
+                self.startSleepButton.transform = CGAffineTransform(translationX: 0, y: reversed ? -4 : 0) // todo bugged
+            }
+            animator.addCompletion { _ in
+                self.animate(reversed: !reversed)
+            }
+            animator.startAnimation()
+        }
     }
 }
