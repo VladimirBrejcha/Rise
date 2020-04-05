@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LoadingView
 
 protocol PersonalPlanViewInput: AnyObject {
     func present(controller: UIViewController)
@@ -31,7 +32,8 @@ protocol PersonalPlanViewOutput: ViewControllerLifeCycle {
 final class PersonalPlanViewController:
     UIViewController,
     UITableViewDelegate,
-    PersonalPlanViewInput
+    PersonalPlanViewInput,
+    PropertyAnimatable
 {
     var output: PersonalPlanViewOutput!
     
@@ -42,11 +44,12 @@ final class PersonalPlanViewController:
     @IBOutlet private weak var tableView: PersonalPlanTableView!
     @IBOutlet private weak var loadingView: LoadingView!
     
+    var propertyAnimationDuration: Double = 0.3
+    
     // MARK: - LifeCycle -
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loadingView.containerView.background = .clear
         tableView.delegate = self
         
         output.viewDidLoad()
@@ -92,11 +95,17 @@ final class PersonalPlanViewController:
     }
     
     func showLoadingInfo(with text: String) {
-        loadingView.changeState(to: .info(message: text))
+        animate {
+            self.tableView.alpha = 0
+            self.loadingView.state = .info(message: text)
+        }
     }
     
     func showContent() {
-        loadingView.changeState(to: .content)
+        animate {
+            self.loadingView.state = .hidden
+            self.tableView.alpha = 1
+        }
     }
     
     func showRightButton(_ show: Bool) {

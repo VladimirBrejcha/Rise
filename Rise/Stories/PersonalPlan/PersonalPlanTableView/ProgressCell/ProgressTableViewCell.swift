@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LoadingView
 
 final class ProgressTableViewCell: UITableViewCell, ConfigurableCell {
     typealias Model = ProgressTableCellModel
@@ -22,7 +23,6 @@ final class ProgressTableViewCell: UITableViewCell, ConfigurableCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        loadingView.containerView.background = .clear
     }
     
     override func draw(_ rect: CGRect) {
@@ -39,10 +39,12 @@ final class ProgressTableViewCell: UITableViewCell, ConfigurableCell {
             self.centerProgressLabel.text = model.text.center
             self.endProgressLabel.text = ""
             if let progress = model.progress {
-                self.loadingView.changeState(to: .content)
+                self.cellContentView.alpha = 1
+                self.loadingView.state = .hidden
                 self.progressBarView.showProgress(progress: CGFloat(progress))
             } else {
-                self.loadingView.changeState(to: .info(message: "Your plan is paused"))
+                self.cellContentView.alpha = 0
+                self.loadingView.state = .info(message: "Your plan is paused")
             }
         }
     }

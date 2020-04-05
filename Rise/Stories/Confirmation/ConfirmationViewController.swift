@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LoadingView
 
 protocol ConfirmationViewInput: AnyObject {
     func updateTitle(with text: String)
@@ -24,7 +25,13 @@ protocol ConfirmationViewOutput: ViewControllerLifeCycle {
     func confirmPressed()
 }
 
-final class ConfirmationViewController: UIViewController, ConfirmationViewInput {
+final class ConfirmationViewController:
+    UIViewController,
+    ConfirmationViewInput,
+    PropertyAnimatable
+{
+    var propertyAnimationDuration: Double = 0.3
+    
     var output: ConfirmationViewOutput!
     
     @IBOutlet private weak var titleLabel: UILabel!
@@ -39,7 +46,6 @@ final class ConfirmationViewController: UIViewController, ConfirmationViewInput 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadingView.containerView.background = .clear
         output.viewDidLoad()
     }
     
@@ -68,11 +74,10 @@ final class ConfirmationViewController: UIViewController, ConfirmationViewInput 
         titleLabel.text = text
     }
     
-    func updateDescription(with text: String) {
+    func updateDescription(with text: String) { 
         UIView.transition(with: descriptionLabel, duration: 0.36,
                           options: .transitionCrossDissolve,
-                          animations:
-            { self.descriptionLabel.text = text },
+                          animations: { self.descriptionLabel.text = text },
                           completion: nil)
     }
     
@@ -85,7 +90,10 @@ final class ConfirmationViewController: UIViewController, ConfirmationViewInput 
     }
         
     func showLoadingView(_ show: Bool) {
-        loadingView.changeState(to: show ? .loading : .content)
+        animate {
+            self.loadingView.state = show ? .loading : .hidden
+            self.buttonsStackView.alpha = show ? 0 : 1
+        }
     }
     
     func dismiss() {

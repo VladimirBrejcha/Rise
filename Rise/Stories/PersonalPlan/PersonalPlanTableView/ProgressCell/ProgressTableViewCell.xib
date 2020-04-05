@@ -60,11 +60,13 @@
                             <constraint firstAttribute="trailing" secondItem="lhx-WI-zwX" secondAttribute="trailing" constant="16" id="s5B-OE-8oi"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qRa-VX-Ppw" customClass="LoadingView" customModule="Rise" customModuleProvider="target">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qRa-VX-Ppw" customClass="LoadingView" customModule="LoadingView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="158"/>
-                        <connections>
-                            <outlet property="contentView" destination="uMx-89-yBS" id="4od-la-4tb"/>
-                        </connections>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <constraints>

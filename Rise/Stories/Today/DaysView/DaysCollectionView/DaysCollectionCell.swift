@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LoadingView
 
 final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
     typealias Model = DaysCollectionCellModel
@@ -26,7 +27,7 @@ final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        loadingView.repeatButtonHandler = {
+        loadingView.repeatTouchUpHandler = { _ in
             self.repeatButtonHandler?(self)
         }
     }
@@ -49,15 +50,19 @@ final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
             
             switch model.state {
             case .loading:
-                self.loadingView.changeState(to: .loading)
+                self.loadingView.state = .loading
+                self.containerView.alpha = 0
             case .showingInfo(let info):
-                self.loadingView.changeState(to: .info(message: info))
+                self.loadingView.state = .info(message: info)
+                self.containerView.alpha = 0
             case .showingError(let error):
-                self.loadingView.changeState(to: .error(message: error))
+                self.loadingView.state = .error(message: error)
+                self.containerView.alpha = 0
             case .showingContent(let left, let right):
                 self.leftLabel.text = left
                 self.rightLabel.text = right
-                self.loadingView.changeState(to: .content)
+                self.loadingView.state = .hidden
+                self.containerView.alpha = 1
             }
         }
     }

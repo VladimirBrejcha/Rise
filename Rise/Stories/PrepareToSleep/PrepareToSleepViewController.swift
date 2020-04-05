@@ -88,14 +88,16 @@ final class PrepareToSleepViewController: UIViewController, PrepareToSleepViewIn
     }
     
     private func animate(reversed: Bool = false) {
-        let animator = UIViewPropertyAnimator(duration: 2, curve: .easeInOut)
-        animator.addAnimations {
-            self.startSleepButton.transform = CGAffineTransform(translationX: 0, y: reversed ? -4 : 0) // todo bugged
+        DispatchQueue.main.async {
+            let animator = UIViewPropertyAnimator(duration: 2, curve: .easeInOut)
+            animator.addAnimations {
+                self.startSleepButton.transform = CGAffineTransform(translationX: 0, y: reversed ? -4 : 0) // todo bugged
+            }
+            animator.addCompletion { _ in
+                self.animate(reversed: !reversed)
+            }
+            animator.startAnimation()
         }
-        animator.addCompletion { _ in
-            self.animate(reversed: !reversed)
-        }
-        animator.startAnimation()
     }
     
     // MARK: - PrepareToSleepViewInput -
