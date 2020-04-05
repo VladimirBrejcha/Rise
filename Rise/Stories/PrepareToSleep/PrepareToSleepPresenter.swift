@@ -33,12 +33,12 @@ final class PrepareToSleepPresenter: PrepareToSleepViewOutput {
             toSleepTime = try getDailyTime.execute(for: NoonedDay.today.date).sleep
             wakeUpTime = try getDailyTime.execute(for: NoonedDay.tomorrow.date).wake
             let toSleepSinceNow = toSleepTime.timeIntervalSince(Date())
-            if toSleepSinceNow >= (-10 / 60) && toSleepSinceNow <= (10 / 60) { // 60 to make minutes
-                view?.updateToSleep(with: "You are just in time today! \(toSleepSinceNow)")
-            } else if toSleepSinceNow < 0 {
-                view?.updateToSleep(with: "You are early today, sleep well \(toSleepSinceNow)")
+            if toSleepSinceNow.isNearby {
+                view?.updateToSleep(with: "You are just in time today!")
             } else if toSleepSinceNow > 0 {
-                view?.updateToSleep(with: "You are late today \(toSleepSinceNow)")
+                view?.updateToSleep(with: "You are early today, sleep well")
+            } else if toSleepSinceNow < 0 {
+                view?.updateToSleep(with: "You are late today :(")
             }
             beginSleepDurationRefreshing()
             view?.updatePicker(with: wakeUpTime)
@@ -75,5 +75,11 @@ final class PrepareToSleepPresenter: PrepareToSleepViewOutput {
     
     private func updateSleepDuration() {
         view?.updateSleepDuration(with: "\(sleepDuration.HHmmString) until wake up")
+    }
+}
+
+fileprivate extension TimeInterval {
+    var isNearby: Bool {
+        self.toMinutes() > -10 && self.toMinutes() < 10
     }
 }
