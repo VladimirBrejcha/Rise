@@ -8,59 +8,54 @@
 
 import UIKit
 
-final class FloatingLabel: UILabel {
-    var dataSource: (() -> (text: String, alpha: Float))? {
-        didSet {
-            guard let source = dataSource
-                else {
-                    timer?.invalidate()
-                    animation?.animate(false)
-                    textToShow = ""
-                    alphaToUse = 0
-                    return
-            }
-            
-            let data = source()
-            
-            if textToShow == data.text { return }
-            
-            if timer != nil { timer?.invalidate() }
-            
-            timer = Timer.scheduledTimer(
-                withTimeInterval: 2,
-                repeats: true
-            ) { [weak self] timer in
-                guard let self = self
-                    else {
-                        timer.invalidate()
-                        return
-                }
-                self.textToShow = data.text
-                self.alphaToUse = CGFloat(data.alpha)
-            }
-            timer?.fire()
-            animation = VerticalPositionMoveAnimation(with: layer, from: 4, to: 0, duration: 2.4)
-            animation?.animate(true)
-        }
+struct FloatingLabelModel {
+    let text: String
+    let alpha: Float
+}
+
+final class FloatingLabel: UILabel, AutoRefreshable, PropertyAnimatable {
+    typealias DataSource = () -> FloatingLabelModel
+    var dataSource: DataSource?
+    var refreshInterval: Double = 2
+    var propertyAnimationDuration: Double = 1
+    
+    private var initialDraw: (() -> Void)?
+    
+    private let animation = VerticalPositionMoveAnimation()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        sharedInit()
     }
     
-    private var animation: Animation?
-    private var timer: Timer?
-    private var textToShow: String = "" {
-        didSet {
-            text = textToShow
-        }
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        sharedInit()
     }
     
-    private var alphaToUse: CGFloat = 0 {
-        didSet {
-            UIView.animate(withDuration: 1, delay: 1, options: [.allowUserInteraction], animations: {
-                self.alpha = self.alphaToUse
-            }, completion: nil)
+    private func sharedInit() {
+        beginRefreshing()
+        initialDraw = {
+            self.animation.add(on: self.layer)
         }
     }
     
     deinit {
-        timer?.invalidate()
+        animation.removeFromSuperlayer()
+    }
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        initialDraw?()
+        initialDraw = nil
+    }
+    
+    func refresh(_ dataSource: DataSource?) {
+        if let data = dataSource?() {
+            self.text = data.text
+            animate {
+                self.alpha = CGFloat(data.alpha)
+            }
+        }
     }
 }

@@ -14,7 +14,7 @@ struct AnimationKeys {
     static let positionY = "position.y"
 }
 
-protocol Animation: AnyObject {
-    init(with layer: CALayer, from: CGFloat, to: CGFloat, duration: CFTimeInterval)
-    func animate(_ animate: Bool)
+protocol Animation {
+    func add(on layer: CALayer)
+    func removeFromSuperlayer()
 }

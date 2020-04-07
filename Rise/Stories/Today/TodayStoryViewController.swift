@@ -17,7 +17,7 @@ protocol TodayStoryViewInput: AnyObject {
     func reloadItems(at indexes: [Int])
     func getIndexOf(cell: DaysCollectionCell) -> Int?
     
-    var timeToSleepDataSource: (() -> (text: String, alpha: Float))? { get set }
+    var timeToSleepDataSource: (() -> FloatingLabelModel)? { get set }
     
     func updateDescription(with text: String)
     
@@ -35,7 +35,7 @@ final class TodayStoryViewController: UIViewController, TodayStoryViewInput {
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var timeToSleepLabel: FloatingLabel!
     
-    var timeToSleepDataSource: (() -> (text: String, alpha: Float))? {
+    var timeToSleepDataSource: (() -> FloatingLabelModel)? {
         didSet {
             timeToSleepLabel.dataSource = timeToSleepDataSource
         }

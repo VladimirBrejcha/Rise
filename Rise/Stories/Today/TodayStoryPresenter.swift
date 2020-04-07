@@ -172,29 +172,29 @@ final class TodayStoryPresenter: TodayStoryViewOutput {
     }
     
     // MARK: - Floating label data source
-    private func floatingLabelDataSource() -> (text: String, alpha: Float) {
+    private func floatingLabelDataSource() -> FloatingLabelModel {
         guard let plan = latestUsedPlan else {
-            return (text: "", alpha: 0)
+            return FloatingLabelModel(text: "", alpha: 0)
         }
         
         if plan.paused {
-            return (text: "Your personal plan is on pause", alpha: 0.85)
+            return FloatingLabelModel(text: "Your personal plan is on pause", alpha: 0.85)
         } else {
             guard let todayDailyTime = try? getDailyTime.execute(for: Date().noon)
                 else {
-                    return (text: "", alpha: 0)
+                    return FloatingLabelModel(text: "", alpha: 0)
             }
             
             guard let minutesUntilSleep = calendar.dateComponents([.minute], from: Date(), to: todayDailyTime.sleep).minute
                 else {
-                    return (text: "", alpha: 0)
+                    return FloatingLabelModel(text: "", alpha: 0)
             }
             
             let minutesInDay: Float = 24 * 60
             
             let sleepDuration = plan.sleepDurationSec
             if Float(minutesUntilSleep) >= minutesInDay - Float(sleepDuration / 60) {
-                return (text: "It's time to sleep!", alpha: 0.85)
+                return FloatingLabelModel(text: "It's time to sleep!", alpha: 0.85)
             }
             
             var alpha: Float = (minutesInDay - Float(minutesUntilSleep)) / minutesInDay
@@ -202,7 +202,7 @@ final class TodayStoryPresenter: TodayStoryViewOutput {
             if alpha > 0.85 { alpha = 0.85 }
             let timeString = minutesUntilSleep.HHmmString
             
-            return (text: "Sleep planned in \(timeString)", alpha: alpha)
+            return FloatingLabelModel(text: "Sleep planned in \(timeString)", alpha: alpha)
         }
     }
     

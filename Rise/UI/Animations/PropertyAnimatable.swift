@@ -10,7 +10,6 @@ import UIKit
 
 protocol PropertyAnimatable {
     var propertyAnimationDuration: Double { get set }
-    func animate(_ animation: @escaping () -> Void)
 }
 
 extension PropertyAnimatable {
