@@ -153,29 +153,85 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NtE-7H-dBE">
-                                <rect key="frame" x="100" y="565" width="214" height="48"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
-                                <state key="normal" title="Sleep">
-                                    <color key="titleColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="sleepButtonPressed:" destination="7eS-bT-KOC" eventType="touchUpInside" id="f07-Rv-Iew"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sleeping" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bWs-lr-N9w">
+                                <rect key="frame" x="20" y="64" width="374" height="27"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fVf-jv-vsz" customClass="LongPressProgressButton" customModule="Rise" customModuleProvider="target">
+                                <rect key="frame" x="20" y="782" width="374" height="60"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="tyD-Lw-PkE"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTc-hX-oX4" customClass="AutoRefreshableLabel" customModule="Rise" customModuleProvider="target">
+                                <rect key="frame" x="10" y="448" width="394" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="40"/>
+                                <color key="textColor" red="0.40000000000000002" green="0.18039215689999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y2g-Lf-cfq" customClass="DesignableContainerView" customModule="Rise" customModuleProvider="target">
+                                <rect key="frame" x="189" y="458" width="36" height="20"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UdE-ir-e2g">
+                                        <rect key="frame" x="28" y="4" width="0.0" height="12"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="disabledTitle"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alarmPressed" translatesAutoresizingMaskIntoConstraints="NO" id="BSN-LZ-VYx">
+                                        <rect key="frame" x="8" y="2" width="16" height="16"/>
+                                        <color key="tintColor" name="disabledTitle"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="BSN-LZ-VYx" secondAttribute="height" multiplier="1:1" id="0yp-cm-w35"/>
+                                            <constraint firstAttribute="height" constant="16" id="Btl-Ve-ez3"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="2p9-wX-Wdc"/>
+                                    <constraint firstAttribute="trailing" secondItem="UdE-ir-e2g" secondAttribute="trailing" constant="8" id="Vus-LA-vle"/>
+                                    <constraint firstAttribute="bottom" secondItem="UdE-ir-e2g" secondAttribute="bottom" constant="4" id="WaT-sG-cpr"/>
+                                    <constraint firstItem="BSN-LZ-VYx" firstAttribute="centerY" secondItem="UdE-ir-e2g" secondAttribute="centerY" id="ccO-7o-Mx0"/>
+                                    <constraint firstItem="UdE-ir-e2g" firstAttribute="leading" secondItem="BSN-LZ-VYx" secondAttribute="trailing" constant="4" id="cnE-aV-Nwj"/>
+                                    <constraint firstItem="UdE-ir-e2g" firstAttribute="top" secondItem="y2g-Lf-cfq" secondAttribute="top" constant="4" id="wRN-Z8-vBt"/>
+                                    <constraint firstItem="BSN-LZ-VYx" firstAttribute="leading" secondItem="y2g-Lf-cfq" secondAttribute="leading" constant="8" id="ys6-7S-uag"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRK-q7-IEK" customClass="FloatingLabel" customModule="Rise" customModuleProvider="target">
+                                <rect key="frame" x="10" y="772" width="394" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" name="disabledTitle"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="8gk-4x-IVS" firstAttribute="bottom" secondItem="NtE-7H-dBE" secondAttribute="bottom" constant="249" id="6tg-jp-qf6"/>
-                            <constraint firstItem="8gk-4x-IVS" firstAttribute="trailing" secondItem="NtE-7H-dBE" secondAttribute="trailing" constant="100" id="M8w-VP-0zb"/>
-                            <constraint firstItem="NtE-7H-dBE" firstAttribute="leading" secondItem="8gk-4x-IVS" secondAttribute="leading" constant="100" id="nXc-em-q4P"/>
+                            <constraint firstItem="zTc-hX-oX4" firstAttribute="leading" secondItem="8gk-4x-IVS" secondAttribute="leading" constant="10" id="2x8-eY-jqS"/>
+                            <constraint firstItem="bWs-lr-N9w" firstAttribute="top" secondItem="8gk-4x-IVS" secondAttribute="top" constant="20" id="9qB-WW-zjC"/>
+                            <constraint firstItem="8gk-4x-IVS" firstAttribute="bottom" secondItem="fVf-jv-vsz" secondAttribute="bottom" constant="20" id="HQb-zb-vm4"/>
+                            <constraint firstItem="8gk-4x-IVS" firstAttribute="trailing" secondItem="zTc-hX-oX4" secondAttribute="trailing" constant="10" id="L6g-xO-XCb"/>
+                            <constraint firstItem="fVf-jv-vsz" firstAttribute="top" secondItem="KRK-q7-IEK" secondAttribute="bottom" constant="10" id="M56-uv-KQi"/>
+                            <constraint firstItem="y2g-Lf-cfq" firstAttribute="top" secondItem="zTc-hX-oX4" secondAttribute="bottom" constant="10" id="Mxc-ZZ-Uyt"/>
+                            <constraint firstItem="8gk-4x-IVS" firstAttribute="trailing" secondItem="fVf-jv-vsz" secondAttribute="trailing" constant="20" id="RcB-ga-ZaZ"/>
+                            <constraint firstItem="zTc-hX-oX4" firstAttribute="centerY" secondItem="uik-k5-iFp" secondAttribute="centerY" id="TI3-Ge-sQf"/>
+                            <constraint firstItem="8gk-4x-IVS" firstAttribute="trailing" secondItem="KRK-q7-IEK" secondAttribute="trailing" constant="10" id="apg-2d-AYr"/>
+                            <constraint firstItem="8gk-4x-IVS" firstAttribute="trailing" secondItem="bWs-lr-N9w" secondAttribute="trailing" constant="20" id="gFh-DN-Obf"/>
+                            <constraint firstItem="fVf-jv-vsz" firstAttribute="leading" secondItem="8gk-4x-IVS" secondAttribute="leading" constant="20" id="l2a-Fh-sPA"/>
+                            <constraint firstItem="y2g-Lf-cfq" firstAttribute="centerX" secondItem="uik-k5-iFp" secondAttribute="centerX" id="ntz-ah-o6W"/>
+                            <constraint firstItem="bWs-lr-N9w" firstAttribute="leading" secondItem="8gk-4x-IVS" secondAttribute="leading" constant="20" id="ph0-yp-uLF"/>
+                            <constraint firstItem="KRK-q7-IEK" firstAttribute="leading" secondItem="8gk-4x-IVS" secondAttribute="leading" constant="10" id="tBm-Zg-8ZZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8gk-4x-IVS"/>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="1" title="" id="DPU-2C-0DP"/>
-                    <navigationItem key="navigationItem" id="RHG-i7-QYe"/>
                     <connections>
-                        <outlet property="sleepButton" destination="NtE-7H-dBE" id="p5N-eo-zfE"/>
+                        <outlet property="alarmLabel" destination="UdE-ir-e2g" id="Wgl-fj-cxH"/>
+                        <outlet property="currentTimeLabel" destination="zTc-hX-oX4" id="DTs-Dv-HFp"/>
+                        <outlet property="stopButton" destination="fVf-jv-vsz" id="hgZ-hk-x9z"/>
+                        <outlet property="timeLeftLabel" destination="KRK-q7-IEK" id="c7d-Df-8JM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HEB-hz-IkO" sceneMemberID="firstResponder"/>
@@ -184,10 +240,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="alarmPressed" width="25" height="25"/>
         <image name="beginToSleepIcon" width="111" height="111"/>
         <image name="cancel" width="75" height="75"/>
         <namedColor name="LightPink">
             <color red="0.71764705882352942" green="0.61568627450980395" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="disabledTitle">
+            <color red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

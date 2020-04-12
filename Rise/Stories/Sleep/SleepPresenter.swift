@@ -11,7 +11,21 @@ import Foundation
 final class SleepPresenter: SleepViewOutput {
     private weak var view: SleepViewInput?
     
-    required init(view: SleepViewInput) {
+    private let alarmAt: Date
+    
+    var currentTime: String { Date().HHmmString }
+    var timeLeft: String { "Time left \(alarmAt.timeIntervalSince(Date()).HHmmString)" }
+    
+    required init(view: SleepViewInput, alarmAt: Date) {
         self.view = view
+        self.alarmAt = alarmAt
+    }
+    
+    func viewDidLoad() {
+        view?.setAlarmTime(alarmAt.HHmmString)
+    }
+    
+    func stopPressed() {
+        view?.dismiss()
     }
 }

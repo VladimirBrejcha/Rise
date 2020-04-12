@@ -8,12 +8,10 @@
 
 import Foundation
 
-final class SleepAssembler: StoryAssembler {
-    typealias View = SleepViewController
-    
-    func assemble() -> View {
-        let controller = Storyboard.sleep.instantiateViewController(of: View.self)
-        controller.output = SleepPresenter(view: controller)
+final class SleepAssembler {
+    func assemble(alarm time: Date) -> SleepViewController {
+        let controller = Storyboard.sleep.instantiateViewController(of: SleepViewController.self)
+        controller.output = SleepPresenter(view: controller, alarmAt: time)
         return controller
     }
 }

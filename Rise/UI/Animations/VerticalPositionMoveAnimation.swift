@@ -28,7 +28,7 @@ final class VerticalPositionMoveAnimation: Animation {
         basicAnimation.isRemovedOnCompletion = false
         basicAnimation.fromValue = layer.frame.midY + 3
         basicAnimation.toValue = layer.frame.midY + 0
-        basicAnimation.duration = 1
+        basicAnimation.duration = 10
         basicAnimation.autoreverses = true
         basicAnimation.repeatCount = Float.greatestFiniteMagnitude
         return basicAnimation

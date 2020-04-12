@@ -94,6 +94,7 @@ final class TodayStoryPresenter: TodayStoryViewOutput {
         }
     }
     
+    let player = AudioPlayer()
     func viewDidAppear() {
         viewIsVisible = true
         if needsUpdate {
@@ -105,6 +106,8 @@ final class TodayStoryPresenter: TodayStoryViewOutput {
             view?.makeTabBar(visible: confirmed)
             if !confirmed { view?.present(controller: Story.confirmation.configure(), with: .overContext) }
         }
+//        playSound()
+        try! player.play(sound: AlarmSounds.bellAlarm)
     }
     
     func viewWillDisappear() {

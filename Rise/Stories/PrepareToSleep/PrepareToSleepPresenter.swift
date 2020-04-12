@@ -53,7 +53,7 @@ final class PrepareToSleepPresenter: PrepareToSleepViewOutput {
     
     func startPressed() {
         view?.close()
-        view?.presentSleep()
+        view?.presentSleep(with: wakeUpTime)
     }
     
     func closePressed() {

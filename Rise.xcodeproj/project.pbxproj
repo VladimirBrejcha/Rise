@@ -125,7 +125,14 @@
 		7EE6404B2378666F005BE355 /* DefaultSunTimeLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6404A2378666F005BE355 /* DefaultSunTimeLocalDataSource.swift */; };
 		7EE6404D23786678005BE355 /* DefaultSunTimeRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6404C23786678005BE355 /* DefaultSunTimeRemoteDataSource.swift */; };
 		7EE6404F23786693005BE355 /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6404E23786693005BE355 /* PersistentContainer.swift */; };
+		7EE6905C243E64C600CA423E /* LongPressProgressButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EE6905B243E64C600CA423E /* LongPressProgressButton.xib */; };
+		7EE6905E243E658B00CA423E /* LongPressProgressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6905D243E658B00CA423E /* LongPressProgressButton.swift */; };
+		7EE87CED2442241000E1BD3B /* Touchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE87CEC2442241000E1BD3B /* Touchable.swift */; };
+		7EE87CEF2442254A00E1BD3B /* AutoRefreshableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE87CEE2442254A00E1BD3B /* AutoRefreshableLabel.swift */; };
 		7EEA217923B6A3B400354BEA /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEA217823B6A3B400354BEA /* Presenter.swift */; };
+		7EEB1E0D24424010001ABE4A /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB1E0C24424010001ABE4A /* AudioPlayer.swift */; };
+		7EEB1E0F2443369F001ABE4A /* bellAlarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7EEB1E0E2443369F001ABE4A /* bellAlarm.wav */; };
+		7EEB1E122443370F001ABE4A /* AlarmSounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB1E112443370F001ABE4A /* AlarmSounds.swift */; };
 		7EEB3CD524198ADB003981B7 /* Sleep.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EEB3CD424198ADB003981B7 /* Sleep.storyboard */; };
 		7EF0B2E024032CD20079F72C /* ProgressTableCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF0B2DF24032CD20079F72C /* ProgressTableCellModel.swift */; };
 		7EF0B2E2240330F90079F72C /* PersonalPlanTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF0B2E1240330F90079F72C /* PersonalPlanTableView.swift */; };
@@ -287,8 +294,15 @@
 		7EE6404A2378666F005BE355 /* DefaultSunTimeLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSunTimeLocalDataSource.swift; sourceTree = "<group>"; };
 		7EE6404C23786678005BE355 /* DefaultSunTimeRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSunTimeRemoteDataSource.swift; sourceTree = "<group>"; };
 		7EE6404E23786693005BE355 /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
+		7EE6905B243E64C600CA423E /* LongPressProgressButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LongPressProgressButton.xib; sourceTree = "<group>"; };
+		7EE6905D243E658B00CA423E /* LongPressProgressButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressProgressButton.swift; sourceTree = "<group>"; };
+		7EE87CEC2442241000E1BD3B /* Touchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Touchable.swift; sourceTree = "<group>"; };
+		7EE87CEE2442254A00E1BD3B /* AutoRefreshableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRefreshableLabel.swift; sourceTree = "<group>"; };
 		7EE939162340F68800FE9954 /* PersonalPlanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalPlanViewController.swift; sourceTree = "<group>"; };
 		7EEA217823B6A3B400354BEA /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		7EEB1E0C24424010001ABE4A /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		7EEB1E0E2443369F001ABE4A /* bellAlarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bellAlarm.wav; sourceTree = "<group>"; };
+		7EEB1E112443370F001ABE4A /* AlarmSounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSounds.swift; sourceTree = "<group>"; };
 		7EEB3CD424198ADB003981B7 /* Sleep.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sleep.storyboard; sourceTree = "<group>"; };
 		7EF0B2DF24032CD20079F72C /* ProgressTableCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTableCellModel.swift; sourceTree = "<group>"; };
 		7EF0B2E1240330F90079F72C /* PersonalPlanTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPlanTableView.swift; sourceTree = "<group>"; };
@@ -683,6 +697,15 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		7EE87CEB2442233500E1BD3B /* LongPressProgressButton */ = {
+			isa = PBXGroup;
+			children = (
+				7EE6905B243E64C600CA423E /* LongPressProgressButton.xib */,
+				7EE6905D243E658B00CA423E /* LongPressProgressButton.swift */,
+			);
+			path = LongPressProgressButton;
+			sourceTree = "<group>";
+		};
 		7EE939142340F5F600FE9954 /* PlanInfoCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -703,6 +726,23 @@
 			path = ProgressCell;
 			sourceTree = "<group>";
 		};
+		7EEB1E10244336A7001ABE4A /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				7EEB1E112443370F001ABE4A /* AlarmSounds.swift */,
+				7EEB1E0E2443369F001ABE4A /* bellAlarm.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		7EEB1E132443372C001ABE4A /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				7E0EACC9241BF05800B8A0A2 /* Color.swift */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
 		7EF0B2E324033B600079F72C /* PersonalPlanTableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -716,6 +756,8 @@
 		7EF3EE162340F75A003BE978 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7EEB1E132443372C001ABE4A /* Colors */,
+				7EEB1E10244336A7001ABE4A /* Sounds */,
 				92D7D65E2296F298009321AE /* Info.plist */,
 				92D7D6592296F298009321AE /* Assets.xcassets */,
 			);
@@ -755,6 +797,8 @@
 				7E97656D2378813700E3AEF2 /* Log.swift */,
 				7E0834AB2387351400BA1AE8 /* DateExtensions.swift */,
 				7E162FF0243D0E22004C68B1 /* AutoRefreshable.swift */,
+				7EE87CEC2442241000E1BD3B /* Touchable.swift */,
+				7EEB1E0C24424010001ABE4A /* AudioPlayer.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -860,7 +904,8 @@
 				7EB26952234F99AE008AEB3D /* Button.swift */,
 				7E199CD5240BD43C00B702AD /* SliderWithValues */,
 				7E5F292923F9638C0050DFD3 /* FloatingLabel.swift */,
-				7E0EACC9241BF05800B8A0A2 /* Color.swift */,
+				7EE87CEE2442254A00E1BD3B /* AutoRefreshableLabel.swift */,
+				7EE87CEB2442233500E1BD3B /* LongPressProgressButton */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -998,6 +1043,7 @@
 				7E4798F7239D8A33007FB8F2 /* Settings.storyboard in Resources */,
 				92D7D65D2296F298009321AE /* LaunchScreen.storyboard in Resources */,
 				7EF4C196240412D80098135A /* ChangePlanDatePickerTableCell.xib in Resources */,
+				7EE6905C243E64C600CA423E /* LongPressProgressButton.xib in Resources */,
 				7ED962B02336649E00CD2408 /* PlanInfoTableViewCell.xib in Resources */,
 				7E76E5AB23E734F500CC4E6D /* ChangePlan.storyboard in Resources */,
 				7EF4C19E240436CD0098135A /* ChangePlanSliderTableCell.xib in Resources */,
@@ -1005,6 +1051,7 @@
 				7E541AF523FB259400BAD710 /* DaysCollectionCell.xib in Resources */,
 				7E4798F3239D85D5007FB8F2 /* CreatePlan.storyboard in Resources */,
 				7E84EB25239D19CF00E02050 /* Confirmation.storyboard in Resources */,
+				7EEB1E0F2443369F001ABE4A /* bellAlarm.wav in Resources */,
 				7EEB3CD524198ADB003981B7 /* Sleep.storyboard in Resources */,
 				92D7D6582296F297009321AE /* Main.storyboard in Resources */,
 			);
@@ -1051,6 +1098,7 @@
 				7E541AF423FB259400BAD710 /* DaysCollectionCell.swift in Sources */,
 				7E4798F5239D894B007FB8F2 /* Storyboard.swift in Sources */,
 				7EB29E0B241987D400116433 /* PrepareToSleepPresenter.swift in Sources */,
+				7EE87CED2442241000E1BD3B /* Touchable.swift in Sources */,
 				7EF4C195240412D80098135A /* ChangePlanDatePickerTableCell.swift in Sources */,
 				7E31497F23425D3700941606 /* ChangePlanTableView.swift in Sources */,
 				7E708A3B23BFD0C7003B5702 /* PlanCreatedCreatePlanViewController.swift in Sources */,
@@ -1122,16 +1170,19 @@
 				7EE6404D23786678005BE355 /* DefaultSunTimeRemoteDataSource.swift in Sources */,
 				7E91D9622371E4850087436F /* DailyPlanTime.swift in Sources */,
 				7E541AFD23FB393400BAD710 /* CollectionDataSource.swift in Sources */,
+				7EEB1E122443370F001ABE4A /* AlarmSounds.swift in Sources */,
 				7E76E5A923E734C200CC4E6D /* ChangePlanAssembler.swift in Sources */,
 				7EB9F34A23C2045A002A6DD3 /* ObservePlanUseCase.swift in Sources */,
 				7E0EACCA241BF05800B8A0A2 /* Color.swift in Sources */,
 				7ED962AF2336649E00CD2408 /* PlanInfoTableViewCell.swift in Sources */,
 				7EA38AEC237853230007919B /* DefaultLocationLocalDataSource.swift in Sources */,
+				7EE6905E243E658B00CA423E /* LongPressProgressButton.swift in Sources */,
 				7EB1C03B23411FFD0028237E /* PersonalPlanPresenter.swift in Sources */,
 				7E5F292A23F9638C0050DFD3 /* FloatingLabel.swift in Sources */,
 				7E173372240D9F7A0028FDBE /* DomainLayer.swift in Sources */,
 				7ECD2C6F241832B300408C4B /* ReshedulePlanUseCase.swift in Sources */,
 				7EE6404B2378666F005BE355 /* DefaultSunTimeLocalDataSource.swift in Sources */,
+				7EE87CEF2442254A00E1BD3B /* AutoRefreshableLabel.swift in Sources */,
 				7EEA217923B6A3B400354BEA /* Presenter.swift in Sources */,
 				7E0A2E3A239D831F00E39C83 /* SettingsPresenter.swift in Sources */,
 				7E98FE67231C3D5C0065FB09 /* UserDefaultsManager.swift in Sources */,
@@ -1144,6 +1195,7 @@
 				7E97656423786B1800E3AEF2 /* DefaultRisePlanRepository.swift in Sources */,
 				7E8C6B982350FB9C0086162F /* TableView.swift in Sources */,
 				7E9B739C239DA8F3007067A6 /* DaysSegmentedControlViewButton.swift in Sources */,
+				7EEB1E0D24424010001ABE4A /* AudioPlayer.swift in Sources */,
 				7E41982423254C36007867AB /* DaysSegmentedControlView.swift in Sources */,
 				7E8675C724165F25004DAF63 /* GetDailyTimeUseCase.swift in Sources */,
 				7EB9004023256BF3006EB9A8 /* DaysView.swift in Sources */,

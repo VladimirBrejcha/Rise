@@ -14,7 +14,7 @@ protocol PrepareToSleepViewInput: AnyObject {
     func updateSleepDuration(with text: String)
     func updateToSleep(with text: String)
     func close()
-    func presentSleep()
+    func presentSleep(with alarm: Date)
 }
 
 protocol PrepareToSleepViewOutput: ViewControllerLifeCycle {
@@ -114,8 +114,8 @@ final class PrepareToSleepViewController: UIViewController, PrepareToSleepViewIn
         self.dismiss(animated: true)
     }
     
-    func presentSleep() {
-        Presenter.present(controller: Story.sleep.configure(), with: .overContext, presentingController: self.presentingViewController!)
+    func presentSleep(with alarm: Date) {
+        Presenter.present(controller: Story.sleep(alarmTime: alarm).configure(), with: .overContext, presentingController: self.presentingViewController!)
     }
     
     // MARK: - Private -

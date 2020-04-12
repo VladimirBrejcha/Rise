@@ -7,69 +7,69 @@
 //
 
 import UIKit
-import UserNotifications
 
 protocol SleepViewInput: AnyObject {
-    
+    func setAlarmTime(_ text: String)
+    func dismiss()
 }
 
-protocol SleepViewOutput: ViewControllerLifeCycle { }
+protocol SleepViewOutput: ViewControllerLifeCycle {
+    func stopPressed()
+    var currentTime: String { get }
+    var timeLeft: String { get }
+}
 
 final class SleepViewController: UIViewController, SleepViewInput {
     var output: SleepViewOutput!
     
-    @IBOutlet weak var sleepButton: UIButton!
+    @IBOutlet private weak var currentTimeLabel: AutoRefreshableLabel!
+    @IBOutlet private weak var stopButton: LongPressProgressButton!
+    @IBOutlet private weak var alarmLabel: UILabel!
+    @IBOutlet private weak var timeLeftLabel: FloatingLabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        registerLocal()
-        
         let backgroundView = GradientHelper.makeDefaultStaticGradient(for: view.bounds)
         view.addSubview(backgroundView)
         view.sendSubviewToBack(backgroundView)
-    }
-    
-    // MARK: Notification center methods
-    private func registerLocal() {
-        let center = UNUserNotificationCenter.current()
+
+        stopButton.title = "Stop"
+        stopButton.progressCompleted = { [weak self] _ in self?.output.stopPressed() }
+        currentTimeLabel.dataSource = { [weak self] in self?.output.currentTime ?? "" }
+        timeLeftLabel.dataSource = { [weak self] in FloatingLabelModel(text: self?.output.timeLeft ?? "", alpha: 1) }
         
-        center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
-            if granted {
-                print("granted")
-            } else {
-                print("\(String(describing: error))")
-            }
-        }
+        output.viewDidLoad()
     }
     
-    private func scheduleLocal() {
-//        let center = UNUserNotificationCenter.current()
-//        center.removeAllPendingNotificationRequests()
-//        
-//        let content = UNMutableNotificationContent()
-//        
-//        content.title = "Wake up"
-//        content.body = "its time to rise and shine"
-//        content.categoryIdentifier = "alarm"
-//        content.userInfo = ["customData": "fizzbuzz"]
-//        content.sound = .default
-//        
-////        let date = timePicker.date
-//        
-//        let components = calendar.dateComponents([.hour, .minute], from: date)
-//        
-//        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
-//        
-//        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-//        center.add(request)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        output.viewWillAppear()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        output.viewDidAppear()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        output.viewWillDisappear()
+    }
+    
+    // MARK: - SleepViewInput -
+    func setAlarmTime(_ text: String) {
+        alarmLabel.text = text
+    }
+    
+    func setButtonTitle(_ text: String) {
         
     }
     
-    // MARK: IBActions
-    @IBAction private func sleepButtonPressed(_ sender: UIButton) {
-//        scheduleLocal()
-        self.dismiss(animated: true)
+    func dismiss() {
+        dismiss(animated: true)
     }
-    
 }
