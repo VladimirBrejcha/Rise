@@ -12,7 +12,7 @@ final class PersonalPlanAssembler: StoryAssembler {
     typealias View = PersonalPlanViewController
     
     func assemble() -> PersonalPlanViewController {
-        let controller = Storyboard.main.instantiateViewController(of: PersonalPlanViewController.self)
+        let controller = Storyboards.main.instantiateViewController(of: PersonalPlanViewController.self)
         controller.output = PersonalPlanPresenter(
             view: controller,
             getPlan: DomainLayer.getPlan,

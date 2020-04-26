@@ -44,26 +44,26 @@ enum Story {
         case .createPlan:
             return CreatePlanAssembler().assemble()
         case .welcomeCreatePlan:
-            let controller = Storyboard.setupPlan.instantiateViewController(of: WelcomeCreatelPlanViewController.self)
+            let controller = Storyboards.setupPlan.instantiateViewController(of: WelcomeCreatelPlanViewController.self)
             return controller
         case .sleepDurationCreatePlan(let sleepDurationOutput):
-            let controller = Storyboard.setupPlan.instantiateViewController(of: SleepDurationCreatePlanViewController.self)
+            let controller = Storyboards.setupPlan.instantiateViewController(of: SleepDurationCreatePlanViewController.self)
             controller.sleepDurationOutput = sleepDurationOutput
             return controller
         case .wakeUpTimeCreatePlan(let wakeUpTimeOutput):
-            let controller = Storyboard.setupPlan.instantiateViewController(of: WakeUpTimeCreatePlanViewController.self)
+            let controller = Storyboards.setupPlan.instantiateViewController(of: WakeUpTimeCreatePlanViewController.self)
             controller.wakeUpTimeOutput = wakeUpTimeOutput
             return controller
         case .planDurationCreatePlan(let planDurationOutput):
-            let controller = Storyboard.setupPlan.instantiateViewController(of: PlanDurationCreatePlanViewController.self)
+            let controller = Storyboards.setupPlan.instantiateViewController(of: PlanDurationCreatePlanViewController.self)
             controller.planDurationOutput = planDurationOutput
             return controller
         case .wentSleepCreatePlan(let wentSleepOutput):
-            let controller = Storyboard.setupPlan.instantiateViewController(of: WentSleepCreatePlanViewController.self)
+            let controller = Storyboards.setupPlan.instantiateViewController(of: WentSleepCreatePlanViewController.self)
             controller.wentSleepTimeOutput = wentSleepOutput
             return controller
         case .planCreatedSetupPlan:
-            let controller = Storyboard.setupPlan.instantiateViewController(of: PlanCreatedCreatePlanViewController.self)
+            let controller = Storyboards.setupPlan.instantiateViewController(of: PlanCreatedCreatePlanViewController.self)
             return controller
         case .changePlan:
             return ChangePlanAssembler().assemble()

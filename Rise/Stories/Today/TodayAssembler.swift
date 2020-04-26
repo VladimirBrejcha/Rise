@@ -12,7 +12,7 @@ final class TodayAssembler: StoryAssembler {
     typealias View = TodayStoryViewController
     
     func assemble() -> TodayStoryViewController {
-        let controller = Storyboard.main.instantiateViewController(of: TodayStoryViewController.self)
+        let controller = Storyboards.main.instantiateViewController(of: TodayStoryViewController.self)
         controller.output = TodayStoryPresenter(view: controller,
                                                 getSunTime: DomainLayer.getSunTime,
                                                 getPlan: DomainLayer.getPlan,

@@ -12,7 +12,7 @@ final class ConfirmationAssembler: StoryAssembler {
     typealias View = ConfirmationViewController
     
     func assemble() -> ConfirmationViewController {
-        let controller = Storyboard.popUp.instantiateViewController(of: ConfirmationViewController.self)
+        let controller = Storyboards.confirmation.instantiateViewController(of: ConfirmationViewController.self)
         controller.output = ConfirmationPresenter(view: controller,
                                                   getPlan: DomainLayer.getPlan,
                                                   confirmPlan: DomainLayer.confirmPlan,

@@ -10,7 +10,7 @@ import Foundation
 
 final class SleepAssembler {
     func assemble(alarm time: Date) -> SleepViewController {
-        let controller = Storyboard.sleep.instantiateViewController(of: SleepViewController.self)
+        let controller = Storyboards.sleep.instantiateViewController(of: SleepViewController.self)
         controller.output = SleepPresenter(view: controller, alarmAt: time)
         return controller
     }

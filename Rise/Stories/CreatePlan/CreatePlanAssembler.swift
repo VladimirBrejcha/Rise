@@ -12,7 +12,7 @@ final class CreatePlanAssembler: StoryAssembler {
     typealias View = CreatePlanViewController
     
     func assemble() -> CreatePlanViewController {
-        let controller = Storyboard.setupPlan.instantiateViewController(of: CreatePlanViewController.self)
+        let controller = Storyboards.setupPlan.instantiateViewController(of: CreatePlanViewController.self)
         let presenter = CreatePlanPresenter(view: controller, makePlan: DomainLayer.makePlan)
         controller.output = presenter
         presenter.stories = [.welcomeCreatePlan,

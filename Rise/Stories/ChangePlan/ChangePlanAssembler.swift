@@ -12,7 +12,7 @@ final class ChangePlanAssembler: StoryAssembler {
     typealias View = ChangePlanViewController
     
     func assemble() -> ChangePlanViewController {
-        let controller = Storyboard.changePlan.instantiateViewController(of: ChangePlanViewController.self)
+        let controller = Storyboards.changePlan.instantiateViewController(of: ChangePlanViewController.self)
         controller.output = ChangePlanPresenter(view: controller,
                                                 getPlan: DomainLayer.getPlan,
                                                 updatePlan: DomainLayer.updatePlan,

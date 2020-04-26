@@ -12,7 +12,7 @@ final class PrepareToSleepAssembler: StoryAssembler {
     typealias View = PrepareToSleepViewController
     
     func assemble() -> View {
-        let controller = Storyboard.sleep.instantiateViewController(of: PrepareToSleepViewController.self)
+        let controller = Storyboards.sleep.instantiateViewController(of: PrepareToSleepViewController.self)
         controller.output = PrepareToSleepPresenter(view: controller,
                                                     getDailyTime: DomainLayer.getDailyTime)
         return controller
