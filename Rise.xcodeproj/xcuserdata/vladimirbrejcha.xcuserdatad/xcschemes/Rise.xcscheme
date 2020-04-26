@@ -41,7 +41,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7EBE8FE723C9224D00043651"
+               BlueprintIdentifier = "7EBE900323C9231200043651"
                BuildableName = "RiseTests.xctest"
                BlueprintName = "RiseTests"
                ReferencedContainer = "container:Rise.xcodeproj">
@@ -53,6 +53,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      enableAddressSanitizer = "YES"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
