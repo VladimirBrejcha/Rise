@@ -12,6 +12,8 @@
 		7E07A10123AFBEE300B9D61A /* WelcomeCreatelPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E07A10023AFBEE300B9D61A /* WelcomeCreatelPlanViewController.swift */; };
 		7E0834AC2387351400BA1AE8 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0834AB2387351400BA1AE8 /* DateExtensions.swift */; };
 		7E0A2E3A239D831F00E39C83 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0A2E39239D831F00E39C83 /* SettingsPresenter.swift */; };
+		7E0B88F62455BEF400BC3CF5 /* DaysSegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0B88F42455BEF400BC3CF5 /* DaysSegmentedControlView.swift */; };
+		7E0B88F72455BEF400BC3CF5 /* DaysSegmentedControlViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0B88F52455BEF400BC3CF5 /* DaysSegmentedControlViewButton.swift */; };
 		7E0EACCA241BF05800B8A0A2 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0EACC9241BF05800B8A0A2 /* Color.swift */; };
 		7E14DCE324438D080041F0F9 /* SelectionObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E14DCE224438D080041F0F9 /* SelectionObservable.swift */; };
 		7E162FF1243D0E22004C68B1 /* AutoRefreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E162FF0243D0E22004C68B1 /* AutoRefreshable.swift */; };
@@ -186,6 +188,8 @@
 		7E07A10023AFBEE300B9D61A /* WelcomeCreatelPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCreatelPlanViewController.swift; sourceTree = "<group>"; };
 		7E0834AB2387351400BA1AE8 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		7E0A2E39239D831F00E39C83 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		7E0B88F42455BEF400BC3CF5 /* DaysSegmentedControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaysSegmentedControlView.swift; sourceTree = "<group>"; };
+		7E0B88F52455BEF400BC3CF5 /* DaysSegmentedControlViewButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaysSegmentedControlViewButton.swift; sourceTree = "<group>"; };
 		7E0EACC9241BF05800B8A0A2 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		7E14DCE224438D080041F0F9 /* SelectionObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionObservable.swift; sourceTree = "<group>"; };
 		7E162FF0243D0E22004C68B1 /* AutoRefreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRefreshable.swift; sourceTree = "<group>"; };
@@ -568,6 +572,8 @@
 		7E9B739D239DA900007067A6 /* DaysSegmentedControlView */ = {
 			isa = PBXGroup;
 			children = (
+				7E0B88F42455BEF400BC3CF5 /* DaysSegmentedControlView.swift */,
+				7E0B88F52455BEF400BC3CF5 /* DaysSegmentedControlViewButton.swift */,
 			);
 			path = DaysSegmentedControlView;
 			sourceTree = "<group>";
@@ -1153,6 +1159,7 @@
 				7E388E38243A3C16001A28DF /* PropertyAnimatable.swift in Sources */,
 				7E97656023786AB000E3AEF2 /* SunTimeData.xcdatamodeld in Sources */,
 				7EA7BA0A2354F1810051A92D /* DaysCollectionView.swift in Sources */,
+				7E0B88F62455BEF400BC3CF5 /* DaysSegmentedControlView.swift in Sources */,
 				7EEB1E1624436369001ABE4A /* Selectable.swift in Sources */,
 				7E98FE63231C2F8C0065FB09 /* Location.swift in Sources */,
 				7E708A4023BFD92D003B5702 /* ChangePlanViewController.swift in Sources */,
@@ -1215,6 +1222,7 @@
 				7EEB1E1A24437329001ABE4A /* ItemsContainable.swift in Sources */,
 				7EB9F34E23C229F2002A6DD3 /* TodayAssembler.swift in Sources */,
 				7EA39D2F244B35870096C49E /* Observable.swift in Sources */,
+				7E0B88F72455BEF400BC3CF5 /* DaysSegmentedControlViewButton.swift in Sources */,
 				7E91D9602371E4080087436F /* RisePlanObject+CoreDataProperties.swift in Sources */,
 				7EF0B2E024032CD20079F72C /* ProgressTableCellModel.swift in Sources */,
 				7E5BDADE2371F08400E43F37 /* RiseLocation+CoreDataClass.swift in Sources */,

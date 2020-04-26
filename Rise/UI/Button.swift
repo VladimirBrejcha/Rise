@@ -11,8 +11,8 @@ import UIKit
 extension UIButton: Selectable { }
 
 class TouchObservableButton: UIButton, TouchObservable {
-    var touchDownObserver: ((inout TouchObservableButton) -> Void)?
-    var touchUpObserver: ((inout TouchObservableButton) -> Void)?
+    var touchDownObserver: ((TouchObservableButton) -> Void)?
+    var touchUpObserver: ((TouchObservableButton) -> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

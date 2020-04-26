@@ -10,12 +10,12 @@ import UIKit
 
 protocol TouchDownObservable: AnyObject {
     associatedtype Control: UIControl
-    var touchDownObserver: ((inout Control) -> Void)? { get set }
+    var touchDownObserver: ((Control) -> Void)? { get set }
 }
 
 protocol TouchUpObservable: AnyObject {
     associatedtype Control: UIControl
-    var touchUpObserver: ((inout Control) -> Void)? { get set }
+    var touchUpObserver: ((Control) -> Void)? { get set }
 }
 
 typealias TouchObservable = TouchDownObservable & TouchUpObservable

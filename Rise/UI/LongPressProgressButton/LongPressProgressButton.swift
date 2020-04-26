@@ -34,7 +34,7 @@ final class LongPressProgressButton: UIView, NibLoadable {
     
     private func sharedInit() {
         setupFromNib()
-        button.touchStarted = { [weak self] _ in
+        button.touchDownObserver = { [weak self] _ in
             guard let self = self else { return }
             if self.workItem != nil { return }
             self.workItem = DispatchWorkItem { [weak self] in
@@ -51,7 +51,7 @@ final class LongPressProgressButton: UIView, NibLoadable {
                 self.animator?.startAnimation()
             }
         }
-        button.touchCancelled = { [weak self] _ in
+        button.touchUpObserver = { [weak self] _ in
             guard let self = self else { return }
             if let workItem = self.workItem {
                 workItem.cancel()
