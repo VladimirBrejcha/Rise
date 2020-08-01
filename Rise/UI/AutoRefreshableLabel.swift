@@ -9,27 +9,11 @@
 import UIKit
 
 final class AutoRefreshableLabel: UILabel, AutoRefreshable {
-    typealias DataSource = () -> String
-    
-    var dataSource: DataSource?
-    
+    var timer: Timer?
+    var dataSource: (() -> String)?
     var refreshInterval: Double = 2
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        sharedInit()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        sharedInit()
-    }
-    
-    private func sharedInit() {
-        beginRefreshing()
-    }
-    
-    func refresh(_ dataSource: DataSource?) {
-        self.text = dataSource?() ?? ""
+    func refresh(with data: String) {
+        text = data
     }
 }

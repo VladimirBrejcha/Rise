@@ -15,7 +15,6 @@ final class DaysView:
     @IBOutlet private weak var segmentedControl: DaysSegmentedControlView!
     @IBOutlet weak var collectionView: DaysCollectionView!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
