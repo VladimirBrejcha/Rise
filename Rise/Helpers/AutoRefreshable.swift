@@ -8,18 +8,42 @@
 
 import Foundation
 
-protocol AutoRefreshable: AnyObject {
-    associatedtype DataSource
+protocol Refreshable {
+    associatedtype DataType
+    func refresh(with data: DataType)
+}
+
+protocol AutoRefreshable: AnyObject, Refreshable {
+    var timer: Timer? { get set }
+    var dataSource: (() -> DataType)? { get set }
     var refreshInterval: Double { get set }
-    var dataSource: DataSource? { get set }
-    func refresh(_ dataSource: DataSource?)
 }
 
 extension AutoRefreshable {
     func beginRefreshing() {
-        refresh(dataSource)
-        Timer.scheduledTimer(withTimeInterval: refreshInterval, repeats: true) { [weak self] _ in
-            self?.refresh(self?.dataSource)
+        guard let dataSource = dataSource else {
+            print("AutoRefreshable.beginRefreshing failed, dataSource was nil")
+            return
         }
+        if timer != nil {
+            timer?.invalidate()
+            timer = nil
+        }
+        refresh(with: dataSource())
+        timer = Timer.scheduledTimer(
+            withTimeInterval: refreshInterval,
+            repeats: true
+        ) { [weak self] timer in
+            guard let self = self else {
+                timer.invalidate()
+                return
+            }
+            self.refresh(with: dataSource())
+        }
+    }
+    
+    func stopRefreshing() {
+        timer?.invalidate()
+        timer = nil
     }
 }

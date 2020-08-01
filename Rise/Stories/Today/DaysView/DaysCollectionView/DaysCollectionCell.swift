@@ -10,8 +10,6 @@ import UIKit
 import LoadingView
 
 final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
-    typealias Model = DaysCollectionCellModel
-
     @IBOutlet private weak var loadingView: LoadingView!
     @IBOutlet private weak var containerView: DesignableContainerView!
     @IBOutlet private weak var leftImageView: UIImageView!
@@ -19,33 +17,47 @@ final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
     @IBOutlet private weak var rightImageView: UIImageView!
     @IBOutlet private weak var rightLabel: UILabel!
     
-    private var repeatButtonHandler: ((DaysCollectionCell) -> Void)?
+    private var repeatButtonHandler: RepeatHandler?
+    private var onDraw: (() -> Void)?
     
-    private var processModelUpdate: (() -> Void)?
+    typealias RepeatHandler = (DaysCollectionCell) -> Void
+    
+    enum State {
+        case loading
+        case showingInfo (info: String)
+        case showingError (error: String)
+        case showingContent (left: String, right: String)
+    }
+
+    struct Model {
+        var state: State
+        let imageName: (left: String, right: String)
+        let repeatHandler: RepeatHandler
+    }
     
     // MARK: - LifeCycle -
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        loadingView.repeatTouchUpHandler = { _ in
-            self.repeatButtonHandler?(self)
+        loadingView.repeatTouchUpHandler = { [weak self] _ in
+            if let self = self {
+                self.repeatButtonHandler?(self)
+            }
         }
     }
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        
-        processModelUpdate?()
-        processModelUpdate = nil
+        onDraw?()
+        onDraw = nil
     }
     
     // MARK: - ConfigurableCell -
-    func configure(with model: DaysCollectionCellModel) {
+    func configure(with model: Model) {
         leftImageView.image = UIImage(named: model.imageName.left)
         rightImageView.image = UIImage(named: model.imageName.right)
-        repeatButtonHandler = model.repeatButtonHandler
+        repeatButtonHandler = model.repeatHandler
         
-        processModelUpdate = { [weak self] in
+        onDraw = { [weak self] in
             guard let self = self else { return }
             
             switch model.state {

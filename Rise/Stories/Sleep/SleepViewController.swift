@@ -37,7 +37,7 @@ final class SleepViewController: UIViewController, SleepViewInput {
         stopButton.title = "Stop"
         stopButton.progressCompleted = { [weak self] _ in self?.output.stopPressed() }
         currentTimeLabel.dataSource = { [weak self] in self?.output.currentTime ?? "" }
-        timeLeftLabel.dataSource = { [weak self] in FloatingLabelModel(text: self?.output.timeLeft ?? "", alpha: 1) }
+        timeLeftLabel.dataSource = { [weak self] in FloatingLabel.Model(text: self?.output.timeLeft ?? "", alpha: 1) }
         
         output.viewDidLoad()
     }

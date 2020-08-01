@@ -8,19 +8,13 @@
 
 import UIKit
 
-struct FloatingLabelModel {
-    let text: String
-    let alpha: Float
-}
-
 final class FloatingLabel: UILabel, AutoRefreshable, PropertyAnimatable {
-    typealias DataSource = () -> FloatingLabelModel
-    var dataSource: DataSource?
-    var refreshInterval: Double = 2
-    var propertyAnimationDuration: Double = 1
-    
+    struct Model {
+        let text: String
+        let alpha: Float
+    }
     private var initialDraw: (() -> Void)?
-    
+    var propertyAnimationDuration: Double = 1
     private let animation = VerticalPositionMoveAnimation()
     
     override init(frame: CGRect) {
@@ -34,7 +28,6 @@ final class FloatingLabel: UILabel, AutoRefreshable, PropertyAnimatable {
     }
     
     private func sharedInit() {
-        beginRefreshing()
         initialDraw = {
             self.animation.add(on: self.layer)
         }
@@ -42,6 +35,7 @@ final class FloatingLabel: UILabel, AutoRefreshable, PropertyAnimatable {
     
     deinit {
         animation.removeFromSuperlayer()
+        stopRefreshing()
     }
     
     override func draw(_ rect: CGRect) {
@@ -50,12 +44,15 @@ final class FloatingLabel: UILabel, AutoRefreshable, PropertyAnimatable {
         initialDraw = nil
     }
     
-    func refresh(_ dataSource: DataSource?) {
-        if let data = dataSource?() {
-            self.text = data.text
-            animate {
-                self.alpha = CGFloat(data.alpha)
-            }
+    // MARK: - AutoRefreshable -
+    var timer: Timer?
+    var refreshInterval: Double = 2
+    var dataSource: (() -> Model)?
+    
+    func refresh(with data: Model) {
+        text = data.text
+        animate { [weak self] in
+            self?.alpha = CGFloat(data.alpha)
         }
     }
 }
