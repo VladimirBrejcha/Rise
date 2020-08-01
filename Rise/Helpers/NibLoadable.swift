@@ -3,7 +3,7 @@
 //  Rise
 //
 //  Created by Владимир Королев on 10.10.2019.
-//  Copyright © 2019 VladimirBrejcha. All rights reserved.
+//  Copyright © 2019-2020 VladimirBrejcha. All rights reserved.
 //
 
 import UIKit
