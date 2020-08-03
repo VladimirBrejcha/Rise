@@ -7,30 +7,25 @@
 //
 
 import UIKit
+import SelectableStackView
 
 final class DaysView:
     DesignableContainerView,
-    UICollectionViewDelegateFlowLayout
+    UICollectionViewDelegateFlowLayout,
+    SelectableStackViewDelegate
 {
-    @IBOutlet private weak var segmentedControl: DaysSegmentedControlView!
+    @IBOutlet private weak var segmentedControl: SelectableStackView!
     @IBOutlet weak var collectionView: DaysCollectionView!
+    
+    private var shouldCenter = true
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         collectionView.delegate = self
-        
-        segmentedControl.onSegmentTouch = { segment in
-            let item = segment.rawValue * 2
-            self.collectionView?.scrollToItem(
-                at: IndexPath(item: item, section: 0),
-                at: .centeredHorizontally,
-                animated: true
-            )
-        }
+        segmentedControl.delegate = self
+        segmentedControl.select(true, at: 1)
     }
-    
-    private var shouldCenter = true
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -53,7 +48,10 @@ final class DaysView:
                height: (collectionView.bounds.height / 2) - 5)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int
+    ) -> CGFloat {
         10
     }
     
@@ -63,7 +61,23 @@ final class DaysView:
         let w = scrollView.bounds.size.width
         let currentPage = Int(ceil(x/w))
         if !(currentPage > 2 || currentPage < 0) {
-            segmentedControl.selectButton(DaysSegmentedControlViewButtonDay(rawValue: currentPage) ?? .today)
+            segmentedControl.select(true, at: currentPage)
+        }
+    }
+    
+    // MARK: - SelectableStackViewDelegate -
+    func didSelect(
+        _ select: Bool,
+        at index: Index,
+        on selectableStackView: SelectableStackView
+    ) {
+        if select {
+            let item = index * 2
+            self.collectionView?.scrollToItem(
+                at: IndexPath(item: item, section: 0),
+                at: .centeredHorizontally,
+                animated: true
+            )
         }
     }
 }

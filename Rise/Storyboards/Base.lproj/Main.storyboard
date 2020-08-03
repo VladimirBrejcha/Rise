@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Upr-F1-t92">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Upr-F1-t92">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -13,7 +13,7 @@
         <scene sceneID="x3b-qG-Bv2">
             <objects>
                 <viewController storyboardIdentifier="TodayStoryViewController" definesPresentationContext="YES" id="zaJ-cb-1ng" customClass="TodayStoryViewController" customModule="Rise" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="CxZ-qH-yJ3">
+                    <view key="view" contentMode="scaleToFill" id="CxZ-qH-yJ3" customClass="TodayView" customModule="Rise" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -53,10 +53,10 @@
                                             <outlet property="delegate" destination="GMJ-xI-VUX" id="THC-Jc-HLE"/>
                                         </connections>
                                     </collectionView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="1So-Po-EsV" customClass="SingleSelectableStackView" customModule="Rise" customModuleProvider="target">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="1So-Po-EsV" customClass="SelectableStackView" customModule="SelectableStackView">
                                         <rect key="frame" x="10" y="296" width="374" height="18"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xKc-rS-Ifx" customClass="TouchObservableButton" customModule="Rise" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xKc-rS-Ifx" customClass="SelectableStackViewButton" customModule="Rise" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="124.5" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <state key="normal" title="yesterday">
@@ -66,7 +66,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ROw-AF-K5u" customClass="TouchObservableButton" customModule="Rise" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ROw-AF-K5u" customClass="SelectableStackViewButton" customModule="Rise" customModuleProvider="target">
                                                 <rect key="frame" x="124.5" y="0.0" width="125" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <state key="normal" title="today">
@@ -76,7 +76,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SaR-h9-8iw" customClass="TouchObservableButton" customModule="Rise" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SaR-h9-8iw" customClass="SelectableStackViewButton" customModule="Rise" customModuleProvider="target">
                                                 <rect key="frame" x="249.5" y="0.0" width="124.5" height="18"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <state key="normal" title="tomorrow">
@@ -87,6 +87,10 @@
                                                 </state>
                                             </button>
                                         </subviews>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="noSelectionAllowed" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="multipleSelectionAllowed" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.070000000000000007" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -158,12 +162,15 @@
                             <constraint firstItem="x9i-c1-Zds" firstAttribute="top" secondItem="A4H-GS-uQy" secondAttribute="bottom" constant="8" id="zrb-Jq-6Fq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ury-MB-qCt"/>
+                        <connections>
+                            <outlet property="daysView" destination="GMJ-xI-VUX" id="3Vj-rV-N6b"/>
+                            <outlet property="descriptionLabel" destination="yuw-uY-MJR" id="SgW-Ks-YKp"/>
+                            <outlet property="timeToSleepLabel" destination="A4H-GS-uQy" id="1gt-0a-YbQ"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="" id="TXr-v4-zcJ"/>
                     <connections>
-                        <outlet property="descriptionLabel" destination="yuw-uY-MJR" id="zUl-yD-4hh"/>
-                        <outlet property="mainContainerView" destination="GMJ-xI-VUX" id="b40-8L-O7w"/>
-                        <outlet property="timeToSleepLabel" destination="A4H-GS-uQy" id="TTE-If-lhY"/>
+                        <outlet property="todayView" destination="CxZ-qH-yJ3" id="AYE-F2-xbS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jGW-AY-dG7" userLabel="First Responder" sceneMemberID="firstResponder"/>
