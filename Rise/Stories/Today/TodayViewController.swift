@@ -124,13 +124,14 @@ final class TodayViewController: UIViewController {
         }
     }
     
+    // MARK: - Private
     private func requestSunTime() {
         getSunTime.execute(for: (numberOfDays: 3, day: NoonedDay.yesterday.date)) { [weak self] result in
             if case .success (let sunTime) = result { self?.updateDaysSunView(with: sunTime) }
             if case .failure = result { self?.updateDaysSunView(with: nil) }
         }
     }
-    // MARK: - Update days view
+    
     private func updateDaysSunView(with sunTimes: [SunTime]?) {
         var itemsToReload = [Int]()
         
@@ -182,7 +183,6 @@ final class TodayViewController: UIViewController {
         todayView.daysCollectionView.indexPath(for: cell)?.row
     }
     
-    // MARK: - Floating label data source
     private func floatingLabelDataSource() -> FloatingLabel.Model {
         guard let plan = latestUsedPlan else {
             return FloatingLabel.Model(text: "", alpha: 0)
@@ -255,10 +255,3 @@ final class TodayViewController: UIViewController {
             : updateDaysPlanView(with: latestUsedPlan)
     }
 }
-
-fileprivate extension Int {
-    var isEven: Bool { return self % 2 == 0 }
-    
-    var isOdd: Bool { return self % 2 != 0 }
-}
-
