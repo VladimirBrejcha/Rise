@@ -42,7 +42,6 @@ final class TodayViewController: UIViewController {
     }
     private var viewIsVisible: Bool = false
     private var needsUpdate: Bool = true
-    private let player = AudioPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,8 +99,6 @@ final class TodayViewController: UIViewController {
                 )
             }
         }
-        //        playSound()
-        try! player.play(sound: AlarmSounds.bellAlarm)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

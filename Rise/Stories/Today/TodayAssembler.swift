@@ -9,11 +9,11 @@
 import Foundation
 
 final class TodayAssembler: StoryAssembler {
-    typealias View = TodayStoryViewController
+    typealias View = TodayViewController
     
-    func assemble() -> TodayStoryViewController {
+    func assemble() -> TodayViewController {
         let controller = Storyboards.main.instantiateViewController(
-            of: TodayStoryViewController.self
+            of: TodayViewController.self
         )
         controller.getSunTime = DomainLayer.getSunTime
         controller.getPlan = DomainLayer.getPlan
