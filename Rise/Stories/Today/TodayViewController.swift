@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class TodayStoryViewController: UIViewController {
+final class TodayViewController: UIViewController {
     @IBOutlet private var todayView: TodayView!
     
     private typealias CellConfigurator
@@ -27,23 +27,17 @@ final class TodayStoryViewController: UIViewController {
     private var collectionDataSource: CollectionDataSource!
     private var cellModels: [DaysCollectionCell.Model] {
         get {
-            guard let dataSource = collectionDataSource
-                else {
-                    return []
+            if let dataSource = collectionDataSource {
+                return dataSource
+                    .items
+                    .compactMap { $0 as? CellConfigurator }
+                    .map { $0.model }
+            } else {
+                return []
             }
-            return dataSource
-                .items
-                .compactMap { $0 as? CellConfigurator }
-                .map { $0.model }
-            
         }
         set {
-            guard let dataSource = collectionDataSource
-                else {
-                    return
-            }
-            dataSource.items = newValue
-                .map { CellConfigurator(model: $0) }
+            collectionDataSource?.items = newValue.map { CellConfigurator(model: $0) }
         }
     }
     private var viewIsVisible: Bool = false
