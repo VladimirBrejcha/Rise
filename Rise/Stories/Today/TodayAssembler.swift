@@ -6,8 +6,6 @@
 //  Copyright © 2020 VladimirBrejcha. All rights reserved.
 //
 
-import Foundation
-
 final class TodayAssembler: StoryAssembler {
     typealias View = TodayViewController
     

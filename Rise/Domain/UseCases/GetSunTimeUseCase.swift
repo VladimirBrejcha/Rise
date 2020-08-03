@@ -9,23 +9,20 @@
 import Foundation
 
 protocol GetSunTime {
-    func execute(for requestValue: (numberOfDays: Int, day: Date),
-                  completion: @escaping (Result<[SunTime], Error>) -> Void)
+    func callAsFunction(for requestValue: (numberOfDays: Int, day: Date),
+                        completion: @escaping (Result<[SunTime], Error>) -> Void)
 }
 
 final class GetSunTimeUseCase: GetSunTime {
     private let locationRepository: LocationRepository
     private let sunTimeRepository: SunTimeRepository
     
-    required init(
-        with locationRepository: LocationRepository,
-        and sunTimeRepository: SunTimeRepository
-    ) {
+    init(_ locationRepository: LocationRepository, _ sunTimeRepository: SunTimeRepository) {
         self.locationRepository = locationRepository
         self.sunTimeRepository = sunTimeRepository
     }
     
-    func execute(
+    func callAsFunction(
         for requestValue: (numberOfDays: Int, day: Date),
         completion: @escaping (Result<[SunTime], Error>) -> Void
     ) {

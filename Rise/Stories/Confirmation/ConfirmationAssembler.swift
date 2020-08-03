@@ -6,8 +6,6 @@
 //  Copyright © 2020 VladimirBrejcha. All rights reserved.
 //
 
-import Foundation
-
 final class ConfirmationAssembler: StoryAssembler {
     typealias View = ConfirmationViewController
     

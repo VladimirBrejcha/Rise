@@ -17,12 +17,6 @@ final class ConfirmationViewController: UIViewController {
     var reshedulePlan: ReshedulePlan! // DI
     
     private var yesterdayPlanToSleepTimeString: String?
-    private var descriptionString: String {
-        yesterdayPlanToSleepTimeString != nil
-            ? "Confirm if you went sleep at the \(yesterdayPlanToSleepTimeString!) o'clock yesterday or reshedule Rise plan to match your current sleep schedule"
-            : "Confirm if you went sleep at the planned time yesterday or reshedule Rise plan to match your current sleep schedule"
-    }
-    
     private var shouldDismissAfterAppear = false
     
     override func viewDidLoad() {
@@ -61,32 +55,24 @@ final class ConfirmationViewController: UIViewController {
                 return
         }
         let confirmed = (try? confirmPlan.checkIfConfirmed()) ?? false
-        if !confirmed {
-            shouldDismissAfterAppear = true
-            return
-        }
         let yesterday = NoonedDay.yesterday.date
-        guard let yesterdayDailyTime = try? getDailyTime.execute(for: yesterday)
-            else {
+        let daysMissed = DateInterval(start: plan.latestConfirmedDay, end: yesterday).durationDays
+        guard
+            let yesterdayDailyTime = try? getDailyTime(for: yesterday),
+            daysMissed > 0,
+            !confirmed  else {
                 shouldDismissAfterAppear = true
                 return
         }
-
+        
+        confirmationView.titleText = daysMissed == 1
+            ? Model.Title.missedOneDay
+            : Model.Title.missedMultipleDays
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
-        yesterdayPlanToSleepTimeString = dateFormatter.string(from: yesterdayDailyTime.sleep)
-
-        let daysMissed = DateInterval(start: plan.latestConfirmedDay, end: yesterday).durationDays
-        if daysMissed == 0 {
-            shouldDismissAfterAppear = true
-            return
-        }
-        if daysMissed == 1 {
-            confirmationView.titleText = "You did not show up last day"
-        } else {
-            confirmationView.titleText = "You did not show up previous days"
-        }
-        confirmationView.descriptionText = descriptionString
+        let plannedTime = dateFormatter.string(from: yesterdayDailyTime.sleep)
+        confirmationView.descriptionText = Model.Description.withPlannedTime(plannedTime)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -94,6 +80,23 @@ final class ConfirmationViewController: UIViewController {
         
         if shouldDismissAfterAppear {
             dismiss(animated: true)
+        }
+    }
+    
+    // MARK: - Model -
+    private struct Model {
+        struct Description {
+            static let updating = "Rise plan is being updated..."
+            static let completed = "Successfully completed"
+            static func withPlannedTime(_ time: String) -> String {
+                "Confirm if you went sleep at the \(time) o'clock yesterday or reshedule Rise plan to match your current sleep schedule"
+            }
+        }
+        struct Title {
+            static let missedOneDay = "You did not show up last day"
+            static let missedMultipleDays = "You did not show up previous days"
+            static let resheduling = "Resheduling"
+            static let `continue` = "Continue"
         }
     }
 }

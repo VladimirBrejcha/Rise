@@ -6,8 +6,6 @@
 //  Copyright © 2020 VladimirBrejcha. All rights reserved.
 //
 
-import Foundation
-
 final class DomainLayer {
     static var getPlan: GetPlan {
         GetPlanUseCase(planRepository: DataLayer.defaultRisePlanRepository)
@@ -25,10 +23,10 @@ final class DomainLayer {
         ObservePlanUseCase(planRepository: DataLayer.defaultRisePlanRepository)
     }
     static var getSunTime: GetSunTime {
-        GetSunTimeUseCase(with: DataLayer.locationRepository, and: DataLayer.sunTimeRepository)
+        GetSunTimeUseCase(DataLayer.locationRepository, DataLayer.sunTimeRepository)
     }
     static var getDailyTime: GetDailyTime {
-        GetDailyTimeUseCase(planRepository: DataLayer.defaultRisePlanRepository)
+        GetDailyTimeUseCase(DataLayer.defaultRisePlanRepository)
     }
     static var pausePlan: PausePlan {
         PausePlanUseCase(planRepository: DataLayer.defaultRisePlanRepository)

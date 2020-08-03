@@ -9,17 +9,17 @@
 import Foundation
 
 protocol GetDailyTime {
-    func execute(for date: Date) throws -> DailyPlanTime
+    func callAsFunction(for date: Date) throws -> DailyPlanTime
 }
 
 final class GetDailyTimeUseCase: GetDailyTime {
     private let planRepository: RisePlanRepository
     
-    required init(planRepository: RisePlanRepository) {
+    init(_ planRepository: RisePlanRepository) {
         self.planRepository = planRepository
     }
     
-    func execute(for date: Date) throws -> DailyPlanTime {
+    func callAsFunction(for date: Date) throws -> DailyPlanTime {
         let plan = try planRepository.get()
         let date = date.appending(days: -plan.daysMissed).noon
         if plan.dateInterval.start > date {

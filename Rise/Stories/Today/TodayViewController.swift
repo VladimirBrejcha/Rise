@@ -74,7 +74,7 @@ final class TodayViewController: UIViewController {
             guard let self = self else { return }
             self.latestUsedPlan = plan
             self.viewIsVisible
-                ? { self.todayView.timeToSleepDataSource = self.floatingLabelDataSource
+                ? { self.todayView.timeToSleepDataSource = self.makeFloatingLabelModel
                     self.updateDaysPlanView(with: plan)}()
                 : { self.needsUpdate = true }()
         }
@@ -85,7 +85,7 @@ final class TodayViewController: UIViewController {
         
         viewIsVisible = true
         if needsUpdate {
-            todayView.timeToSleepDataSource = floatingLabelDataSource
+            todayView.timeToSleepDataSource = makeFloatingLabelModel
             self.updateDaysPlanView(with: latestUsedPlan)
             needsUpdate = false
         }
@@ -103,7 +103,7 @@ final class TodayViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-                viewIsVisible = false
+        viewIsVisible = false
     }
     
     func reloadItem(at index: Int) {
@@ -126,9 +126,13 @@ final class TodayViewController: UIViewController {
     
     // MARK: - Private
     private func requestSunTime() {
-        getSunTime.execute(for: (numberOfDays: 3, day: NoonedDay.yesterday.date)) { [weak self] result in
-            if case .success (let sunTime) = result { self?.updateDaysSunView(with: sunTime) }
-            if case .failure = result { self?.updateDaysSunView(with: nil) }
+        getSunTime(for: (numberOfDays: 3, day: NoonedDay.yesterday.date)) { [weak self] result in
+            if case .success (let sunTime) = result {
+                self?.updateDaysSunView(with: sunTime)
+            }
+            if case .failure = result {
+                self?.updateDaysSunView(with: nil)
+            }
         }
     }
     
@@ -140,15 +144,16 @@ final class TodayViewController: UIViewController {
             
             if let sunTimes = sunTimes {
                 let sunTime = sunTimes[index.offset / 2]
-                cellModels[index.offset].state = .showingContent(left: sunTime.sunrise.HHmmString,
-                                                                 right: sunTime.sunset.HHmmString)
+                cellModels[index.offset].state = .showingContent(
+                    left: sunTime.sunrise.HHmmString,
+                    right: sunTime.sunset.HHmmString
+                )
             } else {
                 cellModels[index.offset].state = .showingError(error: "Failed to load data")
             }
             
             itemsToReload.append(index.offset)
         }
-        
         reloadItems(at: itemsToReload)
     }
     
@@ -161,20 +166,19 @@ final class TodayViewController: UIViewController {
             if plan != nil {
                 let datesArray: [NoonedDay] = [.yesterday, .today, .tomorrow]
                 
-                if let dailyTime = try? getDailyTime.execute(for: datesArray[(index.offset / 2)].date) {
-                    cellModels[index.offset].state = .showingContent(left: dailyTime.wake.HHmmString,
-                                                                     right: dailyTime.sleep.HHmmString)
+                if let dailyTime = try? getDailyTime(for: datesArray[(index.offset / 2)].date) {
+                    cellModels[index.offset].state = .showingContent(
+                        left: dailyTime.wake.HHmmString,
+                        right: dailyTime.sleep.HHmmString
+                    )
                 } else {
                     cellModels[index.offset].state = .showingInfo(info: "No plan for the day")
                 }
-                
-            }
-            else {
+            } else {
                 cellModels[index.offset].state = .showingInfo(info: "You don't have a plan yet")
             }
             
             itemsToReload.append(index.offset)
-            
         }
         reloadItems(at: itemsToReload)
     }
@@ -183,26 +187,25 @@ final class TodayViewController: UIViewController {
         todayView.daysCollectionView.indexPath(for: cell)?.row
     }
     
-    private func floatingLabelDataSource() -> FloatingLabel.Model {
+    private func makeFloatingLabelModel() -> FloatingLabel.Model {
         guard let plan = latestUsedPlan else {
             return FloatingLabel.Model(text: "", alpha: 0)
         }
         
         if plan.paused {
             return FloatingLabel.Model(text: "Your personal plan is on pause", alpha: 0.85)
+            
         } else {
-            guard let todayDailyTime = try? getDailyTime.execute(for: Date().noon)
-                else {
-                    return FloatingLabel.Model(text: "", alpha: 0)
+            guard let todayDailyTime = try? getDailyTime(for: NoonedDay.today.date) else {
+                return FloatingLabel.Model(text: "", alpha: 0)
             }
             
             guard let minutesUntilSleep = calendar.dateComponents(
                 [.minute],
                 from: Date(),
                 to: todayDailyTime.sleep
-            ).minute
-                else {
-                    return FloatingLabel.Model(text: "", alpha: 0)
+            ).minute else {
+                return FloatingLabel.Model(text: "", alpha: 0)
             }
             
             let minutesInDay: Float = 24 * 60
@@ -241,15 +244,10 @@ final class TodayViewController: UIViewController {
     }
     
     private func repeatButtonPressed(on cell: DaysCollectionCell) {
-        guard let index = getIndexOf(cell: cell)
-            else {
-                return
-        }
+        guard let index = getIndexOf(cell: cell) else { return }
         
         cellModels[index].state = .loading
-        
         reloadItem(at: index)
-        
         index.isEven
             ? requestSunTime()
             : updateDaysPlanView(with: latestUsedPlan)

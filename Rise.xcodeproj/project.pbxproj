@@ -533,8 +533,8 @@
 			isa = PBXGroup;
 			children = (
 				7EC7392423C4EF5B00C484B8 /* ConfirmationAssembler.swift */,
-				7E84EB26239D1A5700E02050 /* ConfirmationViewController.swift */,
 				7E814E7324D8A11700EC1665 /* ConfirmationView.swift */,
+				7E84EB26239D1A5700E02050 /* ConfirmationViewController.swift */,
 			);
 			path = Confirmation;
 			sourceTree = "<group>";

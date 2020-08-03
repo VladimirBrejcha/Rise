@@ -30,8 +30,8 @@ final class PrepareToSleepPresenter: PrepareToSleepViewOutput {
     // MARK: - PrepareToSleepViewOutput -
     func viewDidLoad() {
         do {
-            toSleepTime = try getDailyTime.execute(for: NoonedDay.today.date).sleep
-            wakeUpTime = try getDailyTime.execute(for: NoonedDay.tomorrow.date).wake
+            toSleepTime = try getDailyTime(for: NoonedDay.today.date).sleep
+            wakeUpTime = try getDailyTime(for: NoonedDay.tomorrow.date).wake
             let toSleepSinceNow = toSleepTime.timeIntervalSince(Date())
             if toSleepSinceNow.isNearby {
                 view?.updateToSleep(with: "You are just in time today!")
