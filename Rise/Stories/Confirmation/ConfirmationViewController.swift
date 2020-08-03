@@ -7,96 +7,93 @@
 //
 
 import UIKit
-import LoadingView
 
-protocol ConfirmationViewInput: AnyObject {
-    func updateTitle(with text: String)
-    func updateDescription(with text: String)
-
-    func showRescheduleButton(_ show: Bool)
-    func updateConfirmButtonTitle(with text: String)
-    func showLoadingView(_ show: Bool)
+final class ConfirmationViewController: UIViewController {
+    @IBOutlet private var confirmationView: ConfirmationView!
     
-    func dismiss()
-}
-
-protocol ConfirmationViewOutput: ViewControllerLifeCycle {
-    func reshedulePressed()
-    func confirmPressed()
-}
-
-final class ConfirmationViewController:
-    UIViewController,
-    ConfirmationViewInput,
-    PropertyAnimatable
-{
-    var propertyAnimationDuration: Double = 0.3
+    var getPlan: GetPlan! // DI
+    var confirmPlan: ConfirmPlan! // DI
+    var getDailyTime: GetDailyTime! // DI
+    var reshedulePlan: ReshedulePlan! // DI
     
-    var output: ConfirmationViewOutput!
+    private var yesterdayPlanToSleepTimeString: String?
+    private var descriptionString: String {
+        yesterdayPlanToSleepTimeString != nil
+            ? "Confirm if you went sleep at the \(yesterdayPlanToSleepTimeString!) o'clock yesterday or reshedule Rise plan to match your current sleep schedule"
+            : "Confirm if you went sleep at the planned time yesterday or reshedule Rise plan to match your current sleep schedule"
+    }
     
-    @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var descriptionLabel: UILabel!
-    @IBOutlet private weak var buttonsStackView: UIStackView!
-    @IBOutlet private weak var buttonsStackViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var resheduleButton: Button!
-    @IBOutlet private weak var confirmButton: Button!
-    @IBOutlet private weak var loadingView: LoadingView!
-    @IBOutlet private weak var loadingViewHeightConstraint: NSLayoutConstraint!
+    private var shouldDismissAfterAppear = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        output.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        confirmationView.resheduleHandler = { [weak self] in
+            guard let self = self else { return }
+            do {
+                try self.reshedulePlan.execute()
+                self.confirmationView.titleText = "Resheduling"
+                self.confirmationView.descriptionText = "Rise plan is being updated..."
+                Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
+                    self.confirmationView.showRescheduleButton(false)
+                    self.confirmationView.showLoadingView(false)
+                    self.confirmationView.titleText = "Continue"
+                    self.confirmationView.descriptionText = "Successfully completed"
+                }
+            } catch {
+                // todo handle error
+                self.dismiss(animated: true)
+            }
+        }
         
-        output.viewWillAppear()
+        confirmationView.confirmHandler = { [weak self] in
+            do {
+                try self?.confirmPlan.execute()
+            } catch (let error) {
+                // todo handle error
+            }
+            self?.dismiss(animated: true)
+        }
+
+        guard let plan = try? getPlan.execute()
+            else {
+                shouldDismissAfterAppear = true
+                return
+        }
+        let confirmed = (try? confirmPlan.checkIfConfirmed()) ?? false
+        if !confirmed {
+            shouldDismissAfterAppear = true
+            return
+        }
+        let yesterday = NoonedDay.yesterday.date
+        guard let yesterdayDailyTime = try? getDailyTime.execute(for: yesterday)
+            else {
+                shouldDismissAfterAppear = true
+                return
+        }
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        yesterdayPlanToSleepTimeString = dateFormatter.string(from: yesterdayDailyTime.sleep)
+
+        let daysMissed = DateInterval(start: plan.latestConfirmedDay, end: yesterday).durationDays
+        if daysMissed == 0 {
+            shouldDismissAfterAppear = true
+            return
+        }
+        if daysMissed == 1 {
+            confirmationView.titleText = "You did not show up last day"
+        } else {
+            confirmationView.titleText = "You did not show up previous days"
+        }
+        confirmationView.descriptionText = descriptionString
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        output.viewDidAppear()
-    }
-    
-    @IBAction private func resheduleTouchUp(_ sender: Button) {
-        output.reshedulePressed()
-    }
-    
-    @IBAction private func confirmTouchUp(_ sender: Button) {
-        output.confirmPressed()
-    }
-    
-    // MARK: - ConfirmationViewInput -
-    func updateTitle(with text: String) {
-        titleLabel.text = text
-    }
-    
-    func updateDescription(with text: String) { 
-        UIView.transition(with: descriptionLabel, duration: 0.36,
-                          options: .transitionCrossDissolve,
-                          animations: { self.descriptionLabel.text = text },
-                          completion: nil)
-    }
-    
-    func showRescheduleButton(_ show: Bool) {
-        resheduleButton.isHidden = !show
-    }
-    
-    func updateConfirmButtonTitle(with text: String) {
-        confirmButton.setTitle(text, for: .normal)
-    }
-        
-    func showLoadingView(_ show: Bool) {
-        animate {
-            self.loadingView.state = show ? .loading : .hidden
-            self.buttonsStackView.alpha = show ? 0 : 1
+        if shouldDismissAfterAppear {
+            dismiss(animated: true)
         }
-    }
-    
-    func dismiss() {
-        dismiss(animated: true)
     }
 }

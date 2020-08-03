@@ -54,6 +54,7 @@
 		7E708A4023BFD92D003B5702 /* ChangePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3F23BFD92D003B5702 /* ChangePlanViewController.swift */; };
 		7E76E5A923E734C200CC4E6D /* ChangePlanAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E76E5A823E734C200CC4E6D /* ChangePlanAssembler.swift */; };
 		7E76E5AB23E734F500CC4E6D /* ChangePlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E76E5AA23E734F500CC4E6D /* ChangePlan.storyboard */; };
+		7E814E7424D8A11700EC1665 /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E814E7324D8A11700EC1665 /* ConfirmationView.swift */; };
 		7E82C5CF24033BC500DC14CE /* PlanInfoTableCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E82C5CE24033BC500DC14CE /* PlanInfoTableCellModel.swift */; };
 		7E84EB25239D19CF00E02050 /* Confirmation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E84EB24239D19CF00E02050 /* Confirmation.storyboard */; };
 		7E84EB27239D1A5700E02050 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E84EB26239D1A5700E02050 /* ConfirmationViewController.swift */; };
@@ -114,7 +115,6 @@
 		7EB9F35623C37733002A6DD3 /* StoryAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9F35523C37733002A6DD3 /* StoryAssembler.swift */; };
 		7EB9F35A23C389BF002A6DD3 /* DataLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9F35923C389BF002A6DD3 /* DataLayer.swift */; };
 		7EBE900723C9231200043651 /* RisePlanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBE900623C9231200043651 /* RisePlanTests.swift */; };
-		7EC7392323C4ED2100C484B8 /* ConfirmationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC7392223C4ED2100C484B8 /* ConfirmationPresenter.swift */; };
 		7EC7392523C4EF5B00C484B8 /* ConfirmationAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC7392423C4EF5B00C484B8 /* ConfirmationAssembler.swift */; };
 		7ECD2C6F241832B300408C4B /* ReshedulePlanUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD2C6E241832B300408C4B /* ReshedulePlanUseCase.swift */; };
 		7ECD2C722419168600408C4B /* ChangePlanButtonTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD2C702419168600408C4B /* ChangePlanButtonTableCell.swift */; };
@@ -227,6 +227,7 @@
 		7E708A3F23BFD92D003B5702 /* ChangePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanViewController.swift; sourceTree = "<group>"; };
 		7E76E5A823E734C200CC4E6D /* ChangePlanAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanAssembler.swift; sourceTree = "<group>"; };
 		7E76E5AA23E734F500CC4E6D /* ChangePlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChangePlan.storyboard; sourceTree = "<group>"; };
+		7E814E7324D8A11700EC1665 /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
 		7E82C5CE24033BC500DC14CE /* PlanInfoTableCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanInfoTableCellModel.swift; sourceTree = "<group>"; };
 		7E84EB24239D19CF00E02050 /* Confirmation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Confirmation.storyboard; sourceTree = "<group>"; };
 		7E84EB26239D1A5700E02050 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
@@ -288,7 +289,6 @@
 		7EBE900423C9231200043651 /* RiseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RiseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EBE900623C9231200043651 /* RisePlanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RisePlanTests.swift; sourceTree = "<group>"; };
 		7EBE900823C9231200043651 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7EC7392223C4ED2100C484B8 /* ConfirmationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationPresenter.swift; sourceTree = "<group>"; };
 		7EC7392423C4EF5B00C484B8 /* ConfirmationAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationAssembler.swift; sourceTree = "<group>"; };
 		7ECD2C6E241832B300408C4B /* ReshedulePlanUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReshedulePlanUseCase.swift; sourceTree = "<group>"; };
 		7ECD2C702419168600408C4B /* ChangePlanButtonTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanButtonTableCell.swift; sourceTree = "<group>"; };
@@ -532,7 +532,7 @@
 			children = (
 				7EC7392423C4EF5B00C484B8 /* ConfirmationAssembler.swift */,
 				7E84EB26239D1A5700E02050 /* ConfirmationViewController.swift */,
-				7EC7392223C4ED2100C484B8 /* ConfirmationPresenter.swift */,
+				7E814E7324D8A11700EC1665 /* ConfirmationView.swift */,
 			);
 			path = Confirmation;
 			sourceTree = "<group>";
@@ -1129,6 +1129,7 @@
 				7EB9F34623C20379002A6DD3 /* DeletePlanUseCase.swift in Sources */,
 				7EB9F35623C37733002A6DD3 /* StoryAssembler.swift in Sources */,
 				7EB26953234F99AE008AEB3D /* Button.swift in Sources */,
+				7E814E7424D8A11700EC1665 /* ConfirmationView.swift in Sources */,
 				7EB1C0332340F9550028237E /* PersonalPlanViewController.swift in Sources */,
 				7EA38AE623783FFD0007919B /* DefaultLocationRemoteDataSource.swift in Sources */,
 				7EF4C1A0240436D70098135A /* ChangePlanSliderTableCellModel.swift in Sources */,
@@ -1238,7 +1239,6 @@
 				7E98FE67231C3D5C0065FB09 /* UserDefaultsManager.swift in Sources */,
 				7E31497D23425CA600941606 /* TableViewDataSource.swift in Sources */,
 				7EB9F34C23C20504002A6DD3 /* GetSunTimeUseCase.swift in Sources */,
-				7EC7392323C4ED2100C484B8 /* ConfirmationPresenter.swift in Sources */,
 				7E708A3223BF527B003B5702 /* CreatePlanPageViewController.swift in Sources */,
 				7EB9F34823C203E6002A6DD3 /* GetPlanUseCase.swift in Sources */,
 				92E77AF822A5303400E5E21C /* SettingsViewController.swift in Sources */,

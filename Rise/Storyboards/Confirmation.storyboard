@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,7 +12,7 @@
         <scene sceneID="b6j-6B-Exp">
             <objects>
                 <viewController storyboardIdentifier="ConfirmationViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="currentContext" id="2AF-jQ-OVM" customClass="ConfirmationViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="my1-mn-SZj">
+                    <view key="view" contentMode="scaleToFill" id="my1-mn-SZj" customClass="ConfirmationView" customModule="Rise" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -39,6 +39,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
+                                                    <action selector="resheduleTouchUp:" destination="my1-mn-SZj" eventType="touchUpInside" id="8Vw-wb-JEW"/>
                                                     <action selector="resheduleTouchUp:" destination="2AF-jQ-OVM" eventType="touchUpInside" id="DAC-lm-jIQ"/>
                                                 </connections>
                                             </button>
@@ -50,7 +51,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="confirmTouchUp:" destination="2AF-jQ-OVM" eventType="touchUpInside" id="FGZ-ce-uIL"/>
+                                                    <action selector="confirmTouchUp:" destination="my1-mn-SZj" eventType="touchUpInside" id="t5Z-uT-evZ"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -111,15 +112,19 @@
                             <constraint firstItem="1CN-Nj-H2c" firstAttribute="leading" secondItem="Rmv-Kk-P7W" secondAttribute="leading" constant="10" id="HKJ-ps-ijX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Rmv-Kk-P7W"/>
+                        <connections>
+                            <outlet property="buttonsStackView" destination="RRi-hd-6Dt" id="OX5-v3-HpF"/>
+                            <outlet property="buttonsStackViewHeightConstraint" destination="YOe-mw-iLV" id="2We-A0-iFB"/>
+                            <outlet property="confirmButton" destination="G6C-XR-Plh" id="JXx-OO-7OL"/>
+                            <outlet property="descriptionLabel" destination="Qox-KD-r3e" id="FqH-Td-CA9"/>
+                            <outlet property="loadingView" destination="aXp-8r-IzJ" id="skZ-Nh-iwz"/>
+                            <outlet property="resheduleButton" destination="WHD-tR-u4h" id="rZU-0S-gXQ"/>
+                            <outlet property="titleLabel" destination="8ur-nU-zko" id="l9A-Qu-mDB"/>
+                        </connections>
                     </view>
                     <connections>
-                        <outlet property="buttonsStackView" destination="RRi-hd-6Dt" id="sNy-qg-hUu"/>
-                        <outlet property="buttonsStackViewHeightConstraint" destination="YOe-mw-iLV" id="Nhv-MZ-YTm"/>
-                        <outlet property="confirmButton" destination="G6C-XR-Plh" id="0pz-xE-U38"/>
-                        <outlet property="descriptionLabel" destination="Qox-KD-r3e" id="dg6-Hl-PV3"/>
+                        <outlet property="confirmationView" destination="my1-mn-SZj" id="E1N-kC-Uhh"/>
                         <outlet property="loadingView" destination="aXp-8r-IzJ" id="7Bu-RS-Kdx"/>
-                        <outlet property="resheduleButton" destination="WHD-tR-u4h" id="kfP-wP-gUU"/>
-                        <outlet property="titleLabel" destination="8ur-nU-zko" id="qIy-aT-KpF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="icI-Am-4kG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
