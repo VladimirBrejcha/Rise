@@ -14,7 +14,6 @@
 		7E0A2E3A239D831F00E39C83 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0A2E39239D831F00E39C83 /* SettingsPresenter.swift */; };
 		7E0B88F72455BEF400BC3CF5 /* SelectableStackViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0B88F52455BEF400BC3CF5 /* SelectableStackViewButton.swift */; };
 		7E0EACCA241BF05800B8A0A2 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0EACC9241BF05800B8A0A2 /* Color.swift */; };
-		7E14DCE324438D080041F0F9 /* SelectionObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E14DCE224438D080041F0F9 /* SelectionObservable.swift */; };
 		7E162FF1243D0E22004C68B1 /* AutoRefreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E162FF0243D0E22004C68B1 /* AutoRefreshable.swift */; };
 		7E173372240D9F7A0028FDBE /* DomainLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E173371240D9F7A0028FDBE /* DomainLayer.swift */; };
 		7E173375241044D70028FDBE /* SunTimeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E173374241044D70028FDBE /* SunTimeRepository.swift */; };
@@ -82,9 +81,6 @@
 		7EA38AE623783FFD0007919B /* DefaultLocationRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA38AE523783FFD0007919B /* DefaultLocationRemoteDataSource.swift */; };
 		7EA38AE92378526F0007919B /* LocationData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7EA38AE72378526F0007919B /* LocationData.xcdatamodeld */; };
 		7EA38AEC237853230007919B /* DefaultLocationLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA38AEB237853230007919B /* DefaultLocationLocalDataSource.swift */; };
-		7EA39D2F244B35870096C49E /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA39D2E244B35870096C49E /* Observable.swift */; };
-		7EA39D32244B35F40096C49E /* MultipleSelectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA39D31244B35F40096C49E /* MultipleSelectable.swift */; };
-		7EA39D34244B360D0096C49E /* SingleSelectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA39D33244B360D0096C49E /* SingleSelectable.swift */; };
 		7EA7BA0A2354F1810051A92D /* DaysCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA7BA092354F1810051A92D /* DaysCollectionView.swift */; };
 		7EA7BA0C2354F2510051A92D /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA7BA0B2354F2510051A92D /* CollectionView.swift */; };
 		7EB196D8239DBA9900E6C40B /* ViewControllerLifeCycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB196D7239DBA9900E6C40B /* ViewControllerLifeCycle.swift */; };
@@ -137,11 +133,6 @@
 		7EEB1E0D24424010001ABE4A /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB1E0C24424010001ABE4A /* AudioPlayer.swift */; };
 		7EEB1E0F2443369F001ABE4A /* bellAlarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7EEB1E0E2443369F001ABE4A /* bellAlarm.wav */; };
 		7EEB1E122443370F001ABE4A /* AlarmSounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB1E112443370F001ABE4A /* AlarmSounds.swift */; };
-		7EEB1E1624436369001ABE4A /* Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB1E1524436369001ABE4A /* Selectable.swift */; };
-		7EEB1E1824436384001ABE4A /* Selecting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB1E1724436384001ABE4A /* Selecting.swift */; };
-		7EEB1E1A24437329001ABE4A /* ItemsContainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB1E1924437329001ABE4A /* ItemsContainable.swift */; };
-		7EEB1E1D244376E2001ABE4A /* IndexSelecting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB1E1C244376E2001ABE4A /* IndexSelecting.swift */; };
-		7EEB1E1F244376F3001ABE4A /* ItemSelecting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB1E1E244376F3001ABE4A /* ItemSelecting.swift */; };
 		7EEB3CD524198ADB003981B7 /* Sleep.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EEB3CD424198ADB003981B7 /* Sleep.storyboard */; };
 		7EF0B2E024032CD20079F72C /* ProgressTableCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF0B2DF24032CD20079F72C /* ProgressTableCellModel.swift */; };
 		7EF0B2E2240330F90079F72C /* PersonalPlanTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF0B2E1240330F90079F72C /* PersonalPlanTableView.swift */; };
@@ -190,7 +181,6 @@
 		7E0A2E39239D831F00E39C83 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		7E0B88F52455BEF400BC3CF5 /* SelectableStackViewButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectableStackViewButton.swift; sourceTree = "<group>"; };
 		7E0EACC9241BF05800B8A0A2 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		7E14DCE224438D080041F0F9 /* SelectionObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionObservable.swift; sourceTree = "<group>"; };
 		7E162FF0243D0E22004C68B1 /* AutoRefreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRefreshable.swift; sourceTree = "<group>"; };
 		7E173371240D9F7A0028FDBE /* DomainLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainLayer.swift; sourceTree = "<group>"; };
 		7E173374241044D70028FDBE /* SunTimeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeRepository.swift; sourceTree = "<group>"; };
@@ -256,9 +246,6 @@
 		7EA38AE523783FFD0007919B /* DefaultLocationRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLocationRemoteDataSource.swift; sourceTree = "<group>"; };
 		7EA38AE82378526F0007919B /* LocationData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocationData.xcdatamodel; sourceTree = "<group>"; };
 		7EA38AEB237853230007919B /* DefaultLocationLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLocationLocalDataSource.swift; sourceTree = "<group>"; };
-		7EA39D2E244B35870096C49E /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
-		7EA39D31244B35F40096C49E /* MultipleSelectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleSelectable.swift; sourceTree = "<group>"; };
-		7EA39D33244B360D0096C49E /* SingleSelectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSelectable.swift; sourceTree = "<group>"; };
 		7EA7BA092354F1810051A92D /* DaysCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCollectionView.swift; sourceTree = "<group>"; };
 		7EA7BA0B2354F2510051A92D /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		7EB196D7239DBA9900E6C40B /* ViewControllerLifeCycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerLifeCycle.swift; sourceTree = "<group>"; };
@@ -315,11 +302,6 @@
 		7EEB1E0C24424010001ABE4A /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		7EEB1E0E2443369F001ABE4A /* bellAlarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bellAlarm.wav; sourceTree = "<group>"; };
 		7EEB1E112443370F001ABE4A /* AlarmSounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSounds.swift; sourceTree = "<group>"; };
-		7EEB1E1524436369001ABE4A /* Selectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selectable.swift; sourceTree = "<group>"; };
-		7EEB1E1724436384001ABE4A /* Selecting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selecting.swift; sourceTree = "<group>"; };
-		7EEB1E1924437329001ABE4A /* ItemsContainable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsContainable.swift; sourceTree = "<group>"; };
-		7EEB1E1C244376E2001ABE4A /* IndexSelecting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexSelecting.swift; sourceTree = "<group>"; };
-		7EEB1E1E244376F3001ABE4A /* ItemSelecting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSelecting.swift; sourceTree = "<group>"; };
 		7EEB3CD424198ADB003981B7 /* Sleep.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sleep.storyboard; sourceTree = "<group>"; };
 		7EF0B2DF24032CD20079F72C /* ProgressTableCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTableCellModel.swift; sourceTree = "<group>"; };
 		7EF0B2E1240330F90079F72C /* PersonalPlanTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPlanTableView.swift; sourceTree = "<group>"; };
@@ -581,16 +563,6 @@
 			path = Location;
 			sourceTree = "<group>";
 		};
-		7EA39D30244B35D70096C49E /* Selectable */ = {
-			isa = PBXGroup;
-			children = (
-				7EEB1E1524436369001ABE4A /* Selectable.swift */,
-				7EA39D31244B35F40096C49E /* MultipleSelectable.swift */,
-				7EA39D33244B360D0096C49E /* SingleSelectable.swift */,
-			);
-			path = Selectable;
-			sourceTree = "<group>";
-		};
 		7EADA5E7239DA9FA00FE4843 /* DaysView */ = {
 			isa = PBXGroup;
 			children = (
@@ -765,24 +737,9 @@
 		7EEB1E142443635B001ABE4A /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				7EEB1E1B244376D1001ABE4A /* Selecting */,
-				7EEB1E1924437329001ABE4A /* ItemsContainable.swift */,
 				7EE87CEC2442241000E1BD3B /* TouchObservable.swift */,
-				7EA39D2E244B35870096C49E /* Observable.swift */,
 			);
 			path = Protocols;
-			sourceTree = "<group>";
-		};
-		7EEB1E1B244376D1001ABE4A /* Selecting */ = {
-			isa = PBXGroup;
-			children = (
-				7EA39D30244B35D70096C49E /* Selectable */,
-				7EEB1E1724436384001ABE4A /* Selecting.swift */,
-				7EEB1E1C244376E2001ABE4A /* IndexSelecting.swift */,
-				7EEB1E1E244376F3001ABE4A /* ItemSelecting.swift */,
-				7E14DCE224438D080041F0F9 /* SelectionObservable.swift */,
-			);
-			path = Selecting;
 			sourceTree = "<group>";
 		};
 		7EF0B2E324033B600079F72C /* PersonalPlanTableView */ = {
@@ -1145,15 +1102,12 @@
 				7EB29E0B241987D400116433 /* PrepareToSleepPresenter.swift in Sources */,
 				7EE87CED2442241000E1BD3B /* TouchObservable.swift in Sources */,
 				7EF4C195240412D80098135A /* ChangePlanDatePickerTableCell.swift in Sources */,
-				7EEB1E1F244376F3001ABE4A /* ItemSelecting.swift in Sources */,
-				7EEB1E1D244376E2001ABE4A /* IndexSelecting.swift in Sources */,
 				7E31497F23425D3700941606 /* ChangePlanTableView.swift in Sources */,
 				7E708A3B23BFD0C7003B5702 /* PlanCreatedCreatePlanViewController.swift in Sources */,
 				7EB9004423298902006EB9A8 /* ProgressTableViewCell.swift in Sources */,
 				7E388E38243A3C16001A28DF /* PropertyAnimatable.swift in Sources */,
 				7E97656023786AB000E3AEF2 /* SunTimeData.xcdatamodeld in Sources */,
 				7EA7BA0A2354F1810051A92D /* DaysCollectionView.swift in Sources */,
-				7EEB1E1624436369001ABE4A /* Selectable.swift in Sources */,
 				7E98FE63231C2F8C0065FB09 /* Location.swift in Sources */,
 				7E708A4023BFD92D003B5702 /* ChangePlanViewController.swift in Sources */,
 				92D7D6552296F297009321AE /* SleepViewController.swift in Sources */,
@@ -1174,7 +1128,6 @@
 				7E162FF1243D0E22004C68B1 /* AutoRefreshable.swift in Sources */,
 				7E82C5CF24033BC500DC14CE /* PlanInfoTableCellModel.swift in Sources */,
 				7E07A10123AFBEE300B9D61A /* WelcomeCreatelPlanViewController.swift in Sources */,
-				7EA39D34244B360D0096C49E /* SingleSelectable.swift in Sources */,
 				7ED8E59723BFFD5100A1E96F /* Story.swift in Sources */,
 				7EF4C198240412EC0098135A /* ChangePlanDatePickerTableCellModel.swift in Sources */,
 				7EE640492378665D005BE355 /* DefaultSunTimeRepository.swift in Sources */,
@@ -1189,14 +1142,11 @@
 				7E0834AC2387351400BA1AE8 /* DateExtensions.swift in Sources */,
 				7E708A3923BFD09B003B5702 /* WentSleepCreatePlanViewController.swift in Sources */,
 				92BC919422AB24D800BB1D19 /* GradientHelper.swift in Sources */,
-				7EA39D32244B35F40096C49E /* MultipleSelectable.swift in Sources */,
 				7E052A422352377E005D7FAD /* RiseError.swift in Sources */,
-				7E14DCE324438D080041F0F9 /* SelectionObservable.swift in Sources */,
 				92D12FDD22A44B3B0093B0A3 /* CustomTabBarController.swift in Sources */,
 				7E173377241047460028FDBE /* RisePlanRepository.swift in Sources */,
 				7E84EB27239D1A5700E02050 /* ConfirmationViewController.swift in Sources */,
 				7E541AFB23FB388D00BAD710 /* CollectionCellConfigurator.swift in Sources */,
-				7EEB1E1824436384001ABE4A /* Selecting.swift in Sources */,
 				7EB9F34223C2028D002A6DD3 /* MakePlanUseCase.swift in Sources */,
 				7E5BDADF2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift in Sources */,
 				7EE6404F23786693005BE355 /* PersistentContainer.swift in Sources */,
@@ -1212,9 +1162,7 @@
 				7E4901862340DD810034521E /* RisePlanData.xcdatamodeld in Sources */,
 				7E814E7624D8A6DE00EC1665 /* Int+Even.swift in Sources */,
 				7EFF58B9241C1E3B00D2CCEC /* SleepAssembler.swift in Sources */,
-				7EEB1E1A24437329001ABE4A /* ItemsContainable.swift in Sources */,
 				7EB9F34E23C229F2002A6DD3 /* TodayAssembler.swift in Sources */,
-				7EA39D2F244B35870096C49E /* Observable.swift in Sources */,
 				7E0B88F72455BEF400BC3CF5 /* SelectableStackViewButton.swift in Sources */,
 				7E91D9602371E4080087436F /* RisePlanObject+CoreDataProperties.swift in Sources */,
 				7EF0B2E024032CD20079F72C /* ProgressTableCellModel.swift in Sources */,

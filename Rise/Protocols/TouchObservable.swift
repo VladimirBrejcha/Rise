@@ -1,5 +1,5 @@
 //
-//  Touchable.swift
+//  TouchObservable.swift
 //  Rise
 //
 //  Created by Владимир Королев on 11.04.2020.
