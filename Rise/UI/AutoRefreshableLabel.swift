@@ -13,7 +13,5 @@ final class AutoRefreshableLabel: UILabel, AutoRefreshable {
     var dataSource: (() -> String)?
     var refreshInterval: Double = 2
     
-    func refresh(with data: String) {
-        text = data
-    }
+    func refresh(with data: String) { text = data }
 }

@@ -21,13 +21,8 @@ final class TodayView: UIView {
                 : timeToSleepLabel.beginRefreshing()
         }
     }
-    
-    var daysCollectionView: DaysCollectionView {
-        daysView.collectionView
-    }
-    
+    var daysCollectionView: DaysCollectionView { daysView.collectionView }
     var sleepTouchUpHandler: (() -> Void)?
-    
     var descriptionText: String? {
         get { descriptionLabel.text }
         set { descriptionLabel.text = newValue }
