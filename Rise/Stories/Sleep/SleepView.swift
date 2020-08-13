@@ -25,10 +25,10 @@ final class SleepView: UIView, BackgroundSettable {
     }
     
     struct Model {
-        var stopTitle: String
-        var alarmTime: String
-        var stopPressHandler: (LongPressProgressButton) -> Void
-        var currentTimeDataSource: () -> String
-        var timeLeftDataSource: () -> FloatingLabel.Model
+        let stopTitle: String
+        let alarmTime: String
+        let stopPressHandler: (LongPressProgressButton) -> Void
+        let currentTimeDataSource: () -> String
+        let timeLeftDataSource: () -> FloatingLabel.Model
     }
 }

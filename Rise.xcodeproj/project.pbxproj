@@ -78,6 +78,10 @@
 		7E98FE67231C3D5C0065FB09 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE66231C3D5C0065FB09 /* UserDefaultsManager.swift */; };
 		7E9D9C0424E58F39000772C0 /* SleepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D9C0324E58F38000772C0 /* SleepView.swift */; };
 		7E9D9C0624E59501000772C0 /* BackgroundSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D9C0524E59501000772C0 /* BackgroundSettable.swift */; };
+		7E9D9C0824E596DA000772C0 /* PrepareToSleepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D9C0724E596DA000772C0 /* PrepareToSleepView.swift */; };
+		7E9D9C0B24E59B08000772C0 /* Changeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D9C0A24E59B08000772C0 /* Changeable.swift */; };
+		7E9D9C0D24E59B21000772C0 /* ChangeableWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D9C0C24E59B21000772C0 /* ChangeableWrapper.swift */; };
+		7E9D9C0F24E5BADC000772C0 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D9C0E24E5BADC000772C0 /* FloatingButton.swift */; };
 		7EA0924222C8CF820019F2E9 /* CustomTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA0924122C8CF820019F2E9 /* CustomTransition.swift */; };
 		7EA38AE423783EFC0007919B /* DefaultLocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA38AE323783EFC0007919B /* DefaultLocationRepository.swift */; };
 		7EA38AE623783FFD0007919B /* DefaultLocationRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA38AE523783FFD0007919B /* DefaultLocationRemoteDataSource.swift */; };
@@ -94,7 +98,6 @@
 		7EB26951234F9972008AEB3D /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB26950234F9972008AEB3D /* NibLoadable.swift */; };
 		7EB26953234F99AE008AEB3D /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB26952234F99AE008AEB3D /* Button.swift */; };
 		7EB29E09241987C800116433 /* PrepareToSleepAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB29E08241987C800116433 /* PrepareToSleepAssembler.swift */; };
-		7EB29E0B241987D400116433 /* PrepareToSleepPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB29E0A241987D400116433 /* PrepareToSleepPresenter.swift */; };
 		7EB29E0D241987DD00116433 /* PrepareToSleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB29E0C241987DD00116433 /* PrepareToSleepViewController.swift */; };
 		7EB9003E23256AC9006EB9A8 /* DesignableContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9003D23256AC9006EB9A8 /* DesignableContainerView.swift */; };
 		7EB9004023256BF3006EB9A8 /* DaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9003F23256BF3006EB9A8 /* DaysView.swift */; };
@@ -244,6 +247,10 @@
 		7E98FE66231C3D5C0065FB09 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		7E9D9C0324E58F38000772C0 /* SleepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepView.swift; sourceTree = "<group>"; };
 		7E9D9C0524E59501000772C0 /* BackgroundSettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundSettable.swift; sourceTree = "<group>"; };
+		7E9D9C0724E596DA000772C0 /* PrepareToSleepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareToSleepView.swift; sourceTree = "<group>"; };
+		7E9D9C0A24E59B08000772C0 /* Changeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Changeable.swift; sourceTree = "<group>"; };
+		7E9D9C0C24E59B21000772C0 /* ChangeableWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeableWrapper.swift; sourceTree = "<group>"; };
+		7E9D9C0E24E5BADC000772C0 /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		7EA0924122C8CF820019F2E9 /* CustomTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTransition.swift; sourceTree = "<group>"; };
 		7EA38AE323783EFC0007919B /* DefaultLocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLocationRepository.swift; sourceTree = "<group>"; };
 		7EA38AE523783FFD0007919B /* DefaultLocationRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLocationRemoteDataSource.swift; sourceTree = "<group>"; };
@@ -259,7 +266,6 @@
 		7EB26950234F9972008AEB3D /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 		7EB26952234F99AE008AEB3D /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		7EB29E08241987C800116433 /* PrepareToSleepAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareToSleepAssembler.swift; sourceTree = "<group>"; };
-		7EB29E0A241987D400116433 /* PrepareToSleepPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareToSleepPresenter.swift; sourceTree = "<group>"; };
 		7EB29E0C241987DD00116433 /* PrepareToSleepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareToSleepViewController.swift; sourceTree = "<group>"; };
 		7EB9003D23256AC9006EB9A8 /* DesignableContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableContainerView.swift; sourceTree = "<group>"; };
 		7EB9003F23256BF3006EB9A8 /* DaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysView.swift; sourceTree = "<group>"; };
@@ -461,7 +467,7 @@
 			isa = PBXGroup;
 			children = (
 				7EB29E08241987C800116433 /* PrepareToSleepAssembler.swift */,
-				7EB29E0A241987D400116433 /* PrepareToSleepPresenter.swift */,
+				7E9D9C0724E596DA000772C0 /* PrepareToSleepView.swift */,
 				7EB29E0C241987DD00116433 /* PrepareToSleepViewController.swift */,
 			);
 			path = PrepareToSleep;
@@ -551,6 +557,15 @@
 				7E91D95A2371E4080087436F /* RisePlanObject+CoreDataProperties.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		7E9D9C0924E59AFD000772C0 /* Changeable */ = {
+			isa = PBXGroup;
+			children = (
+				7E9D9C0A24E59B08000772C0 /* Changeable.swift */,
+				7E9D9C0C24E59B21000772C0 /* ChangeableWrapper.swift */,
+			);
+			path = Changeable;
 			sourceTree = "<group>";
 		};
 		7EA38AEA237852FD0007919B /* Location */ = {
@@ -739,6 +754,7 @@
 		7EEB1E142443635B001ABE4A /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				7E9D9C0924E59AFD000772C0 /* Changeable */,
 				7EE87CEC2442241000E1BD3B /* TouchObservable.swift */,
 				7E9D9C0524E59501000772C0 /* BackgroundSettable.swift */,
 			);
@@ -908,6 +924,7 @@
 				7E5F292923F9638C0050DFD3 /* FloatingLabel.swift */,
 				7EE87CEE2442254A00E1BD3B /* AutoRefreshableLabel.swift */,
 				7EE87CEB2442233500E1BD3B /* LongPressProgressButton */,
+				7E9D9C0E24E5BADC000772C0 /* FloatingButton.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1101,7 +1118,6 @@
 				7E541AF923FB386B00BAD710 /* CellConfigurator.swift in Sources */,
 				7E541AF423FB259400BAD710 /* DaysCollectionCell.swift in Sources */,
 				7E4798F5239D894B007FB8F2 /* Storyboards.swift in Sources */,
-				7EB29E0B241987D400116433 /* PrepareToSleepPresenter.swift in Sources */,
 				7EE87CED2442241000E1BD3B /* TouchObservable.swift in Sources */,
 				7EF4C195240412D80098135A /* ChangePlanDatePickerTableCell.swift in Sources */,
 				7E31497F23425D3700941606 /* ChangePlanTableView.swift in Sources */,
@@ -1112,6 +1128,7 @@
 				7EA7BA0A2354F1810051A92D /* DaysCollectionView.swift in Sources */,
 				7E98FE63231C2F8C0065FB09 /* Location.swift in Sources */,
 				7E708A4023BFD92D003B5702 /* ChangePlanViewController.swift in Sources */,
+				7E9D9C0F24E5BADC000772C0 /* FloatingButton.swift in Sources */,
 				92D7D6552296F297009321AE /* SleepViewController.swift in Sources */,
 				7E541AF723FB384F00BAD710 /* ConfigurableCell.swift in Sources */,
 				7E052A40235236F1005D7FAD /* DailySunTime.swift in Sources */,
@@ -1153,10 +1170,12 @@
 				7E5BDADF2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift in Sources */,
 				7EE6404F23786693005BE355 /* PersistentContainer.swift in Sources */,
 				7E97656623786B2800E3AEF2 /* DefaultRisePlanLocalDataSource.swift in Sources */,
+				7E9D9C0B24E59B08000772C0 /* Changeable.swift in Sources */,
 				7EB196D8239DBA9900E6C40B /* ViewControllerLifeCycle.swift in Sources */,
 				7EB29E0D241987DD00116433 /* PrepareToSleepViewController.swift in Sources */,
 				7E708A3723BFD058003B5702 /* PlanDurationCreatePlanViewController.swift in Sources */,
 				7E97656E2378813700E3AEF2 /* Log.swift in Sources */,
+				7E9D9C0D24E59B21000772C0 /* ChangeableWrapper.swift in Sources */,
 				7EB196DA23A01B8F00E6C40B /* CreatePlanViewController.swift in Sources */,
 				92D7D6532296F297009321AE /* AppDelegate.swift in Sources */,
 				7EA7BA0C2354F2510051A92D /* CollectionView.swift in Sources */,
@@ -1174,6 +1193,7 @@
 				7EB1C0392340FDB00028237E /* CreatePlanPresenter.swift in Sources */,
 				7EE6404D23786678005BE355 /* DefaultSunTimeRemoteDataSource.swift in Sources */,
 				7E91D9622371E4850087436F /* DailyPlanTime.swift in Sources */,
+				7E9D9C0824E596DA000772C0 /* PrepareToSleepView.swift in Sources */,
 				7E541AFD23FB393400BAD710 /* CollectionDataSource.swift in Sources */,
 				7E9D9C0624E59501000772C0 /* BackgroundSettable.swift in Sources */,
 				7EEB1E122443370F001ABE4A /* AlarmSounds.swift in Sources */,

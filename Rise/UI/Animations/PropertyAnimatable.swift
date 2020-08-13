@@ -14,12 +14,10 @@ protocol PropertyAnimatable {
 
 extension PropertyAnimatable {
     func animate(_ animation: @escaping () -> Void) {
-        DispatchQueue.main.async {
-            UIViewPropertyAnimator(
-                duration: self.propertyAnimationDuration,
-                curve: .easeInOut,
-                animations: animation
-            ).startAnimation()
-        }
+        UIViewPropertyAnimator(
+            duration: propertyAnimationDuration,
+            curve: .easeInOut,
+            animations: animation
+        ).startAnimation()
     }
 }

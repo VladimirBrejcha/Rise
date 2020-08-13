@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-final class Button: UIButton, PropertyAnimatable, TouchObservable {
+class Button: UIButton, PropertyAnimatable, TouchObservable {
     var propertyAnimationDuration: Double = 0.1
     
     var touchDownObserver: ((Button) -> Void)?

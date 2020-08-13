@@ -8,127 +8,80 @@
 
 import UIKit
 
-protocol PrepareToSleepViewInput: AnyObject {
-    func updatePicker(with time: Date)
-    func updateWakeUp(with text: String)
-    func updateSleepDuration(with text: String)
-    func updateToSleep(with text: String)
-    func close()
-    func presentSleep(with alarm: Date)
-}
-
-protocol PrepareToSleepViewOutput: ViewControllerLifeCycle {
-    func pickerValueChanged(_ value: Date)
-    func startPressed()
-    func closePressed()
-}
-
-final class PrepareToSleepViewController: UIViewController, PrepareToSleepViewInput {
-    var output: PrepareToSleepViewOutput!
+final class PrepareToSleepViewController: UIViewController {
+    var prepareToSleepView: PrepareToSleepView!
     
-    @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var startSleepButton: Button!
-    @IBOutlet private weak var startSleepLabel: UILabel!
-    @IBOutlet private weak var wakeUpContainerheightConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var wakeUpTitleLabel: UILabel!
-    @IBOutlet private weak var wakeUpDatePicker: UIDatePicker!
-    @IBOutlet private weak var timeForSleepLabel: UILabel!
-    @IBOutlet private weak var toSleepLabel: UILabel!
+    var getDailyTime: GetDailyTime! // DI
     
-    private var wakeUpExpanded: Bool = false
+    private var toSleepTime: Date = Date()
+    private var wakeUpTime: Date = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let backgroundView = GradientHelper.makeDefaultStaticGradient(for: view.bounds)
-        view.addSubview(backgroundView)
-        view.sendSubviewToBack(backgroundView)
-        
-        toSleepLabel.text = "You are just in time with the plan!"
-        titleLabel.text = "Prepare to sleep"
-        timeForSleepLabel.text = "8 hours 30 minutes until wake up"
-        startSleepLabel.text = "begin to sleep"
-        startSleepButton.layer.cornerRadius = 0
-        startSleepButton.backgroundColor = .clear
-        startSleepButton.alpha = 0.9
-        
-        output.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        output.viewWillAppear()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        animate()
-        output.viewDidAppear()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        output.viewWillDisappear()
-    }
-    
-    @IBAction private func wakeUpContainerTouchUp(_ sender: UITapGestureRecognizer) {
-        let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut) {
-            self.wakeUpContainerheightConstraint.constant = self.wakeUpExpanded ? 50 : 200
-            self.view.layoutIfNeeded()
+        var beforeSleepMotivatingText = ""
+        do {
+            toSleepTime = try getDailyTime(for: NoonedDay.today.date).sleep
+            wakeUpTime = try getDailyTime(for: NoonedDay.tomorrow.date).wake
+            
+            let toSleepSinceNow = toSleepTime.timeIntervalSince(Date())
+            
+            if toSleepSinceNow.isNearby {
+                beforeSleepMotivatingText = "You are just in time today!"
+            } else if toSleepSinceNow > 0 {
+                beforeSleepMotivatingText = "You are early today, sleep well"
+            } else if toSleepSinceNow < 0 {
+                beforeSleepMotivatingText = "You are late today :("
+            }
+            
+        } catch RiseError.noPlanForTheDay {
+            fatalError()
+            // TODO: (vladimir) - handle errors
+        } catch {
+            fatalError()
+            // TODO: (vladimir) - handle other errors
         }
-        animator.startAnimation()
-        wakeUpExpanded.toggle()
-    }
-    
-    @IBAction private func startSleepTouchUp(_ sender: Button) {
-        output.startPressed()
-    }
-    
-    @IBAction private func closeTouchup(_ sender: UIButton) {
-        output.closePressed()
-    }
-    
-    @IBAction private func pickerValueChanged(_ sender: UIDatePicker) {
-        output.pickerValueChanged(sender.date)
-    }
-    
-    // MARK: - PrepareToSleepViewInput -
-    func updatePicker(with time: Date) {
-        wakeUpDatePicker.setDate(time, animated: true)
-    }
-    
-    func updateWakeUp(with text: String) {
-        wakeUpTitleLabel.text = text
-    }
-    
-    func updateSleepDuration(with text: String) {
-        timeForSleepLabel.text = text
-    }
-    
-    func updateToSleep(with text: String) {
-        toSleepLabel.text = text
-    }
-    
-    func close() {
-        self.dismiss(animated: true)
-    }
-    
-    func presentSleep(with alarm: Date) {
-        Presenter.present(controller: Story.sleep(alarmTime: alarm).configure(), with: .overContext, presentingController: self.presentingViewController!)
+        prepareToSleepView.setBackground(
+            GradientHelper.makeDefaultStaticGradient(for: view.bounds)
+        )
+        prepareToSleepView.model = PrepareToSleepView.Model(
+            toSleepText: beforeSleepMotivatingText,
+            title: "Prepare to sleep",
+            timeUntilWakeUpDataSource: { [weak self] in
+                "\(self?.wakeUpTime.timeIntervalSince(Date()).HHmmString ?? "") until wake up"
+            },
+            startSleepText: "begin to sleep",
+            wakeUpTitle: "Alarm at \(wakeUpTime.HHmmString)",
+            wakeUpTime: wakeUpTime,
+            wakeUpTouchHandler: { [weak self] in
+                guard let self = self else { return }
+                self.prepareToSleepView.state = self.prepareToSleepView.state == .normal
+                    ? .expanded
+                    : .normal
+            },
+            startSleepHandler: { [weak self] in
+                guard let self = self else { return }
+                // TODO: (vladimir) - optimise routing
+                self.dismiss()
+                Presenter.present(controller: Story.sleep(alarmTime: self.wakeUpTime).configure(), with: .overContext, presentingController: self.presentingViewController!)
+            },
+            closeHandler: { [weak self] in
+                self?.dismiss()
+            },
+            pickerValueChangeHandler: { [weak self] newValue in
+                self?.wakeUpTime = newValue
+            }
+        )
     }
     
     // MARK: - Private -
-    private func animate(reversed: Bool = false) {
-        DispatchQueue.main.async {
-            let animator = UIViewPropertyAnimator(duration: 2, curve: .easeInOut)
-            animator.addAnimations {
-                self.startSleepButton.transform = CGAffineTransform(translationX: 0, y: reversed ? -4 : 0) // todo bugged
-            }
-            animator.addCompletion { _ in
-                self.animate(reversed: !reversed)
-            }
-            animator.startAnimation()
-        }
+    private func dismiss() {
+        dismiss(animated: true)
+    }
+}
+
+fileprivate extension TimeInterval {
+    var isNearby: Bool {
+        toMinutes() > -10 && toMinutes() < 10
     }
 }
