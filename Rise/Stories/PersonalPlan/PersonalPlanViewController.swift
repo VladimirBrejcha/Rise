@@ -9,116 +9,111 @@
 import UIKit
 import LoadingView
 
-protocol PersonalPlanViewInput: AnyObject {
-    func present(controller: UIViewController)
-    
-    func setTableView(dataSource: UITableViewDataSource)
-    func reloadTable()
-    
-//    func showLoading()
-    func showLoadingInfo(with text: String)
-    func showContent()
-    
-    func setLeftButton(with text: String)
-    func setRightButton(with text: String, and color: UIColor)
-    func showRightButton(_ show: Bool)
-}
-
-protocol PersonalPlanViewOutput: ViewControllerLifeCycle {
-    func planPressed()
-    func pausePressed()
-}
-
 final class PersonalPlanViewController:
     UIViewController,
-    UITableViewDelegate,
-    PersonalPlanViewInput,
-    PropertyAnimatable
+    UITableViewDelegate
 {
-    var output: PersonalPlanViewOutput!
+    var personalPlanView: PersonalPlanView!
     
-    @IBOutlet private weak var planManageButtonsStackView: UIStackView!
-    @IBOutlet private var pauseButton: Button!
-    @IBOutlet private weak var planButton: UIButton!
-    @IBOutlet private weak var infomationLabel: UILabel!
-    @IBOutlet private weak var tableView: PersonalPlanTableView!
-    @IBOutlet private weak var loadingView: LoadingView!
+    private typealias ProgressCellConfigurator = TableCellConfigurator<ProgressTableViewCell, ProgressTableCellModel>
+    private typealias InfoCellConfigurator = TableCellConfigurator<PlanInfoTableViewCell, PlanInfoTableCellModel>
     
-    var propertyAnimationDuration: Double = 0.3
+    private enum RisePlanState: Equatable {
+        case planDoesntExist
+        case normal(plan: RisePlan)
+    }
+    
+    var getPlan: GetPlan! // DI
+    var pausePlan: PausePlan! // DI
+    var observePlan: ObservePlan! // DI
+    
+    private var latestUsedPlan: RisePlan?
+    
+    private var tableDataSource: TableDataSource!
+    private var cellConfigurators: [[CellConfigurator]] {
+        get {
+            if let dataSource = tableDataSource {
+                return dataSource.items
+            } else {
+                return []
+            }
+        }
+        set {
+            if let dataSource = tableDataSource {
+                dataSource.items = newValue
+            }
+        }
+    }
+    
+    private var viewIsVisible: Bool = false
+    private var needsUpdate: Bool = true
     
     // MARK: - LifeCycle -
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        tableView.delegate = self
         
-        output.viewDidLoad()
+        latestUsedPlan = try? getPlan.execute()
+        
+        tableDataSource = TableDataSource(
+            items: [
+                [emptyProgressCellConfigurator],
+                [emptyInfoCellConfigurator,
+                 emptyInfoCellConfigurator,
+                 emptyInfoCellConfigurator,
+                 emptyInfoCellConfigurator]
+            ]
+        )
+        personalPlanView.model = PersonalPlanView.Model(
+            planButtonTitle: "",
+            pauseButtonTitle: "",
+            pauseButtonTitleColor: Color.normalTitle,
+            planTouchHandler: { [weak self] in
+                guard let self = self else { return }
+                Presenter.present(
+                    controller: self.latestUsedPlan == nil
+                        ? Story.createPlan.configure()
+                        : Story.changePlan.configure(),
+                    with: .modal,
+                    presentingController: self
+                )
+            },
+            pauseTouchHandler: { [weak self] in
+                if let plan = self?.latestUsedPlan {
+                    try? self?.pausePlan.execute(pause: !plan.paused)
+                }
+            },
+            tableDataSource: tableDataSource,
+            tableDelegate: self
+        )
+        
+        observePlan.observe { [weak self] plan in
+            guard let self = self else { return }
+            self.latestUsedPlan = plan
+            self.viewIsVisible
+                ? self.updateView(with: plan)
+                : { self.needsUpdate = true }()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        output.viewWillAppear()
+        if needsUpdate {
+            updateView(with: latestUsedPlan)
+            needsUpdate = false
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        output.viewDidAppear()
+        viewIsVisible = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        output.viewWillDisappear()
-    }
-    
-    @IBAction private func planTouchUp(_ sender: Button) {
-        output.planPressed()
-    }
-    
-    @IBAction private func pauseTouchUp(_ sender: Button) {
-        output.pausePressed()
-    }
-    
-    // MARK: - PersonalPlanViewInput -
-    func present(controller: UIViewController) {
-         Presenter.present(controller: controller, with: .modal, presentingController: self)
-    }
-    
-    func setTableView(dataSource: UITableViewDataSource) {
-        tableView.dataSource = dataSource
-    }
-    
-    func reloadTable() {
-        tableView.reloadData()
-    }
-    
-    func showLoadingInfo(with text: String) {
-        animate {
-            self.tableView.alpha = 0
-            self.loadingView.state = .info(message: text)
-        }
-    }
-    
-    func showContent() {
-        animate {
-            self.loadingView.state = .hidden
-            self.tableView.alpha = 1
-        }
-    }
-    
-    func showRightButton(_ show: Bool) {
-        pauseButton.isHidden = !show
-    }
-    
-    func setRightButton(with text: String, and color: UIColor) {
-        pauseButton.setTitle(text, for: .normal)
-        pauseButton.setTitleColor(color, for: .normal)
-    }
-    
-    func setLeftButton(with text: String) {
-        planButton.setTitle(text, for: .normal)
+        viewIsVisible = false
     }
     
     // MARK: - UITableViewDelegate -
@@ -126,5 +121,82 @@ final class PersonalPlanViewController:
         indexPath.section == 0
             ? tableView.frame.size.height / 4.5
             : (tableView.frame.size.height - (tableView.frame.size.height / 4.5)) / 4
+    }
+    
+    // MARK: - Private -
+    private func updateView(with plan: RisePlan?) {
+        updateButtons(with: plan)
+        updateLoadingView(with: plan)
+        updateTableView(with: plan)
+    }
+    
+    private func updateButtons(with plan: RisePlan?) {
+        if let plan = plan {
+            personalPlanView.state = personalPlanView.state?.changing { state in
+                state.pauseButtonHidden = false
+            }
+            personalPlanView.model = personalPlanView.model?.changing { model in
+                model.pauseButtonTitle = plan.paused ? "Resume" : "Pause"
+                model.planButtonTitle = "Change"
+            }
+        } else {
+            personalPlanView.state = personalPlanView.state?.changing { state in
+                state.pauseButtonHidden = true
+            }
+            personalPlanView.model = personalPlanView.model?.changing { model in
+                model.planButtonTitle = "Create Rise plan"
+            }
+        }
+    }
+    
+    private func updateLoadingView(with plan: RisePlan?) {
+        if plan == nil {
+            personalPlanView.state = personalPlanView.state?.changing { state in
+                state.loadingViewState = .info(message: "You don't have sleep plan yet, go and create one!")
+                state.tableViewAlpha = 0
+            }
+        } else {
+            personalPlanView.state = personalPlanView.state?.changing { state in
+                state.loadingViewState = .hidden
+                state.tableViewAlpha = 1
+            }
+        }
+    }
+    
+    private func updateTableView(with plan: RisePlan?) {
+        if let plan = plan {
+            let durationText = "\(plan.sleepDurationSec.HHmmString) of sleep daily"
+            let wakeUpText = "Will wake up at \(plan.finalWakeUpTime.HHmmString)"
+            let toSleepText = "Will sleep at \(plan.finalWakeUpTime.addingTimeInterval(-plan.sleepDurationSec).HHmmString)"
+            //            let syncText = "Synchronized with sunrise"
+            let syncText = "Coming soon"
+            let planDuration = plan.dateInterval.durationDays
+            let completedDays = DateInterval(start: plan.dateInterval.start, end: plan.latestConfirmedDay).durationDays
+            let progress = (planDuration - (planDuration - completedDays)) / planDuration
+            let cellModel = ProgressTableCellModel(text: (left: "0", center: "Progress", right: "\(planDuration)"),
+                                                   progress: Float(progress))
+            
+            cellConfigurators = [
+                [ProgressCellConfigurator(model: cellModel)],
+                [InfoCellConfigurator(model: PlanInfoTableCellModel(imageName: "time", text: durationText)),
+                 InfoCellConfigurator(model: PlanInfoTableCellModel(imageName: "wakeup", text: wakeUpText)),
+                 InfoCellConfigurator(model: PlanInfoTableCellModel(imageName: "fallasleep", text: toSleepText)),
+                 InfoCellConfigurator(model: PlanInfoTableCellModel(imageName: "sun", text: syncText))]
+            ]
+            
+            personalPlanView.reloadData()
+            personalPlanView.state = personalPlanView.state?.changing { state in
+                state.loadingViewState = .hidden
+                state.tableViewAlpha = 1
+            }
+        }
+    }
+    
+    private var emptyInfoCellConfigurator: CellConfigurator {
+        InfoCellConfigurator(model: PlanInfoTableCellModel(imageName: "", text: ""))
+    }
+    
+    private var emptyProgressCellConfigurator: CellConfigurator {
+        ProgressCellConfigurator(model: ProgressTableCellModel(text: (left: "", center: "", right: ""), progress: nil))
     }
 }
