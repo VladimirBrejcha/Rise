@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,7 +13,7 @@
         <scene sceneID="yDU-6s-60W">
             <objects>
                 <viewController storyboardIdentifier="CreatePlanViewController" id="tb3-MT-84x" customClass="CreatePlanViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mrk-j1-Kya">
+                    <view key="view" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mrk-j1-Kya" customClass="CreatePlanView" customModule="Rise" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -26,7 +26,7 @@
                                 <color key="tintColor" name="LightPink"/>
                                 <state key="normal" image="cancel"/>
                                 <connections>
-                                    <action selector="closeTouchUp:" destination="tb3-MT-84x" eventType="touchUpInside" id="VPH-eA-AQ7"/>
+                                    <action selector="closeTouchUp:" destination="mrk-j1-Kya" eventType="touchUpInside" id="xNe-TA-l9A"/>
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="laz-fg-JOl">
@@ -46,7 +46,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="backTouchUp:" destination="tb3-MT-84x" eventType="touchUpInside" id="6NL-AB-E31"/>
+                                            <action selector="backTouchUp:" destination="mrk-j1-Kya" eventType="touchUpInside" id="5Gg-aw-sc0"/>
                                         </connections>
                                     </button>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t3a-mE-e9U" customClass="Button" customModule="Rise" customModuleProvider="target">
@@ -57,7 +57,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="nextTouchUp:" destination="tb3-MT-84x" eventType="touchUpInside" id="8sO-Jd-cmO"/>
+                                            <action selector="nextTouchUp:" destination="mrk-j1-Kya" eventType="touchUpInside" id="sOa-lH-EXP"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -79,11 +79,14 @@
                             <constraint firstItem="MrT-vQ-GsT" firstAttribute="bottom" secondItem="qus-zp-R0h" secondAttribute="bottom" constant="10" id="xZT-ID-Sd5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MrT-vQ-GsT"/>
+                        <connections>
+                            <outlet property="backButton" destination="TaK-KH-eXq" id="g0L-8v-hWt"/>
+                            <outlet property="buttonsStackView" destination="qus-zp-R0h" id="4VJ-vf-f3Y"/>
+                            <outlet property="nextButton" destination="t3a-mE-e9U" id="OPh-ug-cAB"/>
+                        </connections>
                     </view>
                     <connections>
-                        <outlet property="backButton" destination="TaK-KH-eXq" id="cgx-1Q-NMm"/>
-                        <outlet property="buttonsStackView" destination="qus-zp-R0h" id="VqX-62-HpL"/>
-                        <outlet property="nextButton" destination="t3a-mE-e9U" id="xEl-2H-nA1"/>
+                        <outlet property="createPlanView" destination="mrk-j1-Kya" id="owd-kv-ko9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iIt-X6-Ov6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -348,10 +351,10 @@
             </objects>
             <point key="canvasLocation" x="2245" y="23"/>
         </scene>
-        <!--Create Plan Page View Controller-->
+        <!--Page View Controller-->
         <scene sceneID="g6v-gg-l3h">
             <objects>
-                <pageViewController storyboardIdentifier="CreatePlanPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="fxt-dk-StR" customClass="CreatePlanPageViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="fxt-dk-StR" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xYS-Ru-ipF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1587" y="23"/>

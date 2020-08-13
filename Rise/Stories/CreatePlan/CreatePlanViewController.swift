@@ -8,104 +8,198 @@
 
 import UIKit
 
-protocol CreatePlanViewInput: AnyObject {
-    func show(views: [UIViewController], forwardDirection: Bool)
-    
-    func updateBackButtonText(_ text: String)
-    func updateNextButtonText(_ text: String)
-    func showBackButton(_ show: Bool)
-    func enableNextButton(_ enabled: Bool)
-    
-    func endStory()
-}
-
-protocol CreatePlanViewOutput: ViewControllerLifeCycle {
-    func backTouchUp()
-    func nextTouchUp()
-    func closeTouchUp()
-}
-
 final class CreatePlanViewController:
     UIViewController,
-    CreatePlanViewInput,
     UIAdaptivePresentationControllerDelegate
 {
-    var output: CreatePlanViewOutput!
+    @IBOutlet private var createPlanView: CreatePlanView!
     
-    private var pageController: CreatePlanPageViewController!
+    private var pageController: UIPageViewController!
     
-    @IBOutlet private weak var buttonsStackView: UIStackView!
-    @IBOutlet private weak var backButton: Button!
-    @IBOutlet private weak var nextButton: Button!
+    var makePlan: MakePlan! // DI
+    var stories: [Story]! // DI
+    
+    private var choosenSleepDuration: Int?
+    private var choosenWakeUpTime: Date?
+    private var choosenPlanDuration: Int?
+    private var choosenLastTimeWentSleep: Date?
+    private var planGenerated = false
+    
+    private var currentPage = 0
+    private var currentStory: Story { stories[currentPage] }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let backgroundView = GradientHelper.makeDefaultStaticGradient(for: view.bounds)
-        view.addSubview(backgroundView)
-        view.sendSubviewToBack(backgroundView)
+        createPlanView.setBackground(
+            GradientHelper.makeDefaultStaticGradient(for: view.bounds)
+        )
+        createPlanView.model = CreatePlanView.Model(
+            backButtonTitle: "",
+            nextButtonTitle: "Start",
+            closeHandler: { [weak self] in
+                self?.dismiss()
+            },
+            backHandler: { [weak self] in
+                guard let self = self else { return }
+                if self.stories.indices.contains(self.currentPage - 1) {
+                    self.currentPage -= 1
+                    self.updateButtons(story: self.currentStory)
+                    self.show(views: [self.currentStory.configure()], forwardDirection: false)
+                }
+            },
+            nextHandler: { [weak self] in
+                guard let self = self else { return }
+                if case .planCreatedSetupPlan = self.currentStory {
+                    self.dismiss()
+                    return
+                }
+                
+                if case .wentSleepCreatePlan = self.currentStory {
+                    if !self.planGenerated {
+                        self.planGenerated = self.generatePlan()
+                    }
+                }
+                
+                if self.stories.indices.contains(self.currentPage + 1) {
+                    self.currentPage += 1
+                    self.show(views: [self.currentStory.configure()], forwardDirection: true)
+                    self.updateButtons(story: self.currentStory)
+                }
+            }
+        )
+        updateButtons(story: currentStory)
+        show(views: [currentStory.configure()], forwardDirection: true)
         
         presentationController?.delegate = self
-        
-        output.viewDidLoad()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let pageController = segue.destination as? CreatePlanPageViewController {
+        if let pageController = segue.destination as? UIPageViewController {
             self.pageController = pageController
         }
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        output.viewWillAppear()
+    
+    // opened for DI into PageController controllers
+    func sleepDurationValueChanged(_ value: Int) {
+        choosenSleepDuration = value
+        updateButtons(story: currentStory)
     }
     
-    @IBAction private func closeTouchUp(_ sender: UIButton) {
-        output.closeTouchUp()
+    func wakeUpTimeValueChanged(_ value: Date) {
+        choosenWakeUpTime = value
+        updateButtons(story: currentStory)
     }
     
-    @IBAction private func backTouchUp(_ sender: Button) {
-        output.backTouchUp()
+    func planDurationValueChanged(_ value: Int) {
+        choosenPlanDuration = value
+        updateButtons(story: currentStory)
     }
     
-    @IBAction private func nextTouchUp(_ sender: Button) {
-        output.nextTouchUp()
+    func lastTimeWentSleepValueChanged(_ value: Date) {
+        choosenLastTimeWentSleep = value
+        updateButtons(story: currentStory)
     }
-    
-    // MARK: - SetupPlanViewInput -
-    func updateBackButtonText(_ text: String) {
-        backButton.setTitle(text, for: .normal)
-    }
-    
-    func enableNextButton(_ enabled: Bool) {
-        nextButton.isEnabled = enabled
-    }
-    
-    func updateNextButtonText(_ text: String) {
-        nextButton.setTitle(text, for: .normal)
-    }
-    
-    func showBackButton(_ show: Bool) {
-        let animator = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut) {
-            self.backButton.isHidden = !show
-        }
-        animator.startAnimation()
-    }
+    //
     
     func show(views: [UIViewController], forwardDirection: Bool) {
-        pageController.setViewControllers(views,
-                                          direction: forwardDirection ? .forward : .reverse,
-                                          animated: true, completion: nil)
-    }
-    
-    func endStory() {
-        dismiss(animated: true, completion: nil)
+        pageController.setViewControllers(
+            views,
+            direction: forwardDirection ? .forward : .reverse,
+            animated: true, completion: nil
+        )
     }
     
     // MARK: - UIAdaptivePresentationControllerDelegate -
     func presentationControllerShouldDismiss(_ presentationController: UIPresentationController) -> Bool {
-        return false
+        false
+    }
+    
+    // MARK: - Private -
+    private func dismiss() {
+        dismiss(animated: true)
+    }
+    
+    private func updateButtons(story: Story) {
+        switch story {
+        case .welcomeCreatePlan:
+            createPlanView.state = CreatePlanView.State(
+                nextButtonEnabled: true,
+                backButtonHidden: true
+            )
+            createPlanView.model = createPlanView.model?.changing{ model in
+                model.backButtonTitle = ""
+                model.nextButtonTitle = "Start"
+            }
+        case .sleepDurationCreatePlan:
+            createPlanView.state = CreatePlanView.State(
+                nextButtonEnabled: choosenSleepDuration != nil,
+                backButtonHidden: true
+            )
+            createPlanView.model = createPlanView.model?.changing{ model in
+                model.backButtonTitle = ""
+                model.nextButtonTitle = "Next"
+            }
+        case .wakeUpTimeCreatePlan:
+            createPlanView.state = CreatePlanView.State(
+                nextButtonEnabled: choosenWakeUpTime != nil,
+                backButtonHidden: false
+            )
+            createPlanView.model = createPlanView.model?.changing{ model in
+                model.backButtonTitle = "Previous"
+                model.nextButtonTitle = "Next"
+            }
+        case .planDurationCreatePlan:
+            createPlanView.state = CreatePlanView.State(
+                nextButtonEnabled: choosenPlanDuration != nil,
+                backButtonHidden: false
+            )
+            createPlanView.model = createPlanView.model?.changing{ model in
+                model.backButtonTitle = "Previous"
+                model.nextButtonTitle = "Next"
+            }
+        case .wentSleepCreatePlan:
+            createPlanView.state = CreatePlanView.State(
+                nextButtonEnabled: choosenLastTimeWentSleep != nil,
+                backButtonHidden: false
+            )
+            createPlanView.model = createPlanView.model?.changing{ model in
+                model.backButtonTitle = "Previous"
+                model.nextButtonTitle = "Create"
+            }
+        case .planCreatedSetupPlan:
+            createPlanView.state = CreatePlanView.State(
+                nextButtonEnabled: true,
+                backButtonHidden: true
+            )
+            createPlanView.model = createPlanView.model?.changing{ model in
+                model.backButtonTitle = ""
+                model.nextButtonTitle = "Great!"
+            }
+        default:
+            break
+        }
+    }
+    
+    private func generatePlan() -> Bool {
+        guard let choosenSleepDuration = choosenSleepDuration,
+            let choosenWakeUpTime = choosenWakeUpTime,
+            let choosenPlanDuration = choosenPlanDuration,
+            let choosenLastTimeWentSleep = choosenLastTimeWentSleep
+            else {
+                return false
+        }
+        
+        do {
+            try makePlan.execute(sleepDurationMin: choosenSleepDuration,
+                                 wakeUpTime: choosenWakeUpTime,
+                                 planDurationDays: choosenPlanDuration,
+                                 firstSleepTime: choosenLastTimeWentSleep)
+            return true
+        } catch {
+            // todo handle error
+            return false
+        }
     }
 }
+

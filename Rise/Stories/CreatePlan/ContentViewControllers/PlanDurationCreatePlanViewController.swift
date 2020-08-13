@@ -9,15 +9,9 @@
 import UIKit
 
 final class PlanDurationCreatePlanViewController: UIViewController {
-
-    var planDurationOutput: ((Int) -> Void)!
+    var planDurationOutput: ((Int) -> Void)! // DI
     
-    @IBOutlet weak var planDurationLabel: UILabel!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
+    @IBOutlet private weak var planDurationLabel: UILabel!
 
     @IBAction private func planDurationChanged(_ sender: UISlider) {
         let value = Int(sender.value)

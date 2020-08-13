@@ -12,15 +12,18 @@ final class CreatePlanAssembler: StoryAssembler {
     typealias View = CreatePlanViewController
     
     func assemble() -> CreatePlanViewController {
-        let controller = Storyboards.setupPlan.instantiateViewController(of: CreatePlanViewController.self)
-        let presenter = CreatePlanPresenter(view: controller, makePlan: DomainLayer.makePlan)
-        controller.output = presenter
-        presenter.stories = [.welcomeCreatePlan,
-                             .sleepDurationCreatePlan(sleepDurationOutput: presenter.sleepDurationValueChanged(_:)),
-                             .wakeUpTimeCreatePlan(wakeUpTimeOutput: presenter.wakeUpTimeValueChanged(_:)),
-                             .planDurationCreatePlan(planDurationOutput: presenter.planDurationValueChanged(_:)),
-                             .wentSleepCreatePlan(wentSleepOutput: presenter.lastTimeWentSleepValueChanged(_:)),
-                             .planCreatedSetupPlan]
+        let controller = Storyboards.setupPlan.instantiateViewController(
+            of: CreatePlanViewController.self
+        )
+        controller.makePlan = DomainLayer.makePlan
+        controller.stories = [
+            .welcomeCreatePlan,
+            .sleepDurationCreatePlan(sleepDurationOutput: controller.sleepDurationValueChanged(_:)),
+            .wakeUpTimeCreatePlan(wakeUpTimeOutput: controller.wakeUpTimeValueChanged(_:)),
+            .planDurationCreatePlan(planDurationOutput: controller.planDurationValueChanged(_:)),
+            .wentSleepCreatePlan(wentSleepOutput: controller.lastTimeWentSleepValueChanged(_:)),
+            .planCreatedSetupPlan
+        ]
         return controller
     }
 }

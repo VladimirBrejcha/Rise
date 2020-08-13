@@ -10,12 +10,7 @@ import UIKit
 
 final class WentSleepCreatePlanViewController: UIViewController {
     
-    var wentSleepTimeOutput: ((Date) -> Void)!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
+    var wentSleepTimeOutput: ((Date) -> Void)! // DI
     
     @IBAction private func wentSleepTimeChanged(_ sender: UIDatePicker) {
         wentSleepTimeOutput(sender.date)

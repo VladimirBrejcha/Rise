@@ -16,7 +16,7 @@ final class SleepDurationCreatePlanViewController: UIViewController {
     private let maximumDurationH = 10
     private let recomendedDurationH = 8
     
-    var sleepDurationOutput: ((Int) -> Void)!
+    var sleepDurationOutput: ((Int) -> Void)! // DI
     
     override func viewDidLoad() {
         super.viewDidLoad()
