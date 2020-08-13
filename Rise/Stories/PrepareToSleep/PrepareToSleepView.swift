@@ -33,7 +33,7 @@ final class PrepareToSleepView: UIView, BackgroundSettable, PropertyAnimatable {
         let wakeUpTouchHandler: () -> Void
         let startSleepHandler: () -> Void
         let closeHandler: () -> Void
-        let pickerValueChangeHandler: (Date) -> Void
+        let wakeUpValueChangedHandler: (Date) -> Void
     }
     
     // MARK: -  PropertyAnimatable
@@ -45,21 +45,46 @@ final class PrepareToSleepView: UIView, BackgroundSettable, PropertyAnimatable {
         }
     }
     
-    var model: Model! {
+    var model: Model? {
         didSet {
             initialSetup()
-            toSleepLabel.text = model.toSleepText
-            titleLabel.text = model.title
-            timeUntilWakeUpLabel.dataSource = model.timeUntilWakeUpDataSource
-            startSleepLabel.text = model.startSleepText
+            if let model = model {
+                toSleepLabel.text = model.toSleepText
+                titleLabel.text = model.title
+                timeUntilWakeUpLabel.dataSource = model.timeUntilWakeUpDataSource
+                startSleepLabel.text = model.startSleepText
+                wakeUpTitleLabel.text = model.wakeUpTitle
+                wakeUpDatePicker.date = model.wakeUpTime
+            }
         }
     }
     
+    @IBAction private func startSleepTouchUp(_ sender: FloatingButton) {
+        model?.startSleepHandler()
+    }
+    
+    @IBAction private func closeTouchUp(_ sender: UIButton) {
+        model?.closeHandler()
+    }
+    
+    @IBAction private func wakeUpValueChanged(_ sender: UIDatePicker) {
+        model?.wakeUpValueChangedHandler(sender.date)
+    }
+    
+    @IBAction private func wakeUpTouchUp(_ sender: UITapGestureRecognizer) {
+        model?.wakeUpTouchHandler()
+    }
+    
+    // MARK: - Private
+    private var needSetup = true
     private func initialSetup() {
-        startSleepButton.layer.cornerRadius = 0
-        startSleepButton.backgroundColor = .clear
-        startSleepButton.alpha = 0.9
-        timeUntilWakeUpLabel.beginRefreshing()
+        if needSetup {
+            startSleepButton.layer.cornerRadius = 0
+            startSleepButton.backgroundColor = .clear
+            startSleepButton.alpha = 0.9
+            timeUntilWakeUpLabel.beginRefreshing()
+            needSetup = false
+        }
     }
     
     private func expand(_ expand: Bool) {
@@ -67,22 +92,5 @@ final class PrepareToSleepView: UIView, BackgroundSettable, PropertyAnimatable {
             self.wakeUpContainerheightConstraint.constant = expand ? 200 : 50
             self.layoutIfNeeded()
         }
-    }
-}
-
-extension PrepareToSleepView.Model: Changeable {
-    init(copy: ChangeableWrapper<PrepareToSleepView.Model>) {
-        self.init(
-            toSleepText: copy.toSleepText,
-            title: copy.title,
-            timeUntilWakeUpDataSource: copy.timeUntilWakeUpDataSource,
-            startSleepText: copy.startSleepText,
-            wakeUpTitle: copy.wakeUpTitle,
-            wakeUpTime: copy.wakeUpTime,
-            wakeUpTouchHandler: copy.wakeUpTouchHandler,
-            startSleepHandler: copy.startSleepHandler,
-            closeHandler: copy.closeHandler,
-            pickerValueChangeHandler: copy.pickerValueChangeHandler
-        )
     }
 }

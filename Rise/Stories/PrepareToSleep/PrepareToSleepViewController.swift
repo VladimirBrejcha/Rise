@@ -9,7 +9,7 @@
 import UIKit
 
 final class PrepareToSleepViewController: UIViewController {
-    var prepareToSleepView: PrepareToSleepView!
+    @IBOutlet private var prepareToSleepView: PrepareToSleepView!
     
     var getDailyTime: GetDailyTime! // DI
     
@@ -68,7 +68,7 @@ final class PrepareToSleepViewController: UIViewController {
             closeHandler: { [weak self] in
                 self?.dismiss()
             },
-            pickerValueChangeHandler: { [weak self] newValue in
+            wakeUpValueChangedHandler: { [weak self] newValue in
                 self?.wakeUpTime = newValue
             }
         )
