@@ -48,7 +48,6 @@
 		7E708A3723BFD058003B5702 /* PlanDurationCreatePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3623BFD058003B5702 /* PlanDurationCreatePlanViewController.swift */; };
 		7E708A3923BFD09B003B5702 /* WentSleepCreatePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3823BFD09B003B5702 /* WentSleepCreatePlanViewController.swift */; };
 		7E708A3B23BFD0C7003B5702 /* PlanCreatedCreatePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3A23BFD0C7003B5702 /* PlanCreatedCreatePlanViewController.swift */; };
-		7E708A3E23BFD917003B5702 /* ChangePlanPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3D23BFD917003B5702 /* ChangePlanPresenter.swift */; };
 		7E708A4023BFD92D003B5702 /* ChangePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3F23BFD92D003B5702 /* ChangePlanViewController.swift */; };
 		7E76E5A923E734C200CC4E6D /* ChangePlanAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E76E5A823E734C200CC4E6D /* ChangePlanAssembler.swift */; };
 		7E76E5AB23E734F500CC4E6D /* ChangePlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E76E5AA23E734F500CC4E6D /* ChangePlan.storyboard */; };
@@ -83,6 +82,7 @@
 		7E9D9C0F24E5BADC000772C0 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D9C0E24E5BADC000772C0 /* FloatingButton.swift */; };
 		7E9D9C1124E5BEFA000772C0 /* CreatePlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D9C1024E5BEFA000772C0 /* CreatePlanView.swift */; };
 		7E9D9C1324E5DA57000772C0 /* PersonalPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D9C1224E5DA57000772C0 /* PersonalPlanView.swift */; };
+		7E9D9C1524EB0E13000772C0 /* ChangePlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D9C1424EB0E13000772C0 /* ChangePlanView.swift */; };
 		7EA0924222C8CF820019F2E9 /* CustomTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA0924122C8CF820019F2E9 /* CustomTransition.swift */; };
 		7EA38AE423783EFC0007919B /* DefaultLocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA38AE323783EFC0007919B /* DefaultLocationRepository.swift */; };
 		7EA38AE623783FFD0007919B /* DefaultLocationRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA38AE523783FFD0007919B /* DefaultLocationRemoteDataSource.swift */; };
@@ -216,7 +216,6 @@
 		7E708A3623BFD058003B5702 /* PlanDurationCreatePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDurationCreatePlanViewController.swift; sourceTree = "<group>"; };
 		7E708A3823BFD09B003B5702 /* WentSleepCreatePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WentSleepCreatePlanViewController.swift; sourceTree = "<group>"; };
 		7E708A3A23BFD0C7003B5702 /* PlanCreatedCreatePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCreatedCreatePlanViewController.swift; sourceTree = "<group>"; };
-		7E708A3D23BFD917003B5702 /* ChangePlanPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanPresenter.swift; sourceTree = "<group>"; };
 		7E708A3F23BFD92D003B5702 /* ChangePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanViewController.swift; sourceTree = "<group>"; };
 		7E76E5A823E734C200CC4E6D /* ChangePlanAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanAssembler.swift; sourceTree = "<group>"; };
 		7E76E5AA23E734F500CC4E6D /* ChangePlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChangePlan.storyboard; sourceTree = "<group>"; };
@@ -251,6 +250,7 @@
 		7E9D9C0E24E5BADC000772C0 /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		7E9D9C1024E5BEFA000772C0 /* CreatePlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlanView.swift; sourceTree = "<group>"; };
 		7E9D9C1224E5DA57000772C0 /* PersonalPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPlanView.swift; sourceTree = "<group>"; };
+		7E9D9C1424EB0E13000772C0 /* ChangePlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanView.swift; sourceTree = "<group>"; };
 		7EA0924122C8CF820019F2E9 /* CustomTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTransition.swift; sourceTree = "<group>"; };
 		7EA38AE323783EFC0007919B /* DefaultLocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLocationRepository.swift; sourceTree = "<group>"; };
 		7EA38AE523783FFD0007919B /* DefaultLocationRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLocationRemoteDataSource.swift; sourceTree = "<group>"; };
@@ -509,8 +509,8 @@
 			isa = PBXGroup;
 			children = (
 				7E76E5A823E734C200CC4E6D /* ChangePlanAssembler.swift */,
+				7E9D9C1424EB0E13000772C0 /* ChangePlanView.swift */,
 				7E708A3F23BFD92D003B5702 /* ChangePlanViewController.swift */,
-				7E708A3D23BFD917003B5702 /* ChangePlanPresenter.swift */,
 				7EF4C1A124043A8F0098135A /* ChangePlanTableView */,
 			);
 			path = ChangePlan;
@@ -1134,7 +1134,6 @@
 				7EB90047232AB9EB006EB9A8 /* ProgressBar.swift in Sources */,
 				7EA38AE423783EFC0007919B /* DefaultLocationRepository.swift in Sources */,
 				7E25756723F8749A007AE4B5 /* Animation.swift in Sources */,
-				7E708A3E23BFD917003B5702 /* ChangePlanPresenter.swift in Sources */,
 				7EB1C0372340FC6B0028237E /* RisePlan.swift in Sources */,
 				7E173375241044D70028FDBE /* SunTimeRepository.swift in Sources */,
 				7E8675CC2417E5FF004DAF63 /* ConfirmPlanUseCase.swift in Sources */,
@@ -1188,6 +1187,7 @@
 				7E91D95C2371E4080087436F /* RiseDailySunTime+CoreDataProperties.swift in Sources */,
 				7EA0924222C8CF820019F2E9 /* CustomTransition.swift in Sources */,
 				7EE6404D23786678005BE355 /* DefaultSunTimeRemoteDataSource.swift in Sources */,
+				7E9D9C1524EB0E13000772C0 /* ChangePlanView.swift in Sources */,
 				7E9D9C1324E5DA57000772C0 /* PersonalPlanView.swift in Sources */,
 				7E91D9622371E4850087436F /* DailyPlanTime.swift in Sources */,
 				7E9D9C0824E596DA000772C0 /* PrepareToSleepView.swift in Sources */,

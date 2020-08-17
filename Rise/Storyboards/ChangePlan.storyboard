@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,7 +13,7 @@
         <scene sceneID="d4i-Qk-B7b">
             <objects>
                 <viewController storyboardIdentifier="ChangePlanViewController" id="leG-iY-493" customClass="ChangePlanViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="wos-9B-kFo">
+                    <view key="view" contentMode="scaleToFill" id="wos-9B-kFo" customClass="ChangePlanView" customModule="Rise" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -24,7 +24,7 @@
                                 </constraints>
                                 <state key="normal" title="Save"/>
                                 <connections>
-                                    <action selector="saveTouchUp:" destination="leG-iY-493" eventType="touchUpInside" id="WQu-pb-Vgu"/>
+                                    <action selector="saveTouchUp:" destination="wos-9B-kFo" eventType="touchUpInside" id="kCs-b7-Gsn"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="T54-d5-rcW" customClass="ChangePlanTableView" customModule="Rise" customModuleProvider="target">
@@ -40,7 +40,7 @@
                                 <color key="tintColor" name="LightPink"/>
                                 <state key="normal" image="cancel"/>
                                 <connections>
-                                    <action selector="closeTouchUp:" destination="leG-iY-493" eventType="touchUpInside" id="NVr-AA-UxE"/>
+                                    <action selector="closeTouchUp:" destination="wos-9B-kFo" eventType="touchUpInside" id="8x5-2B-pQh"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Rise plan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2uO-mZ-R6o">
@@ -66,11 +66,12 @@
                             <constraint firstItem="sS2-kg-BzT" firstAttribute="top" secondItem="T54-d5-rcW" secondAttribute="bottom" constant="10" id="xoq-g8-QoF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UlE-Na-PZm"/>
+                        <connections>
+                            <outlet property="changePlanTableView" destination="T54-d5-rcW" id="div-dO-p9M"/>
+                        </connections>
                     </view>
                     <connections>
-                        <outlet property="closeButton" destination="e8M-Xk-MCJ" id="wdB-Jg-V1u"/>
-                        <outlet property="saveButton" destination="sS2-kg-BzT" id="bTU-hm-KpT"/>
-                        <outlet property="tableView" destination="T54-d5-rcW" id="PV4-Qa-fVl"/>
+                        <outlet property="changePlanView" destination="wos-9B-kFo" id="xfI-dO-K5v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dSI-RP-2RS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

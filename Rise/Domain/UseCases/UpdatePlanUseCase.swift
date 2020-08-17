@@ -9,7 +9,7 @@
 import Foundation
 
 protocol UpdatePlan {
-    func execute(wakeUpTime: Date?, sleepDurationMin: Int?, planDurationDays: Int?) throws
+    func callAsFunction(wakeUpTime: Date?, sleepDurationMin: Int?, planDurationDays: Int?) throws
 }
 
 final class UpdatePlanUseCase: UpdatePlan {
@@ -19,7 +19,7 @@ final class UpdatePlanUseCase: UpdatePlan {
         self.planRepository = planRepository
     }
     
-    func execute(wakeUpTime: Date?, sleepDurationMin: Int?, planDurationDays: Int?) throws {
+    func callAsFunction(wakeUpTime: Date?, sleepDurationMin: Int?, planDurationDays: Int?) throws {
         let plan = try planRepository.get()
         
         var updatedWakeUpTime: Date?

@@ -8,100 +8,123 @@
 
 import UIKit
 
-protocol ChangePlanViewInput: AnyObject {
-    func setTableView(with dataSource: UITableViewDataSource)
-    func reloadTable()
-    func reloadItem(at indexPath: IndexPath)
-    func reloadItems(at indexPaths: [IndexPath])
+final class ChangePlanViewController: UIViewController, UITableViewDelegate {
+    @IBOutlet private var changePlanView: ChangePlanView!
     
-    func getIndexPath(of cell: UITableViewCell) -> IndexPath?
+    private typealias DatePickerCellConfigurator
+        = TableCellConfigurator<ChangePlanDatePickerTableCell, ChangePlanDatePickerTableCellModel>
+    private typealias SliderCellConfigurator
+        = TableCellConfigurator<ChangePlanSliderTableCell, ChangePlanSliderTableCellModel>
+    private typealias ButtonCellConfigurator
+        = TableCellConfigurator<ChangePlanButtonTableCell, ChangePlanButtonTableCellModel>
     
-    func dismiss()
-}
-
-protocol ChangePlanViewOutput: ViewControllerLifeCycle {
-    func close()
-    func save()
-}
-
-final class ChangePlanViewController:
-    UIViewController,
-    ChangePlanViewInput,
-    UITableViewDelegate
-{
-    var output: ChangePlanViewOutput!
+    var getPlan: GetPlan! // DI
+    var updatePlan: UpdatePlan! // DI
+    var deletePlan: DeletePlan! // DI
     
-    @IBOutlet private weak var saveButton: Button!
-    @IBOutlet private weak var closeButton: UIButton!
-    @IBOutlet private weak var tableView: ChangePlanTableView!
+    private var tableDataSource: TableDataSource! // late init
+    private var cellConfigurators: [[CellConfigurator]] {
+        get { tableDataSource?.items ?? [] }
+        set { tableDataSource?.items = newValue }
+    }
+    
+    private var pickedWakeUp: Date?
+    private var pickedSleepDuration: Int?
+    private var pickedPlanDuration: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let backgroundView = GradientHelper.makeDefaultStaticGradient(for: view.bounds)
-        view.addSubview(backgroundView)
-        view.sendSubviewToBack(backgroundView)
-        
-        tableView.delegate = self
-        
-        output.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        output.viewWillAppear()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        output.viewDidAppear()
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        output.viewWillDisappear()
-    }
-    
-    @IBAction private func closeTouchUp(_ sender: UIButton) {
-        output.close()
-    }
-    
-    @IBAction private func saveTouchUp(_ sender: Button) {
-        output.save()
-    }
-    
-    // MARK: - ChangePlanViewInput -
-    func setTableView(with dataSource: UITableViewDataSource) {
-        tableView.dataSource = dataSource
-    }
-    
-    func reloadItem(at indexPath: IndexPath) {
-        DispatchQueue.main.async {
-            self.tableView.reloadRows(at: [indexPath], with: .automatic)
+        guard let plan = try? getPlan.execute()
+            else {
+                log(.info, with: "Plan is nil - dismissing")
+                dismiss()
+                return
         }
-    }
-    
-    func reloadItems(at indexPaths: [IndexPath]) {
-        DispatchQueue.main.async {
-            self.tableView.reloadRows(at: indexPaths, with: .automatic)
-        }
-    }
-    
-    func reloadTable() {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-    }
-    
-    func getIndexPath(of cell: UITableViewCell) -> IndexPath? {
-        tableView.indexPath(for: cell)
-    }
-    
-    func dismiss() {
-        dismiss(animated: true, completion: nil)
+        
+        let plannedWakeUpTime = plan.finalWakeUpTime
+        
+        let minimumDurationMin: Float = 6 * 60
+        let maximumDurationMin: Float = 10 * 60
+        let plannedDurationMin: Float = Float(plan.sleepDurationSec.toMinutes())
+        
+        let sleepDurationString = plan.sleepDurationSec.HHmmString
+        
+        let plannedPlanDuration = plan.dateInterval.durationDays
+        let minimunPlanDuration: Float = 15
+        let maximumPlanDuration: Float = 45
+        
+        let planDurationString = "\(plannedPlanDuration.description) days"
+        
+        tableDataSource = TableDataSource(
+            items: [
+                [DatePickerCellConfigurator(model: ChangePlanDatePickerTableCellModel(
+                    initialValue: plannedWakeUpTime,
+                    text: "Wake up time",
+                    datePickerDelegate: { [weak self] value in
+                        self?.pickedWakeUp = value
+                    }
+                ))],
+                [SliderCellConfigurator(model: ChangePlanSliderTableCellModel(
+                    title: "Sleep duration",
+                    text: (left: "6", center: sleepDurationString, right: "10"),
+                    sliderMinValue: minimumDurationMin,
+                    sliderValue: plannedDurationMin,
+                    sliderMaxValue: maximumDurationMin,
+                    centerLabelDataSource: { [weak self] cell, value in
+                        self?.pickedSleepDuration = Int(value)
+                        return Int(value).HHmmString
+                    }
+                ))],
+                [SliderCellConfigurator(model: ChangePlanSliderTableCellModel(
+                    title: "Plan duration",
+                    text: (left: "15", center: planDurationString, right: "45"),
+                    sliderMinValue: minimunPlanDuration,
+                    sliderValue: Float(plannedPlanDuration),
+                    sliderMaxValue: maximumPlanDuration,
+                    centerLabelDataSource: { [weak self] cell, value in
+                        self?.pickedPlanDuration = Int(value)
+                        return "\(Int(value).description) days"
+                    }
+                ))],
+                [ButtonCellConfigurator(model: ChangePlanButtonTableCellModel(
+                    title: "Delete and stop",
+                    action: { [weak self] in
+                        do {
+                            try self?.deletePlan.execute()
+                        } catch {
+                            // handle error
+                        }
+                        self?.dismiss()
+                    }
+                ))]
+            ]
+        )
+        
+        changePlanView.setBackground(GradientHelper.makeDefaultStaticGradient(for: view.bounds))
+        changePlanView.model = ChangePlanView.Model(
+            tableViewDelegate: self,
+            tableViewDataSource: tableDataSource,
+            closeHandler: { [weak self] in
+                self?.dismiss()
+            },
+            saveHandler: { [weak self] in
+                guard let self = self else { return }
+                do {
+                    try self.updatePlan(
+                        wakeUpTime: self.pickedWakeUp,
+                        sleepDurationMin: self.pickedSleepDuration,
+                        planDurationDays: self.pickedPlanDuration
+                    )
+                    print("success")
+                } catch (let error) {
+                    print(error)
+                    print(error.localizedDescription)
+                    // todo handle error
+                }
+                self.dismiss()
+            }
+        )
     }
     
     // MARK: - UITableViewDelegate -
@@ -128,5 +151,10 @@ final class ChangePlanViewController:
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         sectionFooter
+    }
+    
+    // MARK: - Private -
+    private func dismiss() {
+        dismiss(animated: true)
     }
 }
