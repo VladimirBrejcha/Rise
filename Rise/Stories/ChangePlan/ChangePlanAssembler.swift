@@ -6,11 +6,9 @@
 //  Copyright © 2020 VladimirBrejcha. All rights reserved.
 //
 
-final class ChangePlanAssembler: StoryAssembler {
-    typealias View = ChangePlanViewController
-    
+final class ChangePlanAssembler {    
     func assemble() -> ChangePlanViewController {
-        let controller = Storyboards.changePlan.instantiateViewController(of: ChangePlanViewController.self)
+        let controller = Storyboard.changePlan.instantiateViewController(of: ChangePlanViewController.self)
         controller.getPlan = DomainLayer.getPlan
         controller.updatePlan = DomainLayer.updatePlan
         controller.deletePlan = DomainLayer.deletePlan

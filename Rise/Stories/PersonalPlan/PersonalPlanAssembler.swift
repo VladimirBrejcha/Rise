@@ -6,11 +6,9 @@
 //  Copyright © 2020 VladimirBrejcha. All rights reserved.
 //
 
-final class PersonalPlanAssembler: StoryAssembler {
-    typealias View = PersonalPlanViewController
-    
+final class PersonalPlanAssembler {
     func assemble() -> PersonalPlanViewController {
-        let controller = Storyboards.main.instantiateViewController(of: PersonalPlanViewController.self)
+        let controller = Storyboard.main.instantiateViewController(of: PersonalPlanViewController.self)
         controller.getPlan = DomainLayer.getPlan
         controller.pausePlan = DomainLayer.pausePlan
         controller.observePlan = DomainLayer.observePlan

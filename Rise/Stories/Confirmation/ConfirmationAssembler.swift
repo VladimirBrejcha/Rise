@@ -6,11 +6,9 @@
 //  Copyright © 2020 VladimirBrejcha. All rights reserved.
 //
 
-final class ConfirmationAssembler: StoryAssembler {
-    typealias View = ConfirmationViewController
-    
+final class ConfirmationAssembler {    
     func assemble() -> ConfirmationViewController {
-        let controller = Storyboards.confirmation.instantiateViewController(of: ConfirmationViewController.self)
+        let controller = Storyboard.confirmation.instantiateViewController(of: ConfirmationViewController.self)
         controller.getPlan = DomainLayer.getPlan
         controller.confirmPlan = DomainLayer.confirmPlan
         controller.getDailyTime = DomainLayer.getDailyTime

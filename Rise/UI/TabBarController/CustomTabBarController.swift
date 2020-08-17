@@ -21,9 +21,9 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
         view.addSubview(backgroundView)
         view.sendSubviewToBack(backgroundView)
         
-        viewControllers = [Story.plan.configure(),
-                           Story.today.configure(),
-                           Story.settings.configure()]
+        viewControllers = [Story.plan(),
+                           Story.today(),
+                           Story.settings()]
         
         selectedIndex = 1
     }

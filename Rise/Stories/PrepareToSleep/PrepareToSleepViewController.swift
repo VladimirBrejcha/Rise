@@ -63,7 +63,7 @@ final class PrepareToSleepViewController: UIViewController {
                 guard let self = self else { return }
                 // TODO: (vladimir) - optimise routing
                 self.dismiss()
-                Presenter.present(controller: Story.sleep(alarmTime: self.wakeUpTime).configure(), with: .overContext, presentingController: self.presentingViewController!)
+                self.present(Story.sleep(alarmTime: self.wakeUpTime)(), with: .overContext)
             },
             closeHandler: { [weak self] in
                 self?.dismiss()

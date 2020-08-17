@@ -6,13 +6,9 @@
 //  Copyright © 2020 VladimirBrejcha. All rights reserved.
 //
 
-final class TodayAssembler: StoryAssembler {
-    typealias View = TodayViewController
-    
+final class TodayAssembler {
     func assemble() -> TodayViewController {
-        let controller = Storyboards.main.instantiateViewController(
-            of: TodayViewController.self
-        )
+        let controller = Storyboard.main.instantiateViewController(of: TodayViewController.self)
         controller.getSunTime = DomainLayer.getSunTime
         controller.getPlan = DomainLayer.getPlan
         controller.observePlan = DomainLayer.observePlan

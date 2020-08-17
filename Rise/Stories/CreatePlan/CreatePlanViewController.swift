@@ -45,7 +45,7 @@ final class CreatePlanViewController:
                 if self.stories.indices.contains(self.currentPage - 1) {
                     self.currentPage -= 1
                     self.updateButtons(story: self.currentStory)
-                    self.show(views: [self.currentStory.configure()], forwardDirection: false)
+                    self.show(views: [self.currentStory()], forwardDirection: false)
                 }
             },
             nextHandler: { [weak self] in
@@ -63,13 +63,13 @@ final class CreatePlanViewController:
                 
                 if self.stories.indices.contains(self.currentPage + 1) {
                     self.currentPage += 1
-                    self.show(views: [self.currentStory.configure()], forwardDirection: true)
+                    self.show(views: [self.currentStory()], forwardDirection: true)
                     self.updateButtons(story: self.currentStory)
                 }
             }
         )
         updateButtons(story: currentStory)
-        show(views: [currentStory.configure()], forwardDirection: true)
+        show(views: [currentStory()], forwardDirection: true)
         
         presentationController?.delegate = self
     }

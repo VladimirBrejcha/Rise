@@ -8,13 +8,9 @@
 
 import Foundation
 
-final class CreatePlanAssembler: StoryAssembler {
-    typealias View = CreatePlanViewController
-    
+final class CreatePlanAssembler {
     func assemble() -> CreatePlanViewController {
-        let controller = Storyboards.setupPlan.instantiateViewController(
-            of: CreatePlanViewController.self
-        )
+        let controller = Storyboard.setupPlan.instantiateViewController(of: CreatePlanViewController.self)
         controller.makePlan = DomainLayer.makePlan
         controller.stories = [
             .welcomeCreatePlan,

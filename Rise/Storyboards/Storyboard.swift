@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Storyboards {
+struct Storyboard {
     static let main: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
     static let changePlan: UIStoryboard = UIStoryboard(name: "ChangePlan", bundle: nil)
     static let setupPlan: UIStoryboard = UIStoryboard(name: "CreatePlan", bundle: nil)

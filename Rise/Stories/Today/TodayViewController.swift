@@ -46,15 +46,6 @@ final class TodayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        todayView.sleepTouchUpHandler = { [weak self] in
-            guard let self = self else { return }
-            Presenter.present(
-                controller: Story.prepareToSleep.configure(),
-                with: .modal,
-                presentingController: self
-            )
-        }
-        
         latestUsedPlan = try? getPlan.execute()
         
         collectionDataSource = CollectionDataSource(items: [
@@ -66,16 +57,27 @@ final class TodayViewController: UIViewController {
             CellConfigurator(model: emptyPlanCellModel)
         ])
         
-        todayView.daysCollectionView.dataSource = collectionDataSource
-        
+        todayView.model = TodayView.Model(
+            collectionViewDataSource: collectionDataSource,
+            timeUntilSleepDataSource: { [weak self] in
+                self?.makeFloatingLabelModel() ?? FloatingLabel.Model(text: "", alpha: 0)
+            },
+            sleepHandler: { [weak self] in
+                self?.present(Story.prepareToSleep(), with: .modal)
+            }
+        )
         requestSunTime()
 
         observePlan.observe { [weak self] plan in
             guard let self = self else { return }
             self.latestUsedPlan = plan
             self.viewIsVisible
-                ? { self.todayView.timeToSleepDataSource = self.makeFloatingLabelModel
-                    self.updateDaysPlanView(with: plan)}()
+                ? {
+                    self.todayView.model = self.todayView.model?.changing { model in
+                        model.timeUntilSleepDataSource = self.makeFloatingLabelModel
+                    }
+                    self.updateDaysPlanView(with: plan)
+                    }()
                 : { self.needsUpdate = true }()
         }
     }
@@ -85,18 +87,16 @@ final class TodayViewController: UIViewController {
         
         viewIsVisible = true
         if needsUpdate {
-            todayView.timeToSleepDataSource = makeFloatingLabelModel
+            todayView.model = todayView.model?.changing { model in
+                model.timeUntilSleepDataSource = makeFloatingLabelModel
+            }
             self.updateDaysPlanView(with: latestUsedPlan)
             needsUpdate = false
         }
         if let confirmed = try? confirmPlan.checkIfConfirmed() {
             makeTabBar(visible: confirmed)
             if !confirmed {
-                Presenter.present(
-                    controller: Story.confirmation.configure(),
-                    with: .overContext,
-                    presentingController: self
-                )
+                present(Story.confirmation(), with: .overContext)
             }
         }
     }
@@ -104,18 +104,6 @@ final class TodayViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         viewIsVisible = false
-    }
-    
-    func reloadItem(at index: Int) {
-        todayView.daysCollectionView.reloadItems(at: [IndexPath(item: index, section: 0)])
-    }
-    
-    func reloadItems(at indexes: [Int]) {
-        todayView.daysCollectionView.reloadItems(at: indexes.map { IndexPath(item: $0, section: 0) })
-    }
-    
-    func reloadCollection() {
-        todayView.daysCollectionView.reloadData()
     }
     
     func makeTabBar(visible: Bool) {        
@@ -154,7 +142,7 @@ final class TodayViewController: UIViewController {
             
             itemsToReload.append(index.offset)
         }
-        reloadItems(at: itemsToReload)
+        todayView.reloadItems(at: itemsToReload)
     }
     
     private func updateDaysPlanView(with plan: RisePlan?) {
@@ -180,11 +168,7 @@ final class TodayViewController: UIViewController {
             
             itemsToReload.append(index.offset)
         }
-        reloadItems(at: itemsToReload)
-    }
-    
-    private func getIndexOf(cell: DaysCollectionCell) -> Int? {
-        todayView.daysCollectionView.indexPath(for: cell)?.row
+        todayView.reloadItems(at: itemsToReload)
     }
     
     private func makeFloatingLabelModel() -> FloatingLabel.Model {
@@ -244,10 +228,10 @@ final class TodayViewController: UIViewController {
     }
     
     private func repeatButtonPressed(on cell: DaysCollectionCell) {
-        guard let index = getIndexOf(cell: cell) else { return }
+        guard let index = todayView.getIndexOf(cell: cell) else { return }
         
         cellModels[index].state = .loading
-        reloadItem(at: index)
+        todayView.reloadItem(at: index)
         index.isEven
             ? requestSunTime()
             : updateDaysPlanView(with: latestUsedPlan)

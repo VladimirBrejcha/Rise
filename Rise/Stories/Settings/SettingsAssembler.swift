@@ -8,11 +8,9 @@
 
 import Foundation
 
-final class SettingsAssembler: StoryAssembler {
-    typealias View = SettingsViewController
-    
+final class SettingsAssembler {
     func assemble() -> SettingsViewController {
-        let controller = Storyboards.settings.instantiateViewController(of: SettingsViewController.self)
+        let controller = Storyboard.settings.instantiateViewController(of: SettingsViewController.self)
         controller.output = SettingsPresenter(view: controller)
         return controller
     }

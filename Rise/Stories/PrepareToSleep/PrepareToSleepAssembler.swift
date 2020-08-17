@@ -8,13 +8,9 @@
 
 import Foundation
 
-final class PrepareToSleepAssembler: StoryAssembler {
-    typealias View = PrepareToSleepViewController
-    
-    func assemble() -> View {
-        let controller = Storyboards.sleep.instantiateViewController(
-            of: PrepareToSleepViewController.self
-        )
+final class PrepareToSleepAssembler {
+    func assemble() -> PrepareToSleepViewController {
+        let controller = Storyboard.sleep.instantiateViewController(of: PrepareToSleepViewController.self)
         controller.getDailyTime = DomainLayer.getDailyTime
         return controller
     }

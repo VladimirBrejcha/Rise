@@ -69,12 +69,11 @@ final class PersonalPlanViewController:
             pauseButtonTitleColor: Color.normalTitle,
             planTouchHandler: { [weak self] in
                 guard let self = self else { return }
-                Presenter.present(
-                    controller: self.latestUsedPlan == nil
-                        ? Story.createPlan.configure()
-                        : Story.changePlan.configure(),
-                    with: .modal,
-                    presentingController: self
+                self.present(
+                    self.latestUsedPlan == nil
+                        ? Story.createPlan()
+                        : Story.changePlan(),
+                    with: .modal
                 )
             },
             pauseTouchHandler: { [weak self] in

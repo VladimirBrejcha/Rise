@@ -13,22 +13,52 @@ final class TodayView: UIView {
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var timeToSleepLabel: FloatingLabel!
     
-    var timeToSleepDataSource: (() -> FloatingLabel.Model)? {
-        didSet {
-            timeToSleepLabel.dataSource = timeToSleepDataSource
-            timeToSleepDataSource == nil
-                ? timeToSleepLabel.stopRefreshing()
-                : timeToSleepLabel.beginRefreshing()
-        }
+    struct Model {
+        let collectionViewDataSource: UICollectionViewDataSource
+        let timeUntilSleepDataSource: (() -> FloatingLabel.Model)?
+        let sleepHandler: () -> Void
     }
-    var daysCollectionView: DaysCollectionView { daysView.collectionView }
-    var sleepTouchUpHandler: (() -> Void)?
-    var descriptionText: String? {
-        get { descriptionLabel.text }
-        set { descriptionLabel.text = newValue }
+    var model: Model? {
+        didSet {
+            if let model = model {
+                daysView.collectionView.dataSource = model.collectionViewDataSource
+                timeToSleepLabel.dataSource = model.timeUntilSleepDataSource
+                model.timeUntilSleepDataSource == nil
+                    ? timeToSleepLabel.stopRefreshing()
+                    : timeToSleepLabel.beginRefreshing()
+            } else {
+                timeToSleepLabel.stopRefreshing()
+            }
+        }
     }
 
     @IBAction private func sleepTouchUp(_ sender: Button) {
-        sleepTouchUpHandler?()
+        model?.sleepHandler()
+    }
+    
+    func reloadItem(at index: Int) {
+        daysView.collectionView.reloadItems(at: [IndexPath(item: index, section: 0)])
+    }
+    
+    func reloadItems(at indexes: [Int]) {
+        daysView.collectionView.reloadItems(at: indexes.map { IndexPath(item: $0, section: 0) })
+    }
+    
+    func reloadCollection() {
+        daysView.collectionView.reloadData()
+    }
+    
+    func getIndexOf(cell: DaysCollectionCell) -> Int? {
+        daysView.collectionView.indexPath(for: cell)?.row
+    }
+}
+
+extension TodayView.Model: Changeable {
+    init(copy: ChangeableWrapper<TodayView.Model>) {
+        self.init(
+            collectionViewDataSource: copy.collectionViewDataSource,
+            timeUntilSleepDataSource: copy.timeUntilSleepDataSource,
+            sleepHandler: copy.sleepHandler
+        )
     }
 }
