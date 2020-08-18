@@ -198,7 +198,7 @@
         <scene sceneID="h2v-11-WTS">
             <objects>
                 <viewController storyboardIdentifier="PersonalPlanViewController" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" id="smg-BM-jT2" customClass="PersonalPlanViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Vzi-Wy-UVB">
+                    <view key="view" contentMode="scaleToFill" id="Vzi-Wy-UVB" customClass="PersonalPlanView" customModule="Rise" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -236,7 +236,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="planTouchUp:" destination="smg-BM-jT2" eventType="touchUpInside" id="enY-Yh-p69"/>
+                                            <action selector="planTouchUp:" destination="Vzi-Wy-UVB" eventType="touchUpInside" id="QvW-tf-E6u"/>
                                         </connections>
                                     </button>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yhh-zc-Kkz" customClass="Button" customModule="Rise" customModuleProvider="target">
@@ -247,7 +247,7 @@
                                             <color key="titleColor" name="Pink"/>
                                         </state>
                                         <connections>
-                                            <action selector="pauseTouchUp:" destination="smg-BM-jT2" eventType="touchUpInside" id="ydu-bT-iFB"/>
+                                            <action selector="pauseTouchUp:" destination="Vzi-Wy-UVB" eventType="touchUpInside" id="vt7-hq-pyP"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -305,15 +305,18 @@
                             <constraint firstItem="Cn5-HU-DMT" firstAttribute="trailing" secondItem="2de-YZ-iQU" secondAttribute="trailing" constant="10" id="zfX-iY-ccC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Cn5-HU-DMT"/>
+                        <connections>
+                            <outlet property="infomationLabel" destination="B5U-B7-LIm" id="b0L-yG-ibs"/>
+                            <outlet property="loadingView" destination="nkn-IX-tf9" id="j83-Z6-QA1"/>
+                            <outlet property="pauseButton" destination="yhh-zc-Kkz" id="E5d-cm-1Ny"/>
+                            <outlet property="planButton" destination="dHd-Ec-x4z" id="bHc-VV-GUt"/>
+                            <outlet property="planManageButtonsStackView" destination="2de-YZ-iQU" id="ndY-te-6Iz"/>
+                            <outlet property="tableView" destination="svV-EI-Lt1" id="FK6-hs-ybD"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" image="alarm" selectedImage="alarmPressed" id="kUu-Cm-Xqv"/>
                     <connections>
-                        <outlet property="infomationLabel" destination="B5U-B7-LIm" id="eE2-eK-KbQ"/>
-                        <outlet property="loadingView" destination="nkn-IX-tf9" id="xxw-NI-2VX"/>
-                        <outlet property="pauseButton" destination="yhh-zc-Kkz" id="IRW-oc-n4r"/>
-                        <outlet property="planButton" destination="dHd-Ec-x4z" id="yQc-RX-BJP"/>
-                        <outlet property="planManageButtonsStackView" destination="2de-YZ-iQU" id="MN5-JK-tuX"/>
-                        <outlet property="tableView" destination="svV-EI-Lt1" id="1dT-S8-XUj"/>
+                        <outlet property="personalPlanView" destination="Vzi-Wy-UVB" id="Ipq-Sg-5jq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0AU-OJ-Grg" userLabel="First Responder" sceneMemberID="firstResponder"/>

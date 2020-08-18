@@ -9,11 +9,8 @@
 import UIKit
 import LoadingView
 
-final class PersonalPlanViewController:
-    UIViewController,
-    UITableViewDelegate
-{
-    var personalPlanView: PersonalPlanView!
+final class PersonalPlanViewController: UIViewController, UITableViewDelegate {
+    @IBOutlet private var personalPlanView: PersonalPlanView!
     
     private typealias ProgressCellConfigurator = TableCellConfigurator<ProgressTableViewCell, ProgressTableCellModel>
     private typealias InfoCellConfigurator = TableCellConfigurator<PlanInfoTableViewCell, PlanInfoTableCellModel>

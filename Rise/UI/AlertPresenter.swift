@@ -10,9 +10,9 @@ import UIKit
 
 final class AlertPresenter {
     static func showAlert(with message: String,
-                   and customTitle: String? = nil,
-                   customAction: UIAlertAction? = nil,
-                   cancelHandler: (() -> Void)? = nil) {
+                          and customTitle: String? = nil,
+                          customAction: UIAlertAction? = nil,
+                          cancelHandler: (() -> Void)? = nil) {
         guard let controller = UIApplication.shared.keyWindow?.rootViewController?.toppestViewController else { return }
         let alert = UIAlertController(title: customTitle ?? "Error", message: message, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { _ in cancelHandler?() }

@@ -9,7 +9,6 @@
 import UIKit
 
 class CollectionDataSource: NSObject, UICollectionViewDataSource {
-    
     var items: [CellConfigurator]
 
     required init(items: [CellConfigurator]) {
