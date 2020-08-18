@@ -9,17 +9,29 @@
 import Foundation
 
 struct DataLayer {
-    static let defaultRisePlanRepository: RisePlanRepository = DefaultRisePlanRepository(with: DataSources.planLocalDataSource)
-    static let sunTimeRepository: SunTimeRepository = DefaultSunTimeRepository(with: DataSources.sunTimeLocalDataSource,
-                                                                               and: DataSources.sunTimeRemoteDataSource)
-    static let locationRepository: LocationRepository = DefaultLocationRepository(with: DataSources.locationLocalDataSource,
-                                                                                  and: DataSources.locationRemoteDataSource)
+    static let defaultRisePlanRepository: RisePlanRepository = DefaultRisePlanRepository(
+        DataSources.planLocalDataSource
+    )
+    static let sunTimeRepository: SunTimeRepository = DefaultSunTimeRepository(
+        DataSources.sunTimeLocalDataSource,
+        DataSources.sunTimeRemoteDataSource
+    )
+    static let locationRepository: LocationRepository = DefaultLocationRepository(
+        DataSources.locationLocalDataSource,
+        DataSources.locationRemoteDataSource
+    )
 }
 
 fileprivate struct DataSources {
-    static let planLocalDataSource: PersonalPlanLocalDataSource = DefaultRisePlanLocalDataSource(with: "RisePlanData")
-    static let locationLocalDataSource: LocationLocalDataSource = DefaultLocationLocalDataSource(with: "LocationData")
+    static let planLocalDataSource: PersonalPlanLocalDataSource = DefaultRisePlanLocalDataSource(
+        containerName: "RisePlanData"
+    )
+    static let locationLocalDataSource: LocationLocalDataSource = DefaultLocationLocalDataSource(
+        containerName: "LocationData"
+    )
     static let locationRemoteDataSource: LocationRemoteDataSource = DefaultLocationRemoteDataSource()
-    static let sunTimeLocalDataSource: SunTimeLocalDataSource = DefaultSunTimeLocalDataSource(with: "SunTimeData")
+    static let sunTimeLocalDataSource: SunTimeLocalDataSource = DefaultSunTimeLocalDataSource(
+        containerName: "SunTimeData"
+    )
     static let sunTimeRemoteDataSource: SunTimeRemoteDataSource = DefaultSunTimeRemoteDataSource()
 }

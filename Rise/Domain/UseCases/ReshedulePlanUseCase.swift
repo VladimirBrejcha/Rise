@@ -9,17 +9,17 @@
 import Foundation
 
 protocol ReshedulePlan {
-    func execute() throws
+    func callAsFunction() throws
 }
 
 final class ReshedulePlanUseCase: ReshedulePlan {
     private let planRepository: RisePlanRepository
     
-    required init(planRepository: RisePlanRepository) {
+    init(_ planRepository: RisePlanRepository) {
         self.planRepository = planRepository
     }
     
-    func execute() throws {
+    func callAsFunction() throws {
         let plan = try planRepository.get()
         
         let missedDays = DateInterval(start: plan.latestConfirmedDay,

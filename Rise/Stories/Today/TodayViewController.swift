@@ -46,7 +46,7 @@ final class TodayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        latestUsedPlan = try? getPlan.execute()
+        latestUsedPlan = try? getPlan()
         
         collectionDataSource = CollectionDataSource(items: [
             CellConfigurator(model: emptySunCellModel),

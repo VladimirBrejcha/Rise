@@ -26,7 +26,7 @@ class LocalDataSource<Object: NSManagedObject> {
         NSEntityDescription.insertNewObject(forEntityName: entityName, into: context) as! Object
     }
     
-    required init(with containerName: String) {
+    required init(containerName: String) {
         self.containerName = containerName
     }
 }

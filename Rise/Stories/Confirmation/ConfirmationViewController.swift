@@ -22,7 +22,7 @@ final class ConfirmationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let plan = try? getPlan.execute()
+        guard let plan = try? getPlan()
             else {
                 shouldDismissAfterAppear = true
                 return
@@ -53,7 +53,7 @@ final class ConfirmationViewController: UIViewController {
                 resheduleTouch: { [weak self] in
                     guard let self = self else { return }
                     do {
-                        try self.reshedulePlan.execute()
+                        try self.reshedulePlan()
                         self.confirmationView.model = ConfirmationView.Model(
                             title: "Resheduling", description: "Rise plan is being updated..."
                         )
@@ -72,7 +72,7 @@ final class ConfirmationViewController: UIViewController {
                 },
                 confirmTouch: { [weak self] in
                     do {
-                        try self?.confirmPlan.execute()
+                        try self?.confirmPlan()
                     } catch (let error) {
                         // todo handle error
                     }

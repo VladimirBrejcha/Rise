@@ -9,18 +9,18 @@
 import Foundation
 
 protocol ConfirmPlan {
-    func execute() throws
+    func callAsFunction() throws
     func checkIfConfirmed() throws -> Bool
 }
 
 final class ConfirmPlanUseCase: ConfirmPlan {
     private let planRepository: RisePlanRepository
 
-    required init(planRepository: RisePlanRepository) {
+    init(_ planRepository: RisePlanRepository) {
         self.planRepository = planRepository
     }
     
-    func execute() throws {
+    func callAsFunction() throws {
         let plan = try planRepository.get()
         let confirmedPlan = RisePlan(dateInterval: plan.dateInterval,
                                      firstSleepTime: plan.firstSleepTime,

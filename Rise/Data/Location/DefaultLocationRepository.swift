@@ -12,7 +12,7 @@ final class DefaultLocationRepository: LocationRepository {
     private let localDataSource: LocationLocalDataSource
     private let remoteDataSource: LocationRemoteDataSource
     
-    required init(with localDataSource: LocationLocalDataSource, and remoteDataSource: LocationRemoteDataSource) {
+    init(_ localDataSource: LocationLocalDataSource, _ remoteDataSource: LocationRemoteDataSource) {
         self.localDataSource = localDataSource
         self.remoteDataSource = remoteDataSource
     }

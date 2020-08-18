@@ -9,17 +9,17 @@
 import Foundation
 
 protocol GetPlan {
-    func execute() throws -> RisePlan
+    func callAsFunction() throws -> RisePlan
 }
 
 final class GetPlanUseCase: GetPlan {
     private let planRepository: RisePlanRepository
     
-    required init(planRepository: RisePlanRepository) {
+    init(_ planRepository: RisePlanRepository) {
         self.planRepository = planRepository
     }
     
-    func execute() throws -> RisePlan {
+    func callAsFunction() throws -> RisePlan {
         try planRepository.get()
     }
 }

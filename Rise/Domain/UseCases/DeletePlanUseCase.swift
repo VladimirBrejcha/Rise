@@ -9,17 +9,17 @@
 import Foundation
 
 protocol DeletePlan {
-    func execute() throws
+    func callAsFunction() throws
 }
 
 final class DeletePlanUseCase: DeletePlan {
     private let planRepository: RisePlanRepository
     
-    required init(planRepository: RisePlanRepository) {
+    init(_ planRepository: RisePlanRepository) {
         self.planRepository = planRepository
     }
     
-    func execute() throws {
+    func callAsFunction() throws {
         try planRepository.removeAll()
     }
 }

@@ -9,23 +9,24 @@
 import Foundation
 
 protocol MakePlan {
-    func execute(sleepDurationMin: Int,
-                 wakeUpTime: Date,
-                 planDurationDays: Int,
-                 firstSleepTime: Date) throws
+    func callAsFunction(sleepDurationMin: Int,
+                        wakeUpTime: Date,
+                        planDurationDays: Int,
+                        firstSleepTime: Date) throws
 }
 
 final class MakePlanUseCase: MakePlan {
     private let planRepository: RisePlanRepository
     
-    required init(planRepository: RisePlanRepository) {
+    init(_ planRepository: RisePlanRepository) {
         self.planRepository = planRepository
     }
     
-    func execute(sleepDurationMin: Int,
-                 wakeUpTime: Date,
-                 planDurationDays: Int,
-                 firstSleepTime: Date) throws {
+    func callAsFunction(sleepDurationMin: Int,
+                        wakeUpTime: Date,
+                        planDurationDays: Int,
+                        firstSleepTime: Date
+    ) throws {
         guard let firstSleepTime = firstSleepTime.zeroSeconds
             else {
                 throw RiseError.failedToCreateDate

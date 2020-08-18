@@ -8,19 +8,19 @@
 
 final class DomainLayer {
     static var getPlan: GetPlan {
-        GetPlanUseCase(planRepository: DataLayer.defaultRisePlanRepository)
+        GetPlanUseCase(DataLayer.defaultRisePlanRepository)
     }
     static var makePlan: MakePlan {
-        MakePlanUseCase(planRepository: DataLayer.defaultRisePlanRepository)
+        MakePlanUseCase(DataLayer.defaultRisePlanRepository)
     }
     static var updatePlan: UpdatePlan {
-        UpdatePlanUseCase(planRepository: DataLayer.defaultRisePlanRepository)
+        UpdatePlanUseCase(DataLayer.defaultRisePlanRepository)
     }
     static var deletePlan: DeletePlan {
-        DeletePlanUseCase(planRepository: DataLayer.defaultRisePlanRepository)
+        DeletePlanUseCase(DataLayer.defaultRisePlanRepository)
     }
     static var observePlan: ObservePlan {
-        ObservePlanUseCase(planRepository: DataLayer.defaultRisePlanRepository)
+        ObservePlanUseCase(DataLayer.defaultRisePlanRepository)
     }
     static var getSunTime: GetSunTime {
         GetSunTimeUseCase(DataLayer.locationRepository, DataLayer.sunTimeRepository)
@@ -29,12 +29,12 @@ final class DomainLayer {
         GetDailyTimeUseCase(DataLayer.defaultRisePlanRepository)
     }
     static var pausePlan: PausePlan {
-        PausePlanUseCase(planRepository: DataLayer.defaultRisePlanRepository)
+        PausePlanUseCase(DataLayer.defaultRisePlanRepository)
     }
     static var confirmPlan: ConfirmPlan {
-        ConfirmPlanUseCase(planRepository: DataLayer.defaultRisePlanRepository)
+        ConfirmPlanUseCase(DataLayer.defaultRisePlanRepository)
     }
     static var reshedulePlan: ReshedulePlan {
-        ReshedulePlanUseCase(planRepository: DataLayer.defaultRisePlanRepository)
+        ReshedulePlanUseCase(DataLayer.defaultRisePlanRepository)
     }
 }

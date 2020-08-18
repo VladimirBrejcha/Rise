@@ -35,7 +35,7 @@ final class ChangePlanViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let plan = try? getPlan.execute()
+        guard let plan = try? getPlan()
             else {
                 log(.info, with: "Plan is nil - dismissing")
                 dismiss()
@@ -91,7 +91,7 @@ final class ChangePlanViewController: UIViewController, UITableViewDelegate {
                     title: "Delete and stop",
                     action: { [weak self] in
                         do {
-                            try self?.deletePlan.execute()
+                            try self?.deletePlan()
                         } catch {
                             // handle error
                         }

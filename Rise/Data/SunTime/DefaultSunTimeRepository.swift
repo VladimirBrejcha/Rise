@@ -12,7 +12,7 @@ final class DefaultSunTimeRepository: SunTimeRepository {
     private let localDataSource: SunTimeLocalDataSource
     private let remoteDataSource: SunTimeRemoteDataSource
     
-    required init(with localDataSource: SunTimeLocalDataSource, and remoteDataSource: SunTimeRemoteDataSource) {
+    init(_ localDataSource: SunTimeLocalDataSource, _ remoteDataSource: SunTimeRemoteDataSource) {
         self.localDataSource = localDataSource
         self.remoteDataSource = remoteDataSource
     }

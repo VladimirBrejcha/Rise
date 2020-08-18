@@ -52,7 +52,7 @@ final class PersonalPlanViewController:
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        latestUsedPlan = try? getPlan.execute()
+        latestUsedPlan = try? getPlan()
         
         tableDataSource = TableDataSource(
             items: [
@@ -81,7 +81,7 @@ final class PersonalPlanViewController:
                 },
                 pauseTouch: { [weak self] in
                     if let plan = self?.latestUsedPlan {
-                        try? self?.pausePlan.execute(pause: !plan.paused)
+                        try? self?.pausePlan(!plan.paused)
                     }
                 }
             ),

@@ -9,18 +9,18 @@
 import Foundation
 
 protocol PausePlan {
-    func execute(pause: Bool) throws
+    func callAsFunction(_ pause: Bool) throws
     func checkIfPaused() throws -> Bool
 }
 
 final class PausePlanUseCase: PausePlan {
     private let planRepository: RisePlanRepository
     
-    required init(planRepository: RisePlanRepository) {
+    init(_ planRepository: RisePlanRepository) {
         self.planRepository = planRepository
     }
     
-    func execute(pause: Bool) throws {
+    func callAsFunction(_ pause: Bool) throws {
         var updatedDaysMissed: Int?
         var updatedPlanEndDate: Date?
         let plan = try planRepository.get()

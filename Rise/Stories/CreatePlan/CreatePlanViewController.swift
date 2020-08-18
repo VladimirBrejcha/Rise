@@ -161,10 +161,10 @@ final class CreatePlanViewController: UIViewController, UIAdaptivePresentationCo
         }
         
         do {
-            try makePlan.execute(sleepDurationMin: choosenSleepDuration,
-                                 wakeUpTime: choosenWakeUpTime,
-                                 planDurationDays: choosenPlanDuration,
-                                 firstSleepTime: choosenLastTimeWentSleep)
+            try makePlan(sleepDurationMin: choosenSleepDuration,
+                         wakeUpTime: choosenWakeUpTime,
+                         planDurationDays: choosenPlanDuration,
+                         firstSleepTime: choosenLastTimeWentSleep)
             return true
         } catch {
             // todo handle error

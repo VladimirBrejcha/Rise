@@ -14,7 +14,7 @@ final class DefaultRisePlanRepository: RisePlanRepository {
     private let localDataSource: PersonalPlanLocalDataSource
     private var observers: [UUID: PlanObserver] = [:]
     
-    required init(with localDataSource: PersonalPlanLocalDataSource) {
+    init(_ localDataSource: PersonalPlanLocalDataSource) {
         self.localDataSource = localDataSource
     }
     

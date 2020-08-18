@@ -15,7 +15,7 @@ protocol UpdatePlan {
 final class UpdatePlanUseCase: UpdatePlan {
     private let planRepository: RisePlanRepository
     
-    required init(planRepository: RisePlanRepository) {
+    init(_ planRepository: RisePlanRepository) {
         self.planRepository = planRepository
     }
     

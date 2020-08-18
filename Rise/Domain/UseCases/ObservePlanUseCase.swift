@@ -18,7 +18,7 @@ final class ObservePlanUseCase: ObservePlan {
     
     private let observerUUID = UUID()
     
-    required init(planRepository: RisePlanRepository) {
+    init(_ planRepository: RisePlanRepository) {
         self.planRepository = planRepository
     }
     
