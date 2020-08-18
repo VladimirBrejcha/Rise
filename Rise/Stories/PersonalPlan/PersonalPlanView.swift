@@ -19,44 +19,48 @@ final class PersonalPlanView: UIView, PropertyAnimatable {
     
     // MARK: - PropertyAnimatable
     var propertyAnimationDuration: Double = 0.3
-    
-    struct Model {
-        let planButtonTitle: String
-        let pauseButtonTitle: String
-        let pauseButtonTitleColor: UIColor
-        let planTouchHandler: () -> Void
-        let pauseTouchHandler: () -> Void
-        let tableDataSource: UITableViewDataSource
-        let tableDelegate: UITableViewDelegate
-    }
-    
+        
     struct State {
         let pauseButtonHidden: Bool
         let loadingViewState: LoadingViewState
         let tableViewAlpha: CGFloat
     }
-    var state: State? {
+    var state: State = State(pauseButtonHidden: true, loadingViewState: .loading, tableViewAlpha: 0) {
         didSet {
-            if let state = state {
-                pauseButton.isHidden = state.pauseButtonHidden
-                animate {
-                    self.loadingView.state = state.loadingViewState
-                    self.tableView.alpha = state.tableViewAlpha
-                }
+            pauseButton.isHidden = state.pauseButtonHidden
+            animate {
+                self.loadingView.state = self.state.loadingViewState
+                self.tableView.alpha = self.state.tableViewAlpha
             }
         }
     }
     
-    var model: Model? {
+    struct Model {
+        let planButtonTitle: String
+        let pauseButtonTitle: String
+        let pauseButtonTitleColor: UIColor
+    }
+    var model: Model = Model(planButtonTitle: "", pauseButtonTitle: "", pauseButtonTitleColor: .clear) {
         didSet {
-            if let model = model {
-                pauseButton.setTitle(model.pauseButtonTitle, for: .normal)
-                pauseButton.setTitleColor(model.pauseButtonTitleColor, for: .normal)
-                planButton.setTitle(model.planButtonTitle, for: .normal)
-                tableView.delegate = model.tableDelegate
-                tableView.dataSource = model.tableDataSource
-            }
+            pauseButton.setTitle(model.pauseButtonTitle, for: .normal)
+            pauseButton.setTitleColor(model.pauseButtonTitleColor, for: .normal)
+            planButton.setTitle(model.planButtonTitle, for: .normal)
         }
+    }
+    
+    struct Handlers {
+        let planTouch: () -> Void
+        let pauseTouch: () -> Void
+    }
+    var handlers: Handlers?
+    
+    func configure(model: Model, handlers: Handlers,
+                   dataSource: UITableViewDataSource, delegate: UITableViewDelegate
+    ) {
+        self.model = model
+        tableView.delegate = delegate
+        tableView.dataSource = dataSource
+        self.handlers = handlers
     }
     
     func reloadData() {
@@ -64,11 +68,11 @@ final class PersonalPlanView: UIView, PropertyAnimatable {
     }
     
     @IBAction private func planTouchUp(_ sender: Button) {
-        model?.planTouchHandler()
+        handlers?.planTouch()
     }
     
     @IBAction private func pauseTouchUp(_ sender: Button) {
-        model?.pauseTouchHandler()
+        handlers?.pauseTouch()
     }
 }
 
@@ -87,11 +91,7 @@ extension PersonalPlanView.Model: Changeable {
         self.init(
             planButtonTitle: copy.planButtonTitle,
             pauseButtonTitle: copy.pauseButtonTitle,
-            pauseButtonTitleColor: copy.pauseButtonTitleColor,
-            planTouchHandler: copy.planTouchHandler,
-            pauseTouchHandler: copy.pauseTouchHandler,
-            tableDataSource: copy.tableDataSource,
-            tableDelegate: copy.tableDelegate
+            pauseButtonTitleColor: copy.pauseButtonTitleColor
         )
     }
 }

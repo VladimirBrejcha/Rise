@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
+final class CustomTabBarController: UITabBarController, UITabBarControllerDelegate, BackgroundSettable {
     
     private let middleButtonBackgroundImageView = UIImageView()
 
@@ -17,9 +17,7 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
         
         delegate = self
         
-        let backgroundView = GradientHelper.makeDefaultAnimatedGradient(for: view.bounds)
-        view.addSubview(backgroundView)
-        view.sendSubviewToBack(backgroundView)
+        setBackground(GradientHelper.makeAnimatedGradientView(frame: view.bounds))
         
         viewControllers = [Story.plan(),
                            Story.today(),

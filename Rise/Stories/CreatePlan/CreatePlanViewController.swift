@@ -8,10 +8,7 @@
 
 import UIKit
 
-final class CreatePlanViewController:
-    UIViewController,
-    UIAdaptivePresentationControllerDelegate
-{
+final class CreatePlanViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
     @IBOutlet private var createPlanView: CreatePlanView!
     
     private var pageController: UIPageViewController!
@@ -31,42 +28,39 @@ final class CreatePlanViewController:
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        createPlanView.setBackground(
-            GradientHelper.makeDefaultStaticGradient(for: view.bounds)
-        )
-        createPlanView.model = CreatePlanView.Model(
-            backButtonTitle: "",
-            nextButtonTitle: "Start",
-            closeHandler: { [weak self] in
-                self?.dismiss()
-            },
-            backHandler: { [weak self] in
-                guard let self = self else { return }
-                if self.stories.indices.contains(self.currentPage - 1) {
-                    self.currentPage -= 1
-                    self.updateButtons(story: self.currentStory)
-                    self.show(views: [self.currentStory()], forwardDirection: false)
-                }
-            },
-            nextHandler: { [weak self] in
-                guard let self = self else { return }
-                if case .planCreatedSetupPlan = self.currentStory {
-                    self.dismiss()
-                    return
-                }
-                
-                if case .wentSleepCreatePlan = self.currentStory {
-                    if !self.planGenerated {
-                        self.planGenerated = self.generatePlan()
+        createPlanView.setBackground(GradientHelper.makeGradientView(frame: view.bounds))
+        createPlanView.configure(
+            model: CreatePlanView.Model(backButtonTitle: "", nextButtonTitle: "Start"),
+            handlers: CreatePlanView.Handlers(
+                close: { [weak self] in
+                    self?.dismiss()
+                },
+                back: { [weak self] in
+                    guard let self = self else { return }
+                    if self.stories.indices.contains(self.currentPage - 1) {
+                        self.currentPage -= 1
+                        self.updateButtons(story: self.currentStory)
+                        self.show(views: [self.currentStory()], forwardDirection: false)
+                    }
+                },
+                next: { [weak self] in
+                    guard let self = self else { return }
+                    if case .planCreatedSetupPlan = self.currentStory {
+                        self.dismiss()
+                        return
+                    }
+                    if case .wentSleepCreatePlan = self.currentStory {
+                        if !self.planGenerated {
+                            self.planGenerated = self.generatePlan()
+                        }
+                    }
+                    if self.stories.indices.contains(self.currentPage + 1) {
+                        self.currentPage += 1
+                        self.show(views: [self.currentStory()], forwardDirection: true)
+                        self.updateButtons(story: self.currentStory)
                     }
                 }
-                
-                if self.stories.indices.contains(self.currentPage + 1) {
-                    self.currentPage += 1
-                    self.show(views: [self.currentStory()], forwardDirection: true)
-                    self.updateButtons(story: self.currentStory)
-                }
-            }
+            )
         )
         updateButtons(story: currentStory)
         show(views: [currentStory()], forwardDirection: true)
@@ -123,59 +117,35 @@ final class CreatePlanViewController:
     private func updateButtons(story: Story) {
         switch story {
         case .welcomeCreatePlan:
-            createPlanView.state = CreatePlanView.State(
-                nextButtonEnabled: true,
-                backButtonHidden: true
-            )
-            createPlanView.model = createPlanView.model?.changing{ model in
-                model.backButtonTitle = ""
-                model.nextButtonTitle = "Start"
-            }
+            createPlanView.state = CreatePlanView.State(nextButtonEnabled: true, backButtonHidden: true)
+            createPlanView.model = CreatePlanView.Model(backButtonTitle: "", nextButtonTitle: "Start")
         case .sleepDurationCreatePlan:
             createPlanView.state = CreatePlanView.State(
                 nextButtonEnabled: choosenSleepDuration != nil,
                 backButtonHidden: true
             )
-            createPlanView.model = createPlanView.model?.changing{ model in
-                model.backButtonTitle = ""
-                model.nextButtonTitle = "Next"
-            }
+            createPlanView.model = CreatePlanView.Model(backButtonTitle: "", nextButtonTitle: "Next")
         case .wakeUpTimeCreatePlan:
             createPlanView.state = CreatePlanView.State(
                 nextButtonEnabled: choosenWakeUpTime != nil,
                 backButtonHidden: false
             )
-            createPlanView.model = createPlanView.model?.changing{ model in
-                model.backButtonTitle = "Previous"
-                model.nextButtonTitle = "Next"
-            }
+            createPlanView.model = CreatePlanView.Model(backButtonTitle: "Previous", nextButtonTitle: "Next")
         case .planDurationCreatePlan:
             createPlanView.state = CreatePlanView.State(
                 nextButtonEnabled: choosenPlanDuration != nil,
                 backButtonHidden: false
             )
-            createPlanView.model = createPlanView.model?.changing{ model in
-                model.backButtonTitle = "Previous"
-                model.nextButtonTitle = "Next"
-            }
+            createPlanView.model = CreatePlanView.Model(backButtonTitle: "Previous", nextButtonTitle: "Next")
         case .wentSleepCreatePlan:
             createPlanView.state = CreatePlanView.State(
                 nextButtonEnabled: choosenLastTimeWentSleep != nil,
                 backButtonHidden: false
             )
-            createPlanView.model = createPlanView.model?.changing{ model in
-                model.backButtonTitle = "Previous"
-                model.nextButtonTitle = "Create"
-            }
+            createPlanView.model = CreatePlanView.Model(backButtonTitle: "Previous", nextButtonTitle: "Create")
         case .planCreatedSetupPlan:
-            createPlanView.state = CreatePlanView.State(
-                nextButtonEnabled: true,
-                backButtonHidden: true
-            )
-            createPlanView.model = createPlanView.model?.changing{ model in
-                model.backButtonTitle = ""
-                model.nextButtonTitle = "Great!"
-            }
+            createPlanView.state = CreatePlanView.State(nextButtonEnabled: true, backButtonHidden: true)
+            createPlanView.model = CreatePlanView.Model(backButtonTitle: "", nextButtonTitle: "Great!")
         default:
             break
         }

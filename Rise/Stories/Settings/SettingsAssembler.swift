@@ -6,12 +6,9 @@
 //  Copyright © 2020 VladimirBrejcha. All rights reserved.
 //
 
-import Foundation
-
 final class SettingsAssembler {
     func assemble() -> SettingsViewController {
         let controller = Storyboard.settings.instantiateViewController(of: SettingsViewController.self)
-        controller.output = SettingsPresenter(view: controller)
         return controller
     }
 }

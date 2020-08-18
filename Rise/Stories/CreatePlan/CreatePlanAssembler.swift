@@ -6,8 +6,6 @@
 //  Copyright © 2020 VladimirBrejcha. All rights reserved.
 //
 
-import Foundation
-
 final class CreatePlanAssembler {
     func assemble() -> CreatePlanViewController {
         let controller = Storyboard.setupPlan.instantiateViewController(of: CreatePlanViewController.self)

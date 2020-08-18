@@ -21,33 +21,6 @@ final class ConfirmationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        confirmationView.resheduleHandler = { [weak self] in
-            guard let self = self else { return }
-            do {
-                try self.reshedulePlan.execute()
-                self.confirmationView.titleText = "Resheduling"
-                self.confirmationView.descriptionText = "Rise plan is being updated..."
-                Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
-                    self.confirmationView.showRescheduleButton(false)
-                    self.confirmationView.showLoadingView(false)
-                    self.confirmationView.titleText = "Continue"
-                    self.confirmationView.descriptionText = "Successfully completed"
-                }
-            } catch {
-                // todo handle error
-                self.dismiss(animated: true)
-            }
-        }
-        
-        confirmationView.confirmHandler = { [weak self] in
-            do {
-                try self?.confirmPlan.execute()
-            } catch (let error) {
-                // todo handle error
-            }
-            self?.dismiss(animated: true)
-        }
 
         guard let plan = try? getPlan.execute()
             else {
@@ -65,14 +38,48 @@ final class ConfirmationViewController: UIViewController {
                 return
         }
         
-        confirmationView.titleText = daysMissed == 1
-            ? Model.Title.missedOneDay
-            : Model.Title.missedMultipleDays
-        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         let plannedTime = dateFormatter.string(from: yesterdayDailyTime.sleep)
-        confirmationView.descriptionText = Model.Description.withPlannedTime(plannedTime)
+        
+        confirmationView.configure(
+            model: ConfirmationView.Model(
+                title: daysMissed == 1
+                    ? Model.Title.missedOneDay
+                    : Model.Title.missedMultipleDays,
+                description: Model.Description.withPlannedTime(plannedTime)
+            ),
+            handlers: ConfirmationView.Handlers(
+                resheduleTouch: { [weak self] in
+                    guard let self = self else { return }
+                    do {
+                        try self.reshedulePlan.execute()
+                        self.confirmationView.model = ConfirmationView.Model(
+                            title: "Resheduling", description: "Rise plan is being updated..."
+                        )
+                        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
+                            self.confirmationView.model = ConfirmationView.Model(
+                                title: "Continue", description: "Successfully completed"
+                            )
+                            self.confirmationView.state = ConfirmationView.State(
+                                loadingViewHidden: true, resheduleButtonHidden: true
+                            )
+                        }
+                    } catch {
+                        // todo handle error
+                        self.dismiss(animated: true)
+                    }
+                },
+                confirmTouch: { [weak self] in
+                    do {
+                        try self?.confirmPlan.execute()
+                    } catch (let error) {
+                        // todo handle error
+                    }
+                    self?.dismiss(animated: true)
+                }
+            )
+        )
     }
     
     override func viewDidAppear(_ animated: Bool) {

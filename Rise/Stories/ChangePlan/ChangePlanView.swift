@@ -11,27 +11,24 @@ import UIKit
 final class ChangePlanView: UIView, BackgroundSettable {
     @IBOutlet private weak var changePlanTableView: ChangePlanTableView!
     
-    struct Model {
-        let tableViewDelegate: UITableViewDelegate
-        let tableViewDataSource: UITableViewDataSource
-        let closeHandler: () -> Void
-        let saveHandler: () -> Void
+    struct Handlers {
+        let close: () -> Void
+        let save: () -> Void
     }
-    var model: Model? {
-        didSet {
-            if let model = model {
-                changePlanTableView.delegate = model.tableViewDelegate
-                changePlanTableView.dataSource = model.tableViewDataSource
-            }
-        }
+    var handlers: Handlers?
+
+    func configure(dataSource: UITableViewDataSource, delegate: UITableViewDelegate, handlers: Handlers) {
+        changePlanTableView.delegate = delegate
+        changePlanTableView.dataSource = dataSource
+        self.handlers = handlers
     }
     
     @IBAction private func closeTouchUp(_ sender: UIButton) {
-        model?.closeHandler()
+        handlers?.close()
     }
     
     @IBAction private func saveTouchUp(_ sender: Button) {
-        model?.saveHandler()
+        handlers?.save()
     }
     
     func getIndexPath(of cell: UITableViewCell) -> IndexPath? {

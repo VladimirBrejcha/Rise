@@ -13,22 +13,29 @@ final class SleepView: UIView, BackgroundSettable {
     @IBOutlet private weak var alarmLabel: UILabel!
     @IBOutlet private weak var stopButton: LongPressProgressButton!
     @IBOutlet private weak var timeLeftLabel: FloatingLabel!
-    
-    var model: Model! {
-        didSet {
-            stopButton.title = model.stopTitle
-            stopButton.progressCompleted = model.stopPressHandler
-            alarmLabel.text = model.alarmTime
-            currentTimeLabel.dataSource = model.currentTimeDataSource
-            timeLeftLabel.dataSource = model.timeLeftDataSource
-        }
-    }
-    
+        
     struct Model {
         let stopTitle: String
         let alarmTime: String
-        let stopPressHandler: (LongPressProgressButton) -> Void
-        let currentTimeDataSource: () -> String
-        let timeLeftDataSource: () -> FloatingLabel.Model
+    }
+    var model: Model? {
+        didSet {
+            if let model = model {
+                stopButton.title = model.stopTitle
+                alarmLabel.text = model.alarmTime
+            }
+        }
+    }
+    
+    struct DataSource {
+        let timeLeft: () -> FloatingLabel.Model
+        let currentTime: () -> String
+    }
+    
+    func configure(model: Model, dataSource: DataSource, stopHandler: @escaping () -> Void) {
+        self.model = model
+        stopButton.progressCompleted = { _ in stopHandler() }
+        timeLeftLabel.dataSource = dataSource.timeLeft
+        currentTimeLabel.dataSource = dataSource.currentTime
     }
 }

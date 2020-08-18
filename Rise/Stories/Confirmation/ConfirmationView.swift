@@ -18,44 +18,53 @@ final class ConfirmationView: UIView, PropertyAnimatable {
     @IBOutlet private weak var confirmButton: Button!
     @IBOutlet private weak var loadingView: LoadingView!
     
+    // MARK: - PropertyAnimatable
     var propertyAnimationDuration: Double = 0.3
-    var resheduleHandler: (() -> Void)?
-    var confirmHandler: (() -> Void)?
     
-    var titleText: String? {
-        get { titleLabel.text }
-        set { titleLabel.text = newValue }
+    struct Handlers {
+        let resheduleTouch: () -> Void
+        let confirmTouch: () -> Void
+    }
+    var handlers: Handlers?
+    
+    struct Model {
+        let title: String
+        let description: String
+    }
+    var model: Model = Model(title: "", description: "") {
+        didSet {
+            titleLabel.text = model.title
+            UIView.transition(with: descriptionLabel, duration: 0.36,
+                              options: .transitionCrossDissolve,
+                              animations: { self.descriptionLabel.text = self.model.description },
+                              completion: nil)
+        }
     }
     
-    var descriptionText: String? {
-        get { descriptionLabel.text }
-        set { UIView.transition(with: descriptionLabel, duration: 0.36,
-                                options: .transitionCrossDissolve,
-                                animations: { self.descriptionLabel.text = newValue },
-                                completion: nil)
+    struct State {
+        let loadingViewHidden: Bool
+        let resheduleButtonHidden: Bool
+    }
+    var state: State = State(loadingViewHidden: true, resheduleButtonHidden: true) {
+        didSet {
+            animate {
+                self.resheduleButton.isHidden = self.state.resheduleButtonHidden
+                self.loadingView.state = self.state.loadingViewHidden ? .hidden : .loading
+                self.buttonsStackView.alpha = self.state.loadingViewHidden ? 1 : 0
+            }
         }
+    }
+    
+    func configure(model: Model, handlers: Handlers) {
+        self.model = model
+        self.handlers = handlers
     }
     
     @IBAction private func resheduleTouchUp(_ sender: Button) {
-        resheduleHandler?()
+        handlers?.resheduleTouch()
     }
     
     @IBAction private func confirmTouchUp(_ sender: Button) {
-        confirmHandler?()
-    }
-    
-    func showRescheduleButton(_ show: Bool) {
-        resheduleButton.isHidden = !show
-    }
-    
-    func updateConfirmButtonTitle(with text: String) {
-        confirmButton.setTitle(text, for: .normal)
-    }
-    
-    func showLoadingView(_ show: Bool) {
-        animate {
-            self.loadingView.state = show ? .loading : .hidden
-            self.buttonsStackView.alpha = show ? 0 : 1
-        }
+        handlers?.confirmTouch()
     }
 }

@@ -11,7 +11,6 @@
 		7E052A422352377E005D7FAD /* RiseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E052A412352377E005D7FAD /* RiseError.swift */; };
 		7E07A10123AFBEE300B9D61A /* WelcomeCreatelPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E07A10023AFBEE300B9D61A /* WelcomeCreatelPlanViewController.swift */; };
 		7E0834AC2387351400BA1AE8 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0834AB2387351400BA1AE8 /* DateExtensions.swift */; };
-		7E0A2E3A239D831F00E39C83 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0A2E39239D831F00E39C83 /* SettingsPresenter.swift */; };
 		7E0B88F72455BEF400BC3CF5 /* SelectableStackViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0B88F52455BEF400BC3CF5 /* SelectableStackViewButton.swift */; };
 		7E0EACCA241BF05800B8A0A2 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0EACC9241BF05800B8A0A2 /* Color.swift */; };
 		7E162FF1243D0E22004C68B1 /* AutoRefreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E162FF0243D0E22004C68B1 /* AutoRefreshable.swift */; };
@@ -44,6 +43,7 @@
 		7E5F292A23F9638C0050DFD3 /* FloatingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5F292923F9638C0050DFD3 /* FloatingLabel.swift */; };
 		7E6268C024D5D49C00F70BC3 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6268BF24D5D49C00F70BC3 /* TodayView.swift */; };
 		7E6268C324D5FAA900F70BC3 /* SelectableStackView in Frameworks */ = {isa = PBXBuildFile; productRef = 7E6268C224D5FAA900F70BC3 /* SelectableStackView */; };
+		7E69836224EBD119002EE278 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69836124EBD119002EE278 /* UIColor+Hex.swift */; };
 		7E708A3423BF635B003B5702 /* SleepDurationCreatePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3323BF635B003B5702 /* SleepDurationCreatePlanViewController.swift */; };
 		7E708A3723BFD058003B5702 /* PlanDurationCreatePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3623BFD058003B5702 /* PlanDurationCreatePlanViewController.swift */; };
 		7E708A3923BFD09B003B5702 /* WentSleepCreatePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3823BFD09B003B5702 /* WentSleepCreatePlanViewController.swift */; };
@@ -178,7 +178,6 @@
 		7E052A412352377E005D7FAD /* RiseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiseError.swift; sourceTree = "<group>"; };
 		7E07A10023AFBEE300B9D61A /* WelcomeCreatelPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCreatelPlanViewController.swift; sourceTree = "<group>"; };
 		7E0834AB2387351400BA1AE8 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
-		7E0A2E39239D831F00E39C83 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		7E0B88F52455BEF400BC3CF5 /* SelectableStackViewButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectableStackViewButton.swift; sourceTree = "<group>"; };
 		7E0EACC9241BF05800B8A0A2 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		7E162FF0243D0E22004C68B1 /* AutoRefreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRefreshable.swift; sourceTree = "<group>"; };
@@ -209,6 +208,7 @@
 		7E5BDADD2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RiseLocation+CoreDataProperties.swift"; path = "Rise/Data/Location/Entity/RiseLocation+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		7E5F292923F9638C0050DFD3 /* FloatingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabel.swift; sourceTree = "<group>"; };
 		7E6268BF24D5D49C00F70BC3 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
+		7E69836124EBD119002EE278 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		7E708A3323BF635B003B5702 /* SleepDurationCreatePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepDurationCreatePlanViewController.swift; sourceTree = "<group>"; };
 		7E708A3623BFD058003B5702 /* PlanDurationCreatePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDurationCreatePlanViewController.swift; sourceTree = "<group>"; };
 		7E708A3823BFD09B003B5702 /* WentSleepCreatePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WentSleepCreatePlanViewController.swift; sourceTree = "<group>"; };
@@ -468,7 +468,6 @@
 			children = (
 				7EB9F35123C36AAE002A6DD3 /* SettingsAssembler.swift */,
 				92E77AF722A5303400E5E21C /* SettingsViewController.swift */,
-				7E0A2E39239D831F00E39C83 /* SettingsPresenter.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -803,6 +802,7 @@
 				7E0834AB2387351400BA1AE8 /* DateExtensions.swift */,
 				7EEB1E0C24424010001ABE4A /* AudioPlayer.swift */,
 				7E814E7524D8A6DE00EC1665 /* Int+Even.swift */,
+				7E69836124EBD119002EE278 /* UIColor+Hex.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1196,10 +1196,10 @@
 				7EE6404B2378666F005BE355 /* DefaultSunTimeLocalDataSource.swift in Sources */,
 				7EE87CEF2442254A00E1BD3B /* AutoRefreshableLabel.swift in Sources */,
 				7EEA217923B6A3B400354BEA /* UIViewController+Present.swift in Sources */,
-				7E0A2E3A239D831F00E39C83 /* SettingsPresenter.swift in Sources */,
 				7E31497D23425CA600941606 /* TableViewDataSource.swift in Sources */,
 				7EB9F34C23C20504002A6DD3 /* GetSunTimeUseCase.swift in Sources */,
 				7EB9F34823C203E6002A6DD3 /* GetPlanUseCase.swift in Sources */,
+				7E69836224EBD119002EE278 /* UIColor+Hex.swift in Sources */,
 				92E77AF822A5303400E5E21C /* SettingsViewController.swift in Sources */,
 				7E97656423786B1800E3AEF2 /* DefaultRisePlanRepository.swift in Sources */,
 				7E8C6B982350FB9C0086162F /* TableView.swift in Sources */,

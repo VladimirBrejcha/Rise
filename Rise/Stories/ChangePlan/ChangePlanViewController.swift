@@ -101,29 +101,31 @@ final class ChangePlanViewController: UIViewController, UITableViewDelegate {
             ]
         )
         
-        changePlanView.setBackground(GradientHelper.makeDefaultStaticGradient(for: view.bounds))
-        changePlanView.model = ChangePlanView.Model(
-            tableViewDelegate: self,
-            tableViewDataSource: tableDataSource,
-            closeHandler: { [weak self] in
-                self?.dismiss()
-            },
-            saveHandler: { [weak self] in
-                guard let self = self else { return }
-                do {
-                    try self.updatePlan(
-                        wakeUpTime: self.pickedWakeUp,
-                        sleepDurationMin: self.pickedSleepDuration,
-                        planDurationDays: self.pickedPlanDuration
-                    )
-                    print("success")
-                } catch (let error) {
-                    print(error)
-                    print(error.localizedDescription)
-                    // todo handle error
+        changePlanView.setBackground(GradientHelper.makeGradientView(frame: view.bounds))
+        changePlanView.configure(
+            dataSource: tableDataSource,
+            delegate: self,
+            handlers: ChangePlanView.Handlers(
+                close: { [weak self] in
+                    self?.dismiss()
+                },
+                save: { [weak self] in
+                    guard let self = self else { return }
+                    do {
+                        try self.updatePlan(
+                            wakeUpTime: self.pickedWakeUp,
+                            sleepDurationMin: self.pickedSleepDuration,
+                            planDurationDays: self.pickedPlanDuration
+                        )
+                        print("success")
+                    } catch (let error) {
+                        print(error)
+                        print(error.localizedDescription)
+                        // todo handle error
+                    }
+                    self.dismiss()
                 }
-                self.dismiss()
-            }
+            )
         )
     }
     

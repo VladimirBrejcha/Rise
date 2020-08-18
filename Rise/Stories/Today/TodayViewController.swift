@@ -57,14 +57,16 @@ final class TodayViewController: UIViewController {
             CellConfigurator(model: emptyPlanCellModel)
         ])
         
-        todayView.model = TodayView.Model(
-            collectionViewDataSource: collectionDataSource,
-            timeUntilSleepDataSource: { [weak self] in
-                self?.makeFloatingLabelModel() ?? FloatingLabel.Model(text: "", alpha: 0)
-            },
-            sleepHandler: { [weak self] in
+        todayView.configure(
+            dataSource: TodayView.DataSource(
+                collection: collectionDataSource,
+                timeUntilSleep:  { [weak self] in
+                    self?.makeFloatingLabelModel() ?? FloatingLabel.Model(text: "", alpha: 0)
+                }
+            ),
+            handlers: TodayView.Handlers(sleepHandler: { [weak self] in
                 self?.present(Story.prepareToSleep(), with: .modal)
-            }
+            })
         )
         requestSunTime()
 
@@ -72,12 +74,7 @@ final class TodayViewController: UIViewController {
             guard let self = self else { return }
             self.latestUsedPlan = plan
             self.viewIsVisible
-                ? {
-                    self.todayView.model = self.todayView.model?.changing { model in
-                        model.timeUntilSleepDataSource = self.makeFloatingLabelModel
-                    }
-                    self.updateDaysPlanView(with: plan)
-                    }()
+                ? self.updateDaysPlanView(with: plan)
                 : { self.needsUpdate = true }()
         }
     }
@@ -87,9 +84,6 @@ final class TodayViewController: UIViewController {
         
         viewIsVisible = true
         if needsUpdate {
-            todayView.model = todayView.model?.changing { model in
-                model.timeUntilSleepDataSource = makeFloatingLabelModel
-            }
             self.updateDaysPlanView(with: latestUsedPlan)
             needsUpdate = false
         }

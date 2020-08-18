@@ -8,14 +8,4 @@
 
 import UIKit
 
-protocol SettingsViewInput: AnyObject {
-    
-}
-
-protocol SettingsViewOutput: AnyObject {
-    
-}
-
-final class SettingsViewController: UIViewController, SettingsViewInput {
-    var output: SettingsViewOutput!
-}
+final class SettingsViewController: UIViewController { }

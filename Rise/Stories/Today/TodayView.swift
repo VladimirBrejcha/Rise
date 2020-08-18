@@ -13,27 +13,25 @@ final class TodayView: UIView {
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var timeToSleepLabel: FloatingLabel!
     
-    struct Model {
-        let collectionViewDataSource: UICollectionViewDataSource
-        let timeUntilSleepDataSource: (() -> FloatingLabel.Model)?
+    struct DataSource {
+        let collection: UICollectionViewDataSource
+        let timeUntilSleep: () -> FloatingLabel.Model
+    }
+    
+    struct Handlers {
         let sleepHandler: () -> Void
     }
-    var model: Model? {
-        didSet {
-            if let model = model {
-                daysView.collectionView.dataSource = model.collectionViewDataSource
-                timeToSleepLabel.dataSource = model.timeUntilSleepDataSource
-                model.timeUntilSleepDataSource == nil
-                    ? timeToSleepLabel.stopRefreshing()
-                    : timeToSleepLabel.beginRefreshing()
-            } else {
-                timeToSleepLabel.stopRefreshing()
-            }
-        }
+    var handlers: Handlers?
+    
+    func configure(dataSource: DataSource, handlers: Handlers) {
+        self.handlers = handlers
+        daysView.collectionView.dataSource = dataSource.collection
+        timeToSleepLabel.dataSource = dataSource.timeUntilSleep
+        timeToSleepLabel.beginRefreshing()
     }
 
     @IBAction private func sleepTouchUp(_ sender: Button) {
-        model?.sleepHandler()
+        handlers?.sleepHandler()
     }
     
     func reloadItem(at index: Int) {
@@ -50,15 +48,5 @@ final class TodayView: UIView {
     
     func getIndexOf(cell: DaysCollectionCell) -> Int? {
         daysView.collectionView.indexPath(for: cell)?.row
-    }
-}
-
-extension TodayView.Model: Changeable {
-    init(copy: ChangeableWrapper<TodayView.Model>) {
-        self.init(
-            collectionViewDataSource: copy.collectionViewDataSource,
-            timeUntilSleepDataSource: copy.timeUntilSleepDataSource,
-            sleepHandler: copy.sleepHandler
-        )
     }
 }

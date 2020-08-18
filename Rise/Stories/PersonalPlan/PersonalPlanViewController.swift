@@ -63,26 +63,30 @@ final class PersonalPlanViewController:
                  emptyInfoCellConfigurator]
             ]
         )
-        personalPlanView.model = PersonalPlanView.Model(
-            planButtonTitle: "",
-            pauseButtonTitle: "",
-            pauseButtonTitleColor: Color.normalTitle,
-            planTouchHandler: { [weak self] in
-                guard let self = self else { return }
-                self.present(
-                    self.latestUsedPlan == nil
-                        ? Story.createPlan()
-                        : Story.changePlan(),
-                    with: .modal
-                )
-            },
-            pauseTouchHandler: { [weak self] in
-                if let plan = self?.latestUsedPlan {
-                    try? self?.pausePlan.execute(pause: !plan.paused)
+        personalPlanView.configure(
+            model: PersonalPlanView.Model(
+                planButtonTitle: "",
+                pauseButtonTitle: "",
+                pauseButtonTitleColor: Color.normalTitle
+            ),
+            handlers: PersonalPlanView.Handlers(
+                planTouch: { [weak self] in
+                    guard let self = self else { return }
+                    self.present(
+                        self.latestUsedPlan == nil
+                            ? Story.createPlan()
+                            : Story.changePlan(),
+                        with: .modal
+                    )
+                },
+                pauseTouch: { [weak self] in
+                    if let plan = self?.latestUsedPlan {
+                        try? self?.pausePlan.execute(pause: !plan.paused)
+                    }
                 }
-            },
-            tableDataSource: tableDataSource,
-            tableDelegate: self
+            ),
+            dataSource: tableDataSource,
+            delegate: self
         )
         
         observePlan.observe { [weak self] plan in
@@ -131,18 +135,18 @@ final class PersonalPlanViewController:
     
     private func updateButtons(with plan: RisePlan?) {
         if let plan = plan {
-            personalPlanView.state = personalPlanView.state?.changing { state in
+            personalPlanView.state = personalPlanView.state.changing { state in
                 state.pauseButtonHidden = false
             }
-            personalPlanView.model = personalPlanView.model?.changing { model in
+            personalPlanView.model = personalPlanView.model.changing { model in
                 model.pauseButtonTitle = plan.paused ? "Resume" : "Pause"
                 model.planButtonTitle = "Change"
             }
         } else {
-            personalPlanView.state = personalPlanView.state?.changing { state in
+            personalPlanView.state = personalPlanView.state.changing { state in
                 state.pauseButtonHidden = true
             }
-            personalPlanView.model = personalPlanView.model?.changing { model in
+            personalPlanView.model = personalPlanView.model.changing { model in
                 model.planButtonTitle = "Create Rise plan"
             }
         }
@@ -150,12 +154,12 @@ final class PersonalPlanViewController:
     
     private func updateLoadingView(with plan: RisePlan?) {
         if plan == nil {
-            personalPlanView.state = personalPlanView.state?.changing { state in
+            personalPlanView.state = personalPlanView.state.changing { state in
                 state.loadingViewState = .info(message: "You don't have sleep plan yet, go and create one!")
                 state.tableViewAlpha = 0
             }
         } else {
-            personalPlanView.state = personalPlanView.state?.changing { state in
+            personalPlanView.state = personalPlanView.state.changing { state in
                 state.loadingViewState = .hidden
                 state.tableViewAlpha = 1
             }
@@ -184,7 +188,7 @@ final class PersonalPlanViewController:
             ]
             
             personalPlanView.reloadData()
-            personalPlanView.state = personalPlanView.state?.changing { state in
+            personalPlanView.state = personalPlanView.state.changing { state in
                 state.loadingViewState = .hidden
                 state.tableViewAlpha = 1
             }

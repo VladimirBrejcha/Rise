@@ -8,7 +8,9 @@
 
 final class ConfirmationAssembler {    
     func assemble() -> ConfirmationViewController {
-        let controller = Storyboard.confirmation.instantiateViewController(of: ConfirmationViewController.self)
+        let controller = Storyboard.confirmation.instantiateViewController(
+            of: ConfirmationViewController.self
+        )
         controller.getPlan = DomainLayer.getPlan
         controller.confirmPlan = DomainLayer.confirmPlan
         controller.getDailyTime = DomainLayer.getDailyTime

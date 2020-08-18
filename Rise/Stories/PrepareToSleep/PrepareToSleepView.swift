@@ -18,40 +18,31 @@ final class PrepareToSleepView: UIView, BackgroundSettable, PropertyAnimatable {
     @IBOutlet private weak var timeUntilWakeUpLabel: AutoRefreshableLabel!
     @IBOutlet private weak var toSleepLabel: UILabel!
     
+    // MARK: - PropertyAnimatable
+    var propertyAnimationDuration: Double = 0.3
+    
     enum State: Equatable {
         case normal
         case expanded
     }
-    
-    struct Model {
-        let toSleepText: String
-        let title: String
-        let timeUntilWakeUpDataSource: () -> String
-        let startSleepText: String
-        let wakeUpTitle: String
-        let wakeUpTime: Date
-        let wakeUpTouchHandler: () -> Void
-        let startSleepHandler: () -> Void
-        let closeHandler: () -> Void
-        let wakeUpValueChangedHandler: (Date) -> Void
-    }
-    
-    // MARK: -  PropertyAnimatable
-    var propertyAnimationDuration: Double = 0.3
-    
     var state: State = .normal {
         didSet {
             expand(state == .expanded)
         }
     }
     
+    struct Model {
+        let toSleepText: String
+        let title: String
+        let startSleepText: String
+        let wakeUpTitle: String
+        let wakeUpTime: Date
+    }
     var model: Model? {
         didSet {
-            initialSetup()
             if let model = model {
                 toSleepLabel.text = model.toSleepText
                 titleLabel.text = model.title
-                timeUntilWakeUpLabel.dataSource = model.timeUntilWakeUpDataSource
                 startSleepLabel.text = model.startSleepText
                 wakeUpTitleLabel.text = model.wakeUpTitle
                 wakeUpDatePicker.date = model.wakeUpTime
@@ -59,32 +50,46 @@ final class PrepareToSleepView: UIView, BackgroundSettable, PropertyAnimatable {
         }
     }
     
+    struct Handlers {
+        let wakeUp: () -> Void
+        let sleep: () -> Void
+        let close: () -> Void
+        let wakeUpTimeChanged: (Date) -> Void
+    }
+    var handlers: Handlers?
+    
+    struct DataSource {
+        let timeUntilWakeUp: () -> String
+    }
+    
+    func configure(model: Model, dataSource: DataSource, handlers: Handlers) {
+        self.model = model
+        self.handlers = handlers
+        timeUntilWakeUpLabel.dataSource = dataSource.timeUntilWakeUp
+        initialSetup()
+    }
+    
     @IBAction private func startSleepTouchUp(_ sender: FloatingButton) {
-        model?.startSleepHandler()
+        handlers?.sleep()
     }
     
     @IBAction private func closeTouchUp(_ sender: UIButton) {
-        model?.closeHandler()
+        handlers?.close()
     }
     
     @IBAction private func wakeUpValueChanged(_ sender: UIDatePicker) {
-        model?.wakeUpValueChangedHandler(sender.date)
+        handlers?.wakeUpTimeChanged(sender.date)
     }
     
     @IBAction private func wakeUpTouchUp(_ sender: UITapGestureRecognizer) {
-        model?.wakeUpTouchHandler()
+        handlers?.wakeUp()
     }
     
-    // MARK: - Private
-    private var needSetup = true
     private func initialSetup() {
-        if needSetup {
-            startSleepButton.layer.cornerRadius = 0
-            startSleepButton.backgroundColor = .clear
-            startSleepButton.alpha = 0.9
-            timeUntilWakeUpLabel.beginRefreshing()
-            needSetup = false
-        }
+        startSleepButton.layer.cornerRadius = 0
+        startSleepButton.backgroundColor = .clear
+        startSleepButton.alpha = 0.9
+        timeUntilWakeUpLabel.beginRefreshing()
     }
     
     private func expand(_ expand: Bool) {

@@ -8,11 +8,7 @@
 
 import UIKit
 
-final class CreatePlanView:
-    UIView,
-    BackgroundSettable,
-    PropertyAnimatable
-{
+final class CreatePlanView: UIView, BackgroundSettable, PropertyAnimatable {
     @IBOutlet private weak var buttonsStackView: UIStackView!
     @IBOutlet private weak var backButton: Button!
     @IBOutlet private weak var nextButton: Button!
@@ -24,23 +20,18 @@ final class CreatePlanView:
         let nextButtonEnabled: Bool
         let backButtonHidden: Bool
     }
-    var state: State? {
+    var state: State = State(nextButtonEnabled: true, backButtonHidden: true) {
         didSet {
-            if let state = state {
-                animate {
-                    self.backButton.isHidden = state.backButtonHidden
-                }
-                nextButton.isEnabled = state.nextButtonEnabled
+            animate {
+                self.backButton.isHidden = self.state.backButtonHidden
             }
+            nextButton.isEnabled = state.nextButtonEnabled
         }
     }
     
     struct Model {
         let backButtonTitle: String
         let nextButtonTitle: String
-        let closeHandler: () -> Void
-        let backHandler: () -> Void
-        let nextHandler: () -> Void
     }
     var model: Model? {
         didSet {
@@ -51,36 +42,27 @@ final class CreatePlanView:
         }
     }
     
+    struct Handlers {
+        let close: () -> Void
+        let back: () -> Void
+        let next: () -> Void
+    }
+    var handlers: Handlers?
+    
+    func configure(model: Model, handlers: Handlers) {
+        self.model = model
+        self.handlers = handlers
+    }
+    
     @IBAction private func closeTouchUp(_ sender: UIButton) {
-        model?.closeHandler()
+        handlers?.close()
     }
     
     @IBAction private func backTouchUp(_ sender: Button) {
-        model?.backHandler()
+        handlers?.back()
     }
     
     @IBAction private func nextTouchUp(_ sender: Button) {
-        model?.nextHandler()
-    }
-}
-
-extension CreatePlanView.Model: Changeable {
-    init(copy: ChangeableWrapper<CreatePlanView.Model>) {
-        self.init(
-            backButtonTitle: copy.backButtonTitle,
-            nextButtonTitle: copy.nextButtonTitle,
-            closeHandler: copy.closeHandler,
-            backHandler: copy.backHandler,
-            nextHandler: copy.nextHandler
-        )
-    }
-}
-
-extension CreatePlanView.State: Changeable {
-    init(copy: ChangeableWrapper<CreatePlanView.State>) {
-        self.init(
-            nextButtonEnabled: copy.nextButtonEnabled,
-            backButtonHidden: copy.backButtonHidden
-        )
+        handlers?.next()
     }
 }

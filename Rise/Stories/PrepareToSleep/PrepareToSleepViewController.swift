@@ -41,36 +41,38 @@ final class PrepareToSleepViewController: UIViewController {
             fatalError()
             // TODO: (vladimir) - handle other errors
         }
-        prepareToSleepView.setBackground(
-            GradientHelper.makeDefaultStaticGradient(for: view.bounds)
-        )
-        prepareToSleepView.model = PrepareToSleepView.Model(
-            toSleepText: beforeSleepMotivatingText,
-            title: "Prepare to sleep",
-            timeUntilWakeUpDataSource: { [weak self] in
-                "\(self?.wakeUpTime.timeIntervalSince(Date()).HHmmString ?? "") until wake up"
-            },
-            startSleepText: "begin to sleep",
-            wakeUpTitle: "Alarm at \(wakeUpTime.HHmmString)",
-            wakeUpTime: wakeUpTime,
-            wakeUpTouchHandler: { [weak self] in
-                guard let self = self else { return }
-                self.prepareToSleepView.state = self.prepareToSleepView.state == .normal
-                    ? .expanded
-                    : .normal
-            },
-            startSleepHandler: { [weak self] in
-                guard let self = self else { return }
-                // TODO: (vladimir) - optimise routing
-                self.dismiss()
-                self.present(Story.sleep(alarmTime: self.wakeUpTime)(), with: .overContext)
-            },
-            closeHandler: { [weak self] in
-                self?.dismiss()
-            },
-            wakeUpValueChangedHandler: { [weak self] newValue in
-                self?.wakeUpTime = newValue
-            }
+        prepareToSleepView.setBackground(GradientHelper.makeGradientView(frame: view.bounds))
+        prepareToSleepView.configure(
+            model: PrepareToSleepView.Model(
+                toSleepText: beforeSleepMotivatingText,
+                title: "Prepare to sleep",
+                startSleepText: "begin to sleep",
+                wakeUpTitle: "Alarm at \(wakeUpTime.HHmmString)",
+                wakeUpTime: wakeUpTime
+            ),
+            dataSource: PrepareToSleepView.DataSource(timeUntilWakeUp: { [weak self] () -> String in
+                 "\(self?.wakeUpTime.timeIntervalSince(Date()).HHmmString ?? "") until wake up"
+            }),
+            handlers: PrepareToSleepView.Handlers(
+                wakeUp: { [weak self] in
+                    guard let self = self else { return }
+                    self.prepareToSleepView.state = self.prepareToSleepView.state == .normal
+                        ? .expanded
+                        : .normal
+                },
+                sleep: { [weak self] in
+                    guard let self = self else { return }
+                    // TODO: (vladimir) - optimise routing
+                    self.dismiss()
+                    self.present(Story.sleep(alarmTime: self.wakeUpTime)(), with: .overContext)
+                },
+                close: { [weak self] in
+                    self?.dismiss()
+                },
+                wakeUpTimeChanged: { [weak self] newValue in
+                    self?.wakeUpTime = newValue
+                }
+            )
         )
     }
     

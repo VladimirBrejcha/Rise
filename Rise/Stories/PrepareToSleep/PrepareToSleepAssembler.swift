@@ -6,8 +6,6 @@
 //  Copyright © 2020 VladimirBrejcha. All rights reserved.
 //
 
-import Foundation
-
 final class PrepareToSleepAssembler {
     func assemble() -> PrepareToSleepViewController {
         let controller = Storyboard.sleep.instantiateViewController(of: PrepareToSleepViewController.self)
