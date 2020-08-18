@@ -12,6 +12,17 @@ import UIKit
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
+    static private(set) var alertWindow: UIWindow = {
+        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
+        alertWindow.backgroundColor = .clear
+
+        let viewController = UIViewController()
+        viewController.view.backgroundColor = .clear
+        alertWindow.rootViewController = viewController
+
+        return alertWindow
+    }()
+    
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?

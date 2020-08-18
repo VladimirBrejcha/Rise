@@ -44,6 +44,18 @@
 		7E6268C024D5D49C00F70BC3 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6268BF24D5D49C00F70BC3 /* TodayView.swift */; };
 		7E6268C324D5FAA900F70BC3 /* SelectableStackView in Frameworks */ = {isa = PBXBuildFile; productRef = 7E6268C224D5FAA900F70BC3 /* SelectableStackView */; };
 		7E69836224EBD119002EE278 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69836124EBD119002EE278 /* UIColor+Hex.swift */; };
+		7E69836524EC68F4002EE278 /* RecoverableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69836424EC68F4002EE278 /* RecoverableError.swift */; };
+		7E69836724EC690C002EE278 /* RecoveryAttemper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69836624EC690C002EE278 /* RecoveryAttemper.swift */; };
+		7E69836924EC6923002EE278 /* RecoveryOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69836824EC6923002EE278 /* RecoveryOptions.swift */; };
+		7E69836B24EC6932002EE278 /* NetworkErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69836A24EC6932002EE278 /* NetworkErrors.swift */; };
+		7E69836E24EC6980002EE278 /* AboveAllAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69836D24EC6980002EE278 /* AboveAllAlert.swift */; };
+		7E69837024EC69A5002EE278 /* ErrorAlertCreatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69836F24EC69A5002EE278 /* ErrorAlertCreatable.swift */; };
+		7E69837224EC69B8002EE278 /* ErrorAlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69837124EC69B8002EE278 /* ErrorAlertPresentable.swift */; };
+		7E69837424EC69CE002EE278 /* ErrorDescriptionExtractable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69837324EC69CE002EE278 /* ErrorDescriptionExtractable.swift */; };
+		7E69837624EC69DE002EE278 /* ErrorViewAddable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69837524EC69DE002EE278 /* ErrorViewAddable.swift */; };
+		7E69837824EC69EE002EE278 /* ErrorViewCreatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69837724EC69EE002EE278 /* ErrorViewCreatable.swift */; };
+		7E69837A24EC69FE002EE278 /* ErrorViewRemovable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69837924EC69FE002EE278 /* ErrorViewRemovable.swift */; };
+		7E69837C24EC702B002EE278 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69837B24EC702B002EE278 /* ErrorView.swift */; };
 		7E708A3423BF635B003B5702 /* SleepDurationCreatePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3323BF635B003B5702 /* SleepDurationCreatePlanViewController.swift */; };
 		7E708A3723BFD058003B5702 /* PlanDurationCreatePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3623BFD058003B5702 /* PlanDurationCreatePlanViewController.swift */; };
 		7E708A3923BFD09B003B5702 /* WentSleepCreatePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3823BFD09B003B5702 /* WentSleepCreatePlanViewController.swift */; };
@@ -209,6 +221,18 @@
 		7E5F292923F9638C0050DFD3 /* FloatingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabel.swift; sourceTree = "<group>"; };
 		7E6268BF24D5D49C00F70BC3 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		7E69836124EBD119002EE278 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		7E69836424EC68F4002EE278 /* RecoverableError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverableError.swift; sourceTree = "<group>"; };
+		7E69836624EC690C002EE278 /* RecoveryAttemper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryAttemper.swift; sourceTree = "<group>"; };
+		7E69836824EC6923002EE278 /* RecoveryOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryOptions.swift; sourceTree = "<group>"; };
+		7E69836A24EC6932002EE278 /* NetworkErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrors.swift; sourceTree = "<group>"; };
+		7E69836D24EC6980002EE278 /* AboveAllAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboveAllAlert.swift; sourceTree = "<group>"; };
+		7E69836F24EC69A5002EE278 /* ErrorAlertCreatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertCreatable.swift; sourceTree = "<group>"; };
+		7E69837124EC69B8002EE278 /* ErrorAlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertPresentable.swift; sourceTree = "<group>"; };
+		7E69837324EC69CE002EE278 /* ErrorDescriptionExtractable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDescriptionExtractable.swift; sourceTree = "<group>"; };
+		7E69837524EC69DE002EE278 /* ErrorViewAddable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewAddable.swift; sourceTree = "<group>"; };
+		7E69837724EC69EE002EE278 /* ErrorViewCreatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewCreatable.swift; sourceTree = "<group>"; };
+		7E69837924EC69FE002EE278 /* ErrorViewRemovable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewRemovable.swift; sourceTree = "<group>"; };
+		7E69837B24EC702B002EE278 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		7E708A3323BF635B003B5702 /* SleepDurationCreatePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepDurationCreatePlanViewController.swift; sourceTree = "<group>"; };
 		7E708A3623BFD058003B5702 /* PlanDurationCreatePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDurationCreatePlanViewController.swift; sourceTree = "<group>"; };
 		7E708A3823BFD09B003B5702 /* WentSleepCreatePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WentSleepCreatePlanViewController.swift; sourceTree = "<group>"; };
@@ -481,6 +505,32 @@
 				7EF0B2E324033B600079F72C /* PersonalPlanTableView */,
 			);
 			path = PersonalPlan;
+			sourceTree = "<group>";
+		};
+		7E69836324EC68DF002EE278 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				7E69836424EC68F4002EE278 /* RecoverableError.swift */,
+				7E69836624EC690C002EE278 /* RecoveryAttemper.swift */,
+				7E69836824EC6923002EE278 /* RecoveryOptions.swift */,
+				7E69836A24EC6932002EE278 /* NetworkErrors.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		7E69836C24EC6977002EE278 /* Alerts */ = {
+			isa = PBXGroup;
+			children = (
+				7E69836D24EC6980002EE278 /* AboveAllAlert.swift */,
+				7E69836F24EC69A5002EE278 /* ErrorAlertCreatable.swift */,
+				7E69837124EC69B8002EE278 /* ErrorAlertPresentable.swift */,
+				7E69837324EC69CE002EE278 /* ErrorDescriptionExtractable.swift */,
+				7E69837524EC69DE002EE278 /* ErrorViewAddable.swift */,
+				7E69837724EC69EE002EE278 /* ErrorViewCreatable.swift */,
+				7E69837924EC69FE002EE278 /* ErrorViewRemovable.swift */,
+				7E69837B24EC702B002EE278 /* ErrorView.swift */,
+			);
+			path = Alerts;
 			sourceTree = "<group>";
 		};
 		7E708A3523BF666F003B5702 /* ContentViewControllers */ = {
@@ -796,6 +846,8 @@
 		7EF3EE192340F8A5003BE978 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				7E69836C24EC6977002EE278 /* Alerts */,
+				7E69836324EC68DF002EE278 /* Errors */,
 				7EEA217823B6A3B400354BEA /* UIViewController+Present.swift */,
 				7E052A412352377E005D7FAD /* RiseError.swift */,
 				7E97656D2378813700E3AEF2 /* Log.swift */,
@@ -1093,12 +1145,15 @@
 				7EF4C19D240436CD0098135A /* ChangePlanSliderTableCell.swift in Sources */,
 				7E88A35123F8B20C00E792CA /* VerticalPositionMoveAnimation.swift in Sources */,
 				7EB9F34423C20347002A6DD3 /* UpdatePlanUseCase.swift in Sources */,
+				7E69837224EC69B8002EE278 /* ErrorAlertPresentable.swift in Sources */,
 				7EB9F34623C20379002A6DD3 /* DeletePlanUseCase.swift in Sources */,
 				7EB26953234F99AE008AEB3D /* Button.swift in Sources */,
+				7E69837624EC69DE002EE278 /* ErrorViewAddable.swift in Sources */,
 				7E814E7424D8A11700EC1665 /* ConfirmationView.swift in Sources */,
 				7EB1C0332340F9550028237E /* PersonalPlanViewController.swift in Sources */,
 				7EA38AE623783FFD0007919B /* DefaultLocationRemoteDataSource.swift in Sources */,
 				7EF4C1A0240436D70098135A /* ChangePlanSliderTableCellModel.swift in Sources */,
+				7E69836924EC6923002EE278 /* RecoveryOptions.swift in Sources */,
 				7EB9F35A23C389BF002A6DD3 /* DataLayer.swift in Sources */,
 				7EB9F35023C35CA9002A6DD3 /* PersonalPlanAssembler.swift in Sources */,
 				92E77AFA22A5304400E5E21C /* TodayViewController.swift in Sources */,
@@ -1123,6 +1178,7 @@
 				7EB26951234F9972008AEB3D /* NibLoadable.swift in Sources */,
 				7EB90047232AB9EB006EB9A8 /* ProgressBar.swift in Sources */,
 				7EA38AE423783EFC0007919B /* DefaultLocationRepository.swift in Sources */,
+				7E69837A24EC69FE002EE278 /* ErrorViewRemovable.swift in Sources */,
 				7E25756723F8749A007AE4B5 /* Animation.swift in Sources */,
 				7EB1C0372340FC6B0028237E /* RisePlan.swift in Sources */,
 				7E173375241044D70028FDBE /* SunTimeRepository.swift in Sources */,
@@ -1139,6 +1195,7 @@
 				7E17337924104DDA0028FDBE /* LocationRepository.swift in Sources */,
 				7EA38AE92378526F0007919B /* LocationData.xcdatamodeld in Sources */,
 				7E6268C024D5D49C00F70BC3 /* TodayView.swift in Sources */,
+				7E69837C24EC702B002EE278 /* ErrorView.swift in Sources */,
 				7E2CA81024032A0F000CEFA5 /* TableCellConfigurator.swift in Sources */,
 				7E91D95F2371E4080087436F /* RisePlanObject+CoreDataClass.swift in Sources */,
 				7EB9F35423C36B54002A6DD3 /* CreatePlanAssembler.swift in Sources */,
@@ -1147,7 +1204,9 @@
 				7E0834AC2387351400BA1AE8 /* DateExtensions.swift in Sources */,
 				7E708A3923BFD09B003B5702 /* WentSleepCreatePlanViewController.swift in Sources */,
 				92BC919422AB24D800BB1D19 /* GradientHelper.swift in Sources */,
+				7E69836E24EC6980002EE278 /* AboveAllAlert.swift in Sources */,
 				7E052A422352377E005D7FAD /* RiseError.swift in Sources */,
+				7E69836724EC690C002EE278 /* RecoveryAttemper.swift in Sources */,
 				92D12FDD22A44B3B0093B0A3 /* CustomTabBarController.swift in Sources */,
 				7E173377241047460028FDBE /* RisePlanRepository.swift in Sources */,
 				7E84EB27239D1A5700E02050 /* ConfirmationViewController.swift in Sources */,
@@ -1163,15 +1222,19 @@
 				7E9D9C0D24E59B21000772C0 /* ChangeableWrapper.swift in Sources */,
 				7EB196DA23A01B8F00E6C40B /* CreatePlanViewController.swift in Sources */,
 				92D7D6532296F297009321AE /* AppDelegate.swift in Sources */,
+				7E69837424EC69CE002EE278 /* ErrorDescriptionExtractable.swift in Sources */,
 				7EA7BA0C2354F2510051A92D /* CollectionView.swift in Sources */,
 				7E91D95B2371E4080087436F /* RiseDailySunTime+CoreDataClass.swift in Sources */,
 				7E4901862340DD810034521E /* RisePlanData.xcdatamodeld in Sources */,
 				7E814E7624D8A6DE00EC1665 /* Int+Even.swift in Sources */,
 				7EFF58B9241C1E3B00D2CCEC /* SleepAssembler.swift in Sources */,
 				7EB9F34E23C229F2002A6DD3 /* TodayAssembler.swift in Sources */,
+				7E69836524EC68F4002EE278 /* RecoverableError.swift in Sources */,
 				7E0B88F72455BEF400BC3CF5 /* SelectableStackViewButton.swift in Sources */,
+				7E69836B24EC6932002EE278 /* NetworkErrors.swift in Sources */,
 				7E91D9602371E4080087436F /* RisePlanObject+CoreDataProperties.swift in Sources */,
 				7EF0B2E024032CD20079F72C /* ProgressTableCellModel.swift in Sources */,
+				7E69837024EC69A5002EE278 /* ErrorAlertCreatable.swift in Sources */,
 				7E5BDADE2371F08400E43F37 /* RiseLocation+CoreDataClass.swift in Sources */,
 				7E91D95C2371E4080087436F /* RiseDailySunTime+CoreDataProperties.swift in Sources */,
 				7EA0924222C8CF820019F2E9 /* CustomTransition.swift in Sources */,
@@ -1210,6 +1273,7 @@
 				7EC7392523C4EF5B00C484B8 /* ConfirmationAssembler.swift in Sources */,
 				7E98FE65231C30C10065FB09 /* AlertPresenter.swift in Sources */,
 				7E8675CE2417E9AA004DAF63 /* PausePlanUseCase.swift in Sources */,
+				7E69837824EC69EE002EE278 /* ErrorViewCreatable.swift in Sources */,
 				7E708A3423BF635B003B5702 /* SleepDurationCreatePlanViewController.swift in Sources */,
 				7ECD2C78241916C600408C4B /* ChangePlanButtonTableCellModel.swift in Sources */,
 			);
