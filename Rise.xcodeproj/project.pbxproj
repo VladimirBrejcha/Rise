@@ -84,7 +84,6 @@
 		7E97656623786B2800E3AEF2 /* DefaultRisePlanLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E97656523786B2800E3AEF2 /* DefaultRisePlanLocalDataSource.swift */; };
 		7E97656E2378813700E3AEF2 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E97656D2378813700E3AEF2 /* Log.swift */; };
 		7E98FE63231C2F8C0065FB09 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE62231C2F8C0065FB09 /* Location.swift */; };
-		7E98FE65231C30C10065FB09 /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E98FE64231C30C10065FB09 /* AlertPresenter.swift */; };
 		7E9D9C0424E58F39000772C0 /* SleepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D9C0324E58F38000772C0 /* SleepView.swift */; };
 		7E9D9C0624E59501000772C0 /* BackgroundSettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D9C0524E59501000772C0 /* BackgroundSettable.swift */; };
 		7E9D9C0824E596DA000772C0 /* PrepareToSleepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D9C0724E596DA000772C0 /* PrepareToSleepView.swift */; };
@@ -261,7 +260,6 @@
 		7E97656523786B2800E3AEF2 /* DefaultRisePlanLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRisePlanLocalDataSource.swift; sourceTree = "<group>"; };
 		7E97656D2378813700E3AEF2 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		7E98FE62231C2F8C0065FB09 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		7E98FE64231C30C10065FB09 /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenter.swift; sourceTree = "<group>"; };
 		7E9D9C0324E58F38000772C0 /* SleepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepView.swift; sourceTree = "<group>"; };
 		7E9D9C0524E59501000772C0 /* BackgroundSettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundSettable.swift; sourceTree = "<group>"; };
 		7E9D9C0724E596DA000772C0 /* PrepareToSleepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareToSleepView.swift; sourceTree = "<group>"; };
@@ -952,7 +950,6 @@
 			children = (
 				7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */,
 				92BC919322AB24D800BB1D19 /* GradientHelper.swift */,
-				7E98FE64231C30C10065FB09 /* AlertPresenter.swift */,
 				7E2CA80E24031FF8000CEFA5 /* TableView */,
 				7E2CA80D24031FDB000CEFA5 /* ConfigurableCell */,
 				7E2CA80C24031E85000CEFA5 /* CollectionView */,
@@ -1271,7 +1268,6 @@
 				7E9D9C1124E5BEFA000772C0 /* CreatePlanView.swift in Sources */,
 				7EB9004023256BF3006EB9A8 /* DaysView.swift in Sources */,
 				7EC7392523C4EF5B00C484B8 /* ConfirmationAssembler.swift in Sources */,
-				7E98FE65231C30C10065FB09 /* AlertPresenter.swift in Sources */,
 				7E8675CE2417E9AA004DAF63 /* PausePlanUseCase.swift in Sources */,
 				7E69837824EC69EE002EE278 /* ErrorViewCreatable.swift in Sources */,
 				7E708A3423BF635B003B5702 /* SleepDurationCreatePlanViewController.swift in Sources */,

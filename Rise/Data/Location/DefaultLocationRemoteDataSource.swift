@@ -57,7 +57,7 @@ final class DefaultLocationRemoteDataSource: NSObject, CLLocationManagerDelegate
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         log(.error, with: error.localizedDescription)
-        AlertPresenter.showAlert(with: error.localizedDescription)
+//        AlertPresenter.showAlert(with: error.localizedDescription) // TODO
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -74,6 +74,6 @@ final class DefaultLocationRemoteDataSource: NSObject, CLLocationManagerDelegate
     
     // MARK: - Private -
     private func askForLocationPermissions(completion: @escaping (Bool) -> Void) {
-        AlertPresenter.showLocationPermissionsAlert(completion: completion)
+//        AlertPresenter.showLocationPermissionsAlert(completion: completion) // TODO 
     }
 }
