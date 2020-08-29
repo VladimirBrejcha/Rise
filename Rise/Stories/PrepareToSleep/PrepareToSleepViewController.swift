@@ -34,7 +34,7 @@ final class PrepareToSleepViewController: UIViewController {
                 beforeSleepMotivatingText = "You are late today :("
             }
             
-        } catch RiseError.noPlanForTheDay {
+        } catch PlanError.noPlanForTheDay {
             fatalError()
             // TODO: (vladimir) - handle errors
         } catch {

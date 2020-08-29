@@ -17,7 +17,7 @@ final class AudioPlayer {
     private var player: AVAudioPlayer?
     
     func play(sound: Sound, loop: Bool = false) throws {
-        guard let url = sound.url else { throw RiseError.cantBuildURL }
+        guard let url = sound.url else { throw InternalError.urlBuildingError }
         
         try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
         try AVAudioSession.sharedInstance().setActive(true)

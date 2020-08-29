@@ -16,10 +16,10 @@ protocol LocationLocalDataSource {
 }
 
 final class DefaultLocationLocalDataSource: LocalDataSource<RiseLocation>, LocationLocalDataSource {
-    func get() throws -> Location {
+    func get() throws -> Location { // TODO
         let fetchResult = try container.fetch()
         if fetchResult.isEmpty {
-            throw RiseError.noDataFound
+            throw InternalError.dateBuildingError
         }
         return buildModel(from: fetchResult[0])
     }

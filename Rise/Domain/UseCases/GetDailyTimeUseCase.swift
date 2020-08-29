@@ -23,7 +23,7 @@ final class GetDailyTimeUseCase: GetDailyTime {
         let plan = try planRepository.get()
         let date = date.appending(days: -plan.daysMissed).noon
         if plan.dateInterval.start > date {
-            throw RiseError.noPlanForTheDay
+            throw PlanError.noPlanForTheDay
         }
         let daysSincePlanStart = DateInterval(start: plan.dateInterval.start, end: date).durationDays
         let toSleepTime = calculateToSleepTime(since: plan.firstSleepTime,

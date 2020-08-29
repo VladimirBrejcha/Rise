@@ -17,11 +17,11 @@ protocol PersonalPlanLocalDataSource {
 }
 
 final class DefaultRisePlanLocalDataSource: LocalDataSource<RisePlanObject>, PersonalPlanLocalDataSource {
-    func get() throws -> RisePlan {
+    func get() throws -> RisePlan { // TODO
         do {
             let fetchResult = try container.fetch()
             if fetchResult.isEmpty {
-                throw RiseError.noDataFound
+                throw NetworkError.noDataReceived
             }
             return buildModel(from: fetchResult[0])
         } catch (let error) {
@@ -35,11 +35,11 @@ final class DefaultRisePlanLocalDataSource: LocalDataSource<RisePlanObject>, Per
         try container.saveContext()
     }
     
-    func update(plan: RisePlan) throws {
+    func update(plan: RisePlan) throws { // TODO
         do {
             let fetchResult = try container.fetch()
             if fetchResult.isEmpty {
-                throw RiseError.noDataFound
+                throw NetworkError.noDataReceived
             }
             update(object: fetchResult[0], with: plan)
             try container.saveContext()

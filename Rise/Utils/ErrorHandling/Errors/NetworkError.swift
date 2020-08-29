@@ -1,5 +1,5 @@
 //
-//  NetworkErrors.swift
+//  NetworkError.swift
 //  Rise
 //
 //  Created by Владимир Королев on 18.08.2020.
@@ -11,29 +11,26 @@ import Foundation
 enum NetworkError: LocalizedError {
     case serverError
     case responseError
+    case responseParsingError
+    case noDataReceived
     case internetError
-    case runOfSpace
 
     // MARK: - LocalizedError -
     var errorDescription: String? {
         switch self {
-        case .serverError, .responseError:
+        case .serverError, .responseError, .noDataReceived, .responseParsingError:
             return "Something bad happened"
         case .internetError:
             return "No internet connection"
-        case .runOfSpace:
-            return "Run out of space"
         }
     }
-
+    
     var recoverySuggestion: String? {
         switch self {
-        case .serverError, .responseError:
+        case .serverError, .responseError, .noDataReceived, .responseParsingError:
             return nil
         case .internetError:
             return "Please check your internet connection"
-        case .runOfSpace:
-            return "Please "
         }
     }
 }

@@ -37,7 +37,7 @@ final class DefaultSunTimeRemoteDataSource: SunTimeRemoteDataSource {
 
             guard let url = self.buildURL(with: location, and: date)
                 else {
-                    completion(.failure(RiseError.cantBuildURL))
+                    completion(.failure(InternalError.urlBuildingError))
                     group.leave()
                     return
             }
@@ -64,7 +64,7 @@ final class DefaultSunTimeRemoteDataSource: SunTimeRemoteDataSource {
 
         group.notify(queue: .main) {
             if returnArray.isEmpty {
-                completion(.failure(RiseError.noDataReceived))
+                completion(.failure(NetworkError.noDataReceived))
             }
             else {
                 completion(.success(returnArray))
@@ -81,7 +81,7 @@ final class DefaultSunTimeRemoteDataSource: SunTimeRemoteDataSource {
             if let data = data {
                 completion(.success(data))
             } else {
-                completion(.failure(RiseError.noDataReceived))
+                completion(.failure(NetworkError.noDataReceived))
             }
         }.resume()
     }
@@ -106,7 +106,7 @@ final class DefaultSunTimeRemoteDataSource: SunTimeRemoteDataSource {
             return .success(json.results)
         }
         catch {
-            return .failure(RiseError.cantParseJSON)
+            return .failure(NetworkError.responseParsingError)
         }
     }
 }

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7E052A40235236F1005D7FAD /* DailySunTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E052A3F235236F1005D7FAD /* DailySunTime.swift */; };
-		7E052A422352377E005D7FAD /* RiseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E052A412352377E005D7FAD /* RiseError.swift */; };
+		7E052A422352377E005D7FAD /* InternalError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E052A412352377E005D7FAD /* InternalError.swift */; };
 		7E07A10123AFBEE300B9D61A /* WelcomeCreatelPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E07A10023AFBEE300B9D61A /* WelcomeCreatelPlanViewController.swift */; };
 		7E0834AC2387351400BA1AE8 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0834AB2387351400BA1AE8 /* DateExtensions.swift */; };
 		7E0B88F72455BEF400BC3CF5 /* SelectableStackViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0B88F52455BEF400BC3CF5 /* SelectableStackViewButton.swift */; };
@@ -43,11 +43,13 @@
 		7E5F292A23F9638C0050DFD3 /* FloatingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5F292923F9638C0050DFD3 /* FloatingLabel.swift */; };
 		7E6268C024D5D49C00F70BC3 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6268BF24D5D49C00F70BC3 /* TodayView.swift */; };
 		7E6268C324D5FAA900F70BC3 /* SelectableStackView in Frameworks */ = {isa = PBXBuildFile; productRef = 7E6268C224D5FAA900F70BC3 /* SelectableStackView */; };
+		7E644D4F24FACF5600BF198C /* PlanError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E644D4E24FACF5600BF198C /* PlanError.swift */; };
+		7E644D5124FACF6E00BF198C /* PermissionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E644D5024FACF6E00BF198C /* PermissionError.swift */; };
 		7E69836224EBD119002EE278 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69836124EBD119002EE278 /* UIColor+Hex.swift */; };
 		7E69836524EC68F4002EE278 /* RecoverableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69836424EC68F4002EE278 /* RecoverableError.swift */; };
 		7E69836724EC690C002EE278 /* RecoveryAttemper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69836624EC690C002EE278 /* RecoveryAttemper.swift */; };
 		7E69836924EC6923002EE278 /* RecoveryOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69836824EC6923002EE278 /* RecoveryOptions.swift */; };
-		7E69836B24EC6932002EE278 /* NetworkErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69836A24EC6932002EE278 /* NetworkErrors.swift */; };
+		7E69836B24EC6932002EE278 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69836A24EC6932002EE278 /* NetworkError.swift */; };
 		7E69836E24EC6980002EE278 /* AboveAllAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69836D24EC6980002EE278 /* AboveAllAlert.swift */; };
 		7E69837024EC69A5002EE278 /* ErrorAlertCreatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69836F24EC69A5002EE278 /* ErrorAlertCreatable.swift */; };
 		7E69837224EC69B8002EE278 /* ErrorAlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69837124EC69B8002EE278 /* ErrorAlertPresentable.swift */; };
@@ -186,7 +188,7 @@
 
 /* Begin PBXFileReference section */
 		7E052A3F235236F1005D7FAD /* DailySunTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySunTime.swift; sourceTree = "<group>"; };
-		7E052A412352377E005D7FAD /* RiseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiseError.swift; sourceTree = "<group>"; };
+		7E052A412352377E005D7FAD /* InternalError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalError.swift; sourceTree = "<group>"; };
 		7E07A10023AFBEE300B9D61A /* WelcomeCreatelPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCreatelPlanViewController.swift; sourceTree = "<group>"; };
 		7E0834AB2387351400BA1AE8 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		7E0B88F52455BEF400BC3CF5 /* SelectableStackViewButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectableStackViewButton.swift; sourceTree = "<group>"; };
@@ -219,11 +221,13 @@
 		7E5BDADD2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RiseLocation+CoreDataProperties.swift"; path = "Rise/Data/Location/Entity/RiseLocation+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		7E5F292923F9638C0050DFD3 /* FloatingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabel.swift; sourceTree = "<group>"; };
 		7E6268BF24D5D49C00F70BC3 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
+		7E644D4E24FACF5600BF198C /* PlanError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanError.swift; sourceTree = "<group>"; };
+		7E644D5024FACF6E00BF198C /* PermissionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionError.swift; sourceTree = "<group>"; };
 		7E69836124EBD119002EE278 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		7E69836424EC68F4002EE278 /* RecoverableError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverableError.swift; sourceTree = "<group>"; };
 		7E69836624EC690C002EE278 /* RecoveryAttemper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryAttemper.swift; sourceTree = "<group>"; };
 		7E69836824EC6923002EE278 /* RecoveryOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryOptions.swift; sourceTree = "<group>"; };
-		7E69836A24EC6932002EE278 /* NetworkErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrors.swift; sourceTree = "<group>"; };
+		7E69836A24EC6932002EE278 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		7E69836D24EC6980002EE278 /* AboveAllAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboveAllAlert.swift; sourceTree = "<group>"; };
 		7E69836F24EC69A5002EE278 /* ErrorAlertCreatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertCreatable.swift; sourceTree = "<group>"; };
 		7E69837124EC69B8002EE278 /* ErrorAlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertPresentable.swift; sourceTree = "<group>"; };
@@ -505,15 +509,26 @@
 			path = PersonalPlan;
 			sourceTree = "<group>";
 		};
-		7E69836324EC68DF002EE278 /* Errors */ = {
+		7E644D4D24FACF4100BF198C /* Errors */ = {
 			isa = PBXGroup;
 			children = (
+				7E69836A24EC6932002EE278 /* NetworkError.swift */,
+				7E644D4E24FACF5600BF198C /* PlanError.swift */,
+				7E644D5024FACF6E00BF198C /* PermissionError.swift */,
+				7E052A412352377E005D7FAD /* InternalError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		7E69836324EC68DF002EE278 /* ErrorHandling */ = {
+			isa = PBXGroup;
+			children = (
+				7E644D4D24FACF4100BF198C /* Errors */,
 				7E69836424EC68F4002EE278 /* RecoverableError.swift */,
 				7E69836624EC690C002EE278 /* RecoveryAttemper.swift */,
 				7E69836824EC6923002EE278 /* RecoveryOptions.swift */,
-				7E69836A24EC6932002EE278 /* NetworkErrors.swift */,
 			);
-			path = Errors;
+			path = ErrorHandling;
 			sourceTree = "<group>";
 		};
 		7E69836C24EC6977002EE278 /* Alerts */ = {
@@ -845,9 +860,8 @@
 			isa = PBXGroup;
 			children = (
 				7E69836C24EC6977002EE278 /* Alerts */,
-				7E69836324EC68DF002EE278 /* Errors */,
+				7E69836324EC68DF002EE278 /* ErrorHandling */,
 				7EEA217823B6A3B400354BEA /* UIViewController+Present.swift */,
-				7E052A412352377E005D7FAD /* RiseError.swift */,
 				7E97656D2378813700E3AEF2 /* Log.swift */,
 				7E0834AB2387351400BA1AE8 /* DateExtensions.swift */,
 				7EEB1E0C24424010001ABE4A /* AudioPlayer.swift */,
@@ -1202,7 +1216,7 @@
 				7E708A3923BFD09B003B5702 /* WentSleepCreatePlanViewController.swift in Sources */,
 				92BC919422AB24D800BB1D19 /* GradientHelper.swift in Sources */,
 				7E69836E24EC6980002EE278 /* AboveAllAlert.swift in Sources */,
-				7E052A422352377E005D7FAD /* RiseError.swift in Sources */,
+				7E052A422352377E005D7FAD /* InternalError.swift in Sources */,
 				7E69836724EC690C002EE278 /* RecoveryAttemper.swift in Sources */,
 				92D12FDD22A44B3B0093B0A3 /* CustomTabBarController.swift in Sources */,
 				7E173377241047460028FDBE /* RisePlanRepository.swift in Sources */,
@@ -1224,14 +1238,16 @@
 				7E91D95B2371E4080087436F /* RiseDailySunTime+CoreDataClass.swift in Sources */,
 				7E4901862340DD810034521E /* RisePlanData.xcdatamodeld in Sources */,
 				7E814E7624D8A6DE00EC1665 /* Int+Even.swift in Sources */,
+				7E644D4F24FACF5600BF198C /* PlanError.swift in Sources */,
 				7EFF58B9241C1E3B00D2CCEC /* SleepAssembler.swift in Sources */,
 				7EB9F34E23C229F2002A6DD3 /* TodayAssembler.swift in Sources */,
 				7E69836524EC68F4002EE278 /* RecoverableError.swift in Sources */,
 				7E0B88F72455BEF400BC3CF5 /* SelectableStackViewButton.swift in Sources */,
-				7E69836B24EC6932002EE278 /* NetworkErrors.swift in Sources */,
+				7E69836B24EC6932002EE278 /* NetworkError.swift in Sources */,
 				7E91D9602371E4080087436F /* RisePlanObject+CoreDataProperties.swift in Sources */,
 				7EF0B2E024032CD20079F72C /* ProgressTableCellModel.swift in Sources */,
 				7E69837024EC69A5002EE278 /* ErrorAlertCreatable.swift in Sources */,
+				7E644D5124FACF6E00BF198C /* PermissionError.swift in Sources */,
 				7E5BDADE2371F08400E43F37 /* RiseLocation+CoreDataClass.swift in Sources */,
 				7E91D95C2371E4080087436F /* RiseDailySunTime+CoreDataProperties.swift in Sources */,
 				7EA0924222C8CF820019F2E9 /* CustomTransition.swift in Sources */,

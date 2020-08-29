@@ -29,7 +29,7 @@ final class MakePlanUseCase: MakePlan {
     ) throws {
         guard let firstSleepTime = firstSleepTime.zeroSeconds
             else {
-                throw RiseError.failedToCreateDate
+                throw InternalError.dateBuildingError
         }
         let dateInterval = try calculateDateInterval(since: firstSleepTime, with: planDurationDays)
         guard let wakeUpTime = calendar.date(bySettingHour: calendar.component(.hour, from: wakeUpTime),
@@ -37,7 +37,7 @@ final class MakePlanUseCase: MakePlan {
                                              second: 00,
                                              of: dateInterval.end)
             else {
-                throw RiseError.failedToCreateDate
+                throw InternalError.dateBuildingError
         }
         
         let sleepDurationSec = sleepDurationMin.toSeconds()
@@ -69,11 +69,11 @@ final class MakePlanUseCase: MakePlan {
     private func calculateDateInterval(since firstSleepTime: Date, with duration: Int) throws -> DateInterval {
         guard let nightDate = calendar.date(bySettingHour: 00, minute: 0, second: 0, of: firstSleepTime)
             else {
-                throw RiseError.failedToCreateDate
+                throw InternalError.dateBuildingError
         }
         guard let noonDate = calendar.date(bySettingHour: 12, minute: 0, second: 0, of: firstSleepTime)
             else {
-                throw RiseError.failedToCreateDate
+                throw InternalError.dateBuildingError
         }
         let startDay = firstSleepTime > nightDate && firstSleepTime < noonDate
             ? firstSleepTime.noon.appending(days: -1)

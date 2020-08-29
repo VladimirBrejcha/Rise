@@ -6,8 +6,6 @@
 //  Copyright © 2019-2020 VladimirBrejcha. All rights reserved.
 //
 
-import Foundation
-
 final class DefaultLocationRepository: LocationRepository {
     private let localDataSource: LocationLocalDataSource
     private let remoteDataSource: LocationRemoteDataSource
@@ -38,7 +36,7 @@ final class DefaultLocationRepository: LocationRepository {
                             completion(.failure(error))
                         }
                       }
-                    : completion(.failure(RiseError.locationAccessDenied))
+                    : completion(.failure(PermissionError.locationAccessDenied))
             }
         }
     }
