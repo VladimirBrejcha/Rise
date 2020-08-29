@@ -29,8 +29,10 @@ final class FloatingButton: Button {
     }
     
     private func sharedInit() {
-        initialDraw = {
-            self.animation.add(on: self.layer)
+        initialDraw = { [weak self] in
+            if let self = self {
+                self.animation.add(on: self.layer)
+            }
         }
     }
     
