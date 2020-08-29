@@ -17,10 +17,10 @@ enum Story {
     // Create plan
     case createPlan
     case welcomeCreatePlan
-    case sleepDurationCreatePlan(sleepDurationOutput: (Int) -> Void)
-    case wakeUpTimeCreatePlan(wakeUpTimeOutput: (Date) -> Void)
-    case planDurationCreatePlan(planDurationOutput: (Int) -> Void)
-    case wentSleepCreatePlan(wentSleepOutput: (Date) -> Void)
+    case sleepDurationCreatePlan(sleepDurationOutput: (Int) -> Void, sleepDurationDataSource: @autoclosure () -> Int?)
+    case wakeUpTimeCreatePlan(wakeUpTimeOutput: (Date) -> Void, wakeUpTimeDataSource: @autoclosure () -> Date?)
+    case planDurationCreatePlan(planDurationOutput: (Int) -> Void, planDurationDataSource: @autoclosure () -> Int?)
+    case wentSleepCreatePlan(wentSleepOutput: (Date) -> Void, wentSleepDataSource: @autoclosure () -> Date?)
     case planCreatedSetupPlan
     
     // Change plan
@@ -46,21 +46,25 @@ enum Story {
         case .welcomeCreatePlan:
             let controller = Storyboard.setupPlan.instantiateViewController(of: WelcomeCreatelPlanViewController.self)
             return controller
-        case .sleepDurationCreatePlan(let sleepDurationOutput):
+        case .sleepDurationCreatePlan(let sleepDurationOutput, let sleepDurationDataSource):
             let controller = Storyboard.setupPlan.instantiateViewController(of: SleepDurationCreatePlanViewController.self)
             controller.sleepDurationOutput = sleepDurationOutput
+            controller.presettedSleepDuration = sleepDurationDataSource()
             return controller
-        case .wakeUpTimeCreatePlan(let wakeUpTimeOutput):
+        case .wakeUpTimeCreatePlan(let wakeUpTimeOutput, let wakeUpTimeDataSource):
             let controller = Storyboard.setupPlan.instantiateViewController(of: WakeUpTimeCreatePlanViewController.self)
             controller.wakeUpTimeOutput = wakeUpTimeOutput
+            controller.presettedWakeUpTime = wakeUpTimeDataSource()
             return controller
-        case .planDurationCreatePlan(let planDurationOutput):
+        case .planDurationCreatePlan(let planDurationOutput, let planDurationDataSource):
             let controller = Storyboard.setupPlan.instantiateViewController(of: PlanDurationCreatePlanViewController.self)
             controller.planDurationOutput = planDurationOutput
+            controller.presettedPlanDuration = planDurationDataSource()
             return controller
-        case .wentSleepCreatePlan(let wentSleepOutput):
+        case .wentSleepCreatePlan(let wentSleepOutput, let wentSleepDataSource):
             let controller = Storyboard.setupPlan.instantiateViewController(of: WentSleepCreatePlanViewController.self)
             controller.wentSleepTimeOutput = wentSleepOutput
+            controller.presettedWentSleepTime = wentSleepDataSource()
             return controller
         case .planCreatedSetupPlan:
             let controller = Storyboard.setupPlan.instantiateViewController(of: PlanCreatedCreatePlanViewController.self)

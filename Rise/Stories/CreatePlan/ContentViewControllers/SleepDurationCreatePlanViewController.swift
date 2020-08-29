@@ -17,13 +17,19 @@ final class SleepDurationCreatePlanViewController: UIViewController {
     private let recomendedDurationH = 8
     
     var sleepDurationOutput: ((Int) -> Void)! // DI
+    var presettedSleepDuration: Int? // DI
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         sleepDurationSlider.minimumValue = Float(minimumDurationH * 60)
         sleepDurationSlider.maximumValue = Float(maximumDurationH * 60)
-        sleepDurationSlider.value = Float(recomendedDurationH * 60)
+        if let presettedSleepDuration = presettedSleepDuration {
+            sleepDurationSlider.value = Float(presettedSleepDuration)
+            sleepDurationLabel.text = presettedSleepDuration.HHmmString
+        } else {
+            sleepDurationSlider.value = Float(recomendedDurationH * 60)
+        }
     }
     
     @IBAction private func sleepDurationChanged(_ sender: UISlider) {

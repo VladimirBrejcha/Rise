@@ -9,8 +9,18 @@
 import UIKit
 
 final class WakeUpTimeCreatePlanViewController: UIViewController {
+    @IBOutlet private weak var wakeUpTimeDatePicker: UIDatePicker!
     
     var wakeUpTimeOutput: ((Date) -> Void)! // DI
+    var presettedWakeUpTime: Date? // DI
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if let presettedWakeUpTime = presettedWakeUpTime {
+            wakeUpTimeDatePicker.setDate(presettedWakeUpTime, animated: false)
+        }
+    }
     
     @IBAction private func wakeUpTimeChanged(_ sender: UIDatePicker) {
         wakeUpTimeOutput(sender.date)

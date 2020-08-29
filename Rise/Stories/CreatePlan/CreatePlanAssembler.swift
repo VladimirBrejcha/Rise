@@ -12,10 +12,22 @@ final class CreatePlanAssembler {
         controller.makePlan = DomainLayer.makePlan
         controller.stories = [
             .welcomeCreatePlan,
-            .sleepDurationCreatePlan(sleepDurationOutput: controller.sleepDurationValueChanged(_:)),
-            .wakeUpTimeCreatePlan(wakeUpTimeOutput: controller.wakeUpTimeValueChanged(_:)),
-            .planDurationCreatePlan(planDurationOutput: controller.planDurationValueChanged(_:)),
-            .wentSleepCreatePlan(wentSleepOutput: controller.lastTimeWentSleepValueChanged(_:)),
+            .sleepDurationCreatePlan(
+                sleepDurationOutput: controller.sleepDurationValueChanged(_:),
+                sleepDurationDataSource: controller.choosenSleepDuration
+            ),
+            .wakeUpTimeCreatePlan(
+                wakeUpTimeOutput: controller.wakeUpTimeValueChanged(_:),
+                wakeUpTimeDataSource: controller.choosenWakeUpTime
+            ),
+            .planDurationCreatePlan(
+                planDurationOutput: controller.planDurationValueChanged(_:),
+                planDurationDataSource: controller.choosenPlanDuration
+            ),
+            .wentSleepCreatePlan(
+                wentSleepOutput: controller.lastTimeWentSleepValueChanged(_:),
+                wentSleepDataSource: controller.choosenLastTimeWentSleep
+            ),
             .planCreatedSetupPlan
         ]
         return controller

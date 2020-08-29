@@ -8,7 +8,7 @@
 
 import UIKit
 
-// TODO: (vladimir) - Implement state saving for the screens (for back button press case)
+// TODO: (vladimir) - Check for memory leaks
 
 final class CreatePlanViewController:
     UIViewController,
@@ -23,10 +23,11 @@ final class CreatePlanViewController:
     var makePlan: MakePlan! // DI
     var stories: [Story]! // DI
     
-    private var choosenSleepDuration: Int?
-    private var choosenWakeUpTime: Date?
-    private var choosenPlanDuration: Int?
-    private var choosenLastTimeWentSleep: Date?
+    // opened for DI into PageController controllers
+    private(set) var choosenSleepDuration: Int?
+    private(set) var choosenWakeUpTime: Date?
+    private(set) var choosenPlanDuration: Int?
+    private(set) var choosenLastTimeWentSleep: Date?
     
     private var currentPage = 0
     private var currentStory: Story { stories[currentPage] }
@@ -122,11 +123,6 @@ final class CreatePlanViewController:
         choosenLastTimeWentSleep = value
         updateButtonsWithCurrentStory()
     }
-    //
-    
-    func showNextStory(direction: UIPageViewController.NavigationDirection) {
-        pageController.setViewControllers([currentStory()], direction: direction, animated: true, completion: nil)
-    }
     
     // MARK: - UIAdaptivePresentationControllerDelegate -
     func presentationControllerShouldDismiss(_ presentationController: UIPresentationController) -> Bool {
@@ -136,6 +132,10 @@ final class CreatePlanViewController:
     // MARK: - Private -
     private func dismiss() {
         dismiss(animated: true)
+    }
+    
+    private func showNextStory(direction: UIPageViewController.NavigationDirection) {
+        pageController.setViewControllers([currentStory()], direction: direction, animated: true, completion: nil)
     }
     
     private func updateButtonsWithCurrentStory() {

@@ -280,6 +280,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tgb-tD-6VV"/>
                     </view>
+                    <connections>
+                        <outlet property="wakeUpTimeDatePicker" destination="aHM-kz-WBT" id="mxN-KF-a1C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dud-BY-8th" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -437,6 +440,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="450-SS-06c"/>
                     </view>
+                    <connections>
+                        <outlet property="wentSleepDatePicker" destination="1Cr-rU-fwC" id="E52-vw-Gky"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RbN-Di-cWj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -539,6 +545,7 @@
                     </view>
                     <connections>
                         <outlet property="planDurationLabel" destination="WHd-JO-6if" id="XEr-06-gqR"/>
+                        <outlet property="planDurationSlider" destination="3up-DL-9xJ" id="r6R-zW-QAf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pg4-pM-0Wg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
