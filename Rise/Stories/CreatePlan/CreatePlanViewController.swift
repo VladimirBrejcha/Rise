@@ -8,7 +8,14 @@
 
 import UIKit
 
-final class CreatePlanViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
+// TODO: (vladimir) - Implement state saving for the screens (for back button press case)
+
+final class CreatePlanViewController:
+    UIViewController,
+    UIAdaptivePresentationControllerDelegate,
+    ErrorAlertCreatable,
+    ErrorAlertPresentable
+{
     @IBOutlet private var createPlanView: CreatePlanView!
     
     private var pageController: UIPageViewController!
@@ -20,13 +27,14 @@ final class CreatePlanViewController: UIViewController, UIAdaptivePresentationCo
     private var choosenWakeUpTime: Date?
     private var choosenPlanDuration: Int?
     private var choosenLastTimeWentSleep: Date?
-    private var planGenerated = false
     
     private var currentPage = 0
     private var currentStory: Story { stories[currentPage] }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        presentationController?.delegate = self
         
         createPlanView.setBackground(GradientHelper.makeGradientView(frame: view.bounds))
         createPlanView.configure(
@@ -39,8 +47,8 @@ final class CreatePlanViewController: UIViewController, UIAdaptivePresentationCo
                     guard let self = self else { return }
                     if self.stories.indices.contains(self.currentPage - 1) {
                         self.currentPage -= 1
-                        self.updateButtons(story: self.currentStory)
-                        self.show(views: [self.currentStory()], forwardDirection: false)
+                        self.showNextStory(direction: .reverse)
+                        self.updateButtonsWithCurrentStory()
                     }
                 },
                 next: { [weak self] in
@@ -50,22 +58,42 @@ final class CreatePlanViewController: UIViewController, UIAdaptivePresentationCo
                         return
                     }
                     if case .wentSleepCreatePlan = self.currentStory {
-                        if !self.planGenerated {
-                            self.planGenerated = self.generatePlan()
+                        do {
+                            try self.generatePlan()
+                        } catch {
+                            self.presentAlert(
+                                from: RecoverableError(
+                                    error: error,
+                                    attempter: RecoveryAttemper(
+                                        recoveryOptions: [
+                                            .custom(
+                                                title: "Leave Create screen",
+                                                action: { [weak self] in
+                                                    log(.error, with: "There was an error creating the plan \(error.localizedDescription)")
+                                                    self?.dismiss()
+                                                }
+                                            ),
+                                            .tryAgain(
+                                                action: {
+                                                    log(.error, with: "There was an error creating the plan \(error.localizedDescription)")
+                                                }
+                                            )
+                                        ]
+                                    )
+                                )
+                            )
                         }
+                        return
                     }
                     if self.stories.indices.contains(self.currentPage + 1) {
                         self.currentPage += 1
-                        self.show(views: [self.currentStory()], forwardDirection: true)
-                        self.updateButtons(story: self.currentStory)
+                        self.showNextStory(direction: .forward)
+                        self.updateButtonsWithCurrentStory()
                     }
                 }
             )
         )
-        updateButtons(story: currentStory)
-        show(views: [currentStory()], forwardDirection: true)
-        
-        presentationController?.delegate = self
+        showNextStory(direction: .forward)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -77,31 +105,27 @@ final class CreatePlanViewController: UIViewController, UIAdaptivePresentationCo
     // opened for DI into PageController controllers
     func sleepDurationValueChanged(_ value: Int) {
         choosenSleepDuration = value
-        updateButtons(story: currentStory)
+        updateButtonsWithCurrentStory()
     }
     
     func wakeUpTimeValueChanged(_ value: Date) {
         choosenWakeUpTime = value
-        updateButtons(story: currentStory)
+        updateButtonsWithCurrentStory()
     }
     
     func planDurationValueChanged(_ value: Int) {
         choosenPlanDuration = value
-        updateButtons(story: currentStory)
+        updateButtonsWithCurrentStory()
     }
     
     func lastTimeWentSleepValueChanged(_ value: Date) {
         choosenLastTimeWentSleep = value
-        updateButtons(story: currentStory)
+        updateButtonsWithCurrentStory()
     }
     //
     
-    func show(views: [UIViewController], forwardDirection: Bool) {
-        pageController.setViewControllers(
-            views,
-            direction: forwardDirection ? .forward : .reverse,
-            animated: true, completion: nil
-        )
+    func showNextStory(direction: UIPageViewController.NavigationDirection) {
+        pageController.setViewControllers([currentStory()], direction: direction, animated: true, completion: nil)
     }
     
     // MARK: - UIAdaptivePresentationControllerDelegate -
@@ -114,8 +138,8 @@ final class CreatePlanViewController: UIViewController, UIAdaptivePresentationCo
         dismiss(animated: true)
     }
     
-    private func updateButtons(story: Story) {
-        switch story {
+    private func updateButtonsWithCurrentStory() {
+        switch currentStory {
         case .welcomeCreatePlan:
             createPlanView.state = CreatePlanView.State(nextButtonEnabled: true, backButtonHidden: true)
             createPlanView.model = CreatePlanView.Model(backButtonTitle: "", nextButtonTitle: "Start")
@@ -151,24 +175,17 @@ final class CreatePlanViewController: UIViewController, UIAdaptivePresentationCo
         }
     }
     
-    private func generatePlan() -> Bool {
-        guard let choosenSleepDuration = choosenSleepDuration,
+    private func generatePlan() throws {
+        if let choosenSleepDuration = choosenSleepDuration,
             let choosenWakeUpTime = choosenWakeUpTime,
             let choosenPlanDuration = choosenPlanDuration,
-            let choosenLastTimeWentSleep = choosenLastTimeWentSleep
-            else {
-                return false
-        }
-        
-        do {
+            let choosenLastTimeWentSleep = choosenLastTimeWentSleep {
             try makePlan(sleepDurationMin: choosenSleepDuration,
                          wakeUpTime: choosenWakeUpTime,
                          planDurationDays: choosenPlanDuration,
                          firstSleepTime: choosenLastTimeWentSleep)
-            return true
-        } catch {
-            // todo handle error
-            return false
+        } else {
+            throw PlanError.someFieldsAreMissing
         }
     }
 }

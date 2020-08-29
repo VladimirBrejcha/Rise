@@ -9,10 +9,7 @@
 import Foundation
 
 protocol MakePlan {
-    func callAsFunction(sleepDurationMin: Int,
-                        wakeUpTime: Date,
-                        planDurationDays: Int,
-                        firstSleepTime: Date) throws
+    func callAsFunction(sleepDurationMin: Int, wakeUpTime: Date, planDurationDays: Int, firstSleepTime: Date) throws
 }
 
 final class MakePlanUseCase: MakePlan {
@@ -22,11 +19,7 @@ final class MakePlanUseCase: MakePlan {
         self.planRepository = planRepository
     }
     
-    func callAsFunction(sleepDurationMin: Int,
-                        wakeUpTime: Date,
-                        planDurationDays: Int,
-                        firstSleepTime: Date
-    ) throws {
+    func callAsFunction(sleepDurationMin: Int, wakeUpTime: Date, planDurationDays: Int, firstSleepTime: Date ) throws {
         guard let firstSleepTime = firstSleepTime.zeroSeconds
             else {
                 throw InternalError.dateBuildingError

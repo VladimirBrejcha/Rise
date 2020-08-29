@@ -23,7 +23,7 @@ enum InternalError: LocalizedError {
     var recoverySuggestion: String? { nil }
     
     private func makeErrorDescriptionWithCode(_ code: Int) -> String {
-        "Something bad happened. Please contact the developer (code: \(code)"
+        "Something bad happened. Please contact the developer (code: \(code))"
     }
 }
 
