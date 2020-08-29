@@ -16,16 +16,20 @@ final class CreatePlanView: UIView, BackgroundSettable, PropertyAnimatable {
     // MARK: - PropertyAnimatable
     var propertyAnimationDuration: Double = 0.3
     
-    struct State {
+    struct State: Equatable {
         let nextButtonEnabled: Bool
         let backButtonHidden: Bool
     }
     var state: State = State(nextButtonEnabled: true, backButtonHidden: true) {
         didSet {
-            animate {
-                self.backButton.isHidden = self.state.backButtonHidden
+            if state.nextButtonEnabled != oldValue.nextButtonEnabled {
+                nextButton.isEnabled = state.nextButtonEnabled
             }
-            nextButton.isEnabled = state.nextButtonEnabled
+            if state.backButtonHidden != oldValue.backButtonHidden {
+                animate {
+                    self.backButton.isHidden = self.state.backButtonHidden
+                }
+            }
         }
     }
     
@@ -50,6 +54,7 @@ final class CreatePlanView: UIView, BackgroundSettable, PropertyAnimatable {
     var handlers: Handlers?
     
     func configure(model: Model, handlers: Handlers) {
+        self.backButton.isHidden = true
         self.model = model
         self.handlers = handlers
     }
