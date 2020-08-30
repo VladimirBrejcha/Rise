@@ -1,5 +1,5 @@
 //
-//  SetupPlanAssembler.swift
+//  CreatePlanAssembler.swift
 //  Rise
 //
 //  Created by Владимир Королев on 06.01.2020.
@@ -13,20 +13,28 @@ final class CreatePlanAssembler {
         controller.stories = [
             .welcomeCreatePlan,
             .sleepDurationCreatePlan(
-                sleepDurationOutput: controller.sleepDurationValueChanged(_:),
-                sleepDurationDataSource: controller.choosenSleepDuration
+                sleepDurationOutput: { [weak controller] value in
+                    controller?.sleepDurationValueChanged(value)
+                },
+                presettedSleepDuration: controller.choosenSleepDuration
             ),
             .wakeUpTimeCreatePlan(
-                wakeUpTimeOutput: controller.wakeUpTimeValueChanged(_:),
-                wakeUpTimeDataSource: controller.choosenWakeUpTime
+                wakeUpTimeOutput: { [weak controller] value in
+                    controller?.wakeUpTimeValueChanged(value)
+                },
+                presettedWakeUpTime: controller.choosenWakeUpTime
             ),
             .planDurationCreatePlan(
-                planDurationOutput: controller.planDurationValueChanged(_:),
-                planDurationDataSource: controller.choosenPlanDuration
+                planDurationOutput: { [weak controller] value in
+                    controller?.planDurationValueChanged(value)
+                },
+                presettedPlanDuration: controller.choosenPlanDuration
             ),
             .wentSleepCreatePlan(
-                wentSleepOutput: controller.lastTimeWentSleepValueChanged(_:),
-                wentSleepDataSource: controller.choosenLastTimeWentSleep
+                wentSleepOutput: { [weak controller] value in
+                    controller?.wakeUpTimeValueChanged(value)
+                },
+                presettedWentSleepTime: controller.choosenLastTimeWentSleep
             ),
             .planCreatedSetupPlan
         ]

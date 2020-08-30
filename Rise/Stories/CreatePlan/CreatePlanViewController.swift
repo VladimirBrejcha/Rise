@@ -8,8 +8,6 @@
 
 import UIKit
 
-// TODO: (vladimir) - Check for memory leaks
-
 final class CreatePlanViewController:
     UIViewController,
     UIAdaptivePresentationControllerDelegate,
