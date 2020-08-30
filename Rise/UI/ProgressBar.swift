@@ -8,8 +8,12 @@
 
 import UIKit
 
-final class ProgressBar: UIView {
+final class ProgressBar: UIView, PropertyAnimatable {
+    private var progress: Double = 0
     private let progressView = UIView()
+    
+    // MARK: - PropertyAnimatable
+    var propertyAnimationDuration: Double { progress * 3 }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,18 +30,19 @@ final class ProgressBar: UIView {
         clipsToBounds = true
         
         addSubview(progressView)
-        
         progressView.layer.cornerRadius = (frame.height / 2)
         progressView.translatesAutoresizingMaskIntoConstraints = false
-        progressView.leftAnchor.constraint(equalTo: leftAnchor, constant: -frame.width + 25).isActive = true
+        progressView.leftAnchor.constraint(equalTo: leftAnchor, constant: -frame.width - 20).isActive = true
         progressView.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
         progressView.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
         progressView.backgroundColor = Color.violet
     }
     
     func showProgress(progress: CGFloat) {
-        UIView.animate(withDuration: TimeInterval(progress * 3), delay: 0, options: [.allowUserInteraction, .curveEaseInOut, .preferredFramesPerSecond60, .transitionFlipFromRight], animations: {
+        self.progress = Double(progress)
+        
+        animate {
             self.progressView.transform = CGAffineTransform(translationX: self.frame.width * progress, y: 0)
-        }, completion: nil)
+        }
     }
 }

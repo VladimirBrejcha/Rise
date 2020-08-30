@@ -137,6 +137,7 @@ final class PersonalPlanViewController: UIViewController, UITableViewDelegate {
             }
             personalPlanView.model = personalPlanView.model.changing { model in
                 model.pauseButtonTitle = plan.paused ? "Resume" : "Pause"
+                model.pauseButtonTitleColor = plan.paused ? Color.normalTitle : Color.redTitle
                 model.planButtonTitle = "Change"
             }
         } else {
@@ -168,7 +169,6 @@ final class PersonalPlanViewController: UIViewController, UITableViewDelegate {
             let durationText = "\(plan.sleepDurationSec.HHmmString) of sleep daily"
             let wakeUpText = "Will wake up at \(plan.finalWakeUpTime.HHmmString)"
             let toSleepText = "Will sleep at \(plan.finalWakeUpTime.addingTimeInterval(-plan.sleepDurationSec).HHmmString)"
-            //            let syncText = "Synchronized with sunrise"
             let syncText = "Coming soon"
             let planDuration = plan.dateInterval.durationDays
             let completedDays = DateInterval(start: plan.dateInterval.start, end: plan.latestConfirmedDay).durationDays

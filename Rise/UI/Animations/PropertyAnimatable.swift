@@ -9,7 +9,7 @@
 import UIKit
 
 protocol PropertyAnimatable {
-    var propertyAnimationDuration: Double { get set }
+    var propertyAnimationDuration: Double { get }
 }
 
 extension PropertyAnimatable {
