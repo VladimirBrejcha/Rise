@@ -81,8 +81,8 @@ final class CreatePlanViewController:
                                     )
                                 )
                             )
+                            return
                         }
-                        return
                     }
                     if self.stories.indices.contains(self.currentPage + 1) {
                         self.currentPage += 1
