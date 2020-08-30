@@ -20,6 +20,7 @@
 		7E17337924104DDA0028FDBE /* LocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E17337824104DDA0028FDBE /* LocationRepository.swift */; };
 		7E199CD2240BD41D00B702AD /* SliderWithValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E199CD1240BD41D00B702AD /* SliderWithValues.swift */; };
 		7E199CD4240BD43400B702AD /* SliderWithValues.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E199CD3240BD43400B702AD /* SliderWithValues.xib */; };
+		7E1CA3D724FC0B2C00AD81B8 /* DaysView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E1CA3D624FC0B2C00AD81B8 /* DaysView.xib */; };
 		7E25756723F8749A007AE4B5 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E25756623F8749A007AE4B5 /* Animation.swift */; };
 		7E2CA81024032A0F000CEFA5 /* TableCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CA80F24032A0F000CEFA5 /* TableCellConfigurator.swift */; };
 		7E31497D23425CA600941606 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31497C23425CA600941606 /* TableViewDataSource.swift */; };
@@ -200,6 +201,7 @@
 		7E17337824104DDA0028FDBE /* LocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepository.swift; sourceTree = "<group>"; };
 		7E199CD1240BD41D00B702AD /* SliderWithValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderWithValues.swift; sourceTree = "<group>"; };
 		7E199CD3240BD43400B702AD /* SliderWithValues.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SliderWithValues.xib; sourceTree = "<group>"; };
+		7E1CA3D624FC0B2C00AD81B8 /* DaysView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DaysView.xib; sourceTree = "<group>"; };
 		7E25756623F8749A007AE4B5 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		7E2CA80F24032A0F000CEFA5 /* TableCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCellConfigurator.swift; sourceTree = "<group>"; };
 		7E31497C23425CA600941606 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
@@ -635,6 +637,7 @@
 			isa = PBXGroup;
 			children = (
 				7EB9003F23256BF3006EB9A8 /* DaysView.swift */,
+				7E1CA3D624FC0B2C00AD81B8 /* DaysView.xib */,
 				7E0B88F52455BEF400BC3CF5 /* SelectableStackViewButton.swift */,
 				7EF3EE182340F875003BE978 /* DaysCollectionView */,
 			);
@@ -1117,6 +1120,7 @@
 				7EF4C196240412D80098135A /* ChangePlanDatePickerTableCell.xib in Resources */,
 				7EE6905C243E64C600CA423E /* LongPressProgressButton.xib in Resources */,
 				7ED962B02336649E00CD2408 /* PlanInfoTableViewCell.xib in Resources */,
+				7E1CA3D724FC0B2C00AD81B8 /* DaysView.xib in Resources */,
 				7E76E5AB23E734F500CC4E6D /* ChangePlan.storyboard in Resources */,
 				7EF4C19E240436CD0098135A /* ChangePlanSliderTableCell.xib in Resources */,
 				92D7D65A2296F298009321AE /* Assets.xcassets in Resources */,

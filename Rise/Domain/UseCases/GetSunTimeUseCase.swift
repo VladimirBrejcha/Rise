@@ -9,7 +9,7 @@
 import Foundation
 
 protocol GetSunTime {
-    func callAsFunction(for requestValue: (numberOfDays: Int, day: Date),
+    func callAsFunction(for requestValue: (numberOfDays: Int, since: Date),
                         completion: @escaping (Result<[SunTime], Error>) -> Void)
 }
 
@@ -23,7 +23,7 @@ final class GetSunTimeUseCase: GetSunTime {
     }
     
     func callAsFunction(
-        for requestValue: (numberOfDays: Int, day: Date),
+        for requestValue: (numberOfDays: Int, since: Date),
         completion: @escaping (Result<[SunTime], Error>) -> Void
     ) {
         locationRepository.get { [weak self] result in
@@ -32,7 +32,7 @@ final class GetSunTimeUseCase: GetSunTime {
             if case .success (let location) = result {
                 self.sunTimeRepository.get(
                     for: requestValue.numberOfDays,
-                    since: requestValue.day,
+                    since: requestValue.since,
                     for: location
                 ) { result in
                     if case .failure (let error) = result { completion(.failure(error)) }

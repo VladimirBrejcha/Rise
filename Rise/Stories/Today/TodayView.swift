@@ -42,10 +42,6 @@ final class TodayView: UIView {
         daysView.collectionView.reloadItems(at: indexes.map { IndexPath(item: $0, section: 0) })
     }
     
-    func reloadCollection() {
-        daysView.collectionView.reloadData()
-    }
-    
     func getIndexOf(cell: DaysCollectionCell) -> Int? {
         daysView.collectionView.indexPath(for: cell)?.row
     }

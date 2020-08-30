@@ -1,5 +1,5 @@
 //
-//  TodayStoryViewController.swift
+//  TodayViewController.swift
 //  Rise
 //
 //  Created by Vladimir Korolev on 03/06/2019.
@@ -8,8 +8,13 @@
 
 import UIKit
 
-final class TodayViewController: UIViewController {
+// TODO: (vladimir) - Fix a bug with error on initial load
+
+final class TodayViewController: UIViewController, PropertyAnimatable {
     @IBOutlet private var todayView: TodayView!
+    
+    // MARK: - PropertyAnimatable
+    var propertyAnimationDuration: Double { 0.15 }
     
     private typealias CellConfigurator
         = CollectionCellConfigurator<DaysCollectionCell, DaysCollectionCell.Model>
@@ -23,7 +28,6 @@ final class TodayViewController: UIViewController {
     var getDailyTime: GetDailyTime! // DI
     var confirmPlan: ConfirmPlan! // DI
     
-    private var latestUsedPlan: RisePlan?
     private var collectionDataSource: CollectionDataSource!
     private var cellModels: [DaysCollectionCell.Model] {
         get {
@@ -41,13 +45,14 @@ final class TodayViewController: UIViewController {
         }
     }
     private var viewIsVisible: Bool = false
-    private var needsUpdate: Bool = true
+    private var planNeedsUpdate: Bool = true
+    private var suntimeNeedsUpdate: Bool = true
+    private var latestPlan: RisePlan?
+    private var latestSuntimes: [SunTime]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        latestUsedPlan = try? getPlan()
-        
+                
         collectionDataSource = CollectionDataSource(items: [
             CellConfigurator(model: emptySunCellModel),
             CellConfigurator(model: emptyPlanCellModel),
@@ -68,14 +73,26 @@ final class TodayViewController: UIViewController {
                 self?.present(Story.prepareToSleep(), with: .modal)
             })
         )
-        requestSunTime()
-
+        
+        requestSunTime { [weak self] sunTimes in
+            guard let self = self else { return }
+            self.latestSuntimes = sunTimes
+            if self.viewIsVisible {
+                self.updateDaysSunView(with: sunTimes)
+            } else {
+                self.suntimeNeedsUpdate = true
+            }
+        }
+        
+        latestPlan = try? getPlan()
         observePlan.observe { [weak self] plan in
             guard let self = self else { return }
-            self.latestUsedPlan = plan
-            self.viewIsVisible
-                ? self.updateDaysPlanView(with: plan)
-                : { self.needsUpdate = true }()
+            self.latestPlan = plan
+            if self.viewIsVisible {
+                self.updateDaysPlanView(with: plan)
+            } else {
+                self.planNeedsUpdate = true
+            }
         }
     }
     
@@ -83,10 +100,17 @@ final class TodayViewController: UIViewController {
         super.viewDidAppear(animated)
         
         viewIsVisible = true
-        if needsUpdate {
-            self.updateDaysPlanView(with: latestUsedPlan)
-            needsUpdate = false
+        
+        if planNeedsUpdate {
+            updateDaysPlanView(with: latestPlan)
+            planNeedsUpdate = false
         }
+        
+        if suntimeNeedsUpdate {
+            updateDaysSunView(with: latestSuntimes)
+            suntimeNeedsUpdate = false
+        }
+        
         if let confirmed = try? confirmPlan.checkIfConfirmed() {
             makeTabBar(visible: confirmed)
             if !confirmed {
@@ -97,23 +121,25 @@ final class TodayViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
         viewIsVisible = false
     }
     
-    func makeTabBar(visible: Bool) {        
-        UIView.animate(withDuration: 0.15) {
+    // MARK: - Private
+    private func makeTabBar(visible: Bool) {
+        animate {
             self.tabBarController?.tabBar.alpha = visible ? 1 : 0
         }
     }
     
-    // MARK: - Private
-    private func requestSunTime() {
-        getSunTime(for: (numberOfDays: 3, day: NoonedDay.yesterday.date)) { [weak self] result in
-            if case .success (let sunTime) = result {
-                self?.updateDaysSunView(with: sunTime)
+    private func requestSunTime(_ completion: @escaping ([SunTime]?) -> Void) {
+        getSunTime(for: (numberOfDays: 3, since: NoonedDay.yesterday.date)) {
+            if case .success (let sunTime) = $0 {
+                completion(sunTime)
             }
-            if case .failure = result {
-                self?.updateDaysSunView(with: nil)
+            if case .failure (let error) = $0 {
+                log(.error, with: "Error on requestSunTime: \(error.localizedDescription)")
+                completion(nil)
             }
         }
     }
@@ -121,20 +147,20 @@ final class TodayViewController: UIViewController {
     private func updateDaysSunView(with sunTimes: [SunTime]?) {
         var itemsToReload = [Int]()
         
-        for index in cellModels.enumerated() {
-            if index.offset.isOdd { continue }
+        for index in cellModels.indices {
+            if index.isOdd { continue } // odd is for planViews
             
             if let sunTimes = sunTimes {
-                let sunTime = sunTimes[index.offset / 2]
-                cellModels[index.offset].state = .showingContent(
+                let sunTime = sunTimes[index / 2]
+                cellModels[index].state = .showingContent(
                     left: sunTime.sunrise.HHmmString,
                     right: sunTime.sunset.HHmmString
                 )
             } else {
-                cellModels[index.offset].state = .showingError(error: "Failed to load data")
+                cellModels[index].state = .showingError(error: "Failed to load data")
             }
             
-            itemsToReload.append(index.offset)
+            itemsToReload.append(index)
         }
         todayView.reloadItems(at: itemsToReload)
     }
@@ -142,31 +168,31 @@ final class TodayViewController: UIViewController {
     private func updateDaysPlanView(with plan: RisePlan?) {
         var itemsToReload = [Int]()
         
-        for index in cellModels.enumerated() {
-            if index.offset.isEven { continue }
+        for index in cellModels.indices {
+            if index.isEven { continue } // even is for sunViews
             
             if plan != nil {
                 let datesArray: [NoonedDay] = [.yesterday, .today, .tomorrow]
                 
-                if let dailyTime = try? getDailyTime(for: datesArray[(index.offset / 2)].date) {
-                    cellModels[index.offset].state = .showingContent(
+                if let dailyTime = try? getDailyTime(for: datesArray[(index / 2)].date) {
+                    cellModels[index].state = .showingContent(
                         left: dailyTime.wake.HHmmString,
                         right: dailyTime.sleep.HHmmString
                     )
                 } else {
-                    cellModels[index.offset].state = .showingInfo(info: "No plan for the day")
+                    cellModels[index].state = .showingInfo(info: "No plan for the day")
                 }
             } else {
-                cellModels[index.offset].state = .showingInfo(info: "You don't have a plan yet")
+                cellModels[index].state = .showingInfo(info: "You don't have a plan yet")
             }
             
-            itemsToReload.append(index.offset)
+            itemsToReload.append(index)
         }
         todayView.reloadItems(at: itemsToReload)
     }
     
     private func makeFloatingLabelModel() -> FloatingLabel.Model {
-        guard let plan = latestUsedPlan else {
+        guard let plan = latestPlan else {
             return FloatingLabel.Model(text: "", alpha: 0)
         }
         
@@ -227,7 +253,15 @@ final class TodayViewController: UIViewController {
         cellModels[index].state = .loading
         todayView.reloadItem(at: index)
         index.isEven
-            ? requestSunTime()
-            : updateDaysPlanView(with: latestUsedPlan)
+            ? requestSunTime { [weak self] sunTimes in
+                guard let self = self else { return }
+                self.latestSuntimes = sunTimes
+                if self.viewIsVisible {
+                    self.updateDaysSunView(with: sunTimes)
+                } else {
+                    self.suntimeNeedsUpdate = true
+                }
+              }
+            : updateDaysPlanView(with: latestPlan)
     }
 }

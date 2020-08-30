@@ -26,9 +26,9 @@ final class VerticalPositionMoveAnimation: Animation {
     private func makeBasicAnimation(for layer: CALayer) -> CABasicAnimation {
         let basicAnimation = CABasicAnimation(keyPath: AnimationKeys.positionY)
         basicAnimation.isRemovedOnCompletion = false
-        basicAnimation.fromValue = layer.frame.midY + 3
+        basicAnimation.fromValue = layer.frame.midY + 4
         basicAnimation.toValue = layer.frame.midY + 0
-        basicAnimation.duration = 10
+        basicAnimation.duration = 5
         basicAnimation.autoreverses = true
         basicAnimation.repeatCount = Float.greatestFiniteMagnitude
         return basicAnimation

@@ -12,16 +12,26 @@ import SelectableStackView
 final class DaysView:
     DesignableContainerView,
     UICollectionViewDelegateFlowLayout,
-    SelectableStackViewDelegate
+    SelectableStackViewDelegate,
+    NibLoadable
 {
     @IBOutlet private weak var segmentedControl: SelectableStackView!
     @IBOutlet weak var collectionView: DaysCollectionView!
     
     private var shouldCenter = true
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        sharedInit()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        sharedInit()
+    }
+    
+    private func sharedInit() {
+        setupFromNib()
         collectionView.delegate = self
         segmentedControl.delegate = self
         segmentedControl.select(true, at: 1)
