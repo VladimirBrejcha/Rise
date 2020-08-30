@@ -32,7 +32,7 @@ final class CreatePlanAssembler {
             ),
             .wentSleepCreatePlan(
                 wentSleepOutput: { [weak controller] value in
-                    controller?.wakeUpTimeValueChanged(value)
+                    controller?.lastTimeWentSleepValueChanged(value)
                 },
                 presettedWentSleepTime: controller.choosenLastTimeWentSleep
             ),
