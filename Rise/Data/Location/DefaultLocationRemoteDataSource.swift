@@ -64,10 +64,15 @@ final class DefaultLocationRemoteDataSource: NSObject, CLLocationManagerDelegate
         guard let completion = requestPermissionsCompletion else { return }
         
         switch status {
-        case .authorizedAlways, .authorizedWhenInUse: completion(true)
-        case .notDetermined: requestPermissions(completion); return
-        case .denied, .restricted: askForLocationPermissions(completion: completion)
-        default: completion(false)
+        case .authorizedAlways, .authorizedWhenInUse:
+            completion(true)
+        case .notDetermined:
+            requestPermissions(completion)
+            return
+        case .denied, .restricted:
+            askForLocationPermissions(completion: completion)
+        default:
+            completion(false)
         }
         authorisationStatus = status
     }

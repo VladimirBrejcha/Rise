@@ -11,6 +11,7 @@ import UIKit
 final class PrepareToSleepViewController: UIViewController {
     @IBOutlet private var prepareToSleepView: PrepareToSleepView!
     
+    var getPlan: GetPlan! // DI
     var getDailyTime: GetDailyTime! // DI
     
     private var toSleepTime: Date = Date()
@@ -21,8 +22,8 @@ final class PrepareToSleepViewController: UIViewController {
         
         var beforeSleepMotivatingText = ""
         do {
-            toSleepTime = try getDailyTime(for: NoonedDay.today.date).sleep
-            wakeUpTime = try getDailyTime(for: NoonedDay.tomorrow.date).wake
+            toSleepTime = try getDailyTime(for: try! getPlan(), date: NoonedDay.today.date).sleep
+            wakeUpTime = try getDailyTime(for: try! getPlan(), date: NoonedDay.tomorrow.date).wake
             
             let toSleepSinceNow = toSleepTime.timeIntervalSince(Date())
             

@@ -10,17 +10,15 @@ import Foundation
 import CoreData
 
 protocol LocationLocalDataSource {
-    func get() throws -> Location
+    func get() throws -> Location?
     func save(location: Location) throws
     func deleteAll() throws
 }
 
 final class DefaultLocationLocalDataSource: LocalDataSource<RiseLocation>, LocationLocalDataSource {
-    func get() throws -> Location { // TODO
+    func get() throws -> Location? {
         let fetchResult = try container.fetch()
-        if fetchResult.isEmpty {
-            throw InternalError.dateBuildingError
-        }
+        if fetchResult.isEmpty { return nil }
         return buildModel(from: fetchResult[0])
     }
     

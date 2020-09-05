@@ -26,7 +26,7 @@ final class DomainLayer {
         GetSunTimeUseCase(DataLayer.locationRepository, DataLayer.sunTimeRepository)
     }
     static var getDailyTime: GetDailyTime {
-        GetDailyTimeUseCase(DataLayer.defaultRisePlanRepository)
+        GetDailyTimeUseCase()
     }
     static var pausePlan: PausePlan {
         PausePlanUseCase(DataLayer.defaultRisePlanRepository)

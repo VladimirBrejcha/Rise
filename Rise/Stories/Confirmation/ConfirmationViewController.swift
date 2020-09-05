@@ -31,7 +31,7 @@ final class ConfirmationViewController: UIViewController {
         let yesterday = NoonedDay.yesterday.date
         let daysMissed = DateInterval(start: plan.latestConfirmedDay, end: yesterday).durationDays
         guard
-            let yesterdayDailyTime = try? getDailyTime(for: yesterday),
+            let yesterdayDailyTime = try? getDailyTime(for: plan, date: yesterday),
             daysMissed > 0,
             !confirmed  else {
                 shouldDismissAfterAppear = true

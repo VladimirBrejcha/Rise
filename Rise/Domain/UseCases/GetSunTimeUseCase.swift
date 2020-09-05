@@ -9,8 +9,7 @@
 import Foundation
 
 protocol GetSunTime {
-    func callAsFunction(for requestValue: (numberOfDays: Int, since: Date),
-                        completion: @escaping (Result<[SunTime], Error>) -> Void)
+    func callAsFunction(numberOfDays: Int, since date: Date, completion: @escaping (Result<[SunTime], Error>) -> Void)
 }
 
 final class GetSunTimeUseCase: GetSunTime {
@@ -22,27 +21,29 @@ final class GetSunTimeUseCase: GetSunTime {
         self.sunTimeRepository = sunTimeRepository
     }
     
-    func callAsFunction(
-        for requestValue: (numberOfDays: Int, since: Date),
-        completion: @escaping (Result<[SunTime], Error>) -> Void
-    ) {
+    func callAsFunction(numberOfDays: Int, since date: Date, completion: @escaping (Result<[SunTime], Error>) -> Void) {
         locationRepository.get { [weak self] result in
-            guard let self = self else { return }
-            
             if case .success (let location) = result {
-                self.sunTimeRepository.get(
-                    for: requestValue.numberOfDays,
-                    since: requestValue.since,
-                    for: location
-                ) { result in
-                    if case .failure (let error) = result { completion(.failure(error)) }
-                    if case .success (let sunTimes) = result {
-                        completion(.success(sunTimes.sorted  {$0.sunrise < $1.sunrise }))
-                    }
-                }
+                self?.getSunTime(for: numberOfDays, since: date, location: location, completion: completion)
             }
-            
-            if case .failure (let error) = result { completion(.failure(error)) }
+            if case .failure (let error) = result {
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    private func getSunTime(for numberOfDays: Int,
+                            since date: Date,
+                            location: Location,
+                            completion: @escaping (Result<[SunTime], Error>) -> Void
+    ) {
+        sunTimeRepository.get(for: numberOfDays, since: date, for: location) { result in
+            if case .success (let sunTimes) = result {
+                completion(.success(sunTimes.sorted { $0.sunrise < $1.sunrise } ))
+            }
+            if case .failure (let error) = result {
+                completion(.failure(error))
+            }
         }
     }
 }
