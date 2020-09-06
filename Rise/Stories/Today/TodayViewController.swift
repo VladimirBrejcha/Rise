@@ -9,6 +9,9 @@
 import UIKit
 
 final class TodayViewController: UIViewController, PropertyAnimatable {
+    // MARK: - PropertyAnimatable
+    var propertyAnimationDuration: Double { 0.15 }
+    
     @IBOutlet private var todayView: TodayView!
     
     var getSunTime: GetSunTime! // DI
@@ -17,9 +20,7 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
     var getDailyTime: GetDailyTime! // DI
     var confirmPlan: ConfirmPlan! // DI
     
-    // MARK: - PropertyAnimatable
-    var propertyAnimationDuration: Double { 0.15 }
-    
+    // MARK: - CollectionDataSource
     private typealias CellConfigurator = CollectionCellConfigurator<DaysCollectionCell, DaysCollectionCell.Model>
     private var collectionDataSource: CollectionDataSource!
     private var cellModels: [DaysCollectionCell.Model] {
@@ -38,10 +39,10 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
         }
     }
     
+    // MARK: - State
     private struct State {
         var sunTimeState: LoadState<[SunTime]>
         var planState: LoadState<RisePlan>
-        var timeUntilSleep = FloatingLabel.Model(text: "", alpha: 0)
         
         enum LoadState<Data: Equatable>: Equatable {
             case loading
@@ -66,6 +67,7 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
     private var performOnDidAppear: [() -> Void] = []
     private var viewIsVisible: Bool = false
     
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -84,7 +86,7 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
             dataSource: TodayView.DataSource(
                 collection: collectionDataSource,
                 timeUntilSleep:  { [weak self] in
-                    self?.state.timeUntilSleep ?? FloatingLabel.Model(text: "", alpha: 0)
+                    self?.floatingLabelModel ?? FloatingLabel.Model(text: "", alpha: 0)
                 }
             ),
             handlers: TodayView.Handlers(
@@ -95,9 +97,9 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
         )
         
         if let plan = try? getPlan() {
-            state = State(sunTimeState: .loading, planState: .loaded(data: plan), timeUntilSleep: floatingLabelModel)
+            state = State(sunTimeState: .loading, planState: .loaded(data: plan))
         } else {
-            state = State(sunTimeState: .loading, planState: .failed, timeUntilSleep: floatingLabelModel)
+            state = State(sunTimeState: .loading, planState: .failed)
         }
         
         observePlan.observe { [weak self] plan in
@@ -210,7 +212,7 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
         
         var stateCounter = 0
         for index in cellModels.indices {
-            if predicate(index) {
+            if predicate(index) && states.indices.contains(stateCounter) {
                 cellModels[index].state = states[stateCounter]
                 itemsToReload.append(index)
                 stateCounter += 1

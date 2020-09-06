@@ -11,7 +11,7 @@ import UIKit
 final class AutoRefreshableLabel: UILabel, AutoRefreshable {
     var timer: Timer?
     var dataSource: (() -> String)?
-    var refreshInterval: Double = 2
+    var refreshInterval: Double = 1
     
     func refresh(with data: String) { text = data }
 }

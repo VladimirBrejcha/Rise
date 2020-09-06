@@ -9,29 +9,38 @@
 import UIKit
 
 final class PrepareToSleepView: UIView, BackgroundSettable, PropertyAnimatable {
+    // MARK: - PropertyAnimatable
+    var propertyAnimationDuration: Double = 0.3
+    
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var startSleepButton: FloatingButton!
     @IBOutlet private weak var startSleepLabel: UILabel!
-    @IBOutlet private weak var wakeUpContainerheightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var wakeUpContainerHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var wakeUpTitleLabel: UILabel!
     @IBOutlet private weak var wakeUpDatePicker: UIDatePicker!
     @IBOutlet private weak var timeUntilWakeUpLabel: AutoRefreshableLabel!
     @IBOutlet private weak var toSleepLabel: UILabel!
     
-    // MARK: - PropertyAnimatable
-    var propertyAnimationDuration: Double = 0.3
-    
+    // MARK: - State
     enum State: Equatable {
         case normal
         case expanded
     }
     var state: State = .normal {
         didSet {
-            expand(state == .expanded)
+            animate { [weak self] in
+                if let self = self {
+                    self.toSleepLabel.alpha = self.state == .expanded ? 0 : 1
+                    self.wakeUpContainerHeightConstraint.constant = self.state == .expanded ? 200 : 50
+                    self.layoutIfNeeded()
+                }
+            }
         }
     }
     
+    // MARK: - Model
     struct Model {
+        let background: UIView
         let toSleepText: String
         let title: String
         let startSleepText: String
@@ -50,24 +59,18 @@ final class PrepareToSleepView: UIView, BackgroundSettable, PropertyAnimatable {
         }
     }
     
+    struct DataSource {
+        let timeUntilWakeUp: () -> String
+    }
+    
+    // MARK: - Handlers
     struct Handlers {
         let wakeUp: () -> Void
         let sleep: () -> Void
         let close: () -> Void
         let wakeUpTimeChanged: (Date) -> Void
     }
-    var handlers: Handlers?
-    
-    struct DataSource {
-        let timeUntilWakeUp: () -> String
-    }
-    
-    func configure(model: Model, dataSource: DataSource, handlers: Handlers) {
-        self.model = model
-        self.handlers = handlers
-        timeUntilWakeUpLabel.dataSource = dataSource.timeUntilWakeUp
-        initialSetup()
-    }
+    private var handlers: Handlers?
     
     @IBAction private func startSleepTouchUp(_ sender: FloatingButton) {
         handlers?.sleep()
@@ -85,17 +88,34 @@ final class PrepareToSleepView: UIView, BackgroundSettable, PropertyAnimatable {
         handlers?.wakeUp()
     }
     
-    private func initialSetup() {
+    // MARK: - Configure
+    private var isConfigured = false
+    func configure(model: Model, dataSource: DataSource, handlers: Handlers) {
+        if isConfigured { return }
+        
+        self.model = model
+        setBackground(model.background)
+        self.handlers = handlers
+        timeUntilWakeUpLabel.dataSource = dataSource.timeUntilWakeUp
+        timeUntilWakeUpLabel.beginRefreshing()
+        
         startSleepButton.layer.cornerRadius = 0
         startSleepButton.backgroundColor = .clear
         startSleepButton.alpha = 0.9
-        timeUntilWakeUpLabel.beginRefreshing()
+        
+        isConfigured = true
     }
-    
-    private func expand(_ expand: Bool) {
-        animate {
-            self.wakeUpContainerheightConstraint.constant = expand ? 200 : 50
-            self.layoutIfNeeded()
-        }
+}
+
+extension PrepareToSleepView.Model: Changeable {
+    init(copy: ChangeableWrapper<PrepareToSleepView.Model>) {
+        self.init(
+            background: copy.background,
+            toSleepText: copy.toSleepText,
+            title: copy.title,
+            startSleepText: copy.startSleepText,
+            wakeUpTitle: copy.wakeUpTitle,
+            wakeUpTime: copy.wakeUpTime
+        )
     }
 }

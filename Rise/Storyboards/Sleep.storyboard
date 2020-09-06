@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -60,17 +60,23 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="140" id="Fi2-Ol-zYP"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="wakeUpValueChanged:" destination="APf-fs-GD3" eventType="valueChanged" id="aSO-q5-Xee"/>
                                         </connections>
                                     </datePicker>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgG-vp-w8i">
                                         <rect key="frame" x="10" y="10" width="374" height="30"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Xeo-1L-nOO"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -85,18 +91,18 @@
                                     <constraint firstAttribute="height" constant="50" id="iUn-wb-UPq"/>
                                 </constraints>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="GLI-1D-9yq" appends="YES" id="L4P-h1-S6H"/>
+                                    <outletCollection property="gestureRecognizers" destination="jtj-95-R56" appends="YES" id="1tR-mS-blS"/>
                                 </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LjJ-vb-W3f" customClass="AutoRefreshableLabel" customModule="Rise" customModuleProvider="target">
-                                <rect key="frame" x="10" y="483" width="394" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                <rect key="frame" x="10" y="489" width="394" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IV8-6m-UNl">
-                                <rect key="frame" x="10" y="413" width="394" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                <rect key="frame" x="10" y="407" width="394" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -109,7 +115,7 @@
                             <constraint firstItem="eFW-pU-9p4" firstAttribute="leading" secondItem="tYg-Dq-Zrm" secondAttribute="leading" constant="10" id="B0C-ZI-W4b"/>
                             <constraint firstAttribute="trailing" secondItem="m1Z-4p-KwJ" secondAttribute="trailing" constant="12" id="NOp-bd-OuH"/>
                             <constraint firstItem="tYg-Dq-Zrm" firstAttribute="trailing" secondItem="w1G-qy-7HK" secondAttribute="trailing" constant="10" id="Oa4-rL-CEw"/>
-                            <constraint firstItem="w1G-qy-7HK" firstAttribute="top" secondItem="IV8-6m-UNl" secondAttribute="bottom" constant="10" id="PBx-gj-R70"/>
+                            <constraint firstItem="w1G-qy-7HK" firstAttribute="top" secondItem="IV8-6m-UNl" secondAttribute="bottom" constant="16" id="PBx-gj-R70"/>
                             <constraint firstItem="m1Z-4p-KwJ" firstAttribute="top" secondItem="tYg-Dq-Zrm" secondAttribute="top" constant="15" id="Qpc-df-ghi"/>
                             <constraint firstItem="tYg-Dq-Zrm" firstAttribute="trailing" secondItem="eFW-pU-9p4" secondAttribute="trailing" constant="10" id="RiU-7u-UbB"/>
                             <constraint firstItem="w1G-qy-7HK" firstAttribute="leading" secondItem="tYg-Dq-Zrm" secondAttribute="leading" constant="10" id="SEb-aA-zXM"/>
@@ -120,7 +126,7 @@
                             <constraint firstAttribute="trailing" secondItem="xQO-cs-6vp" secondAttribute="trailing" constant="10" id="iti-dJ-iJh"/>
                             <constraint firstItem="eFW-pU-9p4" firstAttribute="centerY" secondItem="m1Z-4p-KwJ" secondAttribute="centerY" constant="-2" id="mhJ-Ra-QFR"/>
                             <constraint firstItem="tYg-Dq-Zrm" firstAttribute="trailing" secondItem="LjJ-vb-W3f" secondAttribute="trailing" constant="10" id="r1c-4j-vqr"/>
-                            <constraint firstItem="LjJ-vb-W3f" firstAttribute="top" secondItem="w1G-qy-7HK" secondAttribute="bottom" constant="10" id="uKi-7b-l0k"/>
+                            <constraint firstItem="LjJ-vb-W3f" firstAttribute="top" secondItem="w1G-qy-7HK" secondAttribute="bottom" constant="16" id="uKi-7b-l0k"/>
                             <constraint firstAttribute="trailing" secondItem="IV8-6m-UNl" secondAttribute="trailing" constant="10" id="zip-zD-8In"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tYg-Dq-Zrm"/>
@@ -130,7 +136,7 @@
                             <outlet property="timeUntilWakeUpLabel" destination="LjJ-vb-W3f" id="4iI-yb-hPK"/>
                             <outlet property="titleLabel" destination="eFW-pU-9p4" id="piW-IM-qJt"/>
                             <outlet property="toSleepLabel" destination="IV8-6m-UNl" id="GGU-bW-jij"/>
-                            <outlet property="wakeUpContainerheightConstraint" destination="iUn-wb-UPq" id="G5i-jN-mWW"/>
+                            <outlet property="wakeUpContainerHeightConstraint" destination="iUn-wb-UPq" id="G5i-jN-mWW"/>
                             <outlet property="wakeUpDatePicker" destination="Pjf-in-Z4h" id="kZF-30-dmk"/>
                             <outlet property="wakeUpTitleLabel" destination="fgG-vp-w8i" id="PDo-Dl-sXz"/>
                         </connections>
@@ -140,10 +146,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="trn-Aa-1N7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="l6H-s9-QnM" userLabel="Exit" sceneMemberID="exit"/>
-                <tapGestureRecognizer id="GLI-1D-9yq">
+                <tapGestureRecognizer id="jtj-95-R56">
                     <connections>
-                        <action selector="wakeUpTouchUp:" destination="l6H-s9-QnM" id="QoH-ac-UYa"/>
+                        <action selector="wakeUpTouchUp:" destination="APf-fs-GD3" id="Kh5-Ox-tyZ"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
