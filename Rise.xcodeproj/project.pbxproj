@@ -26,7 +26,7 @@
 		7E31497D23425CA600941606 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31497C23425CA600941606 /* TableViewDataSource.swift */; };
 		7E31497F23425D3700941606 /* ChangePlanTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31497E23425D3700941606 /* ChangePlanTableView.swift */; };
 		7E354E3024119B1C0036FF3F /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E354E2F24119B1C0036FF3F /* LocalDataSource.swift */; };
-		7E388E36243A3A77001A28DF /* LoadingView in Frameworks */ = {isa = PBXBuildFile; productRef = 7E388E35243A3A77001A28DF /* LoadingView */; };
+		7E388E36243A3A77001A28DF /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 7E388E35243A3A77001A28DF /* SwiftPackageProductDependency */; };
 		7E388E38243A3C16001A28DF /* PropertyAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E388E37243A3C16001A28DF /* PropertyAnimatable.swift */; };
 		7E3980D52360D0020059C592 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E3980D42360D0020059C592 /* Intro.storyboard */; };
 		7E4798F3239D85D5007FB8F2 /* CreatePlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E4798F2239D85D5007FB8F2 /* CreatePlan.storyboard */; };
@@ -43,7 +43,7 @@
 		7E5BDADF2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5BDADD2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift */; };
 		7E5F292A23F9638C0050DFD3 /* FloatingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5F292923F9638C0050DFD3 /* FloatingLabel.swift */; };
 		7E6268C024D5D49C00F70BC3 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6268BF24D5D49C00F70BC3 /* TodayView.swift */; };
-		7E6268C324D5FAA900F70BC3 /* SelectableStackView in Frameworks */ = {isa = PBXBuildFile; productRef = 7E6268C224D5FAA900F70BC3 /* SelectableStackView */; };
+		7E6268C324D5FAA900F70BC3 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 7E6268C224D5FAA900F70BC3 /* SwiftPackageProductDependency */; };
 		7E644D4F24FACF5600BF198C /* PlanError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E644D4E24FACF5600BF198C /* PlanError.swift */; };
 		7E644D5124FACF6E00BF198C /* PermissionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E644D5024FACF6E00BF198C /* PermissionError.swift */; };
 		7E69836224EBD119002EE278 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69836124EBD119002EE278 /* UIColor+Hex.swift */; };
@@ -135,7 +135,7 @@
 		7ED8E59723BFFD5100A1E96F /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8E59623BFFD5100A1E96F /* Story.swift */; };
 		7ED962AF2336649E00CD2408 /* PlanInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED962AD2336649E00CD2408 /* PlanInfoTableViewCell.swift */; };
 		7ED962B02336649E00CD2408 /* PlanInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ED962AE2336649E00CD2408 /* PlanInfoTableViewCell.xib */; };
-		7EE1399323E36C5C003895D4 /* AnimatedGradientView in Frameworks */ = {isa = PBXBuildFile; productRef = 7EE1399223E36C5C003895D4 /* AnimatedGradientView */; };
+		7EE1399323E36C5C003895D4 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 7EE1399223E36C5C003895D4 /* SwiftPackageProductDependency */; };
 		7EE227652504C38B00EC70CB /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE227642504C38B00EC70CB /* UserDefaults.swift */; };
 		7EE640492378665D005BE355 /* DefaultSunTimeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE640482378665D005BE355 /* DefaultSunTimeRepository.swift */; };
 		7EE6404B2378666F005BE355 /* DefaultSunTimeLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6404A2378666F005BE355 /* DefaultSunTimeLocalDataSource.swift */; };
@@ -371,9 +371,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E388E36243A3A77001A28DF /* LoadingView in Frameworks */,
-				7EE1399323E36C5C003895D4 /* AnimatedGradientView in Frameworks */,
-				7E6268C324D5FAA900F70BC3 /* SelectableStackView in Frameworks */,
+				7E388E36243A3A77001A28DF /* BuildFile in Frameworks */,
+				7EE1399323E36C5C003895D4 /* BuildFile in Frameworks */,
+				7E6268C324D5FAA900F70BC3 /* BuildFile in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1028,9 +1028,9 @@
 			);
 			name = Rise;
 			packageProductDependencies = (
-				7EE1399223E36C5C003895D4 /* AnimatedGradientView */,
-				7E388E35243A3A77001A28DF /* LoadingView */,
-				7E6268C224D5FAA900F70BC3 /* SelectableStackView */,
+				7EE1399223E36C5C003895D4 /* SwiftPackageProductDependency */,
+				7E388E35243A3A77001A28DF /* SwiftPackageProductDependency */,
+				7E6268C224D5FAA900F70BC3 /* SwiftPackageProductDependency */,
 			);
 			productName = Rise;
 			productReference = 92D7D64F2296F297009321AE /* Rise.app */;
@@ -1087,9 +1087,9 @@
 			);
 			mainGroup = 92D7D6462296F297009321AE;
 			packageReferences = (
-				7EE1398C23E36B97003895D4 /* XCRemoteSwiftPackageReference "AnimatedGradientView" */,
-				7E388E34243A3A77001A28DF /* XCRemoteSwiftPackageReference "LoadingView" */,
-				7E6268C124D5FAA900F70BC3 /* XCRemoteSwiftPackageReference "SelectableStackView" */,
+				7EE1398C23E36B97003895D4 /* RemoteSwiftPackageReference */,
+				7E388E34243A3A77001A28DF /* RemoteSwiftPackageReference */,
+				7E6268C124D5FAA900F70BC3 /* RemoteSwiftPackageReference */,
 			);
 			productRefGroup = 92D7D6502296F297009321AE /* Products */;
 			projectDirPath = "";
@@ -1626,7 +1626,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7E388E34243A3A77001A28DF /* XCRemoteSwiftPackageReference "LoadingView" */ = {
+		7E388E34243A3A77001A28DF /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/VladimirBrejcha/LoadingView";
 			requirement = {
@@ -1634,7 +1634,7 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		7E6268C124D5FAA900F70BC3 /* XCRemoteSwiftPackageReference "SelectableStackView" */ = {
+		7E6268C124D5FAA900F70BC3 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/VladimirBrejcha/SelectableStackView.git";
 			requirement = {
@@ -1642,7 +1642,7 @@
 				minimumVersion = 1.1.1;
 			};
 		};
-		7EE1398C23E36B97003895D4 /* XCRemoteSwiftPackageReference "AnimatedGradientView" */ = {
+		7EE1398C23E36B97003895D4 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/rwbutler/AnimatedGradientView";
 			requirement = {
@@ -1653,19 +1653,19 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7E388E35243A3A77001A28DF /* LoadingView */ = {
+		7E388E35243A3A77001A28DF /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7E388E34243A3A77001A28DF /* XCRemoteSwiftPackageReference "LoadingView" */;
+			package = 7E388E34243A3A77001A28DF /* RemoteSwiftPackageReference */;
 			productName = LoadingView;
 		};
-		7E6268C224D5FAA900F70BC3 /* SelectableStackView */ = {
+		7E6268C224D5FAA900F70BC3 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7E6268C124D5FAA900F70BC3 /* XCRemoteSwiftPackageReference "SelectableStackView" */;
+			package = 7E6268C124D5FAA900F70BC3 /* RemoteSwiftPackageReference */;
 			productName = SelectableStackView;
 		};
-		7EE1399223E36C5C003895D4 /* AnimatedGradientView */ = {
+		7EE1399223E36C5C003895D4 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7EE1398C23E36B97003895D4 /* XCRemoteSwiftPackageReference "AnimatedGradientView" */;
+			package = 7EE1398C23E36B97003895D4 /* RemoteSwiftPackageReference */;
 			productName = AnimatedGradientView;
 		};
 /* End XCSwiftPackageProductDependency section */

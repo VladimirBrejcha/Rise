@@ -8,9 +8,7 @@
 
 import UIKit
 
-// TODO: (vladimir) - Resolve the bugs with time until wake up counter:
-// 1. If days changes, negative value appears
-// 2. Wrong calculations
+// TODO: (vladimir) - Fix routing
 
 final class PrepareToSleepViewController: UIViewController {
     @IBOutlet private var prepareToSleepView: PrepareToSleepView!
@@ -56,7 +54,22 @@ final class PrepareToSleepViewController: UIViewController {
             ),
             dataSource: PrepareToSleepView.DataSource(
                 timeUntilWakeUp: { [weak self] () -> String in
-                    "\(self?.state.wakeUpTime.timeIntervalSinceNow.HHmmString ?? "time") until wake up"
+                    guard let self = self else { return "" }
+                    
+                    var wakeUpTime = self.state.wakeUpTime
+                    
+                    // if date is out of this day
+                    if wakeUpTime < Date().addingTimeInterval(-(60 * 60 * 24)) {
+                        wakeUpTime = wakeUpTime.toToday().adjustDate()
+                    // if date is out of this day other way
+                    } else if wakeUpTime > Date().addingTimeInterval(60 * 60 * 24) { // todo try with appendingDays
+                        wakeUpTime = wakeUpTime.toToday().adjustDate()
+                    // if date is within the day but needs correction
+                    } else if wakeUpTime < Date() {
+                        wakeUpTime = wakeUpTime.adjustDate()
+                    }
+                    
+                    return "\(wakeUpTime.timeIntervalSinceNow.HHmmString) until wake up"
                 }
             ),
             handlers: PrepareToSleepView.Handlers(
@@ -77,38 +90,8 @@ final class PrepareToSleepViewController: UIViewController {
                     self?.dismiss()
                 },
                 wakeUpTimeChanged: { [weak self] newValue in
-                    var time = newValue
-                    if time < Date() {
-                        let tomorrow = Date().addingTimeInterval(60 * 60 * 24)
-                        let tomorrowComponents = calendar.dateComponents([.year, .month, .day], from: tomorrow)
-                        let newValueComponents = calendar.dateComponents([.hour, .minute], from: newValue)
-                        let newDate = calendar.date(
-                            from: DateComponents(
-                                year: tomorrowComponents.year,
-                                month: tomorrowComponents.month,
-                                day: tomorrowComponents.day,
-                                hour: newValueComponents.hour,
-                                minute: newValueComponents.minute
-                            )
-                        )
-                        time = newDate!
-                    } else if time.timeIntervalSinceNow > 60 * 60 * 24 {
-                        let today = Date()
-                        let todayComponents = calendar.dateComponents([.year, .month, .day], from: today)
-                        let newValueComponents = calendar.dateComponents([.hour, .minute], from: newValue)
-                        let newDate = calendar.date(
-                            from: DateComponents(
-                                year: todayComponents.year,
-                                month: todayComponents.month,
-                                day: todayComponents.day,
-                                hour: newValueComponents.hour,
-                                minute: newValueComponents.minute
-                            )
-                        )
-                        time = newDate!
-                    }
-                    self?.previouslySelectedWakeUpTime = time
-                    self?.state.wakeUpTime = time
+                    self?.previouslySelectedWakeUpTime = newValue
+                    self?.state.wakeUpTime = newValue
                     self?.prepareToSleepView.model = self?.prepareToSleepView.model?.changing { model in
                         model.wakeUpTime = newValue
                         model.wakeUpTitle = "Alarm at \(newValue.HHmmString)"
@@ -147,6 +130,46 @@ final class PrepareToSleepViewController: UIViewController {
 fileprivate extension Date {
     var timeIntervalSinceNow: TimeInterval {
         timeIntervalSince(Date())
+    }
+    
+    func toToday() -> Date {
+        let todayComponents = calendar.dateComponents([.year, .month, .day], from: Date())
+        let dateComponents = calendar.dateComponents([.hour, .minute], from: self)
+        guard
+            let newDate = calendar.date(
+                from: DateComponents(
+                    year: todayComponents.year,
+                    month: todayComponents.month,
+                    day: todayComponents.day,
+                    hour: dateComponents.hour,
+                    minute: dateComponents.minute
+                )
+            ) else {
+                fatalError()
+        }
+        return newDate
+    }
+
+    func adjustDate() -> Date {
+        if self < Date() {
+            let tomorrow = Date().addingTimeInterval(60 * 60 * 24)
+            let tomorrowComponents = calendar.dateComponents([.year, .month, .day], from: tomorrow)
+            let dateComponents = calendar.dateComponents([.hour, .minute], from: self)
+            guard
+                let newDate = calendar.date(
+                    from: DateComponents(
+                        year: tomorrowComponents.year,
+                        month: tomorrowComponents.month,
+                        day: tomorrowComponents.day,
+                        hour: dateComponents.hour,
+                        minute: dateComponents.minute
+                    )
+                ) else {
+                    fatalError()
+            }
+            return newDate
+        }
+        return self
     }
 }
 
