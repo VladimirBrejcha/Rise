@@ -36,6 +36,8 @@ final class SleepView: UIView, BackgroundSettable {
         self.model = model
         stopButton.progressCompleted = { _ in stopHandler() }
         timeLeftLabel.dataSource = dataSource.timeLeft
+        timeLeftLabel.beginRefreshing()
         currentTimeLabel.dataSource = dataSource.currentTime
+        currentTimeLabel.beginRefreshing()
     }
 }

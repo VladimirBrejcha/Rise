@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -107,6 +108,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="tYg-Dq-Zrm"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="LjJ-vb-W3f" firstAttribute="leading" secondItem="tYg-Dq-Zrm" secondAttribute="leading" constant="10" id="2C1-rK-9Sb"/>
@@ -129,7 +131,6 @@
                             <constraint firstItem="LjJ-vb-W3f" firstAttribute="top" secondItem="w1G-qy-7HK" secondAttribute="bottom" constant="16" id="uKi-7b-l0k"/>
                             <constraint firstAttribute="trailing" secondItem="IV8-6m-UNl" secondAttribute="trailing" constant="10" id="zip-zD-8In"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="tYg-Dq-Zrm"/>
                         <connections>
                             <outlet property="startSleepButton" destination="jtf-Rn-AX8" id="hmx-eI-XMF"/>
                             <outlet property="startSleepLabel" destination="xQO-cs-6vp" id="b7z-jB-b1Z"/>
@@ -182,7 +183,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y2g-Lf-cfq" customClass="DesignableContainerView" customModule="Rise" customModuleProvider="target">
-                                <rect key="frame" x="189" y="458" width="36" height="20"/>
+                                <rect key="frame" x="189" y="468" width="36" height="20"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UdE-ir-e2g">
                                         <rect key="frame" x="28" y="4" width="0.0" height="12"/>
@@ -199,7 +200,7 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="2p9-wX-Wdc"/>
                                     <constraint firstAttribute="trailing" secondItem="UdE-ir-e2g" secondAttribute="trailing" constant="8" id="Vus-LA-vle"/>
@@ -217,6 +218,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="8gk-4x-IVS"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="zTc-hX-oX4" firstAttribute="leading" secondItem="8gk-4x-IVS" secondAttribute="leading" constant="10" id="2x8-eY-jqS"/>
@@ -224,7 +226,7 @@
                             <constraint firstItem="8gk-4x-IVS" firstAttribute="bottom" secondItem="fVf-jv-vsz" secondAttribute="bottom" constant="20" id="HQb-zb-vm4"/>
                             <constraint firstItem="8gk-4x-IVS" firstAttribute="trailing" secondItem="zTc-hX-oX4" secondAttribute="trailing" constant="10" id="L6g-xO-XCb"/>
                             <constraint firstItem="fVf-jv-vsz" firstAttribute="top" secondItem="KRK-q7-IEK" secondAttribute="bottom" constant="10" id="M56-uv-KQi"/>
-                            <constraint firstItem="y2g-Lf-cfq" firstAttribute="top" secondItem="zTc-hX-oX4" secondAttribute="bottom" constant="10" id="Mxc-ZZ-Uyt"/>
+                            <constraint firstItem="y2g-Lf-cfq" firstAttribute="top" secondItem="zTc-hX-oX4" secondAttribute="bottom" constant="20" id="Mxc-ZZ-Uyt"/>
                             <constraint firstItem="8gk-4x-IVS" firstAttribute="trailing" secondItem="fVf-jv-vsz" secondAttribute="trailing" constant="20" id="RcB-ga-ZaZ"/>
                             <constraint firstItem="zTc-hX-oX4" firstAttribute="centerY" secondItem="uik-k5-iFp" secondAttribute="centerY" id="TI3-Ge-sQf"/>
                             <constraint firstItem="8gk-4x-IVS" firstAttribute="trailing" secondItem="KRK-q7-IEK" secondAttribute="trailing" constant="10" id="apg-2d-AYr"/>
@@ -234,7 +236,6 @@
                             <constraint firstItem="bWs-lr-N9w" firstAttribute="leading" secondItem="8gk-4x-IVS" secondAttribute="leading" constant="20" id="ph0-yp-uLF"/>
                             <constraint firstItem="KRK-q7-IEK" firstAttribute="leading" secondItem="8gk-4x-IVS" secondAttribute="leading" constant="10" id="tBm-Zg-8ZZ"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="8gk-4x-IVS"/>
                         <connections>
                             <outlet property="alarmLabel" destination="UdE-ir-e2g" id="MdO-YO-wSm"/>
                             <outlet property="currentTimeLabel" destination="zTc-hX-oX4" id="XNg-HC-wP4"/>
@@ -251,6 +252,11 @@
             <point key="canvasLocation" x="596" y="78"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="jtf-Rn-AX8">
+            <size key="intrinsicContentSize" width="111" height="111"/>
+        </designable>
+    </designables>
     <resources>
         <image name="alarmPressed" width="25" height="25"/>
         <image name="beginToSleepIcon" width="111" height="111"/>
@@ -261,5 +267,8 @@
         <namedColor name="disabledTitle">
             <color red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
