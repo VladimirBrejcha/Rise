@@ -53,20 +53,7 @@ final class PrepareToSleepViewController: UIViewController {
             dataSource: PrepareToSleepView.DataSource(
                 timeUntilWakeUp: { [weak self] () -> String in
                     guard let self = self else { return "" }
-                    
-                    var wakeUpTime = self.state.wakeUpTime
-                    
-                    // if date is out of this day
-                    if wakeUpTime < Date().addingTimeInterval(-(60 * 60 * 24)) {
-                        wakeUpTime = wakeUpTime.toToday().adjustDate()
-                    // if date is out of this day other way
-                    } else if wakeUpTime > Date().addingTimeInterval(60 * 60 * 24) { // todo try with appendingDays
-                        wakeUpTime = wakeUpTime.toToday().adjustDate()
-                    // if date is within the day but needs correction
-                    } else if wakeUpTime < Date() {
-                        wakeUpTime = wakeUpTime.adjustDate()
-                    }
-                    
+                    let wakeUpTime = self.state.wakeUpTime.fixIfNeeded()
                     return "\(wakeUpTime.timeIntervalSinceNow.HHmmString) until wake up"
                 }
             ),
@@ -124,48 +111,12 @@ final class PrepareToSleepViewController: UIViewController {
 }
 
 fileprivate extension Date {
-    var timeIntervalSinceNow: TimeInterval {
-        timeIntervalSince(Date())
-    }
-    
-    func toToday() -> Date {
-        let todayComponents = calendar.dateComponents([.year, .month, .day], from: Date())
-        let dateComponents = calendar.dateComponents([.hour, .minute], from: self)
-        guard
-            let newDate = calendar.date(
-                from: DateComponents(
-                    year: todayComponents.year,
-                    month: todayComponents.month,
-                    day: todayComponents.day,
-                    hour: dateComponents.hour,
-                    minute: dateComponents.minute
-                )
-            ) else {
-                fatalError()
-        }
-        return newDate
-    }
-
-    func adjustDate() -> Date {
+    func fixIfNeeded() -> Date {
         if self < Date() {
-            let tomorrow = Date().addingTimeInterval(60 * 60 * 24)
-            let tomorrowComponents = calendar.dateComponents([.year, .month, .day], from: tomorrow)
-            let dateComponents = calendar.dateComponents([.hour, .minute], from: self)
-            guard
-                let newDate = calendar.date(
-                    from: DateComponents(
-                        year: tomorrowComponents.year,
-                        month: tomorrowComponents.month,
-                        day: tomorrowComponents.day,
-                        hour: dateComponents.hour,
-                        minute: dateComponents.minute
-                    )
-                ) else {
-                    fatalError()
-            }
-            return newDate
+            return self.changeDayStoringTime(to: .tomorrow)
+        } else {
+            return self
         }
-        return self
     }
 }
 

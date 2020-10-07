@@ -28,6 +28,24 @@ enum NoonedDay {
     }
 }
 
+enum Day {
+    case yesterday
+    case today
+    case tomorrow
+    
+    var date: Date {
+        Date().addingTimeInterval(minutes: minutesFromToday)
+    }
+    
+    private var minutesFromToday: Int {
+        switch self {
+        case .yesterday: return -(24 * 60)
+        case .today: return 0
+        case .tomorrow: return 24 * 60
+        }
+    }
+}
+
 extension DateInterval {
     var durationDays: Int {
         calendar.dateComponents([.day], from: start.noon, to: end.noon).day ?? 0
@@ -55,8 +73,35 @@ extension Date {
         addingTimeInterval(timeInterval.toSeconds())
     }
     
+    var timeIntervalSinceNow: TimeInterval {
+        timeIntervalSince(Date())
+    }
+    
     var zeroSeconds: Date? {
         calendar.date(from: calendar.dateComponents([.year, .month, .day, .hour, .minute], from: self))
+    }
+    
+    func changeDayStoringTime(to day: Day) -> Date {
+        changeDayStoringTime(to: day.date)
+    }
+    
+    func changeDayStoringTime(to date: Date) -> Date {
+        let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
+        let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: self)
+        guard
+            let newDate = calendar.date(
+                from: DateComponents(
+                    year: dateComponents.year,
+                    month: dateComponents.month,
+                    day: dateComponents.day,
+                    hour: timeComponents.hour,
+                    minute: timeComponents.minute,
+                    second: timeComponents.second
+                )
+            ) else {
+                fatalError()
+        }
+        return newDate
     }
 }
 
