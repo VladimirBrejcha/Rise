@@ -91,7 +91,10 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
             ),
             handlers: TodayView.Handlers(
                 sleepHandler: { [weak self] in
-                    self?.present(Story.prepareToSleep(), with: .modal)
+                    self?.present(
+                        AnimatedTransitionNavigationController(rootViewController: Story.prepareToSleep()),
+                        with: .fullScreen
+                    )
                 }
             )
         )

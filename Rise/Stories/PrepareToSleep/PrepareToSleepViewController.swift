@@ -8,8 +8,6 @@
 
 import UIKit
 
-// TODO: (vladimir) - Fix routing
-
 final class PrepareToSleepViewController: UIViewController {
     @IBOutlet private var prepareToSleepView: PrepareToSleepView!
     
@@ -82,9 +80,7 @@ final class PrepareToSleepViewController: UIViewController {
                 },
                 sleep: { [weak self] in
                     guard let self = self else { return }
-                    // TODO: (vladimir) - optimise routing
-                    self.dismiss()
-                    self.present(Story.sleep(alarmTime: self.state.wakeUpTime)(), with: .overContext)
+                    self.navigationController?.setViewControllers([Story.sleep(alarmTime: self.state.wakeUpTime)()], animated: true)
                 },
                 close: { [weak self] in
                     self?.dismiss()
