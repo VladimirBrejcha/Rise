@@ -14,7 +14,7 @@ final class SleepViewController: UIViewController {
     var alarmTime: Date! // DI
     
     private var currentTime: String { Date().HHmmString }
-    private var timeLeft: String { "Time left \(alarmTime.timeIntervalSince(Date()).HHmmString)" }
+    private var timeLeft: String { "Time left \(alarmTime.fixIfNeeded().timeIntervalSince(Date()).HHmmString)" }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,5 +34,15 @@ final class SleepViewController: UIViewController {
                 self?.dismiss(animated: true)
             }
         )
+    }
+}
+
+fileprivate extension Date {
+    func fixIfNeeded() -> Date {
+        if self < Date() {
+            return self.changeDayStoringTime(to: .tomorrow)
+        } else {
+            return self
+        }
     }
 }
