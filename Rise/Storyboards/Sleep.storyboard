@@ -56,16 +56,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w1G-qy-7HK" customClass="DesignableContainerView" customModule="Rise" customModuleProvider="target">
                                 <rect key="frame" x="10" y="423" width="394" height="50"/>
                                 <subviews>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Pjf-in-Z4h">
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="Pjf-in-Z4h">
                                         <rect key="frame" x="0.0" y="60" width="394" height="140"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="140" id="Fi2-Ol-zYP"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="wakeUpValueChanged:" destination="APf-fs-GD3" eventType="valueChanged" id="aSO-q5-Xee"/>
                                         </connections>

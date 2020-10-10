@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -38,7 +38,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qus-zp-R0h">
                                 <rect key="frame" x="10" y="802" width="394" height="50"/>
                                 <subviews>
-                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TaK-KH-eXq" customClass="Button" customModule="Rise" customModuleProvider="target">
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TaK-KH-eXq" customClass="Button" customModule="Rise" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="192" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="0.070000000000000007" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -49,7 +49,7 @@
                                             <action selector="backTouchUp:" destination="mrk-j1-Kya" eventType="touchUpInside" id="5Gg-aw-sc0"/>
                                         </connections>
                                     </button>
-                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t3a-mE-e9U" customClass="Button" customModule="Rise" customModuleProvider="target">
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t3a-mE-e9U" customClass="Button" customModule="Rise" customModuleProvider="target">
                                         <rect key="frame" x="202" y="0.0" width="192" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="0.070000000000000007" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -66,6 +66,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="MrT-vQ-GsT"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Vga-E1-S1H" firstAttribute="top" secondItem="MrT-vQ-GsT" secondAttribute="top" constant="15" id="66V-00-5xq"/>
@@ -78,7 +79,6 @@
                             <constraint firstItem="laz-fg-JOl" firstAttribute="top" secondItem="Vga-E1-S1H" secondAttribute="bottom" constant="10" id="o17-dH-9dF"/>
                             <constraint firstItem="MrT-vQ-GsT" firstAttribute="bottom" secondItem="qus-zp-R0h" secondAttribute="bottom" constant="10" id="xZT-ID-Sd5"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="MrT-vQ-GsT"/>
                         <connections>
                             <outlet property="backButton" destination="TaK-KH-eXq" id="g0L-8v-hWt"/>
                             <outlet property="buttonsStackView" destination="qus-zp-R0h" id="4VJ-vf-f3Y"/>
@@ -176,12 +176,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="8 hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5a6-ad-bCi">
-                                <rect key="frame" x="178" y="495" width="58.5" height="20.5"/>
+                                <rect key="frame" x="178" y="495" width="58" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="9dE-Kh-uNX"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="rr0-u4-HGS" firstAttribute="centerX" secondItem="e8e-9a-xg4" secondAttribute="centerX" id="1uK-a8-2sb"/>
@@ -192,7 +193,6 @@
                             <constraint firstItem="rr0-u4-HGS" firstAttribute="leading" secondItem="9dE-Kh-uNX" secondAttribute="leading" constant="10" id="nqK-zz-L9f"/>
                             <constraint firstItem="rr0-u4-HGS" firstAttribute="centerY" secondItem="e8e-9a-xg4" secondAttribute="centerY" id="sge-du-zhk"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="9dE-Kh-uNX"/>
                     </view>
                     <connections>
                         <outlet property="sleepDurationLabel" destination="5a6-ad-bCi" id="xte-dh-ZbN"/>
@@ -233,17 +233,12 @@
                                             <constraint firstAttribute="width" constant="80" id="QK8-QF-xeI"/>
                                         </constraints>
                                     </imageView>
-                                    <datePicker contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="aHM-kz-WBT">
+                                    <datePicker contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="aHM-kz-WBT">
                                         <rect key="frame" x="20" y="134" width="354" height="160"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="160" id="Ipp-By-ZPU"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="wakeUpTimeChanged:" destination="IqT-UZ-1E9" eventType="valueChanged" id="15y-WM-ery"/>
                                         </connections>
@@ -272,13 +267,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="tgb-tD-6VV"/>
                         <constraints>
                             <constraint firstItem="tgb-tD-6VV" firstAttribute="trailing" secondItem="ON7-S3-9Od" secondAttribute="trailing" constant="10" id="OYq-3P-5T7"/>
                             <constraint firstItem="ON7-S3-9Od" firstAttribute="centerY" secondItem="2Ck-XY-rjz" secondAttribute="centerY" id="afr-3d-SH0"/>
                             <constraint firstItem="ON7-S3-9Od" firstAttribute="leading" secondItem="tgb-tD-6VV" secondAttribute="leading" constant="10" id="bvy-kG-V6z"/>
                             <constraint firstItem="ON7-S3-9Od" firstAttribute="centerX" secondItem="2Ck-XY-rjz" secondAttribute="centerX" id="uJB-tO-bBw"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="tgb-tD-6VV"/>
                     </view>
                     <connections>
                         <outlet property="wakeUpTimeDatePicker" destination="aHM-kz-WBT" id="mxN-KF-a1C"/>
@@ -340,6 +335,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ip8-g2-Vhm"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Bqz-wW-hJ2" firstAttribute="centerY" secondItem="jkO-Es-7Bj" secondAttribute="centerY" id="6OS-9Q-W0q"/>
@@ -347,7 +343,6 @@
                             <constraint firstItem="Ip8-g2-Vhm" firstAttribute="trailing" secondItem="Bqz-wW-hJ2" secondAttribute="trailing" constant="10" id="LhM-Vy-lo7"/>
                             <constraint firstItem="Bqz-wW-hJ2" firstAttribute="centerX" secondItem="jkO-Es-7Bj" secondAttribute="centerX" id="h6k-au-09y"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Ip8-g2-Vhm"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x3D-U3-8ua" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -393,17 +388,12 @@
                                             <constraint firstAttribute="width" constant="80" id="Vzo-k1-Min"/>
                                         </constraints>
                                     </imageView>
-                                    <datePicker contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="1Cr-rU-fwC">
+                                    <datePicker contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="1Cr-rU-fwC">
                                         <rect key="frame" x="20" y="134" width="354" height="160"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="160" id="tr3-x1-UfQ"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="wentSleepTimeChanged:" destination="oLi-Ju-9Md" eventType="valueChanged" id="r8H-ni-txD"/>
                                         </connections>
@@ -432,13 +422,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="450-SS-06c"/>
                         <constraints>
                             <constraint firstItem="GbC-1Y-0tk" firstAttribute="leading" secondItem="450-SS-06c" secondAttribute="leading" constant="10" id="1pa-IJ-5dP"/>
                             <constraint firstItem="GbC-1Y-0tk" firstAttribute="centerY" secondItem="H9Y-Rd-lFa" secondAttribute="centerY" id="Jgo-Bh-M22"/>
                             <constraint firstItem="GbC-1Y-0tk" firstAttribute="centerX" secondItem="H9Y-Rd-lFa" secondAttribute="centerX" id="ifC-3z-r4V"/>
                             <constraint firstItem="450-SS-06c" firstAttribute="trailing" secondItem="GbC-1Y-0tk" secondAttribute="trailing" constant="10" id="tAT-xg-eef"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="450-SS-06c"/>
                     </view>
                     <connections>
                         <outlet property="wentSleepDatePicker" destination="1Cr-rU-fwC" id="E52-vw-Gky"/>
@@ -531,6 +521,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="eQ8-z6-h3p"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="whz-6e-S2Y" firstAttribute="leading" secondItem="eQ8-z6-h3p" secondAttribute="leading" constant="10" id="AbF-Am-aU6"/>
@@ -541,7 +532,6 @@
                             <constraint firstItem="whz-6e-S2Y" firstAttribute="centerX" secondItem="Um7-tj-kqP" secondAttribute="centerX" id="mmA-Oo-PrU"/>
                             <constraint firstItem="eQ8-z6-h3p" firstAttribute="trailing" secondItem="whz-6e-S2Y" secondAttribute="trailing" constant="10" id="oL3-MX-rHb"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="eQ8-z6-h3p"/>
                     </view>
                     <connections>
                         <outlet property="planDurationLabel" destination="WHd-JO-6if" id="XEr-06-gqR"/>
@@ -596,6 +586,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="gDn-R6-A3p"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="mcC-ad-35o" firstAttribute="centerX" secondItem="kCL-BO-R01" secondAttribute="centerX" id="4mB-Pw-fmv"/>
@@ -603,7 +594,6 @@
                             <constraint firstItem="gDn-R6-A3p" firstAttribute="trailing" secondItem="mcC-ad-35o" secondAttribute="trailing" constant="10" id="MIu-hX-mvd"/>
                             <constraint firstItem="mcC-ad-35o" firstAttribute="centerY" secondItem="kCL-BO-R01" secondAttribute="centerY" id="gzW-MY-fgz"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="gDn-R6-A3p"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z2f-fR-S5p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -611,6 +601,14 @@
             <point key="canvasLocation" x="5581" y="23"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="TaK-KH-eXq">
+            <size key="intrinsicContentSize" width="40" height="34"/>
+        </designable>
+        <designable name="t3a-mE-e9U">
+            <size key="intrinsicContentSize" width="38" height="34"/>
+        </designable>
+    </designables>
     <resources>
         <image name="bed" width="100" height="100"/>
         <image name="calendar" width="125" height="125"/>

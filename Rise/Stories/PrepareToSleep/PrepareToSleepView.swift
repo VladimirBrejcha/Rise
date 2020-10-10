@@ -103,6 +103,8 @@ final class PrepareToSleepView: UIView, BackgroundSettable, PropertyAnimatable {
         startSleepButton.backgroundColor = .clear
         startSleepButton.alpha = 0.9
         
+        wakeUpDatePicker.setValue(UIColor.white, forKeyPath: "textColor")
+        
         isConfigured = true
     }
 }
