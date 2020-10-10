@@ -43,9 +43,9 @@ final class LongPressProgressButton: UIView, NibLoadable {
                 self.workItem = nil
             }
             if let workItem = self.workItem {
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: workItem)
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5, execute: workItem)
                 self.progressView.progress = 1
-                self.animator = UIViewPropertyAnimator(duration: 2, curve: .linear) {
+                self.animator = UIViewPropertyAnimator(duration: 1.5, curve: .linear) {
                     self.progressView.layoutIfNeeded()
                 }
                 self.animator?.startAnimation()

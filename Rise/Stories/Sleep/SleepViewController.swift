@@ -21,7 +21,10 @@ final class SleepViewController: UIViewController {
         
         sleepView.setBackground(GradientHelper.makeGradientView(frame: sleepView.bounds))
         sleepView.configure(
-            model: SleepView.Model(stopTitle: "Stop", alarmTime: alarmTime.HHmmString),
+            model: SleepView.Model(
+                stopTitle: "Stop",
+                alarmTime: alarmTime.HHmmString
+            ),
             dataSource: SleepView.DataSource(
                 timeLeft: { [weak self] () -> FloatingLabel.Model in
                     FloatingLabel.Model(text: self?.timeLeft ?? "", alpha: 1)
