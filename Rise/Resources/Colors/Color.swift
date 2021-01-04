@@ -10,8 +10,8 @@ import UIKit
 
 struct Color {
     // Background colors
-    static let defaultButtonBackground = UIColor(named: "defaultButtonBackground")!
-    static let defaultContainerBackground = UIColor(named: "defaultContainerBackground")!
+    static let defaultButtonBackground = UIColor(named: "DefaultButtonBackground")!
+    static let defaultContainerBackground = UIColor(named: "DefaultContainerBackground")!
 
     // Button state colors
     static let redTitle = UIColor(named: "redTitle")!
@@ -19,11 +19,11 @@ struct Color {
     static let disabledTitle = UIColor(named: "disabledTitle")!
     
     // Palette
-    static let black = UIColor(named: "black")!
-    static let pink = UIColor(named: "pink")!
-    static let purple = UIColor(named: "purple")!
-    static let violet = UIColor(named: "violet")!
-    static let lightPink = UIColor(named: "lightPink")!
-    static let darkPink = UIColor(named: "darkPink")!
-    static let darkPurple = UIColor(named: "darkPurple")!
+    static let black = UIColor(named: "Black")!
+    static let pink = UIColor(named: "Pink")!
+    static let purple = UIColor(named: "Purple")!
+    static let violet = UIColor(named: "Violet")!
+    static let lightPink = UIColor(named: "LightPink")!
+    static let darkPink = UIColor(named: "DarkPink")!
+    static let darkPurple = UIColor(named: "DarkPurple")!
 }
