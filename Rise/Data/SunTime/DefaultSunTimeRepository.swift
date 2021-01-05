@@ -28,19 +28,23 @@ final class DefaultSunTimeRepository: SunTimeRepository {
                 remoteRequest(for: numberOfDays, since: day, for: location, completion: completion)
                 return
             }
+
+            if (localResult.count == numberOfDays) {
+                log(.info, with: "found stored sunTimes: \(localResult)")
+                completion(.success(localResult))
+                return
+            }
             
-            localResult.count == numberOfDays
-                ? completion(.success(localResult))
-                : remoteRequest(for: calculateMissingDays(from: localResult, and: numberOfDays),
-                                since: calculateLatestDay(from: localResult).appending(days: 1),
-                                for: location) { result in
-                                    if case .success (let remotResult) = result {
-                                        localResult.append(contentsOf: remotResult)
-                                        completion(.success(localResult))
-                                    }
-                                    if case .failure (let error) = result {
-                                        completion(.failure(error))
-                                    }
+            remoteRequest(for: calculateMissingDays(from: localResult, and: numberOfDays),
+                          since: calculateLatestDay(from: localResult).appending(days: 1),
+                          for: location) { result in
+                if case .success (let remotResult) = result {
+                    localResult.append(contentsOf: remotResult)
+                    completion(.success(localResult))
+                }
+                if case .failure (let error) = result {
+                    completion(.failure(error))
+                }
             }
         } catch {
             remoteRequest(for: numberOfDays, since: day, for: location, completion: completion)
@@ -64,9 +68,11 @@ final class DefaultSunTimeRepository: SunTimeRepository {
         remoteDataSource.get(for: numberOfDays, since: day, for: location) { result in
             if case .success (let remoteSunTimes) = result {
                 completion(.success(remoteSunTimes))
+                log(.info, with: "got sunTimes: \(remoteSunTimes)")
                 try? self.save(sunTime: remoteSunTimes)
             }
             if case .failure (let error) = result {
+                log(.warning, with: "got error: \(error.localizedDescription)")
                 completion(.failure(error))
             }
         }
