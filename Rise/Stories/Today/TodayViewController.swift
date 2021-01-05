@@ -21,9 +21,9 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
     var confirmPlan: ConfirmPlan! // DI
     
     // MARK: - State
-    private struct State: Equatable {
-        var sunTimeState: LoadState<[SunTime]>
-        var planState: LoadState<RisePlan>
+    fileprivate struct State: Equatable {
+        let sunTimeState: LoadState<[SunTime]>
+        let planState: LoadState<RisePlan>
         
         enum LoadState<Data: Equatable>: Equatable {
             case loading
@@ -72,10 +72,11 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
         }
         
         observePlan.observe { [weak self] plan in
+            guard let self = self else { return }
             if let plan = plan {
-                self?.state.planState = .loaded(data: plan)
+                self.state = self.state.changing { $0.planState = .loaded(data: plan) }
             } else {
-                self?.state.planState = .failed
+                self.state = self.state.changing { $0.planState = .failed }
             }
         }
 
@@ -121,68 +122,85 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
     }
     
     // MARK: - Apply states
-    private func applySunTimeState(_ state: State.LoadState<[SunTime]>) -> [DaysCollectionCell.Model] {
+    private func applySunTimeState(_ state: State.LoadState<[SunTime]>) -> [DaysCollectionView.Cell.Model] {
         if todayView.snapshot.numberOfSections == 0 {
-            return defaultSunModels
+            return apply(state: state, on: defaultSunModels)
+        } else {
+            return apply(state: state, on: todayView.snapshot.itemIdentifiers(inSection: .sun))
         }
-        var newStates: [DaysCollectionCell.Model] = todayView.snapshot.itemIdentifiers(inSection: .sun)
+    }
+
+    private func apply(
+        state: State.LoadState<[SunTime]>,
+        on snapshot: [DaysCollectionView.Cell.Model]
+    ) -> [DaysCollectionView.Cell.Model] {
+        var result = snapshot
         switch state {
         case .loading:
-            newStates = newStates.map { $0.changing { $0.state = .loading } }
+            result = snapshot.map { $0.changing { $0.state = .loading } }
         case .loaded(let sunTimes):
             for (index, value) in sunTimes.enumerated() {
-                newStates[index] = newStates[index].changing {
+                result[index] = snapshot[index].changing {
                     $0.state = .showingContent(left: value.sunrise.HHmmString, right: value.sunset.HHmmString)
                 }
             }
         case .failed:
-            newStates = newStates.map { $0.changing { $0.state = .showingError(error: "Failed to load data") } }
+            result = snapshot.map { $0.changing { $0.state = .showingError(error: "Failed to load data") } }
         }
-        return newStates
+        return result
     }
     
-    private func applyPlanState(_ state: State.LoadState<RisePlan>) -> [DaysCollectionCell.Model] {
+    private func applyPlanState(_ state: State.LoadState<RisePlan>) -> [DaysCollectionView.Cell.Model] {
         if todayView.snapshot.numberOfSections == 0 {
-            return defaultPlanModels
+            return apply(state: state, on: defaultPlanModels)
+        } else {
+            return apply(state: state, on: todayView.snapshot.itemIdentifiers(inSection: .plan))
         }
-        var newStates: [DaysCollectionCell.Model] =  todayView.snapshot.itemIdentifiers(inSection: .plan)
+    }
+
+    private func apply(
+        state: State.LoadState<RisePlan>,
+        on snapshot: [DaysCollectionView.Cell.Model]
+    ) -> [DaysCollectionView.Cell.Model] {
+        var result = snapshot
         switch state {
         case .loading:
-            newStates = newStates.map { $0.changing { $0.state = .loading } }
+            result = snapshot.map { $0.changing { $0.state = .loading } }
         case .loaded(let plan):
             let datesArray: [NoonedDay] = [.yesterday, .today, .tomorrow]
             for (index, value) in datesArray.enumerated() {
                 if let dailyTime = try? getDailyTime(for: plan, date: value.date) {
-                    newStates[index] = newStates[index].changing {
+                    result[index] = snapshot[index].changing {
                         $0.state = .showingContent(left: dailyTime.wake.HHmmString, right: dailyTime.sleep.HHmmString)
                     }
                 } else {
-                    newStates[index] = newStates[index].changing {
+                    result[index] = snapshot[index].changing {
                         $0.state = .showingInfo(info: "No plan for the day")
                     }
                 }
             }
         case .failed:
-            newStates = newStates.map { $0.changing { $0.state = .showingInfo(info: "You don't have a plan yet") } }
+            result = snapshot.map { $0.changing { $0.state = .showingInfo(info: "You don't have a plan yet") } }
         }
-        return newStates
+        return result
     }
 
     // MARK: - Refresh sun times
     private func refreshSunTimes() {
         getSunTime(numberOfDays: 3, since: NoonedDay.yesterday.date) { [weak self] result in
+            guard let self = self else { return }
             if case .success (let sunTimes) = result {
-                self?.state.sunTimeState = .loaded(data: sunTimes)
+                self.state = self.state.changing{ $0.sunTimeState = .loaded(data: sunTimes) }
             }
-            if case .failure (let error) = result {
-                self?.state.sunTimeState = .failed
+            if case .failure = result {
+                self.state = self.state.changing{ $0.sunTimeState = .failed }
             }
         }
     }
 
     // MARK: - Repeat handler
     private func repeatButtonPressed(on cell: DaysCollectionCell) {
-        state.sunTimeState = .loading
+        state = state.changing{ $0.sunTimeState = .loading }
         refreshSunTimes()
     }
     
@@ -266,5 +284,11 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
                 id: "Plan.tomorrow"
             )
         ]
+    }
+}
+
+extension TodayViewController.State: Changeable {
+    init(copy: ChangeableWrapper<TodayViewController.State>) {
+        self.init(sunTimeState: copy.sunTimeState, planState: copy.planState)
     }
 }
