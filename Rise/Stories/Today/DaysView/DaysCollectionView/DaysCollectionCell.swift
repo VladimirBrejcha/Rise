@@ -18,21 +18,33 @@ final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
     @IBOutlet private weak var rightLabel: UILabel!
     
     private var repeatButtonHandler: RepeatHandler?
-    private var onDraw: (() -> Void)?
     
     typealias RepeatHandler = (DaysCollectionCell) -> Void
     
-    enum State {
+    enum State: Hashable {
         case loading
         case showingInfo (info: String)
         case showingError (error: String)
         case showingContent (left: String, right: String)
     }
 
-    struct Model {
-        var state: State
+    struct Model: Hashable, Identifiable {
+        let state: State
         let imageName: (left: String, right: String)
         let repeatHandler: RepeatHandler
+
+        // MARK: - Identifiable
+        let id: String
+
+        // MARK: - Equatable
+        static func == (lhs: DaysCollectionCell.Model, rhs: DaysCollectionCell.Model) -> Bool {
+            lhs.id == rhs.id
+        }
+
+        // MARK: - Hashable
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(id)
+        }
     }
     
     // MARK: - LifeCycle -
@@ -44,38 +56,44 @@ final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
             }
         }
     }
-    
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-        onDraw?()
-        onDraw = nil
+
+    override func layoutSubviews() {
+        applyModel()
+        super.layoutSubviews()
     }
     
     // MARK: - ConfigurableCell -
+    private var model: Model?
     func configure(with model: Model) {
+        self.model = model
+        repeatButtonHandler = model.repeatHandler
+    }
+
+    private func applyModel() {
+        guard let model = model else { return }
         leftImageView.image = UIImage(named: model.imageName.left)
         rightImageView.image = UIImage(named: model.imageName.right)
-        repeatButtonHandler = model.repeatHandler
-        
-        onDraw = { [weak self] in
-            guard let self = self else { return }
-            
-            switch model.state {
-            case .loading:
-                self.loadingView.state = .loading
-                self.containerView.alpha = 0
-            case .showingInfo(let info):
-                self.loadingView.state = .info(message: info)
-                self.containerView.alpha = 0
-            case .showingError(let error):
-                self.loadingView.state = .error(message: error)
-                self.containerView.alpha = 0
-            case .showingContent(let left, let right):
-                self.leftLabel.text = left
-                self.rightLabel.text = right
-                self.loadingView.state = .hidden
-                self.containerView.alpha = 1
-            }
+        switch model.state {
+        case .loading:
+            self.loadingView.state = .loading
+            self.containerView.isHidden = true
+        case .showingInfo(let info):
+            self.loadingView.state = .info(message: info)
+            self.containerView.isHidden = true
+        case .showingError(let error):
+            self.loadingView.state = .error(message: error)
+            self.containerView.isHidden = true
+        case .showingContent(let left, let right):
+            self.leftLabel.text = left
+            self.rightLabel.text = right
+            self.loadingView.state = .hidden
+            self.containerView.isHidden = false
         }
+    }
+}
+
+extension DaysCollectionCell.Model: Changeable {
+    init(copy: ChangeableWrapper<DaysCollectionCell.Model>) {
+        self.init(state: copy.state, imageName: copy.imageName, repeatHandler: copy.repeatHandler, id: copy.id)
     }
 }

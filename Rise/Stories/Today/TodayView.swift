@@ -12,40 +12,32 @@ final class TodayView: UIView {
     @IBOutlet private weak var daysView: DaysView!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var timeToSleepLabel: FloatingLabel!
-    
+
+    typealias Snapshot = NSDiffableDataSourceSnapshot<DaysCollectionView.Section, DaysCollectionView.Cell.Model>
+
     // MARK: - Handlers & DataSource
-    struct Handlers {
-        let sleepHandler: () -> Void
-    }
-    var handlers: Handlers?
-    
-    @IBAction private func sleepTouchUp(_ sender: Button) {
-        handlers?.sleepHandler()
-    }
-    
-    struct DataSource {
-        let collection: UICollectionViewDataSource
-        let timeUntilSleep: () -> FloatingLabel.Model
-    }
-    
+    var sleepHandler: (() -> Void)?
+    var timeUntilSleepDataSource: (() -> FloatingLabel.Model)?
+
     // MARK: - Configure
     private var isConfigured = false
-    func configure(dataSource: DataSource, handlers: Handlers) {
+    func configure(
+        timeUntilSleepDataSource: @escaping () -> FloatingLabel.Model,
+        sleepHandler: @escaping () -> Void
+    ) {
         if isConfigured { return }
-        
-        self.handlers = handlers
-        daysView.collectionView.dataSource = dataSource.collection
-        timeToSleepLabel.dataSource = dataSource.timeUntilSleep
+        self.sleepHandler = sleepHandler
+        timeToSleepLabel.dataSource = timeUntilSleepDataSource
         timeToSleepLabel.beginRefreshing()
-        
         isConfigured = true
     }
-    
-    func reloadItems(at indexes: [Int]) {
-        daysView.collectionView.reloadItems(at: indexes.map { IndexPath(item: $0, section: 0) })
+
+    var snapshot: Snapshot { daysView.dataSource.snapshot() }
+    func applySnapshot(_ snapshot: Snapshot) {
+        daysView.dataSource.apply(snapshot, animatingDifferences: true)
     }
-    
-    func getIndexOf(cell: DaysCollectionCell) -> Int? {
-        daysView.collectionView.indexPath(for: cell)?.row
+
+    @IBAction private func sleepTouchUp(_ sender: Button) {
+        sleepHandler?()
     }
 }

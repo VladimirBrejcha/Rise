@@ -20,27 +20,8 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
     var getDailyTime: GetDailyTime! // DI
     var confirmPlan: ConfirmPlan! // DI
     
-    // MARK: - CollectionDataSource
-    private typealias CellConfigurator = CollectionCellConfigurator<DaysCollectionCell, DaysCollectionCell.Model>
-    private var collectionDataSource: CollectionDataSource!
-    private var cellModels: [DaysCollectionCell.Model] {
-        get {
-            if let dataSource = collectionDataSource {
-                return dataSource
-                    .items
-                    .compactMap { $0 as? CellConfigurator }
-                    .map { $0.model }
-            } else {
-                return []
-            }
-        }
-        set {
-            collectionDataSource?.items = newValue.map { CellConfigurator(model: $0) }
-        }
-    }
-    
     // MARK: - State
-    private struct State {
+    private struct State: Equatable {
         var sunTimeState: LoadState<[SunTime]>
         var planState: LoadState<RisePlan>
         
@@ -53,11 +34,12 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
     private var state: State = State(sunTimeState: .loading, planState: .failed) {
         didSet {
             DispatchQueue.main.async {
+                if self.state == oldValue { return }
                 if self.viewIsVisible {
-                    self.applyNewState(self.state, to: oldValue)
+                    self.applySnapshot()
                 } else {
                     self.performOnDidAppear.append {
-                        self.applyNewState(self.state, to: oldValue)
+                        self.applySnapshot()
                     }
                 }
             }
@@ -71,32 +53,16 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionDataSource = CollectionDataSource(
-            items: [
-                CellConfigurator(model: emptySunCellModel),
-                CellConfigurator(model: emptyPlanCellModel),
-                CellConfigurator(model: emptySunCellModel),
-                CellConfigurator(model: emptyPlanCellModel),
-                CellConfigurator(model: emptySunCellModel),
-                CellConfigurator(model: emptyPlanCellModel)
-            ]
-        )
-        
         todayView.configure(
-            dataSource: TodayView.DataSource(
-                collection: collectionDataSource,
-                timeUntilSleep:  { [weak self] in
-                    self?.floatingLabelModel ?? FloatingLabel.Model(text: "", alpha: 0)
-                }
-            ),
-            handlers: TodayView.Handlers(
-                sleepHandler: { [weak self] in
-                    self?.present(
-                        AnimatedTransitionNavigationController(rootViewController: Story.prepareToSleep()),
-                        with: .fullScreen
-                    )
-                }
-            )
+            timeUntilSleepDataSource: { [weak self] in
+                self?.floatingLabelModel ?? FloatingLabel.Model(text: "", alpha: 0)
+            },
+            sleepHandler: { [weak self] in
+                self?.present(
+                    AnimatedTransitionNavigationController(rootViewController: Story.prepareToSleep()),
+                    with: .fullScreen
+                )
+            }
         )
         
         if let plan = try? getPlan() {
@@ -112,7 +78,7 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
                 self?.state.planState = .failed
             }
         }
-        
+
         refreshSunTimes()
     }
     
@@ -138,6 +104,14 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
         super.viewWillDisappear(animated)
         viewIsVisible = false
     }
+
+    func applySnapshot(animatingDifferences: Bool = false) {
+        var snapshot = TodayView.Snapshot()
+        snapshot.appendSections([.sun, .plan])
+        snapshot.appendItems(applySunTimeState(state.sunTimeState), toSection: .sun)
+        snapshot.appendItems(applyPlanState(state.planState), toSection: .plan)
+        todayView.applySnapshot(snapshot)
+    }
     
     // MARK: - Private -
     private func makeTabBar(visible: Bool) {
@@ -147,84 +121,53 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
     }
     
     // MARK: - Apply states
-    private func applyNewState(_ state: State, to oldState: State) {
-        if oldState.sunTimeState != state.sunTimeState {
-            applySunTimeState(state.sunTimeState)
+    private func applySunTimeState(_ state: State.LoadState<[SunTime]>) -> [DaysCollectionCell.Model] {
+        if todayView.snapshot.numberOfSections == 0 {
+            return defaultSunModels
         }
-        if oldState.planState != state.planState {
-            applyPlanState(state.planState)
-        }
-    }
-    
-    private func applySunTimeState(_ state: State.LoadState<[SunTime]>) {
-        var newStates: [DaysCollectionCell.State]?
-        
+        var newStates: [DaysCollectionCell.Model] = todayView.snapshot.itemIdentifiers(inSection: .sun)
         switch state {
         case .loading:
-            newStates = [.loading, .loading, .loading]
+            newStates = newStates.map { $0.changing { $0.state = .loading } }
         case .loaded(let sunTimes):
-            newStates = sunTimes.map {
-                .showingContent(left: $0.sunrise.HHmmString, right: $0.sunset.HHmmString)
-            }
-        case .failed:
-            newStates = [.showingError(error: "Failed to load data"),
-                         .showingError(error: "Failed to load data"),
-                         .showingError(error: "Failed to load data")]
-        }
-        
-        guard let states = newStates else { return }
-        refreshItems(with: states, using: \.isEven) // odd indexes are for planViews
-    }
-    
-    private func applyPlanState(_ state: State.LoadState<RisePlan>) {
-        var newStates: [DaysCollectionCell.State]?
-        switch state {
-        case .loading:
-            newStates = [.loading, .loading, .loading]
-        case .loaded(let plan):
-            let datesArray: [NoonedDay] = [.yesterday, .today, .tomorrow]
-            
-            newStates = []
-            
-            for date in datesArray {
-                if let dailyTime = try? getDailyTime(for: plan, date: date.date) {
-                    newStates?.append(
-                        .showingContent(
-                            left: dailyTime.wake.HHmmString,
-                            right: dailyTime.sleep.HHmmString
-                        )
-                    )
-                } else {
-                    newStates?.append(.showingInfo(info: "No plan for the day"))
+            for (index, value) in sunTimes.enumerated() {
+                newStates[index] = newStates[index].changing {
+                    $0.state = .showingContent(left: value.sunrise.HHmmString, right: value.sunset.HHmmString)
                 }
             }
-            
         case .failed:
-            newStates = [.showingInfo(info: "You don't have a plan yet"),
-                         .showingInfo(info: "You don't have a plan yet"),
-                         .showingInfo(info: "You don't have a plan yet")]
+            newStates = newStates.map { $0.changing { $0.state = .showingError(error: "Failed to load data") } }
         }
-        
-        guard let states = newStates else { return }
-        refreshItems(with: states, using: \.isOdd) // even indexes are for sunViews
+        return newStates
     }
     
-    // MARK: - Refresh items
-    private func refreshItems(with states: [DaysCollectionCell.State], using predicate: (Int) -> Bool) {
-        var itemsToReload = [Int]()
-        
-        var stateCounter = 0
-        for index in cellModels.indices {
-            if predicate(index) && states.indices.contains(stateCounter) {
-                cellModels[index].state = states[stateCounter]
-                itemsToReload.append(index)
-                stateCounter += 1
+    private func applyPlanState(_ state: State.LoadState<RisePlan>) -> [DaysCollectionCell.Model] {
+        if todayView.snapshot.numberOfSections == 0 {
+            return defaultPlanModels
+        }
+        var newStates: [DaysCollectionCell.Model] =  todayView.snapshot.itemIdentifiers(inSection: .plan)
+        switch state {
+        case .loading:
+            newStates = newStates.map { $0.changing { $0.state = .loading } }
+        case .loaded(let plan):
+            let datesArray: [NoonedDay] = [.yesterday, .today, .tomorrow]
+            for (index, value) in datesArray.enumerated() {
+                if let dailyTime = try? getDailyTime(for: plan, date: value.date) {
+                    newStates[index] = newStates[index].changing {
+                        $0.state = .showingContent(left: dailyTime.wake.HHmmString, right: dailyTime.sleep.HHmmString)
+                    }
+                } else {
+                    newStates[index] = newStates[index].changing {
+                        $0.state = .showingInfo(info: "No plan for the day")
+                    }
+                }
             }
+        case .failed:
+            newStates = newStates.map { $0.changing { $0.state = .showingInfo(info: "You don't have a plan yet") } }
         }
-        
-        todayView.reloadItems(at: itemsToReload)
+        return newStates
     }
-    
+
     // MARK: - Refresh sun times
     private func refreshSunTimes() {
         getSunTime(numberOfDays: 3, since: NoonedDay.yesterday.date) { [weak self] result in
@@ -232,7 +175,6 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
                 self?.state.sunTimeState = .loaded(data: sunTimes)
             }
             if case .failure (let error) = result {
-                log(.error, with: error.localizedDescription)
                 self?.state.sunTimeState = .failed
             }
         }
@@ -240,16 +182,6 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
 
     // MARK: - Repeat handler
     private func repeatButtonPressed(on cell: DaysCollectionCell) {
-        guard let index = todayView.getIndexOf(cell: cell) else {
-            log(.warning, with: "repeatButtonPressed called, but index of the cell was nil")
-            return
-        }
-        
-        guard index.isEven else {
-            log(.warning, with: "repeatButtonPressed called, but index was odd")
-            return
-        }
-        
         state.sunTimeState = .loading
         refreshSunTimes()
     }
@@ -290,23 +222,49 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
     }
     
     // MARK: - Default cells
-    private var emptySunCellModel: DaysCollectionCell.Model {
-        DaysCollectionCell.Model(
-            state: .loading,
-            imageName: (left: "sunrise", right: "sunset"),
-            repeatHandler: { [weak self] cell in
-                self?.repeatButtonPressed(on: cell)
-            }
-        )
+    private var defaultSunModels: [DaysCollectionCell.Model] {
+        [
+            DaysCollectionCell.Model(
+                state: .loading,
+                imageName: (left: "sunrise", right: "sunset"),
+                repeatHandler: repeatButtonPressed,
+                id: "Sun.yesterday"
+            ),
+            DaysCollectionCell.Model(
+                state: .loading,
+                imageName: (left: "sunrise", right: "sunset"),
+                repeatHandler: repeatButtonPressed,
+                id: "Sun.today"
+            ),
+            DaysCollectionCell.Model(
+                state: .loading,
+                imageName: (left: "sunrise", right: "sunset"),
+                repeatHandler: repeatButtonPressed,
+                id: "Sun.tomorrow"
+            )
+        ]
     }
-    
-    private var emptyPlanCellModel: DaysCollectionCell.Model {
-        DaysCollectionCell.Model(
-            state: .showingInfo(info: "You don't have a plan yet"),
-            imageName: (left: "wakeup", right: "bed"),
-            repeatHandler: { [weak self] cell in
-                self?.repeatButtonPressed(on: cell)
-            }
-        )
+
+    private var defaultPlanModels: [DaysCollectionCell.Model] {
+        [
+            DaysCollectionCell.Model(
+                state: .showingInfo(info: "You don't have a plan yet"),
+                imageName: (left: "wakeup", right: "bed"),
+                repeatHandler: repeatButtonPressed,
+                id: "Plan.yesterday"
+            ),
+            DaysCollectionCell.Model(
+                state: .showingInfo(info: "You don't have a plan yet"),
+                imageName: (left: "wakeup", right: "bed"),
+                repeatHandler: repeatButtonPressed,
+                id: "Plan.today"
+            ),
+            DaysCollectionCell.Model(
+                state: .showingInfo(info: "You don't have a plan yet"),
+                imageName: (left: "wakeup", right: "bed"),
+                repeatHandler: repeatButtonPressed,
+                id: "Plan.tomorrow"
+            )
+        ]
     }
 }

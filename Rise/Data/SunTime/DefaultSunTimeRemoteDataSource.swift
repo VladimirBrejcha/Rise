@@ -26,6 +26,7 @@ final class DefaultSunTimeRemoteDataSource: SunTimeRemoteDataSource {
              since day: Date,
              for location: Location,
              completion: @escaping (Result<[SunTime], Error>) -> Void) {
+        log(.info, with: "getting")
         var returnArray = [SunTime]()
 
         let group = DispatchGroup()
