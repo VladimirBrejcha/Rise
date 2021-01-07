@@ -31,7 +31,7 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
             case failed
         }
     }
-    private var state: State = State(sunTimeState: .loading, planState: .failed) {
+    private var state: State = State(sunTimeState: .loading, planState: .loading) {
         didSet {
             DispatchQueue.main.async {
                 if self.state == oldValue { return }
