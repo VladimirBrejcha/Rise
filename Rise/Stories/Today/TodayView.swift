@@ -13,7 +13,7 @@ final class TodayView: UIView {
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var timeToSleepLabel: FloatingLabel!
 
-    typealias Snapshot = NSDiffableDataSourceSnapshot<DaysCollectionView.Section, DaysCollectionView.Cell.Model>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<DaysCollectionView.Section, DaysCollectionView.Item.Model>
 
     // MARK: - Handlers & DataSource
     var sleepHandler: (() -> Void)?

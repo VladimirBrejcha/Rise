@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -164,6 +165,15 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HdC-EX-jQx" customClass="DesignableContainerView" customModule="Rise" customModuleProvider="target">
+                                <rect key="frame" x="190.5" y="450" width="33" height="33.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fVf-jv-vsz" customClass="LongPressProgressButton" customModule="Rise" customModuleProvider="target">
                                 <rect key="frame" x="20" y="782" width="374" height="60"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -171,69 +181,96 @@
                                     <constraint firstAttribute="height" constant="60" id="tyD-Lw-PkE"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iLA-ZS-bm2">
+                                <rect key="frame" x="192" y="453" width="30" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="M4Q-mj-2b5"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="alarmTouchUp:" destination="uik-k5-iFp" eventType="touchUpInside" id="g93-da-4bi"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTc-hX-oX4" customClass="AutoRefreshableLabel" customModule="Rise" customModuleProvider="target">
-                                <rect key="frame" x="10" y="448" width="394" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="40"/>
-                                <color key="textColor" red="0.40000000000000002" green="0.18039215689999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="10" y="428" width="394" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="54"/>
+                                <color key="textColor" name="normalTitle"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y2g-Lf-cfq" customClass="DesignableContainerView" customModule="Rise" customModuleProvider="target">
-                                <rect key="frame" x="189" y="468" width="36" height="20"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UdE-ir-e2g">
-                                        <rect key="frame" x="28" y="4" width="0.0" height="12"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" name="disabledTitle"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alarmPressed" translatesAutoresizingMaskIntoConstraints="NO" id="BSN-LZ-VYx">
-                                        <rect key="frame" x="8" y="2" width="16" height="16"/>
-                                        <color key="tintColor" name="disabledTitle"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="BSN-LZ-VYx" secondAttribute="height" multiplier="1:1" id="0yp-cm-w35"/>
-                                            <constraint firstAttribute="height" constant="16" id="Btl-Ve-ez3"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="2p9-wX-Wdc"/>
-                                    <constraint firstAttribute="trailing" secondItem="UdE-ir-e2g" secondAttribute="trailing" constant="8" id="Vus-LA-vle"/>
-                                    <constraint firstAttribute="bottom" secondItem="UdE-ir-e2g" secondAttribute="bottom" constant="4" id="WaT-sG-cpr"/>
-                                    <constraint firstItem="BSN-LZ-VYx" firstAttribute="centerY" secondItem="UdE-ir-e2g" secondAttribute="centerY" id="ccO-7o-Mx0"/>
-                                    <constraint firstItem="UdE-ir-e2g" firstAttribute="leading" secondItem="BSN-LZ-VYx" secondAttribute="trailing" constant="4" id="cnE-aV-Nwj"/>
-                                    <constraint firstItem="UdE-ir-e2g" firstAttribute="top" secondItem="y2g-Lf-cfq" secondAttribute="top" constant="4" id="wRN-Z8-vBt"/>
-                                    <constraint firstItem="BSN-LZ-VYx" firstAttribute="leading" secondItem="y2g-Lf-cfq" secondAttribute="leading" constant="8" id="ys6-7S-uag"/>
-                                </constraints>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRK-q7-IEK" customClass="FloatingLabel" customModule="Rise" customModuleProvider="target">
                                 <rect key="frame" x="10" y="772" width="394" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" name="disabledTitle"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <datePicker contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="lsh-SA-O8W">
+                                <rect key="frame" x="108.5" y="440" width="197" height="53.5"/>
+                                <color key="tintColor" red="0.96100002529999995" green="0.29399999980000002" blue="0.36899998779999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="alarmValueChanged:" destination="uik-k5-iFp" eventType="valueChanged" id="Q8I-tJ-EqY"/>
+                                </connections>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXv-JC-4Xc">
+                                <rect key="frame" x="309.5" y="454" width="26.5" height="25.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="tintColor" name="normalTitle"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="checkmark.circle.fill" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="black"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveAlarmEditTouchUp:" destination="uik-k5-iFp" eventType="touchUpInside" id="66Z-wG-Np5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rDc-1y-qT0">
+                                <rect key="frame" x="78" y="454" width="26.5" height="25.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="tintColor" name="normalTitle"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="multiply.circle.fill" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="black"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelAlarmEditTouchUp:" destination="uik-k5-iFp" eventType="touchUpInside" id="7eM-QE-b2x"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8gk-4x-IVS"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="zTc-hX-oX4" firstAttribute="leading" secondItem="8gk-4x-IVS" secondAttribute="leading" constant="10" id="2x8-eY-jqS"/>
+                            <constraint firstItem="rDc-1y-qT0" firstAttribute="centerY" secondItem="lsh-SA-O8W" secondAttribute="centerY" id="4il-4q-436"/>
                             <constraint firstItem="bWs-lr-N9w" firstAttribute="top" secondItem="8gk-4x-IVS" secondAttribute="top" constant="20" id="9qB-WW-zjC"/>
                             <constraint firstItem="8gk-4x-IVS" firstAttribute="bottom" secondItem="fVf-jv-vsz" secondAttribute="bottom" constant="20" id="HQb-zb-vm4"/>
+                            <constraint firstItem="lsh-SA-O8W" firstAttribute="centerX" secondItem="uik-k5-iFp" secondAttribute="centerX" id="IM6-6u-gbU"/>
+                            <constraint firstItem="HdC-EX-jQx" firstAttribute="height" secondItem="iLA-ZS-bm2" secondAttribute="height" multiplier="1.2" id="IxH-HT-uw8"/>
+                            <constraint firstItem="iLA-ZS-bm2" firstAttribute="centerX" secondItem="lsh-SA-O8W" secondAttribute="centerX" id="JUb-Bd-rWz"/>
                             <constraint firstItem="8gk-4x-IVS" firstAttribute="trailing" secondItem="zTc-hX-oX4" secondAttribute="trailing" constant="10" id="L6g-xO-XCb"/>
                             <constraint firstItem="fVf-jv-vsz" firstAttribute="top" secondItem="KRK-q7-IEK" secondAttribute="bottom" constant="10" id="M56-uv-KQi"/>
-                            <constraint firstItem="y2g-Lf-cfq" firstAttribute="top" secondItem="zTc-hX-oX4" secondAttribute="bottom" constant="20" id="Mxc-ZZ-Uyt"/>
                             <constraint firstItem="8gk-4x-IVS" firstAttribute="trailing" secondItem="fVf-jv-vsz" secondAttribute="trailing" constant="20" id="RcB-ga-ZaZ"/>
-                            <constraint firstItem="zTc-hX-oX4" firstAttribute="centerY" secondItem="uik-k5-iFp" secondAttribute="centerY" id="TI3-Ge-sQf"/>
+                            <constraint firstItem="lsh-SA-O8W" firstAttribute="top" secondItem="zTc-hX-oX4" secondAttribute="bottom" constant="12" id="RnT-BY-CtP"/>
+                            <constraint firstItem="zTc-hX-oX4" firstAttribute="centerY" secondItem="uik-k5-iFp" secondAttribute="centerY" constant="-20" id="TI3-Ge-sQf"/>
+                            <constraint firstItem="iLA-ZS-bm2" firstAttribute="centerY" secondItem="lsh-SA-O8W" secondAttribute="centerY" id="Zu9-Tq-l9P"/>
                             <constraint firstItem="8gk-4x-IVS" firstAttribute="trailing" secondItem="KRK-q7-IEK" secondAttribute="trailing" constant="10" id="apg-2d-AYr"/>
                             <constraint firstItem="8gk-4x-IVS" firstAttribute="trailing" secondItem="bWs-lr-N9w" secondAttribute="trailing" constant="20" id="gFh-DN-Obf"/>
+                            <constraint firstItem="HdC-EX-jQx" firstAttribute="width" secondItem="iLA-ZS-bm2" secondAttribute="width" multiplier="1.1" id="iJX-Sa-0p5"/>
+                            <constraint firstItem="HdC-EX-jQx" firstAttribute="centerX" secondItem="iLA-ZS-bm2" secondAttribute="centerX" id="jCy-T8-yZw"/>
                             <constraint firstItem="fVf-jv-vsz" firstAttribute="leading" secondItem="8gk-4x-IVS" secondAttribute="leading" constant="20" id="l2a-Fh-sPA"/>
-                            <constraint firstItem="y2g-Lf-cfq" firstAttribute="centerX" secondItem="uik-k5-iFp" secondAttribute="centerX" id="ntz-ah-o6W"/>
+                            <constraint firstItem="lsh-SA-O8W" firstAttribute="leading" secondItem="rDc-1y-qT0" secondAttribute="trailing" constant="4" id="lsP-8V-hrn"/>
+                            <constraint firstItem="HdC-EX-jQx" firstAttribute="centerY" secondItem="iLA-ZS-bm2" secondAttribute="centerY" id="oo3-FJ-eKq"/>
                             <constraint firstItem="bWs-lr-N9w" firstAttribute="leading" secondItem="8gk-4x-IVS" secondAttribute="leading" constant="20" id="ph0-yp-uLF"/>
+                            <constraint firstItem="HdC-EX-jQx" firstAttribute="centerX" secondItem="uik-k5-iFp" secondAttribute="centerX" id="qVb-7p-kQ8"/>
+                            <constraint firstItem="iLA-ZS-bm2" firstAttribute="centerX" secondItem="uik-k5-iFp" secondAttribute="centerX" id="rkx-mu-0b4"/>
+                            <constraint firstItem="nXv-JC-4Xc" firstAttribute="centerY" secondItem="lsh-SA-O8W" secondAttribute="centerY" id="suJ-wP-VJG"/>
                             <constraint firstItem="KRK-q7-IEK" firstAttribute="leading" secondItem="8gk-4x-IVS" secondAttribute="leading" constant="10" id="tBm-Zg-8ZZ"/>
+                            <constraint firstItem="nXv-JC-4Xc" firstAttribute="leading" secondItem="lsh-SA-O8W" secondAttribute="trailing" constant="4" id="tOd-bS-zbV"/>
                         </constraints>
                         <connections>
-                            <outlet property="alarmLabel" destination="UdE-ir-e2g" id="MdO-YO-wSm"/>
+                            <outlet property="cancelEditAlarmButton" destination="rDc-1y-qT0" id="ber-oo-vpb"/>
                             <outlet property="currentTimeLabel" destination="zTc-hX-oX4" id="XNg-HC-wP4"/>
+                            <outlet property="editAlarmButton" destination="iLA-ZS-bm2" id="YLJ-Jf-zUI"/>
+                            <outlet property="editAlarmButtonContainer" destination="HdC-EX-jQx" id="5vA-16-ffg"/>
+                            <outlet property="editAlarmDatePicker" destination="lsh-SA-O8W" id="xEI-a5-ifq"/>
+                            <outlet property="saveAlarmEditButton" destination="nXv-JC-4Xc" id="3oK-P1-dKP"/>
                             <outlet property="stopButton" destination="fVf-jv-vsz" id="D8g-YP-EST"/>
                             <outlet property="timeLeftLabel" destination="KRK-q7-IEK" id="8P9-pk-k8Z"/>
                         </connections>
@@ -243,6 +280,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HEB-hz-IkO" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="nSI-AK-sAh"/>
             </objects>
             <point key="canvasLocation" x="596" y="78"/>
         </scene>
@@ -253,14 +291,18 @@
         </designable>
     </designables>
     <resources>
-        <image name="alarmPressed" width="25" height="25"/>
         <image name="beginToSleepIcon" width="111" height="111"/>
         <image name="cancel" width="75" height="75"/>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="multiply.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="LightPink">
-            <color red="0.71764705882352942" green="0.61568627450980395" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.71799999475479126" green="0.61599999666213989" blue="0.74500000476837158" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="disabledTitle">
             <color red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="normalTitle">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

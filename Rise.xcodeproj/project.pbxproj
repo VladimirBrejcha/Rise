@@ -493,7 +493,6 @@
 				7EB9F34D23C229F2002A6DD3 /* TodayAssembler.swift */,
 				7E6268BF24D5D49C00F70BC3 /* TodayView.swift */,
 				92E77AF922A5304400E5E21C /* TodayViewController.swift */,
-				7EADA5E7239DA9FA00FE4843 /* DaysView */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -653,10 +652,10 @@
 		7EADA5E7239DA9FA00FE4843 /* DaysView */ = {
 			isa = PBXGroup;
 			children = (
+				7EF3EE182340F875003BE978 /* DaysCollectionView */,
 				7EB9003F23256BF3006EB9A8 /* DaysView.swift */,
 				7E1CA3D624FC0B2C00AD81B8 /* DaysView.xib */,
 				7E0B88F52455BEF400BC3CF5 /* SelectableStackViewButton.swift */,
-				7EF3EE182340F875003BE978 /* DaysCollectionView */,
 			);
 			path = DaysView;
 			sourceTree = "<group>";
@@ -709,6 +708,15 @@
 				7EBE900823C9231200043651 /* Info.plist */,
 			);
 			path = RiseTests;
+			sourceTree = "<group>";
+		};
+		7EC24EF525A4F139001EFFBE /* DaysCollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				7E541AF223FB259400BAD710 /* DaysCollectionCell.swift */,
+				7E541AF323FB259400BAD710 /* DaysCollectionCell.xib */,
+			);
+			path = DaysCollectionCell;
 			sourceTree = "<group>";
 		};
 		7ECD2C742419168900408C4B /* ChangePlanButtonTableCell */ = {
@@ -869,10 +877,9 @@
 		7EF3EE182340F875003BE978 /* DaysCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				7EC24EF525A4F139001EFFBE /* DaysCollectionCell */,
 				7EA7BA092354F1810051A92D /* DaysCollectionView.swift */,
 				7EC24EED25A49FD3001EFFBE /* DaysCollectionViewLayout.swift */,
-				7E541AF223FB259400BAD710 /* DaysCollectionCell.swift */,
-				7E541AF323FB259400BAD710 /* DaysCollectionCell.xib */,
 			);
 			path = DaysCollectionView;
 			sourceTree = "<group>";
@@ -985,6 +992,7 @@
 			children = (
 				7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */,
 				92BC919322AB24D800BB1D19 /* GradientHelper.swift */,
+				7EADA5E7239DA9FA00FE4843 /* DaysView */,
 				7E2CA80E24031FF8000CEFA5 /* TableView */,
 				7E2CA80D24031FDB000CEFA5 /* ConfigurableCell */,
 				7E2CA80C24031E85000CEFA5 /* CollectionView */,

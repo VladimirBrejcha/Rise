@@ -9,15 +9,16 @@
 import UIKit
 
 final class DaysCollectionView: CollectionView, UICollectionViewDelegate {
-    typealias Cell = DaysCollectionCell
-    override var cellTypes: [UICollectionViewCell.Type] { [Cell.self] }
+    override var cellTypes: [UICollectionViewCell.Type] { [Item.self] }
+
+    typealias Item = DaysCollectionCell
 
     enum Section {
         case sun
         case plan
     }
 
-    typealias DataSource = UICollectionViewDiffableDataSource<Section, Cell.Model>
+    typealias DataSource = UICollectionViewDiffableDataSource<Section, Item.Model>
     private(set) var diffableDataSource: DataSource! // lateinit
 
     var didScrollToPageHandler: ((_ page: Int) -> Void)?
@@ -33,12 +34,12 @@ final class DaysCollectionView: CollectionView, UICollectionViewDelegate {
     }
 
     private func sharedInit() {
-        self.delegate = self
+        delegate = self
         diffableDataSource = DataSource(
             collectionView: self,
             cellProvider: { collection, indexPath, item -> UICollectionViewCell? in
                 if let cell = collection.dequeueReusableCell(
-                    withReuseIdentifier: String(describing: Cell.self),
+                    withReuseIdentifier: String(describing: Item.self),
                     for: indexPath
                 ) as? DaysCollectionCell {
                     cell.configure(with: item)

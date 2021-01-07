@@ -122,7 +122,7 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
     }
     
     // MARK: - Apply states
-    private func applySunTimeState(_ state: State.LoadState<[SunTime]>) -> [DaysCollectionView.Cell.Model] {
+    private func applySunTimeState(_ state: State.LoadState<[SunTime]>) -> [DaysCollectionView.Item.Model] {
         if todayView.snapshot.numberOfSections == 0 {
             return apply(state: state, on: defaultSunModels)
         } else {
@@ -132,8 +132,8 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
 
     private func apply(
         state: State.LoadState<[SunTime]>,
-        on snapshot: [DaysCollectionView.Cell.Model]
-    ) -> [DaysCollectionView.Cell.Model] {
+        on snapshot: [DaysCollectionView.Item.Model]
+    ) -> [DaysCollectionView.Item.Model] {
         var result = snapshot
         switch state {
         case .loading:
@@ -150,7 +150,7 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
         return result
     }
     
-    private func applyPlanState(_ state: State.LoadState<RisePlan>) -> [DaysCollectionView.Cell.Model] {
+    private func applyPlanState(_ state: State.LoadState<RisePlan>) -> [DaysCollectionView.Item.Model] {
         if todayView.snapshot.numberOfSections == 0 {
             return apply(state: state, on: defaultPlanModels)
         } else {
@@ -160,8 +160,8 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
 
     private func apply(
         state: State.LoadState<RisePlan>,
-        on snapshot: [DaysCollectionView.Cell.Model]
-    ) -> [DaysCollectionView.Cell.Model] {
+        on snapshot: [DaysCollectionView.Item.Model]
+    ) -> [DaysCollectionView.Item.Model] {
         var result = snapshot
         switch state {
         case .loading:
@@ -240,7 +240,7 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
     }
     
     // MARK: - Default cells
-    private var defaultSunModels: [DaysCollectionCell.Model] {
+    private var defaultSunModels: [DaysCollectionView.Item.Model] {
         [
             DaysCollectionCell.Model(
                 state: .loading,
@@ -263,7 +263,7 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
         ]
     }
 
-    private var defaultPlanModels: [DaysCollectionCell.Model] {
+    private var defaultPlanModels: [DaysCollectionView.Item.Model] {
         [
             DaysCollectionCell.Model(
                 state: .showingInfo(info: "You don't have a plan yet"),

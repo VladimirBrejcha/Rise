@@ -16,7 +16,9 @@ final class DaysView:
 {
     @IBOutlet private weak var segmentedControl: SelectableStackView!
     @IBOutlet private weak var collectionView: DaysCollectionView!
-    var dataSource: DaysCollectionView.DataSource { collectionView.diffableDataSource }
+    var dataSource: DaysCollectionView.DataSource {
+        collectionView.diffableDataSource
+    }
     
     private var shouldCenter = true
     
