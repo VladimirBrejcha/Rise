@@ -38,7 +38,7 @@ final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
 
         // MARK: - Equatable
         static func == (lhs: DaysCollectionCell.Model, rhs: DaysCollectionCell.Model) -> Bool {
-            lhs.id == rhs.id
+            lhs.id == rhs.id && lhs.state == rhs.state
         }
 
         // MARK: - Hashable

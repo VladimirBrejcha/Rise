@@ -34,7 +34,7 @@ final class TodayView: UIView {
 
     var snapshot: Snapshot { daysView.dataSource.snapshot() }
     func applySnapshot(_ snapshot: Snapshot) {
-        daysView.dataSource.apply(snapshot, animatingDifferences: true)
+        daysView.dataSource.apply(snapshot)
     }
 
     @IBAction private func sleepTouchUp(_ sender: Button) {
