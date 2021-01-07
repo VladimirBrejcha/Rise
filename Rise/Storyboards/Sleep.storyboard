@@ -202,9 +202,13 @@
                                 <color key="textColor" name="disabledTitle"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <datePicker contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="lsh-SA-O8W">
+                            <datePicker contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="lsh-SA-O8W">
                                 <rect key="frame" x="108.5" y="440" width="197" height="53.5"/>
                                 <color key="tintColor" red="0.96100002529999995" green="0.29399999980000002" blue="0.36899998779999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="197" placeholder="YES" id="lER-eT-H51"/>
+                                    <constraint firstAttribute="height" constant="53.5" placeholder="YES" id="nhJ-vr-TPZ"/>
+                                </constraints>
                                 <connections>
                                     <action selector="alarmValueChanged:" destination="uik-k5-iFp" eventType="valueChanged" id="Q8I-tJ-EqY"/>
                                 </connections>

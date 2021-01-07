@@ -85,6 +85,13 @@ final class SleepView: UIView, BackgroundSettable, PropertyAnimatable {
         stopButton.title = "Stop"
         stopButton.progressCompleted = { _ in stopHandler() }
 
+        editAlarmDatePicker.datePickerMode = .time
+        if #available(iOS 14.0, *) {
+            editAlarmDatePicker.preferredDatePickerStyle = .inline
+        } else {
+            editAlarmDatePicker.preferredDatePickerStyle = .compact
+        }
+
         timeLeftLabel.dataSource = dataSource.timeLeft
         timeLeftLabel.beginRefreshing()
 
