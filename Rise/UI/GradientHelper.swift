@@ -33,7 +33,7 @@ final class GradientHelper {
     ) -> UIView {
         guard colors.count == directions.count
             else {
-                log(.error, with: "colors count doesnt match directions count, returning empty view")
+            log(.error, "colors count doesnt match directions count, returning empty view")
                 return UIView()
         }
         

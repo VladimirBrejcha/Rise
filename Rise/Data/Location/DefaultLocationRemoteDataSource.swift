@@ -56,7 +56,7 @@ final class DefaultLocationRemoteDataSource: NSObject, CLLocationManagerDelegate
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        log(.error, with: error.localizedDescription)
+        log(.error, error.localizedDescription)
 //        AlertPresenter.showAlert(with: error.localizedDescription) // TODO
     }
     

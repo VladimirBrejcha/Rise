@@ -9,12 +9,15 @@
 import Foundation
 
 enum PlanError: LocalizedError {
+    case planDoesNotExist
     case noPlanForTheDay
     case someFieldsAreMissing
     
     // MARK: - LocalizedError -
     var errorDescription: String? {
         switch self {
+        case .planDoesNotExist:
+            return "Rise plan is not configured"
         case .noPlanForTheDay:
             return "Rise plan is not scheduled for the day"
         case .someFieldsAreMissing:
@@ -23,7 +26,7 @@ enum PlanError: LocalizedError {
     }
     var recoverySuggestion: String? {
         switch self {
-        case .noPlanForTheDay:
+        case .noPlanForTheDay, .planDoesNotExist:
             return nil
         case .someFieldsAreMissing:
             return "Try to fill all the fields"

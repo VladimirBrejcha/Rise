@@ -8,8 +8,20 @@
 
 import Foundation
 
-func log(_ type: LogType, with message: String, _ file: String = #file, _ line: Int = #line, _ function: String = #function) {
-    print("[\(type.prefix)] \n\(file):\(line) - \(function) \n\(message)")
+func log(
+    _ type: LogType,
+    _ message: String,
+    _ file: String = #file,
+    _ line: Int = #line,
+    _ function: String = #function
+) {
+    print("\(file.onlyFileName):\(line) - \(function) \n\(message) \n")
+}
+
+fileprivate extension String {
+    var onlyFileName: String {
+        URL(fileURLWithPath: self, isDirectory: false).lastPathComponent
+    }
 }
 
 enum LogType {

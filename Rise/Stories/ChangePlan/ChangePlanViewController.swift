@@ -37,7 +37,7 @@ final class ChangePlanViewController: UIViewController, UITableViewDelegate {
         
         guard let plan = try? getPlan()
             else {
-                log(.info, with: "Plan is nil - dismissing")
+            log(.info, "Plan is nil - dismissing")
                 dismiss()
                 return
         }

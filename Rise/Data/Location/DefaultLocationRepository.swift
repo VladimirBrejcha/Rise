@@ -18,7 +18,7 @@ final class DefaultLocationRepository: LocationRepository {
     func get(_ completion: @escaping (Result<Location, Error>) -> Void) {
         do {
             if let storedLocation = try localDataSource.get() {
-                log(.info, with: "found stored location: \(storedLocation)")
+                log(.info, "found stored location: \(storedLocation)")
                 completion(.success(storedLocation))
                 return
             }
@@ -26,7 +26,7 @@ final class DefaultLocationRepository: LocationRepository {
             remoteDataSource.requestPermissions { [weak self] granted in
                 guard let self = self else { return }
                 guard granted else {
-                    log(.warning, with: "access denied")
+                    log(.warning, "access denied")
                     completion(.failure(PermissionError.locationAccessDenied))
                     return
                 }
@@ -34,18 +34,18 @@ final class DefaultLocationRepository: LocationRepository {
                 self.remoteDataSource.get { result in
                     if case .success (let location) = result {
                         self.refreshStoredData(location)
-                        log(.info, with: "got location: \(location)")
+                        log(.info, "got location: \(location)")
                         completion(.success(location))
                     }
                     if case .failure (let error) = result {
-                        log(.warning, with: "got an error: \(error.localizedDescription)")
+                        log(.warning, "got an error: \(error.localizedDescription)")
                         completion(.failure(error))
                     }
                 }
             }
             
         } catch (let error) {
-            log(.warning, with: "got an error: \(error.localizedDescription)")
+            log(.warning, "got an error: \(error.localizedDescription)")
             completion(.failure(error))
         }
     }
@@ -63,7 +63,7 @@ final class DefaultLocationRepository: LocationRepository {
             try self.deleteAll()
             try self.save(location: location)
         } catch (let error) {
-            log(.error, with: error.localizedDescription)
+            log(.error, error.localizedDescription)
         }
     }
 }

@@ -22,7 +22,7 @@ protocol AutoRefreshable: AnyObject, Refreshable {
 extension AutoRefreshable {
     func beginRefreshing() {
         guard let dataSource = dataSource else {
-            log(.error, with: "AutoRefreshable.beginRefreshing failed, dataSource was nil")
+            log(.error, "AutoRefreshable.beginRefreshing failed, dataSource was nil")
             return
         }
         if timer != nil {

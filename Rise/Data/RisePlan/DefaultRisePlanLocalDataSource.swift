@@ -21,7 +21,7 @@ final class DefaultRisePlanLocalDataSource: LocalDataSource<RisePlanObject>, Per
         do {
             let fetchResult = try container.fetch()
             if fetchResult.isEmpty {
-                throw NetworkError.noDataReceived
+                throw PlanError.planDoesNotExist
             }
             return buildModel(from: fetchResult[0])
         } catch (let error) {

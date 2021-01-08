@@ -34,8 +34,12 @@ final class PrepareToSleepViewController: UIViewController {
             state.plan = plan
             state.toSleepTime = try getDailyTime(for: plan, date: NoonedDay.today.date).sleep
             state.wakeUpTime = try getDailyTime(for: plan, date: NoonedDay.tomorrow.date).wake
+        } catch PlanError.planDoesNotExist {
+            if let previouslySelectedWakeUpTime = previouslySelectedWakeUpTime {
+                state.wakeUpTime = previouslySelectedWakeUpTime
+            }
         } catch {
-            log(.info, with: error.localizedDescription)
+            log(.info, error.localizedDescription)
             if let previouslySelectedWakeUpTime = previouslySelectedWakeUpTime {
                 state.wakeUpTime = previouslySelectedWakeUpTime
             }

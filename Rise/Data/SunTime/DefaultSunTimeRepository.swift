@@ -30,7 +30,7 @@ final class DefaultSunTimeRepository: SunTimeRepository {
             }
 
             if (localResult.count == numberOfDays) {
-                log(.info, with: "found stored sunTimes: \(localResult)")
+                log(.info, "found stored sunTimes: \(localResult)")
                 completion(.success(localResult))
                 return
             }
@@ -68,11 +68,11 @@ final class DefaultSunTimeRepository: SunTimeRepository {
         remoteDataSource.get(for: numberOfDays, since: day, for: location) { result in
             if case .success (let remoteSunTimes) = result {
                 completion(.success(remoteSunTimes))
-                log(.info, with: "got sunTimes: \(remoteSunTimes)")
+                log(.info, "got sunTimes: \(remoteSunTimes)")
                 try? self.save(sunTime: remoteSunTimes)
             }
             if case .failure (let error) = result {
-                log(.warning, with: "got error: \(error.localizedDescription)")
+                log(.warning, "got error: \(error.localizedDescription)")
                 completion(.failure(error))
             }
         }

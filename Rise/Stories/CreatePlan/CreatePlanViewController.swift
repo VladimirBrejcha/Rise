@@ -68,13 +68,13 @@ final class CreatePlanViewController:
                                             .custom(
                                                 title: "Leave Create screen",
                                                 action: { [weak self] in
-                                                    log(.error, with: "There was an error creating the plan \(error.localizedDescription)")
+                                                    log(.error, "There was an error creating the plan \(error.localizedDescription)")
                                                     self?.dismiss()
                                                 }
                                             ),
                                             .tryAgain(
                                                 action: {
-                                                    log(.error, with: "There was an error creating the plan \(error.localizedDescription)")
+                                                    log(.error, "There was an error creating the plan \(error.localizedDescription)")
                                                 }
                                             )
                                         ]
