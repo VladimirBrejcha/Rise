@@ -25,10 +25,7 @@ extension AutoRefreshable {
             log(.error, "AutoRefreshable.beginRefreshing failed, dataSource was nil")
             return
         }
-        if timer != nil {
-            timer?.invalidate()
-            timer = nil
-        }
+        if timer != nil { releaseTimer() }
         refresh(with: dataSource())
         timer = Timer.scheduledTimer(
             withTimeInterval: refreshInterval,
@@ -43,6 +40,10 @@ extension AutoRefreshable {
     }
     
     func stopRefreshing() {
+        releaseTimer()
+    }
+
+    private func releaseTimer() {
         timer?.invalidate()
         timer = nil
     }

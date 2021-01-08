@@ -8,15 +8,31 @@
 
 import UIKit
 
-final class SleepViewController: UIViewController {
+// TODO:
+// 1.present(Story.alarming(), with: .overContext, animated: true) Called twice
+
+final class SleepViewController: UIViewController, AutoRefreshable {
     @IBOutlet private var sleepView: SleepView!
     
     var alarmTime: Date! // DI
     private var editingAlarmTime: Date?
+
+    // MARK: - AutoRefreshable
+    var timer: Timer?
+    var dataSource: (() -> Date)?
+    var refreshInterval: Double = 2
+
+    func refresh(with data: Date) {
+        // Check if it is time to alarm
+        if data >= alarmTime {
+            stopRefreshing()
+            self.navigationController?.setViewControllers([Story.alarming(alarmTime: alarmTime)()], animated: true)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         sleepView.setBackground(GradientHelper.makeGradientView(frame: sleepView.bounds))
         sleepView.configure(
             initialModel: SleepView.Model(state: .normal, alarm: alarmTime),
@@ -56,7 +72,9 @@ final class SleepViewController: UIViewController {
                 self?.dismiss(animated: true)
             }
         )
-    }
+        self.dataSource = { Date() }
+        beginRefreshing()
+    }    
 }
 
 fileprivate extension Date {
