@@ -106,6 +106,7 @@
 		7EA38AE623783FFD0007919B /* DefaultLocationRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA38AE523783FFD0007919B /* DefaultLocationRemoteDataSource.swift */; };
 		7EA38AE92378526F0007919B /* LocationData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7EA38AE72378526F0007919B /* LocationData.xcdatamodeld */; };
 		7EA38AEC237853230007919B /* DefaultLocationLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA38AEB237853230007919B /* DefaultLocationLocalDataSource.swift */; };
+		7EA64EEB25A8BC9F0029FBE7 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA64EEA25A8BC9F0029FBE7 /* NotificationManager.swift */; };
 		7EA7BA0A2354F1810051A92D /* DaysCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA7BA092354F1810051A92D /* DaysCollectionView.swift */; };
 		7EA7BA0C2354F2510051A92D /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA7BA0B2354F2510051A92D /* CollectionView.swift */; };
 		7EB196DA23A01B8F00E6C40B /* CreatePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB196D923A01B8F00E6C40B /* CreatePlanViewController.swift */; };
@@ -292,6 +293,7 @@
 		7EA38AE523783FFD0007919B /* DefaultLocationRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLocationRemoteDataSource.swift; sourceTree = "<group>"; };
 		7EA38AE82378526F0007919B /* LocationData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocationData.xcdatamodel; sourceTree = "<group>"; };
 		7EA38AEB237853230007919B /* DefaultLocationLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLocationLocalDataSource.swift; sourceTree = "<group>"; };
+		7EA64EEA25A8BC9F0029FBE7 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		7EA7BA092354F1810051A92D /* DaysCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCollectionView.swift; sourceTree = "<group>"; };
 		7EA7BA0B2354F2510051A92D /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		7EB196D923A01B8F00E6C40B /* CreatePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlanViewController.swift; sourceTree = "<group>"; };
@@ -913,6 +915,7 @@
 				7E814E7524D8A6DE00EC1665 /* Int+Even.swift */,
 				7E69836124EBD119002EE278 /* UIColor+Hex.swift */,
 				7EE227642504C38B00EC70CB /* UserDefaults.swift */,
+				7EA64EEA25A8BC9F0029FBE7 /* NotificationManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1219,6 +1222,7 @@
 				7E31497F23425D3700941606 /* ChangePlanTableView.swift in Sources */,
 				7E708A3B23BFD0C7003B5702 /* PlanCreatedCreatePlanViewController.swift in Sources */,
 				7EB9004423298902006EB9A8 /* ProgressTableViewCell.swift in Sources */,
+				7EA64EEB25A8BC9F0029FBE7 /* NotificationManager.swift in Sources */,
 				7E388E38243A3C16001A28DF /* PropertyAnimatable.swift in Sources */,
 				7E97656023786AB000E3AEF2 /* SunTimeData.xcdatamodeld in Sources */,
 				7EA7BA0A2354F1810051A92D /* DaysCollectionView.swift in Sources */,

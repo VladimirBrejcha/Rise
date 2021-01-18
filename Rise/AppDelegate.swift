@@ -11,6 +11,8 @@ import UIKit
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
+
+    private let notificationManager = NotificationManager()
     
     static private(set) var alertWindow: UIWindow = {
         let alertWindow = UIWindow(frame: UIScreen.main.bounds)
@@ -26,5 +28,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
-    ) -> Bool { true }
+    ) -> Bool {
+//        notificationManager.configure()
+        return true
+    }
 }

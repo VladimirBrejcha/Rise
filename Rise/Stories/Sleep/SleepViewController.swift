@@ -10,6 +10,7 @@ import UIKit
 
 // TODO:
 // 1.present(Story.alarming(), with: .overContext, animated: true) Called twice
+// 2. Date might be not correct because refresher called even after snoozing
 
 final class SleepViewController: UIViewController, AutoRefreshable {
     @IBOutlet private var sleepView: SleepView!
