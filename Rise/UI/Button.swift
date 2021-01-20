@@ -17,26 +17,22 @@ class Button: UIButton, PropertyAnimatable, TouchObservable {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        sharedInit()
+        configure()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        sharedInit()
+        configure()
     }
     
-    private func sharedInit() {
-        backgroundColor = Color.defaultButtonBackground
-        layer.cornerRadius = 12
+    func configure() {
         addTarget(self, action: #selector(touchDown(_:)), for: [.touchDown, .touchDragInside])
         addTarget(self, action: #selector(touchUp(_:)), for: [.touchUpInside, .touchDragOutside, .touchCancel])
-        setTitleColor(Color.normalTitle, for: .normal)
-        setTitleColor(Color.disabledTitle, for: .disabled)
     }
     
     @objc private func touchDown(_ sender: UIButton) {
         animate {
-            sender.transform = CGAffineTransform(scaleX: 0.93, y: 0.93)
+            sender.transform = Styles.Button.scaleTransform
         }
         touchDownObserver?(self)
     }
