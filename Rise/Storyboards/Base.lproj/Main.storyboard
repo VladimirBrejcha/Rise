@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Today View Controller-->
+        <!--Sleep-->
         <scene sceneID="x3b-qG-Bv2">
             <objects>
                 <viewController storyboardIdentifier="TodayViewController" definesPresentationContext="YES" id="zaJ-cb-1ng" customClass="TodayViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,8 +17,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultBackground" translatesAutoresizingMaskIntoConstraints="NO" id="IfU-5m-gfV">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9i-c1-Zds" customClass="Button" customModule="Rise" customModuleProvider="target">
-                                <rect key="frame" x="10" y="792" width="394" height="50"/>
+                                <rect key="frame" x="10" y="743" width="394" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="5Zs-BB-wyl"/>
                                 </constraints>
@@ -67,7 +70,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sleep planned in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4H-GS-uQy" customClass="FloatingLabel" customModule="Rise" customModuleProvider="target">
-                                <rect key="frame" x="10" y="767" width="394" height="17"/>
+                                <rect key="frame" x="10" y="718" width="394" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -77,13 +80,17 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="A4H-GS-uQy" firstAttribute="leading" secondItem="ury-MB-qCt" secondAttribute="leading" constant="10" id="C5e-in-xlc"/>
+                            <constraint firstAttribute="trailing" secondItem="IfU-5m-gfV" secondAttribute="trailing" id="H7l-bo-jqn"/>
                             <constraint firstItem="Q7C-TX-der" firstAttribute="top" secondItem="ury-MB-qCt" secondAttribute="top" constant="10" id="MwH-OO-f3I"/>
                             <constraint firstItem="ury-MB-qCt" firstAttribute="bottom" secondItem="x9i-c1-Zds" secondAttribute="bottom" constant="20" id="UVS-UY-qcw"/>
                             <constraint firstItem="x9i-c1-Zds" firstAttribute="leading" secondItem="ury-MB-qCt" secondAttribute="leading" constant="10" id="aCj-Xr-esR"/>
                             <constraint firstItem="ury-MB-qCt" firstAttribute="trailing" secondItem="Q7C-TX-der" secondAttribute="trailing" constant="10" id="bxb-Nb-AUq"/>
+                            <constraint firstItem="IfU-5m-gfV" firstAttribute="top" secondItem="CxZ-qH-yJ3" secondAttribute="top" id="cq5-nn-Fl5"/>
                             <constraint firstItem="ury-MB-qCt" firstAttribute="trailing" secondItem="A4H-GS-uQy" secondAttribute="trailing" constant="10" id="g7h-MM-uiU"/>
                             <constraint firstItem="ury-MB-qCt" firstAttribute="trailing" secondItem="x9i-c1-Zds" secondAttribute="trailing" constant="10" id="iIe-eJ-TZh"/>
+                            <constraint firstItem="IfU-5m-gfV" firstAttribute="leading" secondItem="CxZ-qH-yJ3" secondAttribute="leading" id="jLu-3k-Gew"/>
                             <constraint firstItem="Q7C-TX-der" firstAttribute="leading" secondItem="ury-MB-qCt" secondAttribute="leading" constant="10" id="jgE-Xd-89i"/>
+                            <constraint firstAttribute="bottom" secondItem="IfU-5m-gfV" secondAttribute="bottom" id="pZ4-5v-PB6"/>
                             <constraint firstItem="GMJ-xI-VUX" firstAttribute="leading" secondItem="ury-MB-qCt" secondAttribute="leading" constant="10" id="qP2-US-sfI"/>
                             <constraint firstItem="ury-MB-qCt" firstAttribute="trailing" secondItem="GMJ-xI-VUX" secondAttribute="trailing" constant="10" id="qdR-kL-hgo"/>
                             <constraint firstItem="GMJ-xI-VUX" firstAttribute="centerY" secondItem="CxZ-qH-yJ3" secondAttribute="centerY" id="wnz-Qf-8LT"/>
@@ -95,14 +102,15 @@
                             <outlet property="timeToSleepLabel" destination="A4H-GS-uQy" id="1gt-0a-YbQ"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" id="TXr-v4-zcJ"/>
+                    <tabBarItem key="tabBarItem" title="Sleep" image="sleepIcon" selectedImage="sleepIconPressed" id="q6e-md-ggm"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="todayView" destination="CxZ-qH-yJ3" id="AYE-F2-xbS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jGW-AY-dG7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="993" y="-155"/>
+            <point key="canvasLocation" x="992.75362318840587" y="-155.35714285714286"/>
         </scene>
         <!--Custom Tab Bar Controller-->
         <scene sceneID="WYa-Sz-OrB">
@@ -111,17 +119,16 @@
                     <tabBar key="tabBar" opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CMZ-Wo-9Jp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" red="0.95460249352331605" green="0.95460249352331605" blue="0.95460249352331605" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R8c-Vt-iqj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="993" y="-818"/>
         </scene>
-        <!--Item-->
+        <!--Plan-->
         <scene sceneID="h2v-11-WTS">
             <objects>
                 <viewController storyboardIdentifier="PersonalPlanViewController" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" id="smg-BM-jT2" customClass="PersonalPlanViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
@@ -241,7 +248,7 @@
                             <outlet property="tableView" destination="svV-EI-Lt1" id="FK6-hs-ybD"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="alarm" selectedImage="alarmPressed" id="kUu-Cm-Xqv"/>
+                    <tabBarItem key="tabBarItem" title="Plan" image="alarm" selectedImage="alarmPressed" id="kUu-Cm-Xqv"/>
                     <connections>
                         <outlet property="personalPlanView" destination="Vzi-Wy-UVB" id="Ipq-Sg-5jq"/>
                     </connections>
@@ -266,6 +273,9 @@
     <resources>
         <image name="alarm" width="25" height="25"/>
         <image name="alarmPressed" width="25" height="25"/>
+        <image name="defaultBackground" width="1280" height="2272"/>
+        <image name="sleepIcon" width="25" height="25"/>
+        <image name="sleepIconPressed" width="25" height="25"/>
         <namedColor name="Pink">
             <color red="0.88200002908706665" green="0.27799999713897705" blue="0.40000000596046448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
