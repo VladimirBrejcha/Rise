@@ -10,7 +10,7 @@ import UIKit
 import SelectableStackView
 
 final class DaysView:
-    DesignableContainerView,
+    UIView,
     SelectableStackViewDelegate,
     NibLoadable
 {

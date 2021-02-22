@@ -73,7 +73,6 @@
 		7E76E5AB23E734F500CC4E6D /* ChangePlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E76E5AA23E734F500CC4E6D /* ChangePlan.storyboard */; };
 		7E814E7424D8A11700EC1665 /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E814E7324D8A11700EC1665 /* ConfirmationView.swift */; };
 		7E814E7624D8A6DE00EC1665 /* Int+Even.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E814E7524D8A6DE00EC1665 /* Int+Even.swift */; };
-		7E82C5CF24033BC500DC14CE /* PlanInfoTableCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E82C5CE24033BC500DC14CE /* PlanInfoTableCellModel.swift */; };
 		7E84EB25239D19CF00E02050 /* Confirmation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E84EB24239D19CF00E02050 /* Confirmation.storyboard */; };
 		7E84EB27239D1A5700E02050 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E84EB26239D1A5700E02050 /* ConfirmationViewController.swift */; };
 		7E8675C724165F25004DAF63 /* GetDailyTimeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8675C624165F25004DAF63 /* GetDailyTimeUseCase.swift */; };
@@ -120,8 +119,6 @@
 		7EB29E0D241987DD00116433 /* PrepareToSleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB29E0C241987DD00116433 /* PrepareToSleepViewController.swift */; };
 		7EB9003E23256AC9006EB9A8 /* DesignableContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9003D23256AC9006EB9A8 /* DesignableContainerView.swift */; };
 		7EB9004023256BF3006EB9A8 /* DaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9003F23256BF3006EB9A8 /* DaysView.swift */; };
-		7EB9004423298902006EB9A8 /* ProgressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9004223298902006EB9A8 /* ProgressTableViewCell.swift */; };
-		7EB9004523298902006EB9A8 /* ProgressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB9004323298902006EB9A8 /* ProgressTableViewCell.xib */; };
 		7EB90047232AB9EB006EB9A8 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */; };
 		7EB9F34223C2028D002A6DD3 /* MakePlanUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9F34123C2028D002A6DD3 /* MakePlanUseCase.swift */; };
 		7EB9F34423C20347002A6DD3 /* UpdatePlanUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9F34323C20347002A6DD3 /* UpdatePlanUseCase.swift */; };
@@ -137,13 +134,15 @@
 		7EBE900723C9231200043651 /* RisePlanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBE900623C9231200043651 /* RisePlanTests.swift */; };
 		7EC24EEE25A49FD3001EFFBE /* DaysCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC24EED25A49FD3001EFFBE /* DaysCollectionViewLayout.swift */; };
 		7EC7392523C4EF5B00C484B8 /* ConfirmationAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC7392423C4EF5B00C484B8 /* ConfirmationAssembler.swift */; };
+		7ECA517E25E340BD009362F9 /* ContextPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECA517D25E340BD009362F9 /* ContextPreview.swift */; };
 		7ECD2C6F241832B300408C4B /* ReshedulePlanUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD2C6E241832B300408C4B /* ReshedulePlanUseCase.swift */; };
 		7ECD2C722419168600408C4B /* ChangePlanButtonTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD2C702419168600408C4B /* ChangePlanButtonTableCell.swift */; };
 		7ECD2C732419168600408C4B /* ChangePlanButtonTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ECD2C712419168600408C4B /* ChangePlanButtonTableCell.xib */; };
 		7ECD2C78241916C600408C4B /* ChangePlanButtonTableCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD2C77241916C600408C4B /* ChangePlanButtonTableCellModel.swift */; };
+		7ED6DD3125E1B50800F906CE /* ImageLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ED6DD3025E1B50800F906CE /* ImageLabelView.xib */; };
+		7ED6DD3625E2A30700F906CE /* ImageLabelViewWithContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED6DD3525E2A30700F906CE /* ImageLabelViewWithContextMenu.swift */; };
+		7ED6DD3F25E33E3D00F906CE /* Statefull.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED6DD3E25E33E3D00F906CE /* Statefull.swift */; };
 		7ED8E59723BFFD5100A1E96F /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8E59623BFFD5100A1E96F /* Story.swift */; };
-		7ED962AF2336649E00CD2408 /* PlanInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED962AD2336649E00CD2408 /* PlanInfoTableViewCell.swift */; };
-		7ED962B02336649E00CD2408 /* PlanInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ED962AE2336649E00CD2408 /* PlanInfoTableViewCell.xib */; };
 		7EE1399323E36C5C003895D4 /* AnimatedGradientView in Frameworks */ = {isa = PBXBuildFile; productRef = 7EE1399223E36C5C003895D4 /* AnimatedGradientView */; };
 		7EE227652504C38B00EC70CB /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE227642504C38B00EC70CB /* UserDefaults.swift */; };
 		7EE640492378665D005BE355 /* DefaultSunTimeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE640482378665D005BE355 /* DefaultSunTimeRepository.swift */; };
@@ -159,8 +158,8 @@
 		7EEB1E0F2443369F001ABE4A /* bellAlarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7EEB1E0E2443369F001ABE4A /* bellAlarm.wav */; };
 		7EEB1E122443370F001ABE4A /* AlarmSounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB1E112443370F001ABE4A /* AlarmSounds.swift */; };
 		7EEB3CD524198ADB003981B7 /* Sleep.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EEB3CD424198ADB003981B7 /* Sleep.storyboard */; };
-		7EF0B2E024032CD20079F72C /* ProgressTableCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF0B2DF24032CD20079F72C /* ProgressTableCellModel.swift */; };
-		7EF0B2E2240330F90079F72C /* PersonalPlanTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF0B2E1240330F90079F72C /* PersonalPlanTableView.swift */; };
+		7EEFC00F25E1AEB0007AE725 /* BorderedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEFC00E25E1AEB0007AE725 /* BorderedView.swift */; };
+		7EEFC01725E1AFD8007AE725 /* ImageLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEFC01625E1AFD8007AE725 /* ImageLabelView.swift */; };
 		7EF4C195240412D80098135A /* ChangePlanDatePickerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF4C193240412D80098135A /* ChangePlanDatePickerTableCell.swift */; };
 		7EF4C196240412D80098135A /* ChangePlanDatePickerTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF4C194240412D80098135A /* ChangePlanDatePickerTableCell.xib */; };
 		7EF4C198240412EC0098135A /* ChangePlanDatePickerTableCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF4C197240412EC0098135A /* ChangePlanDatePickerTableCellModel.swift */; };
@@ -262,7 +261,6 @@
 		7E76E5AA23E734F500CC4E6D /* ChangePlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChangePlan.storyboard; sourceTree = "<group>"; };
 		7E814E7324D8A11700EC1665 /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
 		7E814E7524D8A6DE00EC1665 /* Int+Even.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Even.swift"; sourceTree = "<group>"; };
-		7E82C5CE24033BC500DC14CE /* PlanInfoTableCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanInfoTableCellModel.swift; sourceTree = "<group>"; };
 		7E84EB24239D19CF00E02050 /* Confirmation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Confirmation.storyboard; sourceTree = "<group>"; };
 		7E84EB26239D1A5700E02050 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
 		7E8675C624165F25004DAF63 /* GetDailyTimeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDailyTimeUseCase.swift; sourceTree = "<group>"; };
@@ -308,8 +306,6 @@
 		7EB29E0C241987DD00116433 /* PrepareToSleepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareToSleepViewController.swift; sourceTree = "<group>"; };
 		7EB9003D23256AC9006EB9A8 /* DesignableContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableContainerView.swift; sourceTree = "<group>"; };
 		7EB9003F23256BF3006EB9A8 /* DaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysView.swift; sourceTree = "<group>"; };
-		7EB9004223298902006EB9A8 /* ProgressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTableViewCell.swift; sourceTree = "<group>"; };
-		7EB9004323298902006EB9A8 /* ProgressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressTableViewCell.xib; sourceTree = "<group>"; };
 		7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		7EB9F34123C2028D002A6DD3 /* MakePlanUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePlanUseCase.swift; sourceTree = "<group>"; };
 		7EB9F34323C20347002A6DD3 /* UpdatePlanUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePlanUseCase.swift; sourceTree = "<group>"; };
@@ -327,13 +323,15 @@
 		7EBE900823C9231200043651 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7EC24EED25A49FD3001EFFBE /* DaysCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCollectionViewLayout.swift; sourceTree = "<group>"; };
 		7EC7392423C4EF5B00C484B8 /* ConfirmationAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationAssembler.swift; sourceTree = "<group>"; };
+		7ECA517D25E340BD009362F9 /* ContextPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextPreview.swift; sourceTree = "<group>"; };
 		7ECD2C6E241832B300408C4B /* ReshedulePlanUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReshedulePlanUseCase.swift; sourceTree = "<group>"; };
 		7ECD2C702419168600408C4B /* ChangePlanButtonTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanButtonTableCell.swift; sourceTree = "<group>"; };
 		7ECD2C712419168600408C4B /* ChangePlanButtonTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePlanButtonTableCell.xib; sourceTree = "<group>"; };
 		7ECD2C77241916C600408C4B /* ChangePlanButtonTableCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanButtonTableCellModel.swift; sourceTree = "<group>"; };
+		7ED6DD3025E1B50800F906CE /* ImageLabelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageLabelView.xib; sourceTree = "<group>"; };
+		7ED6DD3525E2A30700F906CE /* ImageLabelViewWithContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabelViewWithContextMenu.swift; sourceTree = "<group>"; };
+		7ED6DD3E25E33E3D00F906CE /* Statefull.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statefull.swift; sourceTree = "<group>"; };
 		7ED8E59623BFFD5100A1E96F /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
-		7ED962AD2336649E00CD2408 /* PlanInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanInfoTableViewCell.swift; sourceTree = "<group>"; };
-		7ED962AE2336649E00CD2408 /* PlanInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanInfoTableViewCell.xib; sourceTree = "<group>"; };
 		7EE1397E23E36944003895D4 /* AIFlatSwitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AIFlatSwitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EE1398523E36AF6003895D4 /* AIFlatSwitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AIFlatSwitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EE1398923E36B01003895D4 /* AnimatedGradientView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AnimatedGradientView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -352,8 +350,8 @@
 		7EEB1E0E2443369F001ABE4A /* bellAlarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bellAlarm.wav; sourceTree = "<group>"; };
 		7EEB1E112443370F001ABE4A /* AlarmSounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSounds.swift; sourceTree = "<group>"; };
 		7EEB3CD424198ADB003981B7 /* Sleep.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sleep.storyboard; sourceTree = "<group>"; };
-		7EF0B2DF24032CD20079F72C /* ProgressTableCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTableCellModel.swift; sourceTree = "<group>"; };
-		7EF0B2E1240330F90079F72C /* PersonalPlanTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPlanTableView.swift; sourceTree = "<group>"; };
+		7EEFC00E25E1AEB0007AE725 /* BorderedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedView.swift; sourceTree = "<group>"; };
+		7EEFC01625E1AFD8007AE725 /* ImageLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabelView.swift; sourceTree = "<group>"; };
 		7EF4C193240412D80098135A /* ChangePlanDatePickerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanDatePickerTableCell.swift; sourceTree = "<group>"; };
 		7EF4C194240412D80098135A /* ChangePlanDatePickerTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePlanDatePickerTableCell.xib; sourceTree = "<group>"; };
 		7EF4C197240412EC0098135A /* ChangePlanDatePickerTableCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanDatePickerTableCellModel.swift; sourceTree = "<group>"; };
@@ -535,7 +533,6 @@
 				7EB9F34F23C35CA9002A6DD3 /* PersonalPlanAssembler.swift */,
 				7E9D9C1224E5DA57000772C0 /* PersonalPlanView.swift */,
 				7EE939162340F68800FE9954 /* PersonalPlanViewController.swift */,
-				7EF0B2E324033B600079F72C /* PersonalPlanTableView */,
 			);
 			path = PersonalPlan;
 			sourceTree = "<group>";
@@ -752,6 +749,15 @@
 			path = ChangePlanButtonTableCell;
 			sourceTree = "<group>";
 		};
+		7ED6DD3A25E2A36B00F906CE /* ImageLabelView */ = {
+			isa = PBXGroup;
+			children = (
+				7EEFC01625E1AFD8007AE725 /* ImageLabelView.swift */,
+				7ED6DD3025E1B50800F906CE /* ImageLabelView.xib */,
+			);
+			path = ImageLabelView;
+			sourceTree = "<group>";
+		};
 		7EE05109241BFE39005B23B3 /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
@@ -816,26 +822,6 @@
 			path = LongPressProgressButton;
 			sourceTree = "<group>";
 		};
-		7EE939142340F5F600FE9954 /* PlanInfoCell */ = {
-			isa = PBXGroup;
-			children = (
-				7E82C5CE24033BC500DC14CE /* PlanInfoTableCellModel.swift */,
-				7ED962AD2336649E00CD2408 /* PlanInfoTableViewCell.swift */,
-				7ED962AE2336649E00CD2408 /* PlanInfoTableViewCell.xib */,
-			);
-			path = PlanInfoCell;
-			sourceTree = "<group>";
-		};
-		7EE939152340F60B00FE9954 /* ProgressCell */ = {
-			isa = PBXGroup;
-			children = (
-				7EF0B2DF24032CD20079F72C /* ProgressTableCellModel.swift */,
-				7EB9004223298902006EB9A8 /* ProgressTableViewCell.swift */,
-				7EB9004323298902006EB9A8 /* ProgressTableViewCell.xib */,
-			);
-			path = ProgressCell;
-			sourceTree = "<group>";
-		};
 		7EEB1E10244336A7001ABE4A /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
@@ -864,16 +850,6 @@
 				7EB26950234F9972008AEB3D /* NibLoadable.swift */,
 			);
 			path = Protocols;
-			sourceTree = "<group>";
-		};
-		7EF0B2E324033B600079F72C /* PersonalPlanTableView */ = {
-			isa = PBXGroup;
-			children = (
-				7EF0B2E1240330F90079F72C /* PersonalPlanTableView.swift */,
-				7EE939152340F60B00FE9954 /* ProgressCell */,
-				7EE939142340F5F600FE9954 /* PlanInfoCell */,
-			);
-			path = PersonalPlanTableView;
 			sourceTree = "<group>";
 		};
 		7EF3EE162340F75A003BE978 /* Resources */ = {
@@ -913,6 +889,7 @@
 			children = (
 				7E69836C24EC6977002EE278 /* Alerts */,
 				7E69836324EC68DF002EE278 /* ErrorHandling */,
+				7ED6DD3E25E33E3D00F906CE /* Statefull.swift */,
 				7EEA217823B6A3B400354BEA /* UIViewController+Present.swift */,
 				7E97656D2378813700E3AEF2 /* Log.swift */,
 				7E0834AB2387351400BA1AE8 /* DateExtensions.swift */,
@@ -1015,6 +992,10 @@
 		92D7D68422980138009321AE /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				7ED6DD3A25E2A36B00F906CE /* ImageLabelView */,
+				7ED6DD3525E2A30700F906CE /* ImageLabelViewWithContextMenu.swift */,
+				7ECA517D25E340BD009362F9 /* ContextPreview.swift */,
+				7EEFC00E25E1AEB0007AE725 /* BorderedView.swift */,
 				7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */,
 				92BC919322AB24D800BB1D19 /* GradientHelper.swift */,
 				7EADA5E7239DA9FA00FE4843 /* DaysView */,
@@ -1158,14 +1139,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E199CD4240BD43400B702AD /* SliderWithValues.xib in Resources */,
-				7EB9004523298902006EB9A8 /* ProgressTableViewCell.xib in Resources */,
 				7ECD2C732419168600408C4B /* ChangePlanButtonTableCell.xib in Resources */,
 				7E3980D52360D0020059C592 /* Intro.storyboard in Resources */,
 				7E4798F7239D8A33007FB8F2 /* Settings.storyboard in Resources */,
 				92D7D65D2296F298009321AE /* LaunchScreen.storyboard in Resources */,
 				7EF4C196240412D80098135A /* ChangePlanDatePickerTableCell.xib in Resources */,
 				7EE6905C243E64C600CA423E /* LongPressProgressButton.xib in Resources */,
-				7ED962B02336649E00CD2408 /* PlanInfoTableViewCell.xib in Resources */,
+				7ED6DD3125E1B50800F906CE /* ImageLabelView.xib in Resources */,
 				7E1CA3D724FC0B2C00AD81B8 /* DaysView.xib in Resources */,
 				7E76E5AB23E734F500CC4E6D /* ChangePlan.storyboard in Resources */,
 				7EF4C19E240436CD0098135A /* ChangePlanSliderTableCell.xib in Resources */,
@@ -1215,6 +1195,7 @@
 				7E814E7424D8A11700EC1665 /* ConfirmationView.swift in Sources */,
 				7EB1C0332340F9550028237E /* PersonalPlanViewController.swift in Sources */,
 				7EA38AE623783FFD0007919B /* DefaultLocationRemoteDataSource.swift in Sources */,
+				7ED6DD3625E2A30700F906CE /* ImageLabelViewWithContextMenu.swift in Sources */,
 				7EF4C1A0240436D70098135A /* ChangePlanSliderTableCellModel.swift in Sources */,
 				7E69836924EC6923002EE278 /* RecoveryOptions.swift in Sources */,
 				7EE227652504C38B00EC70CB /* UserDefaults.swift in Sources */,
@@ -1228,7 +1209,6 @@
 				7EF4C195240412D80098135A /* ChangePlanDatePickerTableCell.swift in Sources */,
 				7E31497F23425D3700941606 /* ChangePlanTableView.swift in Sources */,
 				7E708A3B23BFD0C7003B5702 /* PlanCreatedCreatePlanViewController.swift in Sources */,
-				7EB9004423298902006EB9A8 /* ProgressTableViewCell.swift in Sources */,
 				7EA64EEB25A8BC9F0029FBE7 /* NotificationManager.swift in Sources */,
 				7E388E38243A3C16001A28DF /* PropertyAnimatable.swift in Sources */,
 				7E97656023786AB000E3AEF2 /* SunTimeData.xcdatamodeld in Sources */,
@@ -1249,11 +1229,10 @@
 				7EB1C0372340FC6B0028237E /* RisePlan.swift in Sources */,
 				7E173375241044D70028FDBE /* SunTimeRepository.swift in Sources */,
 				7E8675CC2417E5FF004DAF63 /* ConfirmPlanUseCase.swift in Sources */,
-				7EF0B2E2240330F90079F72C /* PersonalPlanTableView.swift in Sources */,
 				7E199CD2240BD41D00B702AD /* SliderWithValues.swift in Sources */,
 				7E354E3024119B1C0036FF3F /* LocalDataSource.swift in Sources */,
 				7E162FF1243D0E22004C68B1 /* AutoRefreshable.swift in Sources */,
-				7E82C5CF24033BC500DC14CE /* PlanInfoTableCellModel.swift in Sources */,
+				7ED6DD3F25E33E3D00F906CE /* Statefull.swift in Sources */,
 				7E07A10123AFBEE300B9D61A /* WelcomeCreatelPlanViewController.swift in Sources */,
 				7ED8E59723BFFD5100A1E96F /* Story.swift in Sources */,
 				7EF4C198240412EC0098135A /* ChangePlanDatePickerTableCellModel.swift in Sources */,
@@ -1266,6 +1245,7 @@
 				7E91D95F2371E4080087436F /* RisePlanObject+CoreDataClass.swift in Sources */,
 				7EB9F35423C36B54002A6DD3 /* CreatePlanAssembler.swift in Sources */,
 				7ECD2C722419168600408C4B /* ChangePlanButtonTableCell.swift in Sources */,
+				7EEFC01725E1AFD8007AE725 /* ImageLabelView.swift in Sources */,
 				7EB9003E23256AC9006EB9A8 /* DesignableContainerView.swift in Sources */,
 				7E0834AC2387351400BA1AE8 /* DateExtensions.swift in Sources */,
 				7E708A3923BFD09B003B5702 /* WentSleepCreatePlanViewController.swift in Sources */,
@@ -1286,6 +1266,7 @@
 				7EB29E0D241987DD00116433 /* PrepareToSleepViewController.swift in Sources */,
 				7E708A3723BFD058003B5702 /* PlanDurationCreatePlanViewController.swift in Sources */,
 				7E97226925B8CA2D00DBEF5E /* StandartButton.swift in Sources */,
+				7ECA517E25E340BD009362F9 /* ContextPreview.swift in Sources */,
 				7E97656E2378813700E3AEF2 /* Log.swift in Sources */,
 				7E9D9C0D24E59B21000772C0 /* ChangeableWrapper.swift in Sources */,
 				7EB196DA23A01B8F00E6C40B /* CreatePlanViewController.swift in Sources */,
@@ -1302,7 +1283,6 @@
 				7E0B88F72455BEF400BC3CF5 /* SelectableStackViewButton.swift in Sources */,
 				7E69836B24EC6932002EE278 /* NetworkError.swift in Sources */,
 				7E91D9602371E4080087436F /* RisePlanObject+CoreDataProperties.swift in Sources */,
-				7EF0B2E024032CD20079F72C /* ProgressTableCellModel.swift in Sources */,
 				7E69837024EC69A5002EE278 /* ErrorAlertCreatable.swift in Sources */,
 				7E644D5124FACF6E00BF198C /* PermissionError.swift in Sources */,
 				7E5BDADE2371F08400E43F37 /* RiseLocation+CoreDataClass.swift in Sources */,
@@ -1320,7 +1300,7 @@
 				7E76E5A923E734C200CC4E6D /* ChangePlanAssembler.swift in Sources */,
 				7EB9F34A23C2045A002A6DD3 /* ObservePlanUseCase.swift in Sources */,
 				7E0EACCA241BF05800B8A0A2 /* Color.swift in Sources */,
-				7ED962AF2336649E00CD2408 /* PlanInfoTableViewCell.swift in Sources */,
+				7EEFC00F25E1AEB0007AE725 /* BorderedView.swift in Sources */,
 				7E9D9C0424E58F39000772C0 /* SleepView.swift in Sources */,
 				7EA38AEC237853230007919B /* DefaultLocationLocalDataSource.swift in Sources */,
 				7EE6905E243E658B00CA423E /* LongPressProgressButton.swift in Sources */,

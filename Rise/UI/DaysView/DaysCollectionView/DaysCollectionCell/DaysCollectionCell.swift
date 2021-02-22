@@ -13,10 +13,13 @@ final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
     @IBOutlet private weak var loadingView: LoadingView!
     @IBOutlet private weak var containerView: DesignableContainerView!
     @IBOutlet private weak var leftImageView: UIImageView!
+    @IBOutlet private var leftTopLabel: UILabel!
     @IBOutlet private weak var leftLabel: UILabel!
     @IBOutlet private weak var rightImageView: UIImageView!
+    @IBOutlet private var rightTopLabel: UILabel!
     @IBOutlet private weak var rightLabel: UILabel!
-    
+    @IBOutlet var loadingViewTitle: UILabel!
+
     private var repeatButtonHandler: RepeatHandler?
     
     typealias RepeatHandler = (DaysCollectionCell) -> Void
@@ -67,12 +70,31 @@ final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
     func configure(with model: Model) {
         self.model = model
         repeatButtonHandler = model.repeatHandler
+        leftTopLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        leftTopLabel.text = "Sunrise"
+        rightTopLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        rightTopLabel.text = "Sunset"
+        leftLabel.font = UIFont.systemFont(ofSize: 18)
+        rightLabel.font = UIFont.systemFont(ofSize: 18)
+        rightLabel.textColor = .white
+        leftLabel.textColor = .white
+        loadingViewTitle.textColor = .white
+        rightTopLabel.textColor = .white
+        leftTopLabel.textColor = .white
+        loadingView.backgroundColor = .clear
+        loadingView.layer.borderColor = UIColor.white.withAlphaComponent(0.85).cgColor
+        loadingView.layer.borderWidth = 1
+        loadingView.infoLabelFont = UIFont.systemFont(ofSize: 18)
+        leftImageView.image = UIImage(systemName: "sunrise.fill")?.applyingSymbolConfiguration(.init(pointSize: 44, weight: .light))
+        rightImageView.image = UIImage(systemName: "sunset.fill")?.applyingSymbolConfiguration(.init(pointSize: 44, weight: .light))
+        loadingViewTitle.font = UIFont.boldSystemFont(ofSize: 18)
+        loadingViewTitle.text = "Scheduled sleep"
     }
 
     private func applyModel() {
         guard let model = model else { return }
-        leftImageView.image = UIImage(named: model.imageName.left)
-        rightImageView.image = UIImage(named: model.imageName.right)
+//        leftImageView.image = UIImage(named: model.imageName.left)
+//        rightImageView.image = UIImage(named: model.imageName.right)
         switch model.state {
         case .loading:
             self.loadingView.state = .loading

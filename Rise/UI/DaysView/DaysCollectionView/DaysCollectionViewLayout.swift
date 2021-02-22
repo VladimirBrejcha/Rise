@@ -11,7 +11,7 @@ import UIKit
 final class DaysCollectionViewLayout: UICollectionViewLayout {
     private let numberOfColumns = 3
     private let numberOfRows = 2
-    private let cellPadding: CGFloat = 4
+    private let cellPadding: CGFloat = 6
 
     private var cache: [[UICollectionViewLayoutAttributes]] = []
 

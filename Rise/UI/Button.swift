@@ -12,8 +12,8 @@ import UIKit
 class Button: UIButton, PropertyAnimatable, TouchObservable {
     var propertyAnimationDuration: Double = 0.1
     
-    var touchDownObserver: ((Button) -> Void)?
-    var touchUpObserver: ((Button) -> Void)?
+    var onTouchDown: ((Button) -> Void)?
+    var onTouchUp: ((Button) -> Void)?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,13 +34,13 @@ class Button: UIButton, PropertyAnimatable, TouchObservable {
         animate {
             sender.transform = Styles.Button.scaleTransform
         }
-        touchDownObserver?(self)
+        onTouchDown?(self)
     }
     
     @objc private func touchUp(_ sender: UIButton) {
         animate {
             sender.transform = CGAffineTransform.identity
         }
-        touchUpObserver?(self)
+        onTouchUp?(self)
     }
 }

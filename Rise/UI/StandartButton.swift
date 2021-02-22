@@ -10,7 +10,6 @@ import UIKit
 
 @IBDesignable
 final class StandartButton: Button {
-    
     fileprivate typealias Style = Styles.Button
 
     override func configure() {

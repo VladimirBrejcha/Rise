@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sS2-kg-BzT" customClass="Button" customModule="Rise" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sS2-kg-BzT" customClass="Button" customModule="Rise" customModuleProvider="target">
                                 <rect key="frame" x="10" y="802" width="394" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Om1-ms-bKA"/>
@@ -50,7 +51,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="UlE-Na-PZm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="T54-d5-rcW" firstAttribute="leading" secondItem="UlE-Na-PZm" secondAttribute="leading" id="CIj-kz-9P7"/>
                             <constraint firstItem="UlE-Na-PZm" firstAttribute="trailing" secondItem="T54-d5-rcW" secondAttribute="trailing" id="Fc3-ef-RLu"/>
@@ -65,7 +67,6 @@
                             <constraint firstItem="e8M-Xk-MCJ" firstAttribute="top" secondItem="UlE-Na-PZm" secondAttribute="top" constant="15" id="v83-iB-gNH"/>
                             <constraint firstItem="sS2-kg-BzT" firstAttribute="top" secondItem="T54-d5-rcW" secondAttribute="bottom" constant="10" id="xoq-g8-QoF"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="UlE-Na-PZm"/>
                         <connections>
                             <outlet property="changePlanTableView" destination="T54-d5-rcW" id="div-dO-p9M"/>
                         </connections>
@@ -79,10 +80,18 @@
             <point key="canvasLocation" x="137.68115942028987" y="118.52678571428571"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="sS2-kg-BzT">
+            <size key="intrinsicContentSize" width="34" height="30"/>
+        </designable>
+    </designables>
     <resources>
         <image name="cancel" width="75" height="75"/>
         <namedColor name="LightPink">
-            <color red="0.71764705882352942" green="0.61568627450980395" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.71799999475479126" green="0.61599999666213989" blue="0.74500000476837158" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

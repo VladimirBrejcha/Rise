@@ -215,12 +215,12 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
         }
         
         guard let todayDailyTime = try? getDailyTime(for: plan, date: NoonedDay.today.date),
-            let minutesUntilSleep = calendar.dateComponents(
+              let minutesUntilSleep = calendar.dateComponents(
                 [.minute],
                 from: Date(),
                 to: todayDailyTime.sleep
-            ).minute else {
-                return FloatingLabel.Model(text: "", alpha: 0)
+              ).minute else {
+            return FloatingLabel.Model(text: "", alpha: 0)
         }
         
         let minutesInDay: Float = 24 * 60

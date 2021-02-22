@@ -20,7 +20,7 @@ final class AlarmingView: UIView, BackgroundSettable {
         didStop: @escaping () -> Void
     ) {
         snoozeButton.setTitle("Snooze", for: .normal)
-        snoozeButton.touchDownObserver = { _ in didSnooze() }
+        snoozeButton.onTouchDown = { _ in didSnooze() }
 
         stopAlarmButton.title = "Stop alarm"
         stopAlarmButton.progressCompleted = { _ in didStop() }

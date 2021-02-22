@@ -7,91 +7,82 @@
 //
 
 import UIKit
-import LoadingView
 
-final class PersonalPlanView: UIView, PropertyAnimatable {
-    @IBOutlet private weak var planManageButtonsStackView: UIStackView!
-    @IBOutlet private var pauseButton: Button!
-    @IBOutlet private weak var planButton: UIButton!
-    @IBOutlet private weak var infomationLabel: UILabel!
-    @IBOutlet private weak var tableView: PersonalPlanTableView!
-    @IBOutlet private weak var loadingView: LoadingView!
-    
+final class PersonalPlanView: UIView, PropertyAnimatable, Statefull {
+    @IBOutlet private var topLabel: UILabel!
+    @IBOutlet private var centerLabel: UILabel!
+    @IBOutlet private var middleButton: StandartButton!
+    @IBOutlet private var cellTopLeft: ImageLabelViewWithContextMenu!
+    @IBOutlet private var cellTopRight: ImageLabelViewWithContextMenu!
+    @IBOutlet private var cellBottomLeft: ImageLabelViewWithContextMenu!
+    @IBOutlet private var cellBottomRight: ImageLabelViewWithContextMenu!
+
     // MARK: - PropertyAnimatable
     var propertyAnimationDuration: Double = 0.3
-        
+
+    // MARK: - Statefull -
+    typealias CellState = ImageLabelViewWithContextMenu.State
+
     struct State {
-        let pauseButtonHidden: Bool
-        let loadingViewState: LoadingViewState
-        let tableViewAlpha: CGFloat
+        enum ShowCells {
+            case yes(CellState, CellState, CellState, CellState)
+            case no(reason: String)
+        }
+        let showCells: ShowCells
+        let title: String
+        let middleButtonTitle: String
+        let middleButtonHandler: () -> Void
     }
-    var state: State = State(pauseButtonHidden: true, loadingViewState: .loading, tableViewAlpha: 0) {
-        didSet {
-            pauseButton.isHidden = state.pauseButtonHidden
-            animate {
-                self.loadingView.state = self.state.loadingViewState
-                self.tableView.alpha = self.state.tableViewAlpha
+
+    private(set) var state: State?
+    func setState(_ state: State) {
+        self.state = state
+        
+        switch state.showCells {
+        case .yes(let topLeft, let topRight, let bottomLeft, let bottomRight):
+            animate { [weak self] in
+                self?.centerLabel.alpha = 0
+                self?.applyToAllCells { $0.alpha = 1 }
+            }
+            cellTopLeft.setState(topLeft)
+            cellTopRight.setState(topRight)
+            cellBottomLeft.setState(bottomLeft)
+            cellBottomRight.setState(bottomRight)
+        case .no(let reason):
+            centerLabel.text = reason
+            animate { [weak self] in
+                self?.centerLabel.alpha = 1
+                self?.applyToAllCells { $0.alpha = 0 }
             }
         }
+        topLabel.text = state.title
+        middleButton.setTitle(state.middleButtonTitle, for: .normal)
+        middleButton.onTouchDown = { _ in state.middleButtonHandler() }
     }
-    
-    struct Model {
-        let planButtonTitle: String
-        let pauseButtonTitle: String
-        let pauseButtonTitleColor: UIColor
+
+    // MARK: - Configuration -
+    func configure() {
+        topLabel.textAlignment = .center
+        topLabel.textColor = .white
+        topLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
     }
-    var model: Model = Model(planButtonTitle: "", pauseButtonTitle: "", pauseButtonTitleColor: .clear) {
-        didSet {
-            pauseButton.setTitle(model.pauseButtonTitle, for: .normal)
-            pauseButton.setTitleColor(model.pauseButtonTitleColor, for: .normal)
-            planButton.setTitle(model.planButtonTitle, for: .normal)
-        }
-    }
-    
-    struct Handlers {
-        let planTouch: () -> Void
-        let pauseTouch: () -> Void
-    }
-    var handlers: Handlers?
-    
-    func configure(model: Model, handlers: Handlers,
-                   dataSource: UITableViewDataSource, delegate: UITableViewDelegate
-    ) {
-        self.model = model
-        tableView.delegate = delegate
-        tableView.dataSource = dataSource
-        self.handlers = handlers
-    }
-    
-    func reloadData() {
-        tableView.reloadData()
-    }
-    
-    @IBAction private func planTouchUp(_ sender: Button) {
-        handlers?.planTouch()
-    }
-    
-    @IBAction private func pauseTouchUp(_ sender: Button) {
-        handlers?.pauseTouch()
+
+    // MARK: - Internal -
+    private func applyToAllCells(_ change: ((ImageLabelViewWithContextMenu) -> Void)) {
+        change(cellTopLeft)
+        change(cellTopRight)
+        change(cellBottomLeft)
+        change(cellBottomRight)
     }
 }
 
 extension PersonalPlanView.State: Changeable {
     init(copy: ChangeableWrapper<PersonalPlanView.State>) {
         self.init(
-            pauseButtonHidden: copy.pauseButtonHidden,
-            loadingViewState: copy.loadingViewState,
-            tableViewAlpha: copy.tableViewAlpha
-        )
-    }
-}
-
-extension PersonalPlanView.Model: Changeable {
-    init(copy: ChangeableWrapper<PersonalPlanView.Model>) {
-        self.init(
-            planButtonTitle: copy.planButtonTitle,
-            pauseButtonTitle: copy.pauseButtonTitle,
-            pauseButtonTitleColor: copy.pauseButtonTitleColor
+            showCells: copy.showCells,
+            title: copy.title,
+            middleButtonTitle: copy.middleButtonTitle,
+            middleButtonHandler: copy.middleButtonHandler
         )
     }
 }

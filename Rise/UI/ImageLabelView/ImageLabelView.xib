@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImageLabelView" customModule="Rise" customModuleProvider="target">
+            <connections>
+                <outlet property="imageView" destination="ajb-ul-vKj" id="EZz-U5-l6a"/>
+                <outlet property="label" destination="adQ-Qt-4Ky" id="cZJ-DU-8nc"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cuy-OY-gFs" customClass="BorderedView" customModule="Rise" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fwY-i6-tyJ">
+                            <rect key="frame" x="10" y="10" width="394" height="876"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ajb-ul-vKj">
+                                    <rect key="frame" x="0.0" y="0.0" width="394" height="433"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adQ-Qt-4Ky">
+                                    <rect key="frame" x="0.0" y="443" width="394" height="433"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="fwY-i6-tyJ" firstAttribute="top" secondItem="cuy-OY-gFs" secondAttribute="top" constant="10" id="4CZ-mu-PO3"/>
+                        <constraint firstAttribute="trailing" secondItem="fwY-i6-tyJ" secondAttribute="trailing" constant="10" id="9dU-jP-YZA"/>
+                        <constraint firstItem="fwY-i6-tyJ" firstAttribute="leading" secondItem="cuy-OY-gFs" secondAttribute="leading" constant="10" id="Q3l-Vq-hiF"/>
+                        <constraint firstAttribute="bottom" secondItem="fwY-i6-tyJ" secondAttribute="bottom" constant="10" id="dOq-g3-ZtQ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="cuy-OY-gFs" secondAttribute="bottom" id="2IV-ot-gKd"/>
+                <constraint firstAttribute="trailing" secondItem="cuy-OY-gFs" secondAttribute="trailing" id="Rgr-1P-LVz"/>
+                <constraint firstItem="cuy-OY-gFs" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="agl-cN-74G"/>
+                <constraint firstItem="cuy-OY-gFs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ge2-oz-mTW"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="25" y="119"/>
+        </view>
+    </objects>
+</document>

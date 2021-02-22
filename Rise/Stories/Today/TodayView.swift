@@ -10,7 +10,6 @@ import UIKit
 
 final class TodayView: UIView {
     @IBOutlet private weak var daysView: DaysView!
-    @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var timeToSleepLabel: FloatingLabel!
 
     typealias Snapshot = NSDiffableDataSourceSnapshot<DaysCollectionView.Section, DaysCollectionView.Item.Model>
@@ -28,6 +27,7 @@ final class TodayView: UIView {
         if isConfigured { return }
         self.sleepHandler = sleepHandler
         timeToSleepLabel.dataSource = timeUntilSleepDataSource
+        timeToSleepLabel.font = UIFont.boldSystemFont(ofSize: 13)
         timeToSleepLabel.beginRefreshing()
         isConfigured = true
     }
