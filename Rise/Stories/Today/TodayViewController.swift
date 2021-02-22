@@ -8,10 +8,7 @@
 
 import UIKit
 
-final class TodayViewController: UIViewController, PropertyAnimatable {
-    // MARK: - PropertyAnimatable
-    var propertyAnimationDuration: Double { 0.15 }
-    
+final class TodayViewController: UIViewController, Statefull, PropertyAnimatable {
     @IBOutlet private var todayView: TodayView!
     
     var getSunTime: GetSunTime! // DI
@@ -19,9 +16,12 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
     var observePlan: ObservePlan! // DI
     var getDailyTime: GetDailyTime! // DI
     var confirmPlan: ConfirmPlan! // DI
+
+    // MARK: - PropertyAnimatable
+    var propertyAnimationDuration: Double { 0.15 }
     
-    // MARK: - State
-    fileprivate struct State: Equatable {
+    // MARK: - Statefull -
+    struct State: Equatable {
         let sunTimeState: LoadState<[SunTime]>
         let planState: LoadState<RisePlan>
         
@@ -31,23 +31,19 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
             case failed
         }
     }
-    private var state: State = State(sunTimeState: .loading, planState: .loading) {
-        didSet {
-            DispatchQueue.main.async {
-                if self.state == oldValue { return }
-                if self.viewIsVisible {
-                    self.applySnapshot()
-                } else {
-                    self.performOnDidAppear.append {
-                        self.applySnapshot()
-                    }
-                }
+
+    private(set) var state: State?
+
+    func setState(_ state: State) {
+        self.state = state
+        if self.viewIsVisible {
+            self.applySnapshot()
+        } else {
+            self.performOnDidAppear.append {
+                self.applySnapshot()
             }
         }
     }
-    
-    private var performOnDidAppear: [() -> Void] = []
-    private var viewIsVisible: Bool = false
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
@@ -66,17 +62,17 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
         )
         
         if let plan = try? getPlan() {
-            state = State(sunTimeState: .loading, planState: .loaded(data: plan))
+            setState(State(sunTimeState: .loading, planState: .loaded(data: plan)))
         } else {
-            state = State(sunTimeState: .loading, planState: .failed)
+            setState(State(sunTimeState: .loading, planState: .failed))
         }
         
         observePlan.observe { [weak self] plan in
-            guard let self = self else { return }
+            guard let self = self, let state = self.state else { return }
             if let plan = plan {
-                self.state = self.state.changing { $0.planState = .loaded(data: plan) }
+                self.setState(state.changing { $0.planState = .loaded(data: plan) })
             } else {
-                self.state = self.state.changing { $0.planState = .failed }
+                self.setState(state.changing { $0.planState = .failed })
             }
         }
 
@@ -105,23 +101,17 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
         super.viewWillDisappear(animated)
         viewIsVisible = false
     }
-
-    func applySnapshot(animatingDifferences: Bool = false) {
+    
+    // MARK: - Apply snapshot -
+    private func applySnapshot(animatingDifferences: Bool = false) {
+        guard let state = state else { return }
         var snapshot = TodayView.Snapshot()
         snapshot.appendSections([.sun, .plan])
         snapshot.appendItems(applySunTimeState(state.sunTimeState), toSection: .sun)
         snapshot.appendItems(applyPlanState(state.planState), toSection: .plan)
         todayView.applySnapshot(snapshot)
     }
-    
-    // MARK: - Private -
-    private func makeTabBar(visible: Bool) {
-        animate {
-            self.tabBarController?.tabBar.alpha = visible ? 1 : 0
-        }
-    }
-    
-    // MARK: - Apply states
+
     private func applySunTimeState(_ state: State.LoadState<[SunTime]>) -> [DaysCollectionView.Item.Model] {
         if todayView.snapshot.numberOfSections == 0 {
             return apply(state: state, on: defaultSunModels)
@@ -187,26 +177,28 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
 
     // MARK: - Refresh sun times
     private func refreshSunTimes() {
-        getSunTime(numberOfDays: 3, since: NoonedDay.yesterday.date) { [weak self] result in
-            guard let self = self else { return }
+        getSunTime(numberOfDays: 3, since: NoonedDay.yesterday.date, completionQueue: .main) { [weak self] result in
+            guard let self = self, let state = self.state else { return }
             if case .success (let sunTimes) = result {
-                self.state = self.state.changing{ $0.sunTimeState = .loaded(data: sunTimes) }
+                self.setState(state.changing { $0.sunTimeState = .loaded(data: sunTimes) })
             }
             if case .failure = result {
-                self.state = self.state.changing{ $0.sunTimeState = .failed }
+                self.setState(state.changing { $0.sunTimeState = .failed })
             }
         }
     }
 
     // MARK: - Repeat handler
     private func repeatButtonPressed(on cell: DaysCollectionCell) {
-        state = state.changing{ $0.sunTimeState = .loading }
-        refreshSunTimes()
+        if let state = state {
+            setState(state.changing { $0.sunTimeState = .loading })
+            refreshSunTimes()
+        }
     }
     
     // MARK: - Floating label model
     private var floatingLabelModel: FloatingLabel.Model {
-        guard case .loaded (let plan) = state.planState else {
+        guard case .loaded (let plan) = state?.planState else {
             return FloatingLabel.Model(text: "", alpha: 0)
         }
         
@@ -237,6 +229,16 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
         if alpha > alphaMax { alpha = alphaMax }
         
         return FloatingLabel.Model(text: "Sleep planned in \(minutesUntilSleep.HHmmString)", alpha: alpha)
+    }
+
+    // MARK: - Internal -
+    private var performOnDidAppear: [() -> Void] = []
+    private var viewIsVisible: Bool = false
+
+    private func makeTabBar(visible: Bool) {
+        animate {
+            self.tabBarController?.tabBar.alpha = visible ? 1 : 0
+        }
     }
     
     // MARK: - Default cells
