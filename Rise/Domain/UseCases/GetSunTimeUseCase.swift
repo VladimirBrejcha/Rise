@@ -22,7 +22,7 @@ protocol GetSunTime {
 final class GetSunTimeUseCase: GetSunTime {
     private let locationRepository: LocationRepository
     private let sunTimeRepository: SunTimeRepository
-    private let queue = DispatchQueue(label: "GetSunTime", qos: .default)
+    private let queue = DispatchQueue(label: String(describing: GetSunTimeUseCase.self), qos: .default)
     private var completionQueue: DispatchQueue?
     
     init(_ locationRepository: LocationRepository, _ sunTimeRepository: SunTimeRepository) {
