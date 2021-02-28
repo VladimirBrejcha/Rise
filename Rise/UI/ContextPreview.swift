@@ -44,7 +44,7 @@ final class ContextPreview: UIViewController, Statefull {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 0
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        titleLabel.font = Styles.Label.Title.font
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.textAlignment = .center
         descriptionLabel.numberOfLines = 0

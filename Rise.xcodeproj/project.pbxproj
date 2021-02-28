@@ -326,7 +326,6 @@
 		7ED8E59623BFFD5100A1E96F /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		7EE1397E23E36944003895D4 /* AIFlatSwitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AIFlatSwitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EE1398523E36AF6003895D4 /* AIFlatSwitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AIFlatSwitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7EE1398923E36B01003895D4 /* AnimatedGradientView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AnimatedGradientView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EE227642504C38B00EC70CB /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		7EE640482378665D005BE355 /* DefaultSunTimeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSunTimeRepository.swift; sourceTree = "<group>"; };
 		7EE6404A2378666F005BE355 /* DefaultSunTimeLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSunTimeLocalDataSource.swift; sourceTree = "<group>"; };
@@ -396,7 +395,6 @@
 		58118E3FFAF9EC6FD86AEFC7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7EE1398923E36B01003895D4 /* AnimatedGradientView.framework */,
 				7EE1398523E36AF6003895D4 /* AIFlatSwitch.framework */,
 				7EE1397E23E36944003895D4 /* AIFlatSwitch.framework */,
 			);
@@ -491,6 +489,7 @@
 		7E4901882340F3BE0034521E /* Today */ = {
 			isa = PBXGroup;
 			children = (
+				7EADA5E7239DA9FA00FE4843 /* DaysView */,
 				7EB9F34D23C229F2002A6DD3 /* TodayAssembler.swift */,
 				7E6268BF24D5D49C00F70BC3 /* TodayView.swift */,
 				92E77AF922A5304400E5E21C /* TodayViewController.swift */,
@@ -821,19 +820,11 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
-		7EEB1E132443372C001ABE4A /* Colors */ = {
+		7EF3EE162340F75A003BE978 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				7E0EACC9241BF05800B8A0A2 /* Color.swift */,
 				7E97226325B8C90500DBEF5E /* Styles.swift */,
-			);
-			path = Colors;
-			sourceTree = "<group>";
-		};
-		7EF3EE162340F75A003BE978 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				7EEB1E132443372C001ABE4A /* Colors */,
 				7EEB1E10244336A7001ABE4A /* Sounds */,
 				92D7D65E2296F298009321AE /* Info.plist */,
 				92D7D6592296F298009321AE /* Assets.xcassets */,
@@ -971,26 +962,25 @@
 		92D7D68422980138009321AE /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				7EE05109241BFE39005B23B3 /* TabBarController */,
+				7E06FE9B252E384E005D72CB /* AnimatedTransitionNavigationController */,
+				7E2CA80C24031E85000CEFA5 /* CollectionView */,
+				7E2CA80E24031FF8000CEFA5 /* TableView */,
+				7E2CA80D24031FDB000CEFA5 /* ConfigurableCell */,
+				7E88A34F23F8B1F400E792CA /* Animations */,
+				7E199CD5240BD43C00B702AD /* SliderWithValues */,
 				7ED6DD3A25E2A36B00F906CE /* ImageLabelView */,
+				7EE87CEB2442233500E1BD3B /* LongPressProgressButton */,
+				7EB26952234F99AE008AEB3D /* Button.swift */,
+				7E97226825B8CA2D00DBEF5E /* StandartButton.swift */,
+				7E9D9C0E24E5BADC000772C0 /* FloatingButton.swift */,
 				7ED6DD3525E2A30700F906CE /* ImageLabelViewWithContextMenu.swift */,
 				7ECA517D25E340BD009362F9 /* ContextPreview.swift */,
 				7EEFC00E25E1AEB0007AE725 /* BorderedView.swift */,
 				7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */,
-				7EADA5E7239DA9FA00FE4843 /* DaysView */,
-				7E2CA80E24031FF8000CEFA5 /* TableView */,
-				7E2CA80D24031FDB000CEFA5 /* ConfigurableCell */,
-				7E2CA80C24031E85000CEFA5 /* CollectionView */,
-				7E88A34F23F8B1F400E792CA /* Animations */,
 				7EB9003D23256AC9006EB9A8 /* DesignableContainerView.swift */,
-				7EE05109241BFE39005B23B3 /* TabBarController */,
-				7EB26952234F99AE008AEB3D /* Button.swift */,
-				7E97226825B8CA2D00DBEF5E /* StandartButton.swift */,
-				7E199CD5240BD43C00B702AD /* SliderWithValues */,
 				7E5F292923F9638C0050DFD3 /* FloatingLabel.swift */,
 				7EE87CEE2442254A00E1BD3B /* AutoRefreshableLabel.swift */,
-				7EE87CEB2442233500E1BD3B /* LongPressProgressButton */,
-				7E9D9C0E24E5BADC000772C0 /* FloatingButton.swift */,
-				7E06FE9B252E384E005D72CB /* AnimatedTransitionNavigationController */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1088,7 +1078,6 @@
 			);
 			mainGroup = 92D7D6462296F297009321AE;
 			packageReferences = (
-				7EE1398C23E36B97003895D4 /* XCRemoteSwiftPackageReference "AnimatedGradientView" */,
 				7E388E34243A3A77001A28DF /* XCRemoteSwiftPackageReference "LoadingView" */,
 				7E6268C124D5FAA900F70BC3 /* XCRemoteSwiftPackageReference "SelectableStackView" */,
 			);
@@ -1647,14 +1636,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.1.1;
-			};
-		};
-		7EE1398C23E36B97003895D4 /* XCRemoteSwiftPackageReference "AnimatedGradientView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/rwbutler/AnimatedGradientView";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
