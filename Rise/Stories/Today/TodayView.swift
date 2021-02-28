@@ -10,34 +10,27 @@ import UIKit
 
 final class TodayView: UIView {
     @IBOutlet private weak var daysView: DaysView!
-    @IBOutlet private weak var timeToSleepLabel: FloatingLabel!
+    @IBOutlet private var sleepButton: StandartButton!
+    @IBOutlet private weak var timeUntilSleep: FloatingLabel!
 
-    typealias Snapshot = NSDiffableDataSourceSnapshot<DaysCollectionView.Section, DaysCollectionView.Item.Model>
-
-    // MARK: - Handlers & DataSource
-    var sleepHandler: (() -> Void)?
-    var timeUntilSleepDataSource: (() -> FloatingLabel.Model)?
-
-    // MARK: - Configure
     private var isConfigured = false
+
     func configure(
         timeUntilSleepDataSource: @escaping () -> FloatingLabel.Model,
         sleepHandler: @escaping () -> Void
     ) {
         if isConfigured { return }
-        self.sleepHandler = sleepHandler
-        timeToSleepLabel.dataSource = timeUntilSleepDataSource
-        timeToSleepLabel.font = UIFont.boldSystemFont(ofSize: 13)
-        timeToSleepLabel.beginRefreshing()
+        sleepButton.onTouchUp = { _ in sleepHandler() }
+        timeUntilSleep.dataSource = timeUntilSleepDataSource
+        timeUntilSleep.font = Styles.Label.Notification.font
+        timeUntilSleep.beginRefreshing()
         isConfigured = true
     }
 
+    typealias Snapshot = NSDiffableDataSourceSnapshot<DaysCollectionView.Section, DaysCollectionView.Item.Model>
     var snapshot: Snapshot { daysView.dataSource.snapshot() }
+
     func applySnapshot(_ snapshot: Snapshot) {
         daysView.dataSource.apply(snapshot)
-    }
-
-    @IBAction private func sleepTouchUp(_ sender: Button) {
-        sleepHandler?()
     }
 }

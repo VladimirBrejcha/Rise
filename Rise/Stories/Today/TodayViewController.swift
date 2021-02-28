@@ -84,7 +84,7 @@ final class TodayViewController: UIViewController, Statefull, PropertyAnimatable
         
         viewIsVisible = true
         
-        if performOnDidAppear.isNotEmpty {
+        if !performOnDidAppear.isEmpty {
             performOnDidAppear.forEach { $0() }
             performOnDidAppear.removeAll()
         }

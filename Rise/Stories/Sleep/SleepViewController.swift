@@ -34,7 +34,6 @@ final class SleepViewController: UIViewController, AutoRefreshable {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        sleepView.setBackground(GradientHelper.makeGradientView(frame: sleepView.bounds))
         sleepView.configure(
             initialModel: SleepView.Model(state: .normal, alarm: alarmTime),
             dataSource: SleepView.DataSource(

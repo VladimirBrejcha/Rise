@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class ChangePlanView: UIView, BackgroundSettable {
+final class ChangePlanView: UIView {
     @IBOutlet private weak var changePlanTableView: ChangePlanTableView!
     
     struct Handlers {

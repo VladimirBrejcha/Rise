@@ -46,7 +46,10 @@ final class DaysView:
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         if shouldCenter {
-            collectionView.setContentOffset(CGPoint(x: collectionView.bounds.width, y: 0), animated: false)
+            collectionView.setContentOffset(
+                CGPoint(x: collectionView.bounds.width, y: 0),
+                animated: false
+            )
             shouldCenter = false
         }
     }
@@ -54,7 +57,10 @@ final class DaysView:
     // MARK: - SelectableStackViewDelegate -
     func didSelect(_ select: Bool, at index: Index, on selectableStackView: SelectableStackView) {
         if select {
-            collectionView.setContentOffset(CGPoint(x: Int(collectionView.bounds.width) * index, y: 0), animated: true)
+            collectionView.setContentOffset(
+                CGPoint(x: Int(collectionView.bounds.width) * index, y: 0),
+                animated: true
+            )
         }
     }
 }

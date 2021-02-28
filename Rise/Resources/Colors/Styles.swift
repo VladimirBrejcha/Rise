@@ -9,6 +9,15 @@
 import UIKit
 
 enum Styles {
+    enum Label {
+        enum Notification {
+            static let font = UIFont.boldSystemFont(ofSize: 13)
+        }
+        enum Title {
+            static let color = UIColor.white
+            static let font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        }
+    }
     enum TabBar {
         enum Color {
             enum Title {
@@ -33,8 +42,7 @@ enum Styles {
             }
         }
         enum TextStyle {
-            static let size: CGFloat = 18
-            static let font = UIFont.boldSystemFont(ofSize: size)
+            static let font = UIFont.boldSystemFont(ofSize: 18)
         }
         enum Shadow {
             static let radius: CGFloat = 12

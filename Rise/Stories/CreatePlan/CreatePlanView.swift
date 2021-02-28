@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class CreatePlanView: UIView, BackgroundSettable, PropertyAnimatable {
+final class CreatePlanView: UIView, PropertyAnimatable {
     @IBOutlet private weak var buttonsStackView: UIStackView!
     @IBOutlet private weak var backButton: Button!
     @IBOutlet private weak var nextButton: Button!

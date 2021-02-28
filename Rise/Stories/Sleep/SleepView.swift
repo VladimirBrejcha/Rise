@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class SleepView: UIView, BackgroundSettable, PropertyAnimatable {
+final class SleepView: UIView, PropertyAnimatable {
     @IBOutlet private weak var currentTimeLabel: AutoRefreshableLabel!
     @IBOutlet private weak var stopButton: LongPressProgressButton!
     @IBOutlet private weak var timeLeftLabel: FloatingLabel!

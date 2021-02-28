@@ -47,7 +47,6 @@ final class PrepareToSleepViewController: UIViewController {
         
         prepareToSleepView.configure(
             model: PrepareToSleepView.Model(
-                background: GradientHelper.makeGradientView(frame: view.bounds),
                 toSleepText: motivatingText,
                 title: "Prepare to sleep",
                 startSleepText: "begin to sleep",

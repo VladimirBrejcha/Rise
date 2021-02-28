@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class PrepareToSleepView: UIView, BackgroundSettable, PropertyAnimatable {
+final class PrepareToSleepView: UIView, PropertyAnimatable {
     // MARK: - PropertyAnimatable
     var propertyAnimationDuration: Double = 0.3
     
@@ -40,7 +40,6 @@ final class PrepareToSleepView: UIView, BackgroundSettable, PropertyAnimatable {
     
     // MARK: - Model
     struct Model {
-        let background: UIView
         let toSleepText: String
         let title: String
         let startSleepText: String
@@ -94,7 +93,6 @@ final class PrepareToSleepView: UIView, BackgroundSettable, PropertyAnimatable {
         if isConfigured { return }
         
         self.model = model
-        setBackground(model.background)
         self.handlers = handlers
         timeUntilWakeUpLabel.dataSource = dataSource.timeUntilWakeUp
         timeUntilWakeUpLabel.beginRefreshing()
@@ -112,7 +110,6 @@ final class PrepareToSleepView: UIView, BackgroundSettable, PropertyAnimatable {
 extension PrepareToSleepView.Model: Changeable {
     init(copy: ChangeableWrapper<PrepareToSleepView.Model>) {
         self.init(
-            background: copy.background,
             toSleepText: copy.toSleepText,
             title: copy.title,
             startSleepText: copy.startSleepText,

@@ -35,7 +35,6 @@ final class CreatePlanViewController:
         
         presentationController?.delegate = self
         
-        createPlanView.setBackground(GradientHelper.makeGradientView(frame: view.bounds))
         createPlanView.configure(
             model: CreatePlanView.Model(backButtonTitle: "", nextButtonTitle: "Start"),
             handlers: CreatePlanView.Handlers(

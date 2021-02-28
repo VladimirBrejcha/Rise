@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class AlarmingView: UIView, BackgroundSettable {
+final class AlarmingView: UIView {
     @IBOutlet private var currentTimeLabel: AutoRefreshableLabel!
     @IBOutlet private weak var greetLabel: UILabel!
     @IBOutlet private var stopAlarmButton: LongPressProgressButton!

@@ -101,7 +101,6 @@ final class ChangePlanViewController: UIViewController, UITableViewDelegate {
             ]
         )
         
-        changePlanView.setBackground(GradientHelper.makeGradientView(frame: view.bounds))
         changePlanView.configure(
             dataSource: tableDataSource,
             delegate: self,

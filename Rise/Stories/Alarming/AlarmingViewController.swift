@@ -18,7 +18,6 @@ final class AlarmingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        alarmingView.setBackground(GradientHelper.makeGradientView(frame: alarmingView.bounds))
         alarmingView.configure(
             timeDataSource: { Date().HHmmString },
             didSnooze: { [weak self] in
