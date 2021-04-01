@@ -9,7 +9,7 @@
 import UIKit
 
 final class TodayView: UIView {
-    @IBOutlet private var sleepButton: StandartButton!
+    @IBOutlet private var sleepButton: Button!
     @IBOutlet private weak var timeUntilSleep: FloatingLabel!
 
     func configure(

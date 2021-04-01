@@ -11,7 +11,7 @@ import UIKit
 final class PersonalPlanView: UIView, PropertyAnimatable, Statefull {
     @IBOutlet private var topLabel: UILabel!
     @IBOutlet private var centerLabel: UILabel!
-    @IBOutlet private var middleButton: StandartButton!
+    @IBOutlet private var middleButton: Button!
     @IBOutlet private var cellTopLeft: ImageLabelViewWithContextMenu!
     @IBOutlet private var cellTopRight: ImageLabelViewWithContextMenu!
     @IBOutlet private var cellBottomLeft: ImageLabelViewWithContextMenu!

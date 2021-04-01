@@ -54,6 +54,7 @@ final class CreatePlanView: UIView, PropertyAnimatable {
     var handlers: Handlers?
     
     func configure(model: Model, handlers: Handlers) {
+        self.backButton.applyStyle(secondaryButtonStyle())
         self.backButton.isHidden = true
         self.model = model
         self.handlers = handlers

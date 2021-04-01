@@ -9,8 +9,10 @@
 import UIKit
 
 @IBDesignable
-class Button: UIButton, PropertyAnimatable, TouchObservable {
+class Button: UIButton, PropertyAnimatable, TouchObservable, StyledButton {
     var propertyAnimationDuration: Double = 0.1
+
+    var style: ButtonStyle = primaryButtonStyle()
     
     var onTouchDown: ((Button) -> Void)?
     var onTouchUp: ((Button) -> Void)?
@@ -26,13 +28,16 @@ class Button: UIButton, PropertyAnimatable, TouchObservable {
     }
     
     func configure() {
+        applyStyle(primaryButtonStyle())
         addTarget(self, action: #selector(touchDown(_:)), for: [.touchDown, .touchDragInside])
         addTarget(self, action: #selector(touchUp(_:)), for: [.touchUpInside, .touchDragOutside, .touchCancel])
     }
     
     @objc private func touchDown(_ sender: UIButton) {
-        animate {
-            sender.transform = Styles.Button.scaleTransform
+        animate { [weak self] in
+            if let self = self {
+                sender.transform = self.style.scaleTransform
+            }
         }
         onTouchDown?(self)
     }
