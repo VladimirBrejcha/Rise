@@ -212,10 +212,10 @@
                                 </constraints>
                             </imageView>
                             <datePicker contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="aHM-kz-WBT">
-                                <rect key="frame" x="20" y="450" width="374" height="140"/>
+                                <rect key="frame" x="20" y="450" width="374" height="160"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="140" id="Ipp-By-ZPU"/>
+                                    <constraint firstAttribute="height" constant="160" id="wPO-kS-Npw"/>
                                 </constraints>
                                 <connections>
                                     <action selector="wakeUpTimeChanged:" destination="IqT-UZ-1E9" eventType="valueChanged" id="15y-WM-ery"/>
@@ -228,7 +228,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="At what time do you wish to wake up?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RgB-Lg-q8V">
-                                <rect key="frame" x="20" y="594" width="374" height="17"/>
+                                <rect key="frame" x="20" y="614" width="374" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -239,6 +239,7 @@
                             <constraint firstItem="tgb-tD-6VV" firstAttribute="trailing" secondItem="aHM-kz-WBT" secondAttribute="trailing" constant="20" id="9Hr-1c-jec"/>
                             <constraint firstItem="drr-71-2fR" firstAttribute="centerX" secondItem="2Ck-XY-rjz" secondAttribute="centerX" id="M7x-Ld-m34"/>
                             <constraint firstItem="Ess-id-0yv" firstAttribute="top" secondItem="tgb-tD-6VV" secondAttribute="top" id="OEN-Bo-l5c"/>
+                            <constraint firstItem="tgb-tD-6VV" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="RgB-Lg-q8V" secondAttribute="bottom" constant="30" id="PAI-Yo-eAx"/>
                             <constraint firstItem="drr-71-2fR" firstAttribute="centerY" secondItem="2Ck-XY-rjz" secondAttribute="centerY" constant="-80" id="Phi-Ur-qC0"/>
                             <constraint firstItem="Ess-id-0yv" firstAttribute="leading" secondItem="tgb-tD-6VV" secondAttribute="leading" constant="20" id="dCb-6E-FMe"/>
                             <constraint firstItem="RgB-Lg-q8V" firstAttribute="top" secondItem="aHM-kz-WBT" secondAttribute="bottom" constant="4" id="ech-oe-zOR"/>
@@ -318,69 +319,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GbC-1Y-0tk" customClass="DesignableContainerView" customModule="Rise" customModuleProvider="target">
-                                <rect key="frame" x="10" y="291" width="394" height="314"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ix5-gI-bZM">
-                                        <rect key="frame" x="164" y="41" width="0.0" height="0.0"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When did you went sleep last time?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Etr-cU-gbp">
-                                        <rect key="frame" x="10" y="20" width="374" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" image="fallasleep" translatesAutoresizingMaskIntoConstraints="NO" id="Tt0-Lb-eAw">
-                                        <rect key="frame" x="157" y="74" width="80" height="50"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="Vzo-k1-Min"/>
-                                        </constraints>
-                                    </imageView>
-                                    <datePicker contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="1Cr-rU-fwC">
-                                        <rect key="frame" x="20" y="134" width="354" height="160"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="160" id="tr3-x1-UfQ"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="wentSleepTimeChanged:" destination="oLi-Ju-9Md" eventType="valueChanged" id="r8H-ni-txD"/>
-                                        </connections>
-                                    </datePicker>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where are we now?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Etr-cU-gbp">
+                                <rect key="frame" x="20" y="44" width="374" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" image="moon.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Tt0-Lb-eAw">
+                                <rect key="frame" x="157" y="319" width="100" height="98.5"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="1Cr-rU-fwC" firstAttribute="leading" secondItem="GbC-1Y-0tk" secondAttribute="leading" constant="20" symbolic="YES" id="34E-7M-sId"/>
-                                    <constraint firstItem="Tt0-Lb-eAw" firstAttribute="top" secondItem="Etr-cU-gbp" secondAttribute="bottom" constant="30" id="5mx-YY-uAr"/>
-                                    <constraint firstAttribute="trailing" secondItem="Etr-cU-gbp" secondAttribute="trailing" constant="10" id="6Ju-6P-Eao"/>
-                                    <constraint firstAttribute="bottom" secondItem="1Cr-rU-fwC" secondAttribute="bottom" constant="20" symbolic="YES" id="9VQ-QL-ebn"/>
-                                    <constraint firstItem="1Cr-rU-fwC" firstAttribute="centerX" secondItem="GbC-1Y-0tk" secondAttribute="centerX" id="GZL-5X-8Xr"/>
-                                    <constraint firstItem="Etr-cU-gbp" firstAttribute="top" secondItem="GbC-1Y-0tk" secondAttribute="top" constant="20" id="b8u-9e-L08"/>
-                                    <constraint firstAttribute="trailing" secondItem="1Cr-rU-fwC" secondAttribute="trailing" constant="20" symbolic="YES" id="bab-Gj-sZj"/>
-                                    <constraint firstItem="Tt0-Lb-eAw" firstAttribute="centerX" secondItem="GbC-1Y-0tk" secondAttribute="centerX" id="h39-be-FRf"/>
-                                    <constraint firstItem="1Cr-rU-fwC" firstAttribute="top" secondItem="Tt0-Lb-eAw" secondAttribute="bottom" constant="10" id="rFk-Ze-Swf"/>
-                                    <constraint firstItem="Etr-cU-gbp" firstAttribute="leading" secondItem="GbC-1Y-0tk" secondAttribute="leading" constant="10" id="sXn-Q9-LPA"/>
+                                    <constraint firstAttribute="height" constant="100" id="JiO-Mx-55z"/>
+                                    <constraint firstAttribute="width" constant="100" id="Vzo-k1-Min"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="12"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="background">
-                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
+                            </imageView>
+                            <datePicker contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="1Cr-rU-fwC">
+                                <rect key="frame" x="20" y="450" width="374" height="160"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="0Au-nM-aJn"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="wentSleepTimeChanged:" destination="oLi-Ju-9Md" eventType="valueChanged" id="r8H-ni-txD"/>
+                                </connections>
+                            </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When did you went to sleep last time?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1A-ai-1yw">
+                                <rect key="frame" x="20" y="614" width="374" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="450-SS-06c"/>
                         <constraints>
-                            <constraint firstItem="GbC-1Y-0tk" firstAttribute="leading" secondItem="450-SS-06c" secondAttribute="leading" constant="10" id="1pa-IJ-5dP"/>
-                            <constraint firstItem="GbC-1Y-0tk" firstAttribute="centerY" secondItem="H9Y-Rd-lFa" secondAttribute="centerY" id="Jgo-Bh-M22"/>
-                            <constraint firstItem="GbC-1Y-0tk" firstAttribute="centerX" secondItem="H9Y-Rd-lFa" secondAttribute="centerX" id="ifC-3z-r4V"/>
-                            <constraint firstItem="450-SS-06c" firstAttribute="trailing" secondItem="GbC-1Y-0tk" secondAttribute="trailing" constant="10" id="tAT-xg-eef"/>
+                            <constraint firstItem="Tt0-Lb-eAw" firstAttribute="centerX" secondItem="H9Y-Rd-lFa" secondAttribute="centerX" id="2DE-S9-TlQ"/>
+                            <constraint firstItem="450-SS-06c" firstAttribute="trailing" secondItem="1Cr-rU-fwC" secondAttribute="trailing" constant="20" id="2e8-n2-iVH"/>
+                            <constraint firstItem="450-SS-06c" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="x1A-ai-1yw" secondAttribute="bottom" constant="30" id="OEB-Mo-1QU"/>
+                            <constraint firstItem="1Cr-rU-fwC" firstAttribute="top" secondItem="Tt0-Lb-eAw" secondAttribute="bottom" constant="32" id="Px7-yn-q4Q"/>
+                            <constraint firstItem="450-SS-06c" firstAttribute="trailing" secondItem="x1A-ai-1yw" secondAttribute="trailing" constant="20" id="TWX-Yl-gK9"/>
+                            <constraint firstItem="Tt0-Lb-eAw" firstAttribute="centerY" secondItem="H9Y-Rd-lFa" secondAttribute="centerY" constant="-80" id="TYb-uv-bWY"/>
+                            <constraint firstItem="Etr-cU-gbp" firstAttribute="top" secondItem="450-SS-06c" secondAttribute="top" id="USy-FM-om3"/>
+                            <constraint firstItem="1Cr-rU-fwC" firstAttribute="leading" secondItem="450-SS-06c" secondAttribute="leading" constant="20" id="Zw1-mo-OBa"/>
+                            <constraint firstItem="450-SS-06c" firstAttribute="trailing" secondItem="Etr-cU-gbp" secondAttribute="trailing" constant="20" id="fFf-Xx-9wz"/>
+                            <constraint firstItem="Etr-cU-gbp" firstAttribute="leading" secondItem="450-SS-06c" secondAttribute="leading" constant="20" id="fat-TE-GHo"/>
+                            <constraint firstItem="x1A-ai-1yw" firstAttribute="leading" secondItem="H9Y-Rd-lFa" secondAttribute="leading" constant="20" id="tNc-GP-ENk"/>
+                            <constraint firstItem="x1A-ai-1yw" firstAttribute="top" secondItem="1Cr-rU-fwC" secondAttribute="bottom" constant="4" id="zN5-xq-ZHh"/>
                         </constraints>
                     </view>
                     <connections>
@@ -463,7 +446,7 @@
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="check" width="100" height="100"/>
         <image name="defaultBackground" width="1280" height="2272"/>
-        <image name="fallasleep" width="50" height="50"/>
+        <image name="moon.fill" catalog="system" width="128" height="121"/>
         <image name="multiply.circle" catalog="system" width="128" height="121"/>
         <image name="sun.max.fill" catalog="system" width="128" height="124"/>
     </resources>
