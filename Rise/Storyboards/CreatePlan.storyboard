@@ -4,7 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,32 +13,39 @@
         <scene sceneID="yDU-6s-60W">
             <objects>
                 <viewController storyboardIdentifier="CreatePlanViewController" id="tb3-MT-84x" customClass="CreatePlanViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mrk-j1-Kya" customClass="CreatePlanView" customModule="Rise" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="mrk-j1-Kya" customClass="CreatePlanView" customModule="Rise" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultBackground" translatesAutoresizingMaskIntoConstraints="NO" id="HFA-In-GCm">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vga-E1-S1H">
                                 <rect key="frame" x="367" y="59" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="R81-9b-8Qz"/>
                                     <constraint firstAttribute="width" constant="35" id="r9k-eM-kwe"/>
                                 </constraints>
-                                <color key="tintColor" name="LightPink"/>
-                                <state key="normal" image="cancel"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="multiply.circle" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="35" scale="large" weight="light"/>
+                                </state>
                                 <connections>
                                     <action selector="closeTouchUp:" destination="mrk-j1-Kya" eventType="touchUpInside" id="xNe-TA-l9A"/>
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="laz-fg-JOl">
-                                <rect key="frame" x="0.0" y="104" width="414" height="688"/>
+                                <rect key="frame" x="0.0" y="104" width="414" height="668"/>
                                 <connections>
                                     <segue destination="fxt-dk-StR" kind="embed" identifier="SetupPlanPageViewController" id="mXt-a5-Ryw"/>
                                 </connections>
                             </containerView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qus-zp-R0h">
-                                <rect key="frame" x="10" y="802" width="394" height="50"/>
+                                <rect key="frame" x="10" y="782" width="394" height="50"/>
                                 <subviews>
-                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TaK-KH-eXq" customClass="Button" customModule="Rise" customModuleProvider="target">
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TaK-KH-eXq" customClass="StandartButton" customModule="Rise" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="192" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="0.070000000000000007" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -49,7 +56,7 @@
                                             <action selector="backTouchUp:" destination="mrk-j1-Kya" eventType="touchUpInside" id="5Gg-aw-sc0"/>
                                         </connections>
                                     </button>
-                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t3a-mE-e9U" customClass="Button" customModule="Rise" customModuleProvider="target">
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t3a-mE-e9U" customClass="StandartButton" customModule="Rise" customModuleProvider="target">
                                         <rect key="frame" x="202" y="0.0" width="192" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="0.070000000000000007" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -77,7 +84,7 @@
                             <constraint firstItem="MrT-vQ-GsT" firstAttribute="trailing" secondItem="qus-zp-R0h" secondAttribute="trailing" constant="10" id="LvQ-dm-I4C"/>
                             <constraint firstItem="MrT-vQ-GsT" firstAttribute="trailing" secondItem="Vga-E1-S1H" secondAttribute="trailing" constant="12" id="eLp-bL-KZY"/>
                             <constraint firstItem="laz-fg-JOl" firstAttribute="top" secondItem="Vga-E1-S1H" secondAttribute="bottom" constant="10" id="o17-dH-9dF"/>
-                            <constraint firstItem="MrT-vQ-GsT" firstAttribute="bottom" secondItem="qus-zp-R0h" secondAttribute="bottom" constant="10" id="xZT-ID-Sd5"/>
+                            <constraint firstItem="MrT-vQ-GsT" firstAttribute="bottom" secondItem="qus-zp-R0h" secondAttribute="bottom" constant="30" id="xZT-ID-Sd5"/>
                         </constraints>
                         <connections>
                             <outlet property="backButton" destination="TaK-KH-eXq" id="g0L-8v-hWt"/>
@@ -290,58 +297,37 @@
                     <view key="view" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jkO-Es-7Bj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bqz-wW-hJ2" customClass="DesignableContainerView" customModule="Rise" customModuleProvider="target">
-                                <rect key="frame" x="10" y="310.5" width="394" height="275"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lets create your Rise plan!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l37-iF-LHL">
-                                        <rect key="frame" x="10" y="102" width="374" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer a few questions to generate smart personilzed sleep schedule" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySm-bl-ktm">
-                                        <rect key="frame" x="10" y="134" width="374" height="33.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="3Np-K8-yVU">
-                                        <rect key="frame" x="157" y="20" width="80" height="82"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="iPe-0k-ZC8"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lets create your Rise plan!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l37-iF-LHL">
+                                <rect key="frame" x="89" y="466" width="236.5" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer a few questions to generate smart personilzed sleep schedule" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySm-bl-ktm">
+                                <rect key="frame" x="20" y="506" width="374" height="33.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" image="calendar" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3Np-K8-yVU">
+                                <rect key="frame" x="167" y="355" width="80" height="77.5"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="ySm-bl-ktm" firstAttribute="leading" secondItem="Bqz-wW-hJ2" secondAttribute="leading" constant="10" id="687-r7-OA3"/>
-                                    <constraint firstItem="l37-iF-LHL" firstAttribute="top" secondItem="3Np-K8-yVU" secondAttribute="bottom" id="6LG-J1-GQK"/>
-                                    <constraint firstItem="3Np-K8-yVU" firstAttribute="top" secondItem="Bqz-wW-hJ2" secondAttribute="top" constant="20" id="Dgp-DC-Ez8"/>
-                                    <constraint firstItem="l37-iF-LHL" firstAttribute="leading" secondItem="Bqz-wW-hJ2" secondAttribute="leading" constant="10" id="Ray-Lu-r96"/>
-                                    <constraint firstItem="3Np-K8-yVU" firstAttribute="width" secondItem="Bqz-wW-hJ2" secondAttribute="height" multiplier="16:55" id="SaB-V4-UUZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="ySm-bl-ktm" secondAttribute="trailing" constant="10" id="T5o-8C-kMA"/>
-                                    <constraint firstItem="3Np-K8-yVU" firstAttribute="centerX" secondItem="Bqz-wW-hJ2" secondAttribute="centerX" id="iaX-9X-l68"/>
-                                    <constraint firstItem="ySm-bl-ktm" firstAttribute="top" secondItem="l37-iF-LHL" secondAttribute="bottom" constant="8" id="lAT-OF-vAp"/>
-                                    <constraint firstAttribute="trailing" secondItem="l37-iF-LHL" secondAttribute="trailing" constant="10" id="n4T-dO-GrE"/>
+                                    <constraint firstAttribute="width" constant="80" id="iPe-0k-ZC8"/>
+                                    <constraint firstAttribute="height" constant="80" id="qhH-oa-WJN"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="12"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="background">
-                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ip8-g2-Vhm"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Bqz-wW-hJ2" firstAttribute="centerY" secondItem="jkO-Es-7Bj" secondAttribute="centerY" id="6OS-9Q-W0q"/>
-                            <constraint firstItem="Bqz-wW-hJ2" firstAttribute="leading" secondItem="Ip8-g2-Vhm" secondAttribute="leading" constant="10" id="Ha6-oH-Cye"/>
-                            <constraint firstItem="Ip8-g2-Vhm" firstAttribute="trailing" secondItem="Bqz-wW-hJ2" secondAttribute="trailing" constant="10" id="LhM-Vy-lo7"/>
-                            <constraint firstItem="Bqz-wW-hJ2" firstAttribute="centerX" secondItem="jkO-Es-7Bj" secondAttribute="centerX" id="h6k-au-09y"/>
+                            <constraint firstItem="l37-iF-LHL" firstAttribute="centerX" secondItem="jkO-Es-7Bj" secondAttribute="centerX" id="WEA-Zd-JZF"/>
+                            <constraint firstItem="Ip8-g2-Vhm" firstAttribute="trailing" secondItem="ySm-bl-ktm" secondAttribute="trailing" constant="20" id="Yqp-Iz-FGw"/>
+                            <constraint firstItem="ySm-bl-ktm" firstAttribute="top" secondItem="l37-iF-LHL" secondAttribute="bottom" constant="16" id="fwe-0n-VgT"/>
+                            <constraint firstItem="ySm-bl-ktm" firstAttribute="leading" secondItem="Ip8-g2-Vhm" secondAttribute="leading" constant="20" id="jp8-RE-XWl"/>
+                            <constraint firstItem="3Np-K8-yVU" firstAttribute="centerX" secondItem="jkO-Es-7Bj" secondAttribute="centerX" id="k7u-N4-1ev"/>
+                            <constraint firstItem="l37-iF-LHL" firstAttribute="top" secondItem="3Np-K8-yVU" secondAttribute="bottom" constant="32" id="obs-PF-TPa"/>
+                            <constraint firstItem="l37-iF-LHL" firstAttribute="centerY" secondItem="jkO-Es-7Bj" secondAttribute="centerY" constant="30" id="zEM-Y2-4lx"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -611,14 +597,12 @@
     </designables>
     <resources>
         <image name="bed" width="100" height="100"/>
-        <image name="calendar" width="81" height="82"/>
-        <image name="cancel" width="75" height="75"/>
+        <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="check" width="100" height="100"/>
+        <image name="defaultBackground" width="1280" height="2272"/>
         <image name="fallasleep" width="50" height="50"/>
+        <image name="multiply.circle" catalog="system" width="128" height="121"/>
         <image name="timeSlot" width="100" height="100"/>
         <image name="wakeup" width="50" height="50"/>
-        <namedColor name="LightPink">
-            <color red="0.71799999475479126" green="0.61599999666213989" blue="0.74500000476837158" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>
