@@ -64,7 +64,6 @@
 		7E69837A24EC69FE002EE278 /* ErrorViewRemovable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69837924EC69FE002EE278 /* ErrorViewRemovable.swift */; };
 		7E69837C24EC702B002EE278 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69837B24EC702B002EE278 /* ErrorView.swift */; };
 		7E708A3423BF635B003B5702 /* SleepDurationCreatePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3323BF635B003B5702 /* SleepDurationCreatePlanViewController.swift */; };
-		7E708A3723BFD058003B5702 /* PlanDurationCreatePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3623BFD058003B5702 /* PlanDurationCreatePlanViewController.swift */; };
 		7E708A3923BFD09B003B5702 /* WentSleepCreatePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3823BFD09B003B5702 /* WentSleepCreatePlanViewController.swift */; };
 		7E708A3B23BFD0C7003B5702 /* PlanCreatedCreatePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3A23BFD0C7003B5702 /* PlanCreatedCreatePlanViewController.swift */; };
 		7E708A4023BFD92D003B5702 /* ChangePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3F23BFD92D003B5702 /* ChangePlanViewController.swift */; };
@@ -250,7 +249,6 @@
 		7E69837924EC69FE002EE278 /* ErrorViewRemovable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewRemovable.swift; sourceTree = "<group>"; };
 		7E69837B24EC702B002EE278 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		7E708A3323BF635B003B5702 /* SleepDurationCreatePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepDurationCreatePlanViewController.swift; sourceTree = "<group>"; };
-		7E708A3623BFD058003B5702 /* PlanDurationCreatePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDurationCreatePlanViewController.swift; sourceTree = "<group>"; };
 		7E708A3823BFD09B003B5702 /* WentSleepCreatePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WentSleepCreatePlanViewController.swift; sourceTree = "<group>"; };
 		7E708A3A23BFD0C7003B5702 /* PlanCreatedCreatePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCreatedCreatePlanViewController.swift; sourceTree = "<group>"; };
 		7E708A3F23BFD92D003B5702 /* ChangePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanViewController.swift; sourceTree = "<group>"; };
@@ -585,7 +583,6 @@
 				7E07A10023AFBEE300B9D61A /* WelcomeCreatelPlanViewController.swift */,
 				7E708A3323BF635B003B5702 /* SleepDurationCreatePlanViewController.swift */,
 				7E8AB6CD23A18D27009CE41A /* WakeUpTimeCreatePlanViewController.swift */,
-				7E708A3623BFD058003B5702 /* PlanDurationCreatePlanViewController.swift */,
 				7E708A3823BFD09B003B5702 /* WentSleepCreatePlanViewController.swift */,
 				7E708A3A23BFD0C7003B5702 /* PlanCreatedCreatePlanViewController.swift */,
 			);
@@ -1240,7 +1237,6 @@
 				7E97656623786B2800E3AEF2 /* DefaultRisePlanLocalDataSource.swift in Sources */,
 				7E9D9C0B24E59B08000772C0 /* Changeable.swift in Sources */,
 				7EB29E0D241987DD00116433 /* PrepareToSleepViewController.swift in Sources */,
-				7E708A3723BFD058003B5702 /* PlanDurationCreatePlanViewController.swift in Sources */,
 				7E97226925B8CA2D00DBEF5E /* StandartButton.swift in Sources */,
 				7ECA517E25E340BD009362F9 /* ContextPreview.swift in Sources */,
 				7E97656E2378813700E3AEF2 /* Log.swift in Sources */,
