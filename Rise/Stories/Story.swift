@@ -20,7 +20,6 @@ enum Story {
     case welcomeCreatePlan
     case sleepDurationCreatePlan(sleepDurationOutput: (Int) -> Void, presettedSleepDuration: Int?)
     case wakeUpTimeCreatePlan(wakeUpTimeOutput: (Date) -> Void, presettedWakeUpTime: Date?)
-    case planDurationCreatePlan(planDurationOutput: (Int) -> Void, presettedPlanDuration: Int?)
     case wentSleepCreatePlan(wentSleepOutput: (Date) -> Void, presettedWentSleepTime: Date?)
     case planCreatedSetupPlan
     
@@ -59,11 +58,6 @@ enum Story {
             let controller = Storyboard.setupPlan.instantiateViewController(of: WakeUpTimeCreatePlanViewController.self)
             controller.wakeUpTimeOutput = wakeUpTimeOutput
             controller.presettedWakeUpTime = presettedWakeUpTime
-            return controller
-        case .planDurationCreatePlan(let planDurationOutput, let presettedPlanDuration):
-            let controller = Storyboard.setupPlan.instantiateViewController(of: PlanDurationCreatePlanViewController.self)
-            controller.planDurationOutput = planDurationOutput
-            controller.presettedPlanDuration = presettedPlanDuration
             return controller
         case .wentSleepCreatePlan(let wentSleepOutput, let presettedWentSleepTime):
             let controller = Storyboard.setupPlan.instantiateViewController(of: WentSleepCreatePlanViewController.self)

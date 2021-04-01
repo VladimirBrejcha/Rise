@@ -24,12 +24,6 @@ final class CreatePlanAssembler {
                 },
                 presettedWakeUpTime: controller.choosenWakeUpTime
             ),
-            .planDurationCreatePlan(
-                planDurationOutput: { [weak controller] value in
-                    controller?.planDurationValueChanged(value)
-                },
-                presettedPlanDuration: controller.choosenPlanDuration
-            ),
             .wentSleepCreatePlan(
                 wentSleepOutput: { [weak controller] value in
                     controller?.lastTimeWentSleepValueChanged(value)

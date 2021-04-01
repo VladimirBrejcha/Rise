@@ -152,12 +152,6 @@ final class CreatePlanViewController:
                 backButtonHidden: false
             )
             createPlanView.model = CreatePlanView.Model(backButtonTitle: "Previous", nextButtonTitle: "Next")
-        case .planDurationCreatePlan:
-            createPlanView.state = CreatePlanView.State(
-                nextButtonEnabled: choosenPlanDuration != nil,
-                backButtonHidden: false
-            )
-            createPlanView.model = CreatePlanView.Model(backButtonTitle: "Previous", nextButtonTitle: "Next")
         case .wentSleepCreatePlan:
             createPlanView.state = CreatePlanView.State(
                 nextButtonEnabled: choosenLastTimeWentSleep != nil,
