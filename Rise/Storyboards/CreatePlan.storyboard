@@ -389,111 +389,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RbN-Di-cWj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4896" y="23"/>
-        </scene>
-        <!--Plan Duration Create Plan View Controller-->
-        <scene sceneID="6KN-fb-qT0">
-            <objects>
-                <viewController storyboardIdentifier="PlanDurationCreatePlanViewController" id="Ou7-kn-tNN" customClass="PlanDurationCreatePlanViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Um7-tj-kqP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="whz-6e-S2Y" customClass="DesignableContainerView" customModule="Rise" customModuleProvider="target">
-                                <rect key="frame" x="10" y="310.5" width="394" height="275"/>
-                                <subviews>
-                                    <slider opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minValue="15" maxValue="45" translatesAutoresizingMaskIntoConstraints="NO" id="3up-DL-9xJ">
-                                        <rect key="frame" x="48" y="225" width="298" height="31"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="qqu-Lb-Aue"/>
-                                        </constraints>
-                                        <color key="minimumTrackTintColor" white="1" alpha="0.070000000000000007" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="maximumTrackTintColor" white="1" alpha="0.070000000000000007" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <connections>
-                                            <action selector="planDurationChanged:" destination="Ou7-kn-tNN" eventType="valueChanged" id="zCt-fR-QZi"/>
-                                        </connections>
-                                    </slider>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcs-21-jWy">
-                                        <rect key="frame" x="356" y="225" width="21" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RGM-e9-JVN">
-                                        <rect key="frame" x="20" y="225" width="18" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setup plan duration" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ngC-fk-rQ8">
-                                        <rect key="frame" x="10" y="20" width="374" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" image="timeSlot" translatesAutoresizingMaskIntoConstraints="NO" id="EPw-NZ-q6I">
-                                        <rect key="frame" x="157" y="74" width="80" height="80"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="dwd-Af-o2G"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="dcs-21-jWy" firstAttribute="bottom" secondItem="3up-DL-9xJ" secondAttribute="bottom" id="7VQ-ML-6V0"/>
-                                    <constraint firstItem="EPw-NZ-q6I" firstAttribute="width" secondItem="whz-6e-S2Y" secondAttribute="height" multiplier="16:55" id="CQS-4B-UBH"/>
-                                    <constraint firstItem="ngC-fk-rQ8" firstAttribute="top" secondItem="whz-6e-S2Y" secondAttribute="top" constant="20" id="HXS-j0-DMA"/>
-                                    <constraint firstAttribute="trailing" secondItem="ngC-fk-rQ8" secondAttribute="trailing" constant="10" id="Ip5-Y8-web"/>
-                                    <constraint firstAttribute="bottom" secondItem="3up-DL-9xJ" secondAttribute="bottom" constant="20" id="LvC-gz-2sa"/>
-                                    <constraint firstItem="ngC-fk-rQ8" firstAttribute="leading" secondItem="whz-6e-S2Y" secondAttribute="leading" constant="10" id="PX0-Mt-gRF"/>
-                                    <constraint firstItem="EPw-NZ-q6I" firstAttribute="centerX" secondItem="whz-6e-S2Y" secondAttribute="centerX" id="PbH-sE-unx"/>
-                                    <constraint firstItem="dcs-21-jWy" firstAttribute="leading" secondItem="3up-DL-9xJ" secondAttribute="trailing" constant="12" id="Sgj-0U-YME"/>
-                                    <constraint firstItem="3up-DL-9xJ" firstAttribute="leading" secondItem="RGM-e9-JVN" secondAttribute="trailing" constant="12" id="bfb-Wf-2V4"/>
-                                    <constraint firstItem="EPw-NZ-q6I" firstAttribute="top" secondItem="ngC-fk-rQ8" secondAttribute="bottom" constant="30" id="hb2-hp-xsd"/>
-                                    <constraint firstItem="dcs-21-jWy" firstAttribute="top" secondItem="3up-DL-9xJ" secondAttribute="top" id="p3o-hY-6L9"/>
-                                    <constraint firstItem="3up-DL-9xJ" firstAttribute="leading" secondItem="whz-6e-S2Y" secondAttribute="leading" constant="50" id="qk5-au-07A"/>
-                                    <constraint firstItem="RGM-e9-JVN" firstAttribute="bottom" secondItem="3up-DL-9xJ" secondAttribute="bottom" id="rzd-RC-qYZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="3up-DL-9xJ" secondAttribute="trailing" constant="50" id="th7-4L-tba"/>
-                                    <constraint firstItem="RGM-e9-JVN" firstAttribute="top" secondItem="3up-DL-9xJ" secondAttribute="top" id="z08-b9-EJ1"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="12"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="background">
-                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHd-JO-6if">
-                                <rect key="frame" x="196.5" y="494.5" width="21" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="eQ8-z6-h3p"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="whz-6e-S2Y" firstAttribute="leading" secondItem="eQ8-z6-h3p" secondAttribute="leading" constant="10" id="AbF-Am-aU6"/>
-                            <constraint firstItem="3up-DL-9xJ" firstAttribute="top" secondItem="WHd-JO-6if" secondAttribute="bottom" constant="20" id="Fb2-qq-Rru"/>
-                            <constraint firstItem="WHd-JO-6if" firstAttribute="top" secondItem="EPw-NZ-q6I" secondAttribute="bottom" constant="30" id="J2O-Qg-OhU"/>
-                            <constraint firstItem="whz-6e-S2Y" firstAttribute="centerY" secondItem="Um7-tj-kqP" secondAttribute="centerY" id="N6r-uJ-y6x"/>
-                            <constraint firstItem="WHd-JO-6if" firstAttribute="centerX" secondItem="Um7-tj-kqP" secondAttribute="centerX" id="P1g-5Q-s2g"/>
-                            <constraint firstItem="whz-6e-S2Y" firstAttribute="centerX" secondItem="Um7-tj-kqP" secondAttribute="centerX" id="mmA-Oo-PrU"/>
-                            <constraint firstItem="eQ8-z6-h3p" firstAttribute="trailing" secondItem="whz-6e-S2Y" secondAttribute="trailing" constant="10" id="oL3-MX-rHb"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="planDurationLabel" destination="WHd-JO-6if" id="XEr-06-gqR"/>
-                        <outlet property="planDurationSlider" destination="3up-DL-9xJ" id="r6R-zW-QAf"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pg4-pM-0Wg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4222" y="23"/>
+            <point key="canvasLocation" x="4252" y="23"/>
         </scene>
         <!--Plan Created Create Plan View Controller-->
         <scene sceneID="QNg-hs-rwF">
@@ -570,6 +466,5 @@
         <image name="fallasleep" width="50" height="50"/>
         <image name="multiply.circle" catalog="system" width="128" height="121"/>
         <image name="sun.max.fill" catalog="system" width="128" height="124"/>
-        <image name="timeSlot" width="100" height="100"/>
     </resources>
 </document>
