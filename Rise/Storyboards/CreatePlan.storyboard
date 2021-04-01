@@ -126,6 +126,12 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JpR-2Z-H5P">
+                                <rect key="frame" x="366" y="535.5" width="15.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lNo-B3-99A">
                                 <rect key="frame" x="39" y="535.5" width="9" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -152,8 +158,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JpR-2Z-H5P">
-                                <rect key="frame" x="366" y="535.5" width="15.5" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How long do you wish to sleep for?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2l7-Yd-TfY">
+                                <rect key="frame" x="20" y="578" width="374" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -167,13 +173,16 @@
                             <constraint firstItem="u10-Gt-ZVI" firstAttribute="leading" secondItem="lNo-B3-99A" secondAttribute="trailing" constant="12" id="7z5-MN-Ouo"/>
                             <constraint firstItem="hhl-iL-ZVX" firstAttribute="centerY" secondItem="e8e-9a-xg4" secondAttribute="centerY" constant="-60" id="R72-Vs-Oph"/>
                             <constraint firstItem="5a6-ad-bCi" firstAttribute="centerX" secondItem="e8e-9a-xg4" secondAttribute="centerX" id="Rgu-xF-Ir5"/>
+                            <constraint firstItem="9dE-Kh-uNX" firstAttribute="trailing" secondItem="2l7-Yd-TfY" secondAttribute="trailing" constant="20" id="Sq3-c6-RJJ"/>
                             <constraint firstItem="9dE-Kh-uNX" firstAttribute="trailing" secondItem="m0j-2U-tVH" secondAttribute="trailing" constant="20" id="bZ6-oJ-6Hd"/>
                             <constraint firstItem="hhl-iL-ZVX" firstAttribute="centerX" secondItem="e8e-9a-xg4" secondAttribute="centerX" id="bg6-f3-lcH"/>
+                            <constraint firstItem="2l7-Yd-TfY" firstAttribute="leading" secondItem="9dE-Kh-uNX" secondAttribute="leading" constant="20" id="fbo-H6-TDw"/>
                             <constraint firstItem="lNo-B3-99A" firstAttribute="centerY" secondItem="u10-Gt-ZVI" secondAttribute="centerY" id="fsg-O4-1Lc"/>
                             <constraint firstItem="JpR-2Z-H5P" firstAttribute="centerY" secondItem="u10-Gt-ZVI" secondAttribute="centerY" id="j3b-5F-4ve"/>
                             <constraint firstItem="9dE-Kh-uNX" firstAttribute="trailing" secondItem="u10-Gt-ZVI" secondAttribute="trailing" constant="60" id="re5-c4-Ssd"/>
                             <constraint firstItem="m0j-2U-tVH" firstAttribute="top" secondItem="9dE-Kh-uNX" secondAttribute="top" id="uHV-sM-g30"/>
                             <constraint firstItem="m0j-2U-tVH" firstAttribute="leading" secondItem="9dE-Kh-uNX" secondAttribute="leading" constant="20" id="ubw-jh-nP5"/>
+                            <constraint firstItem="2l7-Yd-TfY" firstAttribute="top" secondItem="u10-Gt-ZVI" secondAttribute="bottom" constant="4" id="vXB-I4-Vkd"/>
                             <constraint firstItem="JpR-2Z-H5P" firstAttribute="leading" secondItem="u10-Gt-ZVI" secondAttribute="trailing" constant="12" id="wZH-Vv-4Zm"/>
                             <constraint firstItem="u10-Gt-ZVI" firstAttribute="leading" secondItem="9dE-Kh-uNX" secondAttribute="leading" constant="60" id="yJK-ge-c4x"/>
                         </constraints>
@@ -194,69 +203,50 @@
                     <view key="view" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ck-XY-rjz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ON7-S3-9Od" customClass="DesignableContainerView" customModule="Rise" customModuleProvider="target">
-                                <rect key="frame" x="10" y="291" width="394" height="314"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mcu-y6-jlt">
-                                        <rect key="frame" x="164" y="41" width="0.0" height="0.0"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose wake up time" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ess-id-0yv">
-                                        <rect key="frame" x="10" y="20" width="374" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" image="wakeup" translatesAutoresizingMaskIntoConstraints="NO" id="drr-71-2fR">
-                                        <rect key="frame" x="157" y="74" width="80" height="50"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="QK8-QF-xeI"/>
-                                        </constraints>
-                                    </imageView>
-                                    <datePicker contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="aHM-kz-WBT">
-                                        <rect key="frame" x="20" y="134" width="354" height="160"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="160" id="Ipp-By-ZPU"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="wakeUpTimeChanged:" destination="IqT-UZ-1E9" eventType="valueChanged" id="15y-WM-ery"/>
-                                        </connections>
-                                    </datePicker>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" image="sun.max.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="drr-71-2fR">
+                                <rect key="frame" x="157" y="317.5" width="100" height="100.5"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="drr-71-2fR" firstAttribute="centerX" secondItem="ON7-S3-9Od" secondAttribute="centerX" id="Qpg-oC-WbF"/>
-                                    <constraint firstAttribute="trailing" secondItem="aHM-kz-WBT" secondAttribute="trailing" constant="20" symbolic="YES" id="Qqc-f1-3Fu"/>
-                                    <constraint firstItem="Ess-id-0yv" firstAttribute="leading" secondItem="ON7-S3-9Od" secondAttribute="leading" constant="10" id="Xpn-B2-C6n"/>
-                                    <constraint firstItem="aHM-kz-WBT" firstAttribute="top" secondItem="drr-71-2fR" secondAttribute="bottom" constant="10" id="iav-GO-Cby"/>
-                                    <constraint firstItem="Ess-id-0yv" firstAttribute="top" secondItem="ON7-S3-9Od" secondAttribute="top" constant="20" id="kc7-9z-HbC"/>
-                                    <constraint firstItem="drr-71-2fR" firstAttribute="top" secondItem="Ess-id-0yv" secondAttribute="bottom" constant="30" id="qEh-NC-eAc"/>
-                                    <constraint firstItem="aHM-kz-WBT" firstAttribute="centerX" secondItem="ON7-S3-9Od" secondAttribute="centerX" id="tXJ-wa-NJs"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ess-id-0yv" secondAttribute="trailing" constant="10" id="vvn-vp-p9N"/>
-                                    <constraint firstItem="aHM-kz-WBT" firstAttribute="leading" secondItem="ON7-S3-9Od" secondAttribute="leading" constant="20" symbolic="YES" id="whX-a0-GtH"/>
-                                    <constraint firstAttribute="bottom" secondItem="aHM-kz-WBT" secondAttribute="bottom" constant="20" symbolic="YES" id="zcY-ck-EVh"/>
+                                    <constraint firstAttribute="height" constant="100" id="37s-BV-6fG"/>
+                                    <constraint firstAttribute="width" constant="100" id="QK8-QF-xeI"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="12"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="background">
-                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
+                            </imageView>
+                            <datePicker contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="aHM-kz-WBT">
+                                <rect key="frame" x="20" y="450" width="374" height="140"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="Ipp-By-ZPU"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="wakeUpTimeChanged:" destination="IqT-UZ-1E9" eventType="valueChanged" id="15y-WM-ery"/>
+                                </connections>
+                            </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose wake up time" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ess-id-0yv">
+                                <rect key="frame" x="20" y="44" width="374" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="At what time do you wish to wake up?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RgB-Lg-q8V">
+                                <rect key="frame" x="20" y="594" width="374" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tgb-tD-6VV"/>
                         <constraints>
-                            <constraint firstItem="tgb-tD-6VV" firstAttribute="trailing" secondItem="ON7-S3-9Od" secondAttribute="trailing" constant="10" id="OYq-3P-5T7"/>
-                            <constraint firstItem="ON7-S3-9Od" firstAttribute="centerY" secondItem="2Ck-XY-rjz" secondAttribute="centerY" id="afr-3d-SH0"/>
-                            <constraint firstItem="ON7-S3-9Od" firstAttribute="leading" secondItem="tgb-tD-6VV" secondAttribute="leading" constant="10" id="bvy-kG-V6z"/>
-                            <constraint firstItem="ON7-S3-9Od" firstAttribute="centerX" secondItem="2Ck-XY-rjz" secondAttribute="centerX" id="uJB-tO-bBw"/>
+                            <constraint firstItem="tgb-tD-6VV" firstAttribute="trailing" secondItem="aHM-kz-WBT" secondAttribute="trailing" constant="20" id="9Hr-1c-jec"/>
+                            <constraint firstItem="drr-71-2fR" firstAttribute="centerX" secondItem="2Ck-XY-rjz" secondAttribute="centerX" id="M7x-Ld-m34"/>
+                            <constraint firstItem="Ess-id-0yv" firstAttribute="top" secondItem="tgb-tD-6VV" secondAttribute="top" id="OEN-Bo-l5c"/>
+                            <constraint firstItem="drr-71-2fR" firstAttribute="centerY" secondItem="2Ck-XY-rjz" secondAttribute="centerY" constant="-80" id="Phi-Ur-qC0"/>
+                            <constraint firstItem="Ess-id-0yv" firstAttribute="leading" secondItem="tgb-tD-6VV" secondAttribute="leading" constant="20" id="dCb-6E-FMe"/>
+                            <constraint firstItem="RgB-Lg-q8V" firstAttribute="top" secondItem="aHM-kz-WBT" secondAttribute="bottom" constant="4" id="ech-oe-zOR"/>
+                            <constraint firstItem="RgB-Lg-q8V" firstAttribute="leading" secondItem="2Ck-XY-rjz" secondAttribute="leading" constant="20" id="eew-rR-O9Q"/>
+                            <constraint firstItem="aHM-kz-WBT" firstAttribute="leading" secondItem="tgb-tD-6VV" secondAttribute="leading" constant="20" id="fK7-Uf-l7V"/>
+                            <constraint firstItem="tgb-tD-6VV" firstAttribute="trailing" secondItem="RgB-Lg-q8V" secondAttribute="trailing" constant="20" id="ti4-SE-2eF"/>
+                            <constraint firstItem="tgb-tD-6VV" firstAttribute="trailing" secondItem="Ess-id-0yv" secondAttribute="trailing" constant="20" id="uUT-Of-D7Y"/>
+                            <constraint firstItem="aHM-kz-WBT" firstAttribute="top" secondItem="drr-71-2fR" secondAttribute="bottom" constant="32" id="xAO-zm-GMc"/>
                         </constraints>
                     </view>
                     <connections>
@@ -579,7 +569,7 @@
         <image name="defaultBackground" width="1280" height="2272"/>
         <image name="fallasleep" width="50" height="50"/>
         <image name="multiply.circle" catalog="system" width="128" height="121"/>
+        <image name="sun.max.fill" catalog="system" width="128" height="124"/>
         <image name="timeSlot" width="100" height="100"/>
-        <image name="wakeup" width="50" height="50"/>
     </resources>
 </document>
