@@ -20,7 +20,7 @@ final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
     @IBOutlet private weak var rightLabel: UILabel!
     @IBOutlet var loadingViewTitle: UILabel!
 
-    private var repeatButtonHandler: RepeatHandler?
+    var repeatButtonHandler: RepeatHandler?
     
     typealias RepeatHandler = (DaysCollectionCell) -> Void
     
@@ -34,7 +34,6 @@ final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
     struct Model: Hashable, Identifiable {
         let state: State
         let imageName: (left: String, right: String)
-        let repeatHandler: RepeatHandler
 
         // MARK: - Identifiable
         let id: String
@@ -69,7 +68,6 @@ final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
     private var model: Model?
     func configure(with model: Model) {
         self.model = model
-        repeatButtonHandler = model.repeatHandler
         leftTopLabel.font = UIFont.boldSystemFont(ofSize: 18)
         leftTopLabel.text = "Sunrise"
         rightTopLabel.font = UIFont.boldSystemFont(ofSize: 18)
@@ -116,6 +114,6 @@ final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
 
 extension DaysCollectionCell.Model: Changeable {
     init(copy: ChangeableWrapper<DaysCollectionCell.Model>) {
-        self.init(state: copy.state, imageName: copy.imageName, repeatHandler: copy.repeatHandler, id: copy.id)
+        self.init(state: copy.state, imageName: copy.imageName, id: copy.id)
     }
 }

@@ -29,12 +29,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GMJ-xI-VUX" customClass="DaysView" customModule="Rise" customModuleProvider="target">
-                                <rect key="frame" x="20" y="241.5" width="374" height="374"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="GMJ-xI-VUX" secondAttribute="height" multiplier="1:1" id="cUR-zf-KqQ"/>
-                                </constraints>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sleep planned in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4H-GS-uQy" customClass="FloatingLabel" customModule="Rise" customModuleProvider="target">
                                 <rect key="frame" x="10" y="706" width="394" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -52,15 +46,11 @@
                             <constraint firstItem="IfU-5m-gfV" firstAttribute="top" secondItem="CxZ-qH-yJ3" secondAttribute="top" id="cq5-nn-Fl5"/>
                             <constraint firstItem="ury-MB-qCt" firstAttribute="trailing" secondItem="A4H-GS-uQy" secondAttribute="trailing" constant="10" id="g7h-MM-uiU"/>
                             <constraint firstItem="ury-MB-qCt" firstAttribute="trailing" secondItem="x9i-c1-Zds" secondAttribute="trailing" constant="20" id="iIe-eJ-TZh"/>
-                            <constraint firstItem="GMJ-xI-VUX" firstAttribute="centerY" secondItem="ury-MB-qCt" secondAttribute="centerY" id="im8-fp-VXV"/>
                             <constraint firstItem="IfU-5m-gfV" firstAttribute="leading" secondItem="CxZ-qH-yJ3" secondAttribute="leading" id="jLu-3k-Gew"/>
                             <constraint firstAttribute="bottom" secondItem="IfU-5m-gfV" secondAttribute="bottom" id="pZ4-5v-PB6"/>
-                            <constraint firstItem="GMJ-xI-VUX" firstAttribute="leading" secondItem="ury-MB-qCt" secondAttribute="leading" constant="20" id="qP2-US-sfI"/>
-                            <constraint firstItem="ury-MB-qCt" firstAttribute="trailing" secondItem="GMJ-xI-VUX" secondAttribute="trailing" constant="20" id="qdR-kL-hgo"/>
                             <constraint firstItem="x9i-c1-Zds" firstAttribute="top" secondItem="A4H-GS-uQy" secondAttribute="bottom" constant="10" id="zrb-Jq-6Fq"/>
                         </constraints>
                         <connections>
-                            <outlet property="daysView" destination="GMJ-xI-VUX" id="3Vj-rV-N6b"/>
                             <outlet property="sleepButton" destination="x9i-c1-Zds" id="6Nx-0j-Bty"/>
                             <outlet property="timeUntilSleep" destination="A4H-GS-uQy" id="1gt-0a-YbQ"/>
                         </connections>

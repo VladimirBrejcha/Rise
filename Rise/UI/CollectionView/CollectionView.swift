@@ -10,15 +10,7 @@ import UIKit
 
 class CollectionView: UICollectionView {
     var cellTypes: [UICollectionViewCell.Type] { [] }
-    
-    private var cellIDs: [String] { cellTypes.map { String(describing: $0) } }
-    private var nibNames: [String] { cellIDs }
-    private var nibs: [UINib] {
-        nibNames.map {
-            UINib(nibName: $0, bundle: nil)
-        }
-    }
-    
+
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
         sharedInit()
@@ -30,8 +22,10 @@ class CollectionView: UICollectionView {
     }
     
     private func sharedInit() {
-        for index in cellIDs.indices {
-            register(nibs[index], forCellWithReuseIdentifier: cellIDs[index])
+        cellTypes.forEach { type in
+            let cellId = String(describing: type.self)
+            let nib = UINib(nibName: cellId, bundle: nil)
+            register(nib, forCellWithReuseIdentifier: cellId)
         }
     }
 }

@@ -11,6 +11,7 @@ import UIKit
 enum Story {
     // Main
     case today
+    case days (frame: CGRect)
     case plan
     case settings
     
@@ -38,6 +39,8 @@ enum Story {
         switch self {
         case .today:
             return TodayAssembler().assemble()
+        case .days(let frame):
+            return DaysAssembler().assemble(frame: frame)
         case .plan:
             return PersonalPlanAssembler().assemble()
         case .settings:

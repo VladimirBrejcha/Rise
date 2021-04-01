@@ -9,58 +9,48 @@
 import UIKit
 import SelectableStackView
 
-final class DaysView:
-    UIView,
-    SelectableStackViewDelegate,
-    NibLoadable
-{
+final class DaysView: UIView, SelectableStackViewDelegate, NibLoadable {
+    typealias Snapshot = NSDiffableDataSourceSnapshot<DaysCollectionView.Section, DaysCollectionView.Item.Model>
+
     @IBOutlet private weak var segmentedControl: SelectableStackView!
     @IBOutlet private weak var collectionView: DaysCollectionView!
-    var dataSource: DaysCollectionView.DataSource {
-        collectionView.diffableDataSource
-    }
-    
-    private var shouldCenter = true
-    
+    var snapshot: Snapshot? { collectionView.diffableDataSource?.snapshot() }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        sharedInit()
+        setupFromNib()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        sharedInit()
-    }
-    
-    private func sharedInit() {
         setupFromNib()
-        collectionView.didScrollToPageHandler = { [weak self] page in
-            if page >= 0 && page <= 2 {
-                self?.segmentedControl.select(true, at: page)
-            }
-        }
+    }
+
+    func configure(cellProvider: @escaping DaysCollectionView.CellProvider) {
+        collectionView.configure(
+            pageScrollHandler: { [weak self] page in
+                if page >= 0 && page <= 2 {
+                    self?.segmentedControl.select(true, at: page)
+                }
+            },
+            cellProvider: cellProvider
+        )
         segmentedControl.delegate = self
+    }
+
+    func centerItems() {
+        collectionView.scrollToPage(1, animated: false)
         segmentedControl.select(true, at: 1)
     }
-    
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-        if shouldCenter {
-            collectionView.setContentOffset(
-                CGPoint(x: collectionView.bounds.width, y: 0),
-                animated: false
-            )
-            shouldCenter = false
-        }
+
+    func applySnapshot(_ snapshot: Snapshot) {
+        collectionView.diffableDataSource?.apply(snapshot)
     }
-    
+
     // MARK: - SelectableStackViewDelegate -
     func didSelect(_ select: Bool, at index: Index, on selectableStackView: SelectableStackView) {
         if select {
-            collectionView.setContentOffset(
-                CGPoint(x: Int(collectionView.bounds.width) * index, y: 0),
-                animated: true
-            )
+            collectionView.scrollToPage(index)
         }
     }
 }

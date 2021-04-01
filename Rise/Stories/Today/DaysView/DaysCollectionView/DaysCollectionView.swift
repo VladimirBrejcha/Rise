@@ -8,53 +8,31 @@
 
 import UIKit
 
-final class DaysCollectionView: CollectionView, UICollectionViewDelegate {
-    override var cellTypes: [UICollectionViewCell.Type] { [Item.self] }
-
+final class DaysCollectionView: CollectionView {
     typealias Item = DaysCollectionCell
-
     enum Section {
         case sun
         case plan
     }
-
+    typealias CellProvider = (UICollectionView, IndexPath, Item.Model) -> Item?
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Item.Model>
-    private(set) var diffableDataSource: DataSource! // lateinit
 
-    var didScrollToPageHandler: ((_ page: Int) -> Void)?
+    override var cellTypes: [UICollectionViewCell.Type] { [Item.self] }
 
-    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
-        super.init(frame: frame, collectionViewLayout: layout)
-        sharedInit()
+    private(set) var diffableDataSource: DataSource?
+    private var pageScrollDelegate: CollectionPageScrollDelegate?
+
+    func configure(
+        pageScrollHandler: @escaping CollectionPageScrollDelegate.ScrollToPageHandler,
+        cellProvider: @escaping CellProvider
+    ) {
+        pageScrollDelegate = CollectionPageScrollDelegate(scrollToPageHandler: pageScrollHandler)
+        delegate = pageScrollDelegate
+        diffableDataSource = DataSource(collectionView: self, cellProvider: cellProvider)
+        dataSource = diffableDataSource
     }
 
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        sharedInit()
-    }
-
-    private func sharedInit() {
-        delegate = self
-        diffableDataSource = DataSource(
-            collectionView: self,
-            cellProvider: { collection, indexPath, item -> UICollectionViewCell? in
-                if let cell = collection.dequeueReusableCell(
-                    withReuseIdentifier: String(describing: Item.self),
-                    for: indexPath
-                ) as? DaysCollectionCell {
-                    cell.configure(with: item)
-                    return cell
-                }
-                return nil
-            }
-        )
-    }
-
-    // MARK: - UICollectionViewDelegate -
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let x = scrollView.contentOffset.x
-        let w = scrollView.bounds.size.width
-        let currentPage = Int(ceil(x/w))
-        didScrollToPageHandler?(currentPage)
+    func scrollToPage(_ page: Int, animated: Bool = true) {
+        scrollToItem(at: IndexPath(item: page, section: 0), at: .centeredHorizontally, animated: true)
     }
 }
