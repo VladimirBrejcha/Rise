@@ -382,55 +382,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mcC-ad-35o" customClass="DesignableContainerView" customModule="Rise" customModuleProvider="target">
-                                <rect key="frame" x="10" y="310.5" width="394" height="275"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rise plan generated!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JKd-ab-MPN">
-                                        <rect key="frame" x="10" y="120" width="374" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" image="check" translatesAutoresizingMaskIntoConstraints="NO" id="JbU-9V-BFS">
-                                        <rect key="frame" x="157" y="20" width="80" height="100"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="Dal-mE-CjH"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rise plan generated" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JKd-ab-MPN">
+                                <rect key="frame" x="20" y="466" width="374" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" image="checkmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JbU-9V-BFS">
+                                <rect key="frame" x="157" y="334" width="100" height="100"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="JbU-9V-BFS" firstAttribute="width" secondItem="mcC-ad-35o" secondAttribute="height" multiplier="16:55" id="AdV-HH-to6"/>
-                                    <constraint firstItem="JbU-9V-BFS" firstAttribute="centerX" secondItem="mcC-ad-35o" secondAttribute="centerX" id="BeJ-fn-ZGa"/>
-                                    <constraint firstItem="JKd-ab-MPN" firstAttribute="leading" secondItem="mcC-ad-35o" secondAttribute="leading" constant="10" id="b4e-ox-2TC"/>
-                                    <constraint firstItem="JKd-ab-MPN" firstAttribute="top" secondItem="JbU-9V-BFS" secondAttribute="bottom" id="eRR-hb-4ab"/>
-                                    <constraint firstAttribute="trailing" secondItem="JKd-ab-MPN" secondAttribute="trailing" constant="10" id="xx8-ih-Kzw"/>
-                                    <constraint firstItem="JbU-9V-BFS" firstAttribute="top" secondItem="mcC-ad-35o" secondAttribute="top" constant="20" id="yeZ-aO-tAZ"/>
+                                    <constraint firstAttribute="height" constant="100" id="4oV-5y-09P"/>
+                                    <constraint firstAttribute="width" constant="100" id="Dal-mE-CjH"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="12"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="background">
-                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="heavy"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome on board, we are going to improve you sleep schedule!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U5C-gP-zZT">
+                                <rect key="frame" x="20" y="506" width="374" height="33.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gDn-R6-A3p"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="mcC-ad-35o" firstAttribute="centerX" secondItem="kCL-BO-R01" secondAttribute="centerX" id="4mB-Pw-fmv"/>
-                            <constraint firstItem="mcC-ad-35o" firstAttribute="leading" secondItem="gDn-R6-A3p" secondAttribute="leading" constant="10" id="Bbl-jC-QoC"/>
-                            <constraint firstItem="gDn-R6-A3p" firstAttribute="trailing" secondItem="mcC-ad-35o" secondAttribute="trailing" constant="10" id="MIu-hX-mvd"/>
-                            <constraint firstItem="mcC-ad-35o" firstAttribute="centerY" secondItem="kCL-BO-R01" secondAttribute="centerY" id="gzW-MY-fgz"/>
+                            <constraint firstItem="JbU-9V-BFS" firstAttribute="centerX" secondItem="kCL-BO-R01" secondAttribute="centerX" id="EUc-PM-9d7"/>
+                            <constraint firstItem="JKd-ab-MPN" firstAttribute="centerY" secondItem="kCL-BO-R01" secondAttribute="centerY" constant="30" id="FK6-B6-55p"/>
+                            <constraint firstItem="U5C-gP-zZT" firstAttribute="top" secondItem="JKd-ab-MPN" secondAttribute="bottom" constant="16" id="IRq-G3-cog"/>
+                            <constraint firstItem="gDn-R6-A3p" firstAttribute="trailing" secondItem="JKd-ab-MPN" secondAttribute="trailing" constant="20" id="VVf-xf-aES"/>
+                            <constraint firstItem="gDn-R6-A3p" firstAttribute="trailing" secondItem="U5C-gP-zZT" secondAttribute="trailing" constant="20" id="ZfW-uQ-2Qx"/>
+                            <constraint firstItem="U5C-gP-zZT" firstAttribute="leading" secondItem="gDn-R6-A3p" secondAttribute="leading" constant="20" id="ljm-yt-AfL"/>
+                            <constraint firstItem="JKd-ab-MPN" firstAttribute="leading" secondItem="gDn-R6-A3p" secondAttribute="leading" constant="20" id="v8C-fe-nLG"/>
+                            <constraint firstItem="JKd-ab-MPN" firstAttribute="top" secondItem="JbU-9V-BFS" secondAttribute="bottom" constant="32" id="yyG-up-x8B"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z2f-fR-S5p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5581" y="23"/>
+            <point key="canvasLocation" x="4938" y="23"/>
         </scene>
     </scenes>
     <designables>
@@ -444,7 +434,7 @@
     <resources>
         <image name="bed.double.fill" catalog="system" width="128" height="82"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
-        <image name="check" width="100" height="100"/>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="defaultBackground" width="1280" height="2272"/>
         <image name="moon.fill" catalog="system" width="128" height="121"/>
         <image name="multiply.circle" catalog="system" width="128" height="121"/>
