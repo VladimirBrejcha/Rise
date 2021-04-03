@@ -24,7 +24,6 @@ final class CreatePlanViewController:
     // opened for DI into PageController controllers
     private(set) var choosenSleepDuration: Int?
     private(set) var choosenWakeUpTime: Date?
-    private(set) var choosenPlanDuration: Int?
     private(set) var choosenLastTimeWentSleep: Date?
     
     private var currentPage = 0
@@ -111,11 +110,6 @@ final class CreatePlanViewController:
         updateButtonsWithCurrentStory()
     }
     
-    func planDurationValueChanged(_ value: Int) {
-        choosenPlanDuration = value
-        updateButtonsWithCurrentStory()
-    }
-    
     func lastTimeWentSleepValueChanged(_ value: Date) {
         choosenLastTimeWentSleep = value
         updateButtonsWithCurrentStory()
@@ -169,11 +163,10 @@ final class CreatePlanViewController:
     private func generatePlan() throws {
         if let choosenSleepDuration = choosenSleepDuration,
             let choosenWakeUpTime = choosenWakeUpTime,
-            let choosenPlanDuration = choosenPlanDuration,
             let choosenLastTimeWentSleep = choosenLastTimeWentSleep {
             try makePlan(sleepDurationMin: choosenSleepDuration,
                          wakeUpTime: choosenWakeUpTime,
-                         planDurationDays: choosenPlanDuration,
+                         planDurationDays: 30, // Note: hardcoded default value
                          firstSleepTime: choosenLastTimeWentSleep)
         } else {
             throw PlanError.someFieldsAreMissing
