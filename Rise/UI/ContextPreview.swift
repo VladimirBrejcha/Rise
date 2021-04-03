@@ -44,10 +44,13 @@ final class ContextPreview: UIViewController, Statefull {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 0
-        titleLabel.font = Styles.Label.Title.font
+        titleLabel.textColor = .white
+        titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        descriptionLabel.textColor = .white
         descriptionLabel.textAlignment = .center
         descriptionLabel.numberOfLines = 0
+        descriptionLabel.font = UIFont.systemFont(ofSize: 14)
 
         view.addConstraints([
             view.heightAnchor.constraint(equalToConstant: 250),
