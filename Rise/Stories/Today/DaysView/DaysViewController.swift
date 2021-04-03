@@ -34,7 +34,7 @@ final class DaysViewController: UIViewController, Statefull {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("Not meant to be called")
+        fatalError("DaysViewController.required init: Not meant to be called")
     }
 
     // MARK: - Statefull -
@@ -194,39 +194,72 @@ final class DaysViewController: UIViewController, Statefull {
         return result
     }
 
-    // MARK: - Default items
+    // MARK: - Default items -
+
+    // MARK: - Sun
+    private var defaultSunImages: LeftRightTuple<UIImage> {
+        if let sunrise = UIImage(systemName: "sunrise.fill")?.applyingSymbolConfiguration(.init(pointSize: 44, weight: .light)),
+           let sunset = UIImage(systemName: "sunset.fill")?.applyingSymbolConfiguration(.init(pointSize: 44, weight: .light)) {
+            return (left: sunrise, right: sunset)
+        } else {
+            assertionFailure("Did not find expected defaultSunImages!")
+            return (left: UIImage(), right: UIImage())
+        }
+    }
+
+    private var defaultSunTitles: LeftRightTuple<String> { (left: "Sunrise", right: "Sunset") }
+
     private var defaultSunItems: [Item] {
         [.init(
             state: .loading,
-            imageName: (left: "sunrise", right: "sunset"),
+            image: defaultSunImages,
+            title: defaultSunTitles,
             id: "Sun.yesterday"
         ),
         .init(
             state: .loading,
-            imageName: (left: "sunrise", right: "sunset"),
+            image: defaultSunImages,
+            title: defaultSunTitles,
             id: "Sun.today"
         ),
         .init(
             state: .loading,
-            imageName: (left: "sunrise", right: "sunset"),
+            image: defaultSunImages,
+            title: defaultSunTitles,
             id: "Sun.tomorrow"
         )]
     }
 
+    private var defaultPlanImages: LeftRightTuple<UIImage> {
+        if let wakeup = UIImage(named: "wakeup"),
+           let fallasleep = UIImage(named: "fallasleep") {
+            return (left: wakeup, right: fallasleep)
+        } else {
+            assertionFailure("Did not find expected defaultPlanImages!")
+            return (left: UIImage(), right: UIImage())
+        }
+    }
+
+    private var defaultPlanTitles: LeftRightTuple<String> { (left: "Wake up", right: "To bed") }
+
+    // MARK: - Plan
     private var defaultPlanItems: [Item] {
         [.init(
             state: .showingInfo(info: "You don't have a plan yet"),
-            imageName: (left: "wakeup", right: "bed"),
+            image: defaultPlanImages,
+            title: defaultPlanTitles,
             id: "Plan.yesterday"
         ),
         .init(
             state: .showingInfo(info: "You don't have a plan yet"),
-            imageName: (left: "wakeup", right: "bed"),
+            image: defaultPlanImages,
+            title: defaultPlanTitles,
             id: "Plan.today"
         ),
         .init(
             state: .showingInfo(info: "You don't have a plan yet"),
-            imageName: (left: "wakeup", right: "bed"),
+            image: defaultPlanImages,
+            title: defaultPlanTitles,
             id: "Plan.tomorrow"
         )]
     }

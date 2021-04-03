@@ -9,6 +9,8 @@
 import UIKit
 import LoadingView
 
+typealias LeftRightTuple<T> = (left: T, right: T)
+
 final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
     @IBOutlet private weak var loadingView: LoadingView!
     @IBOutlet private weak var containerView: DesignableContainerView!
@@ -23,17 +25,18 @@ final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
     var repeatButtonHandler: RepeatHandler?
     
     typealias RepeatHandler = (DaysCollectionCell) -> Void
-    
-    enum State: Hashable {
-        case loading
-        case showingInfo (info: String)
-        case showingError (error: String)
-        case showingContent (left: String, right: String)
-    }
 
     struct Model: Hashable, Identifiable {
+        enum State: Hashable {
+            case loading
+            case showingInfo (info: String)
+            case showingError (error: String)
+            case showingContent (left: String, right: String)
+        }
+
         let state: State
-        let imageName: (left: String, right: String)
+        let image: (left: UIImage, right: UIImage)
+        let title: (left: String, right: String)
 
         // MARK: - Identifiable
         let id: String
@@ -68,31 +71,36 @@ final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
     private var model: Model?
     func configure(with model: Model) {
         self.model = model
-        leftTopLabel.font = UIFont.boldSystemFont(ofSize: 18)
-        leftTopLabel.text = "Sunrise"
-        rightTopLabel.font = UIFont.boldSystemFont(ofSize: 18)
-        rightTopLabel.text = "Sunset"
+
+        leftImageView.image = model.image.left
+        rightImageView.image =  model.image.right
+
+        leftTopLabel.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        leftTopLabel.text = model.title.left
+        leftTopLabel.textColor = .white
+
+        rightTopLabel.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        rightTopLabel.text = model.title.right
+        rightTopLabel.textColor = .white
+
         leftLabel.font = UIFont.systemFont(ofSize: 18)
+        leftLabel.textColor = .white
+
         rightLabel.font = UIFont.systemFont(ofSize: 18)
         rightLabel.textColor = .white
-        leftLabel.textColor = .white
+
         loadingViewTitle.textColor = .white
-        rightTopLabel.textColor = .white
-        leftTopLabel.textColor = .white
+        loadingViewTitle.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        loadingViewTitle.text = "Scheduled sleep"
+
         loadingView.backgroundColor = .clear
         loadingView.layer.borderColor = UIColor.white.withAlphaComponent(0.85).cgColor
         loadingView.layer.borderWidth = 1
         loadingView.infoLabelFont = UIFont.systemFont(ofSize: 18)
-        leftImageView.image = UIImage(systemName: "sunrise.fill")?.applyingSymbolConfiguration(.init(pointSize: 44, weight: .light))
-        rightImageView.image = UIImage(systemName: "sunset.fill")?.applyingSymbolConfiguration(.init(pointSize: 44, weight: .light))
-        loadingViewTitle.font = UIFont.boldSystemFont(ofSize: 18)
-        loadingViewTitle.text = "Scheduled sleep"
     }
 
     private func applyModel() {
         guard let model = model else { return }
-//        leftImageView.image = UIImage(named: model.imageName.left)
-//        rightImageView.image = UIImage(named: model.imageName.right)
         switch model.state {
         case .loading:
             self.loadingView.state = .loading
@@ -114,6 +122,6 @@ final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
 
 extension DaysCollectionCell.Model: Changeable {
     init(copy: ChangeableWrapper<DaysCollectionCell.Model>) {
-        self.init(state: copy.state, imageName: copy.imageName, id: copy.id)
+        self.init(state: copy.state, image: copy.image, title: copy.title, id: copy.id)
     }
 }
