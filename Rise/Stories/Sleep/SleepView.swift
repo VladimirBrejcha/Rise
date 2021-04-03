@@ -79,7 +79,7 @@ final class SleepView: UIView, PropertyAnimatable {
     ) {
         editAlarmButton.setImage(UIImage(systemName: "bell.fill"), for: .normal)
         editAlarmButton.centerTextAndImage(spacing: 8)
-        editAlarmButton.tintColor = Color.normalTitle
+        editAlarmButton.tintColor = .white
         editAlarmButton.titleLabel?.font = .systemFont(ofSize: 24)
 
         stopButton.title = "Stop"

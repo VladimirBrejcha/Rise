@@ -9,7 +9,6 @@
 import UIKit
 
 final class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
-    private typealias Colors = Styles.TabBar.Color
     private lazy var appeareance: UITabBarAppearance = {
         let appearance = UITabBarAppearance()
         appearance.configureWithTransparentBackground()
@@ -32,10 +31,7 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
     private func makeItemAppearance(for style: UITabBarItemAppearance.Style) -> UITabBarItemAppearance {
         let appearance = UITabBarItemAppearance(style: style)
         appearance.configureWithDefault(for: style)
-        appearance.normal.iconColor = Colors.Icon.normal
-        appearance.normal.titleTextAttributes = [.foregroundColor: Colors.Title.normal]
-        appearance.selected.titleTextAttributes = [.foregroundColor: Colors.Title.selected]
-        appearance.selected.iconColor = Colors.Icon.selected
+        appearance.applyStyle(.usual)
         return appearance
     }
     

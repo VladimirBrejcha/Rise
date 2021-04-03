@@ -18,7 +18,7 @@ final class TodayView: UIView {
     ) {
         sleepButton.onTouchUp = { _ in sleepHandler() }
         timeUntilSleep.dataSource = timeUntilSleepDataSource
-        timeUntilSleep.font = Styles.Label.Notification.font
+        timeUntilSleep.applyStyle(.notificationLabel)
         timeUntilSleep.beginRefreshing()
     }
 }

@@ -31,7 +31,7 @@ class DesignableContainerView: UIView {
     }
     
     private func sharedInit() {
-        background = Color.defaultContainerBackground
+        background = UIColor(named: "DefaultContainerBackground")
         cornerRadius = 12
         layer.borderWidth = 1
         layer.borderColor = UIColor.white.withAlphaComponent(0.85).cgColor

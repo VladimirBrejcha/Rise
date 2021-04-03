@@ -12,7 +12,7 @@ import UIKit
 class Button: UIButton, PropertyAnimatable, TouchObservable, StyledButton {
     var propertyAnimationDuration: Double = 0.1
 
-    var style: ButtonStyle = primaryButtonStyle()
+    var style: Style.Button = .primary
     
     var onTouchDown: ((Button) -> Void)?
     var onTouchUp: ((Button) -> Void)?
@@ -28,7 +28,7 @@ class Button: UIButton, PropertyAnimatable, TouchObservable, StyledButton {
     }
     
     func configure() {
-        applyStyle(primaryButtonStyle())
+        applyStyle(.primary)
         addTarget(self, action: #selector(touchDown(_:)), for: [.touchDown, .touchDragInside])
         addTarget(self, action: #selector(touchUp(_:)), for: [.touchUpInside, .touchDragOutside, .touchCancel])
     }

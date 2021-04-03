@@ -62,9 +62,7 @@ final class PersonalPlanView: UIView, PropertyAnimatable, Statefull {
 
     // MARK: - Configuration -
     func configure() {
-        topLabel.textAlignment = .center
-        topLabel.textColor = Styles.Label.Title.color
-        topLabel.font = Styles.Label.Title.font
+        topLabel.applyStyle(.bigSizedTitle)
     }
 
     // MARK: - Internal -

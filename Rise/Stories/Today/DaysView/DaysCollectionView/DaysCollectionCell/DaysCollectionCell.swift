@@ -55,6 +55,11 @@ final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
     // MARK: - LifeCycle -
     override func awakeFromNib() {
         super.awakeFromNib()
+        leftTopLabel.applyStyle(.mediumSizedTitle)
+        rightTopLabel.applyStyle(.mediumSizedTitle)
+        loadingViewTitle.applyStyle(.mediumSizedTitle)
+        leftLabel.applyStyle(.mediumSizedBody)
+        rightLabel.applyStyle(.mediumSizedBody)
         loadingView.repeatTouchUpHandler = { [weak self] _ in
             if let self = self {
                 self.repeatButtonHandler?(self)
@@ -75,22 +80,9 @@ final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
         leftImageView.image = model.image.left
         rightImageView.image =  model.image.right
 
-        leftTopLabel.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         leftTopLabel.text = model.title.left
-        leftTopLabel.textColor = .white
-
-        rightTopLabel.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         rightTopLabel.text = model.title.right
-        rightTopLabel.textColor = .white
 
-        leftLabel.font = UIFont.systemFont(ofSize: 18)
-        leftLabel.textColor = .white
-
-        rightLabel.font = UIFont.systemFont(ofSize: 18)
-        rightLabel.textColor = .white
-
-        loadingViewTitle.textColor = .white
-        loadingViewTitle.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         loadingViewTitle.text = "Scheduled sleep"
 
         loadingView.backgroundColor = .clear
