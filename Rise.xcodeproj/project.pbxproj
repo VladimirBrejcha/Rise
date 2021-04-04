@@ -27,7 +27,7 @@
 		7E31497D23425CA600941606 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31497C23425CA600941606 /* TableViewDataSource.swift */; };
 		7E31497F23425D3700941606 /* ChangePlanTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31497E23425D3700941606 /* ChangePlanTableView.swift */; };
 		7E354E3024119B1C0036FF3F /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E354E2F24119B1C0036FF3F /* LocalDataSource.swift */; };
-		7E378662261679460098A204 /* CALayer+Styled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E378661261679460098A204 /* CALayer+Styled.swift */; };
+		7E378662261679460098A204 /* CALayer+Styleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E378661261679460098A204 /* CALayer+Styleable.swift */; };
 		7E388E38243A3C16001A28DF /* PropertyAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E388E37243A3C16001A28DF /* PropertyAnimatable.swift */; };
 		7E3980D52360D0020059C592 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E3980D42360D0020059C592 /* Intro.storyboard */; };
 		7E4798F3239D85D5007FB8F2 /* CreatePlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E4798F2239D85D5007FB8F2 /* CreatePlan.storyboard */; };
@@ -47,10 +47,13 @@
 		7E5BDADE2371F08400E43F37 /* RiseLocation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5BDADC2371F08400E43F37 /* RiseLocation+CoreDataClass.swift */; };
 		7E5BDADF2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5BDADD2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift */; };
 		7E5F292A23F9638C0050DFD3 /* FloatingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5F292923F9638C0050DFD3 /* FloatingLabel.swift */; };
-		7E6225AA26192DF9001AA8FD /* Styled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6225A926192DF9001AA8FD /* Styled.swift */; };
-		7E6225B326192E24001AA8FD /* UILabel+Styled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6225B226192E24001AA8FD /* UILabel+Styled.swift */; };
-		7E6225B826192E3F001AA8FD /* UIButton+Styled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6225B726192E3F001AA8FD /* UIButton+Styled.swift */; };
-		7E6225C026192E6E001AA8FD /* UITabBarItemAppearance+Styled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6225BF26192E6E001AA8FD /* UITabBarItemAppearance+Styled.swift */; };
+		7E6225AA26192DF9001AA8FD /* Styleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6225A926192DF9001AA8FD /* Styleable.swift */; };
+		7E6225B326192E24001AA8FD /* UILabel+Styleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6225B226192E24001AA8FD /* UILabel+Styleable.swift */; };
+		7E6225B826192E3F001AA8FD /* UIButton+Styleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6225B726192E3F001AA8FD /* UIButton+Styleable.swift */; };
+		7E6225C026192E6E001AA8FD /* UITabBarItemAppearance+Styleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6225BF26192E6E001AA8FD /* UITabBarItemAppearance+Styleable.swift */; };
+		7E6225D22619CD75001AA8FD /* HorizontalFadeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6225D12619CD75001AA8FD /* HorizontalFadeView.swift */; };
+		7E6225D72619CD9F001AA8FD /* Gradientable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6225D62619CD9F001AA8FD /* Gradientable.swift */; };
+		7E6225DF2619CDE7001AA8FD /* CAGradientLayer+Gradientable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6225DE2619CDE7001AA8FD /* CAGradientLayer+Gradientable.swift */; };
 		7E6268C024D5D49C00F70BC3 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6268BF24D5D49C00F70BC3 /* TodayView.swift */; };
 		7E6268C324D5FAA900F70BC3 /* SelectableStackView in Frameworks */ = {isa = PBXBuildFile; productRef = 7E6268C224D5FAA900F70BC3 /* SelectableStackView */; };
 		7E644D4F24FACF5600BF198C /* PlanError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E644D4E24FACF5600BF198C /* PlanError.swift */; };
@@ -217,7 +220,7 @@
 		7E31497C23425CA600941606 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		7E31497E23425D3700941606 /* ChangePlanTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanTableView.swift; sourceTree = "<group>"; };
 		7E354E2F24119B1C0036FF3F /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
-		7E378661261679460098A204 /* CALayer+Styled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Styled.swift"; sourceTree = "<group>"; };
+		7E378661261679460098A204 /* CALayer+Styleable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Styleable.swift"; sourceTree = "<group>"; };
 		7E388E37243A3C16001A28DF /* PropertyAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyAnimatable.swift; sourceTree = "<group>"; };
 		7E3980D42360D0020059C592 /* Intro.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
 		7E4798F2239D85D5007FB8F2 /* CreatePlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreatePlan.storyboard; sourceTree = "<group>"; };
@@ -236,10 +239,13 @@
 		7E5BDADC2371F08400E43F37 /* RiseLocation+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RiseLocation+CoreDataClass.swift"; path = "Rise/Data/Location/Entity/RiseLocation+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		7E5BDADD2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RiseLocation+CoreDataProperties.swift"; path = "Rise/Data/Location/Entity/RiseLocation+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		7E5F292923F9638C0050DFD3 /* FloatingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabel.swift; sourceTree = "<group>"; };
-		7E6225A926192DF9001AA8FD /* Styled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styled.swift; sourceTree = "<group>"; };
-		7E6225B226192E24001AA8FD /* UILabel+Styled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Styled.swift"; sourceTree = "<group>"; };
-		7E6225B726192E3F001AA8FD /* UIButton+Styled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Styled.swift"; sourceTree = "<group>"; };
-		7E6225BF26192E6E001AA8FD /* UITabBarItemAppearance+Styled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarItemAppearance+Styled.swift"; sourceTree = "<group>"; };
+		7E6225A926192DF9001AA8FD /* Styleable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styleable.swift; sourceTree = "<group>"; };
+		7E6225B226192E24001AA8FD /* UILabel+Styleable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Styleable.swift"; sourceTree = "<group>"; };
+		7E6225B726192E3F001AA8FD /* UIButton+Styleable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Styleable.swift"; sourceTree = "<group>"; };
+		7E6225BF26192E6E001AA8FD /* UITabBarItemAppearance+Styleable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarItemAppearance+Styleable.swift"; sourceTree = "<group>"; };
+		7E6225D12619CD75001AA8FD /* HorizontalFadeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalFadeView.swift; sourceTree = "<group>"; };
+		7E6225D62619CD9F001AA8FD /* Gradientable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradientable.swift; sourceTree = "<group>"; };
+		7E6225DE2619CDE7001AA8FD /* CAGradientLayer+Gradientable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAGradientLayer+Gradientable.swift"; sourceTree = "<group>"; };
 		7E6268BF24D5D49C00F70BC3 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		7E644D4E24FACF5600BF198C /* PlanError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanError.swift; sourceTree = "<group>"; };
 		7E644D5024FACF6E00BF198C /* PermissionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionError.swift; sourceTree = "<group>"; };
@@ -512,6 +518,7 @@
 			children = (
 				7EB29E08241987C800116433 /* PrepareToSleepAssembler.swift */,
 				7E9D9C0724E596DA000772C0 /* PrepareToSleepView.swift */,
+				7E6225D12619CD75001AA8FD /* HorizontalFadeView.swift */,
 				7EB29E0C241987DD00116433 /* PrepareToSleepViewController.swift */,
 			);
 			path = PrepareToSleep;
@@ -546,16 +553,16 @@
 			path = Alarming;
 			sourceTree = "<group>";
 		};
-		7E6225AE26192E10001AA8FD /* Styled */ = {
+		7E6225AE26192E10001AA8FD /* Styleable */ = {
 			isa = PBXGroup;
 			children = (
-				7E6225A926192DF9001AA8FD /* Styled.swift */,
-				7E378661261679460098A204 /* CALayer+Styled.swift */,
-				7E6225B226192E24001AA8FD /* UILabel+Styled.swift */,
-				7E6225B726192E3F001AA8FD /* UIButton+Styled.swift */,
-				7E6225BF26192E6E001AA8FD /* UITabBarItemAppearance+Styled.swift */,
+				7E6225A926192DF9001AA8FD /* Styleable.swift */,
+				7E378661261679460098A204 /* CALayer+Styleable.swift */,
+				7E6225B226192E24001AA8FD /* UILabel+Styleable.swift */,
+				7E6225B726192E3F001AA8FD /* UIButton+Styleable.swift */,
+				7E6225BF26192E6E001AA8FD /* UITabBarItemAppearance+Styleable.swift */,
 			);
-			path = Styled;
+			path = Styleable;
 			sourceTree = "<group>";
 		};
 		7E6225CA2619B954001AA8FD /* Days */ = {
@@ -566,6 +573,15 @@
 				7EADA5E7239DA9FA00FE4843 /* View */,
 			);
 			path = Days;
+			sourceTree = "<group>";
+		};
+		7E6225E32619CE26001AA8FD /* Gradientable */ = {
+			isa = PBXGroup;
+			children = (
+				7E6225D62619CD9F001AA8FD /* Gradientable.swift */,
+				7E6225DE2619CDE7001AA8FD /* CAGradientLayer+Gradientable.swift */,
+			);
+			path = Gradientable;
 			sourceTree = "<group>";
 		};
 		7E644D4D24FACF4100BF198C /* Errors */ = {
@@ -900,7 +916,8 @@
 				7EEB1E0C24424010001ABE4A /* AudioPlayer.swift */,
 				7EE227642504C38B00EC70CB /* UserDefaults.swift */,
 				7EA64EEA25A8BC9F0029FBE7 /* NotificationManager.swift */,
-				7E6225AE26192E10001AA8FD /* Styled */,
+				7E6225E32619CE26001AA8FD /* Gradientable */,
+				7E6225AE26192E10001AA8FD /* Styleable */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1207,6 +1224,7 @@
 				7E31497F23425D3700941606 /* ChangePlanTableView.swift in Sources */,
 				7E708A3B23BFD0C7003B5702 /* PlanCreatedCreatePlanViewController.swift in Sources */,
 				7EA64EEB25A8BC9F0029FBE7 /* NotificationManager.swift in Sources */,
+				7E6225DF2619CDE7001AA8FD /* CAGradientLayer+Gradientable.swift in Sources */,
 				7E388E38243A3C16001A28DF /* PropertyAnimatable.swift in Sources */,
 				7E97656023786AB000E3AEF2 /* SunTimeData.xcdatamodeld in Sources */,
 				7EA7BA0A2354F1810051A92D /* DaysCollectionView.swift in Sources */,
@@ -1220,7 +1238,7 @@
 				7EB29E09241987C800116433 /* PrepareToSleepAssembler.swift in Sources */,
 				7EB26951234F9972008AEB3D /* NibLoadable.swift in Sources */,
 				7EB90047232AB9EB006EB9A8 /* ProgressBar.swift in Sources */,
-				7E6225B326192E24001AA8FD /* UILabel+Styled.swift in Sources */,
+				7E6225B326192E24001AA8FD /* UILabel+Styleable.swift in Sources */,
 				7EA38AE423783EFC0007919B /* DefaultLocationRepository.swift in Sources */,
 				7E69837A24EC69FE002EE278 /* ErrorViewRemovable.swift in Sources */,
 				7E25756723F8749A007AE4B5 /* Animation.swift in Sources */,
@@ -1231,12 +1249,13 @@
 				7E354E3024119B1C0036FF3F /* LocalDataSource.swift in Sources */,
 				7E162FF1243D0E22004C68B1 /* AutoRefreshable.swift in Sources */,
 				7EAD159F25F50DF700392E6A /* DaysViewController.swift in Sources */,
-				7E378662261679460098A204 /* CALayer+Styled.swift in Sources */,
+				7E378662261679460098A204 /* CALayer+Styleable.swift in Sources */,
 				7ED6DD3F25E33E3D00F906CE /* Statefull.swift in Sources */,
 				7E07A10123AFBEE300B9D61A /* WelcomeCreatelPlanViewController.swift in Sources */,
 				7E989FE125F5B0DF001954CD /* CollectionPageScrollDelegate.swift in Sources */,
 				7ED8E59723BFFD5100A1E96F /* Story.swift in Sources */,
 				7EF4C198240412EC0098135A /* ChangePlanDatePickerTableCellModel.swift in Sources */,
+				7E6225D22619CD75001AA8FD /* HorizontalFadeView.swift in Sources */,
 				7EE640492378665D005BE355 /* DefaultSunTimeRepository.swift in Sources */,
 				7E17337924104DDA0028FDBE /* LocationRepository.swift in Sources */,
 				7EA38AE92378526F0007919B /* LocationData.xcdatamodeld in Sources */,
@@ -1253,7 +1272,7 @@
 				7E69836E24EC6980002EE278 /* AboveAllAlert.swift in Sources */,
 				7E052A422352377E005D7FAD /* InternalError.swift in Sources */,
 				7E69836724EC690C002EE278 /* RecoveryAttemper.swift in Sources */,
-				7E6225AA26192DF9001AA8FD /* Styled.swift in Sources */,
+				7E6225AA26192DF9001AA8FD /* Styleable.swift in Sources */,
 				92D12FDD22A44B3B0093B0A3 /* CustomTabBarController.swift in Sources */,
 				7E173377241047460028FDBE /* RisePlanRepository.swift in Sources */,
 				7E06FE92252E3829005D72CB /* AnimatedTransitionNavigationController.swift in Sources */,
@@ -1268,6 +1287,7 @@
 				7ECA517E25E340BD009362F9 /* ContextPreview.swift in Sources */,
 				7E97656E2378813700E3AEF2 /* Log.swift in Sources */,
 				7E9D9C0D24E59B21000772C0 /* ChangeableWrapper.swift in Sources */,
+				7E6225D72619CD9F001AA8FD /* Gradientable.swift in Sources */,
 				7EB196DA23A01B8F00E6C40B /* CreatePlanViewController.swift in Sources */,
 				92D7D6532296F297009321AE /* AppDelegate.swift in Sources */,
 				7E69837424EC69CE002EE278 /* ErrorDescriptionExtractable.swift in Sources */,
@@ -1317,10 +1337,10 @@
 				7E8C6B982350FB9C0086162F /* TableView.swift in Sources */,
 				7EEB1E0D24424010001ABE4A /* AudioPlayer.swift in Sources */,
 				7E8675C724165F25004DAF63 /* GetDailyTimeUseCase.swift in Sources */,
-				7E6225C026192E6E001AA8FD /* UITabBarItemAppearance+Styled.swift in Sources */,
+				7E6225C026192E6E001AA8FD /* UITabBarItemAppearance+Styleable.swift in Sources */,
 				7E9D9C1124E5BEFA000772C0 /* CreatePlanView.swift in Sources */,
 				7EB9004023256BF3006EB9A8 /* DaysView.swift in Sources */,
-				7E6225B826192E3F001AA8FD /* UIButton+Styled.swift in Sources */,
+				7E6225B826192E3F001AA8FD /* UIButton+Styleable.swift in Sources */,
 				7EC7392523C4EF5B00C484B8 /* ConfirmationAssembler.swift in Sources */,
 				7E8675CE2417E9AA004DAF63 /* PausePlanUseCase.swift in Sources */,
 				7E69837824EC69EE002EE278 /* ErrorViewCreatable.swift in Sources */,
