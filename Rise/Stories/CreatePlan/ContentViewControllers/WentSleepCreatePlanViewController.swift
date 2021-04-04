@@ -16,7 +16,8 @@ final class WentSleepCreatePlanViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        wentSleepDatePicker.applyStyle(.usual)
         if let presettedWentSleepTime = presettedWentSleepTime {
             wentSleepDatePicker.setDate(presettedWentSleepTime, animated: false)
         }

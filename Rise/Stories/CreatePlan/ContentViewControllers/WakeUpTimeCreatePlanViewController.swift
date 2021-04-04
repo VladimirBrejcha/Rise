@@ -17,6 +17,7 @@ final class WakeUpTimeCreatePlanViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        wakeUpTimeDatePicker.applyStyle(.usual)
         if let presettedWakeUpTime = presettedWakeUpTime {
             wakeUpTimeDatePicker.setDate(presettedWakeUpTime, animated: false)
         }

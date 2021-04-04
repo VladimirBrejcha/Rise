@@ -32,7 +32,7 @@ final class HorizontalFadeView: UIView {
 }
 
 fileprivate extension UIColor {
-    func colorsUsingAlpha(_ alpha:CGFloat...) -> [UIColor] {
+    func colorsUsingAlpha(_ alpha: CGFloat...) -> [UIColor] {
         alpha.map { self.withAlphaComponent($0) }
     }
 }
