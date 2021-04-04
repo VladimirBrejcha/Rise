@@ -13,7 +13,6 @@ final class TodayAssembler {
         controller.observePlan = DomainLayer.observePlan
         controller.getDailyTime = DomainLayer.getDailyTime
         controller.confirmPlan = DomainLayer.confirmPlan
-
         return controller
     }
 }

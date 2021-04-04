@@ -88,11 +88,16 @@ final class DaysViewController: UIViewController, Statefull {
                 for: indexPath
             ) as? DaysCollectionView.Item {
                 cell.configure(with: item)
-                cell.repeatButtonHandler = { [weak self] cell in // todo not valid for plan cells
-                    if let self = self, let state = self.state {
-                        self.setState(state.changing { $0.sunTime = .loading })
-                        self.refreshSunTimes()
+                if indexPath.section == 0 {
+                    cell.repeatButtonHandler = { [weak self] cell in
+                        log(.info, "Repeat button pressed on cell: \(item.id)")
+                        if let self = self, let state = self.state {
+                            self.setState(state.changing { $0.sunTime = .loading })
+                            self.refreshSunTimes()
+                        }
                     }
+                } else {
+                    cell.repeatButtonHandler = nil
                 }
                 return cell
             }
@@ -198,8 +203,8 @@ final class DaysViewController: UIViewController, Statefull {
 
     // MARK: - Sun
     private var defaultSunImages: LeftRightTuple<UIImage> {
-        if let sunrise = UIImage(systemName: "sunrise.fill")?.applyingSymbolConfiguration(.init(pointSize: 44, weight: .light)),
-           let sunset = UIImage(systemName: "sunset.fill")?.applyingSymbolConfiguration(.init(pointSize: 44, weight: .light)) {
+        if let sunrise = UIImage(systemName: "sunrise.fill"),
+           let sunset = UIImage(systemName: "sunset.fill") {
             return (left: sunrise, right: sunset)
         } else {
             assertionFailure("Did not find expected defaultSunImages!")
@@ -207,7 +212,9 @@ final class DaysViewController: UIViewController, Statefull {
         }
     }
 
-    private var defaultSunTitles: LeftRightTuple<String> { (left: "Sunrise", right: "Sunset") }
+    private var defaultSunTitles: LeftMiddleRightTuple<String> {
+        (left: "Sunrise", middle: "Sun position", right: "Sunset")
+    }
 
     private var defaultSunItems: [Item] {
         [.init(
@@ -230,6 +237,7 @@ final class DaysViewController: UIViewController, Statefull {
         )]
     }
 
+    // MARK: - Plan
     private var defaultPlanImages: LeftRightTuple<UIImage> {
         if let wakeup = UIImage(named: "wakeup"),
            let fallasleep = UIImage(named: "fallasleep") {
@@ -240,9 +248,10 @@ final class DaysViewController: UIViewController, Statefull {
         }
     }
 
-    private var defaultPlanTitles: LeftRightTuple<String> { (left: "Wake up", right: "To bed") }
+    private var defaultPlanTitles: LeftMiddleRightTuple<String> {
+        (left: "Wake up", middle: "Scheduled sleep", right: "To bed")
+    }
 
-    // MARK: - Plan
     private var defaultPlanItems: [Item] {
         [.init(
             state: .showingInfo(info: "You don't have a plan yet"),
