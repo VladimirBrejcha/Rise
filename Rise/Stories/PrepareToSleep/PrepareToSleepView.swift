@@ -16,6 +16,8 @@ final class PrepareToSleepView: UIView, PropertyAnimatable {
     @IBOutlet private weak var startSleepButton: FloatingButton!
     @IBOutlet private weak var startSleepLabel: UILabel!
     @IBOutlet private weak var wakeUpContainerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private var fadeViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var wakeUpLabelTopConstraint: NSLayoutConstraint!
     @IBOutlet private weak var wakeUpTitleLabel: UILabel!
     @IBOutlet private weak var wakeUpDatePicker: UIDatePicker!
     @IBOutlet private weak var timeUntilWakeUpLabel: AutoRefreshableLabel!
@@ -31,7 +33,10 @@ final class PrepareToSleepView: UIView, PropertyAnimatable {
             animate { [weak self] in
                 if let self = self {
                     self.toSleepLabel.alpha = self.state == .expanded ? 0 : 1
-                    self.wakeUpContainerHeightConstraint.constant = self.state == .expanded ? 200 : 50
+                    self.wakeUpDatePicker.alpha = self.state == .expanded ? 1 : 0
+                    self.fadeViewHeightConstraint.constant = self.state == .expanded ? 40 : 50
+                    self.wakeUpLabelTopConstraint.constant = self.state == .expanded ? -30 : 10
+                    self.wakeUpContainerHeightConstraint.constant = self.state == .expanded ? 190 : 50
                     self.layoutIfNeeded()
                 }
             }
@@ -83,10 +88,11 @@ final class PrepareToSleepView: UIView, PropertyAnimatable {
         handlers?.wakeUpTimeChanged(sender.date)
     }
     
-    @IBAction private func wakeUpTouchUp(_ sender: UITapGestureRecognizer) {
+
+    @IBAction func handleTimeTouchUp(_ sender: UITapGestureRecognizer) {
         handlers?.wakeUp()
     }
-    
+
     // MARK: - Configure
     private var isConfigured = false
     func configure(model: Model, dataSource: DataSource, handlers: Handlers) {
