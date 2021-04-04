@@ -10,10 +10,11 @@ import UIKit
 import LoadingView
 
 typealias LeftRightTuple<T> = (left: T, right: T)
+typealias LeftMiddleRightTuple<T> = (left: T, middle: T, right: T)
 
 final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
     @IBOutlet private weak var loadingView: LoadingView!
-    @IBOutlet private weak var containerView: DesignableContainerView!
+    @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var leftImageView: UIImageView!
     @IBOutlet private var leftTopLabel: UILabel!
     @IBOutlet private weak var leftLabel: UILabel!
@@ -35,8 +36,8 @@ final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
         }
 
         let state: State
-        let image: (left: UIImage, right: UIImage)
-        let title: (left: String, right: String)
+        let image: LeftRightTuple<UIImage>
+        let title: LeftMiddleRightTuple<String>
 
         // MARK: - Identifiable
         let id: String
@@ -55,11 +56,17 @@ final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
     // MARK: - LifeCycle -
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        layer.applyStyle(.usual)
+
         leftTopLabel.applyStyle(.mediumSizedTitle)
         rightTopLabel.applyStyle(.mediumSizedTitle)
         loadingViewTitle.applyStyle(.mediumSizedTitle)
         leftLabel.applyStyle(.mediumSizedBody)
         rightLabel.applyStyle(.mediumSizedBody)
+        loadingView.infoLabelFont = Style.Text.mediumSizedBody.font
+        loadingView.backgroundColor = .clear
+        
         loadingView.repeatTouchUpHandler = { [weak self] _ in
             if let self = self {
                 self.repeatButtonHandler?(self)
@@ -82,13 +89,7 @@ final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
 
         leftTopLabel.text = model.title.left
         rightTopLabel.text = model.title.right
-
-        loadingViewTitle.text = "Scheduled sleep"
-
-        loadingView.backgroundColor = .clear
-        loadingView.layer.borderColor = UIColor.white.withAlphaComponent(0.85).cgColor
-        loadingView.layer.borderWidth = 1
-        loadingView.infoLabelFont = UIFont.systemFont(ofSize: 18)
+        loadingViewTitle.text = model.title.middle
     }
 
     private func applyModel() {
@@ -97,17 +98,21 @@ final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
         case .loading:
             self.loadingView.state = .loading
             self.containerView.isHidden = true
+            self.loadingViewTitle.isHidden = false
         case .showingInfo(let info):
             self.loadingView.state = .info(message: info)
             self.containerView.isHidden = true
+            self.loadingViewTitle.isHidden = false
         case .showingError(let error):
             self.loadingView.state = .error(message: error)
             self.containerView.isHidden = true
+            self.loadingViewTitle.isHidden = false
         case .showingContent(let left, let right):
             self.leftLabel.text = left
             self.rightLabel.text = right
             self.loadingView.state = .hidden
             self.containerView.isHidden = false
+            self.loadingViewTitle.isHidden = true
         }
     }
 }
