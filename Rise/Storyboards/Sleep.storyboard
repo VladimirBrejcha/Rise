@@ -63,15 +63,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w1G-qy-7HK">
                                 <rect key="frame" x="10" y="423" width="394" height="50"/>
                                 <subviews>
-                                    <datePicker alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="Pjf-in-Z4h">
-                                        <rect key="frame" x="0.0" y="-65" width="394" height="180"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="180" id="Fi2-Ol-zYP"/>
-                                        </constraints>
-                                        <connections>
-                                            <action selector="wakeUpValueChanged:" destination="APf-fs-GD3" eventType="valueChanged" id="aSO-q5-Xee"/>
-                                        </connections>
-                                    </datePicker>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgG-vp-w8i">
                                         <rect key="frame" x="10" y="10" width="374" height="30"/>
                                         <gestureRecognizers/>
@@ -82,7 +73,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bCo-5Q-2C3" customClass="HorizontalFadeView" customModule="Rise" customModuleProvider="target">
+                                    <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="bCo-5Q-2C3" customClass="HorizontalFadeView" customModule="Rise" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -90,20 +81,29 @@
                                             <constraint firstAttribute="height" constant="50" id="HJh-gH-pxc"/>
                                         </constraints>
                                     </view>
+                                    <datePicker alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="Pjf-in-Z4h">
+                                        <rect key="frame" x="97" y="-65" width="200" height="180"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="180" id="Fi2-Ol-zYP"/>
+                                            <constraint firstAttribute="width" constant="200" id="yp1-Q8-9du"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="wakeUpValueChanged:" destination="APf-fs-GD3" eventType="valueChanged" id="aSO-q5-Xee"/>
+                                        </connections>
+                                    </datePicker>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="fgG-vp-w8i" secondAttribute="trailing" constant="10" id="5yy-Px-uYJ"/>
                                     <constraint firstItem="Pjf-in-Z4h" firstAttribute="centerY" secondItem="w1G-qy-7HK" secondAttribute="centerY" id="8eq-y3-dHr"/>
-                                    <constraint firstAttribute="trailing" secondItem="Pjf-in-Z4h" secondAttribute="trailing" id="Ds8-wb-aV3"/>
                                     <constraint firstItem="bCo-5Q-2C3" firstAttribute="leading" secondItem="w1G-qy-7HK" secondAttribute="leading" id="HYW-G2-Zll"/>
-                                    <constraint firstItem="fgG-vp-w8i" firstAttribute="top" secondItem="w1G-qy-7HK" secondAttribute="top" constant="10" id="I4P-EZ-snv"/>
-                                    <constraint firstItem="Pjf-in-Z4h" firstAttribute="leading" secondItem="w1G-qy-7HK" secondAttribute="leading" id="Suf-Kh-KIZ"/>
                                     <constraint firstAttribute="trailing" secondItem="bCo-5Q-2C3" secondAttribute="trailing" id="U8p-a2-Hlp"/>
                                     <constraint firstItem="fgG-vp-w8i" firstAttribute="leading" secondItem="w1G-qy-7HK" secondAttribute="leading" constant="10" id="Udk-wY-3dN"/>
+                                    <constraint firstItem="fgG-vp-w8i" firstAttribute="centerY" secondItem="w1G-qy-7HK" secondAttribute="centerY" id="fBr-Wa-7bd"/>
                                     <constraint firstAttribute="height" constant="50" id="iUn-wb-UPq"/>
                                     <constraint firstItem="bCo-5Q-2C3" firstAttribute="centerY" secondItem="w1G-qy-7HK" secondAttribute="centerY" id="rAK-vk-KSh"/>
+                                    <constraint firstItem="Pjf-in-Z4h" firstAttribute="centerX" secondItem="w1G-qy-7HK" secondAttribute="centerX" id="rq9-ez-Ypy"/>
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="PDc-vU-zAb" appends="YES" id="CZy-xp-iGZ"/>
@@ -115,7 +115,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IV8-6m-UNl">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IV8-6m-UNl">
                                 <rect key="frame" x="10" y="407" width="394" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -151,15 +151,15 @@
                             <constraint firstAttribute="trailing" secondItem="IV8-6m-UNl" secondAttribute="trailing" constant="10" id="zip-zD-8In"/>
                         </constraints>
                         <connections>
-                            <outlet property="fadeViewHeightConstraint" destination="HJh-gH-pxc" id="RSC-th-51e"/>
+                            <outlet property="fadeView" destination="bCo-5Q-2C3" id="voa-hV-Vsh"/>
                             <outlet property="startSleepButton" destination="jtf-Rn-AX8" id="hmx-eI-XMF"/>
                             <outlet property="startSleepLabel" destination="xQO-cs-6vp" id="b7z-jB-b1Z"/>
                             <outlet property="timeUntilWakeUpLabel" destination="LjJ-vb-W3f" id="4iI-yb-hPK"/>
+                            <outlet property="timeUntilWakeUpTopConstraint" destination="uKi-7b-l0k" id="RQF-QH-9CN"/>
                             <outlet property="titleLabel" destination="eFW-pU-9p4" id="piW-IM-qJt"/>
                             <outlet property="toSleepLabel" destination="IV8-6m-UNl" id="GGU-bW-jij"/>
                             <outlet property="wakeUpContainerHeightConstraint" destination="iUn-wb-UPq" id="G5i-jN-mWW"/>
                             <outlet property="wakeUpDatePicker" destination="Pjf-in-Z4h" id="kZF-30-dmk"/>
-                            <outlet property="wakeUpLabelTopConstraint" destination="I4P-EZ-snv" id="Bf4-Ev-2Yr"/>
                             <outlet property="wakeUpTitleLabel" destination="fgG-vp-w8i" id="PDo-Dl-sXz"/>
                         </connections>
                     </view>
