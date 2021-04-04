@@ -96,12 +96,9 @@ final class PrepareToSleepView: UIView, PropertyAnimatable {
         self.handlers = handlers
         timeUntilWakeUpLabel.dataSource = dataSource.timeUntilWakeUp
         timeUntilWakeUpLabel.beginRefreshing()
-        
-        startSleepButton.layer.cornerRadius = 0
+
         startSleepButton.backgroundColor = .clear
         startSleepButton.alpha = 0.9
-        
-        wakeUpDatePicker.setValue(UIColor.white, forKeyPath: "textColor")
         
         isConfigured = true
     }
