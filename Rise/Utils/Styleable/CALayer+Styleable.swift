@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension CALayer: Styled {
+extension CALayer: Styleable {
     func applyStyle(_ style: Style.Layer) {
         self.cornerRadius = style.cornerRadius
         self.shadowColor = style.shadow.color

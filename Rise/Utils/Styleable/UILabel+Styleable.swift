@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UILabel: Styled {
+extension UILabel: Styleable {
     func applyStyle(_ style: Style.Text) {
         self.font = style.font
         if let color = style.color {

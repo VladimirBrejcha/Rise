@@ -6,7 +6,7 @@
 //  Copyright © 2021 VladimirBrejcha. All rights reserved.
 //
 
-protocol Styled {
+protocol Styleable {
     associatedtype StyleType
     func applyStyle(_ style: StyleType)
 }

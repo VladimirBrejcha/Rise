@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol StyledButton: UIButton, Styled {
+protocol StyledButton: UIButton, Styleable {
     var style: Style.Button { get set }
 }
 

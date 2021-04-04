@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UITabBarItemAppearance: Styled {
+extension UITabBarItemAppearance: Styleable {
     func applyStyle(_ style: Rise.Style.TabBar.Item) {
         normal.iconColor = style.iconColor.normal
         normal.titleTextAttributes = [.foregroundColor: style.titleColor.normal]
