@@ -16,7 +16,8 @@ final class SleepView: UIView, PropertyAnimatable {
     @IBOutlet private weak var editAlarmDatePicker: UIDatePicker!
     @IBOutlet private weak var cancelEditAlarmButton: UIButton!
     @IBOutlet private weak var saveAlarmEditButton: UIButton!
-    @IBOutlet private weak var editAlarmButtonContainer: DesignableContainerView!
+    @IBOutlet private var backgroundImage: UIImageView!
+    @IBOutlet private weak var editAlarmButtonContainer: UIView!
 
     // MARK: - PropertyAnimatable
     var propertyAnimationDuration: Double { 0.15 }
@@ -77,6 +78,10 @@ final class SleepView: UIView, PropertyAnimatable {
         alarmTimeChangedHandler: @escaping (Date) -> Void,
         stopHandler: @escaping () -> Void
     ) {
+        let blurView = UIBlurEffect(style: .dark)
+        let view = UIVisualEffectView(effect: blurView)
+        view.frame = backgroundImage.bounds
+        backgroundImage.addSubview(view)
         editAlarmButton.setImage(UIImage(systemName: "bell.fill"), for: .normal)
         editAlarmButton.centerTextAndImage(spacing: 8)
         editAlarmButton.tintColor = .white
@@ -104,6 +109,11 @@ final class SleepView: UIView, PropertyAnimatable {
         self.cancelAlarmEditHandler = cancelAlarmEditHandler
         self.saveAlarmEditHandler = saveAlarmEditHandler
         self.alarmTimeChangedHandler = alarmTimeChangedHandler
+
+        self.editAlarmButtonContainer.layer.cornerRadius = 12
+        self.editAlarmButtonContainer.alpha = 0.9
+        self.editAlarmButton.alpha = 0.9
+        self.editAlarmButtonContainer.backgroundColor = UIColor.white.withAlphaComponent(0.1)
     }
 
     @IBAction private func alarmTouchUp(_ sender: UIButton) {
