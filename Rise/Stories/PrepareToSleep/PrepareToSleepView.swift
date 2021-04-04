@@ -9,20 +9,21 @@
 import UIKit
 
 final class PrepareToSleepView: UIView, PropertyAnimatable {
+
     // MARK: - PropertyAnimatable
     var propertyAnimationDuration: Double = 0.3
     
-    @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var startSleepButton: FloatingButton!
-    @IBOutlet private weak var startSleepLabel: UILabel!
-    @IBOutlet private weak var wakeUpContainerHeightConstraint: NSLayoutConstraint!
-    @IBOutlet private var fadeViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet var wakeUpLabelTopConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var wakeUpTitleLabel: UILabel!
-    @IBOutlet private weak var wakeUpDatePicker: UIDatePicker!
-    @IBOutlet private weak var timeUntilWakeUpLabel: AutoRefreshableLabel!
-    @IBOutlet private weak var toSleepLabel: UILabel!
-    
+    @IBOutlet private var titleLabel: UILabel!
+    @IBOutlet private var startSleepButton: FloatingButton!
+    @IBOutlet private var startSleepLabel: UILabel!
+    @IBOutlet private var wakeUpContainerHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private var wakeUpTitleLabel: UILabel!
+    @IBOutlet private var wakeUpDatePicker: UIDatePicker!
+    @IBOutlet private var timeUntilWakeUpLabel: AutoRefreshableLabel!
+    @IBOutlet private var toSleepLabel: UILabel!
+    @IBOutlet private var timeUntilWakeUpTopConstraint: NSLayoutConstraint!
+    @IBOutlet private var fadeView: HorizontalFadeView!
+
     // MARK: - State
     enum State: Equatable {
         case normal
@@ -30,19 +31,24 @@ final class PrepareToSleepView: UIView, PropertyAnimatable {
     }
     var state: State = .normal {
         didSet {
-            animate { [weak self] in
-                if let self = self {
-                    self.toSleepLabel.alpha = self.state == .expanded ? 0 : 1
-                    self.wakeUpDatePicker.alpha = self.state == .expanded ? 1 : 0
-                    self.fadeViewHeightConstraint.constant = self.state == .expanded ? 40 : 50
-                    self.wakeUpLabelTopConstraint.constant = self.state == .expanded ? -30 : 10
-                    self.wakeUpContainerHeightConstraint.constant = self.state == .expanded ? 190 : 50
-                    self.layoutIfNeeded()
+            animate {
+                [self.toSleepLabel, self.wakeUpDatePicker, self.wakeUpTitleLabel].invertAlpha()
+
+                if self.state == .normal {
+                    self.fadeView.transform = CGAffineTransform.identity
+                    self.wakeUpContainerHeightConstraint.constant = 50
+                    self.timeUntilWakeUpTopConstraint.constant = 16
+                } else if self.state == .expanded {
+                    self.fadeView.transform = CGAffineTransform(scaleX: 1, y: 0.8)
+                    self.wakeUpContainerHeightConstraint.constant = 200
+                    self.timeUntilWakeUpTopConstraint.constant = -4
                 }
+                
+                self.layoutIfNeeded()
             }
         }
     }
-    
+
     // MARK: - Model
     struct Model {
         let toSleepText: String
@@ -87,7 +93,6 @@ final class PrepareToSleepView: UIView, PropertyAnimatable {
     @IBAction private func wakeUpValueChanged(_ sender: UIDatePicker) {
         handlers?.wakeUpTimeChanged(sender.date)
     }
-    
 
     @IBAction func handleTimeTouchUp(_ sender: UITapGestureRecognizer) {
         handlers?.wakeUp()
@@ -102,6 +107,8 @@ final class PrepareToSleepView: UIView, PropertyAnimatable {
         self.handlers = handlers
         timeUntilWakeUpLabel.dataSource = dataSource.timeUntilWakeUp
         timeUntilWakeUpLabel.beginRefreshing()
+
+        wakeUpDatePicker.applyStyle(.usual)
 
         startSleepButton.backgroundColor = .clear
         startSleepButton.alpha = 0.9
@@ -119,5 +126,11 @@ extension PrepareToSleepView.Model: Changeable {
             wakeUpTitle: copy.wakeUpTitle,
             wakeUpTime: copy.wakeUpTime
         )
+    }
+}
+
+fileprivate extension Array where Element == UIView {
+    func invertAlpha() {
+        forEach { $0.alpha = 1 - $0.alpha }
     }
 }

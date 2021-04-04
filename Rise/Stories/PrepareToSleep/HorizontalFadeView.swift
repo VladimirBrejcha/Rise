@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HorizontalFadeView: UIView {
+final class HorizontalFadeView: UIView {
     private lazy var gradientLayer: CAGradientLayer = { layer in
         layer.apply(
             Gradient(

@@ -108,7 +108,7 @@ final class PrepareToSleepViewController: UIViewController {
         } else if timeSinceNow > 0 {
             return "Good night, sleep well"
         } else /* if timeSinceNow < 0 */ {
-            return "You are a little late today, this happens to all of us. Sleep well!"
+            return "You are a little late today, it happens with all of us. Sleep well!"
         }
     }
 }
