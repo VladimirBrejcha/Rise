@@ -29,6 +29,16 @@ enum Style {
         struct Border {
             private(set) var color: CGColor = UIColor.clear.cgColor
             private(set) var width: CGFloat = 0
+
+            // MARK: - Instances
+            static var usual: Border {
+                Border(color: UIColor.white.withAlphaComponent(0.85).cgColor, width: 1)
+            }
+        }
+
+        // MARK: - Instances
+        static var usual: Layer {
+            Layer(border: .usual, cornerRadius: 12)
         }
     }
 
