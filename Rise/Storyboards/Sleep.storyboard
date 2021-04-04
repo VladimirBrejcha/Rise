@@ -19,6 +19,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultBackground" translatesAutoresizingMaskIntoConstraints="NO" id="EL6-ld-qe1">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jtf-Rn-AX8" customClass="FloatingButton" customModule="Rise" customModuleProvider="target">
                                 <rect key="frame" x="177" y="768" width="60" height="60"/>
                                 <constraints>
@@ -32,7 +35,7 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFW-pU-9p4">
                                 <rect key="frame" x="10" y="74.5" width="394" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -42,15 +45,18 @@
                                     <constraint firstAttribute="width" constant="35" id="LHf-fg-MYI"/>
                                     <constraint firstAttribute="height" constant="35" id="XdQ-0k-7od"/>
                                 </constraints>
-                                <color key="tintColor" name="LightPink"/>
-                                <state key="normal" image="cancel"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="multiply.circle" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="35" weight="light"/>
+                                </state>
                                 <connections>
                                     <action selector="closeTouchUp:" destination="APf-fs-GD3" eventType="touchUpInside" id="QR7-xg-JRd"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQO-cs-6vp">
                                 <rect key="frame" x="10" y="842" width="394" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -93,13 +99,13 @@
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LjJ-vb-W3f" customClass="AutoRefreshableLabel" customModule="Rise" customModuleProvider="target">
                                 <rect key="frame" x="10" y="489" width="394" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IV8-6m-UNl">
                                 <rect key="frame" x="10" y="407" width="394" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -120,10 +126,14 @@
                             <constraint firstItem="tYg-Dq-Zrm" firstAttribute="bottom" secondItem="xQO-cs-6vp" secondAttribute="bottom" constant="20" id="Sbi-BK-omK"/>
                             <constraint firstItem="jtf-Rn-AX8" firstAttribute="centerX" secondItem="APf-fs-GD3" secondAttribute="centerX" id="WkN-RN-BrL"/>
                             <constraint firstItem="xQO-cs-6vp" firstAttribute="leading" secondItem="APf-fs-GD3" secondAttribute="leading" constant="10" id="YnV-so-rHm"/>
+                            <constraint firstItem="EL6-ld-qe1" firstAttribute="trailing" secondItem="tYg-Dq-Zrm" secondAttribute="trailing" id="e5p-b5-oII"/>
                             <constraint firstItem="IV8-6m-UNl" firstAttribute="leading" secondItem="APf-fs-GD3" secondAttribute="leading" constant="10" id="e8K-fo-ajw"/>
+                            <constraint firstItem="EL6-ld-qe1" firstAttribute="leading" secondItem="tYg-Dq-Zrm" secondAttribute="leading" id="f2A-UL-cc0"/>
                             <constraint firstAttribute="trailing" secondItem="xQO-cs-6vp" secondAttribute="trailing" constant="10" id="iti-dJ-iJh"/>
+                            <constraint firstAttribute="bottom" secondItem="EL6-ld-qe1" secondAttribute="bottom" id="lDd-yX-bu5"/>
                             <constraint firstItem="eFW-pU-9p4" firstAttribute="centerY" secondItem="m1Z-4p-KwJ" secondAttribute="centerY" constant="-2" id="mhJ-Ra-QFR"/>
                             <constraint firstItem="tYg-Dq-Zrm" firstAttribute="trailing" secondItem="LjJ-vb-W3f" secondAttribute="trailing" constant="10" id="r1c-4j-vqr"/>
+                            <constraint firstItem="EL6-ld-qe1" firstAttribute="top" secondItem="APf-fs-GD3" secondAttribute="top" id="s5t-jC-Wuu"/>
                             <constraint firstItem="LjJ-vb-W3f" firstAttribute="top" secondItem="w1G-qy-7HK" secondAttribute="bottom" constant="16" id="uKi-7b-l0k"/>
                             <constraint firstAttribute="trailing" secondItem="IV8-6m-UNl" secondAttribute="trailing" constant="10" id="zip-zD-8In"/>
                         </constraints>
@@ -368,12 +378,10 @@
     </designables>
     <resources>
         <image name="beginToSleepIcon" width="111" height="111"/>
-        <image name="cancel" width="75" height="75"/>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="defaultBackground" width="1280" height="2272"/>
+        <image name="multiply.circle" catalog="system" width="128" height="121"/>
         <image name="multiply.circle.fill" catalog="system" width="128" height="121"/>
-        <namedColor name="LightPink">
-            <color red="0.71799999475479126" green="0.61599999666213989" blue="0.74500000476837158" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="disabledTitle">
             <color red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

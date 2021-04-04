@@ -17,9 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultBackground" translatesAutoresizingMaskIntoConstraints="NO" id="HFA-In-GCm">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultBackground" translatesAutoresizingMaskIntoConstraints="NO" id="HFA-In-GCm">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vga-E1-S1H">
                                 <rect key="frame" x="367" y="59" width="35" height="35"/>
@@ -79,11 +78,15 @@
                             <constraint firstItem="Vga-E1-S1H" firstAttribute="top" secondItem="MrT-vQ-GsT" secondAttribute="top" constant="15" id="66V-00-5xq"/>
                             <constraint firstItem="qus-zp-R0h" firstAttribute="top" secondItem="laz-fg-JOl" secondAttribute="bottom" constant="10" id="7Pn-dX-gxq"/>
                             <constraint firstItem="laz-fg-JOl" firstAttribute="leading" secondItem="MrT-vQ-GsT" secondAttribute="leading" id="9Nz-sU-ZY1"/>
+                            <constraint firstItem="HFA-In-GCm" firstAttribute="trailing" secondItem="MrT-vQ-GsT" secondAttribute="trailing" id="CER-ye-Veo"/>
                             <constraint firstItem="MrT-vQ-GsT" firstAttribute="trailing" secondItem="laz-fg-JOl" secondAttribute="trailing" id="Fdl-du-yR0"/>
                             <constraint firstItem="qus-zp-R0h" firstAttribute="leading" secondItem="MrT-vQ-GsT" secondAttribute="leading" constant="10" id="GUg-7n-a1u"/>
                             <constraint firstItem="MrT-vQ-GsT" firstAttribute="trailing" secondItem="qus-zp-R0h" secondAttribute="trailing" constant="10" id="LvQ-dm-I4C"/>
                             <constraint firstItem="MrT-vQ-GsT" firstAttribute="trailing" secondItem="Vga-E1-S1H" secondAttribute="trailing" constant="12" id="eLp-bL-KZY"/>
+                            <constraint firstAttribute="bottom" secondItem="HFA-In-GCm" secondAttribute="bottom" id="fmA-TB-exu"/>
                             <constraint firstItem="laz-fg-JOl" firstAttribute="top" secondItem="Vga-E1-S1H" secondAttribute="bottom" constant="10" id="o17-dH-9dF"/>
+                            <constraint firstItem="HFA-In-GCm" firstAttribute="leading" secondItem="MrT-vQ-GsT" secondAttribute="leading" id="oK8-m6-67Y"/>
+                            <constraint firstItem="HFA-In-GCm" firstAttribute="top" secondItem="mrk-j1-Kya" secondAttribute="top" id="q3I-bt-kWO"/>
                             <constraint firstItem="MrT-vQ-GsT" firstAttribute="bottom" secondItem="qus-zp-R0h" secondAttribute="bottom" constant="30" id="xZT-ID-Sd5"/>
                         </constraints>
                         <connections>
