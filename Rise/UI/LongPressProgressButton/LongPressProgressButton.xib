@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,15 +18,15 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="97"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gDP-iP-DrZ" customClass="Button" customModule="Rise" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="TRm-LH-8z8"/>
-                    </constraints>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gDP-iP-DrZ" customClass="Button" customModule="Rise" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="85"/>
                 </button>
-                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="4EA-aS-3gZ">
-                    <rect key="frame" x="20" y="56" width="374" height="42"/>
-                    <color key="progressTintColor" name="violet"/>
+                <progressView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="4EA-aS-3gZ">
+                    <rect key="frame" x="20" y="91" width="374" height="7"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="6" id="fFW-kM-D9V"/>
+                    </constraints>
+                    <color key="progressTintColor" red="0.44313725490196076" green="1" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                 </progressView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -44,9 +43,9 @@
             <point key="canvasLocation" x="144.92753623188406" y="-19.084821428571427"/>
         </view>
     </objects>
-    <resources>
-        <namedColor name="violet">
-            <color red="0.55699998140335083" green="0.3529999852180481" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-    </resources>
+    <designables>
+        <designable name="gDP-iP-DrZ">
+            <size key="intrinsicContentSize" width="30" height="30"/>
+        </designable>
+    </designables>
 </document>

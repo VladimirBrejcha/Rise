@@ -34,6 +34,8 @@ final class LongPressProgressButton: UIView, NibLoadable {
     
     private func sharedInit() {
         setupFromNib()
+        progressView.layer.cornerRadius = 3
+        progressView.clipsToBounds = true
         button.onTouchDown = { [weak self] _ in
             guard let self = self else { return }
             if self.workItem != nil { return }
