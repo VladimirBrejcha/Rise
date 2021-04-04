@@ -139,4 +139,15 @@ enum Style {
             )
         }
     }
+    
+    // MARK: - Picker
+    struct Picker {
+        let textColor: UIColor
+        let lineColor: UIColor
+
+        // MARK: - Instances
+        static var usual: Picker {
+            Picker(textColor: .white, lineColor: .clear)
+        }
+    }
 }
