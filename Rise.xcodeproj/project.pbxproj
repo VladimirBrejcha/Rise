@@ -47,6 +47,8 @@
 		7E5BDADE2371F08400E43F37 /* RiseLocation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5BDADC2371F08400E43F37 /* RiseLocation+CoreDataClass.swift */; };
 		7E5BDADF2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5BDADD2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift */; };
 		7E5E3350261A17FF000EE976 /* UIDatePicker+Styleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5E334F261A17FF000EE976 /* UIDatePicker+Styleable.swift */; };
+		7E5E3355261A3496000EE976 /* invertAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5E3354261A3496000EE976 /* invertAlpha.swift */; };
+		7E5E335A261A34B4000EE976 /* applyBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5E3359261A34B4000EE976 /* applyBlur.swift */; };
 		7E5F292A23F9638C0050DFD3 /* FloatingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5F292923F9638C0050DFD3 /* FloatingLabel.swift */; };
 		7E6225AA26192DF9001AA8FD /* Styleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6225A926192DF9001AA8FD /* Styleable.swift */; };
 		7E6225B326192E24001AA8FD /* UILabel+Styleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6225B226192E24001AA8FD /* UILabel+Styleable.swift */; };
@@ -240,6 +242,8 @@
 		7E5BDADC2371F08400E43F37 /* RiseLocation+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RiseLocation+CoreDataClass.swift"; path = "Rise/Data/Location/Entity/RiseLocation+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		7E5BDADD2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RiseLocation+CoreDataProperties.swift"; path = "Rise/Data/Location/Entity/RiseLocation+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		7E5E334F261A17FF000EE976 /* UIDatePicker+Styleable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDatePicker+Styleable.swift"; sourceTree = "<group>"; };
+		7E5E3354261A3496000EE976 /* invertAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = invertAlpha.swift; sourceTree = "<group>"; };
+		7E5E3359261A34B4000EE976 /* applyBlur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = applyBlur.swift; sourceTree = "<group>"; };
 		7E5F292923F9638C0050DFD3 /* FloatingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabel.swift; sourceTree = "<group>"; };
 		7E6225A926192DF9001AA8FD /* Styleable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styleable.swift; sourceTree = "<group>"; };
 		7E6225B226192E24001AA8FD /* UILabel+Styleable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Styleable.swift"; sourceTree = "<group>"; };
@@ -553,6 +557,15 @@
 				7E514DB225A87F5E000EBE81 /* AlarmingViewController.swift */,
 			);
 			path = Alarming;
+			sourceTree = "<group>";
+		};
+		7E5E335E261A34C2000EE976 /* UIViewExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				7E5E3354261A3496000EE976 /* invertAlpha.swift */,
+				7E5E3359261A34B4000EE976 /* applyBlur.swift */,
+			);
+			path = UIViewExtensions;
 			sourceTree = "<group>";
 		};
 		7E6225AE26192E10001AA8FD /* Styleable */ = {
@@ -918,6 +931,7 @@
 				7E0834AB2387351400BA1AE8 /* DateExtensions.swift */,
 				7EEB1E0C24424010001ABE4A /* AudioPlayer.swift */,
 				7EE227642504C38B00EC70CB /* UserDefaults.swift */,
+				7E5E335E261A34C2000EE976 /* UIViewExtensions */,
 				7EA64EEA25A8BC9F0029FBE7 /* NotificationManager.swift */,
 				7E6225E32619CE26001AA8FD /* Gradientable */,
 				7E6225AE26192E10001AA8FD /* Styleable */,
@@ -1241,6 +1255,7 @@
 				7EB29E09241987C800116433 /* PrepareToSleepAssembler.swift in Sources */,
 				7EB26951234F9972008AEB3D /* NibLoadable.swift in Sources */,
 				7EB90047232AB9EB006EB9A8 /* ProgressBar.swift in Sources */,
+				7E5E335A261A34B4000EE976 /* applyBlur.swift in Sources */,
 				7E6225B326192E24001AA8FD /* UILabel+Styleable.swift in Sources */,
 				7EA38AE423783EFC0007919B /* DefaultLocationRepository.swift in Sources */,
 				7E69837A24EC69FE002EE278 /* ErrorViewRemovable.swift in Sources */,
@@ -1267,6 +1282,7 @@
 				7E2CA81024032A0F000CEFA5 /* TableCellConfigurator.swift in Sources */,
 				7E91D95F2371E4080087436F /* RisePlanObject+CoreDataClass.swift in Sources */,
 				7EB9F35423C36B54002A6DD3 /* CreatePlanAssembler.swift in Sources */,
+				7E5E3355261A3496000EE976 /* invertAlpha.swift in Sources */,
 				7ECD2C722419168600408C4B /* ChangePlanButtonTableCell.swift in Sources */,
 				7EEFC01725E1AFD8007AE725 /* ImageLabelView.swift in Sources */,
 				7EB9003E23256AC9006EB9A8 /* DesignableContainerView.swift in Sources */,
