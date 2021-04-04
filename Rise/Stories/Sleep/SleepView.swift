@@ -8,19 +8,17 @@
 
 import UIKit
 
-final class SleepView: UIView, PropertyAnimatable {
-    @IBOutlet private weak var currentTimeLabel: AutoRefreshableLabel!
-    @IBOutlet private weak var stopButton: LongPressProgressButton!
-    @IBOutlet private weak var timeLeftLabel: FloatingLabel!
-    @IBOutlet private weak var editAlarmButton: UIButton!
-    @IBOutlet private weak var editAlarmDatePicker: UIDatePicker!
-    @IBOutlet private weak var cancelEditAlarmButton: UIButton!
-    @IBOutlet private weak var saveAlarmEditButton: UIButton!
-    @IBOutlet private var backgroundImage: UIImageView!
-    @IBOutlet private weak var editAlarmButtonContainer: UIView!
+final class SleepView: UIView, Statefull {
 
-    // MARK: - PropertyAnimatable
-    var propertyAnimationDuration: Double { 0.15 }
+    @IBOutlet private var currentTimeLabel: AutoRefreshableLabel!
+    @IBOutlet private var stopButton: LongPressProgressButton!
+    @IBOutlet private var timeLeftLabel: FloatingLabel!
+    @IBOutlet private var editAlarmButton: UIButton!
+    @IBOutlet private var editAlarmDatePicker: UIDatePicker!
+    @IBOutlet private var cancelEditAlarmButton: UIButton!
+    @IBOutlet private var saveAlarmEditButton: UIButton!
+    @IBOutlet private var backgroundImage: UIImageView!
+    @IBOutlet private var editAlarmButtonContainer: UIView!
 
     private var editAlarmHandler: (() -> Void)?
     private var cancelAlarmEditHandler: (() -> Void)?
@@ -29,39 +27,34 @@ final class SleepView: UIView, PropertyAnimatable {
 
     private let defaultControlAlpha: CGFloat = 0.9
 
-    enum State {
-        case normal
-        case editingAlarm
-    }
+    // MARK: - Statefull
+    private(set) var state: State?
 
-    struct Model {
-        let state: State
-        let alarm: Date
-    }
-
-    var model: Model? {
-        didSet {
-            guard let model = model else { return }
-            animate { [weak self] in
-                guard let self = self else { return }
-                switch model.state {
-                case .normal:
-                    self.editAlarmButtonContainer.alpha = self.defaultControlAlpha
-                    self.editAlarmButton.alpha = self.defaultControlAlpha
-                    self.cancelEditAlarmButton.alpha = 0
-                    self.saveAlarmEditButton.alpha = 0
-                    self.editAlarmDatePicker.alpha = 0
-                    self.editAlarmButton.setTitle(model.alarm.HHmmString, for: .normal)
-                case .editingAlarm:
-                    self.editAlarmButtonContainer.alpha = 0
-                    self.editAlarmButton.alpha = 0
-                    self.cancelEditAlarmButton.alpha = self.defaultControlAlpha
-                    self.saveAlarmEditButton.alpha = self.defaultControlAlpha
-                    self.editAlarmDatePicker.alpha = self.defaultControlAlpha
-                    self.editAlarmDatePicker.date = model.alarm
-                }
-            }
+    func setState(_ state: State) {
+        if let currentState = self.state, currentState == state {
+            log(.info, "Skipping equal state \(state)")
+            return
         }
+
+        self.state = state
+
+        [editAlarmButtonContainer,
+         editAlarmButton,
+         cancelEditAlarmButton,
+         saveAlarmEditButton,
+         editAlarmDatePicker].invertAlpha(max: defaultControlAlpha)
+
+        switch state {
+        case .normal (let alarm):
+            editAlarmButton.setTitle(alarm.HHmmString, for: .normal)
+        case .editingAlarm (let alarm):
+            editAlarmDatePicker.date = alarm
+        }
+    }
+
+    enum State: Equatable {
+        case normal (alarm: Date)
+        case editingAlarm (alarm: Date)
     }
 
     struct DataSource {
@@ -70,7 +63,7 @@ final class SleepView: UIView, PropertyAnimatable {
     }
     
     func configure(
-        initialModel model: Model,
+        initialState state: State,
         dataSource: DataSource,
         editAlarmHandler: @escaping () -> Void,
         cancelAlarmEditHandler: @escaping () -> Void,
@@ -78,10 +71,8 @@ final class SleepView: UIView, PropertyAnimatable {
         alarmTimeChangedHandler: @escaping (Date) -> Void,
         stopHandler: @escaping () -> Void
     ) {
-        let blurView = UIBlurEffect(style: .dark)
-        let view = UIVisualEffectView(effect: blurView)
-        view.frame = backgroundImage.bounds
-        backgroundImage.addSubview(view)
+        backgroundImage.applyBlur(style: .dark)
+
         editAlarmButton.setImage(UIImage(systemName: "bell.fill"), for: .normal)
         editAlarmButton.centerTextAndImage(spacing: 8)
         editAlarmButton.tintColor = .white
@@ -103,17 +94,24 @@ final class SleepView: UIView, PropertyAnimatable {
         currentTimeLabel.dataSource = dataSource.currentTime
         currentTimeLabel.beginRefreshing()
 
-        self.model = model
+        editAlarmButtonContainer.alpha = defaultControlAlpha
+        editAlarmButton.alpha = defaultControlAlpha
+        cancelEditAlarmButton.alpha = 0
+        saveAlarmEditButton.alpha = 0
+        editAlarmDatePicker.alpha = 0
 
         self.editAlarmHandler = editAlarmHandler
         self.cancelAlarmEditHandler = cancelAlarmEditHandler
         self.saveAlarmEditHandler = saveAlarmEditHandler
         self.alarmTimeChangedHandler = alarmTimeChangedHandler
 
-        self.editAlarmButtonContainer.layer.cornerRadius = 12
-        self.editAlarmButtonContainer.alpha = 0.9
-        self.editAlarmButton.alpha = 0.9
-        self.editAlarmButtonContainer.backgroundColor = UIColor.white.withAlphaComponent(0.1)
+        editAlarmButtonContainer.layer.cornerRadius = 12
+        editAlarmButtonContainer.backgroundColor = UIColor.white.withAlphaComponent(0.1)
+
+        self.state = state
+        if case .normal (let alarm) = state {
+            editAlarmButton.setTitle(alarm.HHmmString, for: .normal)
+        }
     }
 
     @IBAction private func alarmTouchUp(_ sender: UIButton) {
@@ -130,12 +128,6 @@ final class SleepView: UIView, PropertyAnimatable {
 
     @IBAction private func saveAlarmEditTouchUp(_ sender: UIButton) {
         saveAlarmEditHandler?()
-    }
-}
-
-extension SleepView.Model: Changeable {
-    init(copy: ChangeableWrapper<SleepView.Model>) {
-        self.init(state: copy.state, alarm: copy.alarm)
     }
 }
 

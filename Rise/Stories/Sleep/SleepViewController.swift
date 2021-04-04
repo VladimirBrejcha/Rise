@@ -35,7 +35,7 @@ final class SleepViewController: UIViewController, AutoRefreshable {
         super.viewDidLoad()
 
         sleepView.configure(
-            initialModel: SleepView.Model(state: .normal, alarm: alarmTime),
+            initialState: .normal(alarm: alarmTime),
             dataSource: SleepView.DataSource(
                 timeLeft: { [weak self] in
                     if let timeLeft = self?.alarmTime.fixIfNeeded().timeIntervalSince(Date()).HHmmString {
@@ -48,20 +48,20 @@ final class SleepViewController: UIViewController, AutoRefreshable {
             ),
             editAlarmHandler: { [weak self] in
                 guard let self = self else { return }
-                self.sleepView.model = self.sleepView.model?.changing { $0.state = .editingAlarm }
+                self.sleepView.setState(.editingAlarm(alarm: self.alarmTime))
             },
             cancelAlarmEditHandler: { [weak self] in
                 guard let self = self else { return }
-                self.sleepView.model = self.sleepView.model?.changing { $0.state = .normal }
+                self.sleepView.setState(.normal(alarm: self.alarmTime))
                 self.editingAlarmTime = nil
             },
             saveAlarmEditHandler: { [weak self] in
                 guard let self = self else { return }
                 if let newAlarmTime = self.editingAlarmTime {
                     self.alarmTime = newAlarmTime
-                    self.sleepView.model = SleepView.Model(state: .normal, alarm: newAlarmTime)
+                    self.sleepView.setState(.normal(alarm: newAlarmTime))
                 } else {
-                    self.sleepView.model = self.sleepView.model?.changing { $0.state = .normal }
+                    self.sleepView.setState(.normal(alarm: self.alarmTime))
                 }
                 self.editingAlarmTime = nil
             },

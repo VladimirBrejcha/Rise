@@ -43,7 +43,7 @@ final class PrepareToSleepView: UIView, PropertyAnimatable {
                     self.wakeUpContainerHeightConstraint.constant = 200
                     self.timeUntilWakeUpTopConstraint.constant = -4
                 }
-                
+
                 self.layoutIfNeeded()
             }
         }
@@ -126,11 +126,5 @@ extension PrepareToSleepView.Model: Changeable {
             wakeUpTitle: copy.wakeUpTitle,
             wakeUpTime: copy.wakeUpTime
         )
-    }
-}
-
-fileprivate extension Array where Element == UIView {
-    func invertAlpha() {
-        forEach { $0.alpha = 1 - $0.alpha }
     }
 }
