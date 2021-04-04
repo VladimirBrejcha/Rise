@@ -70,6 +70,7 @@ enum Style {
 
         let font: UIFont
         private(set) var color: UIColor?
+        private(set) var alignment: NSTextAlignment?
 
         // MARK: - Instances
         static var notificationLabel: Text {
@@ -77,11 +78,11 @@ enum Style {
         }
 
         static var bigSizedTitle: Text {
-            Text(font: .preferredFont(forTextStyle: .largeTitle), color: .white)
+            Text(font: .preferredFont(forTextStyle: .largeTitle), color: .white, alignment: .center)
         }
 
         static var mediumSizedTitle: Text {
-            Text(font: .systemFont(ofSize: 18, weight: .medium), color: .white)
+            Text(font: .systemFont(ofSize: 18, weight: .medium), color: .white, alignment: .center)
         }
 
         static var mediumSizedBody: Text {

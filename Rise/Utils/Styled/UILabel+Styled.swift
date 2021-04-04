@@ -14,5 +14,8 @@ extension UILabel: Styled {
         if let color = style.color {
             self.textColor = color
         }
+        if let alignment = style.alignment {
+            self.textAlignment = alignment
+        }
     }
 }
