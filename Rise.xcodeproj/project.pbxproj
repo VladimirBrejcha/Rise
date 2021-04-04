@@ -499,7 +499,7 @@
 		7E4901882340F3BE0034521E /* Today */ = {
 			isa = PBXGroup;
 			children = (
-				7EADA5E7239DA9FA00FE4843 /* DaysView */,
+				7E6225CA2619B954001AA8FD /* Days */,
 				7EB9F34D23C229F2002A6DD3 /* TodayAssembler.swift */,
 				7E6268BF24D5D49C00F70BC3 /* TodayView.swift */,
 				92E77AF922A5304400E5E21C /* TodayViewController.swift */,
@@ -556,6 +556,16 @@
 				7E6225BF26192E6E001AA8FD /* UITabBarItemAppearance+Styled.swift */,
 			);
 			path = Styled;
+			sourceTree = "<group>";
+		};
+		7E6225CA2619B954001AA8FD /* Days */ = {
+			isa = PBXGroup;
+			children = (
+				7EE647C225F5CA250081ED4C /* DaysAssembler.swift */,
+				7EAD159E25F50DF700392E6A /* DaysViewController.swift */,
+				7EADA5E7239DA9FA00FE4843 /* View */,
+			);
+			path = Days;
 			sourceTree = "<group>";
 		};
 		7E644D4D24FACF4100BF198C /* Errors */ = {
@@ -679,17 +689,15 @@
 			path = Location;
 			sourceTree = "<group>";
 		};
-		7EADA5E7239DA9FA00FE4843 /* DaysView */ = {
+		7EADA5E7239DA9FA00FE4843 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7EE647C225F5CA250081ED4C /* DaysAssembler.swift */,
-				7EAD159E25F50DF700392E6A /* DaysViewController.swift */,
 				7E1CA3D624FC0B2C00AD81B8 /* DaysView.xib */,
 				7EB9003F23256BF3006EB9A8 /* DaysView.swift */,
-				7EF3EE182340F875003BE978 /* DaysCollectionView */,
 				7E0B88F52455BEF400BC3CF5 /* SelectableStackViewButton.swift */,
+				7EF3EE182340F875003BE978 /* DaysCollectionView */,
 			);
-			path = DaysView;
+			path = View;
 			sourceTree = "<group>";
 		};
 		7EB1C0342340FA6E0028237E /* Data */ = {
@@ -868,8 +876,8 @@
 		7EF3EE182340F875003BE978 /* DaysCollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				7EC24EF525A4F139001EFFBE /* DaysCollectionCell */,
 				7EA7BA092354F1810051A92D /* DaysCollectionView.swift */,
+				7EC24EF525A4F139001EFFBE /* DaysCollectionCell */,
 				7E989FE025F5B0DF001954CD /* CollectionPageScrollDelegate.swift */,
 				7EC24EED25A49FD3001EFFBE /* DaysCollectionViewLayout.swift */,
 			);
