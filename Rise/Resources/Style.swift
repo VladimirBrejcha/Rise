@@ -125,7 +125,8 @@ enum Style {
             Button(
                 disabledTitleColor: UIColor.white.withAlphaComponent(0.5),
                 titleStyle: Text(
-                    font: UIFont.boldSystemFont(ofSize: 18)
+                    font: UIFont.boldSystemFont(ofSize: 18),
+                    color: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
                 ),
                 backgroundColor: .clear,
                 effects: Layer(

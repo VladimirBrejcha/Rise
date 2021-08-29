@@ -117,7 +117,7 @@ extension Int {
             ? "\(hours) hours"
             : hours == 0
                 ? "\(minutes) minutes"
-                : "\(hours) h \(minutes) m"
+                : "\(hours)h \(minutes)m"
     }
 }
 

@@ -20,9 +20,8 @@ final class ImageLabelView: UIView, Statefull, NibLoadable {
     private(set) var state: State?
     func setState(_ state: State) {
         self.state = state
-        imageView.image = state.image?.withAlignmentRectInsets(
-            UIEdgeInsets(top: -10, left: -10, bottom: -10, right: -10)
-        )
+        imageView.image = state.image
+        imageView.contentMode = .scaleAspectFit
         label.text = state.text
     }
 
