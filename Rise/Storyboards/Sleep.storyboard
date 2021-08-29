@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -188,6 +188,10 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background2" translatesAutoresizingMaskIntoConstraints="NO" id="UeQ-9m-AT5">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GLV-9r-i98">
+                                <rect key="frame" x="114.5" y="446" width="185" height="41.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sleeping" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bWs-lr-N9w">
                                 <rect key="frame" x="20" y="64" width="374" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
@@ -239,24 +243,28 @@
                                 </connections>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXv-JC-4Xc">
-                                <rect key="frame" x="309.5" y="454" width="26.5" height="25.5"/>
+                                <rect key="frame" x="311.5" y="445.5" width="43.5" height="42.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="tintColor" name="normalTitle"/>
                                 <state key="normal">
                                     <imageReference key="image" image="checkmark.circle.fill" catalog="system" symbolScale="large"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="black"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="28" scale="large" weight="black"/>
                                 </state>
                                 <connections>
                                     <action selector="saveAlarmEditTouchUp:" destination="uik-k5-iFp" eventType="touchUpInside" id="66Z-wG-Np5"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rDc-1y-qT0">
-                                <rect key="frame" x="78" y="454" width="26.5" height="25.5"/>
+                                <rect key="frame" x="52.5" y="442" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="JK5-h7-gfv"/>
+                                    <constraint firstAttribute="width" constant="50" id="Vfb-rN-3Q5"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="tintColor" name="normalTitle"/>
                                 <state key="normal">
                                     <imageReference key="image" image="multiply.circle.fill" catalog="system" symbolScale="large"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="black"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="28" scale="large" weight="black"/>
                                 </state>
                                 <connections>
                                     <action selector="cancelAlarmEditTouchUp:" destination="uik-k5-iFp" eventType="touchUpInside" id="7eM-QE-b2x"/>
@@ -268,6 +276,7 @@
                         <constraints>
                             <constraint firstItem="UeQ-9m-AT5" firstAttribute="top" secondItem="uik-k5-iFp" secondAttribute="top" id="0Q7-bt-uc8"/>
                             <constraint firstItem="zTc-hX-oX4" firstAttribute="leading" secondItem="8gk-4x-IVS" secondAttribute="leading" constant="10" id="2x8-eY-jqS"/>
+                            <constraint firstItem="GLV-9r-i98" firstAttribute="centerY" secondItem="lsh-SA-O8W" secondAttribute="centerY" id="4H2-wf-Jgd"/>
                             <constraint firstItem="rDc-1y-qT0" firstAttribute="centerY" secondItem="lsh-SA-O8W" secondAttribute="centerY" id="4il-4q-436"/>
                             <constraint firstItem="bWs-lr-N9w" firstAttribute="top" secondItem="8gk-4x-IVS" secondAttribute="top" constant="20" id="9qB-WW-zjC"/>
                             <constraint firstItem="8gk-4x-IVS" firstAttribute="bottom" secondItem="fVf-jv-vsz" secondAttribute="bottom" constant="30" id="HQb-zb-vm4"/>
@@ -281,6 +290,7 @@
                             <constraint firstItem="lsh-SA-O8W" firstAttribute="top" secondItem="zTc-hX-oX4" secondAttribute="bottom" constant="12" id="RnT-BY-CtP"/>
                             <constraint firstItem="zTc-hX-oX4" firstAttribute="centerY" secondItem="uik-k5-iFp" secondAttribute="centerY" constant="-20" id="TI3-Ge-sQf"/>
                             <constraint firstAttribute="trailing" secondItem="UeQ-9m-AT5" secondAttribute="trailing" id="TtN-xB-F2d"/>
+                            <constraint firstItem="GLV-9r-i98" firstAttribute="centerX" secondItem="lsh-SA-O8W" secondAttribute="centerX" id="UxY-pb-E1E"/>
                             <constraint firstItem="iLA-ZS-bm2" firstAttribute="centerY" secondItem="lsh-SA-O8W" secondAttribute="centerY" id="Zu9-Tq-l9P"/>
                             <constraint firstItem="8gk-4x-IVS" firstAttribute="trailing" secondItem="KRK-q7-IEK" secondAttribute="trailing" constant="10" id="apg-2d-AYr"/>
                             <constraint firstItem="8gk-4x-IVS" firstAttribute="trailing" secondItem="bWs-lr-N9w" secondAttribute="trailing" constant="20" id="gFh-DN-Obf"/>
@@ -288,19 +298,22 @@
                             <constraint firstItem="HdC-EX-jQx" firstAttribute="width" secondItem="iLA-ZS-bm2" secondAttribute="width" multiplier="1.1" id="iJX-Sa-0p5"/>
                             <constraint firstItem="HdC-EX-jQx" firstAttribute="centerX" secondItem="iLA-ZS-bm2" secondAttribute="centerX" id="jCy-T8-yZw"/>
                             <constraint firstItem="fVf-jv-vsz" firstAttribute="leading" secondItem="8gk-4x-IVS" secondAttribute="leading" constant="20" id="l2a-Fh-sPA"/>
-                            <constraint firstItem="lsh-SA-O8W" firstAttribute="leading" secondItem="rDc-1y-qT0" secondAttribute="trailing" constant="4" id="lsP-8V-hrn"/>
+                            <constraint firstItem="lsh-SA-O8W" firstAttribute="leading" secondItem="rDc-1y-qT0" secondAttribute="trailing" constant="6" id="lsP-8V-hrn"/>
+                            <constraint firstItem="GLV-9r-i98" firstAttribute="width" secondItem="lsh-SA-O8W" secondAttribute="width" constant="-12" id="n6Z-lk-g7o"/>
+                            <constraint firstItem="GLV-9r-i98" firstAttribute="height" secondItem="lsh-SA-O8W" secondAttribute="height" constant="-12" id="nhJ-Jw-05y"/>
                             <constraint firstItem="HdC-EX-jQx" firstAttribute="centerY" secondItem="iLA-ZS-bm2" secondAttribute="centerY" id="oo3-FJ-eKq"/>
                             <constraint firstItem="bWs-lr-N9w" firstAttribute="leading" secondItem="8gk-4x-IVS" secondAttribute="leading" constant="20" id="ph0-yp-uLF"/>
                             <constraint firstItem="HdC-EX-jQx" firstAttribute="centerX" secondItem="uik-k5-iFp" secondAttribute="centerX" id="qVb-7p-kQ8"/>
                             <constraint firstItem="iLA-ZS-bm2" firstAttribute="centerX" secondItem="uik-k5-iFp" secondAttribute="centerX" id="rkx-mu-0b4"/>
                             <constraint firstItem="nXv-JC-4Xc" firstAttribute="centerY" secondItem="lsh-SA-O8W" secondAttribute="centerY" id="suJ-wP-VJG"/>
                             <constraint firstItem="KRK-q7-IEK" firstAttribute="leading" secondItem="8gk-4x-IVS" secondAttribute="leading" constant="10" id="tBm-Zg-8ZZ"/>
-                            <constraint firstItem="nXv-JC-4Xc" firstAttribute="leading" secondItem="lsh-SA-O8W" secondAttribute="trailing" constant="4" id="tOd-bS-zbV"/>
+                            <constraint firstItem="nXv-JC-4Xc" firstAttribute="leading" secondItem="lsh-SA-O8W" secondAttribute="trailing" constant="6" id="tOd-bS-zbV"/>
                         </constraints>
                         <connections>
                             <outlet property="backgroundImage" destination="UeQ-9m-AT5" id="x3o-VA-6fU"/>
                             <outlet property="cancelEditAlarmButton" destination="rDc-1y-qT0" id="ber-oo-vpb"/>
                             <outlet property="currentTimeLabel" destination="zTc-hX-oX4" id="XNg-HC-wP4"/>
+                            <outlet property="datePickerBackground" destination="GLV-9r-i98" id="eeF-TU-rnn"/>
                             <outlet property="editAlarmButton" destination="iLA-ZS-bm2" id="YLJ-Jf-zUI"/>
                             <outlet property="editAlarmButtonContainer" destination="HdC-EX-jQx" id="5vA-16-ffg"/>
                             <outlet property="editAlarmDatePicker" destination="lsh-SA-O8W" id="xEI-a5-ifq"/>

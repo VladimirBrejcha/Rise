@@ -19,6 +19,7 @@ final class SleepView: UIView, Statefull {
     @IBOutlet private var saveAlarmEditButton: UIButton!
     @IBOutlet private var backgroundImage: UIImageView!
     @IBOutlet private var editAlarmButtonContainer: UIView!
+    @IBOutlet private var datePickerBackground: UIView!
 
     private var editAlarmHandler: (() -> Void)?
     private var cancelAlarmEditHandler: (() -> Void)?
@@ -38,11 +39,14 @@ final class SleepView: UIView, Statefull {
 
         self.state = state
 
-        [editAlarmButtonContainer,
-         editAlarmButton,
-         cancelEditAlarmButton,
-         saveAlarmEditButton,
-         editAlarmDatePicker].invertAlpha(max: defaultControlAlpha)
+        UIView.animate(withDuration: 0.2) { [self] in
+            [editAlarmButtonContainer,
+             editAlarmButton,
+             cancelEditAlarmButton,
+             saveAlarmEditButton,
+             editAlarmDatePicker,
+             datePickerBackground].invertAlpha(max: defaultControlAlpha)
+        }
 
         switch state {
         case .normal (let alarm):
@@ -71,6 +75,9 @@ final class SleepView: UIView, Statefull {
         alarmTimeChangedHandler: @escaping (Date) -> Void,
         stopHandler: @escaping () -> Void
     ) {
+        datePickerBackground.backgroundColor = .white.withAlphaComponent(0.4)
+        datePickerBackground.layer.cornerRadius = 8
+
         backgroundImage.applyBlur(style: .dark)
 
         editAlarmButton.setImage(UIImage(systemName: "bell.fill"), for: .normal)
@@ -96,6 +103,7 @@ final class SleepView: UIView, Statefull {
 
         editAlarmButtonContainer.alpha = defaultControlAlpha
         editAlarmButton.alpha = defaultControlAlpha
+        datePickerBackground.alpha = 0
         cancelEditAlarmButton.alpha = 0
         saveAlarmEditButton.alpha = 0
         editAlarmDatePicker.alpha = 0
