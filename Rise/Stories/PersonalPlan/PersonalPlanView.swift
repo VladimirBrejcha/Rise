@@ -62,6 +62,7 @@ final class PersonalPlanView: UIView, PropertyAnimatable, Statefull {
 
     // MARK: - Configuration -
     func configure() {
+        centerLabel.applyStyle(.mediumSizedTitle)
         topLabel.applyStyle(.bigSizedTitle)
     }
 
