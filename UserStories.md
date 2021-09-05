@@ -28,6 +28,8 @@ To see exact time to sleep and to wake for the closest days
 
 Additionally to see sunrise/sunset for the days
 
+Additionally to see how long till sleep today
+
 ----
 
 ### See the schedule details
