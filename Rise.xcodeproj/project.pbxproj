@@ -29,7 +29,6 @@
 		7E354E3024119B1C0036FF3F /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E354E2F24119B1C0036FF3F /* LocalDataSource.swift */; };
 		7E378662261679460098A204 /* CALayer+Styleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E378661261679460098A204 /* CALayer+Styleable.swift */; };
 		7E388E38243A3C16001A28DF /* PropertyAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E388E37243A3C16001A28DF /* PropertyAnimatable.swift */; };
-		7E3980D52360D0020059C592 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E3980D42360D0020059C592 /* Intro.storyboard */; };
 		7E4798F3239D85D5007FB8F2 /* CreatePlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E4798F2239D85D5007FB8F2 /* CreatePlan.storyboard */; };
 		7E4798F5239D894B007FB8F2 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4798F4239D894B007FB8F2 /* Storyboard.swift */; };
 		7E4798F7239D8A33007FB8F2 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E4798F6239D8A33007FB8F2 /* Settings.storyboard */; };
@@ -225,7 +224,6 @@
 		7E354E2F24119B1C0036FF3F /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
 		7E378661261679460098A204 /* CALayer+Styleable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Styleable.swift"; sourceTree = "<group>"; };
 		7E388E37243A3C16001A28DF /* PropertyAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyAnimatable.swift; sourceTree = "<group>"; };
-		7E3980D42360D0020059C592 /* Intro.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
 		7E4798F2239D85D5007FB8F2 /* CreatePlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreatePlan.storyboard; sourceTree = "<group>"; };
 		7E4798F4239D894B007FB8F2 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		7E4798F6239D8A33007FB8F2 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
@@ -854,7 +852,6 @@
 			children = (
 				7E4798F4239D894B007FB8F2 /* Storyboard.swift */,
 				92D7D65B2296F298009321AE /* LaunchScreen.storyboard */,
-				7E3980D42360D0020059C592 /* Intro.storyboard */,
 				92D7D6562296F297009321AE /* Main.storyboard */,
 				7E76E5AA23E734F500CC4E6D /* ChangePlan.storyboard */,
 				7E4798F2239D85D5007FB8F2 /* CreatePlan.storyboard */,
@@ -1171,7 +1168,6 @@
 			files = (
 				7E199CD4240BD43400B702AD /* SliderWithValues.xib in Resources */,
 				7ECD2C732419168600408C4B /* ChangePlanButtonTableCell.xib in Resources */,
-				7E3980D52360D0020059C592 /* Intro.storyboard in Resources */,
 				7E4798F7239D8A33007FB8F2 /* Settings.storyboard in Resources */,
 				92D7D65D2296F298009321AE /* LaunchScreen.storyboard in Resources */,
 				7EF4C196240412D80098135A /* ChangePlanDatePickerTableCell.xib in Resources */,
