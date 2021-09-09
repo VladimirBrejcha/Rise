@@ -29,9 +29,7 @@
 		7E354E3024119B1C0036FF3F /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E354E2F24119B1C0036FF3F /* LocalDataSource.swift */; };
 		7E378662261679460098A204 /* CALayer+Styleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E378661261679460098A204 /* CALayer+Styleable.swift */; };
 		7E388E38243A3C16001A28DF /* PropertyAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E388E37243A3C16001A28DF /* PropertyAnimatable.swift */; };
-		7E4798F3239D85D5007FB8F2 /* CreatePlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E4798F2239D85D5007FB8F2 /* CreatePlan.storyboard */; };
 		7E4798F5239D894B007FB8F2 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4798F4239D894B007FB8F2 /* Storyboard.swift */; };
-		7E4798F7239D8A33007FB8F2 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E4798F6239D8A33007FB8F2 /* Settings.storyboard */; };
 		7E4901862340DD810034521E /* RisePlanData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E4901842340DD810034521E /* RisePlanData.xcdatamodeld */; };
 		7E514DAB25A7BE3C000EBE81 /* LoadingView in Frameworks */ = {isa = PBXBuildFile; productRef = 7E514DAA25A7BE3C000EBE81 /* LoadingView */; };
 		7E514DB325A87F5E000EBE81 /* AlarmingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E514DB225A87F5E000EBE81 /* AlarmingViewController.swift */; };
@@ -77,9 +75,7 @@
 		7E708A3B23BFD0C7003B5702 /* PlanCreatedCreatePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3A23BFD0C7003B5702 /* PlanCreatedCreatePlanViewController.swift */; };
 		7E708A4023BFD92D003B5702 /* ChangePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3F23BFD92D003B5702 /* ChangePlanViewController.swift */; };
 		7E76E5A923E734C200CC4E6D /* ChangePlanAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E76E5A823E734C200CC4E6D /* ChangePlanAssembler.swift */; };
-		7E76E5AB23E734F500CC4E6D /* ChangePlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E76E5AA23E734F500CC4E6D /* ChangePlan.storyboard */; };
 		7E814E7424D8A11700EC1665 /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E814E7324D8A11700EC1665 /* ConfirmationView.swift */; };
-		7E84EB25239D19CF00E02050 /* Confirmation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E84EB24239D19CF00E02050 /* Confirmation.storyboard */; };
 		7E84EB27239D1A5700E02050 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E84EB26239D1A5700E02050 /* ConfirmationViewController.swift */; };
 		7E8675C724165F25004DAF63 /* GetDailyTimeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8675C624165F25004DAF63 /* GetDailyTimeUseCase.swift */; };
 		7E8675CC2417E5FF004DAF63 /* ConfirmPlanUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8675CB2417E5FF004DAF63 /* ConfirmPlanUseCase.swift */; };
@@ -87,6 +83,13 @@
 		7E88A35123F8B20C00E792CA /* VerticalPositionMoveAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E88A35023F8B20C00E792CA /* VerticalPositionMoveAnimation.swift */; };
 		7E8AB6CE23A18D27009CE41A /* WakeUpTimeCreatePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8AB6CD23A18D27009CE41A /* WakeUpTimeCreatePlanViewController.swift */; };
 		7E8C6B982350FB9C0086162F /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8C6B972350FB9C0086162F /* TableView.swift */; };
+		7E8EFA2F26EABC1800DEE564 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7E8EFA2D26EABC1800DEE564 /* Localizable.strings */; };
+		7E8EFA3226EABC2F00DEE564 /* Sleep.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E8EFA3026EABC2F00DEE564 /* Sleep.storyboard */; };
+		7E8EFA3B26EABC3900DEE564 /* Confirmation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E8EFA3326EABC3800DEE564 /* Confirmation.storyboard */; };
+		7E8EFA3C26EABC3900DEE564 /* CreatePlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E8EFA3526EABC3800DEE564 /* CreatePlan.storyboard */; };
+		7E8EFA3D26EABC3900DEE564 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E8EFA3726EABC3800DEE564 /* Settings.storyboard */; };
+		7E8EFA3E26EABC3900DEE564 /* ChangePlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E8EFA3926EABC3900DEE564 /* ChangePlan.storyboard */; };
+		7E8EFA4226EAC4D400DEE564 /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8EFA4126EAC4D400DEE564 /* Strings+Generated.swift */; };
 		7E91D95B2371E4080087436F /* RiseDailySunTime+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E91D9552371E4080087436F /* RiseDailySunTime+CoreDataClass.swift */; };
 		7E91D95C2371E4080087436F /* RiseDailySunTime+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E91D9562371E4080087436F /* RiseDailySunTime+CoreDataProperties.swift */; };
 		7E91D95F2371E4080087436F /* RisePlanObject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E91D9592371E4080087436F /* RisePlanObject+CoreDataClass.swift */; };
@@ -163,7 +166,6 @@
 		7EEB1E0D24424010001ABE4A /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB1E0C24424010001ABE4A /* AudioPlayer.swift */; };
 		7EEB1E0F2443369F001ABE4A /* bellAlarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7EEB1E0E2443369F001ABE4A /* bellAlarm.wav */; };
 		7EEB1E122443370F001ABE4A /* AlarmSounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB1E112443370F001ABE4A /* AlarmSounds.swift */; };
-		7EEB3CD524198ADB003981B7 /* Sleep.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EEB3CD424198ADB003981B7 /* Sleep.storyboard */; };
 		7EEFC00F25E1AEB0007AE725 /* BorderedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEFC00E25E1AEB0007AE725 /* BorderedView.swift */; };
 		7EEFC01725E1AFD8007AE725 /* ImageLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEFC01625E1AFD8007AE725 /* ImageLabelView.swift */; };
 		7EF4C195240412D80098135A /* ChangePlanDatePickerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF4C193240412D80098135A /* ChangePlanDatePickerTableCell.swift */; };
@@ -224,9 +226,7 @@
 		7E354E2F24119B1C0036FF3F /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
 		7E378661261679460098A204 /* CALayer+Styleable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Styleable.swift"; sourceTree = "<group>"; };
 		7E388E37243A3C16001A28DF /* PropertyAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyAnimatable.swift; sourceTree = "<group>"; };
-		7E4798F2239D85D5007FB8F2 /* CreatePlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreatePlan.storyboard; sourceTree = "<group>"; };
 		7E4798F4239D894B007FB8F2 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
-		7E4798F6239D8A33007FB8F2 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		7E4901852340DD810034521E /* PersonalPlanData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonalPlanData.xcdatamodel; sourceTree = "<group>"; };
 		7E514DB225A87F5E000EBE81 /* AlarmingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmingViewController.swift; sourceTree = "<group>"; };
 		7E514DB725A87F67000EBE81 /* AlarmingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmingView.swift; sourceTree = "<group>"; };
@@ -270,9 +270,7 @@
 		7E708A3A23BFD0C7003B5702 /* PlanCreatedCreatePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanCreatedCreatePlanViewController.swift; sourceTree = "<group>"; };
 		7E708A3F23BFD92D003B5702 /* ChangePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanViewController.swift; sourceTree = "<group>"; };
 		7E76E5A823E734C200CC4E6D /* ChangePlanAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanAssembler.swift; sourceTree = "<group>"; };
-		7E76E5AA23E734F500CC4E6D /* ChangePlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChangePlan.storyboard; sourceTree = "<group>"; };
 		7E814E7324D8A11700EC1665 /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
-		7E84EB24239D19CF00E02050 /* Confirmation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Confirmation.storyboard; sourceTree = "<group>"; };
 		7E84EB26239D1A5700E02050 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
 		7E8675C624165F25004DAF63 /* GetDailyTimeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDailyTimeUseCase.swift; sourceTree = "<group>"; };
 		7E8675CB2417E5FF004DAF63 /* ConfirmPlanUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPlanUseCase.swift; sourceTree = "<group>"; };
@@ -280,6 +278,15 @@
 		7E88A35023F8B20C00E792CA /* VerticalPositionMoveAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalPositionMoveAnimation.swift; sourceTree = "<group>"; };
 		7E8AB6CD23A18D27009CE41A /* WakeUpTimeCreatePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUpTimeCreatePlanViewController.swift; sourceTree = "<group>"; };
 		7E8C6B972350FB9C0086162F /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
+		7E8EFA2B26EABBB700DEE564 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7E8EFA2C26EABBB700DEE564 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7E8EFA2E26EABC1800DEE564 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7E8EFA3126EABC2F00DEE564 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Sleep.storyboard; sourceTree = "<group>"; };
+		7E8EFA3426EABC3800DEE564 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Confirmation.storyboard; sourceTree = "<group>"; };
+		7E8EFA3626EABC3800DEE564 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CreatePlan.storyboard; sourceTree = "<group>"; };
+		7E8EFA3826EABC3800DEE564 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
+		7E8EFA3A26EABC3900DEE564 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ChangePlan.storyboard; sourceTree = "<group>"; };
+		7E8EFA4126EAC4D400DEE564 /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
 		7E91D9552371E4080087436F /* RiseDailySunTime+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RiseDailySunTime+CoreDataClass.swift"; path = "Rise/Data/SunTime/Entity/RiseDailySunTime+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		7E91D9562371E4080087436F /* RiseDailySunTime+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RiseDailySunTime+CoreDataProperties.swift"; path = "Rise/Data/SunTime/Entity/RiseDailySunTime+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		7E91D9592371E4080087436F /* RisePlanObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RisePlanObject+CoreDataClass.swift"; path = "Rise/Data/RisePlan/Entity/RisePlanObject+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
@@ -360,7 +367,6 @@
 		7EEB1E0C24424010001ABE4A /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		7EEB1E0E2443369F001ABE4A /* bellAlarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bellAlarm.wav; sourceTree = "<group>"; };
 		7EEB1E112443370F001ABE4A /* AlarmSounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSounds.swift; sourceTree = "<group>"; };
-		7EEB3CD424198ADB003981B7 /* Sleep.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Sleep.storyboard; sourceTree = "<group>"; };
 		7EEFC00E25E1AEB0007AE725 /* BorderedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedView.swift; sourceTree = "<group>"; };
 		7EEFC01625E1AFD8007AE725 /* ImageLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabelView.swift; sourceTree = "<group>"; };
 		7EF4C193240412D80098135A /* ChangePlanDatePickerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanDatePickerTableCell.swift; sourceTree = "<group>"; };
@@ -374,9 +380,7 @@
 		92D7D64F2296F297009321AE /* Rise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D7D6522296F297009321AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92D7D6542296F297009321AE /* SleepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepViewController.swift; sourceTree = "<group>"; };
-		92D7D6572296F297009321AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		92D7D6592296F298009321AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		92D7D65C2296F298009321AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		92D7D65E2296F298009321AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92D7D66E2296F298009321AE /* RiseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RiseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D7D6722296F298009321AE /* RiseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiseUITests.swift; sourceTree = "<group>"; };
@@ -678,6 +682,14 @@
 			path = Animations;
 			sourceTree = "<group>";
 		};
+		7E8EFA4026EAC4B600DEE564 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				7E8EFA4126EAC4D400DEE564 /* Strings+Generated.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
 		7E97656123786AED00E3AEF2 /* RisePlan */ = {
 			isa = PBXGroup;
 			children = (
@@ -853,11 +865,11 @@
 				7E4798F4239D894B007FB8F2 /* Storyboard.swift */,
 				92D7D65B2296F298009321AE /* LaunchScreen.storyboard */,
 				92D7D6562296F297009321AE /* Main.storyboard */,
-				7E76E5AA23E734F500CC4E6D /* ChangePlan.storyboard */,
-				7E4798F2239D85D5007FB8F2 /* CreatePlan.storyboard */,
-				7E4798F6239D8A33007FB8F2 /* Settings.storyboard */,
-				7E84EB24239D19CF00E02050 /* Confirmation.storyboard */,
-				7EEB3CD424198ADB003981B7 /* Sleep.storyboard */,
+				7E8EFA3926EABC3900DEE564 /* ChangePlan.storyboard */,
+				7E8EFA3326EABC3800DEE564 /* Confirmation.storyboard */,
+				7E8EFA3526EABC3800DEE564 /* CreatePlan.storyboard */,
+				7E8EFA3726EABC3800DEE564 /* Settings.storyboard */,
+				7E8EFA3026EABC2F00DEE564 /* Sleep.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -883,6 +895,8 @@
 		7EF3EE162340F75A003BE978 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7E8EFA4026EAC4B600DEE564 /* Generated */,
+				7E8EFA2D26EABC1800DEE564 /* Localizable.strings */,
 				7E97226325B8C90500DBEF5E /* Style.swift */,
 				7EEB1E10244336A7001ABE4A /* Sounds */,
 				92D7D65E2296F298009321AE /* Info.plist */,
@@ -1075,6 +1089,7 @@
 				92D7D64B2296F297009321AE /* Sources */,
 				92D7D64C2296F297009321AE /* Frameworks */,
 				92D7D64D2296F297009321AE /* Resources */,
+				7E8EFA3F26EAC42800DEE564 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1167,21 +1182,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E199CD4240BD43400B702AD /* SliderWithValues.xib in Resources */,
+				7E8EFA3D26EABC3900DEE564 /* Settings.storyboard in Resources */,
 				7ECD2C732419168600408C4B /* ChangePlanButtonTableCell.xib in Resources */,
-				7E4798F7239D8A33007FB8F2 /* Settings.storyboard in Resources */,
 				92D7D65D2296F298009321AE /* LaunchScreen.storyboard in Resources */,
 				7EF4C196240412D80098135A /* ChangePlanDatePickerTableCell.xib in Resources */,
+				7E8EFA3226EABC2F00DEE564 /* Sleep.storyboard in Resources */,
 				7EE6905C243E64C600CA423E /* LongPressProgressButton.xib in Resources */,
+				7E8EFA3B26EABC3900DEE564 /* Confirmation.storyboard in Resources */,
 				7ED6DD3125E1B50800F906CE /* ImageLabelView.xib in Resources */,
 				7E1CA3D724FC0B2C00AD81B8 /* DaysView.xib in Resources */,
-				7E76E5AB23E734F500CC4E6D /* ChangePlan.storyboard in Resources */,
 				7EF4C19E240436CD0098135A /* ChangePlanSliderTableCell.xib in Resources */,
 				92D7D65A2296F298009321AE /* Assets.xcassets in Resources */,
+				7E8EFA3C26EABC3900DEE564 /* CreatePlan.storyboard in Resources */,
 				7E541AF523FB259400BAD710 /* DaysCollectionCell.xib in Resources */,
-				7E4798F3239D85D5007FB8F2 /* CreatePlan.storyboard in Resources */,
-				7E84EB25239D19CF00E02050 /* Confirmation.storyboard in Resources */,
+				7E8EFA2F26EABC1800DEE564 /* Localizable.strings in Resources */,
+				7E8EFA3E26EABC3900DEE564 /* ChangePlan.storyboard in Resources */,
 				7EEB1E0F2443369F001ABE4A /* bellAlarm.wav in Resources */,
-				7EEB3CD524198ADB003981B7 /* Sleep.storyboard in Resources */,
 				92D7D6582296F297009321AE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1194,6 +1210,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7E8EFA3F26EAC42800DEE564 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftgen >/dev/null; then\n  swiftgen\nelse\n  echo \"warning: SwiftGen not installed, download it from https://github.com/SwiftGen/SwiftGen\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7EBE900023C9231200043651 /* Sources */ = {
@@ -1339,6 +1375,7 @@
 				7E5F292A23F9638C0050DFD3 /* FloatingLabel.swift in Sources */,
 				7E173372240D9F7A0028FDBE /* DomainLayer.swift in Sources */,
 				7ECD2C6F241832B300408C4B /* ReshedulePlanUseCase.swift in Sources */,
+				7E8EFA4226EAC4D400DEE564 /* Strings+Generated.swift in Sources */,
 				7EE6404B2378666F005BE355 /* DefaultSunTimeLocalDataSource.swift in Sources */,
 				7EE87CEF2442254A00E1BD3B /* AutoRefreshableLabel.swift in Sources */,
 				7EEA217923B6A3B400354BEA /* UIViewController+Present.swift in Sources */,
@@ -1389,10 +1426,58 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		7E8EFA2D26EABC1800DEE564 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7E8EFA2E26EABC1800DEE564 /* Base */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		7E8EFA3026EABC2F00DEE564 /* Sleep.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7E8EFA3126EABC2F00DEE564 /* Base */,
+			);
+			name = Sleep.storyboard;
+			sourceTree = "<group>";
+		};
+		7E8EFA3326EABC3800DEE564 /* Confirmation.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7E8EFA3426EABC3800DEE564 /* Base */,
+			);
+			name = Confirmation.storyboard;
+			sourceTree = "<group>";
+		};
+		7E8EFA3526EABC3800DEE564 /* CreatePlan.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7E8EFA3626EABC3800DEE564 /* Base */,
+			);
+			name = CreatePlan.storyboard;
+			sourceTree = "<group>";
+		};
+		7E8EFA3726EABC3800DEE564 /* Settings.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7E8EFA3826EABC3800DEE564 /* Base */,
+			);
+			name = Settings.storyboard;
+			sourceTree = "<group>";
+		};
+		7E8EFA3926EABC3900DEE564 /* ChangePlan.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7E8EFA3A26EABC3900DEE564 /* Base */,
+			);
+			name = ChangePlan.storyboard;
+			sourceTree = "<group>";
+		};
 		92D7D6562296F297009321AE /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				92D7D6572296F297009321AE /* Base */,
+				7E8EFA2C26EABBB700DEE564 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1400,7 +1485,7 @@
 		92D7D65B2296F298009321AE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				92D7D65C2296F298009321AE /* Base */,
+				7E8EFA2B26EABBB700DEE564 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
