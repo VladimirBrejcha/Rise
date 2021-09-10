@@ -2,7 +2,7 @@
 //  Animation.swift
 //  Rise
 //
-//  Created by Владимир Королев on 15.02.2020.
+//  Created by Vladimir Korolev on 15.02.2020.
 //  Copyright © 2020 VladimirBrejcha. All rights reserved.
 //
 

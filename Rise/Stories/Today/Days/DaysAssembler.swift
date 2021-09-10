@@ -2,7 +2,7 @@
 //  DaysViewAssembler.swift
 //  Rise
 //
-//  Created by Владимир Королев on 08.03.2021.
+//  Created by Vladimir Korolev on 08.03.2021.
 //  Copyright © 2021 VladimirBrejcha. All rights reserved.
 //
 

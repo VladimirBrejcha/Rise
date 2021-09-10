@@ -2,7 +2,7 @@
 //  DaysCollectionViewLayout.swift
 //  Rise
 //
-//  Created by Владимир Королев on 05.01.2021.
+//  Created by Vladimir Korolev on 05.01.2021.
 //  Copyright © 2021 VladimirBrejcha. All rights reserved.
 //
 

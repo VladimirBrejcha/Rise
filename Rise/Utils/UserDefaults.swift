@@ -2,7 +2,7 @@
 //  UserDefaults.swift
 //  Rise
 //
-//  Created by Владимир Королев on 06.09.2020.
+//  Created by Vladimir Korolev on 06.09.2020.
 //  Copyright © 2020 VladimirBrejcha. All rights reserved.
 //
 
