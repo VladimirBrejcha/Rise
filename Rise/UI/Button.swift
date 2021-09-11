@@ -27,25 +27,33 @@ class Button: UIButton, PropertyAnimatable, TouchObservable, StyledButton {
         configure()
     }
     
-    func configure() {
+    private func configure() {
         applyStyle(.primary)
-        addTarget(self, action: #selector(touchDown(_:)), for: [.touchDown, .touchDragInside])
-        addTarget(self, action: #selector(touchUp(_:)), for: [.touchUpInside, .touchDragOutside, .touchCancel])
+        addTarget(self, action: #selector(scaleDown(_:)), for: [.touchDown, .touchDragInside])
+        addTarget(self, action: #selector(scaleUp(_:)), for: [.touchUpInside, .touchDragOutside, .touchCancel])
+        addTarget(self, action: #selector(handleTouchDown(_:)), for: [.touchDown])
+        addTarget(self, action: #selector(handleTouchUp(_:)), for: [.touchUpInside])
     }
     
-    @objc private func touchDown(_ sender: UIButton) {
+    @objc private func scaleDown(_ sender: UIButton) {
         animate { [weak self] in
             if let self = self {
                 sender.transform = self.style.scaleTransform
             }
         }
-        onTouchDown?(self)
     }
     
-    @objc private func touchUp(_ sender: UIButton) {
+    @objc private func scaleUp(_ sender: UIButton) {
         animate {
             sender.transform = CGAffineTransform.identity
         }
+    }
+
+    @objc private func handleTouchDown(_ sender: UIButton) {
+        onTouchDown?(self)
+    }
+
+    @objc private func handleTouchUp(_ sender: UIButton) {
         onTouchUp?(self)
     }
 }

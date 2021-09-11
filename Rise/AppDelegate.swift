@@ -30,6 +30,31 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
 //        notificationManager.configure()
+        let viewController = OnboardingViewController(data: [
+            .init(
+                title: Text.Onboarding.Title.sleepIsImportant,
+                descriptions: [
+                    Text.Onboarding.dreamedOfWakingUpInTime
+                ]
+            ),
+            .init(
+                title: Text.Onboarding.Title.haveYouScheduledIt,
+                descriptions: [
+                    Text.Onboarding.missedAlarm,
+                    Text.Onboarding.itHappensWithAllOfUs
+                ]
+            ),
+            .init(
+                title: Text.Onboarding.Title.meetRise,
+                descriptions: [
+                    Text.Onboarding.personalAssistent,
+                    Text.Onboarding.secureGoodSleep
+                ]
+            ),
+        ])
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = viewController
+        window?.makeKeyAndVisible()
         return true
     }
 }

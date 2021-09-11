@@ -77,6 +77,10 @@ enum Style {
             Text(font: .boldSystemFont(ofSize: 13))
         }
 
+        static var boldBigTitle: Text {
+            Text(font: .boldSystemFont(ofSize: 30), color: .white, alignment: .center)
+        }
+
         static var bigSizedTitle: Text {
             Text(font: .preferredFont(forTextStyle: .largeTitle), color: .white, alignment: .center)
         }
@@ -115,7 +119,7 @@ enum Style {
                         offset: CGSize(width: 0, height: 4),
                         color: #colorLiteral(red: 0.4431372549, green: 1, blue: 0.8980392157, alpha: 1).cgColor
                     ),
-                    cornerRadius: 25
+                    cornerRadius: 22
                 ),
                 scaleTransform: CGAffineTransform(scaleX: 0.98, y: 0.95)
             )
