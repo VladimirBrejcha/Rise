@@ -14,10 +14,10 @@ internal enum Text {
   internal enum Onboarding {
     /// Continue
     internal static let action = Text.tr("Localizable", "onboarding.action")
+    /// Begin to Rise
+    internal static let actionFinal = Text.tr("Localizable", "onboarding.action_final")
     /// Have you ever dreamed of waking up right on time?
     internal static let dreamedOfWakingUpInTime = Text.tr("Localizable", "onboarding.dreamed_of_waking_up_in_time")
-    /// Have you scheduled it?
-    internal static let haveYouScheduledIt = Text.tr("Localizable", "onboarding.have_you_scheduled_it")
     /// It happens with all of us
     internal static let itHappensWithAllOfUs = Text.tr("Localizable", "onboarding.it_happens_with_all_of_us")
     /// Missed an alarm and still woke up broken?
@@ -26,10 +26,14 @@ internal enum Text {
     internal static let personalAssistent = Text.tr("Localizable", "onboarding.personal_assistent")
     /// Adjust, secure and maintain a good sleep
     internal static let secureGoodSleep = Text.tr("Localizable", "onboarding.secure_good_sleep")
-    /// Sleep is important
-    internal static let sleepIsImportant = Text.tr("Localizable", "onboarding.sleep_is_important")
-    /// Welcome to Rise!
-    internal static let welcomeToRise = Text.tr("Localizable", "onboarding.welcome_to_rise")
+    internal enum Title {
+      /// Have you scheduled it?
+      internal static let haveYouScheduledIt = Text.tr("Localizable", "onboarding.title.have_you_scheduled_it")
+      /// Meet Rise!
+      internal static let meetRise = Text.tr("Localizable", "onboarding.title.meet_rise")
+      /// Sleep is important
+      internal static let sleepIsImportant = Text.tr("Localizable", "onboarding.title.sleep_is_important")
+    }
   }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
