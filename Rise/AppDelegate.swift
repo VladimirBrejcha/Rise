@@ -33,9 +33,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         let nc = UINavigationController(
             rootViewController: DataLayer.userData.onboardingCompleted
-                ? Story.today()
+                ? Story.tabBar()
                 : Story.onboarding()
         )
+        nc.navigationBar.isHidden = true
         window?.rootViewController = nc
         window?.makeKeyAndVisible()
         return true

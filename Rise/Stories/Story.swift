@@ -13,6 +13,7 @@ enum Story {
     case onboarding
 
     // Main
+    case tabBar
     case today
     case days (frame: CGRect)
     case plan
@@ -39,6 +40,11 @@ enum Story {
     
     func callAsFunction() -> UIViewController {
         switch self {
+        case .tabBar:
+            return CustomTabBarController(
+                items: [Story.plan(), Story.today(), Story.settings()],
+                selectedIndex: 1
+            )
         case .onboarding:
             return OnboardingAssembler().assemble()
         case .today:

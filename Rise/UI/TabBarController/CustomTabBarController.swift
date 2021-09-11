@@ -20,10 +20,14 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
         return appearance
     }()
 
+    convenience init(items: [UIViewController], selectedIndex: Int) {
+        self.init(nibName: nil, bundle: nil)
+        self.viewControllers = items
+        self.selectedIndex = selectedIndex
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewControllers = [Story.plan(), Story.today(), Story.settings()]
-        selectedIndex = 1
         tabBar.standardAppearance = appeareance
         delegate = self
     }

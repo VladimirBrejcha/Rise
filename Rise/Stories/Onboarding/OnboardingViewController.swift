@@ -32,7 +32,7 @@ final class OnboardingViewController: UIViewController {
             finalButtonTitle: Text.Onboarding.actionFinal,
             completedHandler: { [weak self] in
                 self?.setOnboardingCompleted(true)
-                self?.navigationController?.setViewControllers([Story.today()], animated: true)
+                self?.navigationController?.setViewControllers([Story.tabBar()], animated: true)
             }
         )
     }
