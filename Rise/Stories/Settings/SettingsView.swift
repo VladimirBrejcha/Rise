@@ -66,6 +66,14 @@ final class SettingsView: UIView {
         VStack.addSeparators(color: .white)
     }
 
+    func deselectAll() {
+        VStack.arrangedSubviews.forEach { view in
+            if let view = view as? SettingItemView {
+                view.drawSelection(false)
+            }
+        }
+    }
+
     // MARK: - Layout
 
     private func setupLayout() {

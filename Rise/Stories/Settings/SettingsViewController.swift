@@ -48,8 +48,12 @@ final class SettingsViewController: UIViewController {
                     description: Text.Settings.Description.about
                 ),
             ],
-            selectionHandler: { identifier in
+            selectionHandler: { [weak self] identifier in
+                guard let self = self else { return }
                 switch identifier {
+                case .onboarding:
+                    self.settingsView.deselectAll()
+                    self.present(Story.onboarding(dismissOnCompletion: true)(), with: .fullScreen)
                 default:
                     print(identifier)
                 }

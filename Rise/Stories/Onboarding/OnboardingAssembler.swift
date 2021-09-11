@@ -7,8 +7,8 @@
 //
 
 final class OnboardingAssembler {
-    func assemble() -> OnboardingViewController {
-        .init(
+    func assemble(dismissOnCompletion: Bool = false) -> OnboardingViewController {
+        let controller = OnboardingViewController(
             data: [
                 .init(
                     title: Text.Onboarding.Title.sleepIsImportant,
@@ -31,7 +31,11 @@ final class OnboardingAssembler {
                     ]
                 ),
             ],
-            setOnboardingCompleted: DomainLayer.setOnboardingCompleted
+            setOnboardingCompleted: DomainLayer.setOnboardingCompleted,
+            dismissOnCompletion: dismissOnCompletion
         )
+        controller.modalPresentationStyle = .fullScreen
+        controller.modalTransitionStyle = .crossDissolve
+        return controller
     }
 }

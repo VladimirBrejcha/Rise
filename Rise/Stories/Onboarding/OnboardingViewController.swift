@@ -14,13 +14,16 @@ final class OnboardingViewController: UIViewController {
     private var onboardingView: OnboardingView { view as! OnboardingView }
     private var setOnboardingCompleted: SetOnboardingCompleted!
     private var data: [OnboardingView.ContentView.Model] = []
+    private var dismissOnCompletion: Bool = false
 
     convenience init(
         data: [OnboardingView.ContentView.Model],
-        setOnboardingCompleted: SetOnboardingCompleted
+        setOnboardingCompleted: SetOnboardingCompleted,
+        dismissOnCompletion: Bool = false
     ) {
         self.init(nibName: nil, bundle: nil)
         self.data = data
+        self.dismissOnCompletion = dismissOnCompletion
         self.setOnboardingCompleted = setOnboardingCompleted
     }
 
@@ -31,8 +34,13 @@ final class OnboardingViewController: UIViewController {
             buttonTitle: Text.Onboarding.action,
             finalButtonTitle: Text.Onboarding.actionFinal,
             completedHandler: { [weak self] in
-                self?.setOnboardingCompleted(true)
-                self?.navigationController?.setViewControllers([Story.tabBar()], animated: true)
+                guard let self = self else { return }
+                self.setOnboardingCompleted(true)
+                if self.dismissOnCompletion {
+                    self.dismiss(animated: true)
+                } else {
+                    self.navigationController?.setViewControllers([Story.tabBar()], animated: true)
+                }
             }
         )
     }

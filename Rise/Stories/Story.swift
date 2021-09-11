@@ -10,7 +10,7 @@ import UIKit
 
 enum Story {
     // Onboarding
-    case onboarding
+    case onboarding(dismissOnCompletion: Bool)
 
     // Main
     case tabBar
@@ -45,8 +45,8 @@ enum Story {
                 items: [Story.plan(), Story.today(), Story.settings()],
                 selectedIndex: 1
             )
-        case .onboarding:
-            return OnboardingAssembler().assemble()
+        case let .onboarding(dismissOnCompletion):
+            return OnboardingAssembler().assemble(dismissOnCompletion: dismissOnCompletion)
         case .today:
             return TodayAssembler().assemble()
         case .days(let frame):

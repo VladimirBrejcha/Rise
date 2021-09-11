@@ -77,16 +77,18 @@ extension SettingsView {
 
         override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             super.touchesBegan(touches, with: event)
-            animate {
-                self.backgroundColor = .white.withAlphaComponent(0.3)
-            }
+            drawSelection(true)
             touchHandler?()
         }
 
         override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
             super.touchesEnded(touches, with: event)
+            drawSelection(false)
+        }
+
+        func drawSelection(_ draw: Bool) {
             animate {
-                self.backgroundColor = .clear
+                self.backgroundColor = draw ? .white.withAlphaComponent(0.3) : .clear
             }
         }
 

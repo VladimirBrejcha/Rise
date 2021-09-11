@@ -34,7 +34,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         let nc = UINavigationController(
             rootViewController: DataLayer.userData.onboardingCompleted
                 ? Story.tabBar()
-                : Story.onboarding()
+                : Story.onboarding(dismissOnCompletion: false)()
         )
         nc.navigationBar.isHidden = true
         window?.rootViewController = nc
