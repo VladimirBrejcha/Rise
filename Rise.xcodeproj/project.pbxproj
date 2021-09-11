@@ -40,6 +40,9 @@
 		7E43064426ED3EE600B67315 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43064326ED3EE600B67315 /* UserData.swift */; };
 		7E43064726ED3F0A00B67315 /* DefaultUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43064626ED3F0A00B67315 /* DefaultUserData.swift */; };
 		7E43064926ED40F400B67315 /* SetOnboardingCompleted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43064826ED40F400B67315 /* SetOnboardingCompleted.swift */; };
+		7E43064B26ED4FF600B67315 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43064A26ED4FF600B67315 /* SettingsView.swift */; };
+		7E43064E26ED514C00B67315 /* SettingItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43064D26ED514C00B67315 /* SettingItemView.swift */; };
+		7E43065026ED528700B67315 /* UIStackView+addSeparators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43064F26ED528700B67315 /* UIStackView+addSeparators.swift */; };
 		7E4798F5239D894B007FB8F2 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4798F4239D894B007FB8F2 /* Storyboard.swift */; };
 		7E4901862340DD810034521E /* RisePlanData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E4901842340DD810034521E /* RisePlanData.xcdatamodeld */; };
 		7E514DAB25A7BE3C000EBE81 /* LoadingView in Frameworks */ = {isa = PBXBuildFile; productRef = 7E514DAA25A7BE3C000EBE81 /* LoadingView */; };
@@ -248,6 +251,9 @@
 		7E43064326ED3EE600B67315 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		7E43064626ED3F0A00B67315 /* DefaultUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUserData.swift; sourceTree = "<group>"; };
 		7E43064826ED40F400B67315 /* SetOnboardingCompleted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetOnboardingCompleted.swift; sourceTree = "<group>"; };
+		7E43064A26ED4FF600B67315 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		7E43064D26ED514C00B67315 /* SettingItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemView.swift; sourceTree = "<group>"; };
+		7E43064F26ED528700B67315 /* UIStackView+addSeparators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+addSeparators.swift"; sourceTree = "<group>"; };
 		7E4798F4239D894B007FB8F2 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		7E4901852340DD810034521E /* PersonalPlanData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonalPlanData.xcdatamodel; sourceTree = "<group>"; };
 		7E514DB225A87F5E000EBE81 /* AlarmingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmingViewController.swift; sourceTree = "<group>"; };
@@ -544,6 +550,14 @@
 			path = UserData;
 			sourceTree = "<group>";
 		};
+		7E43064C26ED513A00B67315 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7E43064D26ED514C00B67315 /* SettingItemView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		7E4901872340F3970034521E /* Stories */ = {
 			isa = PBXGroup;
 			children = (
@@ -588,7 +602,9 @@
 			isa = PBXGroup;
 			children = (
 				7EB9F35123C36AAE002A6DD3 /* SettingsAssembler.swift */,
+				7E43064A26ED4FF600B67315 /* SettingsView.swift */,
 				92E77AF722A5303400E5E21C /* SettingsViewController.swift */,
+				7E43064C26ED513A00B67315 /* Views */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -986,6 +1002,7 @@
 			isa = PBXGroup;
 			children = (
 				7E43063826EBCEDD00B67315 /* UIView+addSubviews.swift */,
+				7E43064F26ED528700B67315 /* UIStackView+addSeparators.swift */,
 				7E43063A26EBCEF600B67315 /* UIView+activateConstraints.swift */,
 				7E9D9C0924E59AFD000772C0 /* Changeable */,
 				7EE87CEC2442241000E1BD3B /* TouchObservable.swift */,
@@ -1312,6 +1329,7 @@
 				7E69837224EC69B8002EE278 /* ErrorAlertPresentable.swift in Sources */,
 				7EB9F34623C20379002A6DD3 /* DeletePlanUseCase.swift in Sources */,
 				7EB26953234F99AE008AEB3D /* Button.swift in Sources */,
+				7E43065026ED528700B67315 /* UIStackView+addSeparators.swift in Sources */,
 				7E69837624EC69DE002EE278 /* ErrorViewAddable.swift in Sources */,
 				7E814E7424D8A11700EC1665 /* ConfirmationView.swift in Sources */,
 				7EB1C0332340F9550028237E /* PersonalPlanViewController.swift in Sources */,
@@ -1365,6 +1383,7 @@
 				7E07A10123AFBEE300B9D61A /* WelcomeCreatelPlanViewController.swift in Sources */,
 				7E989FE125F5B0DF001954CD /* CollectionPageScrollDelegate.swift in Sources */,
 				7ED8E59723BFFD5100A1E96F /* Story.swift in Sources */,
+				7E43064E26ED514C00B67315 /* SettingItemView.swift in Sources */,
 				7EF4C198240412EC0098135A /* ChangePlanDatePickerTableCellModel.swift in Sources */,
 				7E6225D22619CD75001AA8FD /* HorizontalFadeView.swift in Sources */,
 				7EE640492378665D005BE355 /* DefaultSunTimeRepository.swift in Sources */,
@@ -1442,6 +1461,7 @@
 				7EE6905E243E658B00CA423E /* LongPressProgressButton.swift in Sources */,
 				7E5F292A23F9638C0050DFD3 /* FloatingLabel.swift in Sources */,
 				7E173372240D9F7A0028FDBE /* DomainLayer.swift in Sources */,
+				7E43064B26ED4FF600B67315 /* SettingsView.swift in Sources */,
 				7ECD2C6F241832B300408C4B /* ReshedulePlanUseCase.swift in Sources */,
 				7E8EFA4226EAC4D400DEE564 /* Strings+Generated.swift in Sources */,
 				7EE6404B2378666F005BE355 /* DefaultSunTimeLocalDataSource.swift in Sources */,

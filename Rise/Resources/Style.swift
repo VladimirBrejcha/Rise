@@ -92,6 +92,10 @@ enum Style {
         static var mediumSizedBody: Text {
             Text(font: .systemFont(ofSize: 18), color: .white)
         }
+
+        static var description: Text {
+            Text(font: .systemFont(ofSize: 14), color: .white.withAlphaComponent(0.7))
+        }
     }
 
     // MARK: - Button

@@ -35,7 +35,7 @@ final class OnboardingView: UIView, UIScrollViewDelegate {
         return button
     }()
 
-    private lazy var background: UIImageView = {
+    private lazy var backgroundImageView: UIImageView = {
         let view = UIImageView()
         view.image = Asset.Background.rich.image
         view.contentMode = .scaleAspectFill
@@ -86,7 +86,7 @@ final class OnboardingView: UIView, UIScrollViewDelegate {
 
     private func setupViews() {
         addSubviews(
-            background,
+            backgroundImageView,
             scrollView.addSubviews(
                 pagesContainerView
             ),
@@ -112,11 +112,11 @@ final class OnboardingView: UIView, UIScrollViewDelegate {
     // MARK: - Layout
     
     private func setupLayout() {
-        background.activateConstraints(
-            background.leadingAnchor.constraint(equalTo: leadingAnchor),
-            background.trailingAnchor.constraint(equalTo: trailingAnchor),
-            background.topAnchor.constraint(equalTo: topAnchor),
-            background.bottomAnchor.constraint(equalTo: bottomAnchor)
+        backgroundImageView.activateConstraints(
+            backgroundImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            backgroundImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            backgroundImageView.topAnchor.constraint(equalTo: topAnchor),
+            backgroundImageView.bottomAnchor.constraint(equalTo: bottomAnchor)
         )
         button.activateConstraints(
             button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 44),

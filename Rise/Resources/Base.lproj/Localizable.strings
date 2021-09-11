@@ -8,3 +8,11 @@
 "onboarding.it_happens_with_all_of_us" = "It happens with all of us";
 "onboarding.personal_assistent" = "Personal sleep schedule assistant to help establish quality sleep";
 "onboarding.secure_good_sleep" = "Adjust, secure and maintain a good sleep";
+"settings.title.edit_schedule" = "Edit schedule";
+"settings.description.edit_schedule" = "Manually adjust Rise goals";
+"settings.title.show_onboarding" = "Show onboarding";
+"settings.description.show_onboarding" = "If forgot what it is all for";
+"settings.title.about" = "About";
+"settings.description.about" = "Learn more about Rise";
+"settings.title.refresh" = "Refresh sun times";
+"settings.description.refresh" = "Update sunrise/sunset if your location changed";

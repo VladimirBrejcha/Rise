@@ -8,7 +8,8 @@
 
 final class SettingsAssembler {
     func assemble() -> SettingsViewController {
-        let controller = Storyboard.settings.instantiateViewController(of: SettingsViewController.self)
-        return controller
+        Storyboard.settings.instantiateViewController(
+            of: SettingsViewController.self
+        )
     }
 }

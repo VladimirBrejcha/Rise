@@ -35,6 +35,29 @@ internal enum Text {
       internal static let sleepIsImportant = Text.tr("Localizable", "onboarding.title.sleep_is_important")
     }
   }
+
+  internal enum Settings {
+    internal enum Description {
+      /// Learn more about Rise
+      internal static let about = Text.tr("Localizable", "settings.description.about")
+      /// Manually adjust Rise goals
+      internal static let editSchedule = Text.tr("Localizable", "settings.description.edit_schedule")
+      /// Update sunrise/sunset if your location changed
+      internal static let refresh = Text.tr("Localizable", "settings.description.refresh")
+      /// If forgot what it is all for
+      internal static let showOnboarding = Text.tr("Localizable", "settings.description.show_onboarding")
+    }
+    internal enum Title {
+      /// About
+      internal static let about = Text.tr("Localizable", "settings.title.about")
+      /// Edit schedule
+      internal static let editSchedule = Text.tr("Localizable", "settings.title.edit_schedule")
+      /// Refresh sun times
+      internal static let refresh = Text.tr("Localizable", "settings.title.refresh")
+      /// Show onboarding
+      internal static let showOnboarding = Text.tr("Localizable", "settings.title.show_onboarding")
+    }
+  }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces
