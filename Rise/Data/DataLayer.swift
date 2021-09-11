@@ -20,6 +20,7 @@ struct DataLayer {
         DataSources.locationLocalDataSource,
         DataSources.locationRemoteDataSource
     )
+    static let userData: DefaultUserData = .init()
 }
 
 fileprivate struct DataSources {

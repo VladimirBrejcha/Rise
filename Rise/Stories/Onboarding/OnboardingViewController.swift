@@ -11,14 +11,17 @@ import UIKit
 final class OnboardingViewController: UIViewController {
 
     override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
-
     private var onboardingView: OnboardingView { view as! OnboardingView }
-
+    private var setOnboardingCompleted: SetOnboardingCompleted!
     private var data: [OnboardingView.ContentView.Model] = []
 
-    convenience init(data: [OnboardingView.ContentView.Model]) {
+    convenience init(
+        data: [OnboardingView.ContentView.Model],
+        setOnboardingCompleted: SetOnboardingCompleted
+    ) {
         self.init(nibName: nil, bundle: nil)
         self.data = data
+        self.setOnboardingCompleted = setOnboardingCompleted
     }
 
     override func loadView() {
@@ -27,9 +30,15 @@ final class OnboardingViewController: UIViewController {
             content: data,
             buttonTitle: Text.Onboarding.action,
             finalButtonTitle: Text.Onboarding.actionFinal,
-            completedHandler: {
-                print("completed")
+            completedHandler: { [weak self] in
+                self?.setOnboardingCompleted(true)
+                self?.navigationController?.setViewControllers([Story.today()], animated: true)
             }
         )
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationController?.navigationBar.isHidden = true
     }
 }

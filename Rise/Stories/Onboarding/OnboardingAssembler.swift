@@ -30,7 +30,8 @@ final class OnboardingAssembler {
                         Text.Onboarding.secureGoodSleep
                     ]
                 ),
-            ]
+            ],
+            setOnboardingCompleted: DomainLayer.setOnboardingCompleted
         )
     }
 }

@@ -37,4 +37,7 @@ final class DomainLayer {
     static var reshedulePlan: ReshedulePlan {
         ReshedulePlanUseCase(DataLayer.defaultRisePlanRepository)
     }
+    static var setOnboardingCompleted: SetOnboardingCompleted {
+        SetOnboardingCompletedUseCase(DataLayer.userData)
+    }
 }

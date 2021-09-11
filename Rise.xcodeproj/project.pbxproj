@@ -37,6 +37,9 @@
 		7E43063D26ECC4E400B67315 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43063C26ECC4E400B67315 /* ContentView.swift */; };
 		7E43063F26ECC58400B67315 /* DescriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43063E26ECC58400B67315 /* DescriptionLabel.swift */; };
 		7E43064226ED392100B67315 /* OnboardingAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43064126ED392100B67315 /* OnboardingAssembler.swift */; };
+		7E43064426ED3EE600B67315 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43064326ED3EE600B67315 /* UserData.swift */; };
+		7E43064726ED3F0A00B67315 /* DefaultUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43064626ED3F0A00B67315 /* DefaultUserData.swift */; };
+		7E43064926ED40F400B67315 /* SetOnboardingCompleted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43064826ED40F400B67315 /* SetOnboardingCompleted.swift */; };
 		7E4798F5239D894B007FB8F2 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4798F4239D894B007FB8F2 /* Storyboard.swift */; };
 		7E4901862340DD810034521E /* RisePlanData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E4901842340DD810034521E /* RisePlanData.xcdatamodeld */; };
 		7E514DAB25A7BE3C000EBE81 /* LoadingView in Frameworks */ = {isa = PBXBuildFile; productRef = 7E514DAA25A7BE3C000EBE81 /* LoadingView */; };
@@ -242,6 +245,9 @@
 		7E43063C26ECC4E400B67315 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7E43063E26ECC58400B67315 /* DescriptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionLabel.swift; sourceTree = "<group>"; };
 		7E43064126ED392100B67315 /* OnboardingAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAssembler.swift; sourceTree = "<group>"; };
+		7E43064326ED3EE600B67315 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		7E43064626ED3F0A00B67315 /* DefaultUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUserData.swift; sourceTree = "<group>"; };
+		7E43064826ED40F400B67315 /* SetOnboardingCompleted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetOnboardingCompleted.swift; sourceTree = "<group>"; };
 		7E4798F4239D894B007FB8F2 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		7E4901852340DD810034521E /* PersonalPlanData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonalPlanData.xcdatamodel; sourceTree = "<group>"; };
 		7E514DB225A87F5E000EBE81 /* AlarmingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmingViewController.swift; sourceTree = "<group>"; };
@@ -453,6 +459,7 @@
 		7E173373241044BF0028FDBE /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
+				7E43064326ED3EE600B67315 /* UserData.swift */,
 				7E173374241044D70028FDBE /* SunTimeRepository.swift */,
 				7E173376241047460028FDBE /* RisePlanRepository.swift */,
 				7E17337824104DDA0028FDBE /* LocationRepository.swift */,
@@ -527,6 +534,14 @@
 				7E43063E26ECC58400B67315 /* DescriptionLabel.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		7E43064526ED3EF600B67315 /* UserData */ = {
+			isa = PBXGroup;
+			children = (
+				7E43064626ED3F0A00B67315 /* DefaultUserData.swift */,
+			);
+			path = UserData;
 			sourceTree = "<group>";
 		};
 		7E4901872340F3970034521E /* Stories */ = {
@@ -789,6 +804,7 @@
 				7EA38AEA237852FD0007919B /* Location */,
 				7EE6404E23786693005BE355 /* PersistentContainer.swift */,
 				7E354E2F24119B1C0036FF3F /* LocalDataSource.swift */,
+				7E43064526ED3EF600B67315 /* UserData */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -817,6 +833,7 @@
 				7E8675CD2417E9AA004DAF63 /* PausePlanUseCase.swift */,
 				7E8675CB2417E5FF004DAF63 /* ConfirmPlanUseCase.swift */,
 				7ECD2C6E241832B300408C4B /* ReshedulePlanUseCase.swift */,
+				7E43064826ED40F400B67315 /* SetOnboardingCompleted.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -1317,6 +1334,7 @@
 				7E6225DF2619CDE7001AA8FD /* CAGradientLayer+Gradientable.swift in Sources */,
 				7E388E38243A3C16001A28DF /* PropertyAnimatable.swift in Sources */,
 				7E97656023786AB000E3AEF2 /* SunTimeData.xcdatamodeld in Sources */,
+				7E43064726ED3F0A00B67315 /* DefaultUserData.swift in Sources */,
 				7E43064226ED392100B67315 /* OnboardingAssembler.swift in Sources */,
 				7EA7BA0A2354F1810051A92D /* DaysCollectionView.swift in Sources */,
 				7E98FE63231C2F8C0065FB09 /* Location.swift in Sources */,
@@ -1338,6 +1356,7 @@
 				7E173375241044D70028FDBE /* SunTimeRepository.swift in Sources */,
 				7E8675CC2417E5FF004DAF63 /* ConfirmPlanUseCase.swift in Sources */,
 				7E199CD2240BD41D00B702AD /* SliderWithValues.swift in Sources */,
+				7E43064926ED40F400B67315 /* SetOnboardingCompleted.swift in Sources */,
 				7E354E3024119B1C0036FF3F /* LocalDataSource.swift in Sources */,
 				7E162FF1243D0E22004C68B1 /* AutoRefreshable.swift in Sources */,
 				7EAD159F25F50DF700392E6A /* DaysViewController.swift in Sources */,
@@ -1418,6 +1437,7 @@
 				7EB9F34A23C2045A002A6DD3 /* ObservePlanUseCase.swift in Sources */,
 				7EEFC00F25E1AEB0007AE725 /* BorderedView.swift in Sources */,
 				7E9D9C0424E58F39000772C0 /* SleepView.swift in Sources */,
+				7E43064426ED3EE600B67315 /* UserData.swift in Sources */,
 				7EA38AEC237853230007919B /* DefaultLocationLocalDataSource.swift in Sources */,
 				7EE6905E243E658B00CA423E /* LongPressProgressButton.swift in Sources */,
 				7E5F292A23F9638C0050DFD3 /* FloatingLabel.swift in Sources */,

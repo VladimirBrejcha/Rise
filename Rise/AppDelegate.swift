@@ -31,7 +31,12 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
 //        notificationManager.configure()
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = Story.onboarding()
+        let nc = UINavigationController(
+            rootViewController: DataLayer.userData.onboardingCompleted
+                ? Story.today()
+                : Story.onboarding()
+        )
+        window?.rootViewController = nc
         window?.makeKeyAndVisible()
         return true
     }
