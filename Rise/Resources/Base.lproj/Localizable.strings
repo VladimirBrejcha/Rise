@@ -1,7 +1,8 @@
-"onboarding.sleep_is_important" = "Sleep is important";
-"onboarding.have_you_scheduled_it" = "Have you scheduled it?";
-"onboarding.welcome_to_rise" = "Welcome to Rise!";
+"onboarding.title.sleep_is_important" = "Sleep is important";
+"onboarding.title.have_you_scheduled_it" = "Have you scheduled it?";
+"onboarding.title.meet_rise" = "Meet Rise!";
 "onboarding.action" = "Continue";
+"onboarding.action_final" = "Begin to Rise";
 "onboarding.dreamed_of_waking_up_in_time" = "Have you ever dreamed of waking up right on time?";
 "onboarding.missed_alarm" = "Missed an alarm and still woke up broken?";
 "onboarding.it_happens_with_all_of_us" = "It happens with all of us";
