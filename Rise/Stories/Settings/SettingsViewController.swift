@@ -8,16 +8,15 @@
 
 import UIKit
 
-enum SettingIdentifier {
-    case editSchedule
-    case refreshSuntime
-    case onboarding
-    case about
-}
-
 final class SettingsViewController: UIViewController {
 
     private var settingsView: SettingsView { view as! SettingsView }
+    private var getAppVersion: GetAppVersion!
+
+    convenience init(getAppVersion: GetAppVersion) {
+        self.init(nibName: nil, bundle: nil)
+        self.getAppVersion = getAppVersion
+    }
 
     override func loadView() {
         super.loadView()
@@ -57,7 +56,8 @@ final class SettingsViewController: UIViewController {
                 default:
                     print(identifier)
                 }
-            }
+            },
+            appVersion: getAppVersion()
         )
     }
 }

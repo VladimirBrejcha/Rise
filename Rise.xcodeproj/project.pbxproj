@@ -43,6 +43,8 @@
 		7E43064B26ED4FF600B67315 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43064A26ED4FF600B67315 /* SettingsView.swift */; };
 		7E43064E26ED514C00B67315 /* SettingItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43064D26ED514C00B67315 /* SettingItemView.swift */; };
 		7E43065026ED528700B67315 /* UIStackView+addSeparators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43064F26ED528700B67315 /* UIStackView+addSeparators.swift */; };
+		7E43065226ED6E5800B67315 /* SettingIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43065126ED6E5800B67315 /* SettingIdentifier.swift */; };
+		7E43065426ED6E7500B67315 /* GetAppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43065326ED6E7500B67315 /* GetAppVersion.swift */; };
 		7E4798F5239D894B007FB8F2 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4798F4239D894B007FB8F2 /* Storyboard.swift */; };
 		7E4901862340DD810034521E /* RisePlanData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E4901842340DD810034521E /* RisePlanData.xcdatamodeld */; };
 		7E514DAB25A7BE3C000EBE81 /* LoadingView in Frameworks */ = {isa = PBXBuildFile; productRef = 7E514DAA25A7BE3C000EBE81 /* LoadingView */; };
@@ -254,6 +256,8 @@
 		7E43064A26ED4FF600B67315 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7E43064D26ED514C00B67315 /* SettingItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemView.swift; sourceTree = "<group>"; };
 		7E43064F26ED528700B67315 /* UIStackView+addSeparators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+addSeparators.swift"; sourceTree = "<group>"; };
+		7E43065126ED6E5800B67315 /* SettingIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingIdentifier.swift; sourceTree = "<group>"; };
+		7E43065326ED6E7500B67315 /* GetAppVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAppVersion.swift; sourceTree = "<group>"; };
 		7E4798F4239D894B007FB8F2 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		7E4901852340DD810034521E /* PersonalPlanData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonalPlanData.xcdatamodel; sourceTree = "<group>"; };
 		7E514DB225A87F5E000EBE81 /* AlarmingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmingViewController.swift; sourceTree = "<group>"; };
@@ -604,6 +608,7 @@
 				7EB9F35123C36AAE002A6DD3 /* SettingsAssembler.swift */,
 				7E43064A26ED4FF600B67315 /* SettingsView.swift */,
 				92E77AF722A5303400E5E21C /* SettingsViewController.swift */,
+				7E43065126ED6E5800B67315 /* SettingIdentifier.swift */,
 				7E43064C26ED513A00B67315 /* Views */,
 			);
 			path = Settings;
@@ -850,6 +855,7 @@
 				7E8675CB2417E5FF004DAF63 /* ConfirmPlanUseCase.swift */,
 				7ECD2C6E241832B300408C4B /* ReshedulePlanUseCase.swift */,
 				7E43064826ED40F400B67315 /* SetOnboardingCompleted.swift */,
+				7E43065326ED6E7500B67315 /* GetAppVersion.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -1345,6 +1351,7 @@
 				7E541AF423FB259400BAD710 /* DaysCollectionCell.swift in Sources */,
 				7E4798F5239D894B007FB8F2 /* Storyboard.swift in Sources */,
 				7EE87CED2442241000E1BD3B /* TouchObservable.swift in Sources */,
+				7E43065226ED6E5800B67315 /* SettingIdentifier.swift in Sources */,
 				7EF4C195240412D80098135A /* ChangePlanDatePickerTableCell.swift in Sources */,
 				7E31497F23425D3700941606 /* ChangePlanTableView.swift in Sources */,
 				7E708A3B23BFD0C7003B5702 /* PlanCreatedCreatePlanViewController.swift in Sources */,
@@ -1405,6 +1412,7 @@
 				7E69836724EC690C002EE278 /* RecoveryAttemper.swift in Sources */,
 				7E6225AA26192DF9001AA8FD /* Styleable.swift in Sources */,
 				92D12FDD22A44B3B0093B0A3 /* CustomTabBarController.swift in Sources */,
+				7E43065426ED6E7500B67315 /* GetAppVersion.swift in Sources */,
 				7E173377241047460028FDBE /* RisePlanRepository.swift in Sources */,
 				7E06FE92252E3829005D72CB /* AnimatedTransitionNavigationController.swift in Sources */,
 				7E84EB27239D1A5700E02050 /* ConfirmationViewController.swift in Sources */,

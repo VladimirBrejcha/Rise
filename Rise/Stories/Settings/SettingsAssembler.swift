@@ -6,10 +6,16 @@
 //  Copyright © 2020 VladimirBrejcha. All rights reserved.
 //
 
+import UIKit
+
 final class SettingsAssembler {
     func assemble() -> SettingsViewController {
-        Storyboard.settings.instantiateViewController(
-            of: SettingsViewController.self
+        let vc = SettingsViewController(getAppVersion: DomainLayer.getAppVersion)
+        vc.tabBarItem = UITabBarItem(
+            title: nil,
+            image: Asset.settings.image,
+            selectedImage: Asset.settingsPressed.image
         )
+        return vc
     }
 }
