@@ -78,12 +78,22 @@ extension SettingsView {
         override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             super.touchesBegan(touches, with: event)
             drawSelection(true)
-            touchHandler?()
         }
 
         override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
             super.touchesEnded(touches, with: event)
             drawSelection(false)
+            if let touch = touches.first {
+                if point(
+                    inside: convert(
+                        touch.location(in: self),
+                        from: self
+                    ),
+                    with: event
+                ) {
+                    touchHandler?()
+                }
+            }
         }
 
         func drawSelection(_ draw: Bool) {
