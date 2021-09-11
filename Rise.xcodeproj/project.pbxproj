@@ -36,6 +36,7 @@
 		7E43063B26EBCEF600B67315 /* UIView+activateConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43063A26EBCEF600B67315 /* UIView+activateConstraints.swift */; };
 		7E43063D26ECC4E400B67315 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43063C26ECC4E400B67315 /* ContentView.swift */; };
 		7E43063F26ECC58400B67315 /* DescriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43063E26ECC58400B67315 /* DescriptionLabel.swift */; };
+		7E43064226ED392100B67315 /* OnboardingAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43064126ED392100B67315 /* OnboardingAssembler.swift */; };
 		7E4798F5239D894B007FB8F2 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4798F4239D894B007FB8F2 /* Storyboard.swift */; };
 		7E4901862340DD810034521E /* RisePlanData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E4901842340DD810034521E /* RisePlanData.xcdatamodeld */; };
 		7E514DAB25A7BE3C000EBE81 /* LoadingView in Frameworks */ = {isa = PBXBuildFile; productRef = 7E514DAA25A7BE3C000EBE81 /* LoadingView */; };
@@ -240,6 +241,7 @@
 		7E43063A26EBCEF600B67315 /* UIView+activateConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+activateConstraints.swift"; sourceTree = "<group>"; };
 		7E43063C26ECC4E400B67315 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7E43063E26ECC58400B67315 /* DescriptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionLabel.swift; sourceTree = "<group>"; };
+		7E43064126ED392100B67315 /* OnboardingAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAssembler.swift; sourceTree = "<group>"; };
 		7E4798F4239D894B007FB8F2 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		7E4901852340DD810034521E /* PersonalPlanData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonalPlanData.xcdatamodel; sourceTree = "<group>"; };
 		7E514DB225A87F5E000EBE81 /* AlarmingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmingViewController.swift; sourceTree = "<group>"; };
@@ -481,6 +483,7 @@
 		7E252A8626EBBE5000DEB6F0 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				7E43064126ED392100B67315 /* OnboardingAssembler.swift */,
 				7E252A8926EBBE9600DEB6F0 /* OnboardingView.swift */,
 				7E252A8726EBBE6600DEB6F0 /* OnboardingViewController.swift */,
 				7E43064026ECC75E00B67315 /* Views */,
@@ -1314,6 +1317,7 @@
 				7E6225DF2619CDE7001AA8FD /* CAGradientLayer+Gradientable.swift in Sources */,
 				7E388E38243A3C16001A28DF /* PropertyAnimatable.swift in Sources */,
 				7E97656023786AB000E3AEF2 /* SunTimeData.xcdatamodeld in Sources */,
+				7E43064226ED392100B67315 /* OnboardingAssembler.swift in Sources */,
 				7EA7BA0A2354F1810051A92D /* DaysCollectionView.swift in Sources */,
 				7E98FE63231C2F8C0065FB09 /* Location.swift in Sources */,
 				7E708A4023BFD92D003B5702 /* ChangePlanViewController.swift in Sources */,

@@ -9,6 +9,9 @@
 import UIKit
 
 enum Story {
+    // Onboarding
+    case onboarding
+
     // Main
     case today
     case days (frame: CGRect)
@@ -36,6 +39,8 @@ enum Story {
     
     func callAsFunction() -> UIViewController {
         switch self {
+        case .onboarding:
+            return OnboardingAssembler().assemble()
         case .today:
             return TodayAssembler().assemble()
         case .days(let frame):
