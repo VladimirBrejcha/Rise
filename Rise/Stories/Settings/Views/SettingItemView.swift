@@ -85,10 +85,7 @@ extension SettingsView {
             drawSelection(false)
             if let touch = touches.first {
                 if point(
-                    inside: convert(
-                        touch.location(in: self),
-                        from: self
-                    ),
+                    inside: touch.location(in: self),
                     with: event
                 ) {
                     touchHandler?()
