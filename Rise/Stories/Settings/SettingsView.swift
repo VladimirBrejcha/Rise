@@ -10,9 +10,8 @@ import UIKit
 
 final class SettingsView: UIView {
 
-    private var models: [SettingItemView.Model] = []
+    private var models: [ItemView.Model] = []
     private var selectionHandler: ((SettingIdentifier) -> Void)?
-    private var appVersion: String?
 
     // MARK: - Subviews
 
@@ -32,23 +31,14 @@ final class SettingsView: UIView {
         return stack
     }()
 
-    private lazy var appVersionLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 1
-        label.applyStyle(.description)
-        return label
-    }()
-
     // MARK: - LifeCycle
 
     convenience init(
-        models: [SettingItemView.Model],
-        selectionHandler: @escaping (SettingIdentifier) -> Void,
-        appVersion: String?
+        models: [ItemView.Model],
+        selectionHandler: @escaping (SettingIdentifier) -> Void
     ) {
         self.init(frame: .zero)
         self.models = models
-        self.appVersion = appVersion
         self.selectionHandler = selectionHandler
         setup()
     }
@@ -61,28 +51,23 @@ final class SettingsView: UIView {
     private func setupViews() {
         addSubviews(
             backgroundImageView,
-            VStack,
-            appVersionLabel
-        )
-        models.forEach { model in
-            VStack.addArrangedSubview(
-                SettingItemView(
-                    model: model,
-                    touchHandler: { [weak self] in
-                        self?.selectionHandler?(model.identifier)
-                    }
-                )
+            VStack.addArrangedSubviews(
+                models.map { model in
+                    ItemView(
+                        model: model,
+                        touchHandler: { [weak self] in
+                            self?.selectionHandler?(model.identifier)
+                        }
+                    )
+                },
+                separated: true
             )
-        }
-        VStack.addSeparators(color: .white)
-        if let appVersion = appVersion {
-            appVersionLabel.text = "Rise v\(appVersion)"
-        }
+        )
     }
 
     func deselectAll() {
         VStack.arrangedSubviews.forEach { view in
-            if let view = view as? SettingItemView {
+            if let view = view as? ItemView {
                 view.drawSelection(false)
             }
         }
@@ -103,19 +88,12 @@ final class SettingsView: UIView {
             VStack.centerYAnchor.constraint(equalTo: centerYAnchor)
         )
         VStack.arrangedSubviews.forEach { view in
-            if view is SettingItemView {
-                view.activateConstraints(
-                    view.widthAnchor.constraint(equalTo: VStack.widthAnchor)
+            view.activateConstraints(
+                view.widthAnchor.constraint(
+                    equalTo: VStack.widthAnchor,
+                    constant: view is ItemView ? 0 : -44
                 )
-            } else {
-                view.activateConstraints(
-                    view.widthAnchor.constraint(equalTo: VStack.widthAnchor, constant: -44)
-                )
-            }
+            )
         }
-        appVersionLabel.activateConstraints(
-            appVersionLabel.topAnchor.constraint(equalTo: VStack.bottomAnchor, constant: 16),
-            appVersionLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
-        )
     }
 }

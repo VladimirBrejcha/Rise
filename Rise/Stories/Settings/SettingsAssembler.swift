@@ -10,7 +10,7 @@ import UIKit
 
 final class SettingsAssembler {
     func assemble() -> SettingsViewController {
-        let vc = SettingsViewController(getAppVersion: DomainLayer.getAppVersion)
+        let vc = SettingsViewController()
         vc.tabBarItem = UITabBarItem(
             title: nil,
             image: Asset.settings.image,

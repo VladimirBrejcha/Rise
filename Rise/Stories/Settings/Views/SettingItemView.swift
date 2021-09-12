@@ -10,7 +10,7 @@ import UIKit
 
 extension SettingsView {
 
-    final class SettingItemView: UIView, PropertyAnimatable {
+    final class ItemView: UIView, PropertyAnimatable {
 
         struct Model {
             let identifier: SettingIdentifier

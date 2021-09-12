@@ -11,6 +11,29 @@ import Foundation
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum Text {
 
+  internal enum About {
+    internal enum Feedback {
+      /// Leave Feedback
+      internal static let mail = Text.tr("Localizable", "about.feedback.mail")
+    }
+    internal enum Legal {
+      /// License and Open Source Notes
+      internal static let openSource = Text.tr("Localizable", "about.legal.open_source")
+      /// Privacy Policy
+      internal static let privacyPolicy = Text.tr("Localizable", "about.legal.privacy_policy")
+      /// Terms and Conditions
+      internal static let termsAndConditions = Text.tr("Localizable", "about.legal.terms_and_conditions")
+    }
+    internal enum Social {
+      /// Source code on GitHub
+      internal static let github = Text.tr("Localizable", "about.social.github")
+      /// Reach me via LinkedIn
+      internal static let linkedIn = Text.tr("Localizable", "about.social.linked_in")
+      /// Reach me via Telegram
+      internal static let telegram = Text.tr("Localizable", "about.social.telegram")
+    }
+  }
+
   internal enum Onboarding {
     /// Continue
     internal static let action = Text.tr("Localizable", "onboarding.action")

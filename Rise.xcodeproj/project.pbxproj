@@ -45,6 +45,12 @@
 		7E43065026ED528700B67315 /* UIStackView+addSeparators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43064F26ED528700B67315 /* UIStackView+addSeparators.swift */; };
 		7E43065226ED6E5800B67315 /* SettingIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43065126ED6E5800B67315 /* SettingIdentifier.swift */; };
 		7E43065426ED6E7500B67315 /* GetAppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43065326ED6E7500B67315 /* GetAppVersion.swift */; };
+		7E43065726EE4F2000B67315 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43065626EE4F2000B67315 /* AboutView.swift */; };
+		7E43065926EE4F3200B67315 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43065826EE4F3200B67315 /* AboutViewController.swift */; };
+		7E43065B26EE4F3800B67315 /* AboutAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43065A26EE4F3800B67315 /* AboutAssembler.swift */; };
+		7E43065D26EE617500B67315 /* UIStackView+addArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43065C26EE617500B67315 /* UIStackView+addArrangedSubviews.swift */; };
+		7E43065F26EE63DB00B67315 /* AboutItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43065E26EE63DB00B67315 /* AboutItemView.swift */; };
+		7E43066226EE974D00B67315 /* AboutIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43066126EE974D00B67315 /* AboutIdentifier.swift */; };
 		7E4798F5239D894B007FB8F2 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4798F4239D894B007FB8F2 /* Storyboard.swift */; };
 		7E4901862340DD810034521E /* RisePlanData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E4901842340DD810034521E /* RisePlanData.xcdatamodeld */; };
 		7E514DAB25A7BE3C000EBE81 /* LoadingView in Frameworks */ = {isa = PBXBuildFile; productRef = 7E514DAA25A7BE3C000EBE81 /* LoadingView */; };
@@ -258,6 +264,12 @@
 		7E43064F26ED528700B67315 /* UIStackView+addSeparators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+addSeparators.swift"; sourceTree = "<group>"; };
 		7E43065126ED6E5800B67315 /* SettingIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingIdentifier.swift; sourceTree = "<group>"; };
 		7E43065326ED6E7500B67315 /* GetAppVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAppVersion.swift; sourceTree = "<group>"; };
+		7E43065626EE4F2000B67315 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		7E43065826EE4F3200B67315 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		7E43065A26EE4F3800B67315 /* AboutAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAssembler.swift; sourceTree = "<group>"; };
+		7E43065C26EE617500B67315 /* UIStackView+addArrangedSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+addArrangedSubviews.swift"; sourceTree = "<group>"; };
+		7E43065E26EE63DB00B67315 /* AboutItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutItemView.swift; sourceTree = "<group>"; };
+		7E43066126EE974D00B67315 /* AboutIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutIdentifier.swift; sourceTree = "<group>"; };
 		7E4798F4239D894B007FB8F2 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		7E4901852340DD810034521E /* PersonalPlanData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonalPlanData.xcdatamodel; sourceTree = "<group>"; };
 		7E514DB225A87F5E000EBE81 /* AlarmingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmingViewController.swift; sourceTree = "<group>"; };
@@ -562,6 +574,26 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		7E43065526EE2FBE00B67315 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				7E43065A26EE4F3800B67315 /* AboutAssembler.swift */,
+				7E43065626EE4F2000B67315 /* AboutView.swift */,
+				7E43065826EE4F3200B67315 /* AboutViewController.swift */,
+				7E43066126EE974D00B67315 /* AboutIdentifier.swift */,
+				7E43066026EE63DD00B67315 /* Views */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
+		7E43066026EE63DD00B67315 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7E43065E26EE63DB00B67315 /* AboutItemView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		7E4901872340F3970034521E /* Stories */ = {
 			isa = PBXGroup;
 			children = (
@@ -576,6 +608,7 @@
 				7EFF58B5241C1E1A00D2CCEC /* Sleep */,
 				7E514DC125A87FB1000EBE81 /* Alarming */,
 				7E49018A2340F4190034521E /* Settings */,
+				7E43065526EE2FBE00B67315 /* About */,
 			);
 			path = Stories;
 			sourceTree = "<group>";
@@ -1008,8 +1041,9 @@
 			isa = PBXGroup;
 			children = (
 				7E43063826EBCEDD00B67315 /* UIView+addSubviews.swift */,
-				7E43064F26ED528700B67315 /* UIStackView+addSeparators.swift */,
 				7E43063A26EBCEF600B67315 /* UIView+activateConstraints.swift */,
+				7E43064F26ED528700B67315 /* UIStackView+addSeparators.swift */,
+				7E43065C26EE617500B67315 /* UIStackView+addArrangedSubviews.swift */,
 				7E9D9C0924E59AFD000772C0 /* Changeable */,
 				7EE87CEC2442241000E1BD3B /* TouchObservable.swift */,
 				7E162FF0243D0E22004C68B1 /* AutoRefreshable.swift */,
@@ -1357,7 +1391,9 @@
 				7E708A3B23BFD0C7003B5702 /* PlanCreatedCreatePlanViewController.swift in Sources */,
 				7EA64EEB25A8BC9F0029FBE7 /* NotificationManager.swift in Sources */,
 				7E6225DF2619CDE7001AA8FD /* CAGradientLayer+Gradientable.swift in Sources */,
+				7E43065926EE4F3200B67315 /* AboutViewController.swift in Sources */,
 				7E388E38243A3C16001A28DF /* PropertyAnimatable.swift in Sources */,
+				7E43065F26EE63DB00B67315 /* AboutItemView.swift in Sources */,
 				7E97656023786AB000E3AEF2 /* SunTimeData.xcdatamodeld in Sources */,
 				7E43064726ED3F0A00B67315 /* DefaultUserData.swift in Sources */,
 				7E43064226ED392100B67315 /* OnboardingAssembler.swift in Sources */,
@@ -1398,12 +1434,15 @@
 				7EA38AE92378526F0007919B /* LocationData.xcdatamodeld in Sources */,
 				7E6268C024D5D49C00F70BC3 /* TodayView.swift in Sources */,
 				7E69837C24EC702B002EE278 /* ErrorView.swift in Sources */,
+				7E43066226EE974D00B67315 /* AboutIdentifier.swift in Sources */,
 				7E2CA81024032A0F000CEFA5 /* TableCellConfigurator.swift in Sources */,
 				7E91D95F2371E4080087436F /* RisePlanObject+CoreDataClass.swift in Sources */,
 				7EB9F35423C36B54002A6DD3 /* CreatePlanAssembler.swift in Sources */,
 				7E5E3355261A3496000EE976 /* invertAlpha.swift in Sources */,
 				7ECD2C722419168600408C4B /* ChangePlanButtonTableCell.swift in Sources */,
+				7E43065D26EE617500B67315 /* UIStackView+addArrangedSubviews.swift in Sources */,
 				7EEFC01725E1AFD8007AE725 /* ImageLabelView.swift in Sources */,
+				7E43065726EE4F2000B67315 /* AboutView.swift in Sources */,
 				7EB9003E23256AC9006EB9A8 /* DesignableContainerView.swift in Sources */,
 				7E0834AC2387351400BA1AE8 /* DateExtensions.swift in Sources */,
 				7E708A3923BFD09B003B5702 /* WentSleepCreatePlanViewController.swift in Sources */,
@@ -1474,6 +1513,7 @@
 				7E8EFA4226EAC4D400DEE564 /* Strings+Generated.swift in Sources */,
 				7EE6404B2378666F005BE355 /* DefaultSunTimeLocalDataSource.swift in Sources */,
 				7EE87CEF2442254A00E1BD3B /* AutoRefreshableLabel.swift in Sources */,
+				7E43065B26EE4F3800B67315 /* AboutAssembler.swift in Sources */,
 				7EEA217923B6A3B400354BEA /* UIViewController+Present.swift in Sources */,
 				7E31497D23425CA600941606 /* TableViewDataSource.swift in Sources */,
 				7E514DB325A87F5E000EBE81 /* AlarmingViewController.swift in Sources */,

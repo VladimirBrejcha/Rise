@@ -11,12 +11,6 @@ import UIKit
 final class SettingsViewController: UIViewController {
 
     private var settingsView: SettingsView { view as! SettingsView }
-    private var getAppVersion: GetAppVersion!
-
-    convenience init(getAppVersion: GetAppVersion) {
-        self.init(nibName: nil, bundle: nil)
-        self.getAppVersion = getAppVersion
-    }
 
     override func loadView() {
         super.loadView()
@@ -49,15 +43,18 @@ final class SettingsViewController: UIViewController {
             ],
             selectionHandler: { [weak self] identifier in
                 guard let self = self else { return }
+
+                self.settingsView.deselectAll()
+                
                 switch identifier {
                 case .onboarding:
-                    self.settingsView.deselectAll()
                     self.present(Story.onboarding(dismissOnCompletion: true)(), with: .fullScreen)
+                case .about:
+                    self.present(Story.about(), with: .modal)
                 default:
                     print(identifier)
                 }
-            },
-            appVersion: getAppVersion()
+            }
         )
     }
 }

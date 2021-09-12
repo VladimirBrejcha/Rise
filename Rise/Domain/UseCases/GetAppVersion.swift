@@ -14,6 +14,10 @@ protocol GetAppVersion {
 
 final class GetAppVersionUseCase: GetAppVersion {
     func callAsFunction() -> String? {
-        Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+        if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+           let buildVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+            return "\(appVersion) (\(buildVersion))"
+        }
+        return nil
     }
 }

@@ -37,6 +37,9 @@ enum Story {
     case prepareToSleep
     case sleep(alarmTime: Date)
     case alarming(alarmTime: Date)
+
+    // Settings
+    case about
     
     func callAsFunction() -> UIViewController {
         switch self {
@@ -88,6 +91,8 @@ enum Story {
             return SleepAssembler().assemble(alarm: alarmTime)
         case .alarming(let alarmTime):
             return AlarmingAssembler().assemble(alarm: alarmTime)
+        case .about:
+            return AboutAssembler().assemble()
         }
     }
 }

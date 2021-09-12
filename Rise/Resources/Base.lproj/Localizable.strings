@@ -16,3 +16,10 @@
 "settings.description.about" = "Learn more about Rise";
 "settings.title.refresh" = "Refresh sun times";
 "settings.description.refresh" = "Update sunrise/sunset if your location changed";
+"about.legal.terms_and_conditions" = "Terms and Conditions";
+"about.legal.privacy_policy" = "Privacy Policy";
+"about.legal.open_source" = "License and Open Source Notes";
+"about.social.github" = "Source code on GitHub";
+"about.social.linked_in" = "Reach me via LinkedIn";
+"about.social.telegram" = "Reach me via Telegram";
+"about.feedback.mail" = "Leave Feedback";
