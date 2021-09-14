@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MessageUI
 
-final class AboutViewController: UIViewController {
+final class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate {
 
     private var aboutView: AboutView { view as! AboutView }
     private var getAppVersion: GetAppVersion!
@@ -60,9 +61,40 @@ final class AboutViewController: UIViewController {
                     )
                 ]
             ),
-            selectionHandler: { identifier in
+            selectionHandler: { [weak self] identifier in
+                guard let self = self else { return }
+                switch identifier {
+                case .mailFeedback:
+                    self.sendEmail()
+                default:
+                    return
+                }
                 print(identifier)
             }
         )
+    }
+
+    func sendEmail() {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients(["vladimirbrejcha@icloud.com"])
+            mail.setMessageBody("<p>Hello, I'm using Rise v\(getAppVersion() ?? "") and have some feedback.</p>", isHTML: true)
+            present(mail, animated: true)
+        } else {
+            log(.error, "Couldn't send email")
+            // show failure alert
+        }
+    }
+
+    // MARK: - MFMailComposeViewControllerDelegate
+
+    func mailComposeController(
+        _ controller: MFMailComposeViewController,
+        didFinishWith result: MFMailComposeResult,
+        error: Error?
+    ) {
+        log(.info, "mailComposeController didFinish with result: \(result.rawValue), error: \(String(describing: error))")
+        controller.dismiss(animated: true)
     }
 }
