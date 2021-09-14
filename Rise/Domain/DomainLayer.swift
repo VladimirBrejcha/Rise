@@ -40,8 +40,10 @@ final class DomainLayer {
     static var setOnboardingCompleted: SetOnboardingCompleted {
         SetOnboardingCompletedUseCase(DataLayer.userData)
     }
-
     static var getAppVersion: GetAppVersion {
         GetAppVersionUseCase()
+    }
+    static var prepareMail: PrepareMail {
+        PrepareMailUseCase()
     }
 }

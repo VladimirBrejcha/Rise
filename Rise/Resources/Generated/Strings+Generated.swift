@@ -59,6 +59,11 @@ internal enum Text {
     }
   }
 
+  internal enum PrepareMailError {
+    /// Cannot send email. Make sure a mail app is installed
+    internal static let cannotSend = Text.tr("Localizable", "prepare_mail_error.cannot_send")
+  }
+
   internal enum Settings {
     internal enum Description {
       /// Learn more about Rise

@@ -9,14 +9,23 @@
 import UIKit
 import MessageUI
 
-final class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate {
-
+final class AboutViewController:
+    UIViewController,
+    MFMailComposeViewControllerDelegate,
+    ErrorAlertCreatable,
+    ErrorAlertPresentable
+{
     private var aboutView: AboutView { view as! AboutView }
     private var getAppVersion: GetAppVersion!
+    private var prepareMail: PrepareMail!
 
-    convenience init(getAppVersion: GetAppVersion) {
+    convenience init(
+        getAppVersion: GetAppVersion,
+        prepareMail: PrepareMail
+    ) {
         self.init(nibName: nil, bundle: nil)
         self.getAppVersion = getAppVersion
+        self.prepareMail = prepareMail
     }
 
     override func loadView() {
@@ -65,7 +74,7 @@ final class AboutViewController: UIViewController, MFMailComposeViewControllerDe
                 guard let self = self else { return }
                 switch identifier {
                 case .mailFeedback:
-                    self.sendEmail()
+                    self.sendMailFeedback()
                 default:
                     return
                 }
@@ -74,16 +83,19 @@ final class AboutViewController: UIViewController, MFMailComposeViewControllerDe
         )
     }
 
-    func sendEmail() {
-        if MFMailComposeViewController.canSendMail() {
-            let mail = MFMailComposeViewController()
-            mail.mailComposeDelegate = self
-            mail.setToRecipients(["vladimirbrejcha@icloud.com"])
-            mail.setMessageBody("<p>Hello, I'm using Rise v\(getAppVersion() ?? "") and have some feedback.</p>", isHTML: true)
-            present(mail, animated: true)
-        } else {
-            log(.error, "Couldn't send email")
-            // show failure alert
+    func sendMailFeedback() {
+        let result = prepareMail(
+            to: "vladimirbrejcha@icloud.com",
+            subject: "Feedback",
+            message: "Hello, I'm using Rise v\(getAppVersion() ?? "") and have some feedback."
+        )
+        if case let .success(mailVc) = result {
+            if let mailVc = mailVc {
+                mailVc.mailComposeDelegate = self
+                present(mailVc, animated: true)
+            }
+        } else if case let .failure(error) = result {
+            presentAlert(from: error)
         }
     }
 
@@ -94,7 +106,9 @@ final class AboutViewController: UIViewController, MFMailComposeViewControllerDe
         didFinishWith result: MFMailComposeResult,
         error: Error?
     ) {
-        log(.info, "mailComposeController didFinish with result: \(result.rawValue), error: \(String(describing: error))")
+        log(.info,
+            "mailComposeController didFinish with result: \(result.rawValue), error: \(String(describing: error))"
+        )
         controller.dismiss(animated: true)
     }
 }

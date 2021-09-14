@@ -23,3 +23,4 @@
 "about.social.linked_in" = "Reach me via LinkedIn";
 "about.social.telegram" = "Reach me via Telegram";
 "about.feedback.mail" = "Leave Feedback";
+"prepare_mail_error.cannot_send" = "Cannot send email. Make sure a mail app is installed";

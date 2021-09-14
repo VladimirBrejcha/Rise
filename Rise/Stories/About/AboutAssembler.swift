@@ -8,6 +8,9 @@
 
 final class AboutAssembler {
     func assemble() -> AboutViewController {
-        AboutViewController(getAppVersion: DomainLayer.getAppVersion)
+        AboutViewController(
+            getAppVersion: DomainLayer.getAppVersion,
+            prepareMail: DomainLayer.prepareMail
+        )
     }
 }
