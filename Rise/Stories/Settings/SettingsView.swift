@@ -28,6 +28,7 @@ final class SettingsView: UIView {
         stack.alignment = .trailing
         stack.clipsToBounds = true
         stack.layer.applyStyle(.usual)
+        stack.backgroundColor = .white.withAlphaComponent(0.05)
         return stack
     }()
 

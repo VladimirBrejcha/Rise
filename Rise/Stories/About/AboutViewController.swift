@@ -20,6 +20,9 @@ final class AboutViewController:
     private var getAppVersion: GetAppVersion!
     private var prepareMail: PrepareMail!
 
+    private let termsAndConditionsUrlString = "https://www.app-privacy-policy.com/live.php?token=VtZdH0djhNg5Tr4BoQhtPjwzUSGJqH6r"
+    private let privacyPolicyUrlString = "https://rise-0.flycricket.io/privacy.html"
+    private let openSourceUrlString = "https://www.craft.do/s/mLWjI6dIfOxHCJ"
     private let gitHubUrlString = "https://github.com/VladimirBrejcha/Rise"
     private let linkedInUrlString = "https://www.linkedin.com/in/vladimir-korolev/"
     private let telegramUrlString = "https://t.me/vladimirbrejcha"
@@ -83,6 +86,12 @@ final class AboutViewController:
                 self.aboutView.deselectAll()
 
                 switch identifier {
+                case .termsAndConditions:
+                    self.openInBrowser(self.termsAndConditionsUrlString)
+                case .privacyPolicy:
+                    self.openInBrowser(self.privacyPolicyUrlString)
+                case .openSource:
+                    self.openInBrowser(self.openSourceUrlString)
                 case .gitHub:
                     self.openInBrowser(self.gitHubUrlString)
                 case .linkedIn:
@@ -91,8 +100,6 @@ final class AboutViewController:
                     self.openInBrowser(self.telegramUrlString)
                 case .mailFeedback:
                     self.sendMailFeedback()
-                default:
-                    return
                 }
             }
         )

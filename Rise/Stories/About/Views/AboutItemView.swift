@@ -19,6 +19,8 @@ extension AboutView {
         private var model: Model!
         private var touchHandler: (() -> Void)?
         var propertyAnimationDuration: Double { 0.2 }
+        private let normalBgColor: UIColor = .white.withAlphaComponent(0.1)
+        private let selectedBgColor: UIColor = .white.withAlphaComponent(0.3)
 
         // MARK: - Subviews
 
@@ -50,6 +52,7 @@ extension AboutView {
                 titleLabel
             )
             titleLabel.text = model.text
+            backgroundColor = normalBgColor
         }
 
         override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -72,7 +75,7 @@ extension AboutView {
 
         func drawSelection(_ draw: Bool) {
             animate {
-                self.backgroundColor = draw ? .white.withAlphaComponent(0.3) : .clear
+                self.backgroundColor = draw ? self.selectedBgColor : self.normalBgColor
             }
         }
 
