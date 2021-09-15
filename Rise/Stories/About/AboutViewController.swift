@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageUI
+import SafariServices
 
 final class AboutViewController:
     UIViewController,
@@ -18,6 +19,12 @@ final class AboutViewController:
     private var aboutView: AboutView { view as! AboutView }
     private var getAppVersion: GetAppVersion!
     private var prepareMail: PrepareMail!
+
+    private let gitHubUrlString = "https://github.com/VladimirBrejcha/Rise"
+    private let linkedInUrlString = "https://www.linkedin.com/in/vladimir-korolev/"
+    private let telegramUrlString = "https://t.me/vladimirbrejcha"
+
+    // MARK: - LifeCycle
 
     convenience init(
         getAppVersion: GetAppVersion,
@@ -72,18 +79,37 @@ final class AboutViewController:
             ),
             selectionHandler: { [weak self] identifier in
                 guard let self = self else { return }
+
+                self.aboutView.deselectAll()
+
                 switch identifier {
+                case .gitHub:
+                    self.openInBrowser(self.gitHubUrlString)
+                case .linkedIn:
+                    self.openInBrowser(self.linkedInUrlString)
+                case .telegram:
+                    self.openInBrowser(self.telegramUrlString)
                 case .mailFeedback:
                     self.sendMailFeedback()
                 default:
                     return
                 }
-                print(identifier)
             }
         )
     }
 
-    func sendMailFeedback() {
+    // MARK: - Logic
+
+    private func openInBrowser(_ urlString: String) {
+        if let url = URL(string: urlString) {
+            let config = SFSafariViewController.Configuration()
+            config.entersReaderIfAvailable = true
+            let vc = SFSafariViewController(url: url, configuration: config)
+            present(vc, animated: true)
+        }
+    }
+
+    private func sendMailFeedback() {
         let result = prepareMail(
             to: "vladimirbrejcha@icloud.com",
             subject: "Feedback",
