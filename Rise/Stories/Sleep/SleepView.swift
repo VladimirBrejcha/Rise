@@ -114,7 +114,7 @@ final class SleepView: UIView, Statefull {
         self.alarmTimeChangedHandler = alarmTimeChangedHandler
 
         editAlarmButtonContainer.layer.cornerRadius = 12
-        editAlarmButtonContainer.backgroundColor = UIColor.white.withAlphaComponent(0.1)
+        editAlarmButtonContainer.backgroundColor = Asset.Colors.white.color.withAlphaComponent(0.1)
 
         self.state = state
         if case .normal (let alarm) = state {

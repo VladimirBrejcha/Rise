@@ -28,12 +28,7 @@ extension OnboardingView.ContentView {
             view.backgroundColor = .white
             view.layer.applyStyle(
                 .init(
-                    shadow: .init(
-                        radius: 12,
-                        opacity: 0.41,
-                        offset: CGSize(width: 0, height: 4),
-                        color: #colorLiteral(red: 0.4431372549, green: 1, blue: 0.8980392157, alpha: 1).cgColor
-                    ),
+                    shadow: .usual,
                     cornerRadius: pointSide / 2
                 )
             )

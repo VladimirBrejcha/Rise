@@ -67,8 +67,8 @@
 		7E5BDADE2371F08400E43F37 /* RiseLocation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5BDADC2371F08400E43F37 /* RiseLocation+CoreDataClass.swift */; };
 		7E5BDADF2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5BDADD2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift */; };
 		7E5E3350261A17FF000EE976 /* UIDatePicker+Styleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5E334F261A17FF000EE976 /* UIDatePicker+Styleable.swift */; };
-		7E5E3355261A3496000EE976 /* invertAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5E3354261A3496000EE976 /* invertAlpha.swift */; };
-		7E5E335A261A34B4000EE976 /* applyBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5E3359261A34B4000EE976 /* applyBlur.swift */; };
+		7E5E3355261A3496000EE976 /* UIView+invertAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5E3354261A3496000EE976 /* UIView+invertAlpha.swift */; };
+		7E5E335A261A34B4000EE976 /* UIView+applyBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5E3359261A34B4000EE976 /* UIView+applyBlur.swift */; };
 		7E5F292A23F9638C0050DFD3 /* FloatingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5F292923F9638C0050DFD3 /* FloatingLabel.swift */; };
 		7E6225AA26192DF9001AA8FD /* Styleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6225A926192DF9001AA8FD /* Styleable.swift */; };
 		7E6225B326192E24001AA8FD /* UILabel+Styleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6225B226192E24001AA8FD /* UILabel+Styleable.swift */; };
@@ -110,7 +110,6 @@
 		7E8EFA3226EABC2F00DEE564 /* Sleep.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E8EFA3026EABC2F00DEE564 /* Sleep.storyboard */; };
 		7E8EFA3B26EABC3900DEE564 /* Confirmation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E8EFA3326EABC3800DEE564 /* Confirmation.storyboard */; };
 		7E8EFA3C26EABC3900DEE564 /* CreatePlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E8EFA3526EABC3800DEE564 /* CreatePlan.storyboard */; };
-		7E8EFA3D26EABC3900DEE564 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E8EFA3726EABC3800DEE564 /* Settings.storyboard */; };
 		7E8EFA3E26EABC3900DEE564 /* ChangePlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E8EFA3926EABC3900DEE564 /* ChangePlan.storyboard */; };
 		7E8EFA4226EAC4D400DEE564 /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8EFA4126EAC4D400DEE564 /* Strings+Generated.swift */; };
 		7E91D95B2371E4080087436F /* RiseDailySunTime+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E91D9552371E4080087436F /* RiseDailySunTime+CoreDataClass.swift */; };
@@ -183,7 +182,6 @@
 		7EE647C325F5CA250081ED4C /* DaysAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE647C225F5CA250081ED4C /* DaysAssembler.swift */; };
 		7EE6905C243E64C600CA423E /* LongPressProgressButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EE6905B243E64C600CA423E /* LongPressProgressButton.xib */; };
 		7EE6905E243E658B00CA423E /* LongPressProgressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6905D243E658B00CA423E /* LongPressProgressButton.swift */; };
-		7EE87CED2442241000E1BD3B /* TouchObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE87CEC2442241000E1BD3B /* TouchObservable.swift */; };
 		7EE87CEF2442254A00E1BD3B /* AutoRefreshableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE87CEE2442254A00E1BD3B /* AutoRefreshableLabel.swift */; };
 		7EEA217923B6A3B400354BEA /* UIViewController+Present.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEA217823B6A3B400354BEA /* UIViewController+Present.swift */; };
 		7EEB1E0D24424010001ABE4A /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB1E0C24424010001ABE4A /* AudioPlayer.swift */; };
@@ -286,8 +284,8 @@
 		7E5BDADC2371F08400E43F37 /* RiseLocation+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RiseLocation+CoreDataClass.swift"; path = "Rise/Data/Location/Entity/RiseLocation+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		7E5BDADD2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RiseLocation+CoreDataProperties.swift"; path = "Rise/Data/Location/Entity/RiseLocation+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		7E5E334F261A17FF000EE976 /* UIDatePicker+Styleable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDatePicker+Styleable.swift"; sourceTree = "<group>"; };
-		7E5E3354261A3496000EE976 /* invertAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = invertAlpha.swift; sourceTree = "<group>"; };
-		7E5E3359261A34B4000EE976 /* applyBlur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = applyBlur.swift; sourceTree = "<group>"; };
+		7E5E3354261A3496000EE976 /* UIView+invertAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+invertAlpha.swift"; sourceTree = "<group>"; };
+		7E5E3359261A34B4000EE976 /* UIView+applyBlur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+applyBlur.swift"; sourceTree = "<group>"; };
 		7E5F292923F9638C0050DFD3 /* FloatingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingLabel.swift; sourceTree = "<group>"; };
 		7E6225A926192DF9001AA8FD /* Styleable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styleable.swift; sourceTree = "<group>"; };
 		7E6225B226192E24001AA8FD /* UILabel+Styleable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Styleable.swift"; sourceTree = "<group>"; };
@@ -330,7 +328,6 @@
 		7E8EFA3126EABC2F00DEE564 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Sleep.storyboard; sourceTree = "<group>"; };
 		7E8EFA3426EABC3800DEE564 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Confirmation.storyboard; sourceTree = "<group>"; };
 		7E8EFA3626EABC3800DEE564 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CreatePlan.storyboard; sourceTree = "<group>"; };
-		7E8EFA3826EABC3800DEE564 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		7E8EFA3A26EABC3900DEE564 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ChangePlan.storyboard; sourceTree = "<group>"; };
 		7E8EFA4126EAC4D400DEE564 /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
 		7E91D9552371E4080087436F /* RiseDailySunTime+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RiseDailySunTime+CoreDataClass.swift"; path = "Rise/Data/SunTime/Entity/RiseDailySunTime+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
@@ -406,7 +403,6 @@
 		7EE647C225F5CA250081ED4C /* DaysAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysAssembler.swift; sourceTree = "<group>"; };
 		7EE6905B243E64C600CA423E /* LongPressProgressButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LongPressProgressButton.xib; sourceTree = "<group>"; };
 		7EE6905D243E658B00CA423E /* LongPressProgressButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressProgressButton.swift; sourceTree = "<group>"; };
-		7EE87CEC2442241000E1BD3B /* TouchObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchObservable.swift; sourceTree = "<group>"; };
 		7EE87CEE2442254A00E1BD3B /* AutoRefreshableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRefreshableLabel.swift; sourceTree = "<group>"; };
 		7EE939162340F68800FE9954 /* PersonalPlanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalPlanViewController.swift; sourceTree = "<group>"; };
 		7EEA217823B6A3B400354BEA /* UIViewController+Present.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Present.swift"; sourceTree = "<group>"; };
@@ -669,15 +665,6 @@
 			path = Alarming;
 			sourceTree = "<group>";
 		};
-		7E5E335E261A34C2000EE976 /* UIViewExtensions */ = {
-			isa = PBXGroup;
-			children = (
-				7E5E3354261A3496000EE976 /* invertAlpha.swift */,
-				7E5E3359261A34B4000EE976 /* applyBlur.swift */,
-			);
-			path = UIViewExtensions;
-			sourceTree = "<group>";
-		};
 		7E6225AE26192E10001AA8FD /* Styleable */ = {
 			isa = PBXGroup;
 			children = (
@@ -785,7 +772,6 @@
 			children = (
 				7E25756623F8749A007AE4B5 /* Animation.swift */,
 				7E88A35023F8B20C00E792CA /* VerticalPositionMoveAnimation.swift */,
-				7E388E37243A3C16001A28DF /* PropertyAnimatable.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -981,7 +967,6 @@
 				7E8EFA3926EABC3900DEE564 /* ChangePlan.storyboard */,
 				7E8EFA3326EABC3800DEE564 /* Confirmation.storyboard */,
 				7E8EFA3526EABC3800DEE564 /* CreatePlan.storyboard */,
-				7E8EFA3726EABC3800DEE564 /* Settings.storyboard */,
 				7E8EFA3026EABC2F00DEE564 /* Sleep.storyboard */,
 			);
 			path = Storyboards;
@@ -1043,26 +1028,14 @@
 		7EF3EE192340F8A5003BE978 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				7E43063826EBCEDD00B67315 /* UIView+addSubviews.swift */,
-				7E43063A26EBCEF600B67315 /* UIView+activateConstraints.swift */,
-				7E43064F26ED528700B67315 /* UIStackView+addSeparators.swift */,
-				7E43065C26EE617500B67315 /* UIStackView+addArrangedSubviews.swift */,
 				7E9D9C0924E59AFD000772C0 /* Changeable */,
-				7EE87CEC2442241000E1BD3B /* TouchObservable.swift */,
-				7E162FF0243D0E22004C68B1 /* AutoRefreshable.swift */,
-				7EB26950234F9972008AEB3D /* NibLoadable.swift */,
-				7E69836C24EC6977002EE278 /* Alerts */,
 				7E69836324EC68DF002EE278 /* ErrorHandling */,
-				7ED6DD3E25E33E3D00F906CE /* Statefull.swift */,
-				7EEA217823B6A3B400354BEA /* UIViewController+Present.swift */,
 				7E97656D2378813700E3AEF2 /* Log.swift */,
+				7E162FF0243D0E22004C68B1 /* AutoRefreshable.swift */,
 				7E0834AB2387351400BA1AE8 /* DateExtensions.swift */,
 				7EEB1E0C24424010001ABE4A /* AudioPlayer.swift */,
 				7EE227642504C38B00EC70CB /* UserDefaults.swift */,
-				7E5E335E261A34C2000EE976 /* UIViewExtensions */,
 				7EA64EEA25A8BC9F0029FBE7 /* NotificationManager.swift */,
-				7E6225E32619CE26001AA8FD /* Gradientable */,
-				7E6225AE26192E10001AA8FD /* Styleable */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1096,6 +1069,56 @@
 				7ECD2C742419168900408C4B /* ChangePlanButtonTableCell */,
 			);
 			path = ChangePlanTableView;
+			sourceTree = "<group>";
+		};
+		7EFAEF6326F4FBEA00C51A13 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7E6225AE26192E10001AA8FD /* Styleable */,
+				7E5E3359261A34B4000EE976 /* UIView+applyBlur.swift */,
+				7E5E3354261A3496000EE976 /* UIView+invertAlpha.swift */,
+				7E43063826EBCEDD00B67315 /* UIView+addSubviews.swift */,
+				7EEA217823B6A3B400354BEA /* UIViewController+Present.swift */,
+				7E43063A26EBCEF600B67315 /* UIView+activateConstraints.swift */,
+				7E43064F26ED528700B67315 /* UIStackView+addSeparators.swift */,
+				7E43065C26EE617500B67315 /* UIStackView+addArrangedSubviews.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7EFAEF6426F4FC1300C51A13 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				7E6225E32619CE26001AA8FD /* Gradientable */,
+				7EB26950234F9972008AEB3D /* NibLoadable.swift */,
+				7E388E37243A3C16001A28DF /* PropertyAnimatable.swift */,
+				7ED6DD3E25E33E3D00F906CE /* Statefull.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		7EFAEF6526F4FD0200C51A13 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7EE87CEE2442254A00E1BD3B /* AutoRefreshableLabel.swift */,
+				7E5F292923F9638C0050DFD3 /* FloatingLabel.swift */,
+				7EB9003D23256AC9006EB9A8 /* DesignableContainerView.swift */,
+				7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */,
+				7EEFC00E25E1AEB0007AE725 /* BorderedView.swift */,
+				7E9D9C0E24E5BADC000772C0 /* FloatingButton.swift */,
+				7ED6DD3525E2A30700F906CE /* ImageLabelViewWithContextMenu.swift */,
+				7ECA517D25E340BD009362F9 /* ContextPreview.swift */,
+				7EB26952234F99AE008AEB3D /* Button.swift */,
+				7EE87CEB2442233500E1BD3B /* LongPressProgressButton */,
+				7ED6DD3A25E2A36B00F906CE /* ImageLabelView */,
+				7E199CD5240BD43C00B702AD /* SliderWithValues */,
+				7E2CA80D24031FDB000CEFA5 /* ConfigurableCell */,
+				7E2CA80E24031FF8000CEFA5 /* TableView */,
+				7E2CA80C24031E85000CEFA5 /* CollectionView */,
+				7E06FE9B252E384E005D72CB /* AnimatedTransitionNavigationController */,
+				7EE05109241BFE39005B23B3 /* TabBarController */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		7EFF58B5241C1E1A00D2CCEC /* Sleep */ = {
@@ -1137,8 +1160,8 @@
 				7E4901872340F3970034521E /* Stories */,
 				7EB9F33B23C20218002A6DD3 /* Domain */,
 				7EB1C0342340FA6E0028237E /* Data */,
-				7EF3EE192340F8A5003BE978 /* Utils */,
 				92D7D68422980138009321AE /* UI */,
+				7EF3EE192340F8A5003BE978 /* Utils */,
 				7EF3EE162340F75A003BE978 /* Resources */,
 			);
 			path = Rise;
@@ -1156,24 +1179,11 @@
 		92D7D68422980138009321AE /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				7EE05109241BFE39005B23B3 /* TabBarController */,
-				7E06FE9B252E384E005D72CB /* AnimatedTransitionNavigationController */,
-				7E2CA80C24031E85000CEFA5 /* CollectionView */,
-				7E2CA80E24031FF8000CEFA5 /* TableView */,
-				7E2CA80D24031FDB000CEFA5 /* ConfigurableCell */,
+				7E69836C24EC6977002EE278 /* Alerts */,
+				7EFAEF6426F4FC1300C51A13 /* Protocols */,
+				7EFAEF6326F4FBEA00C51A13 /* Extensions */,
+				7EFAEF6526F4FD0200C51A13 /* Views */,
 				7E88A34F23F8B1F400E792CA /* Animations */,
-				7E199CD5240BD43C00B702AD /* SliderWithValues */,
-				7ED6DD3A25E2A36B00F906CE /* ImageLabelView */,
-				7EE87CEB2442233500E1BD3B /* LongPressProgressButton */,
-				7EB26952234F99AE008AEB3D /* Button.swift */,
-				7E9D9C0E24E5BADC000772C0 /* FloatingButton.swift */,
-				7ED6DD3525E2A30700F906CE /* ImageLabelViewWithContextMenu.swift */,
-				7ECA517D25E340BD009362F9 /* ContextPreview.swift */,
-				7EEFC00E25E1AEB0007AE725 /* BorderedView.swift */,
-				7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */,
-				7EB9003D23256AC9006EB9A8 /* DesignableContainerView.swift */,
-				7E5F292923F9638C0050DFD3 /* FloatingLabel.swift */,
-				7EE87CEE2442254A00E1BD3B /* AutoRefreshableLabel.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1299,7 +1309,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E199CD4240BD43400B702AD /* SliderWithValues.xib in Resources */,
-				7E8EFA3D26EABC3900DEE564 /* Settings.storyboard in Resources */,
 				7ECD2C732419168600408C4B /* ChangePlanButtonTableCell.xib in Resources */,
 				92D7D65D2296F298009321AE /* LaunchScreen.storyboard in Resources */,
 				7EF4C196240412D80098135A /* ChangePlanDatePickerTableCell.xib in Resources */,
@@ -1387,7 +1396,6 @@
 				7E541AF923FB386B00BAD710 /* CellConfigurator.swift in Sources */,
 				7E541AF423FB259400BAD710 /* DaysCollectionCell.swift in Sources */,
 				7E4798F5239D894B007FB8F2 /* Storyboard.swift in Sources */,
-				7EE87CED2442241000E1BD3B /* TouchObservable.swift in Sources */,
 				7E43065226ED6E5800B67315 /* SettingIdentifier.swift in Sources */,
 				7EF4C195240412D80098135A /* ChangePlanDatePickerTableCell.swift in Sources */,
 				7E31497F23425D3700941606 /* ChangePlanTableView.swift in Sources */,
@@ -1411,7 +1419,7 @@
 				7EB29E09241987C800116433 /* PrepareToSleepAssembler.swift in Sources */,
 				7EB26951234F9972008AEB3D /* NibLoadable.swift in Sources */,
 				7EB90047232AB9EB006EB9A8 /* ProgressBar.swift in Sources */,
-				7E5E335A261A34B4000EE976 /* applyBlur.swift in Sources */,
+				7E5E335A261A34B4000EE976 /* UIView+applyBlur.swift in Sources */,
 				7E6225B326192E24001AA8FD /* UILabel+Styleable.swift in Sources */,
 				7EA38AE423783EFC0007919B /* DefaultLocationRepository.swift in Sources */,
 				7E69837A24EC69FE002EE278 /* ErrorViewRemovable.swift in Sources */,
@@ -1442,7 +1450,7 @@
 				7E2CA81024032A0F000CEFA5 /* TableCellConfigurator.swift in Sources */,
 				7E91D95F2371E4080087436F /* RisePlanObject+CoreDataClass.swift in Sources */,
 				7EB9F35423C36B54002A6DD3 /* CreatePlanAssembler.swift in Sources */,
-				7E5E3355261A3496000EE976 /* invertAlpha.swift in Sources */,
+				7E5E3355261A3496000EE976 /* UIView+invertAlpha.swift in Sources */,
 				7ECD2C722419168600408C4B /* ChangePlanButtonTableCell.swift in Sources */,
 				7E43065D26EE617500B67315 /* UIStackView+addArrangedSubviews.swift in Sources */,
 				7EEFC01725E1AFD8007AE725 /* ImageLabelView.swift in Sources */,
@@ -1596,14 +1604,6 @@
 				7E8EFA3626EABC3800DEE564 /* Base */,
 			);
 			name = CreatePlan.storyboard;
-			sourceTree = "<group>";
-		};
-		7E8EFA3726EABC3800DEE564 /* Settings.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7E8EFA3826EABC3800DEE564 /* Base */,
-			);
-			name = Settings.storyboard;
 			sourceTree = "<group>";
 		};
 		7E8EFA3926EABC3900DEE564 /* ChangePlan.storyboard */ = {

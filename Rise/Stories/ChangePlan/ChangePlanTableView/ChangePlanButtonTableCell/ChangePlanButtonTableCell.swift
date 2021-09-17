@@ -21,7 +21,7 @@ final class ChangePlanButtonTableCell: UITableViewCell, ConfigurableCell {
     
     func configure(with model: Model) {
         button.setTitle(model.title, for: .normal)
-        button.setTitleColor(UIColor(named: "redTitle"), for: .normal)
+        button.setTitleColor(Asset.Colors.red.color, for: .normal)
         buttonHander = model.action
     }
 }

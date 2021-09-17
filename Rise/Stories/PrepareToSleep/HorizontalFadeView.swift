@@ -16,7 +16,7 @@ final class HorizontalFadeView: UIView {
                     start: CGPoint(x: 0, y: 0),
                     end: CGPoint(x: 1, y: 0)
                 ),
-                colors: UIColor.white
+                colors: Asset.Colors.white.color
                     .colorsUsingAlpha(0, 0.2, 0.2, 0)
                     .map(\.cgColor)
             )

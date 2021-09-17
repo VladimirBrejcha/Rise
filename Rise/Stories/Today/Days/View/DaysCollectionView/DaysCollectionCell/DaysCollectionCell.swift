@@ -57,7 +57,7 @@ final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        layer.applyStyle(.usual)
+        layer.applyStyle(.usualBorder)
 
         leftTopLabel.applyStyle(.mediumSizedTitle)
         rightTopLabel.applyStyle(.mediumSizedTitle)

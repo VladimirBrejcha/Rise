@@ -239,13 +239,7 @@ final class DaysViewController: UIViewController, Statefull {
 
     // MARK: - Plan
     private var defaultPlanImages: LeftRightTuple<UIImage> {
-        if let wakeup = UIImage(named: "wakeup"),
-           let fallasleep = UIImage(named: "fallasleep") {
-            return (left: wakeup, right: fallasleep)
-        } else {
-            assertionFailure("Did not find expected defaultPlanImages!")
-            return (left: UIImage(), right: UIImage())
-        }
+        (left: Asset.wakeup.image, right: Asset.fallasleep.image)
     }
 
     private var defaultPlanTitles: LeftMiddleRightTuple<String> {

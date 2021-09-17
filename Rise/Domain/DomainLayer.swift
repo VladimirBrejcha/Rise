@@ -6,7 +6,7 @@
 //  Copyright © 2020 VladimirBrejcha. All rights reserved.
 //
 
-final class DomainLayer {
+enum DomainLayer {
     static var getPlan: GetPlan {
         GetPlanUseCase(DataLayer.defaultRisePlanRepository)
     }

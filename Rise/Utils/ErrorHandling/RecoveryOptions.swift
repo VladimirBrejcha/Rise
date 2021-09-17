@@ -6,8 +6,6 @@
 //  Copyright © 2020 VladimirBrejcha. All rights reserved.
 //
 
-import Foundation
-
 enum RecoveryOptions {
     case tryAgain(action: (() -> Void))
     case custom(title: String, action: (() -> Void))

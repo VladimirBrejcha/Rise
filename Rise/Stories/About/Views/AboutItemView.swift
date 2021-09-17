@@ -19,8 +19,8 @@ extension AboutView {
         private var model: Model!
         private var touchHandler: (() -> Void)?
         var propertyAnimationDuration: Double { 0.2 }
-        private let normalBgColor: UIColor = .white.withAlphaComponent(0.1)
-        private let selectedBgColor: UIColor = .white.withAlphaComponent(0.3)
+        private let normalBgColor: UIColor = Asset.Colors.white.color.withAlphaComponent(0.1)
+        private let selectedBgColor: UIColor = Asset.Colors.white.color.withAlphaComponent(0.3)
 
         // MARK: - Subviews
 

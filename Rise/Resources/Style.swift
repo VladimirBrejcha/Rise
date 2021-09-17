@@ -11,94 +11,121 @@ import UIKit
 enum Style {
 
     // MARK: - Layer
+
     struct Layer {
 
         private(set) var shadow = Shadow()
         private(set) var border = Border()
         private(set) var cornerRadius: CGFloat = 0
 
-        // MARK: - Shadow
+        // MARK: Instances
+
+        static var usualBorder: Layer {
+            Layer(border: .usual, cornerRadius: 12)
+        }
+
+        // MARK: Shadow
+
         struct Shadow {
             private(set) var radius: CGFloat = 0
             private(set) var opacity: Float = 0
             private(set) var offset = CGSize(width: 0, height: 0)
             private(set) var color = UIColor.clear.cgColor
+
+            // MARK: Instances
+
+            static var usual: Shadow {
+                .init(
+                    radius: 12,
+                    opacity: 0.41,
+                    offset: CGSize(width: 0, height: 4),
+                    color: Asset.Colors.lightBlue.color.cgColor
+                )
+            }
         }
 
-        // MARK: - Border
+        // MARK: Border
+
         struct Border {
             private(set) var color: CGColor = UIColor.clear.cgColor
             private(set) var width: CGFloat = 0
 
-            // MARK: - Instances
-            static var usual: Border {
-                Border(color: UIColor.white.withAlphaComponent(0.85).cgColor, width: 1)
-            }
-        }
+            // MARK: Instances
 
-        // MARK: - Instances
-        static var usual: Layer {
-            Layer(border: .usual, cornerRadius: 12)
+            static var usual: Border {
+                Border(
+                    color: Asset.Colors.whiteSeparator.color.cgColor,
+                    width: 1
+                )
+            }
         }
     }
 
     // MARK: - TabBar
+
     enum TabBar {
 
-        // MARK: - Item
+        // MARK: Item
+
         struct Item {
 
             let titleColor: (normal: UIColor, selected: UIColor)
             let iconColor: (normal: UIColor, selected: UIColor)
 
-            // MARK: - Instances
+            // MARK: Instances
+
             static var usual: Item {
-                Item(titleColor: (
-                    normal: .clear,
-                    selected: .white
-                ),
-                iconColor: (
-                    normal: UIColor.white.withAlphaComponent(0.85),
-                    selected: .white
-                ))
+                Item(
+                    titleColor: (
+                        normal: .clear,
+                        selected: Asset.Colors.white.color
+                    ),
+                    iconColor: (
+                        normal: Asset.Colors.whiteSeparator.color,
+                        selected: Asset.Colors.white.color
+                    )
+                )
             }
         }
     }
 
     // MARK: - Text
+
     struct Text {
 
         let font: UIFont
         private(set) var color: UIColor?
         private(set) var alignment: NSTextAlignment?
 
-        // MARK: - Instances
+        // MARK: Instances
+
         static var notificationLabel: Text {
             Text(font: .boldSystemFont(ofSize: 13))
         }
 
         static var boldBigTitle: Text {
-            Text(font: .boldSystemFont(ofSize: 30), color: .white, alignment: .center)
+            Text(font: .boldSystemFont(ofSize: 30), color: Asset.Colors.white.color, alignment: .center)
         }
 
         static var bigSizedTitle: Text {
-            Text(font: .preferredFont(forTextStyle: .largeTitle), color: .white, alignment: .center)
+            Text(font: .preferredFont(forTextStyle: .largeTitle), color: Asset.Colors.white.color, alignment: .center)
         }
 
         static var mediumSizedTitle: Text {
-            Text(font: .systemFont(ofSize: 18, weight: .medium), color: .white, alignment: .center)
+            Text(font: .systemFont(ofSize: 18, weight: .medium), color: Asset.Colors.white.color, alignment: .center)
         }
 
         static var mediumSizedBody: Text {
-            Text(font: .systemFont(ofSize: 18), color: .white)
+            Text(font: .systemFont(ofSize: 18), color: Asset.Colors.white.color)
         }
 
         static var description: Text {
-            Text(font: .systemFont(ofSize: 14), color: .white.withAlphaComponent(0.7))
+            Text(font: .systemFont(ofSize: 14), color: Asset.Colors.white.color.withAlphaComponent(0.7))
         }
     }
 
     // MARK: - Button
+
     struct Button {
 
         let disabledTitleColor: UIColor?
@@ -107,22 +134,18 @@ enum Style {
         let effects: Layer
         let scaleTransform: CGAffineTransform
 
-        // MARK: - Instances
+        // MARK: Instances
+
         static var primary: Button {
             Button(
-                disabledTitleColor: #colorLiteral(red: 0.07450980392, green: 0.2078431373, blue: 0.3019607843, alpha: 1).withAlphaComponent(0.5),
+                disabledTitleColor: Asset.Colors.black.color.withAlphaComponent(0.5),
                 titleStyle: Text(
                     font: UIFont.boldSystemFont(ofSize: 18),
-                    color: #colorLiteral(red: 0.07450980392, green: 0.2078431373, blue: 0.3019607843, alpha: 1)
+                    color: Asset.Colors.black.color
                 ),
-                backgroundColor: .white,
+                backgroundColor: Asset.Colors.white.color,
                 effects: Layer(
-                    shadow: Layer.Shadow(
-                        radius: 12,
-                        opacity: 0.41,
-                        offset: CGSize(width: 0, height: 4),
-                        color: #colorLiteral(red: 0.4431372549, green: 1, blue: 0.8980392157, alpha: 1).cgColor
-                    ),
+                    shadow: .usual,
                     cornerRadius: 22
                 ),
                 scaleTransform: CGAffineTransform(scaleX: 0.98, y: 0.95)
@@ -131,18 +154,15 @@ enum Style {
 
         static var secondary: Button {
             Button(
-                disabledTitleColor: UIColor.white.withAlphaComponent(0.5),
+                disabledTitleColor: Asset.Colors.white.color.withAlphaComponent(0.5),
                 titleStyle: Text(
-                    font: UIFont.boldSystemFont(ofSize: 18),
-                    color: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                    font: UIFont.systemFont(ofSize: 18),
+                    color: Asset.Colors.white.color
                 ),
                 backgroundColor: .clear,
                 effects: Layer(
-                    border: Layer.Border(
-                        color: UIColor.white.cgColor,
-                        width: 1
-                    ),
-                    cornerRadius: 25
+                    border: .usual,
+                    cornerRadius: 22
                 ),
                 scaleTransform: CGAffineTransform(scaleX: 0.98, y: 0.95)
             )
@@ -150,13 +170,16 @@ enum Style {
     }
     
     // MARK: - Picker
+
     struct Picker {
+
         let textColor: UIColor
         let lineColor: UIColor
 
-        // MARK: - Instances
+        // MARK: Instances
+
         static var usual: Picker {
-            Picker(textColor: .white, lineColor: .clear)
+            Picker(textColor: Asset.Colors.white.color, lineColor: .clear)
         }
     }
 }

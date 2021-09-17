@@ -53,7 +53,7 @@ final class AboutView: UIView, UIScrollViewDelegate {
         stack.axis = .vertical
         stack.alignment = .trailing
         stack.clipsToBounds = true
-        stack.layer.applyStyle(.usual)
+        stack.layer.applyStyle(.usualBorder)
         return stack
     }()
 
@@ -62,7 +62,7 @@ final class AboutView: UIView, UIScrollViewDelegate {
         stack.axis = .vertical
         stack.alignment = .trailing
         stack.clipsToBounds = true
-        stack.layer.applyStyle(.usual)
+        stack.layer.applyStyle(.usualBorder)
         return stack
     }()
 
@@ -71,7 +71,7 @@ final class AboutView: UIView, UIScrollViewDelegate {
         stack.axis = .vertical
         stack.alignment = .trailing
         stack.clipsToBounds = true
-        stack.layer.applyStyle(.usual)
+        stack.layer.applyStyle(.usualBorder)
         return stack
     }()
 
