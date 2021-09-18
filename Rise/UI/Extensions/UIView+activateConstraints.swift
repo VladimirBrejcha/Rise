@@ -6,3 +6,10 @@ extension UIView {
         NSLayoutConstraint.activate(constraints)
     }
 }
+
+extension NSLayoutConstraint {
+    func priority(_ priority: UILayoutPriority) -> Self {
+        self.priority = priority
+        return self
+    }
+}

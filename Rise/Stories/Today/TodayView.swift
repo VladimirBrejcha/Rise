@@ -88,10 +88,10 @@ final class TodayView: UIView {
             timeUntilSleepLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
         )
         daysView.activateConstraints(
-            daysView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            daysView.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
             daysView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             daysView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            daysView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4)
+            daysView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.45)
         )
     }
 }

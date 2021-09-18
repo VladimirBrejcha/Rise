@@ -258,8 +258,14 @@ final class DaysViewController: UIViewController, Statefull {
             .init(
                 state: .loading,
                 image: (
-                    left: UIImage(systemName: "sunrise.fill") ?? UIImage(),
-                    right: UIImage(systemName: "sunset.fill") ?? UIImage()
+                    left: .init(
+                        systemName: "sunrise.fill",
+                        withConfiguration: UIImage.SymbolConfiguration(pointSize: 30)
+                    ) ?? UIImage(),
+                    right: .init(
+                        systemName: "sunset.fill",
+                        withConfiguration: UIImage.SymbolConfiguration(pointSize: 30)
+                    ) ?? UIImage()
                 ),
                 title: (
                     left: Text.sunrise,

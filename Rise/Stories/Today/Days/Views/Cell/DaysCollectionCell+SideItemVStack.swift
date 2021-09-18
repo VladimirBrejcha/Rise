@@ -17,6 +17,8 @@ extension DaysCollectionCell {
         private lazy var topLabel: UILabel = {
             let label = UILabel()
             label.applyStyle(.mediumSizedTitle)
+            label.minimumScaleFactor = 0.7
+            label.adjustsFontSizeToFitWidth = true
             return label
         }()
 
@@ -31,6 +33,8 @@ extension DaysCollectionCell {
         private lazy var bottomLabel: UILabel = {
             let label = UILabel()
             label.applyStyle(.mediumSizedTitle)
+            label.minimumScaleFactor = 0.7
+            label.adjustsFontSizeToFitWidth = true
             return label
         }()
 
@@ -54,12 +58,11 @@ extension DaysCollectionCell {
 
         private func setup() {
             axis = .vertical
-            alignment = .center
-            distribution = .equalCentering
+            alignment = .fill
+            distribution = .fillEqually
             spacing = 2
 
             setupViews()
-            setupLayout()
         }
 
         private func setupViews() {
@@ -67,15 +70,6 @@ extension DaysCollectionCell {
                 topLabel,
                 imageView,
                 bottomLabel
-            )
-        }
-
-        // MARK: - Layout
-
-        private func setupLayout() {
-            imageView.activateConstraints(
-                imageView.heightAnchor.constraint(equalToConstant: 52),
-                imageView.widthAnchor.constraint(equalToConstant: 52)
             )
         }
     }

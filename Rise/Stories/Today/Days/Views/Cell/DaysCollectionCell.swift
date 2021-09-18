@@ -139,8 +139,11 @@ final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
         HStack.activateConstraints(
             HStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
             HStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
-            HStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
-            HStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16)
+            HStack.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -4),
+            HStack.bottomAnchor.constraint(greaterThanOrEqualTo: contentView.bottomAnchor, constant: -12),
+            HStack.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 4),
+            HStack.topAnchor.constraint(lessThanOrEqualTo: contentView.topAnchor, constant: 12),
+            HStack.centerYAnchor.constraint(equalTo: centerYAnchor)
         )
     }
 }
