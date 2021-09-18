@@ -36,10 +36,8 @@ class Button: UIButton, PropertyAnimatable, StyledButton {
     }
     
     @objc private func scaleDown(_ sender: UIButton) {
-        animate { [weak self] in
-            if let self = self {
-                sender.transform = self.style.scaleTransform
-            }
+        animate {
+            sender.transform = CGAffineTransform(scaleX: 0.98, y: 0.95)
         }
     }
     

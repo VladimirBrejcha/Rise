@@ -8,114 +8,144 @@
 
 import UIKit
 
-final class TodayViewController: UIViewController, Statefull, PropertyAnimatable {
-    @IBOutlet private var todayView: TodayView!
-    private var daysViewController: DaysViewController! // lateinit
+final class TodayViewController: UIViewController, PropertyAnimatable {
 
-    var getPlan: GetPlan! // DI
-    var observePlan: ObservePlan! // DI
-    var getDailyTime: GetDailyTime! // DI
-    var confirmPlan: ConfirmPlan! // DI
+    private var todayView: TodayView { view as! TodayView }
+    private let daysViewController = Story.days() as! DaysViewController
 
-    // MARK: - PropertyAnimatable
+    private let getPlan: GetPlan
+    private let observePlan: ObservePlan
+    private let getDailyTime: GetDailyTime
+    private let confirmPlan: ConfirmPlan
+
     var propertyAnimationDuration: Double { 0.15 }
-    
-    // MARK: - Statefull -
-    struct State: Equatable {
-        let plan: RisePlan?
-    }
+    private var schedule: RisePlan?
 
-    private(set) var state: State?
-
-    func setState(_ state: State) {
-        self.state = state
-    }
-    
     // MARK: - LifeCycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-        let width = view.bounds.width - 40
-        let height = width
-        let y = (view.bounds.height - height) / 2
+    init(
+        getPlan: GetPlan,
+        observePlan: ObservePlan,
+        getDailyTime: GetDailyTime,
+        confirmPlan: ConfirmPlan
+    ) {
+        self.getPlan = getPlan
+        self.observePlan = observePlan
+        self.getDailyTime = getDailyTime
+        self.confirmPlan = confirmPlan
 
-        daysViewController = Story.days(
-            frame: CGRect(x: 20, y: y, width: width, height: height)
-        )() as? DaysViewController
+        super.init(nibName: nil, bundle: nil)
 
-        addChild(daysViewController)
-        todayView.addSubview(daysViewController.view)
+        self.schedule = try? self.getPlan()
+        self.observePlan.observe { [weak self] schedule in
+            self?.schedule = schedule
+        }
+    }
 
-        daysViewController.didMove(toParent: self)
-        
-        todayView.configure(
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("This class does not support NSCoder")
+    }
+
+    override func loadView() {
+        super.loadView()
+        self.view = TodayView(
             timeUntilSleepDataSource: { [weak self] in
-                self?.floatingLabelModel ?? FloatingLabel.Model(text: "", alpha: 0)
+                self?.floatingLabelModel ?? .empty
             },
             sleepHandler: { [weak self] in
                 self?.present(
-                    AnimatedTransitionNavigationController(rootViewController: Story.prepareToSleep()),
+                    AnimatedTransitionNavigationController(
+                        rootViewController: Story.prepareToSleep()
+                    ),
                     with: .fullScreen
                 )
-            }
+            },
+            daysView: daysViewController.daysView
         )
+    }
 
-        setState(State(plan: try? getPlan()))
-
-        observePlan.observe { [weak self] plan in
-            self?.setState(State(plan: plan))
-        }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        addChild(daysViewController)
+        daysViewController.didMove(toParent: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         if let confirmed = try? confirmPlan.checkIfConfirmed() {
             makeTabBar(visible: confirmed)
             if !confirmed {
-                present(Story.confirmation(), with: .overContext)
+                present(
+                    Story.confirmation(),
+                    with: .overContext
+                )
             }
         }
     }
 
+    deinit {
+        observePlan.cancel()
+    }
+
     // MARK: - Floating label model
+    
     private var floatingLabelModel: FloatingLabel.Model {
-        guard let plan = state?.plan else {
-            return FloatingLabel.Model(text: "", alpha: 0)
-        }
+        guard let plan = schedule else { return .empty }
+
+        let alphaMax: Float = 0.85
         
         if plan.paused {
-            return FloatingLabel.Model(text: "Personal plan is paused", alpha: 0.85)
+            return .init(
+                text: Text.riseScheduleIsPaused,
+                alpha: alphaMax
+            )
         }
         
-        guard let todayDailyTime = try? getDailyTime(for: plan, date: NoonedDay.today.date),
-              let minutesUntilSleep = calendar.dateComponents(
+        guard
+            let todayDailyTime = try? getDailyTime(
+                for: plan,
+                date: NoonedDay.today.date
+            ),
+            let minutesUntilSleep = calendar.dateComponents(
                 [.minute],
                 from: Date(),
                 to: todayDailyTime.sleep
-              ).minute else {
-            return FloatingLabel.Model(text: "", alpha: 0)
+            ).minute
+        else {
+            return .empty
         }
         
         let minutesInDay: Float = 24 * 60
         let sleepDuration = plan.sleepDurationSec
         let alphaMin: Float = 0.3
-        let alphaMax: Float = 0.85
         
         if Float(minutesUntilSleep) >= minutesInDay - Float(sleepDuration / 60) {
-            return FloatingLabel.Model(text: "It's time to sleep!", alpha: alphaMax)
+            return .init(
+                text: Text.itsTimeToSleep,
+                alpha: alphaMax
+            )
         }
         
         var alpha: Float = (minutesInDay - Float(minutesUntilSleep)) / minutesInDay
         if alpha < alphaMin { alpha = alphaMin }
         if alpha > alphaMax { alpha = alphaMax }
         
-        return FloatingLabel.Model(text: "Sleep planned in \(minutesUntilSleep.HHmmString)", alpha: alpha)
+        return .init(
+            text: Text.sleepPlannedIn(minutesUntilSleep.HHmmString),
+            alpha: alpha
+        )
     }
+
+    // MARK: - Utils
 
     private func makeTabBar(visible: Bool) {
         animate {
             self.tabBarController?.tabBar.alpha = visible ? 1 : 0
         }
     }
+}
+
+fileprivate extension FloatingLabel.Model {
+    static var empty = FloatingLabel.Model(text: "", alpha: 0)
 }

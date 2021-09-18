@@ -22,10 +22,17 @@ class CollectionView: UICollectionView {
     }
     
     private func sharedInit() {
+//        cellTypes.forEach { type in
+//            let cellId = String(describing: type.self)
+//            let nib = UINib(nibName: cellId, bundle: nil)
+//            register(nib, forCellWithReuseIdentifier: cellId)
+//        }
         cellTypes.forEach { type in
-            let cellId = String(describing: type.self)
-            let nib = UINib(nibName: cellId, bundle: nil)
-            register(nib, forCellWithReuseIdentifier: cellId)
+            register(
+                type.self,
+                forCellWithReuseIdentifier: String(describing: type.self)
+            )
         }
+
     }
 }

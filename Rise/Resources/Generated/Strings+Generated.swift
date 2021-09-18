@@ -10,6 +10,42 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum Text {
+  /// Failed to load time
+  internal static let failedToLoadTime = Text.tr("Localizable", "failed_to_load_time")
+  /// It's time to sleep!
+  internal static let itsTimeToSleep = Text.tr("Localizable", "its_time_to_sleep!")
+  /// No plan for the day
+  internal static let noPlanForTheDay = Text.tr("Localizable", "no_plan_for_the_day")
+  /// Rise schedule is paused
+  internal static let riseScheduleIsPaused = Text.tr("Localizable", "rise_schedule_is_paused")
+  /// Scheduled sleep
+  internal static let scheduledSleep = Text.tr("Localizable", "scheduled_sleep")
+  /// Sleep
+  internal static let sleep = Text.tr("Localizable", "sleep")
+  /// Sleep planned in %@
+  internal static func sleepPlannedIn(_ p1: Any) -> String {
+    return Text.tr("Localizable", "sleep_planned_in", String(describing: p1))
+  }
+  /// Sun position
+  internal static let sunPosition = Text.tr("Localizable", "sun_position")
+  /// Sunrise
+  internal static let sunrise = Text.tr("Localizable", "sunrise")
+  /// Sunset
+  internal static let sunset = Text.tr("Localizable", "sunset")
+  /// Time not found
+  internal static let timeNotFound = Text.tr("Localizable", "time_not_found")
+  /// To bed
+  internal static let toBed = Text.tr("Localizable", "to_bed")
+  /// Today
+  internal static let today = Text.tr("Localizable", "today")
+  /// Tomorrow
+  internal static let tomorrow = Text.tr("Localizable", "tomorrow")
+  /// Wake up
+  internal static let wakeUp = Text.tr("Localizable", "wake_up")
+  /// Yesterday
+  internal static let yesterday = Text.tr("Localizable", "yesterday")
+  /// You don't have a plan yet
+  internal static let youDontHaveAPlanYet = Text.tr("Localizable", "you_dont_have_a_plan_yet")
 
   internal enum About {
     internal enum Feedback {

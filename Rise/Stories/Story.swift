@@ -15,7 +15,7 @@ enum Story {
     // Main
     case tabBar
     case today
-    case days (frame: CGRect)
+    case days
     case plan
     case settings
     
@@ -52,8 +52,8 @@ enum Story {
             return OnboardingAssembler().assemble(dismissOnCompletion: dismissOnCompletion)
         case .today:
             return TodayAssembler().assemble()
-        case .days(let frame):
-            return DaysAssembler().assemble(frame: frame)
+        case .days:
+            return DaysAssembler().assemble()
         case .plan:
             return PersonalPlanAssembler().assemble()
         case .settings:

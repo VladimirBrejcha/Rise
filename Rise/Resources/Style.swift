@@ -128,11 +128,11 @@ enum Style {
 
     struct Button {
 
-        let disabledTitleColor: UIColor?
+        private(set) var disabledTitleColor: UIColor? = nil
+        private(set) var selectedTitleColor: UIColor? = nil
         let titleStyle: Text
-        let backgroundColor: UIColor
-        let effects: Layer
-        let scaleTransform: CGAffineTransform
+        private(set) var backgroundColor: UIColor = .clear
+        private(set) var effects: Layer? = nil
 
         // MARK: Instances
 
@@ -147,8 +147,7 @@ enum Style {
                 effects: Layer(
                     shadow: .usual,
                     cornerRadius: 22
-                ),
-                scaleTransform: CGAffineTransform(scaleX: 0.98, y: 0.95)
+                )
             )
         }
 
@@ -163,8 +162,7 @@ enum Style {
                 effects: Layer(
                     border: .usual,
                     cornerRadius: 22
-                ),
-                scaleTransform: CGAffineTransform(scaleX: 0.98, y: 0.95)
+                )
             )
         }
     }

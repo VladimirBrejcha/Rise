@@ -16,7 +16,10 @@ extension StyledButton {
     func applyStyle(_ style: Style.Button) {
         self.style = style
         self.backgroundColor = style.backgroundColor
-        self.layer.applyStyle(style.effects)
+        if let effects = style.effects {
+            self.layer.applyStyle(effects)
+        }
+        self.setTitleColor(style.selectedTitleColor, for: .selected)
         self.setTitleColor(style.titleStyle.color, for: .normal)
         self.setTitleColor(style.disabledTitleColor, for: .disabled)
         self.titleLabel?.font = style.titleStyle.font

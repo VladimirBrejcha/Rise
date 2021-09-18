@@ -10,7 +10,7 @@ import Foundation
 
 let calendar = Calendar.autoupdatingCurrent
 
-enum NoonedDay {
+enum NoonedDay: String, CaseIterable {
     case yesterday
     case today
     case tomorrow

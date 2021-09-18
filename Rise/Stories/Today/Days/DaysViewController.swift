@@ -9,37 +9,19 @@
 import UIKit
 
 final class DaysViewController: UIViewController, Statefull {
-    private typealias Snapshot = DaysView.Snapshot
+
+    private typealias Snapshot = DaysCollectionView.Snapshot
     private typealias Item = DaysCollectionView.Item.Model
 
-    private let daysView: DaysView
+    var daysView: DaysView { view as! DaysView }
 
     private let getSunTime: GetSunTime
     private let getPlan: GetPlan
     private let observePlan: ObservePlan
     private let getDailyTime: GetDailyTime
 
-    init(getSunTime: GetSunTime,
-         getPlan: GetPlan,
-         observePlan: ObservePlan,
-         getDailyTime: GetDailyTime,
-         frame: CGRect
-    ) {
-        self.getSunTime = getSunTime
-        self.getPlan = getPlan
-        self.observePlan = observePlan
-        self.getDailyTime = getDailyTime
-        self.daysView = DaysView(frame: frame)
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("DaysViewController.required init: Not meant to be called")
-    }
-
-    // MARK: - Statefull -
     struct State: Equatable {
-        let sunTime: LoadState<[SunTime]>
+        let sunTime: LoadState<[NoonedDay: SunTime]>
         let plan: LoadState<RisePlan>
 
         enum LoadState<Data: Equatable>: Equatable {
@@ -49,9 +31,73 @@ final class DaysViewController: UIViewController, Statefull {
             case noData
         }
     }
-
     private(set) var state: State?
 
+    // MARK: - LifeCycle
+
+    init(getSunTime: GetSunTime,
+         getPlan: GetPlan,
+         observePlan: ObservePlan,
+         getDailyTime: GetDailyTime
+    ) {
+        self.getSunTime = getSunTime
+        self.getPlan = getPlan
+        self.observePlan = observePlan
+        self.getDailyTime = getDailyTime
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("This class does not support NSCoder")
+    }
+
+    override func loadView() {
+        self.view = DaysView(
+            cellProvider: { collection, indexPath, item in
+                guard let cell = collection.dequeueReusableCell(
+                    withReuseIdentifier: String(describing: DaysCollectionView.Item.self),
+                    for: indexPath
+                ) as? DaysCollectionView.Item else {
+                    return nil
+                }
+
+                cell.configure(with: item)
+                cell.repeatButtonHandler = { [weak self] id in
+                    self?.repeatButtonHandler(identifier: id)
+                }
+
+                return cell
+            },
+            sectionTitles: [
+                Text.yesterday,
+                Text.today,
+                Text.tomorrow
+            ]
+        )
+
+        DispatchQueue.main.async { [self] in
+            observePlan.observe { [weak self] plan in
+                guard let self = self, let state = self.state else { return }
+                if let plan = plan {
+                    self.setState(state.changing { $0.plan = .loaded(data: plan) })
+                } else {
+                    self.setState(state.changing { $0.plan = .noData })
+                }
+            }
+
+            refreshSunTimes()
+
+            if let plan = try? getPlan() {
+                setState(State(sunTime: .loading, plan: .loaded(data: plan)))
+            } else {
+                setState(State(sunTime: .loading, plan: .noData))
+            }
+
+            daysView.centerItems()
+        }
+    }
+    
     func setState(_ state: State) {
         if let currentState = self.state, currentState == state {
             log(.info, "Skipping equal state \(state)")
@@ -65,211 +111,188 @@ final class DaysViewController: UIViewController, Statefull {
         self.state = state
 
         var snapshot = Snapshot()
-        snapshot.appendSections([.sun, .plan])
-        let sunItems = makeItems(with: state.sunTime, snapshot: currentSnapshot)
-        snapshot.appendItems(sunItems, toSection: .sun)
-        let planItems = makeItems(with: state.plan, snapshot: currentSnapshot)
-        snapshot.appendItems(planItems, toSection: .plan)
+        snapshot.appendSections([.yesterday, .today, .tomorrow])
+        snapshot.appendItems(
+            makeItems(
+                for: state,
+                day: .yesterday,
+                snapshot: currentSnapshot
+            ),
+            toSection: .yesterday
+        )
+        snapshot.appendItems(
+            makeItems(
+                for: state,
+                day: .today,
+                snapshot: currentSnapshot
+            ),
+            toSection: .today
+        )
+        snapshot.appendItems(
+            makeItems(
+                for: state,
+                day: .tomorrow,
+                snapshot: currentSnapshot
+            ),
+            toSection: .tomorrow
+        )
 
         daysView.applySnapshot(snapshot)
     }
 
-    // MARK: - LifeCycle -
-    override func loadView() {
-        self.view = daysView
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // MARK: - Actions
 
-        daysView.configure(cellProvider: { collection, indexPath, item in
-            if let cell = collection.dequeueReusableCell(
-                withReuseIdentifier: String(describing: DaysCollectionView.Item.self),
-                for: indexPath
-            ) as? DaysCollectionView.Item {
-                cell.configure(with: item)
-                if indexPath.section == 0 {
-                    cell.repeatButtonHandler = { [weak self] cell in
-                        log(.info, "Repeat button pressed on cell: \(item.id)")
-                        if let self = self, let state = self.state {
-                            self.setState(state.changing { $0.sunTime = .loading })
-                            self.refreshSunTimes()
-                        }
-                    }
-                } else {
-                    cell.repeatButtonHandler = nil
+    private func repeatButtonHandler(identifier: Item.ID) {
+        log(.info, "Repeat button pressed on cell: \(identifier)")
+        guard identifier.kind == .sun else { return }
+        if let state = self.state {
+            setState(
+                state.changing {
+                    $0.sunTime = .loading
                 }
-                return cell
-            }
-            return nil
-        })
-
-        if let plan = try? getPlan() {
-            setState(State(sunTime: .loading, plan: .loaded(data: plan)))
-        } else {
-            setState(State(sunTime: .loading, plan: .noData))
+            )
+            refreshSunTimes()
         }
-        
-        daysView.centerItems()
-
-        observePlan.observe { [weak self] plan in
-            guard let self = self, let state = self.state else { return }
-            if let plan = plan {
-                self.setState(state.changing { $0.plan = .loaded(data: plan) })
-            } else {
-                self.setState(state.changing { $0.plan = .noData })
-            }
-        }
-
-        refreshSunTimes()
     }
 
     // MARK: - Refresh sun times
+
     private func refreshSunTimes() {
-        getSunTime(numberOfDays: 3, since: NoonedDay.yesterday.date, completionQueue: .main) { [weak self] result in
+        getSunTime(
+            numberOfDays: 3,
+            since: NoonedDay.yesterday.date,
+            completionQueue: .main
+        ) { [weak self] result in
             guard let self = self, let state = self.state else { return }
             if case .success (let sunTimes) = result {
-                self.setState(state.changing { $0.sunTime = .loaded(data: sunTimes) })
+                self.setState(
+                    state.changing {
+                        $0.sunTime = .loaded(
+                            data: Dictionary(
+                                uniqueKeysWithValues: zip(
+                                    NoonedDay.allCases, sunTimes
+                                )
+                            )
+                        )
+                    }
+                )
             }
             if case .failure = result {
-                self.setState(state.changing { $0.sunTime = .failed(error: "Failed to load time") })
+                self.setState(
+                    state.changing {
+                        $0.sunTime = .failed(error: Text.failedToLoadTime)
+                    }
+                )
             }
         }
     }
 
     // MARK: - Make items
-    private func makeItems(with state: State.LoadState<[SunTime]>, snapshot: Snapshot) -> [Item] {
-        if snapshot.numberOfSections == 0 {
-            return makeItems(with: state, from: defaultSunItems)
-        } else {
-            return makeItems(with: state, from: snapshot.itemIdentifiers(inSection: .sun))
-        }
-    }
 
-    private func makeItems(with state: State.LoadState<[SunTime]>, from items: [Item]) -> [Item] {
-        var result = items
+    private func transformItem(_ item: Item, applying state: State.LoadState<RisePlan>) -> Item {
         switch state {
         case .loading:
-            result = items.map { $0.changing { $0.state = .loading } }
-        case .loaded(let sunTimes):
-            for (index, value) in sunTimes.enumerated() {
-                result[index] = items[index].changing {
-                    $0.state = .showingContent(left: value.sunrise.HHmmString, right: value.sunset.HHmmString)
-                }
-            }
-        case .failed (let error):
-            result = items.map { $0.changing { $0.state = .showingError(error: error) } }
-        case .noData:
-            result = items.map { $0.changing { $0.state = .showingInfo(info: "Time not found") } }
-        }
-        return result
-    }
-
-    private func makeItems(with state: State.LoadState<RisePlan>, snapshot: Snapshot) -> [Item] {
-        if snapshot.numberOfSections == 0 {
-            return makeItems(with: state, from: defaultPlanItems)
-        } else {
-            return makeItems(with: state, from: snapshot.itemIdentifiers(inSection: .plan))
-        }
-    }
-
-    private func makeItems(with state: State.LoadState<RisePlan>, from items: [Item]) -> [Item] {
-        var result = items
-        switch state {
-        case .loading:
-            result = items.map { $0.changing { $0.state = .loading } }
+            return item.changing { $0.state = .loading }
         case .loaded(let plan):
-            let datesArray: [NoonedDay] = [.yesterday, .today, .tomorrow]
-            for (index, value) in datesArray.enumerated() {
-                if let dailyTime = try? getDailyTime(for: plan, date: value.date) {
-                    result[index] = items[index].changing {
-                        $0.state = .showingContent(left: dailyTime.wake.HHmmString, right: dailyTime.sleep.HHmmString)
-                    }
-                } else {
-                    result[index] = items[index].changing {
-                        $0.state = .showingInfo(info: "No plan for the day")
-                    }
+            if let dailyTime = try? getDailyTime(for: plan, date: item.id.day.date) {
+                return item.changing {
+                    $0.state = .showingContent(
+                        left: dailyTime.wake.HHmmString,
+                        right: dailyTime.sleep.HHmmString
+                    )
+                }
+            } else {
+                return item.changing {
+                    $0.state = .showingInfo(info: Text.noPlanForTheDay)
                 }
             }
         case .failed (let error):
-            result = items.map { $0.changing { $0.state = .showingError(error: error) } }
+            return item.changing { $0.state = .showingError(error: error) }
         case .noData:
-            result = items.map { $0.changing { $0.state = .showingInfo(info: "You don't have a plan yet") } }
+            return item.changing { $0.state = .showingInfo(info: Text.youDontHaveAPlanYet) }
         }
-        return result
+    }
+
+    private func transformItem(_ item: Item, applying state: State.LoadState<[NoonedDay: SunTime]>) -> Item {
+        switch state {
+        case .loading:
+            return item.changing { $0.state = .loading }
+        case .loaded(let sunTimes):
+            guard let sunTime = sunTimes[item.id.day] else { return item }
+            return item.changing {
+                $0.state = .showingContent(
+                    left: sunTime.sunrise.HHmmString,
+                    right: sunTime.sunset.HHmmString
+                )
+            }
+        case .failed (let error):
+            return item.changing { $0.state = .showingError(error: error) }
+        case .noData:
+            return item.changing { $0.state = .showingInfo(info: Text.timeNotFound) }
+        }
+    }
+
+    private func transformItems(with state: State, items: [Item]) -> [Item] {
+        return items.map { item in
+            switch item.id.kind {
+            case .plan:
+                return self.transformItem(item, applying: state.plan)
+            case .sun:
+                return self.transformItem(item, applying: state.sunTime)
+            }
+        }
+    }
+
+    private func makeItems(for state: State, day: NoonedDay, snapshot: Snapshot) -> [Item] {
+        if snapshot.numberOfSections == 0 {
+            return makeDefaultItems(for: day)
+        } else {
+            return transformItems(with: state, items: snapshot.itemIdentifiers(inSection: day))
+        }
     }
 
     // MARK: - Default items -
 
-    // MARK: - Sun
-    private var defaultSunImages: LeftRightTuple<UIImage> {
-        if let sunrise = UIImage(systemName: "sunrise.fill"),
-           let sunset = UIImage(systemName: "sunset.fill") {
-            return (left: sunrise, right: sunset)
-        } else {
-            assertionFailure("Did not find expected defaultSunImages!")
-            return (left: UIImage(), right: UIImage())
-        }
-    }
-
-    private var defaultSunTitles: LeftMiddleRightTuple<String> {
-        (left: "Sunrise", middle: "Sun position", right: "Sunset")
-    }
-
-    private var defaultSunItems: [Item] {
-        [.init(
-            state: .loading,
-            image: defaultSunImages,
-            title: defaultSunTitles,
-            id: "Sun.yesterday"
-        ),
-        .init(
-            state: .loading,
-            image: defaultSunImages,
-            title: defaultSunTitles,
-            id: "Sun.today"
-        ),
-        .init(
-            state: .loading,
-            image: defaultSunImages,
-            title: defaultSunTitles,
-            id: "Sun.tomorrow"
-        )]
-    }
-
-    // MARK: - Plan
-    private var defaultPlanImages: LeftRightTuple<UIImage> {
-        (left: Asset.wakeup.image, right: Asset.fallasleep.image)
-    }
-
-    private var defaultPlanTitles: LeftMiddleRightTuple<String> {
-        (left: "Wake up", middle: "Scheduled sleep", right: "To bed")
-    }
-
-    private var defaultPlanItems: [Item] {
-        [.init(
-            state: .showingInfo(info: "You don't have a plan yet"),
-            image: defaultPlanImages,
-            title: defaultPlanTitles,
-            id: "Plan.yesterday"
-        ),
-        .init(
-            state: .showingInfo(info: "You don't have a plan yet"),
-            image: defaultPlanImages,
-            title: defaultPlanTitles,
-            id: "Plan.today"
-        ),
-        .init(
-            state: .showingInfo(info: "You don't have a plan yet"),
-            image: defaultPlanImages,
-            title: defaultPlanTitles,
-            id: "Plan.tomorrow"
-        )]
+    private func makeDefaultItems(for day: NoonedDay) -> [Item] {
+        [
+            .init(
+                state: .loading,
+                image: (
+                    left: UIImage(systemName: "sunrise.fill") ?? UIImage(),
+                    right: UIImage(systemName: "sunset.fill") ?? UIImage()
+                ),
+                title: (
+                    left: Text.sunrise,
+                    middle: Text.sunPosition,
+                    right: Text.sunset
+                ),
+                id: Item.ID(kind: .sun, day: day)
+            ),
+            .init(
+                state: .showingInfo(info: Text.youDontHaveAPlanYet),
+                image: (
+                    left: Asset.wakeup.image,
+                    right: Asset.fallasleep.image
+                ),
+                title: (
+                    left: Text.wakeUp,
+                    middle: Text.scheduledSleep,
+                    right: Text.toBed
+                ),
+                id: Item.ID(kind: .plan, day: day)
+            )
+        ]
     }
 }
 
 extension DaysViewController.State: Changeable {
     init(copy: ChangeableWrapper<DaysViewController.State>) {
         self.init(sunTime: copy.sunTime, plan: copy.plan)
+    }
+}
+
+extension DaysCollectionCell.Model: Changeable {
+    init(copy: ChangeableWrapper<DaysCollectionCell.Model>) {
+        self.init(state: copy.state, image: copy.image, title: copy.title, id: copy.id)
     }
 }

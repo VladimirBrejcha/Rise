@@ -21,7 +21,6 @@
 		7E17337924104DDA0028FDBE /* LocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E17337824104DDA0028FDBE /* LocationRepository.swift */; };
 		7E199CD2240BD41D00B702AD /* SliderWithValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E199CD1240BD41D00B702AD /* SliderWithValues.swift */; };
 		7E199CD4240BD43400B702AD /* SliderWithValues.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E199CD3240BD43400B702AD /* SliderWithValues.xib */; };
-		7E1CA3D724FC0B2C00AD81B8 /* DaysView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E1CA3D624FC0B2C00AD81B8 /* DaysView.xib */; };
 		7E252A8826EBBE6600DEB6F0 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E252A8726EBBE6600DEB6F0 /* OnboardingViewController.swift */; };
 		7E252A8A26EBBE9600DEB6F0 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E252A8926EBBE9600DEB6F0 /* OnboardingView.swift */; };
 		7E25756723F8749A007AE4B5 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E25756623F8749A007AE4B5 /* Animation.swift */; };
@@ -59,7 +58,6 @@
 		7E514DB825A87F67000EBE81 /* AlarmingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E514DB725A87F67000EBE81 /* AlarmingView.swift */; };
 		7E514DBD25A87F6F000EBE81 /* AlarmingAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E514DBC25A87F6F000EBE81 /* AlarmingAssembler.swift */; };
 		7E541AF423FB259400BAD710 /* DaysCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E541AF223FB259400BAD710 /* DaysCollectionCell.swift */; };
-		7E541AF523FB259400BAD710 /* DaysCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E541AF323FB259400BAD710 /* DaysCollectionCell.xib */; };
 		7E541AF723FB384F00BAD710 /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E541AF623FB384F00BAD710 /* ConfigurableCell.swift */; };
 		7E541AF923FB386B00BAD710 /* CellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E541AF823FB386B00BAD710 /* CellConfigurator.swift */; };
 		7E541AFB23FB388D00BAD710 /* CollectionCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E541AFA23FB388D00BAD710 /* CollectionCellConfigurator.swift */; };
@@ -163,7 +161,6 @@
 		7EB9F35423C36B54002A6DD3 /* CreatePlanAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9F35323C36B54002A6DD3 /* CreatePlanAssembler.swift */; };
 		7EB9F35A23C389BF002A6DD3 /* DataLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9F35923C389BF002A6DD3 /* DataLayer.swift */; };
 		7EBE900723C9231200043651 /* RisePlanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBE900623C9231200043651 /* RisePlanTests.swift */; };
-		7EC24EEE25A49FD3001EFFBE /* DaysCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC24EED25A49FD3001EFFBE /* DaysCollectionViewLayout.swift */; };
 		7EC7392523C4EF5B00C484B8 /* ConfirmationAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC7392423C4EF5B00C484B8 /* ConfirmationAssembler.swift */; };
 		7ECA517E25E340BD009362F9 /* ContextPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECA517D25E340BD009362F9 /* ContextPreview.swift */; };
 		7ECD2C6F241832B300408C4B /* ReshedulePlanUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD2C6E241832B300408C4B /* ReshedulePlanUseCase.swift */; };
@@ -195,6 +192,8 @@
 		7EF4C19D240436CD0098135A /* ChangePlanSliderTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF4C19B240436CD0098135A /* ChangePlanSliderTableCell.swift */; };
 		7EF4C19E240436CD0098135A /* ChangePlanSliderTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF4C19C240436CD0098135A /* ChangePlanSliderTableCell.xib */; };
 		7EF4C1A0240436D70098135A /* ChangePlanSliderTableCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF4C19F240436D70098135A /* ChangePlanSliderTableCellModel.swift */; };
+		7EFAEF6726F5785300C51A13 /* DaysCollectionCell+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFAEF6626F5785300C51A13 /* DaysCollectionCell+Model.swift */; };
+		7EFAEF6926F5938200C51A13 /* DaysCollectionCell+SideItemVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFAEF6826F5938200C51A13 /* DaysCollectionCell+SideItemVStack.swift */; };
 		7EFF58B9241C1E3B00D2CCEC /* SleepAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFF58B8241C1E3B00D2CCEC /* SleepAssembler.swift */; };
 		92D12FDD22A44B3B0093B0A3 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D12FDC22A44B3B0093B0A3 /* CustomTabBarController.swift */; };
 		92D7D6532296F297009321AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6522296F297009321AE /* AppDelegate.swift */; };
@@ -239,7 +238,6 @@
 		7E17337824104DDA0028FDBE /* LocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepository.swift; sourceTree = "<group>"; };
 		7E199CD1240BD41D00B702AD /* SliderWithValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderWithValues.swift; sourceTree = "<group>"; };
 		7E199CD3240BD43400B702AD /* SliderWithValues.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SliderWithValues.xib; sourceTree = "<group>"; };
-		7E1CA3D624FC0B2C00AD81B8 /* DaysView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DaysView.xib; sourceTree = "<group>"; };
 		7E252A8726EBBE6600DEB6F0 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		7E252A8926EBBE9600DEB6F0 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		7E25756623F8749A007AE4B5 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
@@ -276,7 +274,6 @@
 		7E514DB725A87F67000EBE81 /* AlarmingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmingView.swift; sourceTree = "<group>"; };
 		7E514DBC25A87F6F000EBE81 /* AlarmingAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmingAssembler.swift; sourceTree = "<group>"; };
 		7E541AF223FB259400BAD710 /* DaysCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCollectionCell.swift; sourceTree = "<group>"; };
-		7E541AF323FB259400BAD710 /* DaysCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DaysCollectionCell.xib; sourceTree = "<group>"; };
 		7E541AF623FB384F00BAD710 /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
 		7E541AF823FB386B00BAD710 /* CellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurator.swift; sourceTree = "<group>"; };
 		7E541AFA23FB388D00BAD710 /* CollectionCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCellConfigurator.swift; sourceTree = "<group>"; };
@@ -382,7 +379,6 @@
 		7EBE900423C9231200043651 /* RiseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RiseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EBE900623C9231200043651 /* RisePlanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RisePlanTests.swift; sourceTree = "<group>"; };
 		7EBE900823C9231200043651 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7EC24EED25A49FD3001EFFBE /* DaysCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCollectionViewLayout.swift; sourceTree = "<group>"; };
 		7EC7392423C4EF5B00C484B8 /* ConfirmationAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationAssembler.swift; sourceTree = "<group>"; };
 		7ECA517D25E340BD009362F9 /* ContextPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextPreview.swift; sourceTree = "<group>"; };
 		7ECD2C6E241832B300408C4B /* ReshedulePlanUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReshedulePlanUseCase.swift; sourceTree = "<group>"; };
@@ -417,6 +413,8 @@
 		7EF4C19B240436CD0098135A /* ChangePlanSliderTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanSliderTableCell.swift; sourceTree = "<group>"; };
 		7EF4C19C240436CD0098135A /* ChangePlanSliderTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePlanSliderTableCell.xib; sourceTree = "<group>"; };
 		7EF4C19F240436D70098135A /* ChangePlanSliderTableCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanSliderTableCellModel.swift; sourceTree = "<group>"; };
+		7EFAEF6626F5785300C51A13 /* DaysCollectionCell+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DaysCollectionCell+Model.swift"; sourceTree = "<group>"; };
+		7EFAEF6826F5938200C51A13 /* DaysCollectionCell+SideItemVStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DaysCollectionCell+SideItemVStack.swift"; sourceTree = "<group>"; };
 		7EFF58B8241C1E3B00D2CCEC /* SleepAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepAssembler.swift; sourceTree = "<group>"; };
 		92D12FDC22A44B3B0093B0A3 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		92D7D64F2296F297009321AE /* Rise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rise.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -522,6 +520,7 @@
 			isa = PBXGroup;
 			children = (
 				7EA7BA0B2354F2510051A92D /* CollectionView.swift */,
+				7E989FE025F5B0DF001954CD /* CollectionPageScrollDelegate.swift */,
 				7E541AFC23FB393400BAD710 /* CollectionDataSource.swift */,
 				7E541AFA23FB388D00BAD710 /* CollectionCellConfigurator.swift */,
 			);
@@ -614,10 +613,10 @@
 		7E4901882340F3BE0034521E /* Today */ = {
 			isa = PBXGroup;
 			children = (
-				7E6225CA2619B954001AA8FD /* Days */,
 				7EB9F34D23C229F2002A6DD3 /* TodayAssembler.swift */,
 				7E6268BF24D5D49C00F70BC3 /* TodayView.swift */,
 				92E77AF922A5304400E5E21C /* TodayViewController.swift */,
+				7E6225CA2619B954001AA8FD /* Days */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -682,8 +681,9 @@
 			isa = PBXGroup;
 			children = (
 				7EE647C225F5CA250081ED4C /* DaysAssembler.swift */,
+				7EB9003F23256BF3006EB9A8 /* DaysView.swift */,
 				7EAD159E25F50DF700392E6A /* DaysViewController.swift */,
-				7EADA5E7239DA9FA00FE4843 /* View */,
+				7EADA5E7239DA9FA00FE4843 /* Views */,
 			);
 			path = Days;
 			sourceTree = "<group>";
@@ -826,15 +826,13 @@
 			path = Location;
 			sourceTree = "<group>";
 		};
-		7EADA5E7239DA9FA00FE4843 /* View */ = {
+		7EADA5E7239DA9FA00FE4843 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7E1CA3D624FC0B2C00AD81B8 /* DaysView.xib */,
-				7EB9003F23256BF3006EB9A8 /* DaysView.swift */,
-				7E0B88F52455BEF400BC3CF5 /* SelectableStackViewButton.swift */,
-				7EF3EE182340F875003BE978 /* DaysCollectionView */,
+				7EA7BA092354F1810051A92D /* DaysCollectionView.swift */,
+				7EFAEF6A26F5939B00C51A13 /* Cell */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		7EB1C0342340FA6E0028237E /* Data */ = {
@@ -889,15 +887,6 @@
 				7EBE900823C9231200043651 /* Info.plist */,
 			);
 			path = RiseTests;
-			sourceTree = "<group>";
-		};
-		7EC24EF525A4F139001EFFBE /* DaysCollectionCell */ = {
-			isa = PBXGroup;
-			children = (
-				7E541AF223FB259400BAD710 /* DaysCollectionCell.swift */,
-				7E541AF323FB259400BAD710 /* DaysCollectionCell.xib */,
-			);
-			path = DaysCollectionCell;
 			sourceTree = "<group>";
 		};
 		7ECD2C742419168900408C4B /* ChangePlanButtonTableCell */ = {
@@ -1014,17 +1003,6 @@
 			path = CreatePlan;
 			sourceTree = "<group>";
 		};
-		7EF3EE182340F875003BE978 /* DaysCollectionView */ = {
-			isa = PBXGroup;
-			children = (
-				7EA7BA092354F1810051A92D /* DaysCollectionView.swift */,
-				7EC24EF525A4F139001EFFBE /* DaysCollectionCell */,
-				7E989FE025F5B0DF001954CD /* CollectionPageScrollDelegate.swift */,
-				7EC24EED25A49FD3001EFFBE /* DaysCollectionViewLayout.swift */,
-			);
-			path = DaysCollectionView;
-			sourceTree = "<group>";
-		};
 		7EF3EE192340F8A5003BE978 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -1102,6 +1080,7 @@
 			children = (
 				7EE87CEE2442254A00E1BD3B /* AutoRefreshableLabel.swift */,
 				7E5F292923F9638C0050DFD3 /* FloatingLabel.swift */,
+				7E0B88F52455BEF400BC3CF5 /* SelectableStackViewButton.swift */,
 				7EB9003D23256AC9006EB9A8 /* DesignableContainerView.swift */,
 				7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */,
 				7EEFC00E25E1AEB0007AE725 /* BorderedView.swift */,
@@ -1119,6 +1098,16 @@
 				7EE05109241BFE39005B23B3 /* TabBarController */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		7EFAEF6A26F5939B00C51A13 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				7E541AF223FB259400BAD710 /* DaysCollectionCell.swift */,
+				7EFAEF6826F5938200C51A13 /* DaysCollectionCell+SideItemVStack.swift */,
+				7EFAEF6626F5785300C51A13 /* DaysCollectionCell+Model.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		7EFF58B5241C1E1A00D2CCEC /* Sleep */ = {
@@ -1316,11 +1305,9 @@
 				7EE6905C243E64C600CA423E /* LongPressProgressButton.xib in Resources */,
 				7E8EFA3B26EABC3900DEE564 /* Confirmation.storyboard in Resources */,
 				7ED6DD3125E1B50800F906CE /* ImageLabelView.xib in Resources */,
-				7E1CA3D724FC0B2C00AD81B8 /* DaysView.xib in Resources */,
 				7EF4C19E240436CD0098135A /* ChangePlanSliderTableCell.xib in Resources */,
 				92D7D65A2296F298009321AE /* Assets.xcassets in Resources */,
 				7E8EFA3C26EABC3900DEE564 /* CreatePlan.storyboard in Resources */,
-				7E541AF523FB259400BAD710 /* DaysCollectionCell.xib in Resources */,
 				7E8EFA2F26EABC1800DEE564 /* Localizable.strings in Resources */,
 				7E8EFA3E26EABC3900DEE564 /* ChangePlan.storyboard in Resources */,
 				7EEB1E0F2443369F001ABE4A /* bellAlarm.wav in Resources */,
@@ -1371,6 +1358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E8AB6CE23A18D27009CE41A /* WakeUpTimeCreatePlanViewController.swift in Sources */,
+				7EFAEF6926F5938200C51A13 /* DaysCollectionCell+SideItemVStack.swift in Sources */,
 				7EB9F35223C36AAE002A6DD3 /* SettingsAssembler.swift in Sources */,
 				7E252A8A26EBBE9600DEB6F0 /* OnboardingView.swift in Sources */,
 				7EF4C19D240436CD0098135A /* ChangePlanSliderTableCell.swift in Sources */,
@@ -1414,7 +1402,6 @@
 				7E9D9C0F24E5BADC000772C0 /* FloatingButton.swift in Sources */,
 				92D7D6552296F297009321AE /* SleepViewController.swift in Sources */,
 				7E541AF723FB384F00BAD710 /* ConfigurableCell.swift in Sources */,
-				7EC24EEE25A49FD3001EFFBE /* DaysCollectionViewLayout.swift in Sources */,
 				7E052A40235236F1005D7FAD /* DailySunTime.swift in Sources */,
 				7EB29E09241987C800116433 /* PrepareToSleepAssembler.swift in Sources */,
 				7EB26951234F9972008AEB3D /* NibLoadable.swift in Sources */,
@@ -1541,6 +1528,7 @@
 				7E9D9C1124E5BEFA000772C0 /* CreatePlanView.swift in Sources */,
 				7EB9004023256BF3006EB9A8 /* DaysView.swift in Sources */,
 				7E5E3350261A17FF000EE976 /* UIDatePicker+Styleable.swift in Sources */,
+				7EFAEF6726F5785300C51A13 /* DaysCollectionCell+Model.swift in Sources */,
 				7E6225B826192E3F001AA8FD /* UIButton+Styleable.swift in Sources */,
 				7EC7392523C4EF5B00C484B8 /* ConfirmationAssembler.swift in Sources */,
 				7E8675CE2417E9AA004DAF63 /* PausePlanUseCase.swift in Sources */,

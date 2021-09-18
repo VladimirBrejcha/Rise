@@ -9,13 +9,12 @@
 import UIKit
 
 final class DaysAssembler {
-    func assemble(frame: CGRect) -> DaysViewController {
+    func assemble() -> DaysViewController {
         DaysViewController(
             getSunTime: DomainLayer.getSunTime,
             getPlan: DomainLayer.getPlan,
             observePlan: DomainLayer.observePlan,
-            getDailyTime: DomainLayer.getDailyTime,
-            frame: frame
+            getDailyTime: DomainLayer.getDailyTime
         )
     }
 }

@@ -9,62 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Sleep-->
-        <scene sceneID="x3b-qG-Bv2">
-            <objects>
-                <viewController storyboardIdentifier="TodayViewController" definesPresentationContext="YES" id="zaJ-cb-1ng" customClass="TodayViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="CxZ-qH-yJ3" customClass="TodayView" customModule="Rise" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="IfU-5m-gfV">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9i-c1-Zds" customClass="Button" customModule="Rise" customModuleProvider="target">
-                                <rect key="frame" x="20" y="733" width="374" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="5Zs-BB-wyl"/>
-                                </constraints>
-                                <state key="normal" title="Sleep">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sleep planned in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A4H-GS-uQy" customClass="FloatingLabel" customModule="Rise" customModuleProvider="target">
-                                <rect key="frame" x="10" y="706" width="394" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="ury-MB-qCt"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="A4H-GS-uQy" firstAttribute="leading" secondItem="ury-MB-qCt" secondAttribute="leading" constant="10" id="C5e-in-xlc"/>
-                            <constraint firstAttribute="trailing" secondItem="IfU-5m-gfV" secondAttribute="trailing" id="H7l-bo-jqn"/>
-                            <constraint firstItem="ury-MB-qCt" firstAttribute="bottom" secondItem="x9i-c1-Zds" secondAttribute="bottom" constant="30" id="UVS-UY-qcw"/>
-                            <constraint firstItem="x9i-c1-Zds" firstAttribute="leading" secondItem="ury-MB-qCt" secondAttribute="leading" constant="20" id="aCj-Xr-esR"/>
-                            <constraint firstItem="IfU-5m-gfV" firstAttribute="top" secondItem="CxZ-qH-yJ3" secondAttribute="top" id="cq5-nn-Fl5"/>
-                            <constraint firstItem="ury-MB-qCt" firstAttribute="trailing" secondItem="A4H-GS-uQy" secondAttribute="trailing" constant="10" id="g7h-MM-uiU"/>
-                            <constraint firstItem="ury-MB-qCt" firstAttribute="trailing" secondItem="x9i-c1-Zds" secondAttribute="trailing" constant="20" id="iIe-eJ-TZh"/>
-                            <constraint firstItem="IfU-5m-gfV" firstAttribute="leading" secondItem="CxZ-qH-yJ3" secondAttribute="leading" id="jLu-3k-Gew"/>
-                            <constraint firstAttribute="bottom" secondItem="IfU-5m-gfV" secondAttribute="bottom" id="pZ4-5v-PB6"/>
-                            <constraint firstItem="x9i-c1-Zds" firstAttribute="top" secondItem="A4H-GS-uQy" secondAttribute="bottom" constant="10" id="zrb-Jq-6Fq"/>
-                        </constraints>
-                        <connections>
-                            <outlet property="sleepButton" destination="x9i-c1-Zds" id="6Nx-0j-Bty"/>
-                            <outlet property="timeUntilSleep" destination="A4H-GS-uQy" id="1gt-0a-YbQ"/>
-                        </connections>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Sleep" image="sleepIcon" selectedImage="sleepIconPressed" id="q6e-md-ggm"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="todayView" destination="CxZ-qH-yJ3" id="AYE-F2-xbS"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jGW-AY-dG7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="992.75362318840587" y="-155.35714285714286"/>
-        </scene>
         <!--Custom Tab Bar Controller-->
         <scene sceneID="WYa-Sz-OrB">
             <objects>
@@ -182,15 +126,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0AU-OJ-Grg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="298.55072463768118" y="-155.35714285714286"/>
+            <point key="canvasLocation" x="1836" y="-814"/>
         </scene>
     </scenes>
     <designables>
         <designable name="jrZ-yT-gcw">
             <size key="intrinsicContentSize" width="54" height="34"/>
-        </designable>
-        <designable name="x9i-c1-Zds">
-            <size key="intrinsicContentSize" width="46" height="34"/>
         </designable>
     </designables>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -198,8 +139,6 @@
         <image name="alarm" width="25" height="25"/>
         <image name="alarmPressed" width="25" height="25"/>
         <image name="default" width="1280" height="2272"/>
-        <image name="sleepIcon" width="25" height="25"/>
-        <image name="sleepIconPressed" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
