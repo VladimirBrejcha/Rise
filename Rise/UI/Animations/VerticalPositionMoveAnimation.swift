@@ -14,9 +14,13 @@ final class VerticalPositionMoveAnimation: Animation {
         String(describing: Self.self)
     }
     
-    func add(on layer: CALayer) {
+    func add(to layer: CALayer) {
         animationLayer = layer
-        animationLayer?.add(makeBasicAnimation(for: layer), forKey: animationKey)
+        animationLayer?.add(
+            makeBasicAnimation(for: layer
+            ),
+            forKey: animationKey
+        )
     }
     
     func removeFromSuperlayer() {

@@ -22,9 +22,13 @@ internal enum Text {
   internal static let scheduledSleep = Text.tr("Localizable", "scheduled_sleep")
   /// Sleep
   internal static let sleep = Text.tr("Localizable", "sleep")
-  /// Sleep planned in %@
-  internal static func sleepPlannedIn(_ p1: Any) -> String {
-    return Text.tr("Localizable", "sleep_planned_in", String(describing: p1))
+  /// Sleep in just a %@ mins
+  internal static func sleepInJustAFew(_ p1: Any) -> String {
+    return Text.tr("Localizable", "sleep_in_just_a_few", String(describing: p1))
+  }
+  /// Sleep is scheduled in %@
+  internal static func sleepIsScheduledIn(_ p1: Any) -> String {
+    return Text.tr("Localizable", "sleep_is_scheduled_in", String(describing: p1))
   }
   /// Sun position
   internal static let sunPosition = Text.tr("Localizable", "sun_position")

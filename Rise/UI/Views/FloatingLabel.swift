@@ -9,50 +9,39 @@
 import UIKit
 
 final class FloatingLabel: UILabel, AutoRefreshable, PropertyAnimatable {
-    struct Model {
-        let text: String
-        let alpha: Float
-    }
-    private var initialDraw: (() -> Void)?
-    var propertyAnimationDuration: Double = 1
+
     private let animation = VerticalPositionMoveAnimation()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        sharedInit()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        sharedInit()
-    }
-    
-    private func sharedInit() {
-        initialDraw = {
-            self.animation.add(on: self.layer)
+    var propertyAnimationDuration: Double = 1
+    private var needsConfiguration: Bool = true
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if needsConfiguration {
+            animation.add(to: layer)
+            needsConfiguration = false
         }
     }
-    
+
     deinit {
         animation.removeFromSuperlayer()
         stopRefreshing()
     }
-    
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-        initialDraw?()
-        initialDraw = nil
-    }
-    
-    // MARK: - AutoRefreshable -
+
+    // MARK: - AutoRefreshable
+
     var timer: Timer?
     var refreshInterval: Double = 2
     var dataSource: (() -> Model)?
+
+    struct Model {
+        let text: String
+        let alpha: Float
+    }
     
     func refresh(with data: Model) {
         text = data.text
-        animate { [weak self] in
-            self?.alpha = CGFloat(data.alpha)
+        animate {
+            self.alpha = CGFloat(data.alpha)
         }
     }
 }

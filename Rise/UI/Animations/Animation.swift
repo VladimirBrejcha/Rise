@@ -15,6 +15,6 @@ struct AnimationKeys {
 }
 
 protocol Animation {
-    func add(on layer: CALayer)
+    func add(to layer: CALayer)
     func removeFromSuperlayer()
 }

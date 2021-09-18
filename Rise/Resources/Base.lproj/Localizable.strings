@@ -29,7 +29,8 @@
 "tomorrow" = "Tomorrow";
 "rise_schedule_is_paused" = "Rise schedule is paused";
 "its_time_to_sleep!" = "It's time to sleep!";
-"sleep_planned_in"= "Sleep planned in %@";
+"sleep_in_just_a_few" = "Sleep in just a %@ mins";
+"sleep_is_scheduled_in" = "Sleep is scheduled in %@";
 "sleep" = "Sleep";
 "time_not_found" = "Time not found";
 "you_dont_have_a_plan_yet" = "You don't have a plan yet";

@@ -93,12 +93,12 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
     private var floatingLabelModel: FloatingLabel.Model {
         guard let plan = schedule else { return .empty }
 
-        let alphaMax: Float = 0.85
+        let alpha: Float = 0.85
         
         if plan.paused {
             return .init(
                 text: Text.riseScheduleIsPaused,
-                alpha: alphaMax
+                alpha: alpha
             )
         }
         
@@ -115,26 +115,26 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
         else {
             return .empty
         }
-        
-        let minutesInDay: Float = 24 * 60
-        let sleepDuration = plan.sleepDurationSec
-        let alphaMin: Float = 0.3
-        
-        if Float(minutesUntilSleep) >= minutesInDay - Float(sleepDuration / 60) {
+
+        switch minutesUntilSleep {
+        case ...0:
             return .init(
                 text: Text.itsTimeToSleep,
-                alpha: alphaMax
+                alpha: alpha
             )
+        case 1..<10:
+            return .init(
+                text: Text.sleepInJustAFew(minutesUntilSleep.HHmmString),
+                alpha: alpha
+            )
+        case 10...(60 * 5):
+            return .init(
+                text: Text.sleepIsScheduledIn(minutesUntilSleep.HHmmString),
+                alpha: alpha
+            )
+        default:
+            return .empty
         }
-        
-        var alpha: Float = (minutesInDay - Float(minutesUntilSleep)) / minutesInDay
-        if alpha < alphaMin { alpha = alphaMin }
-        if alpha > alphaMax { alpha = alphaMax }
-        
-        return .init(
-            text: Text.sleepPlannedIn(minutesUntilSleep.HHmmString),
-            alpha: alpha
-        )
     }
 
     // MARK: - Utils

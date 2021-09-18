@@ -99,8 +99,8 @@ enum Style {
 
         // MARK: Instances
 
-        static var notificationLabel: Text {
-            Text(font: .boldSystemFont(ofSize: 13))
+        static var footer: Text {
+            Text(font: .boldSystemFont(ofSize: 13), color: Asset.Colors.white.color, alignment: .center)
         }
 
         static var boldBigTitle: Text {

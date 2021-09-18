@@ -31,7 +31,7 @@ final class TodayView: UIView {
 
     private lazy var timeUntilSleepLabel: FloatingLabel = {
         let label = FloatingLabel()
-        label.applyStyle(.notificationLabel)
+        label.applyStyle(.footer)
         label.dataSource = timeUntilSleepDataSource
         return label
     }()
@@ -83,7 +83,7 @@ final class TodayView: UIView {
             sleepButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)
         )
         timeUntilSleepLabel.activateConstraints(
-            timeUntilSleepLabel.bottomAnchor.constraint(equalTo: sleepButton.topAnchor, constant: 10),
+            timeUntilSleepLabel.bottomAnchor.constraint(equalTo: sleepButton.topAnchor, constant: -10),
             timeUntilSleepLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             timeUntilSleepLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
         )
