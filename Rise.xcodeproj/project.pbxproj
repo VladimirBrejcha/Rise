@@ -195,6 +195,7 @@
 		7EF8D1E126F7ABC8002CE18B /* SunTimeAPIServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF8D1E026F7ABC8002CE18B /* SunTimeAPIServiceImpl.swift */; };
 		7EF8D1E426F7AC6E002CE18B /* SunTimeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF8D1E326F7AC6E002CE18B /* SunTimeError.swift */; };
 		7EF8D1E626F7ACB9002CE18B /* SunTimeCoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF8D1E526F7ACB9002CE18B /* SunTimeCoreDataService.swift */; };
+		7EF8D1E926F7E98F002CE18B /* SunTimeRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF8D1E826F7E98F002CE18B /* SunTimeRepositoryTests.swift */; };
 		7EFAEF6726F5785300C51A13 /* DaysCollectionCell+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFAEF6626F5785300C51A13 /* DaysCollectionCell+Model.swift */; };
 		7EFAEF6926F5938200C51A13 /* DaysCollectionCell+SideItemVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFAEF6826F5938200C51A13 /* DaysCollectionCell+SideItemVStack.swift */; };
 		7EFF58B9241C1E3B00D2CCEC /* SleepAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFF58B8241C1E3B00D2CCEC /* SleepAssembler.swift */; };
@@ -419,6 +420,7 @@
 		7EF8D1E026F7ABC8002CE18B /* SunTimeAPIServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeAPIServiceImpl.swift; sourceTree = "<group>"; };
 		7EF8D1E326F7AC6E002CE18B /* SunTimeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeError.swift; sourceTree = "<group>"; };
 		7EF8D1E526F7ACB9002CE18B /* SunTimeCoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeCoreDataService.swift; sourceTree = "<group>"; };
+		7EF8D1E826F7E98F002CE18B /* SunTimeRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeRepositoryTests.swift; sourceTree = "<group>"; };
 		7EFAEF6626F5785300C51A13 /* DaysCollectionCell+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DaysCollectionCell+Model.swift"; sourceTree = "<group>"; };
 		7EFAEF6826F5938200C51A13 /* DaysCollectionCell+SideItemVStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DaysCollectionCell+SideItemVStack.swift"; sourceTree = "<group>"; };
 		7EFF58B8241C1E3B00D2CCEC /* SleepAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepAssembler.swift; sourceTree = "<group>"; };
@@ -889,6 +891,7 @@
 			isa = PBXGroup;
 			children = (
 				7EBE900623C9231200043651 /* RisePlanTests.swift */,
+				7EF8D1E826F7E98F002CE18B /* SunTimeRepositoryTests.swift */,
 				7EBE900823C9231200043651 /* Info.plist */,
 			);
 			path = RiseTests;
@@ -1383,6 +1386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EBE900723C9231200043651 /* RisePlanTests.swift in Sources */,
+				7EF8D1E926F7E98F002CE18B /* SunTimeRepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1664,7 +1668,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 29UN6WTSCZ;
 				INFOPLIST_FILE = RiseTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1685,7 +1689,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 29UN6WTSCZ;
 				INFOPLIST_FILE = RiseTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
