@@ -1,5 +1,5 @@
 //
-//  SunTimeLocalDataSource.swift
+//  SunTimeCoreDataServiceImpl.swift
 //  Rise
 //
 //  Created by Vladimir Korolev on 10.11.2019.
@@ -9,27 +9,20 @@
 import Foundation
 import CoreData
 
-protocol SunTimeLocalDataSource {
-    func get(for numberOfDays: Int, since day: Date) throws -> [SunTime]
-    func save(sunTimes: [SunTime]) throws
-    func deleteAll() throws
-}
+final class SunTimeCoreDataServiceImpl: LocalDataSource<RiseSunTime>, SunTimeCoreDataService {
 
-final class DefaultSunTimeLocalDataSource: LocalDataSource<RiseSunTime>, SunTimeLocalDataSource {
-    func get(for numberOfDays: Int, since day: Date) throws -> [SunTime] {
-        var returnArray = [SunTime]()
-        
-        for iteration in 1...numberOfDays {
-            let date = day.appending(days: iteration - 1)
-            let fetchResult = try container.fetch(with: date.makeDayPredicate())
-            if fetchResult.isEmpty { continue }
-            returnArray.append(buildModel(from: fetchResult[0]))
+    func getSunTimes(for dates: [Date]) throws -> [SunTime] {
+        log(.info, "dates = \(dates)")
+        return try dates.compactMap { date in
+            try container
+                .fetch(with: date.makeDayPredicate())
+                .first
+                .flatMap(buildModel(from:))
         }
-        
-        return returnArray
     }
 
     func save(sunTimes: [SunTime]) throws {
+        log(.info, "sunTimes: \(sunTimes)")
         try sunTimes.forEach { sunTime in
             let sunTimeObject = insertObject()
             update(object: sunTimeObject, with: sunTime)
@@ -38,6 +31,7 @@ final class DefaultSunTimeLocalDataSource: LocalDataSource<RiseSunTime>, SunTime
     }
 
     func deleteAll() throws {
+        log(.info)
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         try context.execute(deleteRequest)

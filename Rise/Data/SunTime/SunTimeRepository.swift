@@ -8,11 +8,13 @@
 
 import Foundation
 
+typealias SunTimesResult = Result<[SunTime], SunTimeError>
+
 protocol SunTimeRepository {
-    func get(for numberOfDays: Int,
-             since day: Date,
-             for location: Location,
-             completion: @escaping (Result<[SunTime], Error>) -> Void)
-    func save(sunTime: [SunTime]) throws
+    func requestSunTimes(
+        dates: [Date],
+        location: Location,
+        completion: @escaping (SunTimesResult) -> Void
+    )
     func deleteAll() throws
 }

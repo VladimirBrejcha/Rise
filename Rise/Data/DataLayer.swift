@@ -12,9 +12,9 @@ struct DataLayer {
     static let defaultRisePlanRepository: RisePlanRepository = DefaultRisePlanRepository(
         DataSources.planLocalDataSource
     )
-    static let sunTimeRepository: SunTimeRepository = DefaultSunTimeRepository(
-        DataSources.sunTimeLocalDataSource,
-        DataSources.sunTimeRemoteDataSource
+    static let sunTimeRepository: SunTimeRepository = SunTimeRepositoryImpl(
+        DataSources.sunTimeCoreDataService,
+        DataSources.sunTimeAPIService
     )
     static let locationRepository: LocationRepository = DefaultLocationRepository(
         DataSources.locationLocalDataSource,
@@ -31,8 +31,8 @@ fileprivate struct DataSources {
         containerName: "LocationData"
     )
     static let locationRemoteDataSource: LocationRemoteDataSource = DefaultLocationRemoteDataSource()
-    static let sunTimeLocalDataSource: SunTimeLocalDataSource = DefaultSunTimeLocalDataSource(
+    static let sunTimeCoreDataService: SunTimeCoreDataService = SunTimeCoreDataServiceImpl(
         containerName: "SunTimeData"
     )
-    static let sunTimeRemoteDataSource: SunTimeRemoteDataSource = DefaultSunTimeRemoteDataSource()
+    static let sunTimeAPIService: SunTimeAPIService = SunTimeAPIServiceImpl()
 }

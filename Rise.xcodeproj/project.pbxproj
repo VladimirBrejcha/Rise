@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7E052A40235236F1005D7FAD /* DailySunTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E052A3F235236F1005D7FAD /* DailySunTime.swift */; };
+		7E052A40235236F1005D7FAD /* SunTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E052A3F235236F1005D7FAD /* SunTime.swift */; };
 		7E052A422352377E005D7FAD /* InternalError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E052A412352377E005D7FAD /* InternalError.swift */; };
 		7E06FE92252E3829005D72CB /* AnimatedTransitionNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E06FE91252E3829005D72CB /* AnimatedTransitionNavigationController.swift */; };
 		7E06FE97252E3841005D72CB /* AnimatedTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E06FE96252E3841005D72CB /* AnimatedTransition.swift */; };
@@ -172,9 +172,9 @@
 		7ED6DD3F25E33E3D00F906CE /* Statefull.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED6DD3E25E33E3D00F906CE /* Statefull.swift */; };
 		7ED8E59723BFFD5100A1E96F /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8E59623BFFD5100A1E96F /* Story.swift */; };
 		7EE227652504C38B00EC70CB /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE227642504C38B00EC70CB /* UserDefaults.swift */; };
-		7EE640492378665D005BE355 /* DefaultSunTimeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE640482378665D005BE355 /* DefaultSunTimeRepository.swift */; };
-		7EE6404B2378666F005BE355 /* DefaultSunTimeLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6404A2378666F005BE355 /* DefaultSunTimeLocalDataSource.swift */; };
-		7EE6404D23786678005BE355 /* DefaultSunTimeRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6404C23786678005BE355 /* DefaultSunTimeRemoteDataSource.swift */; };
+		7EE640492378665D005BE355 /* SunTimeRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE640482378665D005BE355 /* SunTimeRepositoryImpl.swift */; };
+		7EE6404B2378666F005BE355 /* SunTimeCoreDataServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6404A2378666F005BE355 /* SunTimeCoreDataServiceImpl.swift */; };
+		7EE6404D23786678005BE355 /* SunTimeAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6404C23786678005BE355 /* SunTimeAPIService.swift */; };
 		7EE6404F23786693005BE355 /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6404E23786693005BE355 /* PersistentContainer.swift */; };
 		7EE647C325F5CA250081ED4C /* DaysAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE647C225F5CA250081ED4C /* DaysAssembler.swift */; };
 		7EE6905C243E64C600CA423E /* LongPressProgressButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EE6905B243E64C600CA423E /* LongPressProgressButton.xib */; };
@@ -192,6 +192,9 @@
 		7EF4C19D240436CD0098135A /* ChangePlanSliderTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF4C19B240436CD0098135A /* ChangePlanSliderTableCell.swift */; };
 		7EF4C19E240436CD0098135A /* ChangePlanSliderTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF4C19C240436CD0098135A /* ChangePlanSliderTableCell.xib */; };
 		7EF4C1A0240436D70098135A /* ChangePlanSliderTableCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF4C19F240436D70098135A /* ChangePlanSliderTableCellModel.swift */; };
+		7EF8D1E126F7ABC8002CE18B /* SunTimeAPIServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF8D1E026F7ABC8002CE18B /* SunTimeAPIServiceImpl.swift */; };
+		7EF8D1E426F7AC6E002CE18B /* SunTimeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF8D1E326F7AC6E002CE18B /* SunTimeError.swift */; };
+		7EF8D1E626F7ACB9002CE18B /* SunTimeCoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF8D1E526F7ACB9002CE18B /* SunTimeCoreDataService.swift */; };
 		7EFAEF6726F5785300C51A13 /* DaysCollectionCell+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFAEF6626F5785300C51A13 /* DaysCollectionCell+Model.swift */; };
 		7EFAEF6926F5938200C51A13 /* DaysCollectionCell+SideItemVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFAEF6826F5938200C51A13 /* DaysCollectionCell+SideItemVStack.swift */; };
 		7EFF58B9241C1E3B00D2CCEC /* SleepAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFF58B8241C1E3B00D2CCEC /* SleepAssembler.swift */; };
@@ -224,7 +227,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7E052A3F235236F1005D7FAD /* DailySunTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailySunTime.swift; sourceTree = "<group>"; };
+		7E052A3F235236F1005D7FAD /* SunTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTime.swift; sourceTree = "<group>"; };
 		7E052A412352377E005D7FAD /* InternalError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalError.swift; sourceTree = "<group>"; };
 		7E06FE91252E3829005D72CB /* AnimatedTransitionNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedTransitionNavigationController.swift; sourceTree = "<group>"; };
 		7E06FE96252E3841005D72CB /* AnimatedTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedTransition.swift; sourceTree = "<group>"; };
@@ -392,9 +395,9 @@
 		7EE1397E23E36944003895D4 /* AIFlatSwitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AIFlatSwitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EE1398523E36AF6003895D4 /* AIFlatSwitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AIFlatSwitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EE227642504C38B00EC70CB /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
-		7EE640482378665D005BE355 /* DefaultSunTimeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSunTimeRepository.swift; sourceTree = "<group>"; };
-		7EE6404A2378666F005BE355 /* DefaultSunTimeLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSunTimeLocalDataSource.swift; sourceTree = "<group>"; };
-		7EE6404C23786678005BE355 /* DefaultSunTimeRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSunTimeRemoteDataSource.swift; sourceTree = "<group>"; };
+		7EE640482378665D005BE355 /* SunTimeRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeRepositoryImpl.swift; sourceTree = "<group>"; };
+		7EE6404A2378666F005BE355 /* SunTimeCoreDataServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeCoreDataServiceImpl.swift; sourceTree = "<group>"; };
+		7EE6404C23786678005BE355 /* SunTimeAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeAPIService.swift; sourceTree = "<group>"; };
 		7EE6404E23786693005BE355 /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
 		7EE647C225F5CA250081ED4C /* DaysAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysAssembler.swift; sourceTree = "<group>"; };
 		7EE6905B243E64C600CA423E /* LongPressProgressButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LongPressProgressButton.xib; sourceTree = "<group>"; };
@@ -413,6 +416,9 @@
 		7EF4C19B240436CD0098135A /* ChangePlanSliderTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanSliderTableCell.swift; sourceTree = "<group>"; };
 		7EF4C19C240436CD0098135A /* ChangePlanSliderTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePlanSliderTableCell.xib; sourceTree = "<group>"; };
 		7EF4C19F240436D70098135A /* ChangePlanSliderTableCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanSliderTableCellModel.swift; sourceTree = "<group>"; };
+		7EF8D1E026F7ABC8002CE18B /* SunTimeAPIServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeAPIServiceImpl.swift; sourceTree = "<group>"; };
+		7EF8D1E326F7AC6E002CE18B /* SunTimeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeError.swift; sourceTree = "<group>"; };
+		7EF8D1E526F7ACB9002CE18B /* SunTimeCoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeCoreDataService.swift; sourceTree = "<group>"; };
 		7EFAEF6626F5785300C51A13 /* DaysCollectionCell+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DaysCollectionCell+Model.swift"; sourceTree = "<group>"; };
 		7EFAEF6826F5938200C51A13 /* DaysCollectionCell+SideItemVStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DaysCollectionCell+SideItemVStack.swift"; sourceTree = "<group>"; };
 		7EFF58B8241C1E3B00D2CCEC /* SleepAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepAssembler.swift; sourceTree = "<group>"; };
@@ -478,7 +484,6 @@
 			isa = PBXGroup;
 			children = (
 				7E43064326ED3EE600B67315 /* UserData.swift */,
-				7E173374241044D70028FDBE /* SunTimeRepository.swift */,
 				7E173376241047460028FDBE /* RisePlanRepository.swift */,
 				7E17337824104DDA0028FDBE /* LocationRepository.swift */,
 			);
@@ -490,7 +495,7 @@
 			children = (
 				7EB1C0362340FC6B0028237E /* RisePlan.swift */,
 				7E91D9612371E4850087436F /* DailyPlanTime.swift */,
-				7E052A3F235236F1005D7FAD /* DailySunTime.swift */,
+				7E052A3F235236F1005D7FAD /* SunTime.swift */,
 				7E98FE62231C2F8C0065FB09 /* Location.swift */,
 			);
 			path = Entities;
@@ -920,11 +925,11 @@
 		7EE6404723786617005BE355 /* SunTime */ = {
 			isa = PBXGroup;
 			children = (
+				7E173374241044D70028FDBE /* SunTimeRepository.swift */,
+				7EE640482378665D005BE355 /* SunTimeRepositoryImpl.swift */,
+				7EF8D1E326F7AC6E002CE18B /* SunTimeError.swift */,
+				7EF8D1E726F7E71A002CE18B /* Service */,
 				7EE64053237866EE005BE355 /* Entity */,
-				7EE640482378665D005BE355 /* DefaultSunTimeRepository.swift */,
-				7EE6404A2378666F005BE355 /* DefaultSunTimeLocalDataSource.swift */,
-				7EE6404C23786678005BE355 /* DefaultSunTimeRemoteDataSource.swift */,
-				7E97655E23786AB000E3AEF2 /* SunTimeData.xcdatamodeld */,
 			);
 			path = SunTime;
 			sourceTree = "<group>";
@@ -1047,6 +1052,34 @@
 				7ECD2C742419168900408C4B /* ChangePlanButtonTableCell */,
 			);
 			path = ChangePlanTableView;
+			sourceTree = "<group>";
+		};
+		7EF8D1DF26F7ABB8002CE18B /* SunTimeAPIService */ = {
+			isa = PBXGroup;
+			children = (
+				7EE6404C23786678005BE355 /* SunTimeAPIService.swift */,
+				7EF8D1E026F7ABC8002CE18B /* SunTimeAPIServiceImpl.swift */,
+			);
+			path = SunTimeAPIService;
+			sourceTree = "<group>";
+		};
+		7EF8D1E226F7AC59002CE18B /* SunTimeCoreDataService */ = {
+			isa = PBXGroup;
+			children = (
+				7EF8D1E526F7ACB9002CE18B /* SunTimeCoreDataService.swift */,
+				7EE6404A2378666F005BE355 /* SunTimeCoreDataServiceImpl.swift */,
+				7E97655E23786AB000E3AEF2 /* SunTimeData.xcdatamodeld */,
+			);
+			path = SunTimeCoreDataService;
+			sourceTree = "<group>";
+		};
+		7EF8D1E726F7E71A002CE18B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				7EF8D1E226F7AC59002CE18B /* SunTimeCoreDataService */,
+				7EF8D1DF26F7ABB8002CE18B /* SunTimeAPIService */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		7EFAEF6326F4FBEA00C51A13 /* Extensions */ = {
@@ -1366,6 +1399,7 @@
 				7E514DB825A87F67000EBE81 /* AlarmingView.swift in Sources */,
 				7E97226425B8C90500DBEF5E /* Style.swift in Sources */,
 				7EB9F34423C20347002A6DD3 /* UpdatePlanUseCase.swift in Sources */,
+				7EF8D1E626F7ACB9002CE18B /* SunTimeCoreDataService.swift in Sources */,
 				7E69837224EC69B8002EE278 /* ErrorAlertPresentable.swift in Sources */,
 				7EB9F34623C20379002A6DD3 /* DeletePlanUseCase.swift in Sources */,
 				7EB26953234F99AE008AEB3D /* Button.swift in Sources */,
@@ -1377,6 +1411,7 @@
 				7ED6DD3625E2A30700F906CE /* ImageLabelViewWithContextMenu.swift in Sources */,
 				7EF4C1A0240436D70098135A /* ChangePlanSliderTableCellModel.swift in Sources */,
 				7E69836924EC6923002EE278 /* RecoveryOptions.swift in Sources */,
+				7EF8D1E426F7AC6E002CE18B /* SunTimeError.swift in Sources */,
 				7EE227652504C38B00EC70CB /* UserDefaults.swift in Sources */,
 				7EB9F35A23C389BF002A6DD3 /* DataLayer.swift in Sources */,
 				7EB9F35023C35CA9002A6DD3 /* PersonalPlanAssembler.swift in Sources */,
@@ -1402,7 +1437,7 @@
 				7E9D9C0F24E5BADC000772C0 /* FloatingButton.swift in Sources */,
 				92D7D6552296F297009321AE /* SleepViewController.swift in Sources */,
 				7E541AF723FB384F00BAD710 /* ConfigurableCell.swift in Sources */,
-				7E052A40235236F1005D7FAD /* DailySunTime.swift in Sources */,
+				7E052A40235236F1005D7FAD /* SunTime.swift in Sources */,
 				7EB29E09241987C800116433 /* PrepareToSleepAssembler.swift in Sources */,
 				7EB26951234F9972008AEB3D /* NibLoadable.swift in Sources */,
 				7EB90047232AB9EB006EB9A8 /* ProgressBar.swift in Sources */,
@@ -1410,6 +1445,7 @@
 				7E6225B326192E24001AA8FD /* UILabel+Styleable.swift in Sources */,
 				7EA38AE423783EFC0007919B /* DefaultLocationRepository.swift in Sources */,
 				7E69837A24EC69FE002EE278 /* ErrorViewRemovable.swift in Sources */,
+				7EF8D1E126F7ABC8002CE18B /* SunTimeAPIServiceImpl.swift in Sources */,
 				7E25756723F8749A007AE4B5 /* Animation.swift in Sources */,
 				7EB1C0372340FC6B0028237E /* RisePlan.swift in Sources */,
 				7E173375241044D70028FDBE /* SunTimeRepository.swift in Sources */,
@@ -1427,7 +1463,7 @@
 				7E43064E26ED514C00B67315 /* SettingItemView.swift in Sources */,
 				7EF4C198240412EC0098135A /* ChangePlanDatePickerTableCellModel.swift in Sources */,
 				7E6225D22619CD75001AA8FD /* HorizontalFadeView.swift in Sources */,
-				7EE640492378665D005BE355 /* DefaultSunTimeRepository.swift in Sources */,
+				7EE640492378665D005BE355 /* SunTimeRepositoryImpl.swift in Sources */,
 				7E17337924104DDA0028FDBE /* LocationRepository.swift in Sources */,
 				7EA38AE92378526F0007919B /* LocationData.xcdatamodeld in Sources */,
 				7E6268C024D5D49C00F70BC3 /* TodayView.swift in Sources */,
@@ -1487,7 +1523,7 @@
 				7E5BDADE2371F08400E43F37 /* RiseLocation+CoreDataClass.swift in Sources */,
 				7E91D95C2371E4080087436F /* RiseDailySunTime+CoreDataProperties.swift in Sources */,
 				7EA0924222C8CF820019F2E9 /* CustomTransition.swift in Sources */,
-				7EE6404D23786678005BE355 /* DefaultSunTimeRemoteDataSource.swift in Sources */,
+				7EE6404D23786678005BE355 /* SunTimeAPIService.swift in Sources */,
 				7E9D9C1524EB0E13000772C0 /* ChangePlanView.swift in Sources */,
 				7E9D9C1324E5DA57000772C0 /* PersonalPlanView.swift in Sources */,
 				7EE647C325F5CA250081ED4C /* DaysAssembler.swift in Sources */,
@@ -1510,7 +1546,7 @@
 				7E43064B26ED4FF600B67315 /* SettingsView.swift in Sources */,
 				7ECD2C6F241832B300408C4B /* ReshedulePlanUseCase.swift in Sources */,
 				7E8EFA4226EAC4D400DEE564 /* Strings+Generated.swift in Sources */,
-				7EE6404B2378666F005BE355 /* DefaultSunTimeLocalDataSource.swift in Sources */,
+				7EE6404B2378666F005BE355 /* SunTimeCoreDataServiceImpl.swift in Sources */,
 				7EE87CEF2442254A00E1BD3B /* AutoRefreshableLabel.swift in Sources */,
 				7E43065B26EE4F3800B67315 /* AboutAssembler.swift in Sources */,
 				7EEA217923B6A3B400354BEA /* UIViewController+Present.swift in Sources */,

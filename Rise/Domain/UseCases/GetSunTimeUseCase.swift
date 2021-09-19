@@ -36,11 +36,12 @@ final class GetSunTimeUseCase: GetSunTime {
         completionQueue: DispatchQueue? = nil,
         completion: @escaping GetSunTimeCompletion
     ) {
+        let dates = makeDates(since: date, numberOfDays: numberOfDays)
         queue.async { [weak self] in
             self?.completionQueue = completionQueue
             self?.locationRepository.get { [weak self] result in
                 if case .success (let location) = result {
-                    self?.getSunTime(for: numberOfDays, since: date, location: location, completion: completion)
+                    self?.getSunTimes(dates: dates, location: location, completion: completion)
                 }
                 if case .failure (let error) = result {
                     self?.resolveCompletion(completion, with: .failure(error))
@@ -49,22 +50,28 @@ final class GetSunTimeUseCase: GetSunTime {
         }
     }
     
-    private func getSunTime(
-        for numberOfDays: Int,
-        since date: Date,
+    private func getSunTimes(
+        dates: [Date],
         location: Location,
         completion: @escaping GetSunTimeCompletion
     ) {
-        queue.async { [weak self] in
-            self?.sunTimeRepository.get(for: numberOfDays, since: date, for: location) { result in
+        sunTimeRepository.requestSunTimes(
+            dates: dates,
+            location: location,
+            completion: { [weak self] result in
                 if case .success (let sunTimes) = result {
-                    self?.resolveCompletion(completion, with: .success(sunTimes.sorted { $0.sunrise < $1.sunrise } ))
+                    self?.resolveCompletion(
+                        completion,
+                        with: .success(
+                            sunTimes.sorted { $0.sunrise < $1.sunrise }
+                        )
+                    )
                 }
                 if case .failure (let error) = result {
                     self?.resolveCompletion(completion, with: .failure(error))
                 }
             }
-        }
+        )
     }
 
     private func resolveCompletion(
@@ -78,5 +85,10 @@ final class GetSunTimeUseCase: GetSunTime {
         } else {
             completion(result)
         }
+    }
+
+    private func makeDates(since date: Date, numberOfDays: Int) -> [Date] {
+        guard numberOfDays > 0 else { return [] }
+        return (0...numberOfDays - 1).map { date.appending(days: $0) }
     }
 }

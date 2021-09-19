@@ -10,12 +10,16 @@ import Foundation
 
 func log(
     _ type: LogType,
-    _ message: String,
+    _ message: String? = nil,
     _ file: String = #file,
     _ line: Int = #line,
     _ function: String = #function
 ) {
-    print("\(file.onlyFileName):\(line) - \(function) \n\(message) \n")
+    if let message = message {
+        print("\(file.onlyFileName):\(line) - \(function) \n\(message) \n")
+    } else {
+        print("\(file.onlyFileName):\(line) - \(function)")
+    }
 }
 
 fileprivate extension String {

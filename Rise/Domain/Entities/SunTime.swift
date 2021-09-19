@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct SunTime: Codable, Equatable {
+struct SunTime: Decodable, Equatable {
     let sunrise, sunset: Date
 }
