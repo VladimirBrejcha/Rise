@@ -54,16 +54,21 @@ final class CalculateScheduledTimeImpl: CalculateScheduledTime {
             return nil
         }
 
-//        if calendar.isDate(noonedDate, inSameDayAs: schedule.targetWakeUpTime) {
-//            return .init(
-//                wakeUp: schedule.targetWakeUpTime,
-//                toBed: calendar.date(
-//                    byAdding: .minute,
-//                    value: -schedule.targetSleepDurationMin,
-//                    to: schedule.targetWakeUpTime
-//                ).safe
-//            )
-//        }
+        if calendar.isDate(noonedDate, inSameDayAs: schedule.targetWakeUpTime)
+            || noonedDate > schedule.targetWakeUpTime {
+
+            let wakeUp = calendar.date(
+                bySettingHour: calendar.dateComponents([.hour], from: schedule.targetWakeUpTime).hour!,
+                minute: calendar.dateComponents([.minute], from: schedule.targetWakeUpTime).minute!,
+                second: 0,
+                of: noonedDate
+            ).safe
+            let toBed = wakeUp.addingTimeInterval(minutes: -schedule.targetSleepDurationMin)
+            return .init(
+                wakeUp: wakeUp,
+                toBed: toBed
+            )
+        }
 
         let daysDiff = calendar.dateComponents(
             [.day],
@@ -196,23 +201,25 @@ class RiseScheduleTests: XCTestCase {
         }
     }
 
-    func testCalculateScheduledTimeEndDay() {
+    func testCalculateScheduledTimeEndDayAndAfter() {
 
         // Given
 
-        let startDate = NoonedDay.today.date
-        let startingToBedTime = date(
-            byAddingDays: 1,
-            bySettingsHours: 3,
-            bySettingMins: 0,
-            to: startDate
-        )
-        let targetWakeUpTime = date(
-            byAddingDays: 30,
-            bySettingsHours: 8,
-            bySettingMins: 0,
-            to: startDate
-        )
+        func time(day: Int, hour: Int, min: Int) -> Date {
+            calendar.date(
+                from: .init(
+                    year: 2021,
+                    month: 1,
+                    day: day,
+                    hour: hour,
+                    minute: min
+                )
+            )!
+        }
+
+        let startDate = time(day: 1, hour: 12, min: 0)
+        let startingToBedTime = time(day: 2, hour: 3, min: 0)
+        let targetWakeUpTime = time(day: 11, hour: 8, min: 0)
         let targetSleepDurationMin = 8 * 60
 
         let calculateScheduledTime: CalculateScheduledTime = CalculateScheduledTimeImpl(
@@ -224,39 +231,43 @@ class RiseScheduleTests: XCTestCase {
             )
         )
 
-        // When
+        for day in (11...111) {
 
-        let dailyTime = calculateScheduledTime(for: targetWakeUpTime)
+            // When
 
-        // Then
+            let date = startDate.appending(days: day).noon
+            let dailyTime = calculateScheduledTime(for: date)
 
-        guard let dailyTime = dailyTime else {
-            XCTAssert(false)
-            return
+            // Then
+
+            guard let dailyTime = dailyTime else {
+                XCTAssert(false)
+                return
+            }
+
+            guard let wakeUp = dailyTime.wakeUp else {
+                XCTAssert(false)
+                return
+            }
+
+            XCTAssertEqual(
+                calendar.dateComponents([.hour, .minute], from: wakeUp),
+                calendar.dateComponents([.hour, .minute], from: targetWakeUpTime)
+            )
+
+            guard let expectedToBed = calendar.date(
+                byAdding: .minute, value: -targetSleepDurationMin,
+                to: targetWakeUpTime
+            ) else {
+                XCTAssert(false)
+                return
+            }
+
+            XCTAssertEqual(
+                calendar.dateComponents([.hour, .minute], from: dailyTime.toBed),
+                calendar.dateComponents([.hour, .minute], from: expectedToBed)
+            )
         }
-
-        guard let wakeUp = dailyTime.wakeUp else {
-            XCTAssert(false)
-            return
-        }
-
-        XCTAssertEqual(
-            calendar.dateComponents([.day, .hour, .minute], from: wakeUp),
-            calendar.dateComponents([.day, .hour, .minute], from: targetWakeUpTime)
-        )
-
-        guard let expectedToBed = calendar.date(
-            byAdding: .minute, value: -targetSleepDurationMin,
-            to: targetWakeUpTime
-        ) else {
-            XCTAssert(false)
-            return
-        }
-
-        XCTAssertEqual(
-            calendar.dateComponents([.day, .hour, .minute], from: dailyTime.toBed),
-            calendar.dateComponents([.day, .hour, .minute], from: expectedToBed)
-        )
     }
 
     func testCalculateScheduledTimeVariousDays() {
