@@ -70,7 +70,6 @@ final class CalculateScheduledTimeImpl: CalculateScheduledTime {
             )
         }
 
-        
         let daysDiff = calendar.dateComponents(
             [.day],
             from: schedule.startDate.noon,
