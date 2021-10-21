@@ -63,14 +63,17 @@ final class CalculateScheduledTimeImpl: CalculateScheduledTime {
                 second: 0,
                 of: noonedDate
             ).safe
-            let toBed = wakeUp.addingTimeInterval(minutes: -schedule.targetSleepDurationMin)
+
+            let toBed = wakeUp.addingTimeInterval(
+                minutes: -schedule.targetSleepDurationMin + (24 * 60)
+            )
+
             return .init(
                 wakeUp: wakeUp,
                 toBed: toBed
             )
         }
 
-        
         let daysDiff = calendar.dateComponents(
             [.day],
             from: schedule.startDate.noon,
@@ -83,6 +86,7 @@ final class CalculateScheduledTimeImpl: CalculateScheduledTime {
 
         let finalToBedWithoutDays = finalToBed
             .addingTimeInterval(minutes: -daysDiff * 24 * 60)
+            .appending(days: -1)
 
         let diffMins = (schedule.startingToBedTime.timeIntervalSince1970 - finalToBedWithoutDays.timeIntervalSince1970) / 60
 
@@ -117,26 +121,136 @@ extension Optional where Wrapped == Date {
 
 class RiseScheduleTests: XCTestCase {
 
-    // MARK: - Tests -
+    // MARK: - CalculateScheduledTime Tests -
 
-    func testCalculateScheduledTimeBeforeStartDate() {
+    func testCalculateScheduledTimeToSleepOnNextDay() {
+        let numberOfDaysInSchedule = 10
 
+        let startDate = time(day: 1, hour: 12, min: 0)
+        let startingToBedTime = time(day: 2, hour: 3, min: 0)
+        let targetWakeUpTime = time(day: numberOfDaysInSchedule + 1, hour: 8, min: 0)
+        let targetSleepDurationMin = 8 * 60
+
+        let diffMins = 180
+        let dailyShiftMin = diffMins / numberOfDaysInSchedule
+
+        let schedule = Schedule(
+            targetWakeUpTime: targetWakeUpTime,
+            targetSleepDurationMin: targetSleepDurationMin,
+            startingToBedTime: startingToBedTime,
+            startDate: startDate
+        )
+
+        runCalculateScheduleTests(
+            schedule: schedule,
+            numberOfDaysInSchedule: numberOfDaysInSchedule,
+            dailyShiftMin: dailyShiftMin
+        )
+    }
+
+    func testCalculateScheduledTimeToSleepOnSameDay() {
+        let numberOfDaysInSchedule = 10
+
+        let startDate = time(day: 1, hour: 12, min: 0)
+        let startingToBedTime = time(day: 1, hour: 13, min: 0)
+        let targetWakeUpTime = time(day: numberOfDaysInSchedule + 1, hour: 18, min: 0)
+        let targetSleepDurationMin = 8 * 60
+
+        let diffMins = 180
+        let dailyShiftMin = diffMins / numberOfDaysInSchedule
+
+        let schedule = Schedule(
+            targetWakeUpTime: targetWakeUpTime,
+            targetSleepDurationMin: targetSleepDurationMin,
+            startingToBedTime: startingToBedTime,
+            startDate: startDate
+        )
+
+        runCalculateScheduleTests(
+            schedule: schedule,
+            numberOfDaysInSchedule: numberOfDaysInSchedule,
+            dailyShiftMin: dailyShiftMin
+        )
+    }
+
+    func testCalculateScheduledTimeNoDiff() {
+        let numberOfDaysInSchedule = 10
+
+        let startDate = time(day: 1, hour: 12, min: 0)
+        let startingToBedTime = time(day: 1, hour: 23, min: 0)
+        let targetWakeUpTime = time(day: numberOfDaysInSchedule + 1, hour: 7, min: 0)
+        let targetSleepDurationMin = 8 * 60
+
+        let dailyShiftMin = 0
+
+        let schedule = Schedule(
+            targetWakeUpTime: targetWakeUpTime,
+            targetSleepDurationMin: targetSleepDurationMin,
+            startingToBedTime: startingToBedTime,
+            startDate: startDate
+        )
+
+        runCalculateScheduleTests(
+            schedule: schedule,
+            numberOfDaysInSchedule: numberOfDaysInSchedule,
+            dailyShiftMin: dailyShiftMin
+        )
+    }
+
+//    func testCalculateScheduledTimeNegativeDiff() {
+//        let numberOfDaysInSchedule = 10
+//
+//        let startDate = time(day: 1, hour: 12, min: 0)
+//        let startingToBedTime = time(day: 1, hour: 23, min: 0)
+//        let targetWakeUpTime = time(day: numberOfDaysInSchedule + 1, hour: 7, min: 0)
+//        let targetSleepDurationMin = 8 * 60
+//
+//        let dailyShiftMin = 0
+//
+//        let schedule = Schedule(
+//            targetWakeUpTime: targetWakeUpTime,
+//            targetSleepDurationMin: targetSleepDurationMin,
+//            startingToBedTime: startingToBedTime,
+//            startDate: startDate
+//        )
+//
+//        runCalculateScheduleTests(
+//            schedule: schedule,
+//            numberOfDaysInSchedule: numberOfDaysInSchedule,
+//            dailyShiftMin: dailyShiftMin
+//        )
+//    }
+
+    func runCalculateScheduleTests(
+        schedule: Schedule,
+        numberOfDaysInSchedule: Int,
+        dailyShiftMin: Int
+    ) {
+        calculateScheduledTimeBeforeStartDate(schedule: schedule)
+        calculateScheduledTimeVariousDays(
+            schedule: schedule,
+            numberOfDaysInSchedule: numberOfDaysInSchedule,
+            dailyShiftMin: dailyShiftMin
+        )
+        calculateScheduledTimeEndDayAndAfter(
+            schedule: schedule,
+            numberOfDaysInSchedule: numberOfDaysInSchedule
+        )
+    }
+
+    func calculateScheduledTimeBeforeStartDate(
+        schedule: Schedule
+    ) {
         // Given
 
-        let startDate = NoonedDay.today.date
-        let startingToBedTime = date(
-            byAddingDays: 1,
-            bySettingsHours: 3,
-            bySettingMins: 0,
-            to: startDate
-        )
         let calculateScheduledTime: CalculateScheduledTime = CalculateScheduledTimeImpl(
-            schedule: basicSchedule(start: startDate, startToBed: startingToBedTime)
+            schedule: schedule
         )
+
         [
-            startDate.appending(days: -1),
-            startDate.addingTimeInterval(-60 * 60 * 24),
-            startDate.appending(days: -2)
+            schedule.startDate.appending(days: -1),
+            schedule.startDate.addingTimeInterval(-60 * 60 * 24),
+            schedule.startDate.appending(days: -2)
         ]
         .forEach {
 
@@ -150,93 +264,21 @@ class RiseScheduleTests: XCTestCase {
         }
     }
 
-    func testCalculateScheduledTimeStartDay() {
-
+    func calculateScheduledTimeEndDayAndAfter(
+        schedule: Schedule,
+        numberOfDaysInSchedule: Int
+    ) {
         // Given
 
-        let startDate = NoonedDay.today.date
-        let startingToBedTime = date(
-            byAddingDays: 1,
-            bySettingsHours: 3,
-            bySettingMins: 0,
-            to: startDate
-        )
         let calculateScheduledTime: CalculateScheduledTime = CalculateScheduledTimeImpl(
-            schedule: basicSchedule(start: startDate, startToBed: startingToBedTime)
+            schedule: schedule
         )
-        let todayComponents = calendar.dateComponents([.year, .month, .day], from: today)
-        [
-            today,
-            NoonedDay.today.date,
-            calendar.date(from: .init(
-                year: todayComponents.year,
-                month: todayComponents.month,
-                day: todayComponents.day
-            ))!
-        ].forEach { date in
+
+        for day in (numberOfDaysInSchedule...numberOfDaysInSchedule + 100) {
 
             // When
 
-            let dailyTime = calculateScheduledTime(for: date)
-
-            // Then
-
-            guard let dailyTime = dailyTime else {
-                XCTAssert(false)
-                return
-            }
-
-            XCTAssertNil(dailyTime.wakeUp)
-
-            let toBed = dailyTime.toBed
-
-            XCTAssertEqual(
-                calendar.component(.hour, from: toBed),
-                calendar.component(.hour, from: startingToBedTime)
-            )
-
-            XCTAssertEqual(
-                calendar.component(.minute, from: toBed),
-                calendar.component(.minute, from: startingToBedTime)
-            )
-        }
-    }
-
-    func testCalculateScheduledTimeEndDayAndAfter() {
-
-        // Given
-
-        func time(day: Int, hour: Int, min: Int) -> Date {
-            calendar.date(
-                from: .init(
-                    year: 2021,
-                    month: 1,
-                    day: day,
-                    hour: hour,
-                    minute: min
-                )
-            )!
-        }
-
-        let startDate = time(day: 1, hour: 12, min: 0)
-        let startingToBedTime = time(day: 2, hour: 3, min: 0)
-        let targetWakeUpTime = time(day: 11, hour: 8, min: 0)
-        let targetSleepDurationMin = 8 * 60
-
-        let calculateScheduledTime: CalculateScheduledTime = CalculateScheduledTimeImpl(
-            schedule: .init(
-                targetWakeUpTime: targetWakeUpTime,
-                targetSleepDurationMin: targetSleepDurationMin,
-                startingToBedTime: startingToBedTime,
-                startDate: startDate
-            )
-        )
-
-        for day in (11...111) {
-
-            // When
-
-            let date = startDate.appending(days: day).noon
+            let date = schedule.startDate.appending(days: day).noon
             let dailyTime = calculateScheduledTime(for: date)
 
             // Then
@@ -253,12 +295,12 @@ class RiseScheduleTests: XCTestCase {
 
             XCTAssertEqual(
                 calendar.dateComponents([.hour, .minute], from: wakeUp),
-                calendar.dateComponents([.hour, .minute], from: targetWakeUpTime)
+                calendar.dateComponents([.hour, .minute], from: schedule.targetWakeUpTime)
             )
 
             guard let expectedToBed = calendar.date(
-                byAdding: .minute, value: -targetSleepDurationMin,
-                to: targetWakeUpTime
+                byAdding: .minute, value: -schedule.targetSleepDurationMin,
+                to: schedule.targetWakeUpTime
             ) else {
                 XCTAssert(false)
                 return
@@ -271,44 +313,22 @@ class RiseScheduleTests: XCTestCase {
         }
     }
 
-    func testCalculateScheduledTimeVariousDays() {
-
+    func calculateScheduledTimeVariousDays(
+        schedule: Schedule,
+        numberOfDaysInSchedule: Int,
+        dailyShiftMin: Int
+    ) {
         // Given
 
-        func time(day: Int, hour: Int, min: Int) -> Date {
-            calendar.date(
-                from: .init(
-                    year: 2021,
-                    month: 1,
-                    day: day,
-                    hour: hour,
-                    minute: min
-                )
-            )!
-        }
-
-        let startDate = time(day: 1, hour: 12, min: 0)
-        let startingToBedTime = time(day: 2, hour: 3, min: 0)
-        let targetWakeUpTime = time(day: 11, hour: 8, min: 0)
-        let targetSleepDurationMin = 8 * 60
-
         let calculateScheduledTime: CalculateScheduledTime = CalculateScheduledTimeImpl(
-            schedule: .init(
-                targetWakeUpTime: targetWakeUpTime,
-                targetSleepDurationMin: targetSleepDurationMin,
-                startingToBedTime: startingToBedTime,
-                startDate: startDate
-            )
+            schedule: schedule
         )
 
-        let diffMins = 180
-        let dailyShiftMin = diffMins / 10
-
-        for day in (0...10) {
+        for day in (numberOfDaysInSchedule...numberOfDaysInSchedule) {
 
             // When
 
-            let date = startDate.appending(days: day).noon
+            let date = schedule.startDate.appending(days: day).noon
             let dailyTime = calculateScheduledTime(for: date)
 
             // Then
@@ -320,7 +340,9 @@ class RiseScheduleTests: XCTestCase {
 
             XCTAssertEqual(
                 dailyTime.toBed.timeIntervalSince1970,
-                startingToBedTime.timeIntervalSince1970 + Double((day * 24 * 60 * 60) - (day * dailyShiftMin * 60))
+                schedule.startingToBedTime.timeIntervalSince1970
+                    + Double((day * 24 * 60 * 60) - (day * dailyShiftMin * 60)),
+                "day number = \(day)"
             )
 
             if day == 0 {
@@ -335,7 +357,8 @@ class RiseScheduleTests: XCTestCase {
 
             XCTAssertEqual(
                 wakeUp.timeIntervalSince1970,
-                targetWakeUpTime.timeIntervalSince1970 - Double(((10 - day) * 24 * 60 * 60) - (dailyShiftMin * 60 * (10 - day)))
+                schedule.targetWakeUpTime.timeIntervalSince1970
+                    - Double(((10 - day) * 24 * 60 * 60) - (dailyShiftMin * 60 * (10 - day)))
             )
         }
     }
@@ -362,12 +385,15 @@ class RiseScheduleTests: XCTestCase {
         return dateSettedMins
     }
 
-    private func basicSchedule(start: Date, startToBed: Date) -> Schedule {
-        .init(
-            targetWakeUpTime: date(byAddingDays: 30, bySettingsHours: 8, bySettingMins: 0, to: start),
-            targetSleepDurationMin: 8 * 60,
-            startingToBedTime: startToBed,
-            startDate: start
-        )
+    private func time(day: Int, hour: Int, min: Int) -> Date {
+        calendar.date(
+            from: .init(
+                year: 2021,
+                month: 1,
+                day: day,
+                hour: hour,
+                minute: min
+            )
+        )!
     }
 }

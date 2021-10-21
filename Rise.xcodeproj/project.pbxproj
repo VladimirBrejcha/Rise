@@ -184,6 +184,8 @@
 		7EEB1E0D24424010001ABE4A /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB1E0C24424010001ABE4A /* AudioPlayer.swift */; };
 		7EEB1E0F2443369F001ABE4A /* bellAlarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7EEB1E0E2443369F001ABE4A /* bellAlarm.wav */; };
 		7EEB1E122443370F001ABE4A /* AlarmSounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB1E112443370F001ABE4A /* AlarmSounds.swift */; };
+		7EEBEBFE2721F3AF00F8C8D2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEBEBFD2721F3AF00F8C8D2 /* main.swift */; };
+		7EEBEC002721F3F300F8C8D2 /* TestsAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEBEBFF2721F3F300F8C8D2 /* TestsAppDelegate.swift */; };
 		7EEFC00F25E1AEB0007AE725 /* BorderedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEFC00E25E1AEB0007AE725 /* BorderedView.swift */; };
 		7EEFC01725E1AFD8007AE725 /* ImageLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEFC01625E1AFD8007AE725 /* ImageLabelView.swift */; };
 		7EF4C195240412D80098135A /* ChangePlanDatePickerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF4C193240412D80098135A /* ChangePlanDatePickerTableCell.swift */; };
@@ -409,6 +411,8 @@
 		7EEB1E0C24424010001ABE4A /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		7EEB1E0E2443369F001ABE4A /* bellAlarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bellAlarm.wav; sourceTree = "<group>"; };
 		7EEB1E112443370F001ABE4A /* AlarmSounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSounds.swift; sourceTree = "<group>"; };
+		7EEBEBFD2721F3AF00F8C8D2 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		7EEBEBFF2721F3F300F8C8D2 /* TestsAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsAppDelegate.swift; sourceTree = "<group>"; };
 		7EEFC00E25E1AEB0007AE725 /* BorderedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedView.swift; sourceTree = "<group>"; };
 		7EEFC01625E1AFD8007AE725 /* ImageLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabelView.swift; sourceTree = "<group>"; };
 		7EF4C193240412D80098135A /* ChangePlanDatePickerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanDatePickerTableCell.swift; sourceTree = "<group>"; };
@@ -891,6 +895,7 @@
 			isa = PBXGroup;
 			children = (
 				7EBE900623C9231200043651 /* RisePlanTests.swift */,
+				7EEBEBFF2721F3F300F8C8D2 /* TestsAppDelegate.swift */,
 				7EF8D1E826F7E98F002CE18B /* SunTimeRepositoryTests.swift */,
 				7EBE900823C9231200043651 /* Info.plist */,
 			);
@@ -1180,6 +1185,7 @@
 		92D7D6512296F297009321AE /* Rise */ = {
 			isa = PBXGroup;
 			children = (
+				7EEBEBFD2721F3AF00F8C8D2 /* main.swift */,
 				92D7D6522296F297009321AE /* AppDelegate.swift */,
 				7EE71BFD239D8AF0005ABE1A /* Storyboards */,
 				7E4901872340F3970034521E /* Stories */,
@@ -1386,6 +1392,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EBE900723C9231200043651 /* RisePlanTests.swift in Sources */,
+				7EEBEC002721F3F300F8C8D2 /* TestsAppDelegate.swift in Sources */,
 				7EF8D1E926F7E98F002CE18B /* SunTimeRepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1486,6 +1493,7 @@
 				7E0834AC2387351400BA1AE8 /* DateExtensions.swift in Sources */,
 				7E708A3923BFD09B003B5702 /* WentSleepCreatePlanViewController.swift in Sources */,
 				7E69836E24EC6980002EE278 /* AboveAllAlert.swift in Sources */,
+				7EEBEBFE2721F3AF00F8C8D2 /* main.swift in Sources */,
 				7E052A422352377E005D7FAD /* InternalError.swift in Sources */,
 				7E69836724EC690C002EE278 /* RecoveryAttemper.swift in Sources */,
 				7E6225AA26192DF9001AA8FD /* Styleable.swift in Sources */,
