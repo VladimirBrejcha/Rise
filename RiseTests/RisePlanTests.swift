@@ -86,7 +86,7 @@ final class CalculateScheduledTimeImpl: CalculateScheduledTime {
 
         let finalToBedWithoutDays = finalToBed
             .addingTimeInterval(minutes: -daysDiff * 24 * 60)
-            .appending(days: -1)
+            .appending(days: calendar.isDate(schedule.startingToBedTime, inSameDayAs: schedule.startDate) ? -1 : 0)
 
         let diffMins = (schedule.startingToBedTime.timeIntervalSince1970 - finalToBedWithoutDays.timeIntervalSince1970) / 60
 
@@ -172,6 +172,24 @@ class RiseScheduleTests: XCTestCase {
             dailyShiftMin: dailyShiftMin
         )
     }
+
+    // Valid input:
+    //
+    // `startDate`:
+    // nooned day
+    //
+    // `startingToBedTime`:
+    // - same day as startDate
+    // 12:00 -- 23:59
+    // - next day
+    // 00:00 -- 12:00
+    //
+    // 'targetWakeUpTime':
+    // any day 00:00 -- 23:59
+    // must be >= startingToBedTime + targetSleepDurationMin
+    //
+    // `targetSleepDurationMin`:
+    // 5 -- 10 hours
 
     func testCalculateScheduledTimeNoDiff() {
         let numberOfDaysInSchedule = 10
@@ -324,7 +342,7 @@ class RiseScheduleTests: XCTestCase {
             schedule: schedule
         )
 
-        for day in (numberOfDaysInSchedule...numberOfDaysInSchedule) {
+        for day in (1..<numberOfDaysInSchedule) {
 
             // When
 
