@@ -25,8 +25,19 @@ struct Schedule {
     // to bed time of the first scheduled day
     let startingToBedTime: Date
     // the day schedule is created
-    // must be nooned
-    let startDate: Date
+    var startDate: Date {
+        let startingToBedHour = Calendar.current.dateComponents(
+            [.hour],
+            from: startingToBedTime
+        ).hour
+        if let hour = startingToBedHour, hour < 12 {
+            return startingToBedTime
+                .appending(days: -1)
+                .noon
+        } else {
+            return startingToBedTime.noon
+        }
+    }
 }
 
 protocol CalculateScheduledTime {
@@ -144,9 +155,8 @@ class RiseScheduleTests: XCTestCase {
     func testCalculateScheduledTimeToSleepOnNextDay() {
         let numberOfDaysInSchedule = 10
 
-        let startDate = time(day: 1, hour: 12, min: 0)
-        let startingToBedTime = time(day: 2, hour: 3, min: 0)
-        let targetWakeUpTime = time(day: numberOfDaysInSchedule + 1, hour: 8, min: 0)
+        let startingToBedTime = time(day: 2, hour: 3)
+        let targetWakeUpTime = time(day: numberOfDaysInSchedule + 1, hour: 8)
         let targetSleepDurationMin = 8 * 60
 
         let diffMins = 180
@@ -155,8 +165,7 @@ class RiseScheduleTests: XCTestCase {
         let schedule = Schedule(
             targetWakeUpTime: targetWakeUpTime,
             targetSleepDurationMin: targetSleepDurationMin,
-            startingToBedTime: startingToBedTime,
-            startDate: startDate
+            startingToBedTime: startingToBedTime
         )
 
         runCalculateScheduleTests(
@@ -176,9 +185,8 @@ class RiseScheduleTests: XCTestCase {
         let hoursMissing = hoursSleep - hoursDiff
         let minsMissing = hoursMissing * 60
 
-        let startDate = time(day: 1, hour: 12, min: 0)
-        let startingToBedTime = time(day: 1, hour: startHour, min: 0)
-        let targetWakeUpTime = time(day: numberOfDaysInSchedule + 1, hour: wakeHour, min: 0)
+        let startingToBedTime = time(day: 1, hour: startHour)
+        let targetWakeUpTime = time(day: numberOfDaysInSchedule + 1, hour: wakeHour)
         let targetSleepDurationMin = hoursSleep * 60
 
         let dailyShiftMin = minsMissing / numberOfDaysInSchedule
@@ -186,8 +194,7 @@ class RiseScheduleTests: XCTestCase {
         let schedule = Schedule(
             targetWakeUpTime: targetWakeUpTime,
             targetSleepDurationMin: targetSleepDurationMin,
-            startingToBedTime: startingToBedTime,
-            startDate: startDate
+            startingToBedTime: startingToBedTime
         )
 
         runCalculateScheduleTests(
@@ -218,9 +225,8 @@ class RiseScheduleTests: XCTestCase {
     func testCalculateScheduledTimeNoDiff() {
         let numberOfDaysInSchedule = 10
 
-        let startDate = time(day: 1, hour: 12, min: 0)
-        let startingToBedTime = time(day: 1, hour: 23, min: 0)
-        let targetWakeUpTime = time(day: numberOfDaysInSchedule + 1, hour: 7, min: 0)
+        let startingToBedTime = time(day: 1, hour: 23)
+        let targetWakeUpTime = time(day: numberOfDaysInSchedule + 1, hour: 7)
         let targetSleepDurationMin = 8 * 60
 
         let dailyShiftMin = 0
@@ -228,8 +234,7 @@ class RiseScheduleTests: XCTestCase {
         let schedule = Schedule(
             targetWakeUpTime: targetWakeUpTime,
             targetSleepDurationMin: targetSleepDurationMin,
-            startingToBedTime: startingToBedTime,
-            startDate: startDate
+            startingToBedTime: startingToBedTime
         )
 
         runCalculateScheduleTests(
@@ -444,11 +449,11 @@ class RiseScheduleTests: XCTestCase {
         return dateSettedMins
     }
 
-    private func time(day: Int, hour: Int, min: Int) -> Date {
+    private func time(year: Int = 2021, month: Int = 1, day: Int, hour: Int, min: Int = 0) -> Date {
         calendar.date(
             from: .init(
-                year: 2021,
-                month: 1,
+                year: year,
+                month: month,
                 day: day,
                 hour: hour,
                 minute: min
