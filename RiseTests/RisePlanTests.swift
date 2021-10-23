@@ -74,19 +74,20 @@ final class CalculateScheduledTimeImpl: CalculateScheduledTime {
             )
         }
 
+        // not sure if it works as needed
         let daysDiff = calendar.dateComponents(
             [.day],
             from: schedule.startDate.noon,
             to: schedule.targetWakeUpTime.noon
         ).day!
 
-        let finalToBed = schedule.targetWakeUpTime
-            .addingTimeInterval(minutes: -schedule.targetSleepDurationMin)
-            .appending(days: 1)
+        let finalToBed = schedule
+            .targetWakeUpTime
+            .addingTimeInterval(minutes: -schedule.targetSleepDurationMin) // time toBed to wake up at target time
 
         let finalToBedWithoutDays = finalToBed
-            .addingTimeInterval(minutes: -daysDiff * 24 * 60)
-            .appending(days: calendar.isDate(schedule.startingToBedTime, inSameDayAs: schedule.startDate) ? -1 : 0)
+            .addingTimeInterval(minutes: -daysDiff * 24 * 60) // same time toBed but moved daysDiff days backwards
+//            .addingTimeInterval(minutes: 24 * 60) // adding 1 day because finalToBed was based on time before targetWakeUpTime
 
         let diffMins = (schedule.startingToBedTime.timeIntervalSince1970 - finalToBedWithoutDays.timeIntervalSince1970) / 60
 
@@ -94,9 +95,26 @@ final class CalculateScheduledTimeImpl: CalculateScheduledTime {
 
         let daysSincePlanStart = DateInterval(start: schedule.startDate, end: date).durationDays
 
+        let wakeUp: Date
+        if dailyShiftMin == 0 {
+            wakeUp = schedule.targetWakeUpTime.addingTimeInterval(
+                minutes: -(daysDiff - daysSincePlanStart) * 24 * 60
+            )
+        } else {
+            wakeUp = schedule.targetWakeUpTime.addingTimeInterval(
+                minutes: (-(daysDiff - daysSincePlanStart) * 24 * 60) + ((daysDiff - daysSincePlanStart) * dailyShiftMin)
+            )
+        }
+
+        let toBed = schedule
+            .startingToBedTime
+            .addingTimeInterval(
+                minutes: (daysSincePlanStart * 24 * 60) - (dailyShiftMin * daysSincePlanStart)
+            )
+
         return .init(
-            wakeUp: schedule.targetWakeUpTime.addingTimeInterval(minutes: (-(daysDiff - daysSincePlanStart) * 24 * 60) + ((daysDiff - daysSincePlanStart) * dailyShiftMin)),
-            toBed: schedule.startingToBedTime.addingTimeInterval(minutes: (daysSincePlanStart * 24 * 60) - (dailyShiftMin * daysSincePlanStart))
+            wakeUp: wakeUp,
+            toBed: toBed
         )
     }
 
@@ -149,15 +167,21 @@ class RiseScheduleTests: XCTestCase {
     }
 
     func testCalculateScheduledTimeToSleepOnSameDay() {
-        let numberOfDaysInSchedule = 10
+        let numberOfDaysInSchedule = 2
+
+        let startHour = 13
+        let wakeHour = 18
+        let hoursDiff = wakeHour - startHour
+        let hoursSleep = 8
+        let hoursMissing = hoursSleep - hoursDiff
+        let minsMissing = hoursMissing * 60
 
         let startDate = time(day: 1, hour: 12, min: 0)
-        let startingToBedTime = time(day: 1, hour: 13, min: 0)
-        let targetWakeUpTime = time(day: numberOfDaysInSchedule + 1, hour: 18, min: 0)
-        let targetSleepDurationMin = 8 * 60
+        let startingToBedTime = time(day: 1, hour: startHour, min: 0)
+        let targetWakeUpTime = time(day: numberOfDaysInSchedule + 1, hour: wakeHour, min: 0)
+        let targetSleepDurationMin = hoursSleep * 60
 
-        let diffMins = 180
-        let dailyShiftMin = diffMins / numberOfDaysInSchedule
+        let dailyShiftMin = minsMissing / numberOfDaysInSchedule
 
         let schedule = Schedule(
             targetWakeUpTime: targetWakeUpTime,
@@ -313,7 +337,8 @@ class RiseScheduleTests: XCTestCase {
 
             XCTAssertEqual(
                 calendar.dateComponents([.hour, .minute], from: wakeUp),
-                calendar.dateComponents([.hour, .minute], from: schedule.targetWakeUpTime)
+                calendar.dateComponents([.hour, .minute], from: schedule.targetWakeUpTime),
+                "day number = \(day)"
             )
 
             guard let expectedToBed = calendar.date(
@@ -326,7 +351,8 @@ class RiseScheduleTests: XCTestCase {
 
             XCTAssertEqual(
                 calendar.dateComponents([.hour, .minute], from: dailyTime.toBed),
-                calendar.dateComponents([.hour, .minute], from: expectedToBed)
+                calendar.dateComponents([.hour, .minute], from: expectedToBed),
+                "day number = \(day)"
             )
         }
     }
@@ -356,10 +382,17 @@ class RiseScheduleTests: XCTestCase {
                 return
             }
 
+            let expectedToBed: TimeInterval
+
+            if dailyShiftMin == 0 {
+                expectedToBed = schedule.startingToBedTime.timeIntervalSince1970 + Double(day * 24 * 60 * 60)
+            } else {
+                expectedToBed = schedule.startingToBedTime.timeIntervalSince1970 + Double((day * 24 * 60 * 60) - (day * dailyShiftMin * 60))
+            }
+
             XCTAssertEqual(
                 dailyTime.toBed.timeIntervalSince1970,
-                schedule.startingToBedTime.timeIntervalSince1970
-                    + Double((day * 24 * 60 * 60) - (day * dailyShiftMin * 60)),
+                expectedToBed,
                 "day number = \(day)"
             )
 
@@ -373,10 +406,18 @@ class RiseScheduleTests: XCTestCase {
                 return
             }
 
+            let expectedWakeUp: TimeInterval
+
+            if dailyShiftMin == 0 {
+                expectedWakeUp = schedule.targetWakeUpTime.timeIntervalSince1970 - Double(((numberOfDaysInSchedule - day) * 24 * 60 * 60))
+            } else {
+                expectedWakeUp = schedule.targetWakeUpTime.timeIntervalSince1970 - Double(((numberOfDaysInSchedule - day) * 24 * 60 * 60) - (dailyShiftMin * 60 * (numberOfDaysInSchedule - day)))
+            }
+
             XCTAssertEqual(
                 wakeUp.timeIntervalSince1970,
-                schedule.targetWakeUpTime.timeIntervalSince1970
-                    - Double(((10 - day) * 24 * 60 * 60) - (dailyShiftMin * 60 * (10 - day)))
+                expectedWakeUp,
+                "day number = \(day)"
             )
         }
     }
