@@ -85,20 +85,17 @@ final class CalculateScheduledTimeImpl: CalculateScheduledTime {
             )
         }
 
-        // not sure if it works as needed
         let daysDiff = calendar.dateComponents(
             [.day],
             from: schedule.startDate.noon,
             to: schedule.targetWakeUpTime.noon
         ).day!
 
-        let finalToBed = schedule
+        let finalToBedWithoutDays = schedule
             .targetWakeUpTime
             .addingTimeInterval(minutes: -schedule.targetSleepDurationMin) // time toBed to wake up at target time
-
-        let finalToBedWithoutDays = finalToBed
             .addingTimeInterval(minutes: -daysDiff * 24 * 60) // same time toBed but moved daysDiff days backwards
-//            .addingTimeInterval(minutes: 24 * 60) // adding 1 day because finalToBed was based on time before targetWakeUpTime
+            .addingTimeInterval(minutes: 24 * 60) // move one day forward as we are now one day behind of `startDate`
 
         let diffMins = (schedule.startingToBedTime.timeIntervalSince1970 - finalToBedWithoutDays.timeIntervalSince1970) / 60
 
@@ -155,12 +152,18 @@ class RiseScheduleTests: XCTestCase {
     func testCalculateScheduledTimeToSleepOnNextDay() {
         let numberOfDaysInSchedule = 10
 
-        let startingToBedTime = time(day: 2, hour: 3)
-        let targetWakeUpTime = time(day: numberOfDaysInSchedule + 1, hour: 8)
-        let targetSleepDurationMin = 8 * 60
+        let startHour = 3
+        let wakeHour = 8
+        let hoursDiff = wakeHour - startHour
+        let hoursSleep = 8
+        let hoursMissing = hoursSleep - hoursDiff
+        let minsMissing = hoursMissing * 60
 
-        let diffMins = 180
-        let dailyShiftMin = diffMins / numberOfDaysInSchedule
+        let startingToBedTime = time(day: 2, hour: startHour)
+        let targetWakeUpTime = time(day: numberOfDaysInSchedule + 1, hour: wakeHour)
+        let targetSleepDurationMin = hoursSleep * 60
+
+        let dailyShiftMin = minsMissing / numberOfDaysInSchedule
 
         let schedule = Schedule(
             targetWakeUpTime: targetWakeUpTime,
@@ -176,11 +179,11 @@ class RiseScheduleTests: XCTestCase {
     }
 
     func testCalculateScheduledTimeToSleepOnSameDay() {
-        let numberOfDaysInSchedule = 2
+        let numberOfDaysInSchedule = 10
 
-        let startHour = 13
-        let wakeHour = 18
-        let hoursDiff = wakeHour - startHour
+        let startHour = 23
+        let wakeHour = 4
+        let hoursDiff = 5
         let hoursSleep = 8
         let hoursMissing = hoursSleep - hoursDiff
         let minsMissing = hoursMissing * 60
