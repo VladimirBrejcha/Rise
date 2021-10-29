@@ -91,6 +91,7 @@ final class CalculateScheduledTimeImpl: CalculateScheduledTime {
             to: schedule.targetWakeUpTime.noon
         ).day!
 
+        
         let finalToBedWithoutDays = schedule
             .targetWakeUpTime
             .addingTimeInterval(minutes: -schedule.targetSleepDurationMin) // time toBed to wake up at target time
@@ -144,6 +145,24 @@ extension Optional where Wrapped == Date {
         }
     }
 }
+
+// Valid input:
+//
+// `startDate`:
+// nooned day
+//
+// `startingToBedTime`:
+// - same day as startDate
+// 12:00 -- 23:59
+// - next day
+// 00:00 -- 12:00
+//
+// 'targetWakeUpTime':
+// any day 00:00 -- 23:59
+// must be >= startingToBedTime + targetSleepDurationMin
+//
+// `targetSleepDurationMin`:
+// 5 -- 10 hours
 
 class RiseScheduleTests: XCTestCase {
 
@@ -207,23 +226,34 @@ class RiseScheduleTests: XCTestCase {
         )
     }
 
-    // Valid input:
-    //
-    // `startDate`:
-    // nooned day
-    //
-    // `startingToBedTime`:
-    // - same day as startDate
-    // 12:00 -- 23:59
-    // - next day
-    // 00:00 -- 12:00
-    //
-    // 'targetWakeUpTime':
-    // any day 00:00 -- 23:59
-    // must be >= startingToBedTime + targetSleepDurationMin
-    //
-    // `targetSleepDurationMin`:
-    // 5 -- 10 hours
+    func testCalculateScheduledTimeToSleepWakeupOnSameDay() {
+        let numberOfDaysInSchedule = 10
+
+        let startHour = 13
+        let wakeHour = 18
+        let hoursDiff = wakeHour - startHour
+        let hoursSleep = 8
+        let hoursMissing = hoursSleep - hoursDiff
+        let minsMissing = hoursMissing * 60
+
+        let startingToBedTime = time(day: 1, hour: startHour)
+        let targetWakeUpTime = time(day: numberOfDaysInSchedule, hour: wakeHour)
+        let targetSleepDurationMin = hoursSleep * 60
+
+        let dailyShiftMin = minsMissing / numberOfDaysInSchedule
+
+        let schedule = Schedule(
+            targetWakeUpTime: targetWakeUpTime,
+            targetSleepDurationMin: targetSleepDurationMin,
+            startingToBedTime: startingToBedTime
+        )
+
+        runCalculateScheduleTests(
+            schedule: schedule,
+            numberOfDaysInSchedule: numberOfDaysInSchedule,
+            dailyShiftMin: dailyShiftMin
+        )
+    }
 
     func testCalculateScheduledTimeNoDiff() {
         let numberOfDaysInSchedule = 10
