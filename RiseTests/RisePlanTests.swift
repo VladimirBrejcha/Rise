@@ -460,29 +460,17 @@ class RiseScheduleTests: XCTestCase {
         }
     }
 
-
-
     // MARK: - Utils -
 
     private let calendar = Calendar.current
-    private let today = Date()
 
-    private func date(
-        byAddingDays days: Int,
-        bySettingsHours hours: Int,
-        bySettingMins mins: Int,
-        to date: Date
+    private func time(
+        year: Int = 2021,
+        month: Int = 1,
+        day: Int,
+        hour: Int,
+        min: Int = 0
     ) -> Date {
-        guard let dateAddedDay = calendar.date(byAdding: .day, value: days, to: date),
-              let dateSettedHour = calendar.date(bySetting: .hour, value: hours, of: dateAddedDay),
-              let dateSettedMins = calendar.date(bySetting: .minute, value: mins, of: dateSettedHour)
-        else {
-            fatalError()
-        }
-        return dateSettedMins
-    }
-
-    private func time(year: Int = 2021, month: Int = 1, day: Int, hour: Int, min: Int = 0) -> Date {
         calendar.date(
             from: .init(
                 year: year,
