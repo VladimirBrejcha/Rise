@@ -29,6 +29,7 @@ struct NewSchedule {
     let sleepDuration: Minute
     let intensity: Intensity
     let currentToBed: Date
+    let currentWakeUp: Date
     let targetToBed: Date
 }
 
@@ -46,6 +47,17 @@ extension NewSchedule {
                 return 25
             case .high:
                 return 10
+            }
+        }
+
+        var minTimeShift: Int {
+            switch self {
+            case .low:
+                return 3
+            case .normal:
+                return 6
+            case .high:
+                return 9
             }
         }
     }
@@ -73,8 +85,18 @@ final class CreateScheduleImpl: CreateSchedule {
             sleepDuration: wantedSleepDuration,
             intensity: intensity,
             currentToBed: currentToBed,
+            currentWakeUp: calculateWakeUp(
+                toBed: currentToBed,
+                sleepDuration: wantedSleepDuration
+            ),
             targetToBed: wantedToBed
         )
+    }
+
+    private func calculateWakeUp(toBed: Date, sleepDuration: Minute) -> Date {
+        toBed
+            .addingTimeInterval(days: -1)
+            .addingTimeInterval(minutes: sleepDuration)
     }
 }
 
@@ -87,13 +109,20 @@ protocol NextSchedule {
 final class NextScheduleImpl: NextSchedule {
 
     func callAsFunction(from schedule: NewSchedule) -> NewSchedule {
-        .init(
+        let nextToBed = calculateNextToBed(
+            current: schedule.currentToBed,
+            target: schedule.targetToBed,
+            intensity: schedule.intensity
+        )
+        return .init(
             sleepDuration: schedule.sleepDuration,
             intensity: schedule.intensity,
-            currentToBed: calculateNextToBed(
-                current: schedule.currentToBed,
-                target: schedule.targetToBed,
-                intensity: schedule.intensity
+            currentToBed: incrementDay(
+                old: nextToBed
+            ),
+            currentWakeUp: calculateNextWakeUp(
+                currentToBed: nextToBed,
+                sleepDuration: schedule.sleepDuration
             ),
             targetToBed: incrementDay(
                 old: schedule.targetToBed
@@ -101,46 +130,76 @@ final class NextScheduleImpl: NextSchedule {
         )
     }
 
+    private func calculateNextWakeUp(
+        currentToBed: Date,
+        sleepDuration: Minute
+    ) -> Date {
+        currentToBed
+            .addingTimeInterval(days: -1)
+            .addingTimeInterval(minutes: sleepDuration)
+    }
+
     private func calculateNextToBed(
         current: Date,
         target: Date,
         intensity: NewSchedule.Intensity
     ) -> Date {
-        incrementDay(
-            old: createNewCurrentToBed(
-                old: current,
-                timeShift: selectTimeShift(
-                    total: calculateDiff(
-                        current: current,
-                        target: target
-                    ),
-                    intensity: intensity
-                )
+        var timeShift = selectTimeShift(
+            total: calculateDiff(
+                current: current,
+                target: target
+            ),
+            intensity: intensity
+        )
+
+        // handle both directions of time shifting
+        if current > target {
+            timeShift = -timeShift
+        }
+
+        let nextToBed = createNewCurrentToBed(
+            old: current,
+            timeShift: timeShift
+        )
+
+        // prevent overlapping
+        if (current > target && target > nextToBed)
+         || (current < target && target < nextToBed) {
+            return target
+        }
+
+        return nextToBed
+    }
+
+    private func calculateDiff(
+        current: Date,
+        target: Date
+    ) -> Minute {
+        .init(
+            timeInterval: abs(
+                current.timeIntervalSince1970 - target.timeIntervalSince1970
             )
         )
     }
 
-    private func calculateDiff(current: Date, target: Date) -> Minute {
-        .init(
-            timeInterval: abs(current.timeIntervalSince1970 - target.timeIntervalSince1970)
-        )
+    private func selectTimeShift(
+        total: Minute,
+        intensity: NewSchedule.Intensity
+    ) -> Minute {
+        if total <= 0 { return 0 }
+        let shift = total / intensity.divider
+        return max(shift, intensity.minTimeShift)
     }
 
-    private func selectTimeShift(total: Minute, intensity: NewSchedule.Intensity) -> Minute {
-        if total == 0 { return 0 }
-        return total / intensity.divider
-    }
-
-    private func createNewCurrentToBed(old: Date, timeShift: Minute) -> Date {
+    private func createNewCurrentToBed(
+        old: Date,
+        timeShift: Minute
+    ) -> Date {
         old.addingTimeInterval(minutes: timeShift)
     }
 
     private func incrementDay(old: Date) -> Date {
         old.addingTimeInterval(days: 1)
-    }
-
-    private func decrementDay(old: Date) -> Date {
-        old.addingTimeInterval(days: -1)
     }
 }
 
@@ -178,7 +237,7 @@ class ScheduleTests: XCTestCase {
                     let wantedTobed = time(day: 1, hour: wantedHour)
 
                     let diff: Minute = -(currentHour - wantedHour) * 60
-                    let shift = diff / intensity.divider
+                    let shift = max(diff / intensity.divider, intensity.minTimeShift)
 
                     let schedule = createSchedule(
                         wantedSleepDuration: duration,
@@ -187,7 +246,8 @@ class ScheduleTests: XCTestCase {
                         intensity: intensity
                     )
 
-                    testNextSchedule(schedule: schedule, shift: shift)
+                    testNextSchedule(schedule: schedule, shift: -shift)
+                    testTargetReachable(schedule: schedule)
                 }
             }
         }
@@ -214,7 +274,7 @@ class ScheduleTests: XCTestCase {
                     let wantedTobed = time(day: 1, hour: wantedHour)
 
                     let diff: Minute = (currentHour - wantedHour) * 60
-                    let shift = diff / intensity.divider
+                    let shift = max(diff / intensity.divider, intensity.minTimeShift)
 
                     let schedule = createSchedule(
                         wantedSleepDuration: duration,
@@ -224,6 +284,7 @@ class ScheduleTests: XCTestCase {
                     )
 
                     testNextSchedule(schedule: schedule, shift: shift)
+                    testTargetReachable(schedule: schedule)
                 }
             }
         }
@@ -246,13 +307,13 @@ class ScheduleTests: XCTestCase {
             nextSchedule.currentToBed,
             schedule.currentToBed
                 .addingTimeInterval(days: 1)
-                .addingTimeInterval(minutes: shift),
+                .addingTimeInterval(minutes: -shift),
             """
 
                 current: \(schedule.currentToBed)
                 next: \(nextSchedule.currentToBed)
-                expected: \(schedule.currentToBed.addingTimeInterval(days: 1).addingTimeInterval(minutes: shift))
-                shift: \(shift)
+                expected: \(schedule.currentToBed.addingTimeInterval(days: 1).addingTimeInterval(minutes: -shift))
+                shift: \(-shift)
             """
         )
     }
@@ -293,6 +354,41 @@ class ScheduleTests: XCTestCase {
                 XCTAssertEqual(schedule.currentToBed, nextSchedule.currentToBed.appending(days: -1))
                 XCTAssertEqual(schedule.targetToBed, nextSchedule.targetToBed.appending(days: -1))
             }
+        }
+    }
+
+    // MARK: - Recursive to the target
+
+    func testTargetReachable(schedule: NewSchedule) {
+
+        // When
+
+        var next: NewSchedule = nextSchedule(from: schedule)
+
+        var counter = 0
+        while (next.currentToBed != next.targetToBed) {
+            next = nextSchedule(from: next)
+
+            // Then
+
+            XCTAssert(
+                counter <= schedule.intensity.divider * 5,
+                """
+
+                counter: \(counter)
+                intensity: \(next.intensity)
+                target: \(next.targetToBed)
+                next: \(next.currentToBed)
+                """
+            )
+
+            if schedule.targetToBed > schedule.currentToBed {
+                XCTAssertTrue(next.currentToBed <= next.targetToBed)
+            } else {
+                XCTAssertTrue(next.currentToBed >= next.targetToBed)
+            }
+
+            counter += 1
         }
     }
 
