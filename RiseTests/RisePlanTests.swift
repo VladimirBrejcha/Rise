@@ -12,6 +12,8 @@ import XCTest
 struct ScheduledTime {
     // may be `nil` if is of the same day as a `Schedule.startDate`
     let wakeUp: Date?
+
+    // time to go sleep for the night after `wakeUp` time
     let toBed: Date
 }
 
@@ -91,7 +93,6 @@ final class CalculateScheduledTimeImpl: CalculateScheduledTime {
             to: schedule.targetWakeUpTime.noon
         ).day!
 
-        
         let finalToBedWithoutDays = schedule
             .targetWakeUpTime
             .addingTimeInterval(minutes: -schedule.targetSleepDurationMin) // time toBed to wake up at target time
@@ -153,9 +154,9 @@ extension Optional where Wrapped == Date {
 //
 // `startingToBedTime`:
 // - same day as startDate
-// 12:00 -- 23:59
+// 16:00 -- 23:59
 // - next day
-// 00:00 -- 12:00
+// 00:00 -- 16:00
 //
 // 'targetWakeUpTime':
 // any day 00:00 -- 23:59
@@ -236,8 +237,8 @@ class RiseScheduleTests: XCTestCase {
         let hoursMissing = hoursSleep - hoursDiff
         let minsMissing = hoursMissing * 60
 
-        let startingToBedTime = time(day: 1, hour: startHour)
-        let targetWakeUpTime = time(day: numberOfDaysInSchedule, hour: wakeHour)
+        let startingToBedTime = time(day: 2, hour: startHour)
+        let targetWakeUpTime = time(day: numberOfDaysInSchedule + 1, hour: wakeHour)
         let targetSleepDurationMin = hoursSleep * 60
 
         let dailyShiftMin = minsMissing / numberOfDaysInSchedule
