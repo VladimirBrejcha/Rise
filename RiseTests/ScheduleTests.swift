@@ -213,11 +213,10 @@ class ScheduleTests: XCTestCase {
 
     let allDurations = Array((5 * 60)...(10 * 60))
 
-    // MARK: - AnotherSchedule Tests
 
-    // MARK: - With diff
+    // MARK: - NegativeDiff
 
-    func testScheduleNegativeDiff() {
+    func testNextScheduleNegativeDiff() {
 
         // Given
 
@@ -253,7 +252,9 @@ class ScheduleTests: XCTestCase {
         }
     }
 
-    func testSchedulePositiveDiff() {
+    // MARK: - PositiveDiff
+
+    func testNextSchedulePositiveDiff() {
 
         // Given
 
@@ -290,35 +291,7 @@ class ScheduleTests: XCTestCase {
         }
     }
 
-    func testNextSchedule(schedule: NewSchedule, shift: Minute) {
-
-        // When
-
-        let nextSchedule = nextSchedule(from: schedule)
-
-        // Then
-
-        XCTAssertEqual(
-            nextSchedule.targetToBed,
-            schedule.targetToBed
-                .addingTimeInterval(days: 1)
-        )
-        XCTAssertEqual(
-            nextSchedule.currentToBed,
-            schedule.currentToBed
-                .addingTimeInterval(days: 1)
-                .addingTimeInterval(minutes: -shift),
-            """
-
-                current: \(schedule.currentToBed)
-                next: \(nextSchedule.currentToBed)
-                expected: \(schedule.currentToBed.addingTimeInterval(days: 1).addingTimeInterval(minutes: -shift))
-                shift: \(-shift)
-            """
-        )
-    }
-
-    // MARK: - No diff
+    // MARK: - Nodiff
 
     func testNextScheduleNoDiff() {
 
@@ -357,7 +330,35 @@ class ScheduleTests: XCTestCase {
         }
     }
 
-    // MARK: - Recursive to the target
+    // MARK: - Reused
+
+    func testNextSchedule(schedule: NewSchedule, shift: Minute) {
+
+        // When
+
+        let nextSchedule = nextSchedule(from: schedule)
+
+        // Then
+
+        XCTAssertEqual(
+            nextSchedule.targetToBed,
+            schedule.targetToBed
+                .addingTimeInterval(days: 1)
+        )
+        XCTAssertEqual(
+            nextSchedule.currentToBed,
+            schedule.currentToBed
+                .addingTimeInterval(days: 1)
+                .addingTimeInterval(minutes: -shift),
+            """
+
+                current: \(schedule.currentToBed)
+                next: \(nextSchedule.currentToBed)
+                expected: \(schedule.currentToBed.addingTimeInterval(days: 1).addingTimeInterval(minutes: -shift))
+                shift: \(-shift)
+            """
+        )
+    }
 
     func testTargetReachable(schedule: NewSchedule) {
 
