@@ -135,7 +135,6 @@ final class NextScheduleImpl: NextSchedule {
         sleepDuration: Minute
     ) -> Date {
         currentToBed
-            .addingTimeInterval(days: -1)
             .addingTimeInterval(minutes: sleepDuration)
     }
 
@@ -213,6 +212,48 @@ class ScheduleTests: XCTestCase {
 
     let allDurations = Array((5 * 60)...(10 * 60))
 
+    // MARK: - CreateSchedule
+
+    func testCreateSchedule() {
+
+        // Given
+
+        let currentHours = Array(0...50)
+        let wantedHours = Array(1...51)
+        let intensitys = NewSchedule.Intensity.allCases
+
+        for duration in allDurations {
+            for i in currentHours.indices {
+
+                let currentHour = currentHours[i]
+                let wantedHour = wantedHours[i]
+                let intensity = intensitys.randomElement()!
+                let currentToBed = time(day: 1, hour: currentHour)
+                let wantedTobed = time(day: 1, hour: wantedHour)
+
+                // When
+
+                let schedule = createSchedule(
+                    wantedSleepDuration: duration,
+                    currentToBed: currentToBed,
+                    wantedToBed: wantedTobed,
+                    intensity: intensity
+                )
+
+                // Then
+
+                XCTAssertEqual(schedule.currentToBed, currentToBed)
+                XCTAssertEqual(
+                    schedule.currentWakeUp,
+                    currentToBed
+                        .addingTimeInterval(days: -1)
+                        .addingTimeInterval(minutes: duration)
+                )
+                XCTAssertEqual(schedule.intensity, intensity)
+                XCTAssertEqual(schedule.targetToBed, wantedTobed)
+            }
+        }
+    }
 
     // MARK: - NegativeDiff
 
@@ -324,8 +365,10 @@ class ScheduleTests: XCTestCase {
 
                 // Then
 
-                XCTAssertEqual(schedule.currentToBed, nextSchedule.currentToBed.appending(days: -1))
-                XCTAssertEqual(schedule.targetToBed, nextSchedule.targetToBed.appending(days: -1))
+                XCTAssertEqual(nextSchedule.currentToBed, schedule.currentToBed.appending(days: 1))
+                XCTAssertEqual(nextSchedule.currentToBed, nextSchedule.targetToBed)
+                XCTAssertEqual(nextSchedule.currentWakeUp, schedule.currentWakeUp.appending(days: 1))
+                XCTAssertEqual(nextSchedule.targetToBed, schedule.targetToBed.appending(days: 1))
             }
         }
     }
@@ -357,6 +400,12 @@ class ScheduleTests: XCTestCase {
                 expected: \(schedule.currentToBed.addingTimeInterval(days: 1).addingTimeInterval(minutes: -shift))
                 shift: \(-shift)
             """
+        )
+        XCTAssertEqual(
+            nextSchedule.currentWakeUp,
+            schedule.currentWakeUp
+                .addingTimeInterval(days: 1)
+                .addingTimeInterval(minutes: -shift)
         )
     }
 
@@ -413,4 +462,3 @@ class ScheduleTests: XCTestCase {
         )!
     }
 }
-
