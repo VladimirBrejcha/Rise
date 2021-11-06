@@ -32,7 +32,11 @@ final class CreateScheduleImpl: CreateSchedule {
                 toBed: currentToBed,
                 sleepDuration: wantedSleepDuration
             ),
-            targetToBed: wantedToBed
+            targetToBed: wantedToBed,
+            targetWakeUp: calculateWakeUp(
+                toBed: wantedToBed,
+                sleepDuration: wantedSleepDuration
+            )
         )
     }
 

@@ -25,9 +25,6 @@ enum DomainLayer {
     static var getDailyTime: GetDailyTime {
         GetDailyTimeUseCase()
     }
-    static var pausePlan: PausePlan {
-        PausePlanUseCase(DataLayer.defaultRisePlanRepository)
-    }
     static var confirmPlan: ConfirmPlan {
         ConfirmPlanUseCase(DataLayer.defaultRisePlanRepository)
     }
@@ -47,12 +44,15 @@ enum DomainLayer {
         CreateScheduleImpl()
     }
     static var createNextSchedule: CreateNextSchedule {
-        CreateNextScheduleImpl()
+        CreateNextScheduleImpl(DataLayer.userData)
     }
     static var saveSchedule: SaveSchedule {
         SaveScheduleImpl(DataLayer.scheduleRepository)
     }
     static var getSchedule: GetSchedule {
         GetScheduleImpl(DataLayer.scheduleRepository, DomainLayer.createNextSchedule)
+    }
+    static var pauseSchedule: PauseSchedule {
+        PauseScheduleImpl(DataLayer.userData)
     }
 }

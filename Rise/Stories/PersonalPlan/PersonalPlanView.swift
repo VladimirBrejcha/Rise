@@ -9,6 +9,7 @@
 import UIKit
 
 final class PersonalPlanView: UIView, PropertyAnimatable, Statefull {
+    
     @IBOutlet private var topLabel: UILabel!
     @IBOutlet private var centerLabel: UILabel!
     @IBOutlet private var middleButton: Button!
@@ -18,9 +19,11 @@ final class PersonalPlanView: UIView, PropertyAnimatable, Statefull {
     @IBOutlet private var cellBottomRight: ImageLabelViewWithContextMenu!
 
     // MARK: - PropertyAnimatable
+
     var propertyAnimationDuration: Double = 0.3
 
     // MARK: - Statefull -
+
     typealias CellState = ImageLabelViewWithContextMenu.State
 
     struct State {
@@ -61,12 +64,14 @@ final class PersonalPlanView: UIView, PropertyAnimatable, Statefull {
     }
 
     // MARK: - Configuration -
+
     func configure() {
         centerLabel.applyStyle(.mediumSizedTitle)
         topLabel.applyStyle(.bigSizedTitle)
     }
 
     // MARK: - Internal -
+
     private func applyToAllCells(_ change: ((ImageLabelViewWithContextMenu) -> Void)) {
         change(cellTopLeft)
         change(cellTopRight)

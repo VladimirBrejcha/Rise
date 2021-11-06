@@ -55,6 +55,12 @@ class ScheduleTests: XCTestCase {
                 )
                 XCTAssertEqual(schedule.intensity, intensity)
                 XCTAssertEqual(schedule.targetToBed, wantedTobed)
+                XCTAssertEqual(
+                    schedule.targetWakeUp,
+                    wantedTobed
+                        .addingTimeInterval(days: -1)
+                        .addingTimeInterval(minutes: duration)
+                )
             }
         }
     }
@@ -170,6 +176,7 @@ class ScheduleTests: XCTestCase {
                 XCTAssertEqual(nextSchedule.toBed, nextSchedule.targetToBed)
                 XCTAssertEqual(nextSchedule.wakeUp, schedule.wakeUp.appending(days: 1))
                 XCTAssertEqual(nextSchedule.targetToBed, schedule.targetToBed.appending(days: 1))
+                XCTAssertEqual(nextSchedule.targetWakeUp, schedule.targetWakeUp.appending(days: 1))
             }
         }
     }
@@ -187,6 +194,11 @@ class ScheduleTests: XCTestCase {
         XCTAssertEqual(
             nextSchedule.targetToBed,
             schedule.targetToBed
+                .addingTimeInterval(days: 1)
+        )
+        XCTAssertEqual(
+            nextSchedule.targetWakeUp,
+            schedule.targetWakeUp
                 .addingTimeInterval(days: 1)
         )
         XCTAssertEqual(

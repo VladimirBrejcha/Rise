@@ -19,7 +19,24 @@ protocol CreateNextSchedule {
 
 final class CreateNextScheduleImpl: CreateNextSchedule {
 
+    private let userData: UserData
+
+    init(_ userData: UserData) {
+        self.userData = userData
+    }
+
     func callAsFunction(from schedule: Schedule) -> Schedule {
+        if userData.scheduleOnPause {
+            return .init(
+                sleepDuration: schedule.sleepDuration,
+                intensity: schedule.intensity,
+                toBed: incrementDay(old: schedule.toBed),
+                wakeUp: incrementDay(old: schedule.wakeUp),
+                targetToBed: incrementDay(old: schedule.targetToBed),
+                targetWakeUp: incrementDay(old: schedule.targetWakeUp)
+            )
+        }
+
         let nextToBed = calculateNextToBed(
             current: schedule.toBed,
             target: schedule.targetToBed,
@@ -37,6 +54,9 @@ final class CreateNextScheduleImpl: CreateNextSchedule {
             ),
             targetToBed: incrementDay(
                 old: schedule.targetToBed
+            ),
+            targetWakeUp: incrementDay(
+                old: schedule.targetWakeUp
             )
         )
     }

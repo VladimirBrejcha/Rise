@@ -84,6 +84,7 @@ fileprivate extension ScheduleObject {
         toBed = schedule.toBed
         wakeUp = schedule.wakeUp
         targetToBed = schedule.targetToBed
+        targetWakeUp = schedule.targetWakeUp
     }
 }
 
@@ -92,16 +93,18 @@ fileprivate extension Schedule {
         guard let intensity = Schedule.Intensity.init(rawValue: object.intensity),
               let toBed = object.toBed,
               let wakeUp = object.wakeUp,
-              let targetToBed = object.targetToBed else {
-                  assertionFailure()
-                  return nil
-              }
+              let targetToBed = object.targetToBed,
+              let targetWakeUp = object.targetWakeUp else {
+            assertionFailure()
+            return nil
+        }
         self = .init(
             sleepDuration: Schedule.Minute(object.sleepDuration),
             intensity: intensity,
             toBed: toBed,
             wakeUp: wakeUp,
-            targetToBed: targetToBed
+            targetToBed: targetToBed,
+            targetWakeUp: targetWakeUp
         )
     }
 }

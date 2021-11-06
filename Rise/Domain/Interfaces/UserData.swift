@@ -8,4 +8,5 @@
 
 protocol UserData: AnyObject {
     var onboardingCompleted: Bool { get set }
+    var scheduleOnPause: Bool { get set }
 }

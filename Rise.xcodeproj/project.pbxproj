@@ -101,7 +101,6 @@
 		7E84EB27239D1A5700E02050 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E84EB26239D1A5700E02050 /* ConfirmationViewController.swift */; };
 		7E8675C724165F25004DAF63 /* GetDailyTimeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8675C624165F25004DAF63 /* GetDailyTimeUseCase.swift */; };
 		7E8675CC2417E5FF004DAF63 /* ConfirmPlanUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8675CB2417E5FF004DAF63 /* ConfirmPlanUseCase.swift */; };
-		7E8675CE2417E9AA004DAF63 /* PausePlanUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8675CD2417E9AA004DAF63 /* PausePlanUseCase.swift */; };
 		7E88A35123F8B20C00E792CA /* VerticalPositionMoveAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E88A35023F8B20C00E792CA /* VerticalPositionMoveAnimation.swift */; };
 		7E8AB6CE23A18D27009CE41A /* WakeUpTimeCreatePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8AB6CD23A18D27009CE41A /* WakeUpTimeCreatePlanViewController.swift */; };
 		7E8C6B982350FB9C0086162F /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8C6B972350FB9C0086162F /* TableView.swift */; };
@@ -150,6 +149,7 @@
 		7EAFB62A2735E1F300B7C7C6 /* ScheduleCoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFB6292735E1F300B7C7C6 /* ScheduleCoreDataService.swift */; };
 		7EAFB62D2735EC1200B7C7C6 /* SaveSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFB62C2735EC1200B7C7C6 /* SaveSchedule.swift */; };
 		7EAFB62F2735ED7400B7C7C6 /* GetSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFB62E2735ED7400B7C7C6 /* GetSchedule.swift */; };
+		7EAFB6312737203000B7C7C6 /* PauseSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFB6302737203000B7C7C6 /* PauseSchedule.swift */; };
 		7EB196DA23A01B8F00E6C40B /* CreatePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB196D923A01B8F00E6C40B /* CreatePlanViewController.swift */; };
 		7EB1C0332340F9550028237E /* PersonalPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE939162340F68800FE9954 /* PersonalPlanViewController.swift */; };
 		7EB1C0372340FC6B0028237E /* RisePlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1C0362340FC6B0028237E /* RisePlan.swift */; };
@@ -332,7 +332,6 @@
 		7E84EB26239D1A5700E02050 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
 		7E8675C624165F25004DAF63 /* GetDailyTimeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDailyTimeUseCase.swift; sourceTree = "<group>"; };
 		7E8675CB2417E5FF004DAF63 /* ConfirmPlanUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmPlanUseCase.swift; sourceTree = "<group>"; };
-		7E8675CD2417E9AA004DAF63 /* PausePlanUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausePlanUseCase.swift; sourceTree = "<group>"; };
 		7E88A35023F8B20C00E792CA /* VerticalPositionMoveAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalPositionMoveAnimation.swift; sourceTree = "<group>"; };
 		7E8AB6CD23A18D27009CE41A /* WakeUpTimeCreatePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUpTimeCreatePlanViewController.swift; sourceTree = "<group>"; };
 		7E8C6B972350FB9C0086162F /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
@@ -383,6 +382,7 @@
 		7EAFB6292735E1F300B7C7C6 /* ScheduleCoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCoreDataService.swift; sourceTree = "<group>"; };
 		7EAFB62C2735EC1200B7C7C6 /* SaveSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSchedule.swift; sourceTree = "<group>"; };
 		7EAFB62E2735ED7400B7C7C6 /* GetSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSchedule.swift; sourceTree = "<group>"; };
+		7EAFB6302737203000B7C7C6 /* PauseSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseSchedule.swift; sourceTree = "<group>"; };
 		7EB196D923A01B8F00E6C40B /* CreatePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlanViewController.swift; sourceTree = "<group>"; };
 		7EB1C0362340FC6B0028237E /* RisePlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RisePlan.swift; sourceTree = "<group>"; };
 		7EB26950234F9972008AEB3D /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
@@ -923,7 +923,6 @@
 				7EB9F34923C2045A002A6DD3 /* ObservePlanUseCase.swift */,
 				7EB9F34B23C20504002A6DD3 /* GetSunTimeUseCase.swift */,
 				7E8675C624165F25004DAF63 /* GetDailyTimeUseCase.swift */,
-				7E8675CD2417E9AA004DAF63 /* PausePlanUseCase.swift */,
 				7E8675CB2417E5FF004DAF63 /* ConfirmPlanUseCase.swift */,
 				7ECD2C6E241832B300408C4B /* ReshedulePlanUseCase.swift */,
 				7E43064826ED40F400B67315 /* SetOnboardingCompleted.swift */,
@@ -932,6 +931,7 @@
 				7EAFB61B2735D31100B7C7C6 /* CreateSchedule.swift */,
 				7EAFB62C2735EC1200B7C7C6 /* SaveSchedule.swift */,
 				7EAFB62E2735ED7400B7C7C6 /* GetSchedule.swift */,
+				7EAFB6302737203000B7C7C6 /* PauseSchedule.swift */,
 				7EAFB61D2735D3B000B7C7C6 /* CreateNextSchedule.swift */,
 			);
 			path = UseCases;
@@ -1465,6 +1465,7 @@
 				7EF8D1E426F7AC6E002CE18B /* SunTimeError.swift in Sources */,
 				7EE227652504C38B00EC70CB /* UserDefaults.swift in Sources */,
 				7EB9F35A23C389BF002A6DD3 /* DataLayer.swift in Sources */,
+				7EAFB6312737203000B7C7C6 /* PauseSchedule.swift in Sources */,
 				7EB9F35023C35CA9002A6DD3 /* PersonalPlanAssembler.swift in Sources */,
 				92E77AFA22A5304400E5E21C /* TodayViewController.swift in Sources */,
 				7E541AF923FB386B00BAD710 /* CellConfigurator.swift in Sources */,
@@ -1627,7 +1628,6 @@
 				7EFAEF6726F5785300C51A13 /* DaysCollectionCell+Model.swift in Sources */,
 				7E6225B826192E3F001AA8FD /* UIButton+Styleable.swift in Sources */,
 				7EC7392523C4EF5B00C484B8 /* ConfirmationAssembler.swift in Sources */,
-				7E8675CE2417E9AA004DAF63 /* PausePlanUseCase.swift in Sources */,
 				7E69837824EC69EE002EE278 /* ErrorViewCreatable.swift in Sources */,
 				7E708A3423BF635B003B5702 /* SleepDurationCreatePlanViewController.swift in Sources */,
 				7ECD2C78241916C600408C4B /* ChangePlanButtonTableCellModel.swift in Sources */,

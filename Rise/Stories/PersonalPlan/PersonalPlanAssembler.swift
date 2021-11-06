@@ -9,9 +9,8 @@
 final class PersonalPlanAssembler {
     func assemble() -> PersonalPlanViewController {
         let controller = Storyboard.main.instantiateViewController(of: PersonalPlanViewController.self)
-        controller.getPlan = DomainLayer.getPlan
-        controller.pausePlan = DomainLayer.pausePlan
-        controller.observePlan = DomainLayer.observePlan
+        controller.getSchedule = DomainLayer.getSchedule
+        controller.pauseSchedule = DomainLayer.pauseSchedule
         return controller
     }
 }

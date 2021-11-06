@@ -14,6 +14,7 @@ struct Schedule: Equatable {
     let toBed: Date
     let wakeUp: Date
     let targetToBed: Date
+    let targetWakeUp: Date
 }
 
 extension Schedule {

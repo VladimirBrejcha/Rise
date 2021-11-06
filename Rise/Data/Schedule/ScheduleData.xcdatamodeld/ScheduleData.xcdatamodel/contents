@@ -4,10 +4,11 @@
         <attribute name="intensity" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="sleepDuration" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="targetToBed" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="targetWakeUp" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="toBed" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="wakeUp" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="ScheduleObject" positionX="-63" positionY="-18" width="128" height="104"/>
+        <element name="ScheduleObject" positionX="-63" positionY="-18" width="128" height="119"/>
     </elements>
 </model>
