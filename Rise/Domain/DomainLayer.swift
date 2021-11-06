@@ -10,9 +10,6 @@ enum DomainLayer {
     static var getPlan: GetPlan {
         GetPlanUseCase(DataLayer.defaultRisePlanRepository)
     }
-    static var makePlan: MakePlan {
-        MakePlanUseCase(DataLayer.defaultRisePlanRepository)
-    }
     static var updatePlan: UpdatePlan {
         UpdatePlanUseCase(DataLayer.defaultRisePlanRepository)
     }
@@ -45,5 +42,17 @@ enum DomainLayer {
     }
     static var prepareMail: PrepareMail {
         PrepareMailUseCase()
+    }
+    static var createSchedule: CreateSchedule {
+        CreateScheduleImpl()
+    }
+    static var createNextSchedule: CreateNextSchedule {
+        CreateNextScheduleImpl()
+    }
+    static var saveSchedule: SaveSchedule {
+        SaveScheduleImpl(DataLayer.scheduleRepository)
+    }
+    static var getSchedule: GetSchedule {
+        GetScheduleImpl(DataLayer.scheduleRepository, DomainLayer.createNextSchedule)
     }
 }

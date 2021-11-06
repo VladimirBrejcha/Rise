@@ -140,6 +140,16 @@
 		7EA7BA0A2354F1810051A92D /* DaysCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA7BA092354F1810051A92D /* DaysCollectionView.swift */; };
 		7EA7BA0C2354F2510051A92D /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA7BA0B2354F2510051A92D /* CollectionView.swift */; };
 		7EAD159F25F50DF700392E6A /* DaysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAD159E25F50DF700392E6A /* DaysViewController.swift */; };
+		7EAFB61A2735D28E00B7C7C6 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFB6192735D28E00B7C7C6 /* Schedule.swift */; };
+		7EAFB61C2735D31100B7C7C6 /* CreateSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFB61B2735D31100B7C7C6 /* CreateSchedule.swift */; };
+		7EAFB61E2735D3B000B7C7C6 /* CreateNextSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFB61D2735D3B000B7C7C6 /* CreateNextSchedule.swift */; };
+		7EAFB6222735D89F00B7C7C6 /* ScheduleData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFB6202735D89F00B7C7C6 /* ScheduleData.xcdatamodeld */; };
+		7EAFB6242735DA0100B7C7C6 /* ScheduleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFB6232735DA0100B7C7C6 /* ScheduleRepository.swift */; };
+		7EAFB6262735DA8400B7C7C6 /* ScheduleRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFB6252735DA8400B7C7C6 /* ScheduleRepositoryImpl.swift */; };
+		7EAFB6282735DAD000B7C7C6 /* ScheduleLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFB6272735DAD000B7C7C6 /* ScheduleLocalDataSource.swift */; };
+		7EAFB62A2735E1F300B7C7C6 /* ScheduleCoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFB6292735E1F300B7C7C6 /* ScheduleCoreDataService.swift */; };
+		7EAFB62D2735EC1200B7C7C6 /* SaveSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFB62C2735EC1200B7C7C6 /* SaveSchedule.swift */; };
+		7EAFB62F2735ED7400B7C7C6 /* GetSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFB62E2735ED7400B7C7C6 /* GetSchedule.swift */; };
 		7EB196DA23A01B8F00E6C40B /* CreatePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB196D923A01B8F00E6C40B /* CreatePlanViewController.swift */; };
 		7EB1C0332340F9550028237E /* PersonalPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE939162340F68800FE9954 /* PersonalPlanViewController.swift */; };
 		7EB1C0372340FC6B0028237E /* RisePlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB1C0362340FC6B0028237E /* RisePlan.swift */; };
@@ -150,7 +160,6 @@
 		7EB9003E23256AC9006EB9A8 /* DesignableContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9003D23256AC9006EB9A8 /* DesignableContainerView.swift */; };
 		7EB9004023256BF3006EB9A8 /* DaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9003F23256BF3006EB9A8 /* DaysView.swift */; };
 		7EB90047232AB9EB006EB9A8 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */; };
-		7EB9F34223C2028D002A6DD3 /* MakePlanUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9F34123C2028D002A6DD3 /* MakePlanUseCase.swift */; };
 		7EB9F34423C20347002A6DD3 /* UpdatePlanUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9F34323C20347002A6DD3 /* UpdatePlanUseCase.swift */; };
 		7EB9F34623C20379002A6DD3 /* DeletePlanUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9F34523C20379002A6DD3 /* DeletePlanUseCase.swift */; };
 		7EB9F34823C203E6002A6DD3 /* GetPlanUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9F34723C203E6002A6DD3 /* GetPlanUseCase.swift */; };
@@ -174,8 +183,8 @@
 		7ED8E59723BFFD5100A1E96F /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8E59623BFFD5100A1E96F /* Story.swift */; };
 		7EE227652504C38B00EC70CB /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE227642504C38B00EC70CB /* UserDefaults.swift */; };
 		7EE640492378665D005BE355 /* SunTimeRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE640482378665D005BE355 /* SunTimeRepositoryImpl.swift */; };
-		7EE6404B2378666F005BE355 /* SunTimeCoreDataServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6404A2378666F005BE355 /* SunTimeCoreDataServiceImpl.swift */; };
-		7EE6404D23786678005BE355 /* SunTimeAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6404C23786678005BE355 /* SunTimeAPIService.swift */; };
+		7EE6404B2378666F005BE355 /* SunTimeCoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6404A2378666F005BE355 /* SunTimeCoreDataService.swift */; };
+		7EE6404D23786678005BE355 /* SunTimeRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6404C23786678005BE355 /* SunTimeRemoteDataSource.swift */; };
 		7EE6404F23786693005BE355 /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6404E23786693005BE355 /* PersistentContainer.swift */; };
 		7EE647C325F5CA250081ED4C /* DaysAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE647C225F5CA250081ED4C /* DaysAssembler.swift */; };
 		7EE6905C243E64C600CA423E /* LongPressProgressButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EE6905B243E64C600CA423E /* LongPressProgressButton.xib */; };
@@ -197,7 +206,7 @@
 		7EF4C1A0240436D70098135A /* ChangePlanSliderTableCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF4C19F240436D70098135A /* ChangePlanSliderTableCellModel.swift */; };
 		7EF8D1E126F7ABC8002CE18B /* SunTimeAPIServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF8D1E026F7ABC8002CE18B /* SunTimeAPIServiceImpl.swift */; };
 		7EF8D1E426F7AC6E002CE18B /* SunTimeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF8D1E326F7AC6E002CE18B /* SunTimeError.swift */; };
-		7EF8D1E626F7ACB9002CE18B /* SunTimeCoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF8D1E526F7ACB9002CE18B /* SunTimeCoreDataService.swift */; };
+		7EF8D1E626F7ACB9002CE18B /* SunTimeLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF8D1E526F7ACB9002CE18B /* SunTimeLocalDataSource.swift */; };
 		7EF8D1E926F7E98F002CE18B /* SunTimeRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF8D1E826F7E98F002CE18B /* SunTimeRepositoryTests.swift */; };
 		7EFAEF6726F5785300C51A13 /* DaysCollectionCell+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFAEF6626F5785300C51A13 /* DaysCollectionCell+Model.swift */; };
 		7EFAEF6926F5938200C51A13 /* DaysCollectionCell+SideItemVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFAEF6826F5938200C51A13 /* DaysCollectionCell+SideItemVStack.swift */; };
@@ -364,6 +373,16 @@
 		7EA7BA092354F1810051A92D /* DaysCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCollectionView.swift; sourceTree = "<group>"; };
 		7EA7BA0B2354F2510051A92D /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		7EAD159E25F50DF700392E6A /* DaysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysViewController.swift; sourceTree = "<group>"; };
+		7EAFB6192735D28E00B7C7C6 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		7EAFB61B2735D31100B7C7C6 /* CreateSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSchedule.swift; sourceTree = "<group>"; };
+		7EAFB61D2735D3B000B7C7C6 /* CreateNextSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNextSchedule.swift; sourceTree = "<group>"; };
+		7EAFB6212735D89F00B7C7C6 /* ScheduleData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ScheduleData.xcdatamodel; sourceTree = "<group>"; };
+		7EAFB6232735DA0100B7C7C6 /* ScheduleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRepository.swift; sourceTree = "<group>"; };
+		7EAFB6252735DA8400B7C7C6 /* ScheduleRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleRepositoryImpl.swift; sourceTree = "<group>"; };
+		7EAFB6272735DAD000B7C7C6 /* ScheduleLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleLocalDataSource.swift; sourceTree = "<group>"; };
+		7EAFB6292735E1F300B7C7C6 /* ScheduleCoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCoreDataService.swift; sourceTree = "<group>"; };
+		7EAFB62C2735EC1200B7C7C6 /* SaveSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSchedule.swift; sourceTree = "<group>"; };
+		7EAFB62E2735ED7400B7C7C6 /* GetSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSchedule.swift; sourceTree = "<group>"; };
 		7EB196D923A01B8F00E6C40B /* CreatePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlanViewController.swift; sourceTree = "<group>"; };
 		7EB1C0362340FC6B0028237E /* RisePlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RisePlan.swift; sourceTree = "<group>"; };
 		7EB26950234F9972008AEB3D /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
@@ -373,7 +392,6 @@
 		7EB9003D23256AC9006EB9A8 /* DesignableContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableContainerView.swift; sourceTree = "<group>"; };
 		7EB9003F23256BF3006EB9A8 /* DaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysView.swift; sourceTree = "<group>"; };
 		7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
-		7EB9F34123C2028D002A6DD3 /* MakePlanUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePlanUseCase.swift; sourceTree = "<group>"; };
 		7EB9F34323C20347002A6DD3 /* UpdatePlanUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePlanUseCase.swift; sourceTree = "<group>"; };
 		7EB9F34523C20379002A6DD3 /* DeletePlanUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletePlanUseCase.swift; sourceTree = "<group>"; };
 		7EB9F34723C203E6002A6DD3 /* GetPlanUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPlanUseCase.swift; sourceTree = "<group>"; };
@@ -401,8 +419,8 @@
 		7EE1398523E36AF6003895D4 /* AIFlatSwitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AIFlatSwitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EE227642504C38B00EC70CB /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		7EE640482378665D005BE355 /* SunTimeRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeRepositoryImpl.swift; sourceTree = "<group>"; };
-		7EE6404A2378666F005BE355 /* SunTimeCoreDataServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeCoreDataServiceImpl.swift; sourceTree = "<group>"; };
-		7EE6404C23786678005BE355 /* SunTimeAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeAPIService.swift; sourceTree = "<group>"; };
+		7EE6404A2378666F005BE355 /* SunTimeCoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeCoreDataService.swift; sourceTree = "<group>"; };
+		7EE6404C23786678005BE355 /* SunTimeRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeRemoteDataSource.swift; sourceTree = "<group>"; };
 		7EE6404E23786693005BE355 /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
 		7EE647C225F5CA250081ED4C /* DaysAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysAssembler.swift; sourceTree = "<group>"; };
 		7EE6905B243E64C600CA423E /* LongPressProgressButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LongPressProgressButton.xib; sourceTree = "<group>"; };
@@ -425,7 +443,7 @@
 		7EF4C19F240436D70098135A /* ChangePlanSliderTableCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanSliderTableCellModel.swift; sourceTree = "<group>"; };
 		7EF8D1E026F7ABC8002CE18B /* SunTimeAPIServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeAPIServiceImpl.swift; sourceTree = "<group>"; };
 		7EF8D1E326F7AC6E002CE18B /* SunTimeError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeError.swift; sourceTree = "<group>"; };
-		7EF8D1E526F7ACB9002CE18B /* SunTimeCoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeCoreDataService.swift; sourceTree = "<group>"; };
+		7EF8D1E526F7ACB9002CE18B /* SunTimeLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeLocalDataSource.swift; sourceTree = "<group>"; };
 		7EF8D1E826F7E98F002CE18B /* SunTimeRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeRepositoryTests.swift; sourceTree = "<group>"; };
 		7EFAEF6626F5785300C51A13 /* DaysCollectionCell+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DaysCollectionCell+Model.swift"; sourceTree = "<group>"; };
 		7EFAEF6826F5938200C51A13 /* DaysCollectionCell+SideItemVStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DaysCollectionCell+SideItemVStack.swift"; sourceTree = "<group>"; };
@@ -493,6 +511,8 @@
 			children = (
 				7E43064326ED3EE600B67315 /* UserData.swift */,
 				7E173376241047460028FDBE /* RisePlanRepository.swift */,
+				7EAFB6232735DA0100B7C7C6 /* ScheduleRepository.swift */,
+				7E173374241044D70028FDBE /* SunTimeRepository.swift */,
 				7E17337824104DDA0028FDBE /* LocationRepository.swift */,
 			);
 			path = Interfaces;
@@ -505,6 +525,7 @@
 				7E91D9612371E4850087436F /* DailyPlanTime.swift */,
 				7E052A3F235236F1005D7FAD /* SunTime.swift */,
 				7E98FE62231C2F8C0065FB09 /* Location.swift */,
+				7EAFB6192735D28E00B7C7C6 /* Schedule.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -848,10 +869,30 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		7EAFB61F2735D85300B7C7C6 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				7EAFB6202735D89F00B7C7C6 /* ScheduleData.xcdatamodeld */,
+				7EAFB6252735DA8400B7C7C6 /* ScheduleRepositoryImpl.swift */,
+				7EAFB62B2735E20800B7C7C6 /* Local */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
+		7EAFB62B2735E20800B7C7C6 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				7EAFB6272735DAD000B7C7C6 /* ScheduleLocalDataSource.swift */,
+				7EAFB6292735E1F300B7C7C6 /* ScheduleCoreDataService.swift */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
 		7EB1C0342340FA6E0028237E /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				7EB9F35923C389BF002A6DD3 /* DataLayer.swift */,
+				7EAFB61F2735D85300B7C7C6 /* Schedule */,
 				7E97656123786AED00E3AEF2 /* RisePlan */,
 				7EE6404723786617005BE355 /* SunTime */,
 				7EA38AEA237852FD0007919B /* Location */,
@@ -877,7 +918,6 @@
 			isa = PBXGroup;
 			children = (
 				7EB9F34723C203E6002A6DD3 /* GetPlanUseCase.swift */,
-				7EB9F34123C2028D002A6DD3 /* MakePlanUseCase.swift */,
 				7EB9F34323C20347002A6DD3 /* UpdatePlanUseCase.swift */,
 				7EB9F34523C20379002A6DD3 /* DeletePlanUseCase.swift */,
 				7EB9F34923C2045A002A6DD3 /* ObservePlanUseCase.swift */,
@@ -889,6 +929,10 @@
 				7E43064826ED40F400B67315 /* SetOnboardingCompleted.swift */,
 				7E43065326ED6E7500B67315 /* GetAppVersion.swift */,
 				7E3955FF26F162FC003D664D /* PrepareMail.swift */,
+				7EAFB61B2735D31100B7C7C6 /* CreateSchedule.swift */,
+				7EAFB62C2735EC1200B7C7C6 /* SaveSchedule.swift */,
+				7EAFB62E2735ED7400B7C7C6 /* GetSchedule.swift */,
+				7EAFB61D2735D3B000B7C7C6 /* CreateNextSchedule.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -936,10 +980,11 @@
 		7EE6404723786617005BE355 /* SunTime */ = {
 			isa = PBXGroup;
 			children = (
-				7E173374241044D70028FDBE /* SunTimeRepository.swift */,
+				7E97655E23786AB000E3AEF2 /* SunTimeData.xcdatamodeld */,
 				7EE640482378665D005BE355 /* SunTimeRepositoryImpl.swift */,
 				7EF8D1E326F7AC6E002CE18B /* SunTimeError.swift */,
-				7EF8D1E726F7E71A002CE18B /* Service */,
+				7EF8D1E226F7AC59002CE18B /* Local */,
+				7EF8D1DF26F7ABB8002CE18B /* Remote */,
 				7EE64053237866EE005BE355 /* Entity */,
 			);
 			path = SunTime;
@@ -1065,32 +1110,22 @@
 			path = ChangePlanTableView;
 			sourceTree = "<group>";
 		};
-		7EF8D1DF26F7ABB8002CE18B /* SunTimeAPIService */ = {
+		7EF8D1DF26F7ABB8002CE18B /* Remote */ = {
 			isa = PBXGroup;
 			children = (
-				7EE6404C23786678005BE355 /* SunTimeAPIService.swift */,
+				7EE6404C23786678005BE355 /* SunTimeRemoteDataSource.swift */,
 				7EF8D1E026F7ABC8002CE18B /* SunTimeAPIServiceImpl.swift */,
 			);
-			path = SunTimeAPIService;
+			path = Remote;
 			sourceTree = "<group>";
 		};
-		7EF8D1E226F7AC59002CE18B /* SunTimeCoreDataService */ = {
+		7EF8D1E226F7AC59002CE18B /* Local */ = {
 			isa = PBXGroup;
 			children = (
-				7EF8D1E526F7ACB9002CE18B /* SunTimeCoreDataService.swift */,
-				7EE6404A2378666F005BE355 /* SunTimeCoreDataServiceImpl.swift */,
-				7E97655E23786AB000E3AEF2 /* SunTimeData.xcdatamodeld */,
+				7EF8D1E526F7ACB9002CE18B /* SunTimeLocalDataSource.swift */,
+				7EE6404A2378666F005BE355 /* SunTimeCoreDataService.swift */,
 			);
-			path = SunTimeCoreDataService;
-			sourceTree = "<group>";
-		};
-		7EF8D1E726F7E71A002CE18B /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				7EF8D1E226F7AC59002CE18B /* SunTimeCoreDataService */,
-				7EF8D1DF26F7ABB8002CE18B /* SunTimeAPIService */,
-			);
-			path = Service;
+			path = Local;
 			sourceTree = "<group>";
 		};
 		7EFAEF6326F4FBEA00C51A13 /* Extensions */ = {
@@ -1414,13 +1449,14 @@
 				7E514DB825A87F67000EBE81 /* AlarmingView.swift in Sources */,
 				7E97226425B8C90500DBEF5E /* Style.swift in Sources */,
 				7EB9F34423C20347002A6DD3 /* UpdatePlanUseCase.swift in Sources */,
-				7EF8D1E626F7ACB9002CE18B /* SunTimeCoreDataService.swift in Sources */,
+				7EF8D1E626F7ACB9002CE18B /* SunTimeLocalDataSource.swift in Sources */,
 				7E69837224EC69B8002EE278 /* ErrorAlertPresentable.swift in Sources */,
 				7EB9F34623C20379002A6DD3 /* DeletePlanUseCase.swift in Sources */,
 				7EB26953234F99AE008AEB3D /* Button.swift in Sources */,
 				7E43065026ED528700B67315 /* UIStackView+addSeparators.swift in Sources */,
 				7E69837624EC69DE002EE278 /* ErrorViewAddable.swift in Sources */,
 				7E814E7424D8A11700EC1665 /* ConfirmationView.swift in Sources */,
+				7EAFB61C2735D31100B7C7C6 /* CreateSchedule.swift in Sources */,
 				7EB1C0332340F9550028237E /* PersonalPlanViewController.swift in Sources */,
 				7EA38AE623783FFD0007919B /* DefaultLocationRemoteDataSource.swift in Sources */,
 				7ED6DD3625E2A30700F906CE /* ImageLabelViewWithContextMenu.swift in Sources */,
@@ -1455,7 +1491,9 @@
 				7E052A40235236F1005D7FAD /* SunTime.swift in Sources */,
 				7EB29E09241987C800116433 /* PrepareToSleepAssembler.swift in Sources */,
 				7EB26951234F9972008AEB3D /* NibLoadable.swift in Sources */,
+				7EAFB6282735DAD000B7C7C6 /* ScheduleLocalDataSource.swift in Sources */,
 				7EB90047232AB9EB006EB9A8 /* ProgressBar.swift in Sources */,
+				7EAFB61A2735D28E00B7C7C6 /* Schedule.swift in Sources */,
 				7E5E335A261A34B4000EE976 /* UIView+applyBlur.swift in Sources */,
 				7E6225B326192E24001AA8FD /* UILabel+Styleable.swift in Sources */,
 				7EA38AE423783EFC0007919B /* DefaultLocationRepository.swift in Sources */,
@@ -1479,6 +1517,7 @@
 				7EF4C198240412EC0098135A /* ChangePlanDatePickerTableCellModel.swift in Sources */,
 				7E6225D22619CD75001AA8FD /* HorizontalFadeView.swift in Sources */,
 				7EE640492378665D005BE355 /* SunTimeRepositoryImpl.swift in Sources */,
+				7EAFB62A2735E1F300B7C7C6 /* ScheduleCoreDataService.swift in Sources */,
 				7E17337924104DDA0028FDBE /* LocationRepository.swift in Sources */,
 				7EA38AE92378526F0007919B /* LocationData.xcdatamodeld in Sources */,
 				7E6268C024D5D49C00F70BC3 /* TodayView.swift in Sources */,
@@ -1503,13 +1542,13 @@
 				7E6225AA26192DF9001AA8FD /* Styleable.swift in Sources */,
 				92D12FDD22A44B3B0093B0A3 /* CustomTabBarController.swift in Sources */,
 				7E43065426ED6E7500B67315 /* GetAppVersion.swift in Sources */,
+				7EAFB62F2735ED7400B7C7C6 /* GetSchedule.swift in Sources */,
 				7E173377241047460028FDBE /* RisePlanRepository.swift in Sources */,
 				7E06FE92252E3829005D72CB /* AnimatedTransitionNavigationController.swift in Sources */,
 				7E84EB27239D1A5700E02050 /* ConfirmationViewController.swift in Sources */,
 				7E541AFB23FB388D00BAD710 /* CollectionCellConfigurator.swift in Sources */,
 				7E43063D26ECC4E400B67315 /* ContentView.swift in Sources */,
 				7E43063726EBC93300B67315 /* XCAssets+Generated.swift in Sources */,
-				7EB9F34223C2028D002A6DD3 /* MakePlanUseCase.swift in Sources */,
 				7E5BDADF2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift in Sources */,
 				7EE6404F23786693005BE355 /* PersistentContainer.swift in Sources */,
 				7E97656623786B2800E3AEF2 /* DefaultRisePlanLocalDataSource.swift in Sources */,
@@ -1524,12 +1563,14 @@
 				92D7D6532296F297009321AE /* AppDelegate.swift in Sources */,
 				7E69837424EC69CE002EE278 /* ErrorDescriptionExtractable.swift in Sources */,
 				7EA7BA0C2354F2510051A92D /* CollectionView.swift in Sources */,
+				7EAFB6262735DA8400B7C7C6 /* ScheduleRepositoryImpl.swift in Sources */,
 				7E91D95B2371E4080087436F /* RiseDailySunTime+CoreDataClass.swift in Sources */,
 				7E4901862340DD810034521E /* RisePlanData.xcdatamodeld in Sources */,
 				7E644D4F24FACF5600BF198C /* PlanError.swift in Sources */,
 				7EFF58B9241C1E3B00D2CCEC /* SleepAssembler.swift in Sources */,
 				7EB9F34E23C229F2002A6DD3 /* TodayAssembler.swift in Sources */,
 				7E69836524EC68F4002EE278 /* RecoverableError.swift in Sources */,
+				7EAFB6242735DA0100B7C7C6 /* ScheduleRepository.swift in Sources */,
 				7E0B88F72455BEF400BC3CF5 /* SelectableStackViewButton.swift in Sources */,
 				7E69836B24EC6932002EE278 /* NetworkError.swift in Sources */,
 				7E91D9602371E4080087436F /* RisePlanObject+CoreDataProperties.swift in Sources */,
@@ -1539,12 +1580,13 @@
 				7E5BDADE2371F08400E43F37 /* RiseLocation+CoreDataClass.swift in Sources */,
 				7E91D95C2371E4080087436F /* RiseDailySunTime+CoreDataProperties.swift in Sources */,
 				7EA0924222C8CF820019F2E9 /* CustomTransition.swift in Sources */,
-				7EE6404D23786678005BE355 /* SunTimeAPIService.swift in Sources */,
+				7EE6404D23786678005BE355 /* SunTimeRemoteDataSource.swift in Sources */,
 				7E9D9C1524EB0E13000772C0 /* ChangePlanView.swift in Sources */,
 				7E9D9C1324E5DA57000772C0 /* PersonalPlanView.swift in Sources */,
 				7EE647C325F5CA250081ED4C /* DaysAssembler.swift in Sources */,
 				7E514DBD25A87F6F000EBE81 /* AlarmingAssembler.swift in Sources */,
 				7E91D9622371E4850087436F /* DailyPlanTime.swift in Sources */,
+				7EAFB6222735D89F00B7C7C6 /* ScheduleData.xcdatamodeld in Sources */,
 				7E9D9C0824E596DA000772C0 /* PrepareToSleepView.swift in Sources */,
 				7E43063926EBCEDD00B67315 /* UIView+addSubviews.swift in Sources */,
 				7E541AFD23FB393400BAD710 /* CollectionDataSource.swift in Sources */,
@@ -1560,15 +1602,17 @@
 				7E5F292A23F9638C0050DFD3 /* FloatingLabel.swift in Sources */,
 				7E173372240D9F7A0028FDBE /* DomainLayer.swift in Sources */,
 				7E43064B26ED4FF600B67315 /* SettingsView.swift in Sources */,
+				7EAFB62D2735EC1200B7C7C6 /* SaveSchedule.swift in Sources */,
 				7ECD2C6F241832B300408C4B /* ReshedulePlanUseCase.swift in Sources */,
 				7E8EFA4226EAC4D400DEE564 /* Strings+Generated.swift in Sources */,
-				7EE6404B2378666F005BE355 /* SunTimeCoreDataServiceImpl.swift in Sources */,
+				7EE6404B2378666F005BE355 /* SunTimeCoreDataService.swift in Sources */,
 				7EE87CEF2442254A00E1BD3B /* AutoRefreshableLabel.swift in Sources */,
 				7E43065B26EE4F3800B67315 /* AboutAssembler.swift in Sources */,
 				7EEA217923B6A3B400354BEA /* UIViewController+Present.swift in Sources */,
 				7E31497D23425CA600941606 /* TableViewDataSource.swift in Sources */,
 				7E514DB325A87F5E000EBE81 /* AlarmingViewController.swift in Sources */,
 				7EB9F34C23C20504002A6DD3 /* GetSunTimeUseCase.swift in Sources */,
+				7EAFB61E2735D3B000B7C7C6 /* CreateNextSchedule.swift in Sources */,
 				7EB9F34823C203E6002A6DD3 /* GetPlanUseCase.swift in Sources */,
 				92E77AF822A5303400E5E21C /* SettingsViewController.swift in Sources */,
 				7E97656423786B1800E3AEF2 /* DefaultRisePlanRepository.swift in Sources */,
@@ -2020,6 +2064,16 @@
 			);
 			currentVersion = 7EA38AE82378526F0007919B /* LocationData.xcdatamodel */;
 			path = LocationData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		7EAFB6202735D89F00B7C7C6 /* ScheduleData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7EAFB6212735D89F00B7C7C6 /* ScheduleData.xcdatamodel */,
+			);
+			currentVersion = 7EAFB6212735D89F00B7C7C6 /* ScheduleData.xcdatamodel */;
+			path = ScheduleData.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

@@ -9,10 +9,10 @@
 import Foundation
 
 final class SunTimeRepositoryImpl: SunTimeRepository {
-    private let localDataSource: SunTimeCoreDataService
-    private let remoteDataSource: SunTimeAPIService
+    private let localDataSource: SunTimeLocalDataSource
+    private let remoteDataSource: SunTimeRemoteDataSource
     
-    init(_ localDataSource: SunTimeCoreDataService, _ remoteDataSource: SunTimeAPIService) {
+    init(_ localDataSource: SunTimeLocalDataSource, _ remoteDataSource: SunTimeRemoteDataSource) {
         self.localDataSource = localDataSource
         self.remoteDataSource = remoteDataSource
     }
@@ -70,7 +70,7 @@ final class SunTimeRepositoryImpl: SunTimeRepository {
         try localDataSource.deleteAll()
     }
 
-    private func handleRemoteRequestResult(result: SunTimeAPIServiceResult) -> SunTimesResult {
+    private func handleRemoteRequestResult(result: SunTimeRemoteResult) -> SunTimesResult {
         switch result {
         case .success(let sunTimes):
             log(.info, "got sunTimes: \(sunTimes)")

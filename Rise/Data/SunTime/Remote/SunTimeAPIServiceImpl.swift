@@ -8,12 +8,12 @@
 
 import Foundation
 
-final class SunTimeAPIServiceImpl: SunTimeAPIService {
+final class SunTimeAPIServiceImpl: SunTimeRemoteDataSource {
 
     func requestSunTimes(
         for dates: [Date],
         location: Location,
-        completion: @escaping (SunTimeAPIServiceResult) -> Void
+        completion: @escaping (SunTimeRemoteResult) -> Void
     ) {
         var requestResult = [SunTime]()
         var requestError: NetworkError?

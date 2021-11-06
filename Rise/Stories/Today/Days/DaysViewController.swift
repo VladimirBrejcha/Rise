@@ -16,13 +16,13 @@ final class DaysViewController: UIViewController, Statefull {
     var daysView: DaysView { view as! DaysView }
 
     private let getSunTime: GetSunTime
-    private let getPlan: GetPlan
-    private let observePlan: ObservePlan
-    private let getDailyTime: GetDailyTime
+    private let getSchedule: GetSchedule
 
     struct State: Equatable {
         let sunTime: LoadState<[NoonedDay: SunTime]>
-        let plan: LoadState<RisePlan>
+        let yesterdaySchedule: Schedule?
+        let todaySchedule: Schedule?
+        let tomorrowSchedule: Schedule?
 
         enum LoadState<Data: Equatable>: Equatable {
             case loading
@@ -35,15 +35,13 @@ final class DaysViewController: UIViewController, Statefull {
 
     // MARK: - LifeCycle
 
-    init(getSunTime: GetSunTime,
-         getPlan: GetPlan,
-         observePlan: ObservePlan,
-         getDailyTime: GetDailyTime
+    init(
+        getSunTime: GetSunTime,
+        getSchedule: GetSchedule
     ) {
         self.getSunTime = getSunTime
-        self.getPlan = getPlan
-        self.observePlan = observePlan
-        self.getDailyTime = getDailyTime
+        self.getSchedule = getSchedule
+
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -77,25 +75,28 @@ final class DaysViewController: UIViewController, Statefull {
         )
 
         DispatchQueue.main.async { [self] in
-            observePlan.observe { [weak self] plan in
-                guard let self = self, let state = self.state else { return }
-                if let plan = plan {
-                    self.setState(state.changing { $0.plan = .loaded(data: plan) })
-                } else {
-                    self.setState(state.changing { $0.plan = .noData })
-                }
-            }
-
+            state = .init(
+                sunTime: .loading,
+                yesterdaySchedule: nil,
+                todaySchedule: nil,
+                tomorrowSchedule: nil
+            )
+            refreshSchedule()
             refreshSunTimes()
-
-            if let plan = try? getPlan() {
-                setState(State(sunTime: .loading, plan: .loaded(data: plan)))
-            } else {
-                setState(State(sunTime: .loading, plan: .noData))
-            }
-
             daysView.centerItems()
         }
+    }
+
+    // finished here
+
+    private func refreshSchedule() {
+        guard let state = state else { return }
+
+        setState(state.changing {
+            $0.yesterdaySchedule = getSchedule.yesterday()
+            $0.todaySchedule = getSchedule.today()
+            $0.tomorrowSchedule = getSchedule.tomorrow()
+        })
     }
     
     func setState(_ state: State) {
@@ -189,31 +190,32 @@ final class DaysViewController: UIViewController, Statefull {
 
     // MARK: - Make items
 
-    private func transformItem(_ item: Item, applying state: State.LoadState<RisePlan>) -> Item {
-        switch state {
-        case .loading:
-            return item.changing { $0.state = .loading }
-        case .loaded(let plan):
-            if let dailyTime = try? getDailyTime(for: plan, date: item.id.day.date) {
-                return item.changing {
-                    $0.state = .showingContent(
-                        left: dailyTime.wake.HHmmString,
-                        right: dailyTime.sleep.HHmmString
-                    )
-                }
-            } else {
-                return item.changing {
-                    $0.state = .showingInfo(info: Text.noPlanForTheDay)
-                }
-            }
-        case .failed (let error):
-            return item.changing { $0.state = .showingError(error: error) }
-        case .noData:
+    private func transformScheduleItem(_ item: Item, applying state: State) -> Item {
+        guard let yesterdaySchedule = state.yesterdaySchedule,
+              let todaySchedule = state.todaySchedule,
+              let tomorrowSchedule = state.tomorrowSchedule
+        else {
             return item.changing { $0.state = .showingInfo(info: Text.youDontHaveAPlanYet) }
+        }
+        var itemSchedule: Schedule {
+            switch item.id.day {
+            case .yesterday:
+                return yesterdaySchedule
+            case .today:
+                return todaySchedule
+            case .tomorrow:
+                return tomorrowSchedule
+            }
+        }
+        return item.changing {
+            $0.state = .showingContent(
+                left: itemSchedule.wakeUp.HHmmString,
+                right: itemSchedule.toBed.HHmmString
+            )
         }
     }
 
-    private func transformItem(_ item: Item, applying state: State.LoadState<[NoonedDay: SunTime]>) -> Item {
+    private func transformSunTimeItem(_ item: Item, applying state: State.LoadState<[NoonedDay: SunTime]>) -> Item {
         switch state {
         case .loading:
             return item.changing { $0.state = .loading }
@@ -236,9 +238,9 @@ final class DaysViewController: UIViewController, Statefull {
         return items.map { item in
             switch item.id.kind {
             case .plan:
-                return self.transformItem(item, applying: state.plan)
+                return self.transformScheduleItem(item, applying: state)
             case .sun:
-                return self.transformItem(item, applying: state.sunTime)
+                return self.transformSunTimeItem(item, applying: state.sunTime)
             }
         }
     }
@@ -293,7 +295,12 @@ final class DaysViewController: UIViewController, Statefull {
 
 extension DaysViewController.State: Changeable {
     init(copy: ChangeableWrapper<DaysViewController.State>) {
-        self.init(sunTime: copy.sunTime, plan: copy.plan)
+        self.init(
+            sunTime: copy.sunTime,
+            yesterdaySchedule: copy.yesterdaySchedule,
+            todaySchedule: copy.todaySchedule,
+            tomorrowSchedule: copy.todaySchedule
+        )
     }
 }
 

@@ -130,3 +130,9 @@ extension Double {
         self.toMinutes().HHmmString
     }
 }
+
+extension Date {
+    func addingTimeInterval(days: Int) -> Date {
+        addingTimeInterval(TimeInterval(days * 24 * 60 * 60))
+    }
+}

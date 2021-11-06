@@ -9,208 +9,13 @@
 import XCTest
 @testable import Rise
 
-typealias Minute = Int
-
-extension Minute {
-    init(timeInterval: TimeInterval) {
-        self = Int(timeInterval) / 60
-    }
-}
-
-extension Date {
-    func addingTimeInterval(days: Int) -> Date {
-        addingTimeInterval(TimeInterval(days * 24 * 60 * 60))
-    }
-}
-
-// MARK: - Schedule
-
-struct NewSchedule {
-    let sleepDuration: Minute
-    let intensity: Intensity
-    let currentToBed: Date
-    let currentWakeUp: Date
-    let targetToBed: Date
-}
-
-extension NewSchedule {
-    enum Intensity {
-        case low
-        case normal
-        case high
-
-        var divider: Int {
-            switch self {
-            case .low:
-                return 40
-            case .normal:
-                return 25
-            case .high:
-                return 10
-            }
-        }
-
-        var minTimeShift: Int {
-            switch self {
-            case .low:
-                return 3
-            case .normal:
-                return 6
-            case .high:
-                return 9
-            }
-        }
-    }
-}
-
-// MARK: - CreateSchedule
-
-protocol CreateSchedule {
-    func callAsFunction(
-        wantedSleepDuration: Minute,
-        currentToBed: Date,
-        wantedToBed: Date,
-        intensity: NewSchedule.Intensity
-    ) -> NewSchedule
-}
-
-final class CreateScheduleImpl: CreateSchedule {
-    func callAsFunction(
-        wantedSleepDuration: Minute,
-        currentToBed: Date,
-        wantedToBed: Date,
-        intensity: NewSchedule.Intensity
-    ) -> NewSchedule {
-        .init(
-            sleepDuration: wantedSleepDuration,
-            intensity: intensity,
-            currentToBed: currentToBed,
-            currentWakeUp: calculateWakeUp(
-                toBed: currentToBed,
-                sleepDuration: wantedSleepDuration
-            ),
-            targetToBed: wantedToBed
-        )
-    }
-
-    private func calculateWakeUp(toBed: Date, sleepDuration: Minute) -> Date {
-        toBed
-            .addingTimeInterval(days: -1)
-            .addingTimeInterval(minutes: sleepDuration)
-    }
-}
-
-// MARK: - NextSchedule
-
-protocol NextSchedule {
-    func callAsFunction(from schedule: NewSchedule) -> NewSchedule
-}
-
-final class NextScheduleImpl: NextSchedule {
-
-    func callAsFunction(from schedule: NewSchedule) -> NewSchedule {
-        let nextToBed = calculateNextToBed(
-            current: schedule.currentToBed,
-            target: schedule.targetToBed,
-            intensity: schedule.intensity
-        )
-        return .init(
-            sleepDuration: schedule.sleepDuration,
-            intensity: schedule.intensity,
-            currentToBed: incrementDay(
-                old: nextToBed
-            ),
-            currentWakeUp: calculateNextWakeUp(
-                currentToBed: nextToBed,
-                sleepDuration: schedule.sleepDuration
-            ),
-            targetToBed: incrementDay(
-                old: schedule.targetToBed
-            )
-        )
-    }
-
-    private func calculateNextWakeUp(
-        currentToBed: Date,
-        sleepDuration: Minute
-    ) -> Date {
-        currentToBed
-            .addingTimeInterval(minutes: sleepDuration)
-    }
-
-    private func calculateNextToBed(
-        current: Date,
-        target: Date,
-        intensity: NewSchedule.Intensity
-    ) -> Date {
-        var timeShift = selectTimeShift(
-            total: calculateDiff(
-                current: current,
-                target: target
-            ),
-            intensity: intensity
-        )
-
-        // handle both directions of time shifting
-        if current > target {
-            timeShift = -timeShift
-        }
-
-        let nextToBed = createNewCurrentToBed(
-            old: current,
-            timeShift: timeShift
-        )
-
-        // prevent overlapping
-        if (current > target && target > nextToBed)
-         || (current < target && target < nextToBed) {
-            return target
-        }
-
-        return nextToBed
-    }
-
-    private func calculateDiff(
-        current: Date,
-        target: Date
-    ) -> Minute {
-        .init(
-            timeInterval: abs(
-                current.timeIntervalSince1970 - target.timeIntervalSince1970
-            )
-        )
-    }
-
-    private func selectTimeShift(
-        total: Minute,
-        intensity: NewSchedule.Intensity
-    ) -> Minute {
-        if total <= 0 { return 0 }
-        let shift = total / intensity.divider
-        return max(shift, intensity.minTimeShift)
-    }
-
-    private func createNewCurrentToBed(
-        old: Date,
-        timeShift: Minute
-    ) -> Date {
-        old.addingTimeInterval(minutes: timeShift)
-    }
-
-    private func incrementDay(old: Date) -> Date {
-        old.addingTimeInterval(days: 1)
-    }
-}
-
-extension NewSchedule.Intensity: CaseIterable { }
-extension NewSchedule: Equatable { }
-
 class ScheduleTests: XCTestCase {
 
     var createSchedule: CreateSchedule { CreateScheduleImpl() }
-    var nextSchedule: NextSchedule { NextScheduleImpl() }
+    var nextSchedule: CreateNextSchedule { CreateNextScheduleImpl() }
 
     let allDurations = Array((5 * 60)...(10 * 60))
+    let allIntensities: [Schedule.Intensity] = [.low, .normal, .high]
 
     // MARK: - CreateSchedule
 
@@ -220,14 +25,13 @@ class ScheduleTests: XCTestCase {
 
         let currentHours = Array(0...50)
         let wantedHours = Array(1...51)
-        let intensitys = NewSchedule.Intensity.allCases
 
         for duration in allDurations {
             for i in currentHours.indices {
 
                 let currentHour = currentHours[i]
                 let wantedHour = wantedHours[i]
-                let intensity = intensitys.randomElement()!
+                let intensity = allIntensities.randomElement()!
                 let currentToBed = time(day: 1, hour: currentHour)
                 let wantedTobed = time(day: 1, hour: wantedHour)
 
@@ -242,9 +46,9 @@ class ScheduleTests: XCTestCase {
 
                 // Then
 
-                XCTAssertEqual(schedule.currentToBed, currentToBed)
+                XCTAssertEqual(schedule.toBed, currentToBed)
                 XCTAssertEqual(
-                    schedule.currentWakeUp,
+                    schedule.wakeUp,
                     currentToBed
                         .addingTimeInterval(days: -1)
                         .addingTimeInterval(minutes: duration)
@@ -263,7 +67,6 @@ class ScheduleTests: XCTestCase {
 
         let currentHours = Array(0...50)
         let wantedHours = Array(1...51)
-        let intensitys = NewSchedule.Intensity.allCases
 
         for duration in allDurations {
 
@@ -272,11 +75,11 @@ class ScheduleTests: XCTestCase {
 
                 for wantedHour in wantedHours[i...wantedHours.count - 1] {
 
-                    let intensity: NewSchedule.Intensity = intensitys.randomElement()!
+                    let intensity: Schedule.Intensity = allIntensities.randomElement()!
                     let currentToBed = time(day: 1, hour: currentHour)
                     let wantedTobed = time(day: 1, hour: wantedHour)
 
-                    let diff: Minute = -(currentHour - wantedHour) * 60
+                    let diff: Schedule.Minute = -(currentHour - wantedHour) * 60
                     let shift = max(diff / intensity.divider, intensity.minTimeShift)
 
                     let schedule = createSchedule(
@@ -301,7 +104,6 @@ class ScheduleTests: XCTestCase {
 
         let currentHours = Array(1...70)
         let wantedHours = Array(0...69)
-        let intensitys = NewSchedule.Intensity.allCases
 
         for duration in allDurations {
 
@@ -311,11 +113,11 @@ class ScheduleTests: XCTestCase {
 
                 for wantedHour in wantedHours[0...i] {
 
-                    let intensity: NewSchedule.Intensity = intensitys.randomElement()!
+                    let intensity: Schedule.Intensity = allIntensities.randomElement()!
                     let currentToBed = time(day: 1, hour: currentHour)
                     let wantedTobed = time(day: 1, hour: wantedHour)
 
-                    let diff: Minute = (currentHour - wantedHour) * 60
+                    let diff: Schedule.Minute = (currentHour - wantedHour) * 60
                     let shift = max(diff / intensity.divider, intensity.minTimeShift)
 
                     let schedule = createSchedule(
@@ -340,7 +142,6 @@ class ScheduleTests: XCTestCase {
 
         let currentHours = Array(0...70)
         let wantedHours = Array(0...70)
-        let intensitys = NewSchedule.Intensity.allCases
 
         for duration in allDurations {
 
@@ -348,7 +149,7 @@ class ScheduleTests: XCTestCase {
 
                 let currentHour = currentHours[i]
                 let wantedHour = wantedHours[i]
-                let intensity: NewSchedule.Intensity = intensitys.randomElement()!
+                let intensity: Schedule.Intensity = allIntensities.randomElement()!
                 let currentToBed = time(day: 1, hour: currentHour)
                 let wantedTobed = time(day: 1, hour: wantedHour)
 
@@ -365,9 +166,9 @@ class ScheduleTests: XCTestCase {
 
                 // Then
 
-                XCTAssertEqual(nextSchedule.currentToBed, schedule.currentToBed.appending(days: 1))
-                XCTAssertEqual(nextSchedule.currentToBed, nextSchedule.targetToBed)
-                XCTAssertEqual(nextSchedule.currentWakeUp, schedule.currentWakeUp.appending(days: 1))
+                XCTAssertEqual(nextSchedule.toBed, schedule.toBed.appending(days: 1))
+                XCTAssertEqual(nextSchedule.toBed, nextSchedule.targetToBed)
+                XCTAssertEqual(nextSchedule.wakeUp, schedule.wakeUp.appending(days: 1))
                 XCTAssertEqual(nextSchedule.targetToBed, schedule.targetToBed.appending(days: 1))
             }
         }
@@ -375,7 +176,7 @@ class ScheduleTests: XCTestCase {
 
     // MARK: - Reused
 
-    func testNextSchedule(schedule: NewSchedule, shift: Minute) {
+    func testNextSchedule(schedule: Schedule, shift: Schedule.Minute) {
 
         // When
 
@@ -389,34 +190,34 @@ class ScheduleTests: XCTestCase {
                 .addingTimeInterval(days: 1)
         )
         XCTAssertEqual(
-            nextSchedule.currentToBed,
-            schedule.currentToBed
+            nextSchedule.toBed,
+            schedule.toBed
                 .addingTimeInterval(days: 1)
                 .addingTimeInterval(minutes: -shift),
             """
 
-                current: \(schedule.currentToBed)
-                next: \(nextSchedule.currentToBed)
-                expected: \(schedule.currentToBed.addingTimeInterval(days: 1).addingTimeInterval(minutes: -shift))
+                current: \(schedule.toBed)
+                next: \(nextSchedule.toBed)
+                expected: \(schedule.toBed.addingTimeInterval(days: 1).addingTimeInterval(minutes: -shift))
                 shift: \(-shift)
             """
         )
         XCTAssertEqual(
-            nextSchedule.currentWakeUp,
-            schedule.currentWakeUp
+            nextSchedule.wakeUp,
+            schedule.wakeUp
                 .addingTimeInterval(days: 1)
                 .addingTimeInterval(minutes: -shift)
         )
     }
 
-    func testTargetReachable(schedule: NewSchedule) {
+    func testTargetReachable(schedule: Schedule) {
 
         // When
 
-        var next: NewSchedule = nextSchedule(from: schedule)
+        var next: Schedule = nextSchedule(from: schedule)
 
         var counter = 0
-        while (next.currentToBed != next.targetToBed) {
+        while (next.toBed != next.targetToBed) {
             next = nextSchedule(from: next)
 
             // Then
@@ -428,14 +229,14 @@ class ScheduleTests: XCTestCase {
                 counter: \(counter)
                 intensity: \(next.intensity)
                 target: \(next.targetToBed)
-                next: \(next.currentToBed)
+                next: \(next.toBed)
                 """
             )
 
-            if schedule.targetToBed > schedule.currentToBed {
-                XCTAssertTrue(next.currentToBed <= next.targetToBed)
+            if schedule.targetToBed > schedule.toBed {
+                XCTAssertTrue(next.toBed <= next.targetToBed)
             } else {
-                XCTAssertTrue(next.currentToBed >= next.targetToBed)
+                XCTAssertTrue(next.toBed >= next.targetToBed)
             }
 
             counter += 1

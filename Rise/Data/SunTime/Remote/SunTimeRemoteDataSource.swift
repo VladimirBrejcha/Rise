@@ -1,5 +1,5 @@
 //
-//  SunTimeAPIService.swift
+//  SunTimeRemoteDataSource.swift
 //  Rise
 //
 //  Created by Vladimir Korolev on 10.11.2019.
@@ -8,12 +8,12 @@
 
 import Foundation
 
-typealias SunTimeAPIServiceResult = Result<[SunTime], NetworkError>
+typealias SunTimeRemoteResult = Result<[SunTime], NetworkError>
 
-protocol SunTimeAPIService {
+protocol SunTimeRemoteDataSource {
     func requestSunTimes(
         for dates: [Date],
         location: Location,
-        completion: @escaping (SunTimeAPIServiceResult) -> Void
+        completion: @escaping (SunTimeRemoteResult) -> Void
     )
 }

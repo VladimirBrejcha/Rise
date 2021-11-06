@@ -28,13 +28,6 @@ final class DefaultLocationLocalDataSource: LocalDataSource<RiseLocation>, Locat
         try container.saveContext()
     }
     
-    func deleteAll() throws {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        try context.execute(deleteRequest)
-        try context.save()
-    }
-    
     // MARK: - Private -
     private func buildModel(from object: RiseLocation) -> Location {
         return Location(latitude: object.latitude, longitude: object.longitude)

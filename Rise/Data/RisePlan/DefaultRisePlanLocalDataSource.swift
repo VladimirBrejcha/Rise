@@ -48,13 +48,6 @@ final class DefaultRisePlanLocalDataSource: LocalDataSource<RisePlanObject>, Per
         }
     }
     
-    func deleteAll() throws {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
-        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        try context.execute(deleteRequest)
-        try context.save()
-    }
-    
     // MARK: - Private -
     private func buildModel(from object: RisePlanObject) -> RisePlan {
         return RisePlan(
