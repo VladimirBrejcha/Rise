@@ -8,31 +8,31 @@
 
 import Foundation
 
-struct DataLayer {
-    static let defaultRisePlanRepository: RisePlanRepository = DefaultRisePlanRepository(
-        DataSources.planLocalDataSource
-    )
+enum DataLayer {
     static let sunTimeRepository: SunTimeRepository = SunTimeRepositoryImpl(
-        DataSources.sunTimeCoreDataService,
-        DataSources.sunTimeAPIService
+        DataSources.sunTimeLocalDataSource,
+        DataSources.sunTimeRemoteDataSource
     )
     static let locationRepository: LocationRepository = DefaultLocationRepository(
         DataSources.locationLocalDataSource,
         DataSources.locationRemoteDataSource
     )
+    static let scheduleRepository: ScheduleRepository = ScheduleRepositoryImpl(
+        DataSources.scheduleLocalDataSource
+    )
     static let userData: DefaultUserData = .init()
 }
 
 fileprivate struct DataSources {
-    static let planLocalDataSource: PersonalPlanLocalDataSource = DefaultRisePlanLocalDataSource(
-        containerName: "RisePlanData"
+    static let scheduleLocalDataSource: ScheduleLocalDataSource = ScheduleCoreDataService(
+        containerName: "ScheduleData"
     )
     static let locationLocalDataSource: LocationLocalDataSource = DefaultLocationLocalDataSource(
         containerName: "LocationData"
     )
     static let locationRemoteDataSource: LocationRemoteDataSource = DefaultLocationRemoteDataSource()
-    static let sunTimeCoreDataService: SunTimeCoreDataService = SunTimeCoreDataServiceImpl(
+    static let sunTimeLocalDataSource: SunTimeLocalDataSource = SunTimeCoreDataService(
         containerName: "SunTimeData"
     )
-    static let sunTimeAPIService: SunTimeAPIService = SunTimeAPIServiceImpl()
+    static let sunTimeRemoteDataSource: SunTimeRemoteDataSource = SunTimeAPIServiceImpl()
 }

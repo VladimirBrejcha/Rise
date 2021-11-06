@@ -11,10 +11,10 @@ final class ConfirmationAssembler {
         let controller = Storyboard.confirmation.instantiateViewController(
             of: ConfirmationViewController.self
         )
-        controller.getPlan = DomainLayer.getPlan
-        controller.confirmPlan = DomainLayer.confirmPlan
-        controller.getDailyTime = DomainLayer.getDailyTime
-        controller.reshedulePlan = DomainLayer.reshedulePlan
+//        controller.getPlan = DomainLayer.getPlan
+//        controller.confirmPlan = DomainLayer.confirmPlan
+//        controller.getDailyTime = DomainLayer.getDailyTime
+//        controller.reshedulePlan = DomainLayer.reshedulePlan
         return controller
     }
 }

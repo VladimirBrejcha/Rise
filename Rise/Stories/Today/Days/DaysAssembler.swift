@@ -12,9 +12,7 @@ final class DaysAssembler {
     func assemble() -> DaysViewController {
         DaysViewController(
             getSunTime: DomainLayer.getSunTime,
-            getPlan: DomainLayer.getPlan,
-            observePlan: DomainLayer.observePlan,
-            getDailyTime: DomainLayer.getDailyTime
+            getSchedule: DomainLayer.getSchedule
         )
     }
 }

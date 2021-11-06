@@ -10,10 +10,10 @@ import Foundation
 import CoreData
 
 final class PersistentContainer<ObjectType: NSManagedObject>: NSPersistentContainer {
-    func fetch(with predicate: NSPredicate? = nil) throws -> [ObjectType] {
+    func fetch(requestBuilder build: ((NSFetchRequest<ObjectType>) -> Void)? = nil) throws -> [ObjectType] {
         let entityName = String(describing: ObjectType.self)
         let fetchRequest = NSFetchRequest<ObjectType>(entityName: entityName)
-        fetchRequest.predicate = predicate
+        build?(fetchRequest)
         return try viewContext.fetch(fetchRequest)
     }
     

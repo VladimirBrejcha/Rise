@@ -89,6 +89,6 @@ final class GetSunTimeUseCase: GetSunTime {
 
     private func makeDates(since date: Date, numberOfDays: Int) -> [Date] {
         guard numberOfDays > 0 else { return [] }
-        return (0...numberOfDays - 1).map { date.appending(days: $0) }
+        return (0...numberOfDays - 1).map { date.addingTimeInterval(days: $0) }
     }
 }

@@ -19,10 +19,10 @@ extension DaysCollectionCell {
 
             enum Kind {
                 case sun
-                case plan
+                case schedule
             }
             let kind: Kind
-            let day: NoonedDay
+            let day: DaysViewController.NoonedDay
         }
 
         enum State: Hashable {

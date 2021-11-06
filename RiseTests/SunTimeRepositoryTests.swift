@@ -13,7 +13,7 @@ class SunTimeRepositoryTests: XCTestCase {
 
     // MARK: - Mocks
 
-    class SunTimeCoreDataServiceFakeDataImpl: SunTimeCoreDataService {
+    class SunTimeCoreDataServiceFakeDataImpl: SunTimeLocalDataSource {
         private let fakeData: [SunTime]
 
         init(fakeData: [SunTime]) {
@@ -29,7 +29,7 @@ class SunTimeRepositoryTests: XCTestCase {
         func deleteAll() throws { }
     }
 
-    class SunTimeAPIServiceFakeDataImpl: SunTimeAPIService {
+    class SunTimeAPIServiceFakeDataImpl: SunTimeRemoteDataSource {
         private let fakeData: [SunTime]
 
         init(fakeData: [SunTime]) {
@@ -39,7 +39,7 @@ class SunTimeRepositoryTests: XCTestCase {
         func requestSunTimes(
             for dates: [Date],
             location: Location,
-            completion: @escaping (SunTimeAPIServiceResult) -> Void
+            completion: @escaping (SunTimeRemoteResult) -> Void
         ) {
             completion(.success(fakeData))
         }
@@ -108,7 +108,7 @@ class SunTimeRepositoryTests: XCTestCase {
     }
 
     func testSaving() {
-        class SunTimeCoreDataServiceFakeDataSaverImpl: SunTimeCoreDataService {
+        class SunTimeCoreDataServiceFakeDataSaverImpl: SunTimeLocalDataSource {
             private let fakeData: [SunTime]
             var savedData: [SunTime] = []
 
@@ -149,7 +149,7 @@ class SunTimeRepositoryTests: XCTestCase {
     }
 
     func testDeleting() {
-        class SunTimeCoreDataServiceDataDeleter: SunTimeCoreDataService {
+        class SunTimeCoreDataServiceDataDeleter: SunTimeLocalDataSource {
 
             let expectation: XCTestExpectation
 
@@ -181,7 +181,7 @@ class SunTimeRepositoryTests: XCTestCase {
     }
 
     func testFail() {
-        class SunTimeCoreDataServiceFailingImpl: SunTimeCoreDataService {
+        class SunTimeCoreDataServiceFailingImpl: SunTimeLocalDataSource {
             func getSunTimes(for dates: [Date]) throws -> [SunTime] {
                 throw NetworkError.internalError
             }
@@ -191,11 +191,11 @@ class SunTimeRepositoryTests: XCTestCase {
             func deleteAll() throws { }
         }
 
-        class SunTimeAPIServiceFailingImpl: SunTimeAPIService {
+        class SunTimeAPIServiceFailingImpl: SunTimeRemoteDataSource {
             func requestSunTimes(
                 for dates: [Date],
                 location: Location,
-                completion: @escaping (SunTimeAPIServiceResult) -> Void
+                completion: @escaping (SunTimeRemoteResult) -> Void
             ) {
                 completion(.failure(NetworkError.internalError))
             }
@@ -224,13 +224,13 @@ class SunTimeRepositoryTests: XCTestCase {
 
     let fakeRequestedDates: [Date] = [
         Date().noon,
-        Date().appending(days: 1).noon,
-        Date().appending(days: 2).noon
+        Date().addingTimeInterval(days: 1).noon,
+        Date().addingTimeInterval(days: 2).noon
     ]
 
     let fakeSunTimes: [SunTime] = [
         .init(sunrise: Date().noon, sunset: Date().noon),
-        .init(sunrise: Date().appending(days: 1).noon, sunset: Date().appending(days: 1).noon),
-        .init(sunrise: Date().appending(days: 2).noon, sunset: Date().appending(days: 2).noon)
+        .init(sunrise: Date().addingTimeInterval(days: 1).noon, sunset: Date().addingTimeInterval(days: 1).noon),
+        .init(sunrise: Date().addingTimeInterval(days: 2).noon, sunset: Date().addingTimeInterval(days: 2).noon)
     ]
 }

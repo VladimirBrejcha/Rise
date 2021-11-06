@@ -7,35 +7,8 @@
 //
 
 enum DomainLayer {
-    static var getPlan: GetPlan {
-        GetPlanUseCase(DataLayer.defaultRisePlanRepository)
-    }
-    static var makePlan: MakePlan {
-        MakePlanUseCase(DataLayer.defaultRisePlanRepository)
-    }
-    static var updatePlan: UpdatePlan {
-        UpdatePlanUseCase(DataLayer.defaultRisePlanRepository)
-    }
-    static var deletePlan: DeletePlan {
-        DeletePlanUseCase(DataLayer.defaultRisePlanRepository)
-    }
-    static var observePlan: ObservePlan {
-        ObservePlanUseCase(DataLayer.defaultRisePlanRepository)
-    }
     static var getSunTime: GetSunTime {
         GetSunTimeUseCase(DataLayer.locationRepository, DataLayer.sunTimeRepository)
-    }
-    static var getDailyTime: GetDailyTime {
-        GetDailyTimeUseCase()
-    }
-    static var pausePlan: PausePlan {
-        PausePlanUseCase(DataLayer.defaultRisePlanRepository)
-    }
-    static var confirmPlan: ConfirmPlan {
-        ConfirmPlanUseCase(DataLayer.defaultRisePlanRepository)
-    }
-    static var reshedulePlan: ReshedulePlan {
-        ReshedulePlanUseCase(DataLayer.defaultRisePlanRepository)
     }
     static var setOnboardingCompleted: SetOnboardingCompleted {
         SetOnboardingCompletedUseCase(DataLayer.userData)
@@ -45,5 +18,29 @@ enum DomainLayer {
     }
     static var prepareMail: PrepareMail {
         PrepareMailUseCase()
+    }
+
+    // MARK: - Schedule
+
+    static var createSchedule: CreateSchedule {
+        CreateScheduleImpl()
+    }
+    static var updateSchedule: UpdateSchedule {
+        UpdateScheduleImpl(DomainLayer.createSchedule, DataLayer.scheduleRepository)
+    }
+    static var createNextSchedule: CreateNextSchedule {
+        CreateNextScheduleImpl(DataLayer.userData)
+    }
+    static var saveSchedule: SaveSchedule {
+        SaveScheduleImpl(DataLayer.scheduleRepository)
+    }
+    static var getSchedule: GetSchedule {
+        GetScheduleImpl(DataLayer.scheduleRepository, DomainLayer.createNextSchedule)
+    }
+    static var pauseSchedule: PauseSchedule {
+        PauseScheduleImpl(DataLayer.userData)
+    }
+    static var deleteSchedule: DeleteSchedule {
+        DeleteScheduleImpl(DataLayer.scheduleRepository, DataLayer.userData)
     }
 }

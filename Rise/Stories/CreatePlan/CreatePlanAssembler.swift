@@ -9,7 +9,8 @@
 final class CreatePlanAssembler {
     func assemble() -> CreatePlanViewController {
         let controller = Storyboard.setupPlan.instantiateViewController(of: CreatePlanViewController.self)
-        controller.makePlan = DomainLayer.makePlan
+        controller.createSchedule = DomainLayer.createSchedule
+        controller.saveSchedule = DomainLayer.saveSchedule
         controller.stories = [
             .welcomeCreatePlan,
             .sleepDurationCreatePlan(

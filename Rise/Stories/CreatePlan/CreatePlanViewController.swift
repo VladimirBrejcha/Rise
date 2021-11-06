@@ -17,8 +17,9 @@ final class CreatePlanViewController:
     @IBOutlet private var createPlanView: CreatePlanView!
     
     private var pageController: UIPageViewController!
-    
-    var makePlan: MakePlan! // DI
+
+    var createSchedule: CreateSchedule! // DI
+    var saveSchedule: SaveSchedule! // DI
     var stories: [Story]! // DI
     
     // opened for DI into PageController controllers
@@ -164,12 +165,15 @@ final class CreatePlanViewController:
         if let choosenSleepDuration = choosenSleepDuration,
             let choosenWakeUpTime = choosenWakeUpTime,
             let choosenLastTimeWentSleep = choosenLastTimeWentSleep {
-            try makePlan(sleepDurationMin: choosenSleepDuration,
-                         wakeUpTime: choosenWakeUpTime,
-                         planDurationDays: 30, // Note: hardcoded default value
-                         firstSleepTime: choosenLastTimeWentSleep)
+            let schedule = createSchedule( // todo: save
+                wantedSleepDuration: choosenSleepDuration,
+                currentToBed: choosenLastTimeWentSleep,
+                wantedToBed: choosenWakeUpTime, // todo
+                intensity: .normal // todo
+            )
+            saveSchedule(schedule)
         } else {
-            throw PlanError.someFieldsAreMissing
+            throw PlanError.someFieldsAreMissing // todo
         }
     }
 }

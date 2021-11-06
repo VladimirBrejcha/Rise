@@ -9,8 +9,7 @@
 final class PrepareToSleepAssembler {
     func assemble() -> PrepareToSleepViewController {
         let controller = Storyboard.sleep.instantiateViewController(of: PrepareToSleepViewController.self)
-        controller.getPlan = DomainLayer.getPlan
-        controller.getDailyTime = DomainLayer.getDailyTime
+        controller.getSchedule = DomainLayer.getSchedule
         return controller
     }
 }

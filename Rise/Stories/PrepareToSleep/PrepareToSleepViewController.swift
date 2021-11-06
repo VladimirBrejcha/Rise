@@ -9,54 +9,39 @@
 import UIKit
 
 final class PrepareToSleepViewController: UIViewController {
+
     @IBOutlet private var prepareToSleepView: PrepareToSleepView!
     
-    var getPlan: GetPlan! // DI
-    var getDailyTime: GetDailyTime! // DI
+    var getSchedule: GetSchedule! // DI
     
-    @UserDefault<Date>("previouslySelectedWakeUpTime")
+    @UserDefault<Date>("previously_selected_wakeup_time")
     private var previouslySelectedWakeUpTime: Date?
-    
-    // MARK: - State
-    private struct State {
-        var plan: RisePlan? = nil
-        var toSleepTime: Date? = nil
-        var wakeUpTime: Date
+
+    private var wakeUpTime: Date {
+        schedule?.wakeUp ?? previouslySelectedWakeUpTime ?? Date()
     }
-    private var state: State = State(wakeUpTime: Date())
-    
+
+    private var schedule: Schedule?
+
     // MARK: - LifeCycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        do {
-            let plan = try getPlan()
-            state.plan = plan
-            state.toSleepTime = try getDailyTime(for: plan, date: NoonedDay.today.date).sleep
-            state.wakeUpTime = try getDailyTime(for: plan, date: NoonedDay.tomorrow.date).wake
-        } catch PlanError.planDoesNotExist {
-            if let previouslySelectedWakeUpTime = previouslySelectedWakeUpTime {
-                state.wakeUpTime = previouslySelectedWakeUpTime
-            }
-        } catch {
-            log(.info, error.localizedDescription)
-            if let previouslySelectedWakeUpTime = previouslySelectedWakeUpTime {
-                state.wakeUpTime = previouslySelectedWakeUpTime
-            }
-        }
+
+        schedule = getSchedule.today()
         
         prepareToSleepView.configure(
             model: PrepareToSleepView.Model(
                 toSleepText: motivatingText,
                 title: "Prepare to sleep",
                 startSleepText: "begin to sleep",
-                wakeUpTitle: "Alarm at \(state.wakeUpTime.HHmmString)",
-                wakeUpTime: state.wakeUpTime
+                wakeUpTitle: "Alarm at \(wakeUpTime.HHmmString)",
+                wakeUpTime: wakeUpTime
             ),
             dataSource: PrepareToSleepView.DataSource(
                 timeUntilWakeUp: { [weak self] () -> String in
                     guard let self = self else { return "" }
-                    let wakeUpTime = self.state.wakeUpTime.fixIfNeeded()
+                    let wakeUpTime = self.wakeUpTime.fixIfNeeded()
                     return "\(wakeUpTime.timeIntervalSinceNow.HHmmString) until wake up"
                 }
             ),
@@ -70,14 +55,16 @@ final class PrepareToSleepViewController: UIViewController {
                 },
                 sleep: { [weak self] in
                     guard let self = self else { return }
-                    self.navigationController?.setViewControllers([Story.sleep(alarmTime: self.state.wakeUpTime)()], animated: true)
+                    self.navigationController?.setViewControllers(
+                        [Story.sleep(alarmTime: self.wakeUpTime)()],
+                        animated: true
+                    )
                 },
                 close: { [weak self] in
                     self?.dismiss()
                 },
                 wakeUpTimeChanged: { [weak self] newValue in
                     self?.previouslySelectedWakeUpTime = newValue
-                    self?.state.wakeUpTime = newValue
                     self?.prepareToSleepView.model = self?.prepareToSleepView.model?.changing { model in
                         model.wakeUpTime = newValue
                         model.wakeUpTitle = "Alarm at \(newValue.HHmmString)"
@@ -87,14 +74,10 @@ final class PrepareToSleepViewController: UIViewController {
         )
     }
     
-    // MARK: - Private -
-    private func dismiss() {
-        dismiss(animated: true)
-    }
-    
     // MARK: - Make motivating text
+
     private var motivatingText: String {
-        if let time = state.toSleepTime {
+        if let time = schedule?.toBed {
             return makeMotivatingText(with: time)
         } else {
             return "Have a good night!"
@@ -111,6 +94,12 @@ final class PrepareToSleepViewController: UIViewController {
             return "You are a little late today, it happens with all of us. Sleep well!"
         }
     }
+
+    // MARK: - Private -
+
+    private func dismiss() {
+        dismiss(animated: true)
+    }
 }
 
 fileprivate extension Date {
@@ -120,6 +109,10 @@ fileprivate extension Date {
         } else {
             return self
         }
+    }
+
+    var timeIntervalSinceNow: TimeInterval {
+        timeIntervalSince(Date())
     }
 }
 
