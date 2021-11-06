@@ -74,12 +74,6 @@ final class PrepareToSleepViewController: UIViewController {
         )
     }
     
-    // MARK: - Private -
-
-    private func dismiss() {
-        dismiss(animated: true)
-    }
-    
     // MARK: - Make motivating text
 
     private var motivatingText: String {
@@ -100,6 +94,12 @@ final class PrepareToSleepViewController: UIViewController {
             return "You are a little late today, it happens with all of us. Sleep well!"
         }
     }
+
+    // MARK: - Private -
+
+    private func dismiss() {
+        dismiss(animated: true)
+    }
 }
 
 fileprivate extension Date {
@@ -109,6 +109,10 @@ fileprivate extension Date {
         } else {
             return self
         }
+    }
+
+    var timeIntervalSinceNow: TimeInterval {
+        timeIntervalSince(Date())
     }
 }
 

@@ -33,7 +33,7 @@ final class SunTimeRepositoryImpl: SunTimeRepository {
 
             let missedDates: [Date] = dates.filter { date in
                 !localResult.contains { sunTime in
-                    Calendar.current.isDate(sunTime.sunrise, inSameDayAs: date)
+                    calendar.isDate(sunTime.sunrise, inSameDayAs: date)
                 }
             }
 

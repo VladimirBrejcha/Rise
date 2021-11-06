@@ -7,23 +7,8 @@
 //
 
 enum DomainLayer {
-    static var getPlan: GetPlan {
-        GetPlanUseCase(DataLayer.defaultRisePlanRepository)
-    }
-    static var updatePlan: UpdatePlan {
-        UpdatePlanUseCase(DataLayer.defaultRisePlanRepository)
-    }
-    static var deletePlan: DeletePlan {
-        DeletePlanUseCase(DataLayer.defaultRisePlanRepository)
-    }
-    static var observePlan: ObservePlan {
-        ObservePlanUseCase(DataLayer.defaultRisePlanRepository)
-    }
     static var getSunTime: GetSunTime {
         GetSunTimeUseCase(DataLayer.locationRepository, DataLayer.sunTimeRepository)
-    }
-    static var reshedulePlan: ReshedulePlan {
-        ReshedulePlanUseCase(DataLayer.defaultRisePlanRepository)
     }
     static var setOnboardingCompleted: SetOnboardingCompleted {
         SetOnboardingCompletedUseCase(DataLayer.userData)
@@ -34,8 +19,14 @@ enum DomainLayer {
     static var prepareMail: PrepareMail {
         PrepareMailUseCase()
     }
+
+    // MARK: - Schedule
+
     static var createSchedule: CreateSchedule {
         CreateScheduleImpl()
+    }
+    static var updateSchedule: UpdateSchedule {
+        UpdateScheduleImpl(DomainLayer.createSchedule, DataLayer.scheduleRepository)
     }
     static var createNextSchedule: CreateNextSchedule {
         CreateNextScheduleImpl(DataLayer.userData)
@@ -48,5 +39,8 @@ enum DomainLayer {
     }
     static var pauseSchedule: PauseSchedule {
         PauseScheduleImpl(DataLayer.userData)
+    }
+    static var deleteSchedule: DeleteSchedule {
+        DeleteScheduleImpl(DataLayer.scheduleRepository, DataLayer.userData)
     }
 }

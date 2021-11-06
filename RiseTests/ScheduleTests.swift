@@ -172,11 +172,11 @@ class ScheduleTests: XCTestCase {
 
                 // Then
 
-                XCTAssertEqual(nextSchedule.toBed, schedule.toBed.appending(days: 1))
+                XCTAssertEqual(nextSchedule.toBed, schedule.toBed.addingTimeInterval(days: 1))
                 XCTAssertEqual(nextSchedule.toBed, nextSchedule.targetToBed)
-                XCTAssertEqual(nextSchedule.wakeUp, schedule.wakeUp.appending(days: 1))
-                XCTAssertEqual(nextSchedule.targetToBed, schedule.targetToBed.appending(days: 1))
-                XCTAssertEqual(nextSchedule.targetWakeUp, schedule.targetWakeUp.appending(days: 1))
+                XCTAssertEqual(nextSchedule.wakeUp, schedule.wakeUp.addingTimeInterval(days: 1))
+                XCTAssertEqual(nextSchedule.targetToBed, schedule.targetToBed.addingTimeInterval(days: 1))
+                XCTAssertEqual(nextSchedule.targetWakeUp, schedule.targetWakeUp.addingTimeInterval(days: 1))
             }
         }
     }
@@ -264,7 +264,7 @@ class ScheduleTests: XCTestCase {
         hour: Int,
         min: Int = 0
     ) -> Date {
-        Calendar.current.date(
+        calendar.date(
             from: .init(
                 year: year,
                 month: month,

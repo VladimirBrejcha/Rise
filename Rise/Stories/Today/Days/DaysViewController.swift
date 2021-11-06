@@ -237,7 +237,7 @@ final class DaysViewController: UIViewController, Statefull {
     private func transformItems(with state: State, items: [Item]) -> [Item] {
         return items.map { item in
             switch item.id.kind {
-            case .plan:
+            case .schedule:
                 return self.transformScheduleItem(item, applying: state)
             case .sun:
                 return self.transformSunTimeItem(item, applying: state.sunTime)
@@ -287,7 +287,7 @@ final class DaysViewController: UIViewController, Statefull {
                     middle: Text.scheduledSleep,
                     right: Text.toBed
                 ),
-                id: Item.ID(kind: .plan, day: day)
+                id: Item.ID(kind: .schedule, day: day)
             )
         ]
     }
@@ -307,5 +307,29 @@ extension DaysViewController.State: Changeable {
 extension DaysCollectionCell.Model: Changeable {
     init(copy: ChangeableWrapper<DaysCollectionCell.Model>) {
         self.init(state: copy.state, image: copy.image, title: copy.title, id: copy.id)
+    }
+}
+
+
+extension DaysViewController {
+    enum NoonedDay: String, CaseIterable {
+        case yesterday
+        case today
+        case tomorrow
+
+        var date: Date {
+            Date().addingTimeInterval(days: numberOfDaysFromToday).noon
+        }
+
+        private var numberOfDaysFromToday: Int {
+            switch self {
+            case .yesterday:
+                return -1
+            case .today:
+                return 0
+            case .tomorrow:
+                return 1
+            }
+        }
     }
 }

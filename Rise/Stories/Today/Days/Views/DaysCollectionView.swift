@@ -9,7 +9,7 @@
 import UIKit
 
 extension DaysCollectionView {
-    typealias Section = NoonedDay
+    typealias Section = DaysViewController.NoonedDay
     typealias Item = DaysCollectionCell
     typealias CellProvider = (UICollectionView, IndexPath, Item.Model) -> Item?
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Item.Model>

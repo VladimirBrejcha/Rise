@@ -18,8 +18,6 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
     private var todaySchedule: Schedule?
 
     var propertyAnimationDuration: Double { 0.15 }
-    private var schedule: RisePlan?
-
     // MARK: - LifeCycle
 
     init(getSchedule: GetSchedule) {
@@ -68,19 +66,11 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
     // MARK: - Floating label model
     
     private var floatingLabelModel: FloatingLabel.Model {
-        guard let plan = schedule else { return .empty }
-
-        let alpha: Float = 0.85
-        
-        if plan.paused {
-            return .init(
-                text: Text.riseScheduleIsPaused,
-                alpha: alpha
-            )
+        guard let todaySchedule = todaySchedule else {
+            return .empty
         }
 
-        guard let todaySchedule = todaySchedule,
-              let minutesUntilSleep = calendar.dateComponents(
+        guard let minutesUntilSleep = calendar.dateComponents(
                   [.minute],
                   from: Date(),
                   to: todaySchedule.toBed
@@ -88,6 +78,8 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
         else {
             return .empty
         }
+
+        let alpha: Float = 0.85
 
         switch minutesUntilSleep {
         case ...0:

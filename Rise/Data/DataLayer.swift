@@ -9,9 +9,6 @@
 import Foundation
 
 enum DataLayer {
-    static let defaultRisePlanRepository: RisePlanRepository = DefaultRisePlanRepository(
-        DataSources.planLocalDataSource
-    )
     static let sunTimeRepository: SunTimeRepository = SunTimeRepositoryImpl(
         DataSources.sunTimeLocalDataSource,
         DataSources.sunTimeRemoteDataSource
@@ -29,9 +26,6 @@ enum DataLayer {
 fileprivate struct DataSources {
     static let scheduleLocalDataSource: ScheduleLocalDataSource = ScheduleCoreDataService(
         containerName: "ScheduleDate"
-    )
-    static let planLocalDataSource: PersonalPlanLocalDataSource = DefaultRisePlanLocalDataSource(
-        containerName: "RisePlanData"
     )
     static let locationLocalDataSource: LocationLocalDataSource = DefaultLocationLocalDataSource(
         containerName: "LocationData"

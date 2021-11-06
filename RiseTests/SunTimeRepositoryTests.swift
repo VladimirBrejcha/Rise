@@ -224,13 +224,13 @@ class SunTimeRepositoryTests: XCTestCase {
 
     let fakeRequestedDates: [Date] = [
         Date().noon,
-        Date().appending(days: 1).noon,
-        Date().appending(days: 2).noon
+        Date().addingTimeInterval(days: 1).noon,
+        Date().addingTimeInterval(days: 2).noon
     ]
 
     let fakeSunTimes: [SunTime] = [
         .init(sunrise: Date().noon, sunset: Date().noon),
-        .init(sunrise: Date().appending(days: 1).noon, sunset: Date().appending(days: 1).noon),
-        .init(sunrise: Date().appending(days: 2).noon, sunset: Date().appending(days: 2).noon)
+        .init(sunrise: Date().addingTimeInterval(days: 1).noon, sunset: Date().addingTimeInterval(days: 1).noon),
+        .init(sunrise: Date().addingTimeInterval(days: 2).noon, sunset: Date().addingTimeInterval(days: 2).noon)
     ]
 }
