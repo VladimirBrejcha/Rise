@@ -99,7 +99,6 @@
 		7E76E5A923E734C200CC4E6D /* ChangePlanAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E76E5A823E734C200CC4E6D /* ChangePlanAssembler.swift */; };
 		7E814E7424D8A11700EC1665 /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E814E7324D8A11700EC1665 /* ConfirmationView.swift */; };
 		7E84EB27239D1A5700E02050 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E84EB26239D1A5700E02050 /* ConfirmationViewController.swift */; };
-		7E8675C724165F25004DAF63 /* GetDailyTimeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8675C624165F25004DAF63 /* GetDailyTimeUseCase.swift */; };
 		7E88A35123F8B20C00E792CA /* VerticalPositionMoveAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E88A35023F8B20C00E792CA /* VerticalPositionMoveAnimation.swift */; };
 		7E8AB6CE23A18D27009CE41A /* WakeUpTimeCreatePlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8AB6CD23A18D27009CE41A /* WakeUpTimeCreatePlanViewController.swift */; };
 		7E8C6B982350FB9C0086162F /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8C6B972350FB9C0086162F /* TableView.swift */; };
@@ -329,7 +328,6 @@
 		7E76E5A823E734C200CC4E6D /* ChangePlanAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlanAssembler.swift; sourceTree = "<group>"; };
 		7E814E7324D8A11700EC1665 /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
 		7E84EB26239D1A5700E02050 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
-		7E8675C624165F25004DAF63 /* GetDailyTimeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDailyTimeUseCase.swift; sourceTree = "<group>"; };
 		7E88A35023F8B20C00E792CA /* VerticalPositionMoveAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalPositionMoveAnimation.swift; sourceTree = "<group>"; };
 		7E8AB6CD23A18D27009CE41A /* WakeUpTimeCreatePlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUpTimeCreatePlanViewController.swift; sourceTree = "<group>"; };
 		7E8C6B972350FB9C0086162F /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
@@ -920,7 +918,6 @@
 				7EB9F34523C20379002A6DD3 /* DeletePlanUseCase.swift */,
 				7EB9F34923C2045A002A6DD3 /* ObservePlanUseCase.swift */,
 				7EB9F34B23C20504002A6DD3 /* GetSunTimeUseCase.swift */,
-				7E8675C624165F25004DAF63 /* GetDailyTimeUseCase.swift */,
 				7ECD2C6E241832B300408C4B /* ReshedulePlanUseCase.swift */,
 				7E43064826ED40F400B67315 /* SetOnboardingCompleted.swift */,
 				7E43065326ED6E7500B67315 /* GetAppVersion.swift */,
@@ -1616,7 +1613,6 @@
 				7E06FE97252E3841005D72CB /* AnimatedTransition.swift in Sources */,
 				7E8C6B982350FB9C0086162F /* TableView.swift in Sources */,
 				7EEB1E0D24424010001ABE4A /* AudioPlayer.swift in Sources */,
-				7E8675C724165F25004DAF63 /* GetDailyTimeUseCase.swift in Sources */,
 				7E6225C026192E6E001AA8FD /* UITabBarItemAppearance+Styleable.swift in Sources */,
 				7E9D9C1124E5BEFA000772C0 /* CreatePlanView.swift in Sources */,
 				7EB9004023256BF3006EB9A8 /* DaysView.swift in Sources */,
