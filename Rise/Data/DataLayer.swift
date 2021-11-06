@@ -25,7 +25,7 @@ enum DataLayer {
 
 fileprivate struct DataSources {
     static let scheduleLocalDataSource: ScheduleLocalDataSource = ScheduleCoreDataService(
-        containerName: "ScheduleDate"
+        containerName: "ScheduleData"
     )
     static let locationLocalDataSource: LocationLocalDataSource = DefaultLocationLocalDataSource(
         containerName: "LocationData"

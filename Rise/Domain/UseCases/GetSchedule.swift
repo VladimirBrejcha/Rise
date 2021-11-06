@@ -44,9 +44,11 @@ final class GetScheduleImpl: GetSchedule {
         }
         if let latestSchedule = scheduleRepository.getLatest() {
             if latestSchedule.wakeUp.noon > date.noon {
+                log(.info, "the date \(date.noon) is before latest schedule \(latestSchedule.wakeUp.noon), schedule doesnt exist")
                 return nil
             }
-            return getAndSaveNext(from: latestSchedule, untilDate: latestSchedule.wakeUp)
+            log(.info, "preparing next schedule for date \(date.noon), latest schedule date is \(latestSchedule.wakeUp.noon)")
+            return getAndSaveNext(from: latestSchedule, untilDate: date)
         }
         return nil
     }

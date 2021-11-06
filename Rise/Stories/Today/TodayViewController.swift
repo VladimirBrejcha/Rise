@@ -24,8 +24,6 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
         self.getSchedule = getSchedule
 
         super.init(nibName: nil, bundle: nil)
-
-        self.todaySchedule = getSchedule.today()
     }
 
     @available(*, unavailable)

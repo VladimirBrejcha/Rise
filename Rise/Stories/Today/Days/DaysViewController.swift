@@ -75,16 +75,20 @@ final class DaysViewController: UIViewController, Statefull {
         )
 
         DispatchQueue.main.async { [self] in
-            state = .init(
+            setState(.init(
                 sunTime: .loading,
-                yesterdaySchedule: nil,
-                todaySchedule: nil,
-                tomorrowSchedule: nil
-            )
-            refreshSchedule()
+                yesterdaySchedule: getSchedule.yesterday(),
+                todaySchedule: getSchedule.today(),
+                tomorrowSchedule: getSchedule.tomorrow()
+            ))
             refreshSunTimes()
             daysView.centerItems()
         }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        refreshSchedule()
     }
 
     // finished here
