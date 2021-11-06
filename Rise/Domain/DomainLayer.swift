@@ -25,9 +25,6 @@ enum DomainLayer {
     static var getDailyTime: GetDailyTime {
         GetDailyTimeUseCase()
     }
-    static var confirmPlan: ConfirmPlan {
-        ConfirmPlanUseCase(DataLayer.defaultRisePlanRepository)
-    }
     static var reshedulePlan: ReshedulePlan {
         ReshedulePlanUseCase(DataLayer.defaultRisePlanRepository)
     }

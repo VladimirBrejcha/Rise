@@ -12,7 +12,7 @@ import XCTest
 class ScheduleTests: XCTestCase {
 
     var createSchedule: CreateSchedule { CreateScheduleImpl() }
-    var nextSchedule: CreateNextSchedule { CreateNextScheduleImpl() }
+    var nextSchedule: CreateNextSchedule { CreateNextScheduleImpl(DefaultUserData()) }
 
     let allDurations = Array((5 * 60)...(10 * 60))
     let allIntensities: [Schedule.Intensity] = [.low, .normal, .high]
