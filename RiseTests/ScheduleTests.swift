@@ -13,9 +13,25 @@ class ScheduleTests: XCTestCase {
 
     var createSchedule: CreateSchedule { CreateScheduleImpl() }
     var nextSchedule: CreateNextSchedule { CreateNextScheduleImpl(DefaultUserData()) }
+    var updateSchedule: UpdateSchedule {
+        UpdateScheduleImpl(createSchedule, scheduleRepository)
+    }
+    var scheduleRepository = ScheduleRepositoryMock()
 
     let allDurations = Array((5 * 60)...(10 * 60))
     let allIntensities: [Schedule.Intensity] = [.low, .normal, .high]
+
+    // MARK: - Setup | Teardown
+
+    override func setUp() {
+        super.setUp()
+    }
+
+    override func tearDown() {
+        super.tearDown()
+        scheduleRepository.saveHandler = nil
+        scheduleRepository.deleteAllHandler = nil
+    }
 
     // MARK: - CreateSchedule
 
@@ -255,6 +271,302 @@ class ScheduleTests: XCTestCase {
         }
     }
 
+    // MARK: - UpdateSchedule
+
+    func testUpdateScheduleNoEdit() {
+
+        // Given
+
+        let schedule = Schedule(
+            sleepDuration: 8 * 60,
+            intensity: .normal,
+            toBed: time(day: 1, hour: 23),
+            wakeUp: time(day: 1, hour: 7),
+            targetToBed: time(day: 1, hour: 23),
+            targetWakeUp: time(day: 1, hour: 7)
+        )
+
+        var newSchedule: Schedule?
+        let saveExpectation = expectation(description: "save")
+        let deleteExpectation = expectation(description: "delete")
+        scheduleRepository.saveHandler = handleSave
+        scheduleRepository.deleteAllHandler = handleDeleteAll
+
+        // When
+
+        updateSchedule.callAsFunction(
+            current: schedule,
+            newSleepDuration: nil,
+            newToBed: nil
+        )
+
+        // Then
+
+        func handleSave(_ schedule: Schedule) {
+            newSchedule = schedule
+            saveExpectation.fulfill()
+        }
+
+        func handleDeleteAll() {
+            deleteExpectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1) { error in
+            if let error = error {
+                XCTFail(error.localizedDescription)
+                return
+            }
+            XCTAssertEqual(newSchedule, schedule)
+        }
+    }
+
+    func testUpdateScheduleEditSleepDuration() {
+
+        // Given
+
+        let schedule = Schedule(
+            sleepDuration: 8 * 60,
+            intensity: .normal,
+            toBed: time(day: 1, hour: 23),
+            wakeUp: time(day: 1, hour: 7),
+            targetToBed: time(day: 1, hour: 23),
+            targetWakeUp: time(day: 1, hour: 7)
+        )
+        let newSleepDuration = 7 * 60
+        let diffMins = -60
+
+        var newSchedule: Schedule?
+        let saveExpectation = expectation(description: "save")
+        let deleteExpectation = expectation(description: "delete")
+        scheduleRepository.saveHandler = handleSave
+        scheduleRepository.deleteAllHandler = handleDeleteAll
+
+        // When
+
+        updateSchedule.callAsFunction(
+            current: schedule,
+            newSleepDuration: newSleepDuration,
+            newToBed: nil
+        )
+
+        // Then
+
+        func handleSave(_ schedule: Schedule) {
+            newSchedule = schedule
+            saveExpectation.fulfill()
+        }
+
+        func handleDeleteAll() {
+            deleteExpectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1) { error in
+            if let error = error {
+                XCTFail(error.localizedDescription)
+                return
+            }
+
+            XCTAssertEqual(newSchedule?.sleepDuration, newSleepDuration)
+            XCTAssertEqual(newSchedule?.intensity, schedule.intensity)
+            XCTAssertEqual(newSchedule?.targetToBed, schedule.targetToBed)
+            XCTAssertEqual(
+                newSchedule?.targetWakeUp,
+                schedule.targetWakeUp.addingTimeInterval(minutes: diffMins)
+            )
+            XCTAssertEqual(newSchedule?.toBed, schedule.toBed)
+            XCTAssertEqual(
+                newSchedule?.wakeUp,
+                schedule.wakeUp.addingTimeInterval(minutes: diffMins)
+            )
+        }
+    }
+
+    func testUpdateScheduleEditToBed() {
+
+        // Given
+
+        let schedule = Schedule(
+            sleepDuration: 8 * 60,
+            intensity: .normal,
+            toBed: time(day: 1, hour: 23),
+            wakeUp: time(day: 1, hour: 7),
+            targetToBed: time(day: 1, hour: 23),
+            targetWakeUp: time(day: 1, hour: 7)
+        )
+        let newToBed = time(day: 1, hour: 22)
+        let diffMins = -60
+
+        var newSchedule: Schedule?
+        let saveExpectation = expectation(description: "save")
+        let deleteExpectation = expectation(description: "delete")
+        scheduleRepository.saveHandler = handleSave
+        scheduleRepository.deleteAllHandler = handleDeleteAll
+
+        // When
+
+        updateSchedule.callAsFunction(
+            current: schedule,
+            newSleepDuration: nil,
+            newToBed: newToBed
+        )
+
+        // Then
+
+        func handleSave(_ schedule: Schedule) {
+            newSchedule = schedule
+            saveExpectation.fulfill()
+        }
+
+        func handleDeleteAll() {
+            deleteExpectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1) { error in
+            if let error = error {
+                XCTFail(error.localizedDescription)
+                return
+            }
+
+            XCTAssertEqual(newSchedule?.sleepDuration, schedule.sleepDuration)
+            XCTAssertEqual(newSchedule?.intensity, schedule.intensity)
+            XCTAssertEqual(newSchedule?.targetToBed, newToBed)
+            XCTAssertEqual(
+                newSchedule?.targetWakeUp,
+                schedule.targetWakeUp.addingTimeInterval(minutes: diffMins)
+            )
+            XCTAssertEqual(newSchedule?.toBed, schedule.toBed)
+            XCTAssertEqual(
+                newSchedule?.wakeUp,
+                schedule.wakeUp
+            )
+        }
+    }
+
+    func testUpdateScheduleEditToBedNeedsNormalisation() {
+
+        // Given
+
+        let schedule = Schedule(
+            sleepDuration: 8 * 60,
+            intensity: .normal,
+            toBed: time(day: 1, hour: 23),
+            wakeUp: time(day: 1, hour: 7),
+            targetToBed: time(day: 1, hour: 23),
+            targetWakeUp: time(day: 1, hour: 7)
+        )
+        let newToBed = time(day: 3, hour: 22)
+        let correctNewToBed = time(day: 1, hour: 22)
+        let diffMins = -60
+
+        var newSchedule: Schedule?
+        let saveExpectation = expectation(description: "save")
+        let deleteExpectation = expectation(description: "delete")
+        scheduleRepository.saveHandler = handleSave
+        scheduleRepository.deleteAllHandler = handleDeleteAll
+
+        // When
+
+        updateSchedule.callAsFunction(
+            current: schedule,
+            newSleepDuration: nil,
+            newToBed: newToBed
+        )
+
+        // Then
+
+        func handleSave(_ schedule: Schedule) {
+            newSchedule = schedule
+            saveExpectation.fulfill()
+        }
+
+        func handleDeleteAll() {
+            deleteExpectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1) { error in
+            if let error = error {
+                XCTFail(error.localizedDescription)
+                return
+            }
+
+            XCTAssertEqual(newSchedule?.sleepDuration, schedule.sleepDuration)
+            XCTAssertEqual(newSchedule?.intensity, schedule.intensity)
+            XCTAssertEqual(newSchedule?.targetToBed, correctNewToBed)
+            XCTAssertEqual(
+                newSchedule?.targetWakeUp,
+                schedule.targetWakeUp.addingTimeInterval(minutes: diffMins)
+            )
+            XCTAssertEqual(newSchedule?.toBed, schedule.toBed)
+            XCTAssertEqual(
+                newSchedule?.wakeUp,
+                schedule.wakeUp
+            )
+        }
+    }
+
+    func testUpdateScheduleEditSleepDurationAndEditToBedNeedsNormalisation() {
+
+        // Given
+
+        let schedule = Schedule(
+            sleepDuration: 8 * 60,
+            intensity: .normal,
+            toBed: time(day: 1, hour: 23),
+            wakeUp: time(day: 1, hour: 7),
+            targetToBed: time(day: 1, hour: 23),
+            targetWakeUp: time(day: 1, hour: 7)
+        )
+        let newSleepDuration = 7 * 60
+        let newToBed = time(day: 3, hour: 22)
+        let correctNewToBed = time(day: 1, hour: 22)
+        let diffMins = -120
+
+        var newSchedule: Schedule?
+        let saveExpectation = expectation(description: "save")
+        let deleteExpectation = expectation(description: "delete")
+        scheduleRepository.saveHandler = handleSave
+        scheduleRepository.deleteAllHandler = handleDeleteAll
+
+        // When
+
+        updateSchedule.callAsFunction(
+            current: schedule,
+            newSleepDuration: newSleepDuration,
+            newToBed: newToBed
+        )
+
+        // Then
+
+        func handleSave(_ schedule: Schedule) {
+            newSchedule = schedule
+            saveExpectation.fulfill()
+        }
+
+        func handleDeleteAll() {
+            deleteExpectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1) { error in
+            if let error = error {
+                XCTFail(error.localizedDescription)
+                return
+            }
+
+            XCTAssertEqual(newSchedule?.sleepDuration, newSleepDuration)
+            XCTAssertEqual(newSchedule?.intensity, schedule.intensity)
+            XCTAssertEqual(newSchedule?.targetToBed, correctNewToBed)
+            XCTAssertEqual(
+                newSchedule?.targetWakeUp,
+                schedule.targetWakeUp.addingTimeInterval(minutes: diffMins)
+            )
+            XCTAssertEqual(newSchedule?.toBed, schedule.toBed)
+            XCTAssertEqual(
+                newSchedule?.wakeUp,
+                schedule.wakeUp.addingTimeInterval(minutes: diffMins / 2)
+            )
+        }
+    }
+
     // MARK: - Utils -
 
     private func time(
@@ -273,5 +585,28 @@ class ScheduleTests: XCTestCase {
                 minute: min
             )
         )!
+    }
+}
+
+extension ScheduleTests {
+    class ScheduleRepositoryMock: ScheduleRepository {
+        var saveHandler: ((Schedule) -> Void)?
+        var deleteAllHandler: (() -> Void)?
+
+        func get(for date: Date) -> Schedule? {
+            return nil
+        }
+
+        func getLatest() -> Schedule? {
+            return nil
+        }
+
+        func save(_ schedule: Schedule) {
+            saveHandler?(schedule)
+        }
+
+        func deleteAll() {
+            deleteAllHandler?()
+        }
     }
 }
