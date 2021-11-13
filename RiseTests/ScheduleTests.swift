@@ -16,6 +16,9 @@ class ScheduleTests: XCTestCase {
     var updateSchedule: UpdateSchedule {
         UpdateScheduleImpl(createSchedule, scheduleRepository)
     }
+    var getSchedule: GetSchedule {
+        GetScheduleImpl(scheduleRepository, nextSchedule)
+    }
     var scheduleRepository = ScheduleRepositoryMock()
 
     let allDurations = Array((5 * 60)...(10 * 60))
@@ -29,6 +32,8 @@ class ScheduleTests: XCTestCase {
 
     override func tearDown() {
         super.tearDown()
+        scheduleRepository.getForDateHandler = nil
+        scheduleRepository.getLatestHandler = nil
         scheduleRepository.saveHandler = nil
         scheduleRepository.deleteAllHandler = nil
     }
@@ -567,6 +572,94 @@ class ScheduleTests: XCTestCase {
         }
     }
 
+    // MARK: - Get Schedule
+
+    func testGetScheduleNoSchedule() {
+
+        // Given
+
+        scheduleRepository.getLatestHandler = { return nil }
+        scheduleRepository.getForDateHandler = { _ in return nil }
+
+        // When
+
+        let yesterdaySchedule = getSchedule.yesterday()
+        let todaySchedule = getSchedule.today()
+        let tomorrowSchedule = getSchedule.tomorrow()
+
+        // Then
+
+        XCTAssertNil(yesterdaySchedule)
+        XCTAssertNil(todaySchedule)
+        XCTAssertNil(tomorrowSchedule)
+    }
+
+    func testGetScheduleScheduledSinceToday() {
+
+        // Given
+
+        let getSchedule = GetScheduleImpl(scheduleRepository, nextSchedule) {
+            self.time(day: 1, hour: 12)
+        }
+
+        let schedule = Schedule(
+            sleepDuration: 8 * 60,
+            intensity: .normal,
+            toBed: time(day: 1, hour: 23),
+            wakeUp: time(day: 1, hour: 7),
+            targetToBed: time(day: 1, hour: 23),
+            targetWakeUp: time(day: 1, hour: 7)
+        )
+        let expectedTomorrowSchedule = Schedule(
+            sleepDuration: 8 * 60,
+            intensity: .normal,
+            toBed: time(day: 2, hour: 23),
+            wakeUp: time(day: 2, hour: 7),
+            targetToBed: time(day: 2, hour: 23),
+            targetWakeUp: time(day: 2, hour: 7)
+        )
+
+        var newSchedule: Schedule?
+        let saveExpectation = expectation(description: "save")
+        scheduleRepository.saveHandler = handleSave
+        scheduleRepository.deleteAllHandler = handleDeleteAll
+        scheduleRepository.getLatestHandler = { return schedule }
+        scheduleRepository.getForDateHandler = { date in
+            if calendar.isDate(date, inSameDayAs: schedule.wakeUp) {
+                return schedule
+            }
+            return nil
+        }
+
+        // When
+
+        let yesterdaySchedule = getSchedule.yesterday()
+        let todaySchedule = getSchedule.today()
+        let tomorrowSchedule = getSchedule.tomorrow()
+
+        // Then
+
+        func handleSave(_ schedule: Schedule) {
+            newSchedule = schedule
+            saveExpectation.fulfill()
+        }
+
+        func handleDeleteAll() {
+            XCTFail()
+        }
+
+        waitForExpectations(timeout: 1) { error in
+            if let error = error {
+                XCTFail(error.localizedDescription)
+                return
+            }
+            XCTAssertNil(yesterdaySchedule)
+            XCTAssertEqual(todaySchedule, schedule)
+            XCTAssertEqual(tomorrowSchedule, expectedTomorrowSchedule)
+            XCTAssertEqual(newSchedule, expectedTomorrowSchedule)
+        }
+    }
+
     // MARK: - Utils -
 
     private func time(
@@ -592,13 +685,15 @@ extension ScheduleTests {
     class ScheduleRepositoryMock: ScheduleRepository {
         var saveHandler: ((Schedule) -> Void)?
         var deleteAllHandler: (() -> Void)?
+        var getForDateHandler: ((Date) -> Schedule?)?
+        var getLatestHandler: (() -> Schedule?)?
 
         func get(for date: Date) -> Schedule? {
-            return nil
+            getForDateHandler?(date)
         }
 
         func getLatest() -> Schedule? {
-            return nil
+            getLatestHandler?()
         }
 
         func save(_ schedule: Schedule) {

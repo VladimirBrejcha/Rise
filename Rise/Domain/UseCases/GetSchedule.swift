@@ -18,24 +18,27 @@ final class GetScheduleImpl: GetSchedule {
 
     private let scheduleRepository: ScheduleRepository
     private let createNextSchedule: CreateNextSchedule
+    private let dateGenerator: () -> Date
 
     init(_ scheduleRepository: ScheduleRepository,
-         _ createNextSchedule: CreateNextSchedule
+         _ createNextSchedule: CreateNextSchedule,
+         dateGenerator: @escaping () -> Date = Date.init
     ) {
+        self.dateGenerator = dateGenerator
         self.scheduleRepository = scheduleRepository
         self.createNextSchedule = createNextSchedule
     }
 
     func yesterday() -> Schedule? {
-        getSchedule(for: Date().addingTimeInterval(days: -1))
+        getSchedule(for: dateGenerator().addingTimeInterval(days: -1))
     }
 
     func today() -> Schedule? {
-        getSchedule(for: Date())
+        getSchedule(for: dateGenerator())
     }
 
     func tomorrow() -> Schedule? {
-        getSchedule(for: Date().addingTimeInterval(days: 1))
+        getSchedule(for: dateGenerator().addingTimeInterval(days: 1))
     }
 
     private func getSchedule(for date: Date) -> Schedule? {
