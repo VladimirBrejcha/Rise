@@ -8,11 +8,16 @@
 
 import Foundation
 
+/*
+ * Creates new schedule with given parameters or with fallback to current schedule parameters
+ * Deletes old schedule from the storage
+ * Saves new schedule to the storage
+ */
 protocol UpdateSchedule {
     func callAsFunction(
         current schedule: Schedule,
-        wantedSleepDuration: Schedule.Minute?,
-        wantedToBed: Date?
+        newSleepDuration: Schedule.Minute?,
+        newToBed: Date?
     )
 }
 
@@ -28,19 +33,37 @@ final class UpdateScheduleImpl: UpdateSchedule {
         self.scheduleRepository = scheduleRepository
     }
 
-    // todo set correct dates
     func callAsFunction(
         current schedule: Schedule,
-        wantedSleepDuration: Schedule.Minute?,
-        wantedToBed: Date?
+        newSleepDuration: Schedule.Minute?,
+        newToBed: Date?
     ) {
         let newSchedule = createSchedule(
-            wantedSleepDuration: wantedSleepDuration ?? schedule.sleepDuration,
+            wantedSleepDuration: newSleepDuration ?? schedule.sleepDuration,
             currentToBed: schedule.toBed,
-            wantedToBed: wantedToBed ?? schedule.targetToBed,
+            wantedToBed: newToBed?.normalized(with: schedule.targetToBed) ?? schedule.targetToBed,
             intensity: schedule.intensity
         )
         scheduleRepository.deleteAll()
         scheduleRepository.save(newSchedule)
+    }
+}
+
+fileprivate extension Date {
+    func normalized(with date: Date) -> Date {
+        let components = calendar.dateComponents([.hour, .minute], from: self)
+        guard let hour = components.hour,
+              let minute = components.minute,
+              let date = calendar.date(
+                bySettingHour: hour,
+                minute: minute,
+                second: 0,
+                of: date
+              )
+        else {
+            assertionFailure("Could'nt build a date")
+            return date
+        }
+        return date
     }
 }

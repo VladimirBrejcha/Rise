@@ -99,8 +99,8 @@ final class ChangePlanViewController: UIViewController, UITableViewDelegate {
                     }
                     self.updateSchedule(
                         current: schedule,
-                        wantedSleepDuration: self.pickedSleepDuration,
-                        wantedToBed: self.pickedToBed
+                        newSleepDuration: self.pickedSleepDuration,
+                        newToBed: self.pickedToBed
                     )
                     self.dismiss()
                 }
