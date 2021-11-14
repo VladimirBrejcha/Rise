@@ -86,6 +86,8 @@ class ScheduleTests: XCTestCase {
         }
     }
 
+    // MARK: - CreateNextSchedule -
+
     // MARK: - NegativeDiff
 
     func testNextScheduleNegativeDiff() {
@@ -657,6 +659,301 @@ class ScheduleTests: XCTestCase {
             XCTAssertEqual(todaySchedule, schedule)
             XCTAssertEqual(tomorrowSchedule, expectedTomorrowSchedule)
             XCTAssertEqual(newSchedule, expectedTomorrowSchedule)
+        }
+    }
+
+    func testGetScheduleScheduledSinceTomorrow() {
+
+        // Given
+
+        let getSchedule = GetScheduleImpl(scheduleRepository, nextSchedule) {
+            self.time(day: 1, hour: 12)
+        }
+
+        let schedule = Schedule(
+            sleepDuration: 8 * 60,
+            intensity: .normal,
+            toBed: time(day: 2, hour: 23),
+            wakeUp: time(day: 2, hour: 7),
+            targetToBed: time(day: 2, hour: 23),
+            targetWakeUp: time(day: 2, hour: 7)
+        )
+
+        scheduleRepository.deleteAllHandler = handleDeleteAll
+        scheduleRepository.getLatestHandler = {
+            return schedule
+        }
+        scheduleRepository.getForDateHandler = { date in
+            if calendar.isDate(date, inSameDayAs: schedule.wakeUp) {
+                return schedule
+            }
+            return nil
+        }
+
+        // When
+
+        let yesterdaySchedule = getSchedule.yesterday()
+        let todaySchedule = getSchedule.today()
+        let tomorrowSchedule = getSchedule.tomorrow()
+
+        // Then
+
+        func handleSave(_ schedule: Schedule) {
+            XCTFail()
+        }
+
+        func handleDeleteAll() {
+            XCTFail()
+        }
+
+        XCTAssertNil(yesterdaySchedule)
+        XCTAssertNil(todaySchedule)
+        XCTAssertEqual(tomorrowSchedule, schedule)
+    }
+
+    func testGetScheduleHaveAllDays() {
+
+        // Given
+
+        let getSchedule = GetScheduleImpl(scheduleRepository, nextSchedule) {
+            self.time(day: 2, hour: 12)
+        }
+
+        let schedules: [Schedule] = [
+            Schedule(
+                sleepDuration: 8 * 60,
+                intensity: .normal,
+                toBed: time(day: 1, hour: 23),
+                wakeUp: time(day: 1, hour: 7),
+                targetToBed: time(day: 1, hour: 23),
+                targetWakeUp: time(day: 1, hour: 7)
+            ),
+            Schedule(
+                sleepDuration: 8 * 60,
+                intensity: .normal,
+                toBed: time(day: 2, hour: 23),
+                wakeUp: time(day: 2, hour: 7),
+                targetToBed: time(day: 2, hour: 23),
+                targetWakeUp: time(day: 2, hour: 7)
+            ),
+            Schedule(
+                sleepDuration: 8 * 60,
+                intensity: .normal,
+                toBed: time(day: 3, hour: 23),
+                wakeUp: time(day: 3, hour: 7),
+                targetToBed: time(day: 3, hour: 23),
+                targetWakeUp: time(day: 3, hour: 7)
+            )
+        ]
+
+        scheduleRepository.deleteAllHandler = handleDeleteAll
+        scheduleRepository.getLatestHandler = getLatest
+        scheduleRepository.getForDateHandler = { date in
+            return schedules.first(
+                where: { calendar.isDate(date, inSameDayAs: $0.wakeUp) }
+            )
+        }
+
+        // When
+
+        let yesterdaySchedule = getSchedule.yesterday()
+        let todaySchedule = getSchedule.today()
+        let tomorrowSchedule = getSchedule.tomorrow()
+
+        // Then
+
+        func handleSave(_ schedule: Schedule) {
+            XCTFail()
+        }
+
+        func handleDeleteAll() {
+            XCTFail()
+        }
+
+        func getLatest() -> Schedule? {
+            XCTFail()
+            return schedules[2]
+        }
+
+        XCTAssertEqual(yesterdaySchedule, schedules[0])
+        XCTAssertEqual(todaySchedule, schedules[1])
+        XCTAssertEqual(tomorrowSchedule, schedules[2])
+    }
+
+    func testGetScheduleHaveYesterday() {
+
+        // Given
+
+        let getSchedule = GetScheduleImpl(scheduleRepository, nextSchedule) {
+            self.time(day: 2, hour: 12)
+        }
+
+        let schedule = Schedule(
+            sleepDuration: 8 * 60,
+            intensity: .normal,
+            toBed: time(day: 1, hour: 23),
+            wakeUp: time(day: 1, hour: 7),
+            targetToBed: time(day: 1, hour: 23),
+            targetWakeUp: time(day: 1, hour: 7)
+        )
+        let expectedTodaySchedule = Schedule(
+            sleepDuration: 8 * 60,
+            intensity: .normal,
+            toBed: time(day: 2, hour: 23),
+            wakeUp: time(day: 2, hour: 7),
+            targetToBed: time(day: 2, hour: 23),
+            targetWakeUp: time(day: 2, hour: 7)
+        )
+        let expectedTomorrowSchedule = Schedule(
+            sleepDuration: 8 * 60,
+            intensity: .normal,
+            toBed: time(day: 3, hour: 23),
+            wakeUp: time(day: 3, hour: 7),
+            targetToBed: time(day: 3, hour: 23),
+            targetWakeUp: time(day: 3, hour: 7)
+        )
+
+        var savedTodaySchedule: Schedule?
+        var savedTomorrowSchedule: Schedule?
+        let saveExpectation = expectation(description: "save")
+        saveExpectation.expectedFulfillmentCount = 2
+        scheduleRepository.deleteAllHandler = handleDeleteAll
+        scheduleRepository.saveHandler = handleSave
+        scheduleRepository.getLatestHandler = {
+            if let savedTodaySchedule = savedTodaySchedule {
+                return savedTodaySchedule
+            }
+            return schedule
+        }
+        scheduleRepository.getForDateHandler = { date in
+            if let savedTodaySchedule = savedTodaySchedule,
+               calendar.isDate(date, inSameDayAs: savedTodaySchedule.wakeUp) {
+                return savedTodaySchedule
+            }
+            if calendar.isDate(date, inSameDayAs: schedule.wakeUp) {
+                return schedule
+            }
+            return nil
+        }
+
+        // When
+
+        let yesterdaySchedule = getSchedule.yesterday()
+        let todaySchedule = getSchedule.today()
+        let tomorrowSchedule = getSchedule.tomorrow()
+
+        // Then
+
+        func handleSave(_ schedule: Schedule) {
+            if savedTodaySchedule == nil {
+                savedTodaySchedule = schedule
+            } else {
+                savedTomorrowSchedule = schedule
+            }
+            saveExpectation.fulfill()
+        }
+
+        func handleDeleteAll() {
+            XCTFail()
+        }
+
+        waitForExpectations(timeout: 1) { error in
+            if let error = error {
+                XCTFail(error.localizedDescription)
+                return
+            }
+            XCTAssertEqual(yesterdaySchedule, schedule)
+            XCTAssertEqual(todaySchedule, expectedTodaySchedule)
+            XCTAssertEqual(tomorrowSchedule, expectedTomorrowSchedule)
+            XCTAssertEqual(savedTodaySchedule, expectedTodaySchedule)
+            XCTAssertEqual(savedTomorrowSchedule, expectedTomorrowSchedule)
+        }
+    }
+
+    func testGetScheduleHave10DaysAgo() {
+
+        // Given
+
+        let getSchedule = GetScheduleImpl(scheduleRepository, nextSchedule) {
+            self.time(day: 11, hour: 12)
+        }
+
+        let schedule = Schedule(
+            sleepDuration: 8 * 60,
+            intensity: .normal,
+            toBed: time(day: 1, hour: 23),
+            wakeUp: time(day: 1, hour: 7),
+            targetToBed: time(day: 1, hour: 23),
+            targetWakeUp: time(day: 1, hour: 7)
+        )
+        let expectedYesterdaySchedule = Schedule(
+            sleepDuration: 8 * 60,
+            intensity: .normal,
+            toBed: time(day: 10, hour: 23),
+            wakeUp: time(day: 10, hour: 7),
+            targetToBed: time(day: 10, hour: 23),
+            targetWakeUp: time(day: 10, hour: 7)
+        )
+        let expectedTodaySchedule = Schedule(
+            sleepDuration: 8 * 60,
+            intensity: .normal,
+            toBed: time(day: 11, hour: 23),
+            wakeUp: time(day: 11, hour: 7),
+            targetToBed: time(day: 11, hour: 23),
+            targetWakeUp: time(day: 11, hour: 7)
+        )
+        let expectedTomorrowSchedule = Schedule(
+            sleepDuration: 8 * 60,
+            intensity: .normal,
+            toBed: time(day: 12, hour: 23),
+            wakeUp: time(day: 12, hour: 7),
+            targetToBed: time(day: 12, hour: 23),
+            targetWakeUp: time(day: 12, hour: 7)
+        )
+
+        var savedSchedules: [Schedule] = [schedule]
+        let saveExpectation = expectation(description: "save")
+        saveExpectation.expectedFulfillmentCount = 11
+        scheduleRepository.deleteAllHandler = handleDeleteAll
+        scheduleRepository.saveHandler = handleSave
+        scheduleRepository.getLatestHandler = {
+            savedSchedules.last
+        }
+        scheduleRepository.getForDateHandler = { date in
+            savedSchedules.first(
+                where: { calendar.isDate(date, inSameDayAs: $0.wakeUp) }
+            )
+        }
+
+        // When
+
+        let yesterdaySchedule = getSchedule.yesterday()
+        let todaySchedule = getSchedule.today()
+        let tomorrowSchedule = getSchedule.tomorrow()
+
+        // Then
+
+        func handleSave(_ schedule: Schedule) {
+            savedSchedules.append(schedule)
+            saveExpectation.fulfill()
+        }
+
+        func handleDeleteAll() {
+            XCTFail()
+        }
+
+        waitForExpectations(timeout: 1) { error in
+            if let error = error {
+                XCTFail(error.localizedDescription)
+                return
+            }
+            XCTAssertEqual(yesterdaySchedule, expectedYesterdaySchedule)
+            XCTAssertEqual(todaySchedule, expectedTodaySchedule)
+            XCTAssertEqual(tomorrowSchedule, expectedTomorrowSchedule)
+            XCTAssertEqual(savedSchedules.count, 12)
+            XCTAssertEqual(savedSchedules[11], expectedTomorrowSchedule)
+            XCTAssertEqual(savedSchedules[10], expectedTodaySchedule)
+            XCTAssertEqual(savedSchedules[9], expectedYesterdaySchedule)
         }
     }
 
