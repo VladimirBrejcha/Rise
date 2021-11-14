@@ -14,8 +14,6 @@ internal enum Text {
   internal static let failedToLoadTime = Text.tr("Localizable", "failed_to_load_time")
   /// It's time to sleep!
   internal static let itsTimeToSleep = Text.tr("Localizable", "its_time_to_sleep!")
-  /// No plan for the day
-  internal static let noPlanForTheDay = Text.tr("Localizable", "no_plan_for_the_day")
   /// Rise schedule is paused
   internal static let riseScheduleIsPaused = Text.tr("Localizable", "rise_schedule_is_paused")
   /// Scheduled sleep
@@ -48,8 +46,8 @@ internal enum Text {
   internal static let wakeUp = Text.tr("Localizable", "wake_up")
   /// Yesterday
   internal static let yesterday = Text.tr("Localizable", "yesterday")
-  /// You don't have a plan yet
-  internal static let youDontHaveAPlanYet = Text.tr("Localizable", "you_dont_have_a_plan_yet")
+  /// You don't have a schedule yet
+  internal static let youDontHaveAScheduleYet = Text.tr("Localizable", "you_dont_have_a_schedule_yet")
 
   internal enum About {
     internal enum Feedback {

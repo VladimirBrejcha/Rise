@@ -16,19 +16,19 @@ enum Story {
     case tabBar
     case today
     case days
-    case plan
+    case schedule
     case settings
     
-    // Create plan
-    case createPlan
-    case welcomeCreatePlan
-    case sleepDurationCreatePlan(sleepDurationOutput: (Int) -> Void, presettedSleepDuration: Int?)
-    case wakeUpTimeCreatePlan(wakeUpTimeOutput: (Date) -> Void, presettedWakeUpTime: Date?)
-    case wentSleepCreatePlan(wentSleepOutput: (Date) -> Void, presettedWentSleepTime: Date?)
-    case planCreatedSetupPlan
+    // Create schedule
+    case createSchedule
+    case welcomeCreateSchedule
+    case sleepDurationCreateSchedule(sleepDurationOutput: (Int) -> Void, presettedSleepDuration: Int?)
+    case wakeUpTimeCreateSchedule(wakeUpTimeOutput: (Date) -> Void, presettedWakeUpTime: Date?)
+    case wentSleepCreateSchedule(wentSleepOutput: (Date) -> Void, presettedWentSleepTime: Date?)
+    case scheduleCreatedCreateSchedule
     
-    // Change plan
-    case changePlan
+    // Edit schedule
+    case editSchedule
     
     // Сonfirmation
     case confirmation
@@ -45,7 +45,7 @@ enum Story {
         switch self {
         case .tabBar:
             return CustomTabBarController(
-                items: [Story.plan(), Story.today(), Story.settings()],
+                items: [Story.schedule(), Story.today(), Story.settings()],
                 selectedIndex: 1
             )
         case let .onboarding(dismissOnCompletion):
@@ -54,42 +54,42 @@ enum Story {
             return TodayAssembler().assemble()
         case .days:
             return DaysAssembler().assemble()
-        case .plan:
-            return PersonalPlanAssembler().assemble()
+        case .schedule:
+            return ScheduleAssembler().assemble()
         case .settings:
             return SettingsAssembler().assemble()
-        case .createPlan:
-            return CreatePlanAssembler().assemble()
-        case .welcomeCreatePlan:
-            return Storyboard.setupPlan.instantiateViewController(
-                of: WelcomeCreatelPlanViewController.self
+        case .createSchedule:
+            return CreateScheduleAssembler().assemble()
+        case .welcomeCreateSchedule:
+            return Storyboard.createSchedule.instantiateViewController(
+                of: WelcomeCreateScheduleViewController.self
             )
-        case .sleepDurationCreatePlan(let sleepDurationOutput, let presettedSleepDuration):
-            let controller = Storyboard.setupPlan.instantiateViewController(
-                of: SleepDurationCreatePlanViewController.self
+        case .sleepDurationCreateSchedule(let sleepDurationOutput, let presettedSleepDuration):
+            let controller = Storyboard.createSchedule.instantiateViewController(
+                of: SleepDurationCreateScheduleViewController.self
             )
             controller.sleepDurationOutput = sleepDurationOutput
             controller.presettedSleepDuration = presettedSleepDuration
             return controller
-        case .wakeUpTimeCreatePlan(let wakeUpTimeOutput, let presettedWakeUpTime):
-            let controller = Storyboard.setupPlan.instantiateViewController(
-                of: WakeUpTimeCreatePlanViewController.self
+        case .wakeUpTimeCreateSchedule(let wakeUpTimeOutput, let presettedWakeUpTime):
+            let controller = Storyboard.createSchedule.instantiateViewController(
+                of: WakeUpTimeCreateScheduleViewController.self
             )
             controller.wakeUpTimeOutput = wakeUpTimeOutput
             controller.presettedWakeUpTime = presettedWakeUpTime
             return controller
-        case .wentSleepCreatePlan(let wentSleepOutput, let presettedWentSleepTime):
-            let controller = Storyboard.setupPlan.instantiateViewController(
-                of: WentSleepCreatePlanViewController.self
+        case .wentSleepCreateSchedule(let wentSleepOutput, let presettedWentSleepTime):
+            let controller = Storyboard.createSchedule.instantiateViewController(
+                of: WentSleepCreateScheduleViewController.self
             )
             controller.wentSleepTimeOutput = wentSleepOutput
             controller.presettedWentSleepTime = presettedWentSleepTime
             return controller
-        case .planCreatedSetupPlan:
-            let controller = Storyboard.setupPlan.instantiateViewController(of: PlanCreatedCreatePlanViewController.self)
+        case .scheduleCreatedCreateSchedule:
+            let controller = Storyboard.createSchedule.instantiateViewController(of: ScheduleCreatedCreateScheduleViewController.self)
             return controller
-        case .changePlan:
-            return ChangePlanAssembler().assemble()
+        case .editSchedule:
+            return EditScheduleAssembler().assemble()
         case .confirmation:
             return ConfirmationAssembler().assemble()
         case .prepareToSleep:

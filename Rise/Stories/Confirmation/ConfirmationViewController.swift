@@ -22,7 +22,7 @@ final class ConfirmationViewController: UIViewController {
 //    override func viewDidLoad() {
 //        super.viewDidLoad()
 //
-//        guard let plan = try? getPlan()
+//        guard let schedule = try? getPlan()
 //            else {
 //                shouldDismissAfterAppear = true
 //                return

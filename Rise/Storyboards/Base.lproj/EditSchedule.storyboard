@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Edit Schedule View Controller-->
+        <scene sceneID="d4i-Qk-B7b">
+            <objects>
+                <viewController storyboardIdentifier="EditScheduleViewController" id="leG-iY-493" customClass="EditScheduleViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wos-9B-kFo" customClass="EditScheduleView" customModule="Rise" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sS2-kg-BzT" customClass="Button" customModule="Rise" customModuleProvider="target">
+                                <rect key="frame" x="10" y="540" width="580" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Om1-ms-bKA"/>
+                                </constraints>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveTouchUp:" destination="wos-9B-kFo" eventType="touchUpInside" id="kCs-b7-Gsn"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="T54-d5-rcW" customClass="EditScheduleTableView" customModule="Rise" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="54" width="600" height="476"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e8M-Xk-MCJ">
+                                <rect key="frame" x="553" y="15" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="g78-IX-cGo"/>
+                                    <constraint firstAttribute="height" constant="35" id="ipG-tf-0eo"/>
+                                </constraints>
+                                <color key="tintColor" name="LightPink"/>
+                                <state key="normal" image="cancel"/>
+                                <connections>
+                                    <action selector="closeTouchUp:" destination="wos-9B-kFo" eventType="touchUpInside" id="8x5-2B-pQh"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Rise schedule" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2uO-mZ-R6o">
+                                <rect key="frame" x="10" y="17.5" width="580" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="UlE-Na-PZm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="T54-d5-rcW" firstAttribute="leading" secondItem="UlE-Na-PZm" secondAttribute="leading" id="CIj-kz-9P7"/>
+                            <constraint firstItem="UlE-Na-PZm" firstAttribute="trailing" secondItem="T54-d5-rcW" secondAttribute="trailing" id="Fc3-ef-RLu"/>
+                            <constraint firstItem="sS2-kg-BzT" firstAttribute="leading" secondItem="UlE-Na-PZm" secondAttribute="leading" constant="10" id="LFZ-1y-DE1"/>
+                            <constraint firstAttribute="trailing" secondItem="2uO-mZ-R6o" secondAttribute="trailing" constant="10" id="N9W-mc-E11"/>
+                            <constraint firstItem="T54-d5-rcW" firstAttribute="top" secondItem="2uO-mZ-R6o" secondAttribute="bottom" constant="10" id="Pd7-Hu-ZwE"/>
+                            <constraint firstItem="UlE-Na-PZm" firstAttribute="bottom" secondItem="sS2-kg-BzT" secondAttribute="bottom" constant="10" id="TO0-yL-iVt"/>
+                            <constraint firstAttribute="trailing" secondItem="e8M-Xk-MCJ" secondAttribute="trailing" constant="12" id="VnG-VK-7vU"/>
+                            <constraint firstItem="2uO-mZ-R6o" firstAttribute="centerY" secondItem="e8M-Xk-MCJ" secondAttribute="centerY" constant="-2" id="dtz-hD-3Xb"/>
+                            <constraint firstItem="UlE-Na-PZm" firstAttribute="trailing" secondItem="sS2-kg-BzT" secondAttribute="trailing" constant="10" id="flS-bW-GQo"/>
+                            <constraint firstItem="2uO-mZ-R6o" firstAttribute="leading" secondItem="UlE-Na-PZm" secondAttribute="leading" constant="10" id="s73-ht-0yk"/>
+                            <constraint firstItem="e8M-Xk-MCJ" firstAttribute="top" secondItem="UlE-Na-PZm" secondAttribute="top" constant="15" id="v83-iB-gNH"/>
+                            <constraint firstItem="sS2-kg-BzT" firstAttribute="top" secondItem="T54-d5-rcW" secondAttribute="bottom" constant="10" id="xoq-g8-QoF"/>
+                        </constraints>
+                        <connections>
+                            <outlet property="editScheduleTableView" destination="T54-d5-rcW" id="div-dO-p9M"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="editScheduleView" destination="wos-9B-kFo" id="xfI-dO-K5v"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dSI-RP-2RS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="118.52678571428571"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cancel" width="75" height="75"/>
+        <namedColor name="LightPink">
+            <color red="0.71799999475479126" green="0.61599999666213989" blue="0.74500000476837158" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

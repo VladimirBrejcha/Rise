@@ -199,7 +199,7 @@ final class DaysViewController: UIViewController, Statefull {
               let todaySchedule = state.todaySchedule,
               let tomorrowSchedule = state.tomorrowSchedule
         else {
-            return item.changing { $0.state = .showingInfo(info: Text.youDontHaveAPlanYet) }
+            return item.changing { $0.state = .showingInfo(info: Text.youDontHaveAScheduleYet) }
         }
         var itemSchedule: Schedule {
             switch item.id.day {
@@ -281,7 +281,7 @@ final class DaysViewController: UIViewController, Statefull {
                 id: Item.ID(kind: .sun, day: day)
             ),
             .init(
-                state: .showingInfo(info: Text.youDontHaveAPlanYet),
+                state: .showingInfo(info: Text.youDontHaveAScheduleYet),
                 image: (
                     left: Asset.wakeup.image,
                     right: Asset.fallasleep.image
