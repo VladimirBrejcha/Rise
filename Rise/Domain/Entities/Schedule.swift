@@ -23,8 +23,8 @@ extension Schedule {
 
 extension Schedule {
     enum Intensity: Int16 {
-        case low
-        case normal
-        case high
+        case low = 0
+        case normal = 1
+        case high = 2
     }
 }

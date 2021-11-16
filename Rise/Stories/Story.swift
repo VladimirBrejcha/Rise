@@ -20,11 +20,26 @@ enum Story {
     case settings
     
     // Create schedule
-    case createSchedule
+    case createSchedule(onCreate: () -> Void)
     case welcomeCreateSchedule
-    case sleepDurationCreateSchedule(sleepDurationOutput: (Int) -> Void, presettedSleepDuration: Int?)
-    case wakeUpTimeCreateSchedule(wakeUpTimeOutput: (Date) -> Void, presettedWakeUpTime: Date?)
-    case wentSleepCreateSchedule(wentSleepOutput: (Date) -> Void, presettedWentSleepTime: Date?)
+    case sleepDurationCreateSchedule(
+        sleepDurationOutput: (Int) -> Void,
+        currentSleepDuration: () -> Schedule.Minute?
+    )
+    case wakeUpTimeCreateSchedule(
+        toBedTimeOutput: (Date) -> Void,
+        wakeUpTimeOutput: (Date) -> Void,
+        currentSleepDuration: () -> Schedule.Minute?,
+        currentWakeUpTime: () -> Date?
+    )
+    case intensityCreateSchedule(
+        scheduleIntensityOutput: (Schedule.Intensity) -> Void,
+        currentIntensity: () -> Schedule.Intensity?
+    )
+    case wentSleepCreateSchedule(
+        wentSleepOutput: (Date) -> Void,
+        currentWentSleepTime: () -> Date?
+    )
     case scheduleCreatedCreateSchedule
     
     // Edit schedule
@@ -58,32 +73,43 @@ enum Story {
             return ScheduleAssembler().assemble()
         case .settings:
             return SettingsAssembler().assemble()
-        case .createSchedule:
-            return CreateScheduleAssembler().assemble()
+        case let .createSchedule(onCreate):
+            return CreateScheduleAssembler().assemble(onCreate: onCreate)
         case .welcomeCreateSchedule:
             return Storyboard.createSchedule.instantiateViewController(
                 of: WelcomeCreateScheduleViewController.self
             )
-        case .sleepDurationCreateSchedule(let sleepDurationOutput, let presettedSleepDuration):
+        case let .sleepDurationCreateSchedule(sleepDurationOutput, currentSleepDuration):
             let controller = Storyboard.createSchedule.instantiateViewController(
                 of: SleepDurationCreateScheduleViewController.self
             )
             controller.sleepDurationOutput = sleepDurationOutput
-            controller.presettedSleepDuration = presettedSleepDuration
+            controller.currentSleepDuration = currentSleepDuration
             return controller
-        case .wakeUpTimeCreateSchedule(let wakeUpTimeOutput, let presettedWakeUpTime):
+        case let .wakeUpTimeCreateSchedule(
+            toBedTimeOutput, wakeUpTimeOutput, currentSleepDuration, currentWakeUpTime
+        ):
             let controller = Storyboard.createSchedule.instantiateViewController(
                 of: WakeUpTimeCreateScheduleViewController.self
             )
+            controller.toBedTimeOutput = toBedTimeOutput
             controller.wakeUpTimeOutput = wakeUpTimeOutput
-            controller.presettedWakeUpTime = presettedWakeUpTime
+            controller.currentSleepDuration = currentSleepDuration
+            controller.currentWakeUpTime = currentWakeUpTime
             return controller
-        case .wentSleepCreateSchedule(let wentSleepOutput, let presettedWentSleepTime):
+        case let .intensityCreateSchedule(scheduleIntensityOutput, currentIntensity):
+            let controller = Storyboard.createSchedule.instantiateViewController(
+                of: IntensityCreateScheduleViewController.self
+            )
+            controller.scheduleIntensityOutput = scheduleIntensityOutput
+            controller.currentIntensity = currentIntensity
+            return controller
+        case let .wentSleepCreateSchedule(wentSleepOutput, currentWentSleepTime):
             let controller = Storyboard.createSchedule.instantiateViewController(
                 of: WentSleepCreateScheduleViewController.self
             )
             controller.wentSleepTimeOutput = wentSleepOutput
-            controller.presettedWentSleepTime = presettedWentSleepTime
+            controller.currentWentSleepTime = currentWentSleepTime
             return controller
         case .scheduleCreatedCreateSchedule:
             let controller = Storyboard.createSchedule.instantiateViewController(of: ScheduleCreatedCreateScheduleViewController.self)

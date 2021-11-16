@@ -7,29 +7,50 @@
 //
 
 final class CreateScheduleAssembler {
-    func assemble() -> CreateScheduleViewController {
+    func assemble(onCreate: @escaping () -> Void) -> CreateScheduleViewController {
         let controller = Storyboard.createSchedule.instantiateViewController(of: CreateScheduleViewController.self)
         controller.createSchedule = DomainLayer.createSchedule
         controller.saveSchedule = DomainLayer.saveSchedule
+        controller.onCreate = onCreate
         controller.stories = [
             .welcomeCreateSchedule,
             .sleepDurationCreateSchedule(
                 sleepDurationOutput: { [weak controller] value in
                     controller?.sleepDurationValueChanged(value)
                 },
-                presettedSleepDuration: controller.choosenSleepDuration
+                currentSleepDuration: { [weak controller] in
+                    controller?.chosenSleepDuration
+                }
             ),
             .wakeUpTimeCreateSchedule(
+                toBedTimeOutput: { [weak controller] value in
+                    controller?.toBedTimeValueChanged(value)
+                },
                 wakeUpTimeOutput: { [weak controller] value in
                     controller?.wakeUpTimeValueChanged(value)
                 },
-                presettedWakeUpTime: controller.choosenWakeUpTime
+                currentSleepDuration: { [weak controller] in
+                    controller?.chosenSleepDuration
+                },
+                currentWakeUpTime: { [weak controller] in
+                    controller?.chosenWakeUpTime
+                }
+            ),
+            .intensityCreateSchedule(
+                scheduleIntensityOutput: { [weak controller] value in
+                    controller?.intensityValueChanged(value)
+                },
+                currentIntensity: { [weak controller] in
+                    controller?.chosenIntensity
+                }
             ),
             .wentSleepCreateSchedule(
                 wentSleepOutput: { [weak controller] value in
                     controller?.lastTimeWentSleepValueChanged(value)
                 },
-                presettedWentSleepTime: controller.choosenLastTimeWentSleep
+                currentWentSleepTime: { [weak controller] in
+                    controller?.chosenLastTimeWentSleep
+                }
             ),
             .scheduleCreatedCreateSchedule
         ]

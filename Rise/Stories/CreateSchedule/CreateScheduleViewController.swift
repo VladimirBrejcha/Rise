@@ -21,11 +21,15 @@ final class CreateScheduleViewController:
     var createSchedule: CreateSchedule! // DI
     var saveSchedule: SaveSchedule! // DI
     var stories: [Story]! // DI
+    var onCreate: (() -> Void)? // DI
     
     // opened for DI into PageController controllers
-    private(set) var choosenSleepDuration: Int?
-    private(set) var choosenWakeUpTime: Date?
-    private(set) var choosenLastTimeWentSleep: Date?
+
+    private(set) var chosenSleepDuration: Schedule.Minute = 8 * 60
+    private(set) var chosenWakeUpTime: Date?
+    private(set) var chosenToBedTime: Date?
+    private(set) var chosenIntensity: Schedule.Intensity = .normal
+    private(set) var chosenLastTimeWentSleep: Date?
     
     private var currentPage = 0
     private var currentStory: Story { stories[currentPage] }
@@ -36,57 +40,35 @@ final class CreateScheduleViewController:
         presentationController?.delegate = self
         
         createScheduleView.configure(
-            model: CreateScheduleView.Model(backButtonTitle: "", nextButtonTitle: "Start"),
-            handlers: CreateScheduleView.Handlers(
+            model: .init(
+                backButtonTitle: "",
+                nextButtonTitle: "Start"
+            ),
+            handlers: .init(
                 close: { [weak self] in
                     self?.dismiss()
                 },
                 back: { [weak self] in
-                    guard let self = self else { return }
-                    if self.stories.indices.contains(self.currentPage - 1) {
-                        self.currentPage -= 1
-                        self.showNextStory(direction: .reverse)
-                        self.updateButtonsWithCurrentStory()
-                    }
+                    self?.goToPrevPage()
                 },
                 next: { [weak self] in
                     guard let self = self else { return }
-                    if case .scheduleCreatedCreateSchedule = self.currentStory {
-                        self.dismiss()
-                        return
-                    }
-                    if case .wentSleepCreateSchedule = self.currentStory {
+                    switch self.currentStory {
+                    case .scheduleCreatedCreateSchedule:
+                        self.dismiss(completion: { [weak self] in
+                            self?.onCreate?()
+                        })
+                    case .wentSleepCreateSchedule:
                         do {
                             try self.generateSchedule()
+                            self.goToNextPage()
                         } catch {
                             self.presentAlert(
-                                from: RecoverableError(
-                                    error: error,
-                                    attempter: RecoveryAttemper(
-                                        recoveryOptions: [
-                                            .custom(
-                                                title: "Leave Create screen",
-                                                action: { [weak self] in
-                                                    log(.error, "There was an error creating the schedule \(error.localizedDescription)")
-                                                    self?.dismiss()
-                                                }
-                                            ),
-                                            .tryAgain(
-                                                action: {
-                                                    log(.error, "There was an error creating the schedule \(error.localizedDescription)")
-                                                }
-                                            )
-                                        ]
-                                    )
-                                )
+                                from: self.recoverableError(from: error)
                             )
-                            return
                         }
-                    }
-                    if self.stories.indices.contains(self.currentPage + 1) {
-                        self.currentPage += 1
-                        self.showNextStory(direction: .forward)
-                        self.updateButtonsWithCurrentStory()
+                    default:
+                        self.goToNextPage()
                     }
                 }
             )
@@ -101,77 +83,137 @@ final class CreateScheduleViewController:
     }
     
     // opened for DI into PageController controllers
-    func sleepDurationValueChanged(_ value: Int) {
-        choosenSleepDuration = value
+
+    func sleepDurationValueChanged(_ value: Schedule.Minute) {
+        chosenSleepDuration = value
         updateButtonsWithCurrentStory()
     }
     
     func wakeUpTimeValueChanged(_ value: Date) {
-        choosenWakeUpTime = value
+        chosenWakeUpTime = value
+        updateButtonsWithCurrentStory()
+    }
+
+    func toBedTimeValueChanged(_ value: Date) {
+        chosenToBedTime = value
+    }
+
+    func intensityValueChanged(_ value: Schedule.Intensity) {
+        chosenIntensity = value
         updateButtonsWithCurrentStory()
     }
     
     func lastTimeWentSleepValueChanged(_ value: Date) {
-        choosenLastTimeWentSleep = value
+        chosenLastTimeWentSleep = value
         updateButtonsWithCurrentStory()
     }
     
     // MARK: - UIAdaptivePresentationControllerDelegate -
+
     func presentationControllerShouldDismiss(_ presentationController: UIPresentationController) -> Bool {
         false
     }
     
     // MARK: - Private -
-    private func dismiss() {
-        dismiss(animated: true)
+
+    private func dismiss(completion: (() -> Void)? = nil) {
+        dismiss(animated: true, completion: completion)
+    }
+
+    private func goToPrevPage() {
+        if stories.indices.contains(currentPage - 1) {
+            currentPage -= 1
+            showNextStory(direction: .reverse)
+            updateButtonsWithCurrentStory()
+        }
+    }
+
+    private func goToNextPage() {
+        if stories.indices.contains(currentPage + 1) {
+            currentPage += 1
+            showNextStory(direction: .forward)
+            updateButtonsWithCurrentStory()
+        }
     }
     
     private func showNextStory(direction: UIPageViewController.NavigationDirection) {
-        pageController.setViewControllers([currentStory()], direction: direction, animated: true, completion: nil)
+        pageController.setViewControllers([currentStory()], direction: direction, animated: true)
     }
     
     private func updateButtonsWithCurrentStory() {
+        let next = "Next"
+        let prev = "Previous"
         switch currentStory {
         case .welcomeCreateSchedule:
-            createScheduleView.state = CreateScheduleView.State(nextButtonEnabled: true, backButtonHidden: true)
-            createScheduleView.model = CreateScheduleView.Model(backButtonTitle: "", nextButtonTitle: "Start")
-        case .sleepDurationCreateSchedule:
-            createScheduleView.state = CreateScheduleView.State(
-                nextButtonEnabled: choosenSleepDuration != nil,
+            createScheduleView.state = .init(
+                nextButtonEnabled: true,
                 backButtonHidden: true
             )
-            createScheduleView.model = CreateScheduleView.Model(backButtonTitle: "", nextButtonTitle: "Next")
+            createScheduleView.model = .init(
+                backButtonTitle: "",
+                nextButtonTitle: "Start"
+            )
+        case .sleepDurationCreateSchedule:
+            createScheduleView.state = .init(
+                nextButtonEnabled: true,
+                backButtonHidden: true
+            )
+            createScheduleView.model = .init(
+                backButtonTitle: "",
+                nextButtonTitle: next
+            )
         case .wakeUpTimeCreateSchedule:
-            createScheduleView.state = CreateScheduleView.State(
-                nextButtonEnabled: choosenWakeUpTime != nil,
+            createScheduleView.state = .init(
+                nextButtonEnabled: chosenWakeUpTime != nil,
                 backButtonHidden: false
             )
-            createScheduleView.model = CreateScheduleView.Model(backButtonTitle: "Previous", nextButtonTitle: "Next")
+            createScheduleView.model = .init(
+                backButtonTitle: prev,
+                nextButtonTitle: next
+            )
+        case .intensityCreateSchedule:
+            createScheduleView.state = .init(
+                nextButtonEnabled: true,
+                backButtonHidden: false
+            )
+            createScheduleView.model = .init(
+                backButtonTitle: prev,
+                nextButtonTitle: next
+            )
         case .wentSleepCreateSchedule:
-            createScheduleView.state = CreateScheduleView.State(
-                nextButtonEnabled: choosenLastTimeWentSleep != nil,
+            createScheduleView.state = .init(
+                nextButtonEnabled: chosenLastTimeWentSleep != nil,
                 backButtonHidden: false
             )
-            createScheduleView.model = CreateScheduleView.Model(backButtonTitle: "Previous", nextButtonTitle: "Create")
+            createScheduleView.model = .init(
+                backButtonTitle: prev,
+                nextButtonTitle: "Create"
+            )
         case .scheduleCreatedCreateSchedule:
-            createScheduleView.state = CreateScheduleView.State(nextButtonEnabled: true, backButtonHidden: true)
-            createScheduleView.model = CreateScheduleView.Model(backButtonTitle: "", nextButtonTitle: "Great!")
+            createScheduleView.state = .init(
+                nextButtonEnabled: true,
+                backButtonHidden: true
+            )
+            createScheduleView.model = .init(
+                backButtonTitle: "",
+                nextButtonTitle: "Great!"
+            )
         default:
             break
         }
     }
     
     private func generateSchedule() throws {
-        if let choosenSleepDuration = choosenSleepDuration,
-            let choosenWakeUpTime = choosenWakeUpTime,
-            let choosenLastTimeWentSleep = choosenLastTimeWentSleep {
-            let schedule = createSchedule( // todo: save
-                wantedSleepDuration: choosenSleepDuration,
-                currentToBed: choosenLastTimeWentSleep,
-                wantedToBed: choosenWakeUpTime, // todo
-                intensity: .normal // todo
+        if let chosenToBedTime = chosenToBedTime,
+           let chosenLastTimeWentSleep = chosenLastTimeWentSleep {
+            saveSchedule(
+                createSchedule(
+                    wantedSleepDuration: chosenSleepDuration,
+                    currentToBed: chosenLastTimeWentSleep,
+                    wantedToBed: chosenToBedTime,
+                    intensity: chosenIntensity
+                )
             )
-            saveSchedule(schedule)
         } else {
             throw Error.someFieldsAreMissing
         }
@@ -194,6 +236,34 @@ extension CreateScheduleViewController {
                 return "Try to fill all the fields"
             }
         }
+    }
+
+    func recoverableError(from error: Swift.Error) -> RecoverableError {
+        RecoverableError(
+            error: error,
+            attempter: RecoveryAttempter(
+                recoveryOptions: [
+                    .custom(
+                        title: "Leave Create screen",
+                        action: { [weak self] in
+                            log(
+                                .error,
+                                "There was an error creating the schedule \(error.localizedDescription)"
+                            )
+                            self?.dismiss()
+                        }
+                    ),
+                    .tryAgain(
+                        action: {
+                            log(
+                                .error,
+                                "There was an error creating the schedule \(error.localizedDescription)"
+                            )
+                        }
+                    )
+                ]
+            )
+        )
     }
 }
 

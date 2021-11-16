@@ -44,7 +44,12 @@ final class ScheduleViewController: UIViewController {
                     title: "Personal schedule",
                     middleButtonTitle: "Create Rise schedule",
                     middleButtonHandler: { [weak self] in
-                        self?.present(Story.createSchedule(), with: .modal)
+                        self?.present(
+                            Story.createSchedule(onCreate: { [weak self] in
+                                self?.refresh()
+                            })(),
+                            with: .modal
+                        )
                     }
                 )
             )

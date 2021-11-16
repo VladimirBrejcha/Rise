@@ -1,12 +1,12 @@
 //
-//  RecoveryAttemper.swift
+//  RecoveryAttempter.swift
 //  Rise
 //
 //  Created by Vladimir Korolev on 18.08.2020.
 //  Copyright © 2020 VladimirBrejcha. All rights reserved.
 //
 
-struct RecoveryAttemper {
+struct RecoveryAttempter {
     private let recoveryOptions: [RecoveryOptions]
 
     var recoveryOptionsText: [String] { recoveryOptions.map(\.title) }
@@ -29,10 +29,10 @@ struct RecoveryAttemper {
     }
 
     static func tryAgainAttempter(block: @escaping (() -> Void)) -> Self {
-        RecoveryAttemper(recoveryOptions: [.cancel, .tryAgain(action: block)])
+        RecoveryAttempter(recoveryOptions: [.cancel, .tryAgain(action: block)])
     }
 
-    static func cancalableAttemter(options: [RecoveryOptions]) -> Self {
-        RecoveryAttemper(recoveryOptions: [.cancel] + options)
+    static func cancellableAttempter(options: [RecoveryOptions]) -> Self {
+        RecoveryAttempter(recoveryOptions: [.cancel] + options)
     }
 }

@@ -14,27 +14,27 @@ final class SleepDurationCreateScheduleViewController: UIViewController {
     
     private let minimumDurationH = 6
     private let maximumDurationH = 10
-    private let recomendedDurationH = 8
+    private let recommendedDurationH = 8
     
-    var sleepDurationOutput: ((Int) -> Void)! // DI
-    var presettedSleepDuration: Int? // DI
+    var sleepDurationOutput: ((Schedule.Minute) -> Void)? // DI
+    var currentSleepDuration: (() -> Schedule.Minute?)? // DI
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         sleepDurationSlider.minimumValue = Float(minimumDurationH * 60)
         sleepDurationSlider.maximumValue = Float(maximumDurationH * 60)
-        if let presettedSleepDuration = presettedSleepDuration {
-            sleepDurationSlider.value = Float(presettedSleepDuration)
-            sleepDurationLabel.text = presettedSleepDuration.HHmmString
+        if let currentSleepDuration = currentSleepDuration?() {
+            sleepDurationSlider.value = Float(currentSleepDuration)
+            sleepDurationLabel.text = currentSleepDuration.HHmmString
         } else {
-            sleepDurationSlider.value = Float(recomendedDurationH * 60)
+            sleepDurationSlider.value = Float(recommendedDurationH * 60)
         }
     }
     
     @IBAction private func sleepDurationChanged(_ sender: UISlider) {
-        let chosenDuration = Int(sender.value)
+        let chosenDuration = Schedule.Minute(sender.value)
         sleepDurationLabel.text = chosenDuration.HHmmString
-        sleepDurationOutput(chosenDuration)
+        sleepDurationOutput?(chosenDuration)
     }
 }

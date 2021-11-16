@@ -10,7 +10,7 @@ import Foundation
 
 struct RecoverableError: Foundation.RecoverableError, LocalizedError {
     let error: Error
-    let attempter: RecoveryAttemper
+    let attempter: RecoveryAttempter
     
     var localizedError: LocalizedError? { error as? LocalizedError }
     

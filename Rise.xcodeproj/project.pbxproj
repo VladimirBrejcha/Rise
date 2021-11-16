@@ -24,6 +24,7 @@
 		7E252A8A26EBBE9600DEB6F0 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E252A8926EBBE9600DEB6F0 /* OnboardingView.swift */; };
 		7E25756723F8749A007AE4B5 /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E25756623F8749A007AE4B5 /* Animation.swift */; };
 		7E2CA81024032A0F000CEFA5 /* TableCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CA80F24032A0F000CEFA5 /* TableCellConfigurator.swift */; };
+		7E2E0A692744471B00A51344 /* IntensityCreateScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2E0A682744471B00A51344 /* IntensityCreateScheduleViewController.swift */; };
 		7E31497D23425CA600941606 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31497C23425CA600941606 /* TableViewDataSource.swift */; };
 		7E31497F23425D3700941606 /* EditScheduleTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31497E23425D3700941606 /* EditScheduleTableView.swift */; };
 		7E354E3024119B1C0036FF3F /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E354E2F24119B1C0036FF3F /* LocalDataSource.swift */; };
@@ -77,7 +78,7 @@
 		7E6268C324D5FAA900F70BC3 /* SelectableStackView in Frameworks */ = {isa = PBXBuildFile; productRef = 7E6268C224D5FAA900F70BC3 /* SelectableStackView */; };
 		7E644D5124FACF6E00BF198C /* PermissionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E644D5024FACF6E00BF198C /* PermissionError.swift */; };
 		7E69836524EC68F4002EE278 /* RecoverableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69836424EC68F4002EE278 /* RecoverableError.swift */; };
-		7E69836724EC690C002EE278 /* RecoveryAttemper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69836624EC690C002EE278 /* RecoveryAttemper.swift */; };
+		7E69836724EC690C002EE278 /* RecoveryAttempter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69836624EC690C002EE278 /* RecoveryAttempter.swift */; };
 		7E69836924EC6923002EE278 /* RecoveryOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69836824EC6923002EE278 /* RecoveryOptions.swift */; };
 		7E69836B24EC6932002EE278 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69836A24EC6932002EE278 /* NetworkError.swift */; };
 		7E69836E24EC6980002EE278 /* AboveAllAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69836D24EC6980002EE278 /* AboveAllAlert.swift */; };
@@ -245,6 +246,7 @@
 		7E252A8926EBBE9600DEB6F0 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		7E25756623F8749A007AE4B5 /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		7E2CA80F24032A0F000CEFA5 /* TableCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCellConfigurator.swift; sourceTree = "<group>"; };
+		7E2E0A682744471B00A51344 /* IntensityCreateScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityCreateScheduleViewController.swift; sourceTree = "<group>"; };
 		7E31497C23425CA600941606 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		7E31497E23425D3700941606 /* EditScheduleTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScheduleTableView.swift; sourceTree = "<group>"; };
 		7E354E2F24119B1C0036FF3F /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
@@ -296,7 +298,7 @@
 		7E6268BF24D5D49C00F70BC3 /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		7E644D5024FACF6E00BF198C /* PermissionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionError.swift; sourceTree = "<group>"; };
 		7E69836424EC68F4002EE278 /* RecoverableError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverableError.swift; sourceTree = "<group>"; };
-		7E69836624EC690C002EE278 /* RecoveryAttemper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryAttemper.swift; sourceTree = "<group>"; };
+		7E69836624EC690C002EE278 /* RecoveryAttempter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryAttempter.swift; sourceTree = "<group>"; };
 		7E69836824EC6923002EE278 /* RecoveryOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryOptions.swift; sourceTree = "<group>"; };
 		7E69836A24EC6932002EE278 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		7E69836D24EC6980002EE278 /* AboveAllAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboveAllAlert.swift; sourceTree = "<group>"; };
@@ -719,7 +721,7 @@
 			children = (
 				7E644D4D24FACF4100BF198C /* Errors */,
 				7E69836424EC68F4002EE278 /* RecoverableError.swift */,
-				7E69836624EC690C002EE278 /* RecoveryAttemper.swift */,
+				7E69836624EC690C002EE278 /* RecoveryAttempter.swift */,
 				7E69836824EC6923002EE278 /* RecoveryOptions.swift */,
 			);
 			path = ErrorHandling;
@@ -746,6 +748,7 @@
 				7E07A10023AFBEE300B9D61A /* WelcomeCreateScheduleViewController.swift */,
 				7E708A3323BF635B003B5702 /* SleepDurationCreateScheduleViewController.swift */,
 				7E8AB6CD23A18D27009CE41A /* WakeUpTimeCreateScheduleViewController.swift */,
+				7E2E0A682744471B00A51344 /* IntensityCreateScheduleViewController.swift */,
 				7E708A3823BFD09B003B5702 /* WentSleepCreateScheduleViewController.swift */,
 				7E708A3A23BFD0C7003B5702 /* ScheduleCreatedCreateScheduleViewController.swift */,
 			);
@@ -1412,6 +1415,7 @@
 				7EAFB61C2735D31100B7C7C6 /* CreateSchedule.swift in Sources */,
 				7EB1C0332340F9550028237E /* ScheduleViewController.swift in Sources */,
 				7EA38AE623783FFD0007919B /* DefaultLocationRemoteDataSource.swift in Sources */,
+				7E2E0A692744471B00A51344 /* IntensityCreateScheduleViewController.swift in Sources */,
 				7ED6DD3625E2A30700F906CE /* ImageLabelViewWithContextMenu.swift in Sources */,
 				7EF4C1A0240436D70098135A /* EditScheduleSliderTableCellModel.swift in Sources */,
 				7E69836924EC6923002EE278 /* RecoveryOptions.swift in Sources */,
@@ -1491,7 +1495,7 @@
 				7E69836E24EC6980002EE278 /* AboveAllAlert.swift in Sources */,
 				7EEBEBFE2721F3AF00F8C8D2 /* main.swift in Sources */,
 				7E052A422352377E005D7FAD /* InternalError.swift in Sources */,
-				7E69836724EC690C002EE278 /* RecoveryAttemper.swift in Sources */,
+				7E69836724EC690C002EE278 /* RecoveryAttempter.swift in Sources */,
 				7E6225AA26192DF9001AA8FD /* Styleable.swift in Sources */,
 				92D12FDD22A44B3B0093B0A3 /* CustomTabBarController.swift in Sources */,
 				7E43065426ED6E7500B67315 /* GetAppVersion.swift in Sources */,
@@ -1829,7 +1833,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 29UN6WTSCZ;
 				INFOPLIST_FILE = "$(SRCROOT)/Rise/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1852,7 +1856,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 29UN6WTSCZ;
 				INFOPLIST_FILE = "$(SRCROOT)/Rise/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
