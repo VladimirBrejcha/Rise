@@ -91,8 +91,6 @@ final class DaysViewController: UIViewController, Statefull {
         refreshSchedule()
     }
 
-    // finished here
-
     private func refreshSchedule() {
         guard let state = state else { return }
 
