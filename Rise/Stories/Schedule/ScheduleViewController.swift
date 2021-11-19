@@ -18,7 +18,7 @@ final class ScheduleViewController: UIViewController {
     private let bedImage = UIImage(systemName: "bed.double.fill")
     private let sunImage = UIImage(systemName: "sun.max.fill")
     private let moonImage = UIImage(systemName: "moon.fill")
-    private let sparklesImage = UIImage(systemName: "sparkles")
+    private let speedometerImage = UIImage(systemName: "speedometer")
 
     private var schedule: Schedule?
 
@@ -71,11 +71,28 @@ final class ScheduleViewController: UIViewController {
             contextViewController: sleepDurationPreview,
             actions: []
         )
-
-        let sunSyncCell = ScheduleView.CellState(
-            image: sparklesImage,
-            text: "Coming soon",
-            contextViewController: nil,
+        let intensityPreview = ContextPreview()
+        intensityPreview.setState(
+            .init(
+                image: speedometerImage,
+                title: "Intensity",
+                description: {
+                    let intensityDescription = schedule.intensity.description
+                    switch schedule.intensity {
+                    case .low:
+                        return "\(intensityDescription):\nSmoothly and calmly reaching the target"
+                    case .normal:
+                        return "\(intensityDescription):\nBalanced pace to reach the goal"
+                    case .high:
+                        return "\(intensityDescription):\nAchieving the goal most quickly"
+                    }
+                }()
+            )
+        )
+        let intensityCell = ScheduleView.CellState(
+            image: speedometerImage,
+            text: "\(schedule.intensity.description) intensity",
+            contextViewController: intensityPreview,
             actions: []
         )
 
@@ -113,12 +130,17 @@ final class ScheduleViewController: UIViewController {
 
         scheduleView.setState(
             ScheduleView.State(
-                showCells: .yes(sleepDurationCell, sunSyncCell, wakeUpCell, bedtimeCell),
+                showCells: .yes(sleepDurationCell, intensityCell, wakeUpCell, bedtimeCell),
                 title: "Personal schedule",
                 middleButtonTitle: pauseSchedule.isOnPause ? "Resume" : "Pause",
                 middleButtonHandler: { [weak self] in
-                    guard let self = self else { return }
+                    guard let self = self, let state = self.scheduleView.state else { return }
                     self.pauseSchedule(!self.pauseSchedule.isOnPause)
+                    self.scheduleView.setState(
+                        state.changing {
+                            $0.middleButtonTitle = self.pauseSchedule.isOnPause ? "Resume" : "Pause"
+                        }
+                    )
                 }
             )
         )

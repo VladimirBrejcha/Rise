@@ -26,5 +26,16 @@ extension Schedule {
         case low = 0
         case normal = 1
         case high = 2
+
+        var description: String {
+            switch self {
+            case .low:
+                return "Low"
+            case .normal:
+                return "Normal"
+            case .high:
+                return "High"
+            }
+        }
     }
 }

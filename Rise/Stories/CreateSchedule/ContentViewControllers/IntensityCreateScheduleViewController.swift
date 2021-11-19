@@ -85,17 +85,6 @@ final class IntensityCreateScheduleViewController: UIViewController {
 }
 
 fileprivate extension Schedule.Intensity {
-    var description: String {
-        switch self {
-        case .low:
-            return "Low"
-        case .normal:
-            return "Normal"
-        case .high:
-            return "High"
-        }
-    }
-
     var index: Int {
         Int(rawValue)
     }

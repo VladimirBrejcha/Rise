@@ -9,7 +9,8 @@
 import UIKit
 
 final class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
-    private lazy var appeareance: UITabBarAppearance = {
+
+    private lazy var appearance: UITabBarAppearance = {
         let appearance = UITabBarAppearance()
         appearance.configureWithTransparentBackground()
         appearance.backgroundImage = Asset.tabBarBack.image
@@ -28,7 +29,7 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBar.standardAppearance = appeareance
+        tabBar.standardAppearance = appearance
         delegate = self
     }
 
@@ -40,6 +41,7 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
     }
     
     // MARK: - UITabBarControllerDelegate -
+
     func tabBarController(
         _ tabBarController: UITabBarController,
         animationControllerForTransitionFrom fromVC: UIViewController,
