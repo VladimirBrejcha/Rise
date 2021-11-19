@@ -165,6 +165,21 @@ enum Style {
                 )
             )
         }
+
+        static var red: Button {
+            Button(
+                disabledTitleColor: Asset.Colors.red.color.withAlphaComponent(0.5),
+                titleStyle: Text(
+                    font: UIFont.boldSystemFont(ofSize: 18),
+                    color: Asset.Colors.red.color
+                ),
+                backgroundColor: Asset.Colors.white.color,
+                effects: Layer(
+                    shadow: .usual,
+                    cornerRadius: 22
+                )
+            )
+        }
     }
     
     // MARK: - Picker
@@ -178,6 +193,24 @@ enum Style {
 
         static var usual: Picker {
             Picker(textColor: Asset.Colors.white.color, lineColor: .clear)
+        }
+    }
+
+    // MARK: - Segmented control
+
+    struct SegmentedControl {
+        let selectionColor: UIColor
+        let backgroundColor: UIColor
+        let selectedTextColor: UIColor
+        let normalTextColor: UIColor
+
+        static var usual: SegmentedControl {
+            .init(
+                selectionColor: Asset.Colors.white.color.withAlphaComponent(0.3),
+                backgroundColor: .clear,
+                selectedTextColor: Asset.Colors.white.color,
+                normalTextColor: Asset.Colors.white.color.withAlphaComponent(0.3)
+            )
         }
     }
 }

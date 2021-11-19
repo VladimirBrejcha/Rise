@@ -8,7 +8,9 @@
 
 import Foundation
 
-struct EditScheduleButtonTableCellModel {
-    let title: String
-    let action: () -> Void
+extension EditScheduleButtonTableCell {
+    struct Model {
+        let title: String
+        let action: () -> Void
+    }
 }

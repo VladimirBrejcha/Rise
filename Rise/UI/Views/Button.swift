@@ -28,7 +28,7 @@ class Button: UIButton, PropertyAnimatable, StyledButton {
     }
     
     private func configure() {
-        applyStyle(.primary)
+        applyStyle(style)
         addTarget(self, action: #selector(scaleDown(_:)), for: [.touchDown, .touchDragInside])
         addTarget(self, action: #selector(scaleUp(_:)), for: [.touchUpInside, .touchDragOutside, .touchCancel])
         addTarget(self, action: #selector(handleTouchDown(_:)), for: [.touchDown])

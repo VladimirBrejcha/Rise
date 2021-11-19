@@ -18,11 +18,11 @@ extension SettingsView {
             let title: String
             let description: String
         }
-        private var model: Model!
+        private(set) var model: Model!
         private var touchHandler: (() -> Void)?
         var propertyAnimationDuration: Double { 0.2 }
 
-        // MARK: - Subviewss
+        // MARK: - Subviews
 
         private lazy var imageView: UIImageView = {
             let view = UIImageView()

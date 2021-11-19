@@ -9,7 +9,12 @@
 import UIKit
 
 final class EditScheduleTableView: TableView {
-    override var cellTypes: [UITableViewCell.Type] { [EditScheduleDatePickerTableCell.self,
-                                                      EditScheduleSliderTableCell.self,
-                                                      EditScheduleButtonTableCell.self] }
+    override var cellTypes: [UITableViewCell.Type] {
+        [
+            EditScheduleDatePickerTableCell.self,
+            EditScheduleSliderTableCell.self,
+            EditScheduleButtonTableCell.self,
+            EditScheduleSegmentedControlTableCell.self
+        ]
+    }
 }

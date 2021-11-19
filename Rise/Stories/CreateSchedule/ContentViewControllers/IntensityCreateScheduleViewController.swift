@@ -21,16 +21,7 @@ final class IntensityCreateScheduleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        intensitySegmentedControl.selectedSegmentTintColor = .white.withAlphaComponent(0.3)
-        intensitySegmentedControl.backgroundColor = .clear
-        intensitySegmentedControl.setTitleTextAttributes(
-            [NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.3)],
-            for: .normal
-        )
-        intensitySegmentedControl.setTitleTextAttributes(
-            [NSAttributedString.Key.foregroundColor: UIColor.white],
-            for: .selected
-        )
+        intensitySegmentedControl.applyStyle(.usual)
         intensitySegmentedControl.removeAllSegments()
         intensitySegmentedControl.insertSegment(
             action: .init(
@@ -81,11 +72,5 @@ final class IntensityCreateScheduleViewController: UIViewController {
                 return "Achieve the goal most quickly"
             }
         }()
-    }
-}
-
-fileprivate extension Schedule.Intensity {
-    var index: Int {
-        Int(rawValue)
     }
 }

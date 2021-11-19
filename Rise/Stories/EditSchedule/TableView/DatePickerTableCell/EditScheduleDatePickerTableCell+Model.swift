@@ -8,8 +8,10 @@
 
 import Foundation
 
-struct EditScheduleDatePickerTableCellModel {
-    let initialValue: Date
-    let text: String
-    let datePickerDelegate: ((Date) -> Void)
+extension EditScheduleDatePickerTableCell {
+    struct Model {
+        let initialValue: Date
+        let text: String
+        let datePickerDelegate: ((Date) -> Void)
+    }
 }

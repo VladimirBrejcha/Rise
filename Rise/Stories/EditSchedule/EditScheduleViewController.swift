@@ -8,59 +8,29 @@
 
 import UIKit
 
-final class EditScheduleViewController: UIViewController, UITableViewDelegate {
-    @IBOutlet private var editScheduleView: EditScheduleView!
-    
-    private typealias DatePickerCellConfigurator
-        = TableCellConfigurator<EditScheduleDatePickerTableCell, EditScheduleDatePickerTableCellModel>
-    private typealias SliderCellConfigurator
-        = TableCellConfigurator<EditScheduleSliderTableCell, EditScheduleSliderTableCellModel>
-    private typealias ButtonCellConfigurator
-        = TableCellConfigurator<EditScheduleButtonTableCell, EditScheduleButtonTableCellModel>
+final class EditScheduleViewController:
+    UIViewController,
+    UITableViewDelegate
+{
 
-    var getSchedule: GetSchedule! // DI
-    var updateSchedule: UpdateSchedule! // DI
-    var deleteSchedule: DeleteSchedule! // DI
+    private let schedule: Schedule
+    private let updateSchedule: UpdateSchedule
+    private let deleteSchedule: DeleteSchedule
 
-    private var schedule: Schedule?
-    
-    private var tableDataSource: TableDataSource! // late init
-    private var cellConfigurators: [[CellConfigurator]] {
-        get { tableDataSource?.items ?? [] }
-        set { tableDataSource?.items = newValue }
-    }
-    
     private var pickedToBed: Date?
-    private var pickedSleepDuration: Int?
+    private var pickedSleepDuration: Schedule.Minute?
+    private var pickedIntensity: Schedule.Intensity?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        guard let schedule = getSchedule.today() else {
-            log(.info, "Schedule is nil - dismissing")
-            dismiss()
-            return
-        }
-        self.schedule = schedule
-
-        let plannedWakeUpTime = schedule.targetWakeUp
-        
+    private lazy var tableDataSource: TableDataSource = {
+        let plannedToBed = schedule.targetToBed
         let minimumDurationMin: Float = 6 * 60
         let maximumDurationMin: Float = 10 * 60
         let plannedDurationMin: Float = Float(schedule.sleepDuration)
-        
         let sleepDurationString = schedule.sleepDuration.HHmmString
-        
-        tableDataSource = TableDataSource(
+
+        return TableDataSource(
             items: [
-                [DatePickerCellConfigurator(model: EditScheduleDatePickerTableCellModel(
-                    initialValue: plannedWakeUpTime,
-                    text: "To bed time",
-                    datePickerDelegate: { [weak self] value in
-                        self?.pickedToBed = value
-                    }
-                ))],
-                [SliderCellConfigurator(model: EditScheduleSliderTableCellModel(
+                [SliderCellConfigurator(model: .init(
                     title: "Sleep duration",
                     text: (left: "6", center: sleepDurationString, right: "10"),
                     sliderMinValue: minimumDurationMin,
@@ -71,7 +41,38 @@ final class EditScheduleViewController: UIViewController, UITableViewDelegate {
                         return Int(value).HHmmString
                     }
                 ))],
-                [ButtonCellConfigurator(model: EditScheduleButtonTableCellModel(
+                [SegmentedControlCellConfigurator(model: .init(
+                    title: "Intensity",
+                    selectedSegment: schedule.intensity.index,
+                    segments: [
+                        .init(
+                            title: Schedule.Intensity.low.description,
+                            handler: { [weak self] _ in
+                                self?.pickedIntensity = .low
+                            }
+                        ),
+                        .init(
+                            title: Schedule.Intensity.normal.description,
+                            handler: { [weak self] _ in
+                                self?.pickedIntensity = .normal
+                            }
+                        ),
+                        .init(
+                            title: Schedule.Intensity.high.description,
+                            handler: { [weak self] _ in
+                                self?.pickedIntensity = .high
+                            }
+                        )
+                    ]
+                ))],
+                [DatePickerCellConfigurator(model: .init(
+                    initialValue: plannedToBed,
+                    text: "To bed time",
+                    datePickerDelegate: { [weak self] value in
+                        self?.pickedToBed = value
+                    }
+                ))],
+                [ButtonCellConfigurator(model: .init(
                     title: "Delete and stop",
                     action: { [weak self] in
                         self?.deleteSchedule()
@@ -80,58 +81,74 @@ final class EditScheduleViewController: UIViewController, UITableViewDelegate {
                 ))]
             ]
         )
-        
-        editScheduleView.configure(
+    }()
+
+    private var cellConfigurators: [[CellConfigurator]] {
+        get { tableDataSource.items }
+        set { tableDataSource.items = newValue }
+    }
+
+    // MARK: - LifeCycle
+
+    init(updateSchedule: UpdateSchedule,
+         deleteSchedule: DeleteSchedule,
+         schedule: Schedule
+    ) {
+        self.updateSchedule = updateSchedule
+        self.deleteSchedule = deleteSchedule
+        self.schedule = schedule
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("This class does not support NSCoder")
+    }
+
+    override func loadView() {
+        super.loadView()
+        self.view = EditScheduleView(
             dataSource: tableDataSource,
             delegate: self,
-            handlers: EditScheduleView.Handlers(
-                close: { [weak self] in
-                    self?.dismiss()
-                },
-                save: { [weak self] in
-                    guard let self = self else { return }
-                    guard let schedule = self.getSchedule.today(),
-                          self.pickedSleepDuration != nil || self.pickedToBed != nil
-                    else {
-                        self.dismiss()
-                        return
-                    }
-                    self.updateSchedule(
-                        current: schedule,
-                        newSleepDuration: self.pickedSleepDuration,
-                        newToBed: self.pickedToBed
-                    )
+            closeHandler: { [weak self] in
+                self?.dismiss()
+            },
+            saveHandler: { [weak self] in
+                guard let self = self else { return }
+                guard self.pickedSleepDuration != nil
+                        || self.pickedToBed != nil
+                        || self.pickedIntensity != nil
+                else {
                     self.dismiss()
+                    return
                 }
-            )
+                self.updateSchedule(
+                    current: self.schedule,
+                    newSleepDuration: self.pickedSleepDuration,
+                    newToBed: self.pickedToBed,
+                    newIntensity: self.pickedIntensity
+                )
+                self.dismiss()
+            }
         )
     }
     
     // MARK: - UITableViewDelegate -
 
-    private let cellSpacing: CGFloat = 10
-    private let sectionFooter: UIView = {
-        let view = UIView()
-        view.backgroundColor = .clear
-        return view
-    }()
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-        case 0: return 180
-        case 3: return 60
-        default: return 120
-        }
+        tableDataSource.items[indexPath.section][indexPath.row].height
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         section == tableView.numberOfSections - 1
             ? 0
-            : cellSpacing
+            : 10
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        sectionFooter
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
     }
     
     // MARK: - Private -
@@ -139,4 +156,15 @@ final class EditScheduleViewController: UIViewController, UITableViewDelegate {
     private func dismiss() {
         dismiss(animated: true)
     }
+}
+
+fileprivate extension EditScheduleViewController {
+    typealias DatePickerCellConfigurator
+    = TableCellConfigurator<EditScheduleDatePickerTableCell, EditScheduleDatePickerTableCell.Model>
+    typealias SliderCellConfigurator
+    = TableCellConfigurator<EditScheduleSliderTableCell, EditScheduleSliderTableCell.Model>
+    typealias ButtonCellConfigurator
+    = TableCellConfigurator<EditScheduleButtonTableCell, EditScheduleButtonTableCell.Model>
+    typealias SegmentedControlCellConfigurator
+    = TableCellConfigurator<EditScheduleSegmentedControlTableCell, EditScheduleSegmentedControlTableCell.Model>
 }

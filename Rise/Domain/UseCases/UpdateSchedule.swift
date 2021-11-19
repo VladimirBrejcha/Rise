@@ -17,7 +17,8 @@ protocol UpdateSchedule {
     func callAsFunction(
         current schedule: Schedule,
         newSleepDuration: Schedule.Minute?,
-        newToBed: Date?
+        newToBed: Date?,
+        newIntensity: Schedule.Intensity?
     )
 }
 
@@ -36,13 +37,14 @@ final class UpdateScheduleImpl: UpdateSchedule {
     func callAsFunction(
         current schedule: Schedule,
         newSleepDuration: Schedule.Minute?,
-        newToBed: Date?
+        newToBed: Date?,
+        newIntensity: Schedule.Intensity?
     ) {
         let newSchedule = createSchedule(
             wantedSleepDuration: newSleepDuration ?? schedule.sleepDuration,
             currentToBed: schedule.toBed,
-            wantedToBed: newToBed?.normalized(with: schedule.targetToBed) ?? schedule.targetToBed,
-            intensity: schedule.intensity
+            wantedToBed: newToBed?.normalised(with: schedule.targetToBed) ?? schedule.targetToBed,
+            intensity: newIntensity ?? schedule.intensity
         )
         scheduleRepository.deleteAll()
         scheduleRepository.save(newSchedule)
@@ -50,7 +52,7 @@ final class UpdateScheduleImpl: UpdateSchedule {
 }
 
 fileprivate extension Date {
-    func normalized(with date: Date) -> Date {
+    func normalised(with date: Date) -> Date {
         let components = calendar.dateComponents([.hour, .minute], from: self)
         guard let hour = components.hour,
               let minute = components.minute,

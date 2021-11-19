@@ -1,5 +1,5 @@
 //
-//  StyledButton.swift
+//  CALayer+Styleable.swift
 //  Rise
 //
 //  Created by Vladimir Korolev on 02.04.2021.

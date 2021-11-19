@@ -46,7 +46,7 @@ extension ErrorAlertCreatable where Self: UIViewController {
         let alertViewController = aboveAll
             ? AboveAllAlertController(title: title, message: message, preferredStyle: .alert)
             : UIAlertController(title: title, message: message, preferredStyle: .alert)
-        actions.forEach { alertViewController.addAction($0) }
+        actions.forEach(alertViewController.addAction)
         return alertViewController
     }
 

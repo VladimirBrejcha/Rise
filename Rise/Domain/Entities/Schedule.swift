@@ -37,5 +37,9 @@ extension Schedule {
                 return "High"
             }
         }
+        
+        var index: Int {
+            Int(rawValue)
+        }
     }
 }

@@ -10,15 +10,7 @@ import UIKit
 
 class TableView: UITableView {
     var cellTypes: [UITableViewCell.Type] { [] }
-    
-    private var cellIDs: [String] { cellTypes.map { String(describing: $0) } }
-    private var nibNames: [String] { cellIDs }
-    private var nibs: [UINib] {
-        nibNames.map {
-            UINib(nibName: $0, bundle: nil)
-        }
-    }
-    
+
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         sharedInit()
@@ -30,8 +22,11 @@ class TableView: UITableView {
     }
     
     private func sharedInit() {
-        for index in cellIDs.indices {
-            register(nibs[index], forCellReuseIdentifier: cellIDs[index])
+        for cellType in cellTypes {
+            register(
+                cellType.self,
+                forCellReuseIdentifier: String(describing: cellType.self)
+            )
         }
     }
 }

@@ -10,5 +10,6 @@ import UIKit
 
 protocol CellConfigurator {
     static var reuseId: String { get }
+    var height: CGFloat { get }
     func configure(cell: UIView)
 }

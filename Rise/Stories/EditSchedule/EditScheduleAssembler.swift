@@ -7,11 +7,11 @@
 //
 
 final class EditScheduleAssembler {    
-    func assemble() -> EditScheduleViewController {
-        let controller = Storyboard.editSchedule.instantiateViewController(of: EditScheduleViewController.self)
-        controller.getSchedule = DomainLayer.getSchedule
-        controller.updateSchedule = DomainLayer.updateSchedule
-        controller.deleteSchedule = DomainLayer.deleteSchedule
-        return controller
+    func assemble(schedule: Schedule) -> EditScheduleViewController {
+        EditScheduleViewController(
+            updateSchedule: DomainLayer.updateSchedule,
+            deleteSchedule: DomainLayer.deleteSchedule,
+            schedule: schedule
+        )
     }
 }

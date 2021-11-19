@@ -10,7 +10,6 @@ import UIKit
 
 final class SettingsView: UIView {
 
-    private var models: [ItemView.Model] = []
     private var selectionHandler: ((SettingIdentifier) -> Void)?
 
     // MARK: - Subviews
@@ -35,11 +34,9 @@ final class SettingsView: UIView {
     // MARK: - LifeCycle
 
     convenience init(
-        models: [ItemView.Model],
         selectionHandler: @escaping (SettingIdentifier) -> Void
     ) {
         self.init(frame: .zero)
-        self.models = models
         self.selectionHandler = selectionHandler
         setup()
     }
@@ -52,18 +49,33 @@ final class SettingsView: UIView {
     private func setupViews() {
         addSubviews(
             backgroundImageView,
-            VStack.addArrangedSubviews(
-                models.map { model in
-                    ItemView(
-                        model: model,
-                        touchHandler: { [weak self] in
-                            self?.selectionHandler?(model.identifier)
-                        }
-                    )
-                },
-                separated: true
-            )
+            VStack
         )
+    }
+
+    func reconfigure(with models: [ItemView.Model]) {
+        VStack.arrangedSubviews.forEach {
+            $0.removeFromSuperview()
+        }
+        VStack.addArrangedSubviews(
+            models.map { model in
+                ItemView(
+                    model: model,
+                    touchHandler: { [weak self] in
+                        self?.selectionHandler?(model.identifier)
+                    }
+                )
+            },
+            separated: true
+        )
+        VStack.arrangedSubviews.forEach { view in
+            view.activateConstraints(
+                view.widthAnchor.constraint(
+                    equalTo: VStack.widthAnchor,
+                    constant: view is ItemView ? 0 : -44
+                )
+            )
+        }
     }
 
     func deselectAll() {
@@ -88,13 +100,5 @@ final class SettingsView: UIView {
             VStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             VStack.centerYAnchor.constraint(equalTo: centerYAnchor)
         )
-        VStack.arrangedSubviews.forEach { view in
-            view.activateConstraints(
-                view.widthAnchor.constraint(
-                    equalTo: VStack.widthAnchor,
-                    constant: view is ItemView ? 0 : -44
-                )
-            )
-        }
     }
 }

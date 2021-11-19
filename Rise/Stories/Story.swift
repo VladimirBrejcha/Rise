@@ -43,7 +43,7 @@ enum Story {
     case scheduleCreatedCreateSchedule
     
     // Edit schedule
-    case editSchedule
+    case editSchedule(schedule: Schedule)
     
     // Сonfirmation
     case confirmation
@@ -114,8 +114,8 @@ enum Story {
         case .scheduleCreatedCreateSchedule:
             let controller = Storyboard.createSchedule.instantiateViewController(of: ScheduleCreatedCreateScheduleViewController.self)
             return controller
-        case .editSchedule:
-            return EditScheduleAssembler().assemble()
+        case let .editSchedule(schedule):
+            return EditScheduleAssembler().assemble(schedule: schedule)
         case .confirmation:
             return ConfirmationAssembler().assemble()
         case .prepareToSleep:

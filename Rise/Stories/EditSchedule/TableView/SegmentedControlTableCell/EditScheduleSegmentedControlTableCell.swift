@@ -1,19 +1,19 @@
 //
-//  EditScheduleSliderTableCell.swift
+//  EditScheduleSegmentedControlTableCell.swift
 //  Rise
 //
-//  Created by Vladimir Korolev on 24.02.2020.
-//  Copyright © 2020 VladimirBrejcha. All rights reserved.
+//  Created by Vladimir Korolev on 19.11.2021.
+//  Copyright © 2021 VladimirBrejcha. All rights reserved.
 //
 
 import UIKit
 
-final class EditScheduleSliderTableCell:
+final class EditScheduleSegmentedControlTableCell:
     UITableViewCell,
     ConfigurableCell,
     SelfHeightSizing
 {
-    static var height: CGFloat { 130 }
+    static var height: CGFloat { 70 }
 
     // MARK: - Subviews
 
@@ -22,15 +22,16 @@ final class EditScheduleSliderTableCell:
         return container
     }()
 
+    private lazy var segmentedControl: UISegmentedControl = {
+        let segmentedControl = UISegmentedControl()
+        segmentedControl.applyStyle(.usual)
+        return segmentedControl
+    }()
+
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.applyStyle(.mediumSizedBody)
         return label
-    }()
-
-    private lazy var slider: SliderWithValues = {
-        let slider = SliderWithValues()
-        return slider
     }()
 
     // MARK: - LifeCycle
@@ -52,7 +53,7 @@ final class EditScheduleSliderTableCell:
         contentView.addSubviews(
             titleLabel,
             container.addSubviews(
-                slider
+                segmentedControl
             )
         )
     }
@@ -71,27 +72,22 @@ final class EditScheduleSliderTableCell:
             container.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             container.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 2)
         )
-        slider.activateConstraints(
-            slider.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            slider.trailingAnchor.constraint(equalTo: container.trailingAnchor),
-            slider.bottomAnchor.constraint(equalTo: container.bottomAnchor),
-            slider.heightAnchor.constraint(equalToConstant: 90),
-            slider.topAnchor.constraint(equalTo: container.topAnchor)
+        segmentedControl.activateConstraints(
+            segmentedControl.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            segmentedControl.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+            segmentedControl.bottomAnchor.constraint(equalTo: container.bottomAnchor),
+            segmentedControl.topAnchor.constraint(equalTo: container.topAnchor)
         )
     }
 
     // MARK: - ConfigurableCell
-    
+
     func configure(with model: Model) {
         titleLabel.text = model.title
-        slider.leftLabel.text = model.text.left
-        slider.centerLabel.text = model.text.center
-        slider.rightLabel.text = model.text.right
-        slider.slider.minimumValue = model.sliderMinValue
-        slider.slider.maximumValue = model.sliderMaxValue
-        slider.slider.setValue(model.sliderValue, animated: true)
-        slider.centerLabelDataSource = {
-            model.centerLabelDataSource(self, $0)
+        segmentedControl.removeAllSegments()
+        model.segments.enumerated().forEach {
+            segmentedControl.insertSegment(action: $1, at: $0, animated: false)
         }
+        segmentedControl.selectedSegmentIndex = model.selectedSegment
     }
 }

@@ -18,6 +18,7 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
     private var todaySchedule: Schedule?
 
     var propertyAnimationDuration: Double { 0.15 }
+
     // MARK: - LifeCycle
 
     init(getSchedule: GetSchedule) {
