@@ -19,8 +19,16 @@ final class EditScheduleViewController:
     private let deleteSchedule: DeleteSchedule
 
     private var pickedToBed: Date?
-    private var pickedSleepDuration: Schedule.Minute?
+    private var pickedSleepDuration: Schedule.Minute? {
+        didSet {
+            if let pickedSleepDuration = pickedSleepDuration {
+                sleepDurationObserver?(pickedSleepDuration)
+            }
+        }
+    }
     private var pickedIntensity: Schedule.Intensity?
+
+    private var sleepDurationObserver: ((Schedule.Minute) -> Void)?
     
     private lazy var tableDataSource: TableDataSource = {
         let plannedToBed = schedule.targetToBed
@@ -66,13 +74,19 @@ final class EditScheduleViewController:
                         )
                     ]
                 ))],
-                [DatePickerCellConfigurator(model: .init(
-                    initialValue: plannedToBed,
-                    text: "To bed time",
-                    datePickerDelegate: { [weak self] value in
-                        self?.pickedToBed = value
-                    }
-                ))],
+                [DatePickerCellConfigurator(
+                    model: .init(
+                        initialValue: plannedToBed,
+                        initialSleepDuration: schedule.sleepDuration,
+                        text: "To bed time",
+                        datePickerDelegate: { [weak self] value in
+                            self?.pickedToBed = value
+                        },
+                        sleepDurationObserver: { [weak self] observer in
+                            self?.sleepDurationObserver = observer
+                        }
+                    )
+                )],
                 [ButtonCellConfigurator(model: .init(
                     title: "Delete and stop",
                     action: { [weak self] in

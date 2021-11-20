@@ -90,8 +90,9 @@ final class EditScheduleSliderTableCell:
         slider.slider.minimumValue = model.sliderMinValue
         slider.slider.maximumValue = model.sliderMaxValue
         slider.slider.setValue(model.sliderValue, animated: true)
-        slider.centerLabelDataSource = {
-            model.centerLabelDataSource(self, $0)
+        slider.centerLabelDataSource = { [weak self] in
+            guard let self = self else { return "" }
+            return model.centerLabelDataSource(self, $0)
         }
     }
 }

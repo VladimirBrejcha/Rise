@@ -11,7 +11,9 @@ import Foundation
 extension EditScheduleDatePickerTableCell {
     struct Model {
         let initialValue: Date
+        let initialSleepDuration: Schedule.Minute
         let text: String
-        let datePickerDelegate: ((Date) -> Void)
+        let datePickerDelegate: (Date) -> Void
+        let sleepDurationObserver: (@escaping (Schedule.Minute) -> Void) -> Void
     }
 }

@@ -13,8 +13,13 @@ final class EditScheduleDatePickerTableCell:
     ConfigurableCell,
     SelfHeightSizing
 {
-    static var height: CGFloat { 180 }
+    static var height: CGFloat { 200 }
     private var datePickerDelegate: ((Date) -> Void)?
+    private var sleepDuration: Schedule.Minute = 8 * 60 {
+        didSet {
+            self.refreshWakeUpLabel(with: datePicker.date, sleepDuration: sleepDuration)
+        }
+    }
 
     // MARK: - Subviews
 
@@ -42,6 +47,12 @@ final class EditScheduleDatePickerTableCell:
         return label
     }()
 
+    private lazy var wakeUpLabel: UILabel = {
+        let label = UILabel()
+        label.applyStyle(.footer)
+        return label
+    }()
+
     // MARK: - LifeCycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -62,12 +73,14 @@ final class EditScheduleDatePickerTableCell:
             titleLabel,
             container.addSubviews(
                 datePicker
-            )
+            ),
+            wakeUpLabel
         )
     }
     
     @IBAction private func datePickerValueChanged(_ sender: UIDatePicker) {
         datePickerDelegate?(sender.date)
+        refreshWakeUpLabel(with: sender.date, sleepDuration: sleepDuration)
     }
 
     // MARK: - Layout
@@ -81,7 +94,6 @@ final class EditScheduleDatePickerTableCell:
         container.activateConstraints(
             container.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             container.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            container.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             container.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 2)
         )
         datePicker.activateConstraints(
@@ -91,6 +103,12 @@ final class EditScheduleDatePickerTableCell:
             datePicker.heightAnchor.constraint(equalToConstant: 140),
             datePicker.topAnchor.constraint(equalTo: container.topAnchor)
         )
+        wakeUpLabel.activateConstraints(
+            wakeUpLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            wakeUpLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            wakeUpLabel.topAnchor.constraint(equalTo: container.bottomAnchor, constant: 10),
+            wakeUpLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        )
     }
     
     // MARK: - ConfigurableCell -
@@ -98,6 +116,15 @@ final class EditScheduleDatePickerTableCell:
     func configure(with model: Model) {
         titleLabel.text = model.text
         datePicker.setDate(model.initialValue, animated: false)
+        sleepDuration = model.initialSleepDuration
+        model.sleepDurationObserver({ [weak self] sleepDuration in
+            self?.sleepDuration = sleepDuration
+        })
         datePickerDelegate = model.datePickerDelegate
+    }
+
+    private func refreshWakeUpLabel(with date: Date, sleepDuration: Schedule.Minute) {
+        let wakeUpDate = date.addingTimeInterval(minutes: sleepDuration)
+        wakeUpLabel.text = "Estimated wake up at \(wakeUpDate.HHmmString)"
     }
 }
