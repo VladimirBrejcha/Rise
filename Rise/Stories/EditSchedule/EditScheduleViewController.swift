@@ -10,9 +10,10 @@ import UIKit
 
 final class EditScheduleViewController:
     UIViewController,
-    UITableViewDelegate
+    UITableViewDelegate,
+    AlertCreatable,
+    AlertPresentable
 {
-
     private let schedule: Schedule
     private let updateSchedule: UpdateSchedule
     private let deleteSchedule: DeleteSchedule
@@ -75,8 +76,17 @@ final class EditScheduleViewController:
                 [ButtonCellConfigurator(model: .init(
                     title: "Delete and stop",
                     action: { [weak self] in
-                        self?.deleteSchedule()
-                        self?.dismiss()
+                        self?.presentAreYouSureAlert(
+                            text: "You are about to delete the schedule. You can't undo this action",
+                            action: .init(
+                                title: "Delete",
+                                style: .destructive,
+                                handler: { _ in
+                                    self?.deleteSchedule()
+                                    self?.dismiss()
+                                }
+                            )
+                        )
                     }
                 ))]
             ]

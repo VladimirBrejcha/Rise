@@ -10,7 +10,7 @@ import UIKit
 
 protocol AlertCreatable: AnyObject, ErrorReasonExtractable {
     func makeAlert(for error: Error) -> UIAlertController
-    func makeDefaultAlert(with text: String) -> UIAlertController
+    func makeAreYouSureAlert(text: String, action: UIAlertAction) -> UIAlertController
 }
 
 extension AlertCreatable where Self: UIViewController {
@@ -35,6 +35,10 @@ extension AlertCreatable where Self: UIViewController {
             message: description,
             actions: [.okAction]
         )
+    }
+
+    func makeAreYouSureAlert(text: String, action: UIAlertAction) -> UIAlertController {
+        makeAlert(title: "Are you sure?", message: text, actions: [action, .cancelAction])
     }
     
     private func makeAlert(
@@ -62,12 +66,9 @@ extension AlertCreatable where Self: UIViewController {
         }
         return makeAlert(title: title, message: message, actions: actions)
     }
-
-    func makeDefaultAlert(with text: String) -> UIAlertController {
-        makeAlert(title: text, message: nil, actions: [.okAction])
-    }
 }
 
 extension UIAlertAction {
     static let okAction = UIAlertAction(title: "Ok", style: .cancel) { _ in }
+    static let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in }
 }
