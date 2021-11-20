@@ -1,5 +1,5 @@
 //
-//  ErrorAlertCreatable.swift
+//  AlertCreatable.swift
 //  Rise
 //
 //  Created by Vladimir Korolev on 18.08.2020.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-protocol ErrorAlertCreatable: AnyObject, ErrorReasonExtractable {
-    func makeAlert(for error: Error, aboveAll: Bool) -> UIAlertController
+protocol AlertCreatable: AnyObject, ErrorReasonExtractable {
+    func makeAlert(for error: Error) -> UIAlertController
     func makeDefaultAlert(with text: String) -> UIAlertController
 }
 
-extension ErrorAlertCreatable where Self: UIViewController {
-    func makeAlert(for error: Error, aboveAll: Bool) -> UIAlertController {
+extension AlertCreatable where Self: UIViewController {
+    func makeAlert(for error: Error) -> UIAlertController {
         if let recoverableError = error as? RecoverableError {
-            return makeRecoverableAlert(for: recoverableError, aboveAll: aboveAll)
+            return makeRecoverableAlert(for: recoverableError)
         }
         
         let defaultTitle = "Error"
@@ -26,33 +26,29 @@ extension ErrorAlertCreatable where Self: UIViewController {
             return makeAlert(
                 title: localizedError.errorDescription ?? defaultTitle,
                 message: description,
-                actions: [.defaultAction],
-                aboveAll: aboveAll
+                actions: [.okAction]
             )
         }
 
         return makeAlert(
-            title: defaultTitle, message: description,
-            actions: [.defaultAction], aboveAll: aboveAll
+            title: defaultTitle,
+            message: description,
+            actions: [.okAction]
         )
     }
     
     private func makeAlert(
         title: String?,
         message: String?,
-        actions: [UIAlertAction],
-        aboveAll: Bool
+        actions: [UIAlertAction]
     ) -> UIAlertController {
-        let alertViewController = aboveAll
-            ? AboveAllAlertController(title: title, message: message, preferredStyle: .alert)
-            : UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         actions.forEach(alertViewController.addAction)
         return alertViewController
     }
 
     private func makeRecoverableAlert(
-        for recoverableError: RecoverableError,
-        aboveAll: Bool
+        for recoverableError: RecoverableError
     ) -> UIAlertController {
         let title = recoverableError.errorDescription
         let message = errorReason(from: recoverableError)
@@ -64,14 +60,14 @@ extension ErrorAlertCreatable where Self: UIViewController {
                 recoverableError.attemptRecovery(optionIndex: element.offset)
             }
         }
-        return makeAlert(title: title, message: message, actions: actions, aboveAll: aboveAll)
+        return makeAlert(title: title, message: message, actions: actions)
     }
 
     func makeDefaultAlert(with text: String) -> UIAlertController {
-        makeAlert(title: text, message: nil, actions: [.defaultAction], aboveAll: false)
+        makeAlert(title: text, message: nil, actions: [.okAction])
     }
 }
 
 extension UIAlertAction {
-    static let defaultAction = UIAlertAction(title: "Ok", style: .cancel) { _ in }
+    static let okAction = UIAlertAction(title: "Ok", style: .cancel) { _ in }
 }

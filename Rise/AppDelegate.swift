@@ -25,19 +25,6 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         return window
     }()
 
-    // MARK: - AboveAllAlertController
-
-    static private(set) var alertWindow: UIWindow = {
-        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
-        alertWindow.backgroundColor = .clear
-
-        let viewController = UIViewController()
-        viewController.view.backgroundColor = .clear
-        alertWindow.rootViewController = viewController
-
-        return alertWindow
-    }()
-
     // MARK: - UIApplicationDelegate
     
     func application(

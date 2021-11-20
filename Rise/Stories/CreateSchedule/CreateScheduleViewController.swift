@@ -11,8 +11,8 @@ import UIKit
 final class CreateScheduleViewController:
     UIViewController,
     UIAdaptivePresentationControllerDelegate,
-    ErrorAlertCreatable,
-    ErrorAlertPresentable
+    AlertCreatable,
+    AlertPresentable
 {
     @IBOutlet private var createScheduleView: CreateScheduleView!
     

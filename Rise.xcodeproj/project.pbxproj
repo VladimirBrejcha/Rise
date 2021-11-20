@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7E052A40235236F1005D7FAD /* SunTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E052A3F235236F1005D7FAD /* SunTime.swift */; };
-		7E052A422352377E005D7FAD /* InternalError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E052A412352377E005D7FAD /* InternalError.swift */; };
 		7E06FE92252E3829005D72CB /* AnimatedTransitionNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E06FE91252E3829005D72CB /* AnimatedTransitionNavigationController.swift */; };
 		7E06FE97252E3841005D72CB /* AnimatedTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E06FE96252E3841005D72CB /* AnimatedTransition.swift */; };
 		7E07A10123AFBEE300B9D61A /* WelcomeCreateScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E07A10023AFBEE300B9D61A /* WelcomeCreateScheduleViewController.swift */; };
@@ -18,6 +17,8 @@
 		7E15396B2748028400CC2E7B /* UISegmentedControl+Styleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E15396A2748028400CC2E7B /* UISegmentedControl+Styleable.swift */; };
 		7E15396D2748043700CC2E7B /* EditScheduleSegmentedControlTableCell+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E15396C2748043700CC2E7B /* EditScheduleSegmentedControlTableCell+Model.swift */; };
 		7E15396F2748156C00CC2E7B /* SelfHeightSizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E15396E2748156C00CC2E7B /* SelfHeightSizing.swift */; };
+		7E15397327494C1F00CC2E7B /* AudioPlayerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E15397227494C1F00CC2E7B /* AudioPlayerError.swift */; };
+		7E15397527494C3400CC2E7B /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E15397427494C3400CC2E7B /* Sound.swift */; };
 		7E162FF1243D0E22004C68B1 /* AutoRefreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E162FF0243D0E22004C68B1 /* AutoRefreshable.swift */; };
 		7E173372240D9F7A0028FDBE /* DomainLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E173371240D9F7A0028FDBE /* DomainLayer.swift */; };
 		7E173375241044D70028FDBE /* SunTimeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E173374241044D70028FDBE /* SunTimeRepository.swift */; };
@@ -83,9 +84,8 @@
 		7E69836724EC690C002EE278 /* RecoveryAttempter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69836624EC690C002EE278 /* RecoveryAttempter.swift */; };
 		7E69836924EC6923002EE278 /* RecoveryOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69836824EC6923002EE278 /* RecoveryOptions.swift */; };
 		7E69836B24EC6932002EE278 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69836A24EC6932002EE278 /* NetworkError.swift */; };
-		7E69836E24EC6980002EE278 /* AboveAllAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69836D24EC6980002EE278 /* AboveAllAlert.swift */; };
-		7E69837024EC69A5002EE278 /* ErrorAlertCreatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69836F24EC69A5002EE278 /* ErrorAlertCreatable.swift */; };
-		7E69837224EC69B8002EE278 /* ErrorAlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69837124EC69B8002EE278 /* ErrorAlertPresentable.swift */; };
+		7E69837024EC69A5002EE278 /* AlertCreatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69836F24EC69A5002EE278 /* AlertCreatable.swift */; };
+		7E69837224EC69B8002EE278 /* AlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69837124EC69B8002EE278 /* AlertPresentable.swift */; };
 		7E69837424EC69CE002EE278 /* ErrorDescriptionExtractable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69837324EC69CE002EE278 /* ErrorDescriptionExtractable.swift */; };
 		7E69837624EC69DE002EE278 /* ErrorViewAddable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69837524EC69DE002EE278 /* ErrorViewAddable.swift */; };
 		7E69837824EC69EE002EE278 /* ErrorViewCreatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69837724EC69EE002EE278 /* ErrorViewCreatable.swift */; };
@@ -228,7 +228,6 @@
 
 /* Begin PBXFileReference section */
 		7E052A3F235236F1005D7FAD /* SunTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTime.swift; sourceTree = "<group>"; };
-		7E052A412352377E005D7FAD /* InternalError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalError.swift; sourceTree = "<group>"; };
 		7E06FE91252E3829005D72CB /* AnimatedTransitionNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedTransitionNavigationController.swift; sourceTree = "<group>"; };
 		7E06FE96252E3841005D72CB /* AnimatedTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedTransition.swift; sourceTree = "<group>"; };
 		7E07A10023AFBEE300B9D61A /* WelcomeCreateScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCreateScheduleViewController.swift; sourceTree = "<group>"; };
@@ -238,6 +237,8 @@
 		7E15396A2748028400CC2E7B /* UISegmentedControl+Styleable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Styleable.swift"; sourceTree = "<group>"; };
 		7E15396C2748043700CC2E7B /* EditScheduleSegmentedControlTableCell+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditScheduleSegmentedControlTableCell+Model.swift"; sourceTree = "<group>"; };
 		7E15396E2748156C00CC2E7B /* SelfHeightSizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfHeightSizing.swift; sourceTree = "<group>"; };
+		7E15397227494C1F00CC2E7B /* AudioPlayerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerError.swift; sourceTree = "<group>"; };
+		7E15397427494C3400CC2E7B /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		7E162FF0243D0E22004C68B1 /* AutoRefreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRefreshable.swift; sourceTree = "<group>"; };
 		7E173371240D9F7A0028FDBE /* DomainLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainLayer.swift; sourceTree = "<group>"; };
 		7E173374241044D70028FDBE /* SunTimeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeRepository.swift; sourceTree = "<group>"; };
@@ -301,9 +302,8 @@
 		7E69836624EC690C002EE278 /* RecoveryAttempter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryAttempter.swift; sourceTree = "<group>"; };
 		7E69836824EC6923002EE278 /* RecoveryOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryOptions.swift; sourceTree = "<group>"; };
 		7E69836A24EC6932002EE278 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		7E69836D24EC6980002EE278 /* AboveAllAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboveAllAlert.swift; sourceTree = "<group>"; };
-		7E69836F24EC69A5002EE278 /* ErrorAlertCreatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertCreatable.swift; sourceTree = "<group>"; };
-		7E69837124EC69B8002EE278 /* ErrorAlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertPresentable.swift; sourceTree = "<group>"; };
+		7E69836F24EC69A5002EE278 /* AlertCreatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCreatable.swift; sourceTree = "<group>"; };
+		7E69837124EC69B8002EE278 /* AlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresentable.swift; sourceTree = "<group>"; };
 		7E69837324EC69CE002EE278 /* ErrorDescriptionExtractable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDescriptionExtractable.swift; sourceTree = "<group>"; };
 		7E69837524EC69DE002EE278 /* ErrorViewAddable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewAddable.swift; sourceTree = "<group>"; };
 		7E69837724EC69EE002EE278 /* ErrorViewCreatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewCreatable.swift; sourceTree = "<group>"; };
@@ -487,6 +487,27 @@
 				7E153968274801F100CC2E7B /* EditScheduleSegmentedControlTableCell.swift */,
 			);
 			path = SegmentedControlTableCell;
+			sourceTree = "<group>";
+		};
+		7E15397027494B7700CC2E7B /* ErrorView */ = {
+			isa = PBXGroup;
+			children = (
+				7E69837524EC69DE002EE278 /* ErrorViewAddable.swift */,
+				7E69837724EC69EE002EE278 /* ErrorViewCreatable.swift */,
+				7E69837924EC69FE002EE278 /* ErrorViewRemovable.swift */,
+				7E69837B24EC702B002EE278 /* ErrorView.swift */,
+			);
+			path = ErrorView;
+			sourceTree = "<group>";
+		};
+		7E15397127494C1000CC2E7B /* AudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				7EEB1E0C24424010001ABE4A /* AudioPlayer.swift */,
+				7E15397227494C1F00CC2E7B /* AudioPlayerError.swift */,
+				7E15397427494C3400CC2E7B /* Sound.swift */,
+			);
+			path = AudioPlayer;
 			sourceTree = "<group>";
 		};
 		7E173373241044BF0028FDBE /* Interfaces */ = {
@@ -715,7 +736,6 @@
 			children = (
 				7E69836A24EC6932002EE278 /* NetworkError.swift */,
 				7E644D5024FACF6E00BF198C /* PermissionError.swift */,
-				7E052A412352377E005D7FAD /* InternalError.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -725,6 +745,7 @@
 			children = (
 				7E644D4D24FACF4100BF198C /* Errors */,
 				7E69836424EC68F4002EE278 /* RecoverableError.swift */,
+				7E69837324EC69CE002EE278 /* ErrorDescriptionExtractable.swift */,
 				7E69836624EC690C002EE278 /* RecoveryAttempter.swift */,
 				7E69836824EC6923002EE278 /* RecoveryOptions.swift */,
 			);
@@ -734,14 +755,8 @@
 		7E69836C24EC6977002EE278 /* Alerts */ = {
 			isa = PBXGroup;
 			children = (
-				7E69836D24EC6980002EE278 /* AboveAllAlert.swift */,
-				7E69836F24EC69A5002EE278 /* ErrorAlertCreatable.swift */,
-				7E69837124EC69B8002EE278 /* ErrorAlertPresentable.swift */,
-				7E69837324EC69CE002EE278 /* ErrorDescriptionExtractable.swift */,
-				7E69837524EC69DE002EE278 /* ErrorViewAddable.swift */,
-				7E69837724EC69EE002EE278 /* ErrorViewCreatable.swift */,
-				7E69837924EC69FE002EE278 /* ErrorViewRemovable.swift */,
-				7E69837B24EC702B002EE278 /* ErrorView.swift */,
+				7E69836F24EC69A5002EE278 /* AlertCreatable.swift */,
+				7E69837124EC69B8002EE278 /* AlertPresentable.swift */,
 			);
 			path = Alerts;
 			sourceTree = "<group>";
@@ -1033,7 +1048,7 @@
 				7EAFB6362737313F00B7C7C6 /* Date */,
 				7E97656D2378813700E3AEF2 /* Log.swift */,
 				7E162FF0243D0E22004C68B1 /* AutoRefreshable.swift */,
-				7EEB1E0C24424010001ABE4A /* AudioPlayer.swift */,
+				7E15397127494C1000CC2E7B /* AudioPlayer */,
 				7EE227642504C38B00EC70CB /* UserDefaults.swift */,
 				7EA64EEA25A8BC9F0029FBE7 /* NotificationManager.swift */,
 			);
@@ -1106,6 +1121,7 @@
 		7EFAEF6426F4FC1300C51A13 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				7E69836C24EC6977002EE278 /* Alerts */,
 				7E6225E32619CE26001AA8FD /* Gradientable */,
 				7EB26950234F9972008AEB3D /* NibLoadable.swift */,
 				7E388E37243A3C16001A28DF /* PropertyAnimatable.swift */,
@@ -1128,6 +1144,7 @@
 				7ED6DD3525E2A30700F906CE /* ImageLabelViewWithContextMenu.swift */,
 				7ECA517D25E340BD009362F9 /* ContextPreview.swift */,
 				7EB26952234F99AE008AEB3D /* Button.swift */,
+				7E15397027494B7700CC2E7B /* ErrorView */,
 				7EE87CEB2442233500E1BD3B /* LongPressProgressButton */,
 				7ED6DD3A25E2A36B00F906CE /* ImageLabelView */,
 				7E199CD5240BD43C00B702AD /* SliderWithValues */,
@@ -1209,7 +1226,6 @@
 		92D7D68422980138009321AE /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				7E69836C24EC6977002EE278 /* Alerts */,
 				7EFAEF6426F4FC1300C51A13 /* Protocols */,
 				7EFAEF6326F4FBEA00C51A13 /* Extensions */,
 				7EFAEF6526F4FD0200C51A13 /* Views */,
@@ -1405,7 +1421,7 @@
 				7E514DB825A87F67000EBE81 /* AlarmingView.swift in Sources */,
 				7E97226425B8C90500DBEF5E /* Style.swift in Sources */,
 				7EF8D1E626F7ACB9002CE18B /* SunTimeLocalDataSource.swift in Sources */,
-				7E69837224EC69B8002EE278 /* ErrorAlertPresentable.swift in Sources */,
+				7E69837224EC69B8002EE278 /* AlertPresentable.swift in Sources */,
 				7EB26953234F99AE008AEB3D /* Button.swift in Sources */,
 				7E15396F2748156C00CC2E7B /* SelfHeightSizing.swift in Sources */,
 				7E43065026ED528700B67315 /* UIStackView+addSeparators.swift in Sources */,
@@ -1430,6 +1446,7 @@
 				7E541AF423FB259400BAD710 /* DaysCollectionCell.swift in Sources */,
 				7E4798F5239D894B007FB8F2 /* Storyboard.swift in Sources */,
 				7E43065226ED6E5800B67315 /* SettingIdentifier.swift in Sources */,
+				7E15397527494C3400CC2E7B /* Sound.swift in Sources */,
 				7EF4C195240412D80098135A /* EditScheduleDatePickerTableCell.swift in Sources */,
 				7EAFB633273729C400B7C7C6 /* UpdateSchedule.swift in Sources */,
 				7E31497F23425D3700941606 /* EditScheduleTableView.swift in Sources */,
@@ -1490,12 +1507,11 @@
 				7E43065D26EE617500B67315 /* UIStackView+addArrangedSubviews.swift in Sources */,
 				7EEFC01725E1AFD8007AE725 /* ImageLabelView.swift in Sources */,
 				7E43065726EE4F2000B67315 /* AboutView.swift in Sources */,
+				7E15397327494C1F00CC2E7B /* AudioPlayerError.swift in Sources */,
 				7EB9003E23256AC9006EB9A8 /* DesignableContainerView.swift in Sources */,
 				7E0834AC2387351400BA1AE8 /* Date+Utils.swift in Sources */,
 				7E708A3923BFD09B003B5702 /* WentSleepCreateScheduleViewController.swift in Sources */,
-				7E69836E24EC6980002EE278 /* AboveAllAlert.swift in Sources */,
 				7EEBEBFE2721F3AF00F8C8D2 /* main.swift in Sources */,
-				7E052A422352377E005D7FAD /* InternalError.swift in Sources */,
 				7E69836724EC690C002EE278 /* RecoveryAttempter.swift in Sources */,
 				7E6225AA26192DF9001AA8FD /* Styleable.swift in Sources */,
 				92D12FDD22A44B3B0093B0A3 /* CustomTabBarController.swift in Sources */,
@@ -1526,7 +1542,7 @@
 				7EAFB6242735DA0100B7C7C6 /* ScheduleRepository.swift in Sources */,
 				7E0B88F72455BEF400BC3CF5 /* SelectableStackViewButton.swift in Sources */,
 				7E69836B24EC6932002EE278 /* NetworkError.swift in Sources */,
-				7E69837024EC69A5002EE278 /* ErrorAlertCreatable.swift in Sources */,
+				7E69837024EC69A5002EE278 /* AlertCreatable.swift in Sources */,
 				7E43063B26EBCEF600B67315 /* UIView+activateConstraints.swift in Sources */,
 				7E644D5124FACF6E00BF198C /* PermissionError.swift in Sources */,
 				7E5BDADE2371F08400E43F37 /* RiseLocation+CoreDataClass.swift in Sources */,

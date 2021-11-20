@@ -13,8 +13,8 @@ import SafariServices
 final class AboutViewController:
     UIViewController,
     MFMailComposeViewControllerDelegate,
-    ErrorAlertCreatable,
-    ErrorAlertPresentable
+    AlertCreatable,
+    AlertPresentable
 {
     private var aboutView: AboutView { view as! AboutView }
     private var getAppVersion: GetAppVersion!

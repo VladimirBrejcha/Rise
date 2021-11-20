@@ -8,16 +8,11 @@
 
 import AVFoundation
 
-struct Sound: Equatable {
-    let resource: String
-    let fileExtension: String
-}
-
 final class AudioPlayer {
     private var player: AVAudioPlayer?
     
     func play(sound: Sound, loop: Bool = false) throws {
-        guard let url = sound.url else { throw InternalError.urlBuildingError }
+        guard let url = sound.url else { throw AudioPlayerError.urlBuildingError }
         
         try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
         try AVAudioSession.sharedInstance().setActive(true)
