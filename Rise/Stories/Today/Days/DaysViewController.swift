@@ -74,14 +74,14 @@ final class DaysViewController: UIViewController, Statefull {
             ]
         )
 
+        setState(.init(
+            sunTime: .loading,
+            yesterdaySchedule: nil,
+            todaySchedule: nil,
+            tomorrowSchedule: nil
+        ))
+
         DispatchQueue.main.async { [self] in
-            setState(.init(
-                sunTime: .loading,
-                yesterdaySchedule: getSchedule.yesterday(),
-                todaySchedule: getSchedule.today(),
-                tomorrowSchedule: getSchedule.tomorrow()
-            ))
-            refreshSunTimes()
             daysView.centerItems()
         }
     }
@@ -89,6 +89,7 @@ final class DaysViewController: UIViewController, Statefull {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         refreshSchedule()
+        refreshSunTimes()
     }
 
     private func refreshSchedule() {
@@ -193,27 +194,34 @@ final class DaysViewController: UIViewController, Statefull {
     // MARK: - Make items
 
     private func transformScheduleItem(_ item: Item, applying state: State) -> Item {
-        guard let yesterdaySchedule = state.yesterdaySchedule,
-              let todaySchedule = state.todaySchedule,
-              let tomorrowSchedule = state.tomorrowSchedule
-        else {
+        guard state.yesterdaySchedule != nil
+                || state.todaySchedule != nil
+                || state.tomorrowSchedule != nil else {
             return item.changing { $0.state = .showingInfo(info: Text.youDontHaveAScheduleYet) }
         }
-        var itemSchedule: Schedule {
+
+        let schedule: Schedule? = {
             switch item.id.day {
             case .yesterday:
-                return yesterdaySchedule
+                return state.yesterdaySchedule
             case .today:
-                return todaySchedule
+                return state.todaySchedule
             case .tomorrow:
-                return tomorrowSchedule
+                return state.tomorrowSchedule
             }
-        }
-        return item.changing {
-            $0.state = .showingContent(
-                left: itemSchedule.wakeUp.HHmmString,
-                right: itemSchedule.toBed.HHmmString
-            )
+        }()
+
+        if let schedule = schedule {
+            return item.changing {
+                $0.state = .showingContent(
+                    left: schedule.wakeUp.HHmmString,
+                    right: schedule.toBed.HHmmString
+                )
+            }
+        } else {
+            return item.changing {
+                $0.state = .showingInfo(info: Text.noScheduleForTheDay)
+            }
         }
     }
 
@@ -311,7 +319,6 @@ extension DaysCollectionCell.Model: Changeable {
         self.init(state: copy.state, image: copy.image, title: copy.title, id: copy.id)
     }
 }
-
 
 extension DaysViewController {
     enum NoonedDay: String, CaseIterable {

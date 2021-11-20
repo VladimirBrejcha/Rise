@@ -34,6 +34,7 @@
 "sleep" = "Sleep";
 "time_not_found" = "Time not found";
 "you_dont_have_a_schedule_yet" = "You don't have a schedule yet";
+"no_schedule_for_the_day" = "No schedule for the day";
 "failed_to_load_time" = "Failed to load time";
 "sunrise" = "Sunrise";
 "sunset" = "Sunset";

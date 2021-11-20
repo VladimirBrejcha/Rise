@@ -14,6 +14,8 @@ internal enum Text {
   internal static let failedToLoadTime = Text.tr("Localizable", "failed_to_load_time")
   /// It's time to sleep!
   internal static let itsTimeToSleep = Text.tr("Localizable", "its_time_to_sleep!")
+  /// No schedule for the day
+  internal static let noScheduleForTheDay = Text.tr("Localizable", "no_schedule_for_the_day")
   /// Rise schedule is paused
   internal static let riseScheduleIsPaused = Text.tr("Localizable", "rise_schedule_is_paused")
   /// Scheduled sleep
