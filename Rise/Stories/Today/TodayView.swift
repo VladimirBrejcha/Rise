@@ -83,7 +83,7 @@ final class TodayView: UIView {
             sleepButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)
         )
         timeUntilSleepLabel.activateConstraints(
-            timeUntilSleepLabel.bottomAnchor.constraint(equalTo: sleepButton.topAnchor, constant: -10),
+            timeUntilSleepLabel.bottomAnchor.constraint(equalTo: sleepButton.topAnchor, constant: -20),
             timeUntilSleepLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             timeUntilSleepLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
         )

@@ -309,7 +309,7 @@ extension DaysViewController.State: Changeable {
             sunTime: copy.sunTime,
             yesterdaySchedule: copy.yesterdaySchedule,
             todaySchedule: copy.todaySchedule,
-            tomorrowSchedule: copy.todaySchedule
+            tomorrowSchedule: copy.tomorrowSchedule
         )
     }
 }
