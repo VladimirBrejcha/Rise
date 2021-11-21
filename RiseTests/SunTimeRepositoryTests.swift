@@ -175,7 +175,7 @@ class SunTimeRepositoryTests: XCTestCase {
             SunTimeAPIServiceFakeDataImpl(fakeData: [])
         )
 
-        try! repository.deleteAll()
+        repository.deleteAll()
 
         wait(for: [expectation], timeout: 1)
     }

@@ -11,6 +11,9 @@ import XCTest
 
 class ScheduleTests: XCTestCase {
 
+    var userDataMock = UserDataMock()
+    var scheduleRepository = ScheduleRepositoryMock()
+
     var createSchedule: CreateSchedule { CreateScheduleImpl() }
     var nextSchedule: CreateNextSchedule { CreateNextScheduleImpl(DefaultUserData()) }
     var updateSchedule: UpdateSchedule {
@@ -19,7 +22,9 @@ class ScheduleTests: XCTestCase {
     var getSchedule: GetSchedule {
         GetScheduleImpl(scheduleRepository, nextSchedule)
     }
-    var scheduleRepository = ScheduleRepositoryMock()
+    var adjustSchedule: AdjustSchedule {
+        AdjustScheduleImpl(createSchedule, scheduleRepository, userDataMock)
+    }
 
     let allDurations = Array((5 * 60)...(10 * 60))
     let allIntensities: [Schedule.Intensity] = [.low, .normal, .high]
@@ -304,7 +309,8 @@ class ScheduleTests: XCTestCase {
         updateSchedule.callAsFunction(
             current: schedule,
             newSleepDuration: nil,
-            newToBed: nil
+            newToBed: nil,
+            newIntensity: nil
         )
 
         // Then
@@ -353,7 +359,8 @@ class ScheduleTests: XCTestCase {
         updateSchedule.callAsFunction(
             current: schedule,
             newSleepDuration: newSleepDuration,
-            newToBed: nil
+            newToBed: nil,
+            newIntensity: nil
         )
 
         // Then
@@ -414,7 +421,8 @@ class ScheduleTests: XCTestCase {
         updateSchedule.callAsFunction(
             current: schedule,
             newSleepDuration: nil,
-            newToBed: newToBed
+            newToBed: newToBed,
+            newIntensity: nil
         )
 
         // Then
@@ -476,7 +484,8 @@ class ScheduleTests: XCTestCase {
         updateSchedule.callAsFunction(
             current: schedule,
             newSleepDuration: nil,
-            newToBed: newToBed
+            newToBed: newToBed,
+            newIntensity: nil
         )
 
         // Then
@@ -539,7 +548,8 @@ class ScheduleTests: XCTestCase {
         updateSchedule.callAsFunction(
             current: schedule,
             newSleepDuration: newSleepDuration,
-            newToBed: newToBed
+            newToBed: newToBed,
+            newIntensity: nil
         )
 
         // Then
@@ -957,6 +967,12 @@ class ScheduleTests: XCTestCase {
         }
     }
 
+    // MARK: - AdjustSchedule
+
+    func testAdjustSchedule() {
+
+    }
+
     // MARK: - Utils -
 
     private func time(
@@ -1000,5 +1016,13 @@ extension ScheduleTests {
         func deleteAll() {
             deleteAllHandler?()
         }
+    }
+}
+
+extension ScheduleTests {
+    class UserDataMock: UserData {
+        var onboardingCompleted: Bool = true
+        var scheduleOnPause: Bool = false
+        var latestAppUsageDate: Date? = nil
     }
 }
