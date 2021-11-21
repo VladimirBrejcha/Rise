@@ -23,7 +23,7 @@ class ScheduleTests: XCTestCase {
         GetScheduleImpl(scheduleRepository, nextSchedule)
     }
     var adjustSchedule: AdjustSchedule {
-        AdjustScheduleImpl(createSchedule, scheduleRepository, userDataMock)
+        AdjustScheduleImpl(scheduleRepository, userDataMock)
     }
 
     let allDurations = Array((5 * 60)...(10 * 60))
@@ -298,9 +298,6 @@ class ScheduleTests: XCTestCase {
             targetWakeUp: time(day: 1, hour: 7)
         )
 
-        var newSchedule: Schedule?
-        let saveExpectation = expectation(description: "save")
-        let deleteExpectation = expectation(description: "delete")
         scheduleRepository.saveHandler = handleSave
         scheduleRepository.deleteAllHandler = handleDeleteAll
 
@@ -316,20 +313,11 @@ class ScheduleTests: XCTestCase {
         // Then
 
         func handleSave(_ schedule: Schedule) {
-            newSchedule = schedule
-            saveExpectation.fulfill()
+            XCTFail()
         }
 
         func handleDeleteAll() {
-            deleteExpectation.fulfill()
-        }
-
-        waitForExpectations(timeout: 1) { error in
-            if let error = error {
-                XCTFail(error.localizedDescription)
-                return
-            }
-            XCTAssertEqual(newSchedule, schedule)
+            XCTFail()
         }
     }
 
@@ -969,8 +957,95 @@ class ScheduleTests: XCTestCase {
 
     // MARK: - AdjustSchedule
 
-    func testAdjustSchedule() {
+    func testAdjustScheduleNoEdit() {
 
+        // Given
+
+        let schedule = Schedule(
+            sleepDuration: 8 * 60,
+            intensity: .normal,
+            toBed: time(day: 1, hour: 23),
+            wakeUp: time(day: 1, hour: 7),
+            targetToBed: time(day: 1, hour: 23),
+            targetWakeUp: time(day: 1, hour: 7)
+        )
+
+        scheduleRepository.saveHandler = handleSave
+        scheduleRepository.deleteAllHandler = handleDeleteAll
+
+        // When
+
+        adjustSchedule.callAsFunction(
+            currentSchedule: schedule,
+            newToBed: time(day: 1, hour: 23)
+        )
+
+        // Then
+
+        func handleSave(_ schedule: Schedule) {
+            XCTFail()
+        }
+
+        func handleDeleteAll() {
+            XCTFail()
+        }
+    }
+
+    func testAdjustScheduleEdit() {
+
+        // Given
+
+        let schedule = Schedule(
+            sleepDuration: 8 * 60,
+            intensity: .normal,
+            toBed: time(day: 1, hour: 23),
+            wakeUp: time(day: 1, hour: 7),
+            targetToBed: time(day: 1, hour: 23),
+            targetWakeUp: time(day: 1, hour: 7)
+        )
+
+        let newToBed = time(day: 2, hour: 0)
+        var newSchedule: Schedule?
+        let saveExpectation = expectation(description: "save")
+        let deleteExpectation = expectation(description: "delete")
+        scheduleRepository.saveHandler = handleSave
+        scheduleRepository.deleteAllHandler = handleDeleteAll
+
+        // When
+
+        adjustSchedule.callAsFunction(
+            currentSchedule: schedule,
+            newToBed: newToBed
+        )
+
+        // Then
+
+        let expectedSchedule = Schedule(
+            sleepDuration: 8 * 60,
+            intensity: .normal,
+            toBed: newToBed,
+            wakeUp: time(day: 1, hour: 7),
+            targetToBed: time(day: 1, hour: 23),
+            targetWakeUp: time(day: 1, hour: 7)
+        )
+
+        func handleSave(_ schedule: Schedule) {
+            newSchedule = schedule
+            saveExpectation.fulfill()
+        }
+
+        func handleDeleteAll() {
+            deleteExpectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1) { error in
+            if let error = error {
+                XCTFail(error.localizedDescription)
+                return
+            }
+            XCTAssertEqual(expectedSchedule, newSchedule)
+            XCTAssertNotEqual(newSchedule, schedule)
+        }
     }
 
     // MARK: - Utils -

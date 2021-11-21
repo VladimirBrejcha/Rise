@@ -23,11 +23,11 @@ protocol AdjustSchedule {
 
 final class AdjustScheduleImpl: AdjustSchedule {
 
-    private let createSchedule: CreateSchedule
     private let scheduleRepository: ScheduleRepository
     private let userData: UserData
 
     private var adjusted = false
+
     var mightNeedAdjustment: Bool {
         if adjusted { return false }
         guard let latestAppUsageDate = userData.latestAppUsageDate,
@@ -37,11 +37,9 @@ final class AdjustScheduleImpl: AdjustSchedule {
         return days >= 2
     }
 
-    init(_ createSchedule: CreateSchedule,
-         _ scheduleRepository: ScheduleRepository,
+    init(_ scheduleRepository: ScheduleRepository,
          _ userData: UserData
     ) {
-        self.createSchedule = createSchedule
         self.scheduleRepository = scheduleRepository
         self.userData = userData
     }
@@ -50,33 +48,20 @@ final class AdjustScheduleImpl: AdjustSchedule {
         currentSchedule schedule: Schedule,
         newToBed: Date
     ) {
-        let newSchedule = createSchedule(
-            wantedSleepDuration: schedule.sleepDuration,
-            currentToBed: newToBed.normalised(with: schedule.toBed),
-            wantedToBed: schedule.targetToBed,
-            intensity: schedule.intensity
+        let newSchedule = Schedule(
+            sleepDuration: schedule.sleepDuration,
+            intensity: schedule.intensity,
+            toBed: newToBed,
+            wakeUp: schedule.wakeUp,
+            targetToBed: schedule.targetToBed,
+            targetWakeUp: schedule.targetWakeUp
         )
+        adjusted = true
+        if newSchedule == schedule {
+            log(.warning, "No changes, early return")
+            return
+        }
         scheduleRepository.deleteAll()
         scheduleRepository.save(newSchedule)
-        adjusted = true
-    }
-}
-
-fileprivate extension Date {
-    func normalised(with date: Date) -> Date {
-        let components = calendar.dateComponents([.hour, .minute], from: self)
-        guard let hour = components.hour,
-              let minute = components.minute,
-              let date = calendar.date(
-                bySettingHour: hour,
-                minute: minute,
-                second: 0,
-                of: date
-              )
-        else {
-            assertionFailure("Could'nt build a date")
-            return date
-        }
-        return date
     }
 }

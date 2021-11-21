@@ -46,6 +46,10 @@ final class UpdateScheduleImpl: UpdateSchedule {
             wantedToBed: newToBed?.normalised(with: schedule.targetToBed) ?? schedule.targetToBed,
             intensity: newIntensity ?? schedule.intensity
         )
+        if newSchedule == schedule {
+            log(.warning, "No changes, early return")
+            return
+        }
         scheduleRepository.deleteAll()
         scheduleRepository.save(newSchedule)
     }
