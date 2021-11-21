@@ -15,7 +15,11 @@ final class DefaultLocationRepository: LocationRepository {
         self.remoteDataSource = remoteDataSource
     }
     
-    func get(_ completion: @escaping (Result<Location, Error>) -> Void) {
+    func get(
+        permissionRequestProvider: @escaping (@escaping (Bool) -> Void) -> Void,
+        _ completion: @escaping (Result<Location, Error>) -> Void
+    ) {
+        log(.info)
         do {
             if let storedLocation = try localDataSource.get() {
                 log(.info, "found stored location: \(storedLocation)")
@@ -23,7 +27,9 @@ final class DefaultLocationRepository: LocationRepository {
                 return
             }
             
-            remoteDataSource.requestPermissions { [weak self] granted in
+            remoteDataSource.requestPermissions(
+                permissionRequestProvider: permissionRequestProvider
+            ) { [weak self] granted in
                 guard let self = self else { return }
                 guard granted else {
                     log(.warning, "access denied")
@@ -33,7 +39,7 @@ final class DefaultLocationRepository: LocationRepository {
                 
                 self.remoteDataSource.get { result in
                     if case .success (let location) = result {
-                        self.refreshStoredData(location)
+                        self.save(location: location)
                         log(.info, "got location: \(location)")
                         completion(.success(location))
                     }
@@ -50,20 +56,25 @@ final class DefaultLocationRepository: LocationRepository {
         }
     }
     
-    func save(location: Location) throws {
-        try localDataSource.save(location: location)
-    }
-    
-    func deleteAll() throws {
-        try localDataSource.deleteAll()
-    }
-    
-    private func refreshStoredData(_ location: Location) {
+    private func save(location: Location) {
+        log(.info, "location: \(location)")
+
         do {
-            try self.deleteAll()
-            try self.save(location: location)
+            try localDataSource.save(location: location)
         } catch (let error) {
-            log(.error, error.localizedDescription)
+            assertionFailure(error.localizedDescription)
+            log(.error, "deleting error: \(error.localizedDescription)")
+        }
+    }
+    
+    func deleteAll() {
+        log(.info)
+
+        do {
+            try localDataSource.deleteAll()
+        } catch (let error) {
+            assertionFailure(error.localizedDescription)
+            log(.error, "deleting error: \(error.localizedDescription)")
         }
     }
 }

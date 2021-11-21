@@ -17,7 +17,6 @@ enum Story {
     case today
     case days
     case schedule
-    case settings
     
     // Create schedule
     case createSchedule(onCreate: () -> Void)
@@ -54,7 +53,9 @@ enum Story {
     case alarming(alarmTime: Date)
 
     // Settings
+    case settings
     case about
+    case refreshSunTime
     
     func callAsFunction() -> UIViewController {
         switch self {
@@ -126,6 +127,8 @@ enum Story {
             return AlarmingAssembler().assemble(alarm: alarmTime)
         case .about:
             return AboutAssembler().assemble()
+        case .refreshSunTime:
+            return RefreshSunTimesAssembler().assemble()
         }
     }
 }

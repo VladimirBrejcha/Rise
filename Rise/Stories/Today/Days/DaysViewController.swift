@@ -8,8 +8,12 @@
 
 import UIKit
 
-final class DaysViewController: UIViewController, Statefull {
-
+final class DaysViewController:
+    UIViewController,
+    Statefull,
+    AlertCreatable,
+    LocationPermissionAlertPresentable
+{
     private typealias Snapshot = DaysCollectionView.Snapshot
     private typealias Item = DaysCollectionView.Item.Model
 
@@ -162,10 +166,23 @@ final class DaysViewController: UIViewController, Statefull {
     // MARK: - Refresh sun times
 
     private func refreshSunTimes() {
+        guard let state = state else { return }
+        setState(
+            state.changing {
+                $0.sunTime = .loading
+            }
+        )
         getSunTime(
             numberOfDays: 3,
             since: NoonedDay.yesterday.date,
-            completionQueue: .main
+            completionQueue: .main,
+            permissionRequestProvider: { [weak self] openSettingsHandler in
+                DispatchQueue.main.async {
+                    self?.presentLocationPermissionAccessAlert { didOpenSettings in
+                        openSettingsHandler(didOpenSettings)
+                    }
+                }
+            }
         ) { [weak self] result in
             guard let self = self, let state = self.state else { return }
             if case .success (let sunTimes) = result {
@@ -181,10 +198,18 @@ final class DaysViewController: UIViewController, Statefull {
                     }
                 )
             }
-            if case .failure = result {
+            if case let .failure(error) = result {
                 self.setState(
                     state.changing {
-                        $0.sunTime = .failed(error: Text.failedToLoadTime)
+                        $0.sunTime = .failed(
+                            error: {
+                                if error as? PermissionError == .locationAccessDenied {
+                                    return Text.locationAccessMissing
+                                } else {
+                                    return Text.failedToLoadTime
+                                }
+                            }()
+                        )
                     }
                 )
             }

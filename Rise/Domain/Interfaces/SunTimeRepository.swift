@@ -16,5 +16,5 @@ protocol SunTimeRepository {
         location: Location,
         completion: @escaping (SunTimesResult) -> Void
     )
-    func deleteAll() throws
+    func deleteAll()
 }

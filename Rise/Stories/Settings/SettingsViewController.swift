@@ -47,8 +47,8 @@ final class SettingsViewController: UIViewController {
                     self.present(Story.onboarding(dismissOnCompletion: true)(), with: .fullScreen)
                 case .about:
                     self.present(Story.about(), with: .modal)
-                default:
-                    print(identifier)
+                case .refreshSuntime:
+                    self.present(Story.refreshSunTime(), with: .modal)
                 }
             }
         )

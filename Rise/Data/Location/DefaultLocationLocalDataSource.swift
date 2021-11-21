@@ -17,12 +17,14 @@ protocol LocationLocalDataSource {
 
 final class DefaultLocationLocalDataSource: LocalDataSource<RiseLocation>, LocationLocalDataSource {
     func get() throws -> Location? {
+        log(.info)
         let fetchResult = try container.fetch()
         if fetchResult.isEmpty { return nil }
         return buildModel(from: fetchResult[0])
     }
     
     func save(location: Location) throws {
+        log(.info)
         let locationObject = insertObject()
         update(object: locationObject, with: location)
         try container.saveContext()

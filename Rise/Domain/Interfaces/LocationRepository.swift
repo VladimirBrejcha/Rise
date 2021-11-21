@@ -9,7 +9,9 @@
 import Foundation
 
 protocol LocationRepository {
-    func get(_ completion: @escaping (Result<Location, Error>) -> Void)
-    func save(location: Location) throws
-    func deleteAll() throws
+    func get(
+        permissionRequestProvider: @escaping (@escaping (Bool) -> Void) -> Void,
+        _ completion: @escaping (Result<Location, Error>) -> Void
+    )
+    func deleteAll()
 }

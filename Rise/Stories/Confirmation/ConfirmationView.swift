@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import LoadingView
+//import LoadingView
 
 final class ConfirmationView: UIView, PropertyAnimatable {
 //    @IBOutlet private weak var titleLabel: UILabel!

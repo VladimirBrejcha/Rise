@@ -10,12 +10,24 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum Text {
+  /// An internal error occurred
+  internal static let anInternalErrorOccurred = Text.tr("Localizable", "an_internal_error_occurred")
   /// Failed to load time
   internal static let failedToLoadTime = Text.tr("Localizable", "failed_to_load_time")
   /// It's time to sleep!
   internal static let itsTimeToSleep = Text.tr("Localizable", "its_time_to_sleep!")
+  /// Location access is required to perform refresh
+  internal static let locationAccessIsRequiredToPerformRefresh = Text.tr("Localizable", "location_access_is_required_to_perform_refresh")
+  /// Location access missing
+  internal static let locationAccessMissing = Text.tr("Localizable", "location_access_missing")
   /// No schedule for the day
   internal static let noScheduleForTheDay = Text.tr("Localizable", "no_schedule_for_the_day")
+  /// Refresh
+  internal static let refresh = Text.tr("Localizable", "refresh")
+  /// Refresh sun times
+  internal static let refreshSunTimes = Text.tr("Localizable", "refresh_sun_times")
+  /// We store your location on the device to provide fast and energy efficient access to sunrise/sunset times even offline
+  internal static let refreshSunTimesDescription = Text.tr("Localizable", "refresh_sun_times_description")
   /// Rise schedule is paused
   internal static let riseScheduleIsPaused = Text.tr("Localizable", "rise_schedule_is_paused")
   /// Scheduled sleep
@@ -30,6 +42,8 @@ internal enum Text {
   internal static func sleepIsScheduledIn(_ p1: Any) -> String {
     return Text.tr("Localizable", "sleep_is_scheduled_in", String(describing: p1))
   }
+  /// Success!
+  internal static let success = Text.tr("Localizable", "success")
   /// Sun position
   internal static let sunPosition = Text.tr("Localizable", "sun_position")
   /// Sunrise
@@ -44,6 +58,8 @@ internal enum Text {
   internal static let today = Text.tr("Localizable", "today")
   /// Tomorrow
   internal static let tomorrow = Text.tr("Localizable", "tomorrow")
+  /// In case if your location changed use refresh to update it with actual data
+  internal static let useRefreshFor = Text.tr("Localizable", "use_refresh_for")
   /// Wake up
   internal static let wakeUp = Text.tr("Localizable", "wake_up")
   /// Yesterday

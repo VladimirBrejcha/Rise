@@ -7,9 +7,7 @@
 //
 
 enum DomainLayer {
-    static var getSunTime: GetSunTime {
-        GetSunTimeUseCase(DataLayer.locationRepository, DataLayer.sunTimeRepository)
-    }
+
     static var setOnboardingCompleted: SetOnboardingCompleted {
         SetOnboardingCompletedUseCase(DataLayer.userData)
     }
@@ -18,6 +16,15 @@ enum DomainLayer {
     }
     static var prepareMail: PrepareMail {
         PrepareMailUseCase()
+    }
+
+    // MARK: - SunTime
+
+    static var getSunTime: GetSunTime {
+        GetSunTimeImpl(DataLayer.locationRepository, DataLayer.sunTimeRepository)
+    }
+    static var refreshSunTime: RefreshSunTime {
+        RefreshSunTimeImpl(DataLayer.locationRepository, DataLayer.sunTimeRepository)
     }
 
     // MARK: - Schedule

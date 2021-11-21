@@ -66,8 +66,15 @@ final class SunTimeRepositoryImpl: SunTimeRepository {
         }
     }
     
-    func deleteAll() throws {
-        try localDataSource.deleteAll()
+    func deleteAll() {
+        log(.info)
+
+        do {
+            try localDataSource.deleteAll()
+        } catch (let error) {
+            assertionFailure(error.localizedDescription)
+            log(.error, "deleting error: \(error.localizedDescription)")
+        }
     }
 
     private func handleRemoteRequestResult(result: SunTimeRemoteResult) -> SunTimesResult {

@@ -72,13 +72,13 @@ final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
 
     private func setupViews() {
         layer.applyStyle(.usualBorder)
-        addSubviews(
-            loadingView,
-            loadingViewTitle,
+        contentView.addSubviews(
             HStack.addArrangedSubviews(
                 leftVStack,
                 rightVStack
-            )
+            ),
+            loadingView,
+            loadingViewTitle
         )
     }
 
@@ -124,6 +124,11 @@ final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
 
     // MARK: - Layout
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        loadingView.restoreAnimation()
+    }
+
     private func setupLayout() {
         loadingViewTitle.activateConstraints(
             loadingViewTitle.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
@@ -143,7 +148,7 @@ final class DaysCollectionCell: UICollectionViewCell, ConfigurableCell {
             HStack.bottomAnchor.constraint(greaterThanOrEqualTo: contentView.bottomAnchor, constant: -12),
             HStack.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 4),
             HStack.topAnchor.constraint(lessThanOrEqualTo: contentView.topAnchor, constant: 12),
-            HStack.centerYAnchor.constraint(equalTo: centerYAnchor)
+            HStack.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         )
     }
 }

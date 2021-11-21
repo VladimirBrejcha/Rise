@@ -10,6 +10,11 @@ import UIKit
 
 protocol AlertCreatable: AnyObject, ErrorReasonExtractable {
     func makeAlert(for error: Error) -> UIAlertController
+    func makeAlert(
+        title: String?,
+        message: String?,
+        actions: [UIAlertAction]
+    ) -> UIAlertController
     func makeAreYouSureAlert(text: String, action: UIAlertAction) -> UIAlertController
 }
 
@@ -41,7 +46,7 @@ extension AlertCreatable where Self: UIViewController {
         makeAlert(title: "Are you sure?", message: text, actions: [action, .cancelAction])
     }
     
-    private func makeAlert(
+    func makeAlert(
         title: String?,
         message: String?,
         actions: [UIAlertAction]
