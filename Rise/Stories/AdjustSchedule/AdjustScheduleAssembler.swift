@@ -9,7 +9,7 @@
 final class AdjustScheduleAssembler {
     func assemble(
         currentSchedule: Schedule,
-        completion: @escaping (Bool) -> Void
+        completion: ((Bool) -> Void)? = nil
     ) -> AdjustScheduleViewController {
         AdjustScheduleViewController(
             adjustSchedule: DomainLayer.adjustSchedule,

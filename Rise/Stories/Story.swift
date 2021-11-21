@@ -19,7 +19,7 @@ enum Story {
     case schedule
     case adjustSchedule(
         currentSchedule: Schedule,
-        completion: (Bool) -> Void
+        completion: ((Bool) -> Void)? = nil
     )
     
     // Create schedule

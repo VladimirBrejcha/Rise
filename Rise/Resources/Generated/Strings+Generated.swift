@@ -14,6 +14,8 @@ internal enum Text {
   internal static let adjustSchedule = Text.tr("Localizable", "adjust_schedule")
   /// Sometimes we all miss our sleep schedule
   internal static let adjustScheduleDescription = Text.tr("Localizable", "adjust_schedule_description")
+  /// If you missed sleep
+  internal static let adjustScheduleShortDescription = Text.tr("Localizable", "adjust_schedule_short_description")
   /// In case this happens to you, you can update the Rise schedule to better suit your current situation. Remember, there is no need to rush, good sleep requires careful attention.
   internal static let adjustScheduleSuggestionToAdjust = Text.tr("Localizable", "adjust_schedule_suggestion_to_adjust")
   /// An internal error occurred

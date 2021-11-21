@@ -16,7 +16,7 @@ final class AdjustScheduleViewController: UIViewController {
 
     private let adjustSchedule: AdjustSchedule
     private let currentSchedule: Schedule
-    private let completion: (Bool) -> Void
+    private let completion: ((Bool) -> Void)?
     private var selectedToBed: Date?
 
     // MARK: - LifeCycle
@@ -24,7 +24,7 @@ final class AdjustScheduleViewController: UIViewController {
     init(
         adjustSchedule: AdjustSchedule,
         currentSchedule: Schedule,
-        completion: @escaping (Bool) -> Void
+        completion: ((Bool) -> Void)?
     ) {
         self.adjustSchedule = adjustSchedule
         self.currentSchedule = currentSchedule
@@ -42,7 +42,7 @@ final class AdjustScheduleViewController: UIViewController {
         self.view = AdjustScheduleView(
             closeHandler: { [weak self] in
                 self?.dismiss(animated: true, completion: {
-                    self?.completion(false)
+                    self?.completion?(false)
                 })
             },
             saveHandler: { [weak self] in
@@ -58,7 +58,7 @@ final class AdjustScheduleViewController: UIViewController {
                 self.loadedView.showSuccess()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     self.dismiss(animated: true, completion: {
-                        self.completion(true)
+                        self.completion?(true)
                     })
                 }
             },

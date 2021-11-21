@@ -8,6 +8,7 @@
 
 enum SettingIdentifier {
     case editSchedule
+    case adjustBedTime
     case refreshSuntime
     case onboarding
     case about

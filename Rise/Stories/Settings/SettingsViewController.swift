@@ -43,6 +43,12 @@ final class SettingsViewController: UIViewController {
                     } else {
                         assertionFailure("Attempted to present editSchedule without schedule")
                     }
+                case .adjustBedTime:
+                    if let schedule = self.schedule {
+                        self.present(Story.adjustSchedule(currentSchedule: schedule)(), with: .fullScreen)
+                    } else {
+                        assertionFailure("Attempted to present editSchedule without schedule")
+                    }
                 case .onboarding:
                     self.present(Story.onboarding(dismissOnCompletion: true)(), with: .fullScreen)
                 case .about:
@@ -62,11 +68,17 @@ final class SettingsViewController: UIViewController {
     private var models: [SettingsView.ItemView.Model] {
         var result: [SettingsView.ItemView.Model] = []
         if schedule != nil {
-            result.append(SettingsView.ItemView.Model(
+            result.append(.init(
                 identifier: .editSchedule,
                 image: UIImage.init(systemName: "calendar")!,
                 title: Text.Settings.Title.editSchedule,
                 description: Text.Settings.Description.editSchedule
+            ))
+            result.append(.init(
+                identifier: .adjustBedTime,
+                image: UIImage(systemName: "bed.double.fill")!,
+                title: Text.adjustSchedule,
+                description: Text.adjustScheduleShortDescription
             ))
         }
         result.append(contentsOf: [
