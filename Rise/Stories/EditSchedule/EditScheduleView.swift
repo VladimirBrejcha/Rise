@@ -81,6 +81,7 @@ final class EditScheduleView: UIView {
 
     private func setupLayout() {
         editScheduleTableView.activateConstraints(
+            editScheduleTableView.topAnchor.constraint(equalTo: titleView.bottomAnchor, constant: 10),
             editScheduleTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             editScheduleTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             editScheduleTableView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -10)
