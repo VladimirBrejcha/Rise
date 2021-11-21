@@ -113,10 +113,22 @@ final class TodayView: UIView {
             timeUntilSleepLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
         )
         daysView.activateConstraints(
-            daysView.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
+            {
+                if UIScreen.main.bounds.height <= 568 /* iPhone SE and smaller */ {
+                    return daysView.bottomAnchor.constraint(equalTo: timeUntilSleepLabel.topAnchor, constant: -20)
+                } else {
+                    return daysView.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor)
+                }
+            }(),
             daysView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             daysView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            daysView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.45)
+            {
+                if UIScreen.main.bounds.height <= 568 /* iPhone SE and smaller */ {
+                    return daysView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20)
+                } else {
+                    return daysView.heightAnchor.constraint(greaterThanOrEqualTo: heightAnchor, multiplier: 0.42)
+                }
+            }()
         )
     }
 }
