@@ -46,6 +46,9 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
                     with: .fullScreen
                 )
             },
+            adjustScheduleHandler: {
+                print("adjust schedule")
+            },
             daysView: daysViewController.daysView
         )
     }

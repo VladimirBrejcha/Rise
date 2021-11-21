@@ -25,6 +25,8 @@
 		7E15397E2749675300CC2E7B /* RefreshSunTimesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E15397D2749675300CC2E7B /* RefreshSunTimesViewController.swift */; };
 		7E1539832749B09100CC2E7B /* SelectableStackView in Frameworks */ = {isa = PBXBuildFile; productRef = 7E1539822749B09100CC2E7B /* SelectableStackView */; };
 		7E15398A2749B2F900CC2E7B /* LoadingView in Frameworks */ = {isa = PBXBuildFile; productRef = 7E1539892749B2F900CC2E7B /* LoadingView */; };
+		7E15398C2749D70C00CC2E7B /* CloseableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E15398B2749D70C00CC2E7B /* CloseableButton.swift */; };
+		7E15398E2749D71E00CC2E7B /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E15398D2749D71E00CC2E7B /* CloseButton.swift */; };
 		7E162FF1243D0E22004C68B1 /* AutoRefreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E162FF0243D0E22004C68B1 /* AutoRefreshable.swift */; };
 		7E173372240D9F7A0028FDBE /* DomainLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E173371240D9F7A0028FDBE /* DomainLayer.swift */; };
 		7E173375241044D70028FDBE /* SunTimeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E173374241044D70028FDBE /* SunTimeRepository.swift */; };
@@ -243,6 +245,8 @@
 		7E1539792749674300CC2E7B /* RefreshSunTimesAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshSunTimesAssembler.swift; sourceTree = "<group>"; };
 		7E15397B2749674B00CC2E7B /* RefreshSunTimesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshSunTimesView.swift; sourceTree = "<group>"; };
 		7E15397D2749675300CC2E7B /* RefreshSunTimesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshSunTimesViewController.swift; sourceTree = "<group>"; };
+		7E15398B2749D70C00CC2E7B /* CloseableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseableButton.swift; sourceTree = "<group>"; };
+		7E15398D2749D71E00CC2E7B /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		7E162FF0243D0E22004C68B1 /* AutoRefreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRefreshable.swift; sourceTree = "<group>"; };
 		7E173371240D9F7A0028FDBE /* DomainLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainLayer.swift; sourceTree = "<group>"; };
 		7E173374241044D70028FDBE /* SunTimeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeRepository.swift; sourceTree = "<group>"; };
@@ -1151,6 +1155,8 @@
 				7ED6DD3525E2A30700F906CE /* ImageLabelViewWithContextMenu.swift */,
 				7ECA517D25E340BD009362F9 /* ContextPreview.swift */,
 				7EB26952234F99AE008AEB3D /* Button.swift */,
+				7E15398B2749D70C00CC2E7B /* CloseableButton.swift */,
+				7E15398D2749D71E00CC2E7B /* CloseButton.swift */,
 				7E15397027494B7700CC2E7B /* ErrorView */,
 				7EE87CEB2442233500E1BD3B /* LongPressProgressButton */,
 				7ED6DD3A25E2A36B00F906CE /* ImageLabelView */,
@@ -1509,6 +1515,7 @@
 				7E69837C24EC702B002EE278 /* ErrorView.swift in Sources */,
 				7E39560026F162FC003D664D /* PrepareMail.swift in Sources */,
 				7E43066226EE974D00B67315 /* AboutIdentifier.swift in Sources */,
+				7E15398E2749D71E00CC2E7B /* CloseButton.swift in Sources */,
 				7E2CA81024032A0F000CEFA5 /* TableCellConfigurator.swift in Sources */,
 				7EB9F35423C36B54002A6DD3 /* CreateScheduleAssembler.swift in Sources */,
 				7E5E3355261A3496000EE976 /* UIView+invertAlpha.swift in Sources */,
@@ -1534,6 +1541,7 @@
 				7E9D9C0B24E59B08000772C0 /* Changeable.swift in Sources */,
 				7EB29E0D241987DD00116433 /* PrepareToSleepViewController.swift in Sources */,
 				7E252A8826EBBE6600DEB6F0 /* OnboardingViewController.swift in Sources */,
+				7E15398C2749D70C00CC2E7B /* CloseableButton.swift in Sources */,
 				7ECA517E25E340BD009362F9 /* ContextPreview.swift in Sources */,
 				7E97656E2378813700E3AEF2 /* Log.swift in Sources */,
 				7E9D9C0D24E59B21000772C0 /* ChangeableWrapper.swift in Sources */,

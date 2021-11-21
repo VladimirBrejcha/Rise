@@ -23,13 +23,11 @@ final class RefreshSunTimesView: UIView {
         return view
     }()
 
-    private lazy var closeButton: UIButton = {
-        let button = UIButton()
-        button.setImage(Asset.cancel.image, for: .normal)
-        button.tintColor = Asset.Colors.white.color
-        button.addTarget(self, action: #selector(closeTouchUp), for: .touchUpInside)
-        return button
-    }()
+    private lazy var closeButton: Button = makeCloseButton(
+        handler: { [weak self] in
+            self?.closeHandler()
+        }
+    )
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -97,11 +95,7 @@ final class RefreshSunTimesView: UIView {
     }
 
     // MARK: - Actions
-
-    @objc private func closeTouchUp() {
-        closeHandler()
-    }
-
+    
     func showLoading() {
         loadingView.state = .loading
         refreshButton.isHidden = true

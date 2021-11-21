@@ -11,6 +11,7 @@ import UIKit
 final class TodayView: UIView {
 
     private let sleepHandler: () -> Void
+    private let adjustScheduleHandler: () -> Void
     private let timeUntilSleepDataSource: () -> FloatingLabel.Model
 
     // MARK: - Subviews
@@ -22,10 +23,31 @@ final class TodayView: UIView {
         return view
     }()
 
+    private lazy var buttonsVStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.spacing = 8
+        return stack
+    }()
+
     private lazy var sleepButton: Button = {
         let button = Button()
         button.setTitle(Text.sleep, for: .normal)
         button.onTouchUp = { [weak self] _ in self?.sleepHandler() }
+        return button
+    }()
+
+    private lazy var adjustScheduleButton: Button = {
+        let button = closeableButton(
+            closeHandler: { [weak self] in
+                self?.adjustScheduleButton.isHidden = true
+            }
+        )
+        button.setTitle(Text.adjustSchedule, for: .normal)
+        button.applyStyle(.secondary)
+        button.onTouchUp = { [weak self] _ in
+            self?.adjustScheduleHandler()
+        }
         return button
     }()
 
@@ -40,11 +62,14 @@ final class TodayView: UIView {
 
     // MARK: - LifeCycle
 
-    init(timeUntilSleepDataSource: @escaping () -> FloatingLabel.Model,
-         sleepHandler: @escaping () -> Void,
-         daysView: DaysView
+    init(
+        timeUntilSleepDataSource: @escaping () -> FloatingLabel.Model,
+        sleepHandler: @escaping () -> Void,
+        adjustScheduleHandler: @escaping () -> Void,
+        daysView: DaysView
     ) {
         self.sleepHandler = sleepHandler
+        self.adjustScheduleHandler = adjustScheduleHandler
         self.timeUntilSleepDataSource = timeUntilSleepDataSource
         self.daysView = daysView
         super.init(frame: .zero)
@@ -62,7 +87,10 @@ final class TodayView: UIView {
             backgroundImageView,
             daysView,
             timeUntilSleepLabel,
-            sleepButton
+            buttonsVStack.addArrangedSubviews(
+                sleepButton,
+                adjustScheduleButton
+            )
         )
         timeUntilSleepLabel.beginRefreshing()
     }
@@ -76,12 +104,16 @@ final class TodayView: UIView {
             backgroundImageView.topAnchor.constraint(equalTo: topAnchor),
             backgroundImageView.bottomAnchor.constraint(equalTo: bottomAnchor)
         )
-        sleepButton.activateConstraints(
-            sleepButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            sleepButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            sleepButton.heightAnchor.constraint(equalToConstant: 50),
-            sleepButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)
+        buttonsVStack.activateConstraints(
+            buttonsVStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            buttonsVStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            buttonsVStack.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)
         )
+        buttonsVStack.arrangedSubviews.forEach { view in
+            view.activateConstraints(
+                view.heightAnchor.constraint(equalToConstant: 50)
+            )
+        }
         timeUntilSleepLabel.activateConstraints(
             timeUntilSleepLabel.bottomAnchor.constraint(equalTo: sleepButton.topAnchor, constant: -20),
             timeUntilSleepLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),

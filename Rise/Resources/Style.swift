@@ -151,6 +151,16 @@ enum Style {
             )
         }
 
+        static var image: Button {
+            Button(
+                disabledTitleColor: nil,
+                selectedTitleColor: nil,
+                titleStyle: .footer,
+                backgroundColor: .clear,
+                effects: nil
+            )
+        }
+
         static var secondary: Button {
             Button(
                 disabledTitleColor: Asset.Colors.white.color.withAlphaComponent(0.5),
