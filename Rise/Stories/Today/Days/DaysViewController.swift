@@ -96,7 +96,7 @@ final class DaysViewController:
         refreshSunTimes()
     }
 
-    private func refreshSchedule() {
+    func refreshSchedule() {
         guard let state = state else { return }
 
         setState(state.changing {

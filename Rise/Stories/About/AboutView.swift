@@ -23,13 +23,6 @@ final class AboutView: UIView, UIScrollViewDelegate {
 
     // MARK: - Subviews
 
-    private lazy var backgroundImageView: UIImageView = {
-        let view = UIImageView()
-        view.image = Asset.Background.default.image
-        view.contentMode = .scaleAspectFill
-        return view
-    }()
-
     private lazy var logoImageView: UIImageView = {
         let view = UIImageView()
         return view
@@ -114,9 +107,8 @@ final class AboutView: UIView, UIScrollViewDelegate {
     }
 
     private func setupViews() {
+        addBackgroundView()
         addSubviews(
-            backgroundImageView,
-
             scrollView.addSubviews(
 
                 contentView.addSubviews(
@@ -183,12 +175,6 @@ final class AboutView: UIView, UIScrollViewDelegate {
     // MARK: - Layout
 
     private func setupLayout() {
-        backgroundImageView.activateConstraints(
-            backgroundImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            backgroundImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            backgroundImageView.topAnchor.constraint(equalTo: topAnchor),
-            backgroundImageView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        )
         logoImageView.activateConstraints(
             logoImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
             logoImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),

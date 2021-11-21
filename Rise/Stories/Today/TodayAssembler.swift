@@ -11,7 +11,8 @@ import UIKit
 final class TodayAssembler {
     func assemble() -> TodayViewController {
         let vc = TodayViewController(
-            getSchedule: DomainLayer.getSchedule
+            getSchedule: DomainLayer.getSchedule,
+            adjustSchedule: DomainLayer.adjustSchedule
         )
         vc.tabBarItem = UITabBarItem(
             title: nil,

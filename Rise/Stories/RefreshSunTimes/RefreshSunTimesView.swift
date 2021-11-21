@@ -16,25 +16,12 @@ final class RefreshSunTimesView: UIView {
 
     // MARK: - Subviews
 
-    private lazy var backgroundImageView: UIImageView = {
-        let view = UIImageView()
-        view.image = Asset.Background.default.image
-        view.contentMode = .scaleAspectFill
-        return view
-    }()
-
-    private lazy var closeButton: Button = makeCloseButton(
-        handler: { [weak self] in
+    private lazy var titleView: UIView = View.screenTitleView(
+        title: Text.refreshSunTimes,
+        closeHandler: { [weak self] in
             self?.closeHandler()
         }
     )
-
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.applyStyle(.mediumSizedTitle)
-        label.text = Text.refreshSunTimes
-        return label
-    }()
 
     private lazy var loadingView: LoadingView = {
         let loadingView = LoadingView(frame: .zero)
@@ -84,10 +71,9 @@ final class RefreshSunTimesView: UIView {
     }
 
     private func setupViews() {
+        addBackgroundView()
+        addScreenTitleView(titleView)
         addSubviews(
-            backgroundImageView,
-            titleLabel,
-            closeButton,
             imageView,
             loadingView,
             refreshButton
@@ -118,23 +104,6 @@ final class RefreshSunTimesView: UIView {
     // MARK: - Layout
 
     private func setupLayout() {
-        backgroundImageView.activateConstraints(
-            backgroundImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            backgroundImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            backgroundImageView.topAnchor.constraint(equalTo: topAnchor),
-            backgroundImageView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        )
-        titleLabel.activateConstraints(
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            titleLabel.centerYAnchor.constraint(equalTo: closeButton.centerYAnchor, constant: -2)
-        )
-        closeButton.activateConstraints(
-            closeButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 14),
-            closeButton.widthAnchor.constraint(equalToConstant: 35),
-            closeButton.heightAnchor.constraint(equalToConstant: 35),
-            closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12)
-        )
         imageView.activateConstraints(
             imageView.heightAnchor.constraint(equalToConstant: 50),
             imageView.widthAnchor.constraint(equalToConstant: 50),

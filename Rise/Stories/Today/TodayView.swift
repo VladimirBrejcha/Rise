@@ -16,13 +16,6 @@ final class TodayView: UIView {
 
     // MARK: - Subviews
 
-    private lazy var backgroundImageView: UIImageView = {
-        let view = UIImageView()
-        view.image = Asset.Background.default.image
-        view.contentMode = .scaleAspectFill
-        return view
-    }()
-
     private lazy var buttonsVStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
@@ -38,16 +31,16 @@ final class TodayView: UIView {
     }()
 
     private lazy var adjustScheduleButton: Button = {
-        let button = closeableButton(
+        let button = View.closeableButton(
+            touchHandler: { [weak self] in
+                self?.adjustScheduleHandler()
+            },
             closeHandler: { [weak self] in
                 self?.adjustScheduleButton.isHidden = true
-            }
+            },
+            style: .secondary
         )
         button.setTitle(Text.adjustSchedule, for: .normal)
-        button.applyStyle(.secondary)
-        button.onTouchUp = { [weak self] _ in
-            self?.adjustScheduleHandler()
-        }
         return button
     }()
 
@@ -65,6 +58,7 @@ final class TodayView: UIView {
     init(
         timeUntilSleepDataSource: @escaping () -> FloatingLabel.Model,
         sleepHandler: @escaping () -> Void,
+        showAdjustSchedule: Bool,
         adjustScheduleHandler: @escaping () -> Void,
         daysView: DaysView
     ) {
@@ -73,6 +67,7 @@ final class TodayView: UIView {
         self.timeUntilSleepDataSource = timeUntilSleepDataSource
         self.daysView = daysView
         super.init(frame: .zero)
+        adjustScheduleButton.isHidden = !showAdjustSchedule
         setupViews()
         setupLayout()
     }
@@ -83,8 +78,8 @@ final class TodayView: UIView {
     }
 
     private func setupViews() {
+        addBackgroundView()
         addSubviews(
-            backgroundImageView,
             daysView,
             timeUntilSleepLabel,
             buttonsVStack.addArrangedSubviews(
@@ -95,15 +90,13 @@ final class TodayView: UIView {
         timeUntilSleepLabel.beginRefreshing()
     }
 
+    func allowAdjustSchedule(_ allow: Bool) {
+        adjustScheduleButton.isHidden = !allow
+    }
+
     // MARK: - Layout
 
     private func setupLayout() {
-        backgroundImageView.activateConstraints(
-            backgroundImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            backgroundImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            backgroundImageView.topAnchor.constraint(equalTo: topAnchor),
-            backgroundImageView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        )
         buttonsVStack.activateConstraints(
             buttonsVStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             buttonsVStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),

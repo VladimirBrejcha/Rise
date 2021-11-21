@@ -51,3 +51,8 @@
 "an_internal_error_occurred" = "An internal error occurred";
 "success" = "Success!";
 "adjust_schedule" = "Adjust schedule";
+"edit_rise_schedule" = "Edit Rise schedule";
+"save" = "Save";
+"adjust_schedule_description" = "Sometimes we all miss our sleep schedule";
+"adjust_schedule_suggestion_to_adjust" = "In case this happens to you, you can update the Rise schedule to better suit your current situation. Remember, there is no need to rush, good sleep requires careful attention.";
+"last_time_i_went_sleep_at" = "last time I went to sleep at";

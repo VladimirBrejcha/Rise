@@ -15,12 +15,12 @@ final class EditScheduleView: UIView {
 
     // MARK: - Subviews
 
-    private lazy var backgroundImageView: UIImageView = {
-        let view = UIImageView()
-        view.image = Asset.Background.default.image
-        view.contentMode = .scaleAspectFill
-        return view
-    }()
+    private lazy var titleView: UIView = View.screenTitleView(
+        title: Text.editRiseSchedule,
+        closeHandler: { [weak self] in
+            self?.closeHandler()
+        }
+    )
 
     private lazy var editScheduleTableView: EditScheduleTableView = {
         let tableView = EditScheduleTableView()
@@ -33,24 +33,11 @@ final class EditScheduleView: UIView {
 
     private lazy var saveButton: Button = {
         let button = Button()
-        button.setTitle("Save", for: .normal)
+        button.setTitle(Text.save, for: .normal)
         button.onTouchUp = { [weak self] _ in
             self?.saveHandler()
         }
         return button
-    }()
-
-    private lazy var closeButton: Button = makeCloseButton(
-        handler: { [weak self] in
-            self?.closeHandler()
-        }
-    )
-
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.applyStyle(.mediumSizedTitle)
-        label.text = "Change Rise schedule"
-        return label
     }()
 
     // MARK: - LifeCycle
@@ -71,10 +58,9 @@ final class EditScheduleView: UIView {
     }
 
     private func setupViews() {
+        addBackgroundView()
+        addScreenTitleView(titleView)
         addSubviews(
-            backgroundImageView,
-            closeButton,
-            titleLabel,
             editScheduleTableView,
             saveButton
         )
@@ -94,24 +80,6 @@ final class EditScheduleView: UIView {
     // MARK: - Layout
 
     private func setupLayout() {
-        backgroundImageView.activateConstraints(
-            backgroundImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            backgroundImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            backgroundImageView.topAnchor.constraint(equalTo: topAnchor),
-            backgroundImageView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        )
-        titleLabel.activateConstraints(
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            titleLabel.centerYAnchor.constraint(equalTo: closeButton.centerYAnchor, constant: -2),
-            titleLabel.bottomAnchor.constraint(equalTo: editScheduleTableView.topAnchor, constant: -10)
-        )
-        closeButton.activateConstraints(
-            closeButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 14),
-            closeButton.widthAnchor.constraint(equalToConstant: 35),
-            closeButton.heightAnchor.constraint(equalToConstant: 35),
-            closeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12)
-        )
         editScheduleTableView.activateConstraints(
             editScheduleTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             editScheduleTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),

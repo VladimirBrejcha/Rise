@@ -6,7 +6,10 @@
 //  Copyright © 2021 VladimirBrejcha. All rights reserved.
 //
 
+import Foundation
+
 protocol UserData: AnyObject {
     var onboardingCompleted: Bool { get set }
     var scheduleOnPause: Bool { get set }
+    var latestAppUsageDate: Date? { get set }
 }

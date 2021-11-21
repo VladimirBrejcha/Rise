@@ -40,6 +40,15 @@
 		7E2E0A692744471B00A51344 /* IntensityCreateScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2E0A682744471B00A51344 /* IntensityCreateScheduleViewController.swift */; };
 		7E31497D23425CA600941606 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31497C23425CA600941606 /* TableViewDataSource.swift */; };
 		7E31497F23425D3700941606 /* EditScheduleTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31497E23425D3700941606 /* EditScheduleTableView.swift */; };
+		7E346CE5274A5BFE00848DBB /* AdjustScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E346CE2274A5BFE00848DBB /* AdjustScheduleView.swift */; };
+		7E346CE6274A5BFE00848DBB /* AdjustScheduleAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E346CE3274A5BFE00848DBB /* AdjustScheduleAssembler.swift */; };
+		7E346CE7274A5BFE00848DBB /* AdjustScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E346CE4274A5BFE00848DBB /* AdjustScheduleViewController.swift */; };
+		7E346CE9274A5C5500848DBB /* ScreenTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E346CE8274A5C5500848DBB /* ScreenTitleView.swift */; };
+		7E346CEB274A635F00848DBB /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E346CEA274A635F00848DBB /* View.swift */; };
+		7E346CED274A637B00848DBB /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E346CEC274A637B00848DBB /* BackgroundView.swift */; };
+		7E346CEF274A64E700848DBB /* UIViewController+addBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E346CEE274A64E700848DBB /* UIViewController+addBackground.swift */; };
+		7E346CF1274AC8F700848DBB /* UIViewController+addScreenTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E346CF0274AC8F700848DBB /* UIViewController+addScreenTitleView.swift */; };
+		7E346CF3274AE0CA00848DBB /* AdjustSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E346CF2274AE0CA00848DBB /* AdjustSchedule.swift */; };
 		7E354E3024119B1C0036FF3F /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E354E2F24119B1C0036FF3F /* LocalDataSource.swift */; };
 		7E378662261679460098A204 /* CALayer+Styleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E378661261679460098A204 /* CALayer+Styleable.swift */; };
 		7E388E38243A3C16001A28DF /* PropertyAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E388E37243A3C16001A28DF /* PropertyAnimatable.swift */; };
@@ -181,7 +190,7 @@
 		7EE6905C243E64C600CA423E /* LongPressProgressButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EE6905B243E64C600CA423E /* LongPressProgressButton.xib */; };
 		7EE6905E243E658B00CA423E /* LongPressProgressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6905D243E658B00CA423E /* LongPressProgressButton.swift */; };
 		7EE87CEF2442254A00E1BD3B /* AutoRefreshableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE87CEE2442254A00E1BD3B /* AutoRefreshableLabel.swift */; };
-		7EEA217923B6A3B400354BEA /* UIViewController+Present.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEA217823B6A3B400354BEA /* UIViewController+Present.swift */; };
+		7EEA217923B6A3B400354BEA /* UIViewController+present.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEA217823B6A3B400354BEA /* UIViewController+present.swift */; };
 		7EEB1E0D24424010001ABE4A /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB1E0C24424010001ABE4A /* AudioPlayer.swift */; };
 		7EEB1E0F2443369F001ABE4A /* bellAlarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7EEB1E0E2443369F001ABE4A /* bellAlarm.wav */; };
 		7EEB1E122443370F001ABE4A /* AlarmSounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB1E112443370F001ABE4A /* AlarmSounds.swift */; };
@@ -260,6 +269,15 @@
 		7E2E0A682744471B00A51344 /* IntensityCreateScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityCreateScheduleViewController.swift; sourceTree = "<group>"; };
 		7E31497C23425CA600941606 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		7E31497E23425D3700941606 /* EditScheduleTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScheduleTableView.swift; sourceTree = "<group>"; };
+		7E346CE2274A5BFE00848DBB /* AdjustScheduleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjustScheduleView.swift; sourceTree = "<group>"; };
+		7E346CE3274A5BFE00848DBB /* AdjustScheduleAssembler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjustScheduleAssembler.swift; sourceTree = "<group>"; };
+		7E346CE4274A5BFE00848DBB /* AdjustScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjustScheduleViewController.swift; sourceTree = "<group>"; };
+		7E346CE8274A5C5500848DBB /* ScreenTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTitleView.swift; sourceTree = "<group>"; };
+		7E346CEA274A635F00848DBB /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		7E346CEC274A637B00848DBB /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		7E346CEE274A64E700848DBB /* UIViewController+addBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+addBackground.swift"; sourceTree = "<group>"; };
+		7E346CF0274AC8F700848DBB /* UIViewController+addScreenTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+addScreenTitleView.swift"; sourceTree = "<group>"; };
+		7E346CF2274AE0CA00848DBB /* AdjustSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustSchedule.swift; sourceTree = "<group>"; };
 		7E354E2F24119B1C0036FF3F /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
 		7E378661261679460098A204 /* CALayer+Styleable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Styleable.swift"; sourceTree = "<group>"; };
 		7E388E37243A3C16001A28DF /* PropertyAnimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyAnimatable.swift; sourceTree = "<group>"; };
@@ -407,7 +425,7 @@
 		7EE6905D243E658B00CA423E /* LongPressProgressButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressProgressButton.swift; sourceTree = "<group>"; };
 		7EE87CEE2442254A00E1BD3B /* AutoRefreshableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRefreshableLabel.swift; sourceTree = "<group>"; };
 		7EE939162340F68800FE9954 /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
-		7EEA217823B6A3B400354BEA /* UIViewController+Present.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Present.swift"; sourceTree = "<group>"; };
+		7EEA217823B6A3B400354BEA /* UIViewController+present.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+present.swift"; sourceTree = "<group>"; };
 		7EEB1E0C24424010001ABE4A /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		7EEB1E0E2443369F001ABE4A /* bellAlarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bellAlarm.wav; sourceTree = "<group>"; };
 		7EEB1E112443370F001ABE4A /* AlarmSounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSounds.swift; sourceTree = "<group>"; };
@@ -600,6 +618,16 @@
 			path = TableView;
 			sourceTree = "<group>";
 		};
+		7E346CE1274A5BFE00848DBB /* AdjustSchedule */ = {
+			isa = PBXGroup;
+			children = (
+				7E346CE3274A5BFE00848DBB /* AdjustScheduleAssembler.swift */,
+				7E346CE2274A5BFE00848DBB /* AdjustScheduleView.swift */,
+				7E346CE4274A5BFE00848DBB /* AdjustScheduleViewController.swift */,
+			);
+			path = AdjustSchedule;
+			sourceTree = "<group>";
+		};
 		7E43064026ECC75E00B67315 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -659,6 +687,7 @@
 				7E514DC125A87FB1000EBE81 /* Alarming */,
 				7E49018A2340F4190034521E /* Settings */,
 				7E1539782749672E00CC2E7B /* RefreshSunTimes */,
+				7E346CE1274A5BFE00848DBB /* AdjustSchedule */,
 				7E43065526EE2FBE00B67315 /* About */,
 			);
 			path = Stories;
@@ -891,9 +920,9 @@
 				7EAFB61F2735D85300B7C7C6 /* Schedule */,
 				7EE6404723786617005BE355 /* SunTime */,
 				7EA38AEA237852FD0007919B /* Location */,
+				7E43064526ED3EF600B67315 /* UserData */,
 				7EE6404E23786693005BE355 /* PersistentContainer.swift */,
 				7E354E2F24119B1C0036FF3F /* LocalDataSource.swift */,
-				7E43064526ED3EF600B67315 /* UserData */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -919,6 +948,7 @@
 				7E3955FF26F162FC003D664D /* PrepareMail.swift */,
 				7EAFB61B2735D31100B7C7C6 /* CreateSchedule.swift */,
 				7EAFB632273729C400B7C7C6 /* UpdateSchedule.swift */,
+				7E346CF2274AE0CA00848DBB /* AdjustSchedule.swift */,
 				7EAFB63427372C2500B7C7C6 /* DeleteSchedule.swift */,
 				7EAFB62C2735EC1200B7C7C6 /* SaveSchedule.swift */,
 				7EAFB62E2735ED7400B7C7C6 /* GetSchedule.swift */,
@@ -1121,7 +1151,9 @@
 				7E5E3359261A34B4000EE976 /* UIView+applyBlur.swift */,
 				7E5E3354261A3496000EE976 /* UIView+invertAlpha.swift */,
 				7E43063826EBCEDD00B67315 /* UIView+addSubviews.swift */,
-				7EEA217823B6A3B400354BEA /* UIViewController+Present.swift */,
+				7EEA217823B6A3B400354BEA /* UIViewController+present.swift */,
+				7E346CEE274A64E700848DBB /* UIViewController+addBackground.swift */,
+				7E346CF0274AC8F700848DBB /* UIViewController+addScreenTitleView.swift */,
 				7E43063A26EBCEF600B67315 /* UIView+activateConstraints.swift */,
 				7E43064F26ED528700B67315 /* UIStackView+addSeparators.swift */,
 				7E43065C26EE617500B67315 /* UIStackView+addArrangedSubviews.swift */,
@@ -1154,8 +1186,11 @@
 				7E9D9C0E24E5BADC000772C0 /* FloatingButton.swift */,
 				7ED6DD3525E2A30700F906CE /* ImageLabelViewWithContextMenu.swift */,
 				7ECA517D25E340BD009362F9 /* ContextPreview.swift */,
+				7E346CEA274A635F00848DBB /* View.swift */,
 				7EB26952234F99AE008AEB3D /* Button.swift */,
 				7E15398B2749D70C00CC2E7B /* CloseableButton.swift */,
+				7E346CE8274A5C5500848DBB /* ScreenTitleView.swift */,
+				7E346CEC274A637B00848DBB /* BackgroundView.swift */,
 				7E15398D2749D71E00CC2E7B /* CloseButton.swift */,
 				7E15397027494B7700CC2E7B /* ErrorView */,
 				7EE87CEB2442233500E1BD3B /* LongPressProgressButton */,
@@ -1477,6 +1512,7 @@
 				7E708A4023BFD92D003B5702 /* EditScheduleViewController.swift in Sources */,
 				7E9D9C0F24E5BADC000772C0 /* FloatingButton.swift in Sources */,
 				92D7D6552296F297009321AE /* SleepViewController.swift in Sources */,
+				7E346CEB274A635F00848DBB /* View.swift in Sources */,
 				7E15397A2749674300CC2E7B /* RefreshSunTimesAssembler.swift in Sources */,
 				7E541AF723FB384F00BAD710 /* ConfigurableCell.swift in Sources */,
 				7E052A40235236F1005D7FAD /* SunTime.swift in Sources */,
@@ -1509,6 +1545,7 @@
 				7E6225D22619CD75001AA8FD /* HorizontalFadeView.swift in Sources */,
 				7EE640492378665D005BE355 /* SunTimeRepositoryImpl.swift in Sources */,
 				7EAFB62A2735E1F300B7C7C6 /* ScheduleCoreDataService.swift in Sources */,
+				7E346CEF274A64E700848DBB /* UIViewController+addBackground.swift in Sources */,
 				7E17337924104DDA0028FDBE /* LocationRepository.swift in Sources */,
 				7EA38AE92378526F0007919B /* LocationData.xcdatamodeld in Sources */,
 				7E6268C024D5D49C00F70BC3 /* TodayView.swift in Sources */,
@@ -1525,6 +1562,7 @@
 				7E43065726EE4F2000B67315 /* AboutView.swift in Sources */,
 				7E15397327494C1F00CC2E7B /* AudioPlayerError.swift in Sources */,
 				7EB9003E23256AC9006EB9A8 /* DesignableContainerView.swift in Sources */,
+				7E346CE5274A5BFE00848DBB /* AdjustScheduleView.swift in Sources */,
 				7E0834AC2387351400BA1AE8 /* Date+Utils.swift in Sources */,
 				7E708A3923BFD09B003B5702 /* WentSleepCreateScheduleViewController.swift in Sources */,
 				7EEBEBFE2721F3AF00F8C8D2 /* main.swift in Sources */,
@@ -1544,6 +1582,7 @@
 				7E15398C2749D70C00CC2E7B /* CloseableButton.swift in Sources */,
 				7ECA517E25E340BD009362F9 /* ContextPreview.swift in Sources */,
 				7E97656E2378813700E3AEF2 /* Log.swift in Sources */,
+				7E346CF1274AC8F700848DBB /* UIViewController+addScreenTitleView.swift in Sources */,
 				7E9D9C0D24E59B21000772C0 /* ChangeableWrapper.swift in Sources */,
 				7E6225D72619CD9F001AA8FD /* Gradientable.swift in Sources */,
 				7EB196DA23A01B8F00E6C40B /* CreateScheduleViewController.swift in Sources */,
@@ -1560,6 +1599,8 @@
 				7E69836B24EC6932002EE278 /* NetworkError.swift in Sources */,
 				7E69837024EC69A5002EE278 /* AlertCreatable.swift in Sources */,
 				7E43063B26EBCEF600B67315 /* UIView+activateConstraints.swift in Sources */,
+				7E346CE7274A5BFE00848DBB /* AdjustScheduleViewController.swift in Sources */,
+				7E346CED274A637B00848DBB /* BackgroundView.swift in Sources */,
 				7E644D5124FACF6E00BF198C /* PermissionError.swift in Sources */,
 				7E5BDADE2371F08400E43F37 /* RiseLocation+CoreDataClass.swift in Sources */,
 				7E91D95C2371E4080087436F /* RiseDailySunTime+CoreDataProperties.swift in Sources */,
@@ -1572,8 +1613,10 @@
 				7E514DBD25A87F6F000EBE81 /* AlarmingAssembler.swift in Sources */,
 				7EAFB6222735D89F00B7C7C6 /* ScheduleData.xcdatamodeld in Sources */,
 				7E9D9C0824E596DA000772C0 /* PrepareToSleepView.swift in Sources */,
+				7E346CE9274A5C5500848DBB /* ScreenTitleView.swift in Sources */,
 				7E43063926EBCEDD00B67315 /* UIView+addSubviews.swift in Sources */,
 				7EEB1E122443370F001ABE4A /* AlarmSounds.swift in Sources */,
+				7E346CE6274A5BFE00848DBB /* AdjustScheduleAssembler.swift in Sources */,
 				7E76E5A923E734C200CC4E6D /* EditScheduleAssembler.swift in Sources */,
 				7E43063F26ECC58400B67315 /* DescriptionLabel.swift in Sources */,
 				7EEFC00F25E1AEB0007AE725 /* BorderedView.swift in Sources */,
@@ -1585,6 +1628,7 @@
 				7E5F292A23F9638C0050DFD3 /* FloatingLabel.swift in Sources */,
 				7EAFB63E2737318D00B7C7C6 /* Double+Utils.swift in Sources */,
 				7E173372240D9F7A0028FDBE /* DomainLayer.swift in Sources */,
+				7E346CF3274AE0CA00848DBB /* AdjustSchedule.swift in Sources */,
 				7E43064B26ED4FF600B67315 /* SettingsView.swift in Sources */,
 				7EAFB62D2735EC1200B7C7C6 /* SaveSchedule.swift in Sources */,
 				7E8EFA4226EAC4D400DEE564 /* Strings+Generated.swift in Sources */,
@@ -1592,7 +1636,7 @@
 				7EAFB63A2737315F00B7C7C6 /* Day.swift in Sources */,
 				7EE87CEF2442254A00E1BD3B /* AutoRefreshableLabel.swift in Sources */,
 				7E43065B26EE4F3800B67315 /* AboutAssembler.swift in Sources */,
-				7EEA217923B6A3B400354BEA /* UIViewController+Present.swift in Sources */,
+				7EEA217923B6A3B400354BEA /* UIViewController+present.swift in Sources */,
 				7E31497D23425CA600941606 /* TableViewDataSource.swift in Sources */,
 				7E514DB325A87F5E000EBE81 /* AlarmingViewController.swift in Sources */,
 				7EB9F34C23C20504002A6DD3 /* GetSunTime.swift in Sources */,

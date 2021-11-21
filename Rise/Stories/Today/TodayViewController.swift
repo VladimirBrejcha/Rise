@@ -13,16 +13,17 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
     private var todayView: TodayView { view as! TodayView }
     private let daysViewController = Story.days() as! DaysViewController
 
+    private let adjustSchedule: AdjustSchedule
     private let getSchedule: GetSchedule
-
     private var todaySchedule: Schedule?
 
     var propertyAnimationDuration: Double { 0.15 }
 
     // MARK: - LifeCycle
 
-    init(getSchedule: GetSchedule) {
+    init(getSchedule: GetSchedule, adjustSchedule: AdjustSchedule) {
         self.getSchedule = getSchedule
+        self.adjustSchedule = adjustSchedule
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -46,8 +47,23 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
                     with: .fullScreen
                 )
             },
-            adjustScheduleHandler: {
-                print("adjust schedule")
+            showAdjustSchedule: adjustSchedule.mightNeedAdjustment,
+            adjustScheduleHandler: { [weak self] in
+                guard let todaySchedule = self?.todaySchedule else {
+                    return
+                }
+                self?.present(
+                    Story.adjustSchedule(
+                        currentSchedule: todaySchedule,
+                        completion: { adjusted in
+                            if adjusted {
+                                self?.daysViewController.refreshSchedule()
+                            }
+                            self?.todayView.allowAdjustSchedule(false)
+                        }
+                    )(),
+                    with: .modal
+                )
             },
             daysView: daysViewController.daysView
         )

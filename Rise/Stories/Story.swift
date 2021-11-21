@@ -17,6 +17,10 @@ enum Story {
     case today
     case days
     case schedule
+    case adjustSchedule(
+        currentSchedule: Schedule,
+        completion: (Bool) -> Void
+    )
     
     // Create schedule
     case createSchedule(onCreate: () -> Void)
@@ -40,7 +44,6 @@ enum Story {
         currentWentSleepTime: () -> Date?
     )
     case scheduleCreatedCreateSchedule
-
     
     // Sleep
     case prepareToSleep
@@ -109,7 +112,9 @@ enum Story {
             controller.currentWentSleepTime = currentWentSleepTime
             return controller
         case .scheduleCreatedCreateSchedule:
-            let controller = Storyboard.createSchedule.instantiateViewController(of: ScheduleCreatedCreateScheduleViewController.self)
+            let controller = Storyboard.createSchedule.instantiateViewController(
+                of: ScheduleCreatedCreateScheduleViewController.self
+            )
             return controller
         case let .editSchedule(schedule):
             return EditScheduleAssembler().assemble(schedule: schedule)
@@ -123,6 +128,11 @@ enum Story {
             return AboutAssembler().assemble()
         case .refreshSunTime:
             return RefreshSunTimesAssembler().assemble()
+        case let .adjustSchedule(currentSchedule, completion):
+            return AdjustScheduleAssembler().assemble(
+                currentSchedule: currentSchedule,
+                completion: completion
+            )
         }
     }
 }

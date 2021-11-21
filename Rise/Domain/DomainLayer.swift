@@ -35,6 +35,9 @@ enum DomainLayer {
     static var updateSchedule: UpdateSchedule {
         UpdateScheduleImpl(DomainLayer.createSchedule, DataLayer.scheduleRepository)
     }
+    static var adjustSchedule: AdjustSchedule {
+        AdjustScheduleImpl(DomainLayer.createSchedule, DataLayer.scheduleRepository, DataLayer.userData)
+    }
     static var createNextSchedule: CreateNextSchedule {
         CreateNextScheduleImpl(DataLayer.userData)
     }

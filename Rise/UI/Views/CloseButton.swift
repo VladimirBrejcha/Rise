@@ -6,13 +6,15 @@
 //  Copyright © 2021 VladimirBrejcha. All rights reserved.
 //
 
-func makeCloseButton(handler: @escaping () -> Void) -> Button {
-    let closeButton = Button()
-    closeButton.applyStyle(.image)
-    closeButton.setImage(Asset.cancel.image, for: .normal)
-    closeButton.tintColor = Asset.Colors.white.color
-    closeButton.onTouchUp = { _ in
-        handler()
+extension View {
+    static func closeButton(handler: @escaping () -> Void) -> Button {
+        let closeButton = Button()
+        closeButton.applyStyle(.image)
+        closeButton.setImage(Asset.cancel.image, for: .normal)
+        closeButton.tintColor = Asset.Colors.white.color
+        closeButton.onTouchUp = { _ in
+            handler()
+        }
+        return closeButton
     }
-    return closeButton
 }

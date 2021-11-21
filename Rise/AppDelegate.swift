@@ -34,4 +34,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = mainWindow
         return true
     }
+
+    func applicationWillTerminate(_ application: UIApplication) {
+        DataLayer.userData.latestAppUsageDate = Date()
+    }
 }

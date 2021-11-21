@@ -14,13 +14,6 @@ final class SettingsView: UIView {
 
     // MARK: - Subviews
 
-    private lazy var backgroundImageView: UIImageView = {
-        let view = UIImageView()
-        view.image = Asset.Background.default.image
-        view.contentMode = .scaleAspectFill
-        return view
-    }()
-
     private lazy var VStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
@@ -47,8 +40,8 @@ final class SettingsView: UIView {
     }
 
     private func setupViews() {
+        addBackgroundView()
         addSubviews(
-            backgroundImageView,
             VStack
         )
     }
@@ -89,12 +82,6 @@ final class SettingsView: UIView {
     // MARK: - Layout
 
     private func setupLayout() {
-        backgroundImageView.activateConstraints(
-            backgroundImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            backgroundImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            backgroundImageView.topAnchor.constraint(equalTo: topAnchor),
-            backgroundImageView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        )
         VStack.activateConstraints(
             VStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             VStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
