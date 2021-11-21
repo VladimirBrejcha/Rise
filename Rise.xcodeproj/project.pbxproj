@@ -101,14 +101,11 @@
 		7E708A3B23BFD0C7003B5702 /* ScheduleCreatedCreateScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3A23BFD0C7003B5702 /* ScheduleCreatedCreateScheduleViewController.swift */; };
 		7E708A4023BFD92D003B5702 /* EditScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3F23BFD92D003B5702 /* EditScheduleViewController.swift */; };
 		7E76E5A923E734C200CC4E6D /* EditScheduleAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E76E5A823E734C200CC4E6D /* EditScheduleAssembler.swift */; };
-		7E814E7424D8A11700EC1665 /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E814E7324D8A11700EC1665 /* ConfirmationView.swift */; };
-		7E84EB27239D1A5700E02050 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E84EB26239D1A5700E02050 /* ConfirmationViewController.swift */; };
 		7E88A35123F8B20C00E792CA /* VerticalPositionMoveAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E88A35023F8B20C00E792CA /* VerticalPositionMoveAnimation.swift */; };
 		7E8AB6CE23A18D27009CE41A /* WakeUpTimeCreateScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8AB6CD23A18D27009CE41A /* WakeUpTimeCreateScheduleViewController.swift */; };
 		7E8C6B982350FB9C0086162F /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8C6B972350FB9C0086162F /* TableView.swift */; };
 		7E8EFA2F26EABC1800DEE564 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7E8EFA2D26EABC1800DEE564 /* Localizable.strings */; };
 		7E8EFA3226EABC2F00DEE564 /* Sleep.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E8EFA3026EABC2F00DEE564 /* Sleep.storyboard */; };
-		7E8EFA3B26EABC3900DEE564 /* Confirmation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E8EFA3326EABC3800DEE564 /* Confirmation.storyboard */; };
 		7E8EFA3C26EABC3900DEE564 /* CreateSchedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E8EFA3526EABC3800DEE564 /* CreateSchedule.storyboard */; };
 		7E8EFA4226EAC4D400DEE564 /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8EFA4126EAC4D400DEE564 /* Strings+Generated.swift */; };
 		7E91D95B2371E4080087436F /* RiseDailySunTime+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E91D9552371E4080087436F /* RiseDailySunTime+CoreDataClass.swift */; };
@@ -166,7 +163,6 @@
 		7EB9F35223C36AAE002A6DD3 /* SettingsAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9F35123C36AAE002A6DD3 /* SettingsAssembler.swift */; };
 		7EB9F35423C36B54002A6DD3 /* CreateScheduleAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9F35323C36B54002A6DD3 /* CreateScheduleAssembler.swift */; };
 		7EB9F35A23C389BF002A6DD3 /* DataLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9F35923C389BF002A6DD3 /* DataLayer.swift */; };
-		7EC7392523C4EF5B00C484B8 /* ConfirmationAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC7392423C4EF5B00C484B8 /* ConfirmationAssembler.swift */; };
 		7ECA517E25E340BD009362F9 /* ContextPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECA517D25E340BD009362F9 /* ContextPreview.swift */; };
 		7ECD2C722419168600408C4B /* EditScheduleButtonTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD2C702419168600408C4B /* EditScheduleButtonTableCell.swift */; };
 		7ECD2C78241916C600408C4B /* EditScheduleButtonTableCell+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECD2C77241916C600408C4B /* EditScheduleButtonTableCell+Model.swift */; };
@@ -323,8 +319,6 @@
 		7E708A3A23BFD0C7003B5702 /* ScheduleCreatedCreateScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCreatedCreateScheduleViewController.swift; sourceTree = "<group>"; };
 		7E708A3F23BFD92D003B5702 /* EditScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScheduleViewController.swift; sourceTree = "<group>"; };
 		7E76E5A823E734C200CC4E6D /* EditScheduleAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScheduleAssembler.swift; sourceTree = "<group>"; };
-		7E814E7324D8A11700EC1665 /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
-		7E84EB26239D1A5700E02050 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
 		7E88A35023F8B20C00E792CA /* VerticalPositionMoveAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalPositionMoveAnimation.swift; sourceTree = "<group>"; };
 		7E8AB6CD23A18D27009CE41A /* WakeUpTimeCreateScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUpTimeCreateScheduleViewController.swift; sourceTree = "<group>"; };
 		7E8C6B972350FB9C0086162F /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
@@ -332,7 +326,6 @@
 		7E8EFA2C26EABBB700DEE564 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7E8EFA2E26EABC1800DEE564 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7E8EFA3126EABC2F00DEE564 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Sleep.storyboard; sourceTree = "<group>"; };
-		7E8EFA3426EABC3800DEE564 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Confirmation.storyboard; sourceTree = "<group>"; };
 		7E8EFA3626EABC3800DEE564 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CreateSchedule.storyboard; sourceTree = "<group>"; };
 		7E8EFA4126EAC4D400DEE564 /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
 		7E91D9552371E4080087436F /* RiseDailySunTime+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "RiseDailySunTime+CoreDataClass.swift"; path = "Rise/Data/SunTime/Entity/RiseDailySunTime+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
@@ -391,7 +384,6 @@
 		7EB9F35923C389BF002A6DD3 /* DataLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLayer.swift; sourceTree = "<group>"; };
 		7EBE900423C9231200043651 /* RiseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RiseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EBE900823C9231200043651 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7EC7392423C4EF5B00C484B8 /* ConfirmationAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationAssembler.swift; sourceTree = "<group>"; };
 		7ECA517D25E340BD009362F9 /* ContextPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextPreview.swift; sourceTree = "<group>"; };
 		7ECD2C702419168600408C4B /* EditScheduleButtonTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScheduleButtonTableCell.swift; sourceTree = "<group>"; };
 		7ECD2C77241916C600408C4B /* EditScheduleButtonTableCell+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditScheduleButtonTableCell+Model.swift"; sourceTree = "<group>"; };
@@ -655,7 +647,6 @@
 				7ED8E59623BFFD5100A1E96F /* Story.swift */,
 				7E252A8626EBBE5000DEB6F0 /* Onboarding */,
 				7E4901882340F3BE0034521E /* Today */,
-				7E84EB28239D1A6100E02050 /* Confirmation */,
 				7E49018B2340F4460034521E /* Schedule */,
 				7EF3EE172340F794003BE978 /* CreateSchedule */,
 				7E708A3C23BFD8F2003B5702 /* EditSchedule */,
@@ -809,16 +800,6 @@
 				7EF4C1A124043A8F0098135A /* TableView */,
 			);
 			path = EditSchedule;
-			sourceTree = "<group>";
-		};
-		7E84EB28239D1A6100E02050 /* Confirmation */ = {
-			isa = PBXGroup;
-			children = (
-				7EC7392423C4EF5B00C484B8 /* ConfirmationAssembler.swift */,
-				7E814E7324D8A11700EC1665 /* ConfirmationView.swift */,
-				7E84EB26239D1A5700E02050 /* ConfirmationViewController.swift */,
-			);
-			path = Confirmation;
 			sourceTree = "<group>";
 		};
 		7E88A34F23F8B1F400E792CA /* Animations */ = {
@@ -1018,7 +999,6 @@
 				7E4798F4239D894B007FB8F2 /* Storyboard.swift */,
 				92D7D65B2296F298009321AE /* LaunchScreen.storyboard */,
 				92D7D6562296F297009321AE /* Main.storyboard */,
-				7E8EFA3326EABC3800DEE564 /* Confirmation.storyboard */,
 				7E8EFA3526EABC3800DEE564 /* CreateSchedule.storyboard */,
 				7E8EFA3026EABC2F00DEE564 /* Sleep.storyboard */,
 			);
@@ -1386,7 +1366,6 @@
 				92D7D65D2296F298009321AE /* LaunchScreen.storyboard in Resources */,
 				7E8EFA3226EABC2F00DEE564 /* Sleep.storyboard in Resources */,
 				7EE6905C243E64C600CA423E /* LongPressProgressButton.xib in Resources */,
-				7E8EFA3B26EABC3900DEE564 /* Confirmation.storyboard in Resources */,
 				7ED6DD3125E1B50800F906CE /* ImageLabelView.xib in Resources */,
 				92D7D65A2296F298009321AE /* Assets.xcassets in Resources */,
 				7E8EFA3C26EABC3900DEE564 /* CreateSchedule.storyboard in Resources */,
@@ -1455,7 +1434,6 @@
 				7E15396F2748156C00CC2E7B /* SelfHeightSizing.swift in Sources */,
 				7E43065026ED528700B67315 /* UIStackView+addSeparators.swift in Sources */,
 				7E69837624EC69DE002EE278 /* ErrorViewAddable.swift in Sources */,
-				7E814E7424D8A11700EC1665 /* ConfirmationView.swift in Sources */,
 				7EAFB61C2735D31100B7C7C6 /* CreateSchedule.swift in Sources */,
 				7EB1C0332340F9550028237E /* ScheduleViewController.swift in Sources */,
 				7EA38AE623783FFD0007919B /* DefaultLocationRemoteDataSource.swift in Sources */,
@@ -1549,7 +1527,6 @@
 				7E43065426ED6E7500B67315 /* GetAppVersion.swift in Sources */,
 				7EAFB62F2735ED7400B7C7C6 /* GetSchedule.swift in Sources */,
 				7E06FE92252E3829005D72CB /* AnimatedTransitionNavigationController.swift in Sources */,
-				7E84EB27239D1A5700E02050 /* ConfirmationViewController.swift in Sources */,
 				7E43063D26ECC4E400B67315 /* ContentView.swift in Sources */,
 				7E43063726EBC93300B67315 /* XCAssets+Generated.swift in Sources */,
 				7E5BDADF2371F08400E43F37 /* RiseLocation+CoreDataProperties.swift in Sources */,
@@ -1623,7 +1600,6 @@
 				7E5E3350261A17FF000EE976 /* UIDatePicker+Styleable.swift in Sources */,
 				7EFAEF6726F5785300C51A13 /* DaysCollectionCell+Model.swift in Sources */,
 				7E6225B826192E3F001AA8FD /* UIButton+Styleable.swift in Sources */,
-				7EC7392523C4EF5B00C484B8 /* ConfirmationAssembler.swift in Sources */,
 				7E69837824EC69EE002EE278 /* ErrorViewCreatable.swift in Sources */,
 				7E708A3423BF635B003B5702 /* SleepDurationCreateScheduleViewController.swift in Sources */,
 				7ECD2C78241916C600408C4B /* EditScheduleButtonTableCell+Model.swift in Sources */,
@@ -1668,14 +1644,6 @@
 				7E8EFA3126EABC2F00DEE564 /* Base */,
 			);
 			name = Sleep.storyboard;
-			sourceTree = "<group>";
-		};
-		7E8EFA3326EABC3800DEE564 /* Confirmation.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7E8EFA3426EABC3800DEE564 /* Base */,
-			);
-			name = Confirmation.storyboard;
 			sourceTree = "<group>";
 		};
 		7E8EFA3526EABC3800DEE564 /* CreateSchedule.storyboard */ = {

@@ -40,12 +40,7 @@ enum Story {
         currentWentSleepTime: () -> Date?
     )
     case scheduleCreatedCreateSchedule
-    
-    // Edit schedule
-    case editSchedule(schedule: Schedule)
-    
-    // Сonfirmation
-    case confirmation
+
     
     // Sleep
     case prepareToSleep
@@ -56,6 +51,7 @@ enum Story {
     case settings
     case about
     case refreshSunTime
+    case editSchedule(schedule: Schedule)
     
     func callAsFunction() -> UIViewController {
         switch self {
@@ -117,8 +113,6 @@ enum Story {
             return controller
         case let .editSchedule(schedule):
             return EditScheduleAssembler().assemble(schedule: schedule)
-        case .confirmation:
-            return ConfirmationAssembler().assemble()
         case .prepareToSleep:
             return PrepareToSleepAssembler().assemble()
         case .sleep(let alarmTime):
