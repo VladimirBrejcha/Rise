@@ -159,13 +159,13 @@ final class DaysViewController:
                     $0.sunTime = .loading
                 }
             )
-            refreshSunTimes()
+            refreshSunTimes(allowPermissionAlert: true)
         }
     }
 
     // MARK: - Refresh sun times
 
-    private func refreshSunTimes() {
+    private func refreshSunTimes(allowPermissionAlert: Bool = false) {
         guard let state = state else { return }
         setState(
             state.changing {
@@ -177,6 +177,10 @@ final class DaysViewController:
             since: NoonedDay.yesterday.date,
             completionQueue: .main,
             permissionRequestProvider: { [weak self] openSettingsHandler in
+                if !allowPermissionAlert {
+                    openSettingsHandler(false)
+                    return
+                }
                 DispatchQueue.main.async {
                     self?.presentLocationPermissionAccessAlert { didOpenSettings in
                         openSettingsHandler(didOpenSettings)
