@@ -10,6 +10,7 @@ final class PrepareToSleepAssembler {
     func assemble() -> PrepareToSleepViewController {
         let controller = Storyboard.sleep.instantiateViewController(of: PrepareToSleepViewController.self)
         controller.getSchedule = DomainLayer.getSchedule
+        controller.preferredWakeUpTime = DomainLayer.preferredWakeUpTime
         return controller
     }
 }

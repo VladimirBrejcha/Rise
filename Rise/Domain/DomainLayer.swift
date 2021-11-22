@@ -17,6 +17,9 @@ enum DomainLayer {
     static var prepareMail: PrepareMail {
         PrepareMailUseCase()
     }
+    static var preferredWakeUpTime: PreferredWakeUpTime {
+        PreferredWakeUpTimeImpl(DataLayer.userData)
+    }
 
     // MARK: - SunTime
 

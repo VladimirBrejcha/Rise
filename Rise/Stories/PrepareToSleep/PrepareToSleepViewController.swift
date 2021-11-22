@@ -13,12 +13,16 @@ final class PrepareToSleepViewController: UIViewController {
     @IBOutlet private var prepareToSleepView: PrepareToSleepView!
     
     var getSchedule: GetSchedule! // DI
-    
-    @UserDefault<Date>("previously_selected_wakeup_time")
-    private var previouslySelectedWakeUpTime: Date?
+    var preferredWakeUpTime: PreferredWakeUpTime! // DI
+
+    private var customSelectedWakeUpTime: Date?
 
     private var wakeUpTime: Date {
-        schedule?.wakeUp ?? previouslySelectedWakeUpTime ?? Date()
+        if let schedule = schedule {
+            return customSelectedWakeUpTime ?? schedule.wakeUp
+        } else {
+            return customSelectedWakeUpTime ?? preferredWakeUpTime.time ?? Date()
+        }
     }
 
     private var schedule: Schedule?
@@ -28,7 +32,16 @@ final class PrepareToSleepViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        schedule = getSchedule.today()
+        guard let hours = calendar.dateComponents([.hour], from: Date()).hour else {
+            dismiss()
+            return
+        }
+
+        if hours < 6 {
+            schedule = getSchedule.today()
+        } else {
+            schedule = getSchedule.tomorrow()
+        }
         
         prepareToSleepView.configure(
             model: PrepareToSleepView.Model(
@@ -64,7 +77,8 @@ final class PrepareToSleepViewController: UIViewController {
                     self?.dismiss()
                 },
                 wakeUpTimeChanged: { [weak self] newValue in
-                    self?.previouslySelectedWakeUpTime = newValue
+                    self?.customSelectedWakeUpTime = newValue
+                    self?.preferredWakeUpTime.time = newValue
                     self?.prepareToSleepView.model = self?.prepareToSleepView.model?.changing { model in
                         model.wakeUpTime = newValue
                         model.wakeUpTitle = "Alarm at \(newValue.HHmmString)"

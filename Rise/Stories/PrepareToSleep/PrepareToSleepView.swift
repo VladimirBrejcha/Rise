@@ -13,6 +13,7 @@ final class PrepareToSleepView: UIView, PropertyAnimatable {
     // MARK: - PropertyAnimatable
     var propertyAnimationDuration: Double = 0.3
     
+    @IBOutlet private var backgroundImageView: UIImageView!
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var startSleepButton: FloatingButton!
     @IBOutlet private var startSleepLabel: UILabel!
@@ -112,6 +113,8 @@ final class PrepareToSleepView: UIView, PropertyAnimatable {
 
         startSleepButton.backgroundColor = .clear
         startSleepButton.alpha = 0.9
+
+        backgroundImageView.applyBlur(style: .dark)
         
         isConfigured = true
     }

@@ -9,7 +9,8 @@
 import UIKit
 
 final class HorizontalFadeView: UIView {
-    private lazy var gradientLayer: CAGradientLayer = { layer in
+    private lazy var gradientLayer: CAGradientLayer = {
+        let layer = CAGradientLayer()
         layer.apply(
             Gradient(
                 position: (
@@ -23,7 +24,7 @@ final class HorizontalFadeView: UIView {
         )
         self.layer.addSublayer(layer)
         return layer
-    }(CAGradientLayer())
+    }()
 
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -33,6 +34,6 @@ final class HorizontalFadeView: UIView {
 
 fileprivate extension UIColor {
     func colorsUsingAlpha(_ alpha: CGFloat...) -> [UIColor] {
-        alpha.map { self.withAlphaComponent($0) }
+        alpha.map(withAlphaComponent)
     }
 }

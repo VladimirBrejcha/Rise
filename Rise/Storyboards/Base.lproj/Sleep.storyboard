@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultBackground" translatesAutoresizingMaskIntoConstraints="NO" id="EL6-ld-qe1">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rich" translatesAutoresizingMaskIntoConstraints="NO" id="EL6-ld-qe1">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jtf-Rn-AX8" customClass="FloatingButton" customModule="Rise" customModuleProvider="target">
@@ -151,6 +151,7 @@
                             <constraint firstAttribute="trailing" secondItem="IV8-6m-UNl" secondAttribute="trailing" constant="10" id="zip-zD-8In"/>
                         </constraints>
                         <connections>
+                            <outlet property="backgroundImageView" destination="EL6-ld-qe1" id="ne7-n0-Sye"/>
                             <outlet property="fadeView" destination="bCo-5Q-2C3" id="voa-hV-Vsh"/>
                             <outlet property="startSleepButton" destination="jtf-Rn-AX8" id="hmx-eI-XMF"/>
                             <outlet property="startSleepLabel" destination="xQO-cs-6vp" id="b7z-jB-b1Z"/>
@@ -185,7 +186,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background2" translatesAutoresizingMaskIntoConstraints="NO" id="UeQ-9m-AT5">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rich" translatesAutoresizingMaskIntoConstraints="NO" id="UeQ-9m-AT5">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GLV-9r-i98">
@@ -243,7 +244,7 @@
                                 </connections>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXv-JC-4Xc">
-                                <rect key="frame" x="311.5" y="445.5" width="43.5" height="42.5"/>
+                                <rect key="frame" x="311.5" y="444.5" width="46.5" height="44.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="tintColor" name="normalTitle"/>
                                 <state key="normal">
@@ -410,12 +411,11 @@
         </designable>
     </designables>
     <resources>
-        <image name="background2" width="320" height="568"/>
         <image name="beginToSleepIcon" width="111" height="111"/>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="defaultBackground" width="1280" height="2272"/>
         <image name="multiply.circle" catalog="system" width="128" height="121"/>
         <image name="multiply.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="rich" width="320" height="568"/>
         <namedColor name="disabledTitle">
             <color red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

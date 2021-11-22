@@ -75,6 +75,7 @@
 		7E43066226EE974D00B67315 /* AboutIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43066126EE974D00B67315 /* AboutIdentifier.swift */; };
 		7E4798F5239D894B007FB8F2 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4798F4239D894B007FB8F2 /* Storyboard.swift */; };
 		7E48D2B4274C22C900B14355 /* UIScreen+isSmallSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E48D2B3274C22C900B14355 /* UIScreen+isSmallSize.swift */; };
+		7E48D2B6274C2E6800B14355 /* PreferredWakeUpTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E48D2B5274C2E6800B14355 /* PreferredWakeUpTime.swift */; };
 		7E514DB325A87F5E000EBE81 /* AlarmingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E514DB225A87F5E000EBE81 /* AlarmingViewController.swift */; };
 		7E514DB825A87F67000EBE81 /* AlarmingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E514DB725A87F67000EBE81 /* AlarmingView.swift */; };
 		7E514DBD25A87F6F000EBE81 /* AlarmingAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E514DBC25A87F6F000EBE81 /* AlarmingAssembler.swift */; };
@@ -305,6 +306,7 @@
 		7E43066126EE974D00B67315 /* AboutIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutIdentifier.swift; sourceTree = "<group>"; };
 		7E4798F4239D894B007FB8F2 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		7E48D2B3274C22C900B14355 /* UIScreen+isSmallSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+isSmallSize.swift"; sourceTree = "<group>"; };
+		7E48D2B5274C2E6800B14355 /* PreferredWakeUpTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferredWakeUpTime.swift; sourceTree = "<group>"; };
 		7E514DB225A87F5E000EBE81 /* AlarmingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmingViewController.swift; sourceTree = "<group>"; };
 		7E514DB725A87F67000EBE81 /* AlarmingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmingView.swift; sourceTree = "<group>"; };
 		7E514DBC25A87F6F000EBE81 /* AlarmingAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmingAssembler.swift; sourceTree = "<group>"; };
@@ -711,7 +713,6 @@
 			children = (
 				7EB29E08241987C800116433 /* PrepareToSleepAssembler.swift */,
 				7E9D9C0724E596DA000772C0 /* PrepareToSleepView.swift */,
-				7E6225D12619CD75001AA8FD /* HorizontalFadeView.swift */,
 				7EB29E0C241987DD00116433 /* PrepareToSleepViewController.swift */,
 			);
 			path = PrepareToSleep;
@@ -947,6 +948,7 @@
 				7E1539762749619400CC2E7B /* RefreshSunTime.swift */,
 				7E43064826ED40F400B67315 /* SetOnboardingCompleted.swift */,
 				7E43065326ED6E7500B67315 /* GetAppVersion.swift */,
+				7E48D2B5274C2E6800B14355 /* PreferredWakeUpTime.swift */,
 				7E3955FF26F162FC003D664D /* PrepareMail.swift */,
 				7EAFB61B2735D31100B7C7C6 /* CreateSchedule.swift */,
 				7EAFB632273729C400B7C7C6 /* UpdateSchedule.swift */,
@@ -1183,6 +1185,7 @@
 				7EE87CEE2442254A00E1BD3B /* AutoRefreshableLabel.swift */,
 				7E5F292923F9638C0050DFD3 /* FloatingLabel.swift */,
 				7E0B88F52455BEF400BC3CF5 /* SelectableStackViewButton.swift */,
+				7E6225D12619CD75001AA8FD /* HorizontalFadeView.swift */,
 				7EB9003D23256AC9006EB9A8 /* DesignableContainerView.swift */,
 				7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */,
 				7EEFC00E25E1AEB0007AE725 /* BorderedView.swift */,
@@ -1611,6 +1614,7 @@
 				7EA0924222C8CF820019F2E9 /* CustomTransition.swift in Sources */,
 				7EE6404D23786678005BE355 /* SunTimeRemoteDataSource.swift in Sources */,
 				7E15396D2748043700CC2E7B /* EditScheduleSegmentedControlTableCell+Model.swift in Sources */,
+				7E48D2B6274C2E6800B14355 /* PreferredWakeUpTime.swift in Sources */,
 				7E9D9C1524EB0E13000772C0 /* EditScheduleView.swift in Sources */,
 				7E9D9C1324E5DA57000772C0 /* ScheduleView.swift in Sources */,
 				7EE647C325F5CA250081ED4C /* DaysAssembler.swift in Sources */,

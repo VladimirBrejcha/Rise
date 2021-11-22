@@ -17,4 +17,7 @@ final class DefaultUserData: UserData {
 
     @UserDefault("latest_app_usage_date")
     var latestAppUsageDate: Date?
+
+    @UserDefault<Date>("preferred_wakeup_time")
+    var preferredWakeUpTime: Date?
 }

@@ -12,4 +12,5 @@ protocol UserData: AnyObject {
     var onboardingCompleted: Bool { get set }
     var scheduleOnPause: Bool { get set }
     var latestAppUsageDate: Date? { get set }
+    var preferredWakeUpTime: Date? { get set }
 }
