@@ -74,6 +74,7 @@
 		7E43065F26EE63DB00B67315 /* AboutItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43065E26EE63DB00B67315 /* AboutItemView.swift */; };
 		7E43066226EE974D00B67315 /* AboutIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43066126EE974D00B67315 /* AboutIdentifier.swift */; };
 		7E4798F5239D894B007FB8F2 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4798F4239D894B007FB8F2 /* Storyboard.swift */; };
+		7E48D2B4274C22C900B14355 /* UIScreen+isSmallSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E48D2B3274C22C900B14355 /* UIScreen+isSmallSize.swift */; };
 		7E514DB325A87F5E000EBE81 /* AlarmingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E514DB225A87F5E000EBE81 /* AlarmingViewController.swift */; };
 		7E514DB825A87F67000EBE81 /* AlarmingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E514DB725A87F67000EBE81 /* AlarmingView.swift */; };
 		7E514DBD25A87F6F000EBE81 /* AlarmingAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E514DBC25A87F6F000EBE81 /* AlarmingAssembler.swift */; };
@@ -303,6 +304,7 @@
 		7E43065E26EE63DB00B67315 /* AboutItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutItemView.swift; sourceTree = "<group>"; };
 		7E43066126EE974D00B67315 /* AboutIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutIdentifier.swift; sourceTree = "<group>"; };
 		7E4798F4239D894B007FB8F2 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
+		7E48D2B3274C22C900B14355 /* UIScreen+isSmallSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+isSmallSize.swift"; sourceTree = "<group>"; };
 		7E514DB225A87F5E000EBE81 /* AlarmingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmingViewController.swift; sourceTree = "<group>"; };
 		7E514DB725A87F67000EBE81 /* AlarmingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmingView.swift; sourceTree = "<group>"; };
 		7E514DBC25A87F6F000EBE81 /* AlarmingAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmingAssembler.swift; sourceTree = "<group>"; };
@@ -1157,6 +1159,7 @@
 				7E43063A26EBCEF600B67315 /* UIView+activateConstraints.swift */,
 				7E43064F26ED528700B67315 /* UIStackView+addSeparators.swift */,
 				7E43065C26EE617500B67315 /* UIStackView+addArrangedSubviews.swift */,
+				7E48D2B3274C22C900B14355 /* UIScreen+isSmallSize.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1510,6 +1513,7 @@
 				7EA7BA0A2354F1810051A92D /* DaysCollectionView.swift in Sources */,
 				7E98FE63231C2F8C0065FB09 /* Location.swift in Sources */,
 				7E708A4023BFD92D003B5702 /* EditScheduleViewController.swift in Sources */,
+				7E48D2B4274C22C900B14355 /* UIScreen+isSmallSize.swift in Sources */,
 				7E9D9C0F24E5BADC000772C0 /* FloatingButton.swift in Sources */,
 				92D7D6552296F297009321AE /* SleepViewController.swift in Sources */,
 				7E346CEB274A635F00848DBB /* View.swift in Sources */,
