@@ -17,8 +17,7 @@ final class VerticalPositionMoveAnimation: Animation {
     func add(to layer: CALayer) {
         animationLayer = layer
         animationLayer?.add(
-            makeBasicAnimation(for: layer
-            ),
+            makeBasicAnimation(for: layer),
             forKey: animationKey
         )
     }

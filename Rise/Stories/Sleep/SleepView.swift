@@ -11,6 +11,8 @@ import UIKit
 final class SleepView: UIView {
 
     private let stopHandler: () -> Void
+    private let keepAppOpenedHandler: () -> Void
+    private var shouldRestartAnimationOnWakeUpLabel = false
 
     // MARK: - Subviews
 
@@ -42,6 +44,28 @@ final class SleepView: UIView {
         return label
     }()
 
+    private lazy var buttonsVStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.spacing = 8
+        return stack
+    }()
+
+    private lazy var keepAppOpenedButton: Button = {
+        let button = View.closeableButton(
+            touchHandler: { [weak self] in
+                self?.keepAppOpenedHandler()
+            },
+            closeHandler: { [weak self] in
+                self?.shouldRestartAnimationOnWakeUpLabel = true
+                self?.keepAppOpenedButton.isHidden = true
+            },
+            style: .secondary
+        )
+        button.setTitle(Text.KeepAppOpenedSuggestion.button, for: .normal)
+        return button
+    }()
+
     private lazy var stopButton: LongPressProgressButton = {
         let button = LongPressProgressButton()
         button.title = Text.stop
@@ -57,9 +81,11 @@ final class SleepView: UIView {
         currentTimeDataSource: @escaping () -> String,
         wakeUpInDataSource: @escaping () -> FloatingLabel.Model,
         alarmTime: String,
-        stopHandler: @escaping () -> Void
+        stopHandler: @escaping () -> Void,
+        keepAppOpenedHandler: @escaping () -> Void
     ) {
         self.stopHandler = stopHandler
+        self.keepAppOpenedHandler = keepAppOpenedHandler
         super.init(frame: .zero)
         self.currentTimeLabel.dataSource = currentTimeDataSource
         self.wakeUpInLabel.dataSource = wakeUpInDataSource
@@ -73,6 +99,14 @@ final class SleepView: UIView {
         fatalError("This class does not support NSCoder")
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if shouldRestartAnimationOnWakeUpLabel {
+            shouldRestartAnimationOnWakeUpLabel = false
+            wakeUpInLabel.restartAnimation()
+        }
+    }
+
     private func setupViews() {
         addBackgroundView(.rich, blur: .dark)
         addScreenTitleView(titleView)
@@ -80,7 +114,10 @@ final class SleepView: UIView {
             currentTimeLabel,
             alarmAtLabel,
             wakeUpInLabel,
-            stopButton
+            buttonsVStack.addArrangedSubviews(
+                keepAppOpenedButton,
+                stopButton
+            )
         )
 
         currentTimeLabel.beginRefreshing()
@@ -103,13 +140,18 @@ final class SleepView: UIView {
         wakeUpInLabel.activateConstraints(
             wakeUpInLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             wakeUpInLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            wakeUpInLabel.bottomAnchor.constraint(equalTo: stopButton.topAnchor, constant: -10)
+            wakeUpInLabel.bottomAnchor.constraint(equalTo: buttonsVStack.topAnchor, constant: -10)
+        )
+        buttonsVStack.activateConstraints(
+            buttonsVStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            buttonsVStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            buttonsVStack.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)
         )
         stopButton.activateConstraints(
-            stopButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            stopButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            stopButton.heightAnchor.constraint(equalToConstant: 62),
-            stopButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)
+            stopButton.heightAnchor.constraint(equalToConstant: 62)
+        )
+        keepAppOpenedButton.activateConstraints(
+            keepAppOpenedButton.heightAnchor.constraint(equalToConstant: 50)
         )
     }
 }

@@ -20,4 +20,7 @@ final class DefaultUserData: UserData {
 
     @UserDefault<Date>("preferred_wakeup_time")
     var preferredWakeUpTime: Date?
+    
+    @NonNilUserDefault("keep_app_opened_suggested", defaultValue: false)
+    var keepAppOpenedSuggested: Bool
 }

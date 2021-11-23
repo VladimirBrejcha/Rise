@@ -58,6 +58,12 @@ final class SleepViewController: UIViewController, AutoRefreshable {
             alarmTime: "Alarm at \(alarmTime.HHmmString)",
             stopHandler: { [weak self] in
                 self?.dismiss(animated: true)
+            },
+            keepAppOpenedHandler: { [weak self] in
+                self?.present(
+                    Story.keepAppOpenedSuggestion(completion: nil)(),
+                    with: .modal
+                )
             }
         )
     }

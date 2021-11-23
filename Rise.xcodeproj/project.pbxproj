@@ -184,6 +184,10 @@
 		7ED6DD3F25E33E3D00F906CE /* Statefull.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED6DD3E25E33E3D00F906CE /* Statefull.swift */; };
 		7ED8E59723BFFD5100A1E96F /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8E59623BFFD5100A1E96F /* Story.swift */; };
 		7EE227652504C38B00EC70CB /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE227642504C38B00EC70CB /* UserDefaults.swift */; };
+		7EE3EB93274D7D390000CFDE /* KeepAppOpenedSuggestionAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE3EB90274D7D390000CFDE /* KeepAppOpenedSuggestionAssembler.swift */; };
+		7EE3EB94274D7D390000CFDE /* KeepAppOpenedSuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE3EB91274D7D390000CFDE /* KeepAppOpenedSuggestionView.swift */; };
+		7EE3EB95274D7D390000CFDE /* KeepAppOpenedSuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE3EB92274D7D390000CFDE /* KeepAppOpenedSuggestionViewController.swift */; };
+		7EE3EB97274D81E70000CFDE /* SuggestKeepAppOpened.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE3EB96274D81E70000CFDE /* SuggestKeepAppOpened.swift */; };
 		7EE640492378665D005BE355 /* SunTimeRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE640482378665D005BE355 /* SunTimeRepositoryImpl.swift */; };
 		7EE6404B2378666F005BE355 /* SunTimeCoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6404A2378666F005BE355 /* SunTimeCoreDataService.swift */; };
 		7EE6404D23786678005BE355 /* SunTimeRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE6404C23786678005BE355 /* SunTimeRemoteDataSource.swift */; };
@@ -420,6 +424,10 @@
 		7EE1397E23E36944003895D4 /* AIFlatSwitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AIFlatSwitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EE1398523E36AF6003895D4 /* AIFlatSwitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AIFlatSwitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EE227642504C38B00EC70CB /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		7EE3EB90274D7D390000CFDE /* KeepAppOpenedSuggestionAssembler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeepAppOpenedSuggestionAssembler.swift; sourceTree = "<group>"; };
+		7EE3EB91274D7D390000CFDE /* KeepAppOpenedSuggestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeepAppOpenedSuggestionView.swift; sourceTree = "<group>"; };
+		7EE3EB92274D7D390000CFDE /* KeepAppOpenedSuggestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeepAppOpenedSuggestionViewController.swift; sourceTree = "<group>"; };
+		7EE3EB96274D81E70000CFDE /* SuggestKeepAppOpened.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestKeepAppOpened.swift; sourceTree = "<group>"; };
 		7EE640482378665D005BE355 /* SunTimeRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeRepositoryImpl.swift; sourceTree = "<group>"; };
 		7EE6404A2378666F005BE355 /* SunTimeCoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeCoreDataService.swift; sourceTree = "<group>"; };
 		7EE6404C23786678005BE355 /* SunTimeRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeRemoteDataSource.swift; sourceTree = "<group>"; };
@@ -687,6 +695,7 @@
 				7EF3EE172340F794003BE978 /* CreateSchedule */,
 				7E708A3C23BFD8F2003B5702 /* EditSchedule */,
 				7E4901892340F3D90034521E /* PrepareToSleep */,
+				7EE3EB8F274D7D390000CFDE /* KeepAppOpenedSuggestion */,
 				7EFF58B5241C1E1A00D2CCEC /* Sleep */,
 				7E514DC125A87FB1000EBE81 /* Alarming */,
 				7E49018A2340F4190034521E /* Settings */,
@@ -949,6 +958,7 @@
 				7E43064826ED40F400B67315 /* SetOnboardingCompleted.swift */,
 				7E43065326ED6E7500B67315 /* GetAppVersion.swift */,
 				7E48D2B5274C2E6800B14355 /* PreferredWakeUpTime.swift */,
+				7EE3EB96274D81E70000CFDE /* SuggestKeepAppOpened.swift */,
 				7E3955FF26F162FC003D664D /* PrepareMail.swift */,
 				7EAFB61B2735D31100B7C7C6 /* CreateSchedule.swift */,
 				7EAFB632273729C400B7C7C6 /* UpdateSchedule.swift */,
@@ -998,6 +1008,16 @@
 				7EA0924122C8CF820019F2E9 /* CustomTransition.swift */,
 			);
 			path = TabBarController;
+			sourceTree = "<group>";
+		};
+		7EE3EB8F274D7D390000CFDE /* KeepAppOpenedSuggestion */ = {
+			isa = PBXGroup;
+			children = (
+				7EE3EB90274D7D390000CFDE /* KeepAppOpenedSuggestionAssembler.swift */,
+				7EE3EB91274D7D390000CFDE /* KeepAppOpenedSuggestionView.swift */,
+				7EE3EB92274D7D390000CFDE /* KeepAppOpenedSuggestionViewController.swift */,
+			);
+			path = KeepAppOpenedSuggestion;
 			sourceTree = "<group>";
 		};
 		7EE6404723786617005BE355 /* SunTime */ = {
@@ -1469,6 +1489,7 @@
 				7E8AB6CE23A18D27009CE41A /* WakeUpTimeCreateScheduleViewController.swift in Sources */,
 				7EFAEF6926F5938200C51A13 /* DaysCollectionCell+SideItemVStack.swift in Sources */,
 				7EB9F35223C36AAE002A6DD3 /* SettingsAssembler.swift in Sources */,
+				7EE3EB97274D81E70000CFDE /* SuggestKeepAppOpened.swift in Sources */,
 				7E252A8A26EBBE9600DEB6F0 /* OnboardingView.swift in Sources */,
 				7EF4C19D240436CD0098135A /* EditScheduleSliderTableCell.swift in Sources */,
 				7E88A35123F8B20C00E792CA /* VerticalPositionMoveAnimation.swift in Sources */,
@@ -1509,6 +1530,7 @@
 				7E6225DF2619CDE7001AA8FD /* CAGradientLayer+Gradientable.swift in Sources */,
 				7E43065926EE4F3200B67315 /* AboutViewController.swift in Sources */,
 				7E388E38243A3C16001A28DF /* PropertyAnimatable.swift in Sources */,
+				7EE3EB94274D7D390000CFDE /* KeepAppOpenedSuggestionView.swift in Sources */,
 				7E43065F26EE63DB00B67315 /* AboutItemView.swift in Sources */,
 				7E97656023786AB000E3AEF2 /* SunTimeData.xcdatamodeld in Sources */,
 				7E43064726ED3F0A00B67315 /* DefaultUserData.swift in Sources */,
@@ -1551,6 +1573,7 @@
 				7EF4C198240412EC0098135A /* EditScheduleDatePickerTableCell+Model.swift in Sources */,
 				7E6225D22619CD75001AA8FD /* HorizontalFadeView.swift in Sources */,
 				7EE640492378665D005BE355 /* SunTimeRepositoryImpl.swift in Sources */,
+				7EE3EB95274D7D390000CFDE /* KeepAppOpenedSuggestionViewController.swift in Sources */,
 				7EAFB62A2735E1F300B7C7C6 /* ScheduleCoreDataService.swift in Sources */,
 				7E346CEF274A64E700848DBB /* UIViewController+addBackground.swift in Sources */,
 				7E17337924104DDA0028FDBE /* LocationRepository.swift in Sources */,
@@ -1594,6 +1617,7 @@
 				7E6225D72619CD9F001AA8FD /* Gradientable.swift in Sources */,
 				7EB196DA23A01B8F00E6C40B /* CreateScheduleViewController.swift in Sources */,
 				92D7D6532296F297009321AE /* AppDelegate.swift in Sources */,
+				7EE3EB93274D7D390000CFDE /* KeepAppOpenedSuggestionAssembler.swift in Sources */,
 				7E69837424EC69CE002EE278 /* ErrorDescriptionExtractable.swift in Sources */,
 				7EA7BA0C2354F2510051A92D /* CollectionView.swift in Sources */,
 				7EAFB6262735DA8400B7C7C6 /* ScheduleRepositoryImpl.swift in Sources */,

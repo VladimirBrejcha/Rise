@@ -59,3 +59,9 @@
 "last_time_i_went_sleep_at" = "last time I went to sleep at";
 "sleeping" = "Sleeping";
 "stop" = "Stop";
+"keep_app_opened_suggestion.title" = "Information";
+"keep_app_opened_suggestion.description" = "Please do not close the app or lock your phone while you sleep";
+"keep_app_opened_suggestion.where_to_place_phone" = "We suggest to leave the phone near the bed and keep it unlocked";
+"keep_app_opened_suggestion.description_why" = "This is necessary for the correct functioning of the alarm clock when you wake up";
+"keep_app_opened_suggestion.continue" = "Continue";
+"keep_app_opened_suggestion.button" = "Why stay on screen";

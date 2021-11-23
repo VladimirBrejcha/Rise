@@ -108,6 +108,21 @@ internal enum Text {
     }
   }
 
+  internal enum KeepAppOpenedSuggestion {
+    /// Why stay on screen
+    internal static let button = Text.tr("Localizable", "keep_app_opened_suggestion.button")
+    /// Continue
+    internal static let `continue` = Text.tr("Localizable", "keep_app_opened_suggestion.continue")
+    /// Please do not close the app or lock your phone while you sleep
+    internal static let description = Text.tr("Localizable", "keep_app_opened_suggestion.description")
+    /// This is necessary for the correct functioning of the alarm clock when you wake up
+    internal static let descriptionWhy = Text.tr("Localizable", "keep_app_opened_suggestion.description_why")
+    /// Information
+    internal static let title = Text.tr("Localizable", "keep_app_opened_suggestion.title")
+    /// We suggest to leave the phone near the bed and keep it unlocked
+    internal static let whereToPlacePhone = Text.tr("Localizable", "keep_app_opened_suggestion.where_to_place_phone")
+  }
+
   internal enum Onboarding {
     /// Continue
     internal static let action = Text.tr("Localizable", "onboarding.action")

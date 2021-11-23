@@ -22,6 +22,11 @@ final class FloatingLabel: UILabel, AutoRefreshable, PropertyAnimatable {
         }
     }
 
+    func restartAnimation() {
+        animation.removeFromSuperlayer()
+        animation.add(to: layer)
+    }
+
     deinit {
         animation.removeFromSuperlayer()
         stopRefreshing()

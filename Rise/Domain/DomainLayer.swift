@@ -20,6 +20,9 @@ enum DomainLayer {
     static var preferredWakeUpTime: PreferredWakeUpTime {
         PreferredWakeUpTimeImpl(DataLayer.userData)
     }
+    static var suggestKeepAppUpened: SuggestKeepAppOpened {
+        SuggestKeepAppOpenedImpl(DataLayer.userData)
+    }
 
     // MARK: - SunTime
 

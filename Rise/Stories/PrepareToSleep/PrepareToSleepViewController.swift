@@ -14,6 +14,7 @@ final class PrepareToSleepViewController: UIViewController {
     
     var getSchedule: GetSchedule! // DI
     var preferredWakeUpTime: PreferredWakeUpTime! // DI
+    var suggestKeepAppOpened: SuggestKeepAppOpened! // DI
 
     private var customSelectedWakeUpTime: Date?
 
@@ -68,10 +69,17 @@ final class PrepareToSleepViewController: UIViewController {
                 },
                 sleep: { [weak self] in
                     guard let self = self else { return }
-                    self.navigationController?.setViewControllers(
-                        [Story.sleep(alarmTime: self.wakeUpTime)()],
-                        animated: true
-                    )
+                    if self.suggestKeepAppOpened.shouldSuggest {
+                        self.suggestKeepAppOpened.shouldSuggest = false
+                        self.present(
+                            Story.keepAppOpenedSuggestion(completion: {
+                                self.goToSleep()
+                            })(),
+                            with: .fullScreen
+                        )
+                    } else {
+                        self.goToSleep()
+                    }
                 },
                 close: { [weak self] in
                     self?.dismiss()
@@ -113,6 +121,13 @@ final class PrepareToSleepViewController: UIViewController {
 
     private func dismiss() {
         dismiss(animated: true)
+    }
+
+    private func goToSleep() {
+        navigationController?.setViewControllers(
+            [Story.sleep(alarmTime: wakeUpTime)()],
+            animated: true
+        )
     }
 }
 

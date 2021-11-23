@@ -13,4 +13,5 @@ protocol UserData: AnyObject {
     var scheduleOnPause: Bool { get set }
     var latestAppUsageDate: Date? { get set }
     var preferredWakeUpTime: Date? { get set }
+    var keepAppOpenedSuggested: Bool { get set }
 }

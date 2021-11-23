@@ -47,6 +47,7 @@ enum Story {
     
     // Sleep
     case prepareToSleep
+    case keepAppOpenedSuggestion(completion: (() -> Void)?)
     case sleep(alarmTime: Date)
     case alarming(alarmTime: Date)
 
@@ -131,6 +132,10 @@ enum Story {
         case let .adjustSchedule(currentSchedule, completion):
             return AdjustScheduleAssembler().assemble(
                 currentSchedule: currentSchedule,
+                completion: completion
+            )
+        case let .keepAppOpenedSuggestion(completion):
+            return KeepAppOpenedSuggestionAssembler().assemble(
                 completion: completion
             )
         }
