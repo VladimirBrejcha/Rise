@@ -16,9 +16,9 @@ final class AdjustScheduleView: UIView {
 
     // MARK: - Subviews
 
-    private lazy var titleView: UIView = View.screenTitleView(
+    private lazy var titleView: UIView = View.Title.make(
         title: Text.adjustSchedule,
-        closeHandler: { [weak self] in
+        closeButton: .default { [weak self] in
             self?.closeHandler()
         }
     )

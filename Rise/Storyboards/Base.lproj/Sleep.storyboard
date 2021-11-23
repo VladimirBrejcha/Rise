@@ -7,7 +7,6 @@
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -178,159 +177,6 @@
             </objects>
             <point key="canvasLocation" x="-191.30434782608697" y="78.348214285714278"/>
         </scene>
-        <!--Sleep View Controller-->
-        <scene sceneID="ynl-Bc-AR9">
-            <objects>
-                <viewController storyboardIdentifier="SleepViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="currentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7eS-bT-KOC" customClass="SleepViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="uik-k5-iFp" customClass="SleepView" customModule="Rise" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rich" translatesAutoresizingMaskIntoConstraints="NO" id="UeQ-9m-AT5">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GLV-9r-i98">
-                                <rect key="frame" x="114.5" y="446" width="185" height="41.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sleeping" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bWs-lr-N9w">
-                                <rect key="frame" x="20" y="64" width="374" height="24"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HdC-EX-jQx">
-                                <rect key="frame" x="190.5" y="450" width="33" height="33.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fVf-jv-vsz" customClass="LongPressProgressButton" customModule="Rise" customModuleProvider="target">
-                                <rect key="frame" x="20" y="772" width="374" height="60"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="tyD-Lw-PkE"/>
-                                </constraints>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iLA-ZS-bm2">
-                                <rect key="frame" x="192" y="453" width="30" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="M4Q-mj-2b5"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <connections>
-                                    <action selector="alarmTouchUp:" destination="uik-k5-iFp" eventType="touchUpInside" id="g93-da-4bi"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zTc-hX-oX4" customClass="AutoRefreshableLabel" customModule="Rise" customModuleProvider="target">
-                                <rect key="frame" x="10" y="428" width="394" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="54"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRK-q7-IEK" customClass="FloatingLabel" customModule="Rise" customModuleProvider="target">
-                                <rect key="frame" x="10" y="762" width="394" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" name="disabledTitle"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <datePicker contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="lsh-SA-O8W">
-                                <rect key="frame" x="108.5" y="440" width="197" height="53.5"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="197" placeholder="YES" id="lER-eT-H51"/>
-                                    <constraint firstAttribute="height" constant="53.5" placeholder="YES" id="nhJ-vr-TPZ"/>
-                                </constraints>
-                                <connections>
-                                    <action selector="alarmValueChanged:" destination="uik-k5-iFp" eventType="valueChanged" id="Q8I-tJ-EqY"/>
-                                </connections>
-                            </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXv-JC-4Xc">
-                                <rect key="frame" x="311.5" y="444.5" width="46.5" height="44.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="tintColor" name="normalTitle"/>
-                                <state key="normal">
-                                    <imageReference key="image" image="checkmark.circle.fill" catalog="system" symbolScale="large"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="28" scale="large" weight="black"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveAlarmEditTouchUp:" destination="uik-k5-iFp" eventType="touchUpInside" id="66Z-wG-Np5"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rDc-1y-qT0">
-                                <rect key="frame" x="52.5" y="442" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="JK5-h7-gfv"/>
-                                    <constraint firstAttribute="width" constant="50" id="Vfb-rN-3Q5"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="tintColor" name="normalTitle"/>
-                                <state key="normal">
-                                    <imageReference key="image" image="multiply.circle.fill" catalog="system" symbolScale="large"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="28" scale="large" weight="black"/>
-                                </state>
-                                <connections>
-                                    <action selector="cancelAlarmEditTouchUp:" destination="uik-k5-iFp" eventType="touchUpInside" id="7eM-QE-b2x"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="8gk-4x-IVS"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="UeQ-9m-AT5" firstAttribute="top" secondItem="uik-k5-iFp" secondAttribute="top" id="0Q7-bt-uc8"/>
-                            <constraint firstItem="zTc-hX-oX4" firstAttribute="leading" secondItem="8gk-4x-IVS" secondAttribute="leading" constant="10" id="2x8-eY-jqS"/>
-                            <constraint firstItem="GLV-9r-i98" firstAttribute="centerY" secondItem="lsh-SA-O8W" secondAttribute="centerY" id="4H2-wf-Jgd"/>
-                            <constraint firstItem="rDc-1y-qT0" firstAttribute="centerY" secondItem="lsh-SA-O8W" secondAttribute="centerY" id="4il-4q-436"/>
-                            <constraint firstItem="bWs-lr-N9w" firstAttribute="top" secondItem="8gk-4x-IVS" secondAttribute="top" constant="20" id="9qB-WW-zjC"/>
-                            <constraint firstItem="8gk-4x-IVS" firstAttribute="bottom" secondItem="fVf-jv-vsz" secondAttribute="bottom" constant="30" id="HQb-zb-vm4"/>
-                            <constraint firstItem="lsh-SA-O8W" firstAttribute="centerX" secondItem="uik-k5-iFp" secondAttribute="centerX" id="IM6-6u-gbU"/>
-                            <constraint firstItem="HdC-EX-jQx" firstAttribute="height" secondItem="iLA-ZS-bm2" secondAttribute="height" multiplier="1.2" id="IxH-HT-uw8"/>
-                            <constraint firstItem="iLA-ZS-bm2" firstAttribute="centerX" secondItem="lsh-SA-O8W" secondAttribute="centerX" id="JUb-Bd-rWz"/>
-                            <constraint firstItem="8gk-4x-IVS" firstAttribute="trailing" secondItem="zTc-hX-oX4" secondAttribute="trailing" constant="10" id="L6g-xO-XCb"/>
-                            <constraint firstItem="UeQ-9m-AT5" firstAttribute="leading" secondItem="uik-k5-iFp" secondAttribute="leading" id="Lqz-H2-aoR"/>
-                            <constraint firstItem="fVf-jv-vsz" firstAttribute="top" secondItem="KRK-q7-IEK" secondAttribute="bottom" constant="10" id="M56-uv-KQi"/>
-                            <constraint firstItem="8gk-4x-IVS" firstAttribute="trailing" secondItem="fVf-jv-vsz" secondAttribute="trailing" constant="20" id="RcB-ga-ZaZ"/>
-                            <constraint firstItem="lsh-SA-O8W" firstAttribute="top" secondItem="zTc-hX-oX4" secondAttribute="bottom" constant="12" id="RnT-BY-CtP"/>
-                            <constraint firstItem="zTc-hX-oX4" firstAttribute="centerY" secondItem="uik-k5-iFp" secondAttribute="centerY" constant="-20" id="TI3-Ge-sQf"/>
-                            <constraint firstAttribute="trailing" secondItem="UeQ-9m-AT5" secondAttribute="trailing" id="TtN-xB-F2d"/>
-                            <constraint firstItem="GLV-9r-i98" firstAttribute="centerX" secondItem="lsh-SA-O8W" secondAttribute="centerX" id="UxY-pb-E1E"/>
-                            <constraint firstItem="iLA-ZS-bm2" firstAttribute="centerY" secondItem="lsh-SA-O8W" secondAttribute="centerY" id="Zu9-Tq-l9P"/>
-                            <constraint firstItem="8gk-4x-IVS" firstAttribute="trailing" secondItem="KRK-q7-IEK" secondAttribute="trailing" constant="10" id="apg-2d-AYr"/>
-                            <constraint firstItem="8gk-4x-IVS" firstAttribute="trailing" secondItem="bWs-lr-N9w" secondAttribute="trailing" constant="20" id="gFh-DN-Obf"/>
-                            <constraint firstAttribute="bottom" secondItem="UeQ-9m-AT5" secondAttribute="bottom" id="hDN-7A-tca"/>
-                            <constraint firstItem="HdC-EX-jQx" firstAttribute="width" secondItem="iLA-ZS-bm2" secondAttribute="width" multiplier="1.1" id="iJX-Sa-0p5"/>
-                            <constraint firstItem="HdC-EX-jQx" firstAttribute="centerX" secondItem="iLA-ZS-bm2" secondAttribute="centerX" id="jCy-T8-yZw"/>
-                            <constraint firstItem="fVf-jv-vsz" firstAttribute="leading" secondItem="8gk-4x-IVS" secondAttribute="leading" constant="20" id="l2a-Fh-sPA"/>
-                            <constraint firstItem="lsh-SA-O8W" firstAttribute="leading" secondItem="rDc-1y-qT0" secondAttribute="trailing" constant="6" id="lsP-8V-hrn"/>
-                            <constraint firstItem="GLV-9r-i98" firstAttribute="width" secondItem="lsh-SA-O8W" secondAttribute="width" constant="-12" id="n6Z-lk-g7o"/>
-                            <constraint firstItem="GLV-9r-i98" firstAttribute="height" secondItem="lsh-SA-O8W" secondAttribute="height" constant="-12" id="nhJ-Jw-05y"/>
-                            <constraint firstItem="HdC-EX-jQx" firstAttribute="centerY" secondItem="iLA-ZS-bm2" secondAttribute="centerY" id="oo3-FJ-eKq"/>
-                            <constraint firstItem="bWs-lr-N9w" firstAttribute="leading" secondItem="8gk-4x-IVS" secondAttribute="leading" constant="20" id="ph0-yp-uLF"/>
-                            <constraint firstItem="HdC-EX-jQx" firstAttribute="centerX" secondItem="uik-k5-iFp" secondAttribute="centerX" id="qVb-7p-kQ8"/>
-                            <constraint firstItem="iLA-ZS-bm2" firstAttribute="centerX" secondItem="uik-k5-iFp" secondAttribute="centerX" id="rkx-mu-0b4"/>
-                            <constraint firstItem="nXv-JC-4Xc" firstAttribute="centerY" secondItem="lsh-SA-O8W" secondAttribute="centerY" id="suJ-wP-VJG"/>
-                            <constraint firstItem="KRK-q7-IEK" firstAttribute="leading" secondItem="8gk-4x-IVS" secondAttribute="leading" constant="10" id="tBm-Zg-8ZZ"/>
-                            <constraint firstItem="nXv-JC-4Xc" firstAttribute="leading" secondItem="lsh-SA-O8W" secondAttribute="trailing" constant="6" id="tOd-bS-zbV"/>
-                        </constraints>
-                        <connections>
-                            <outlet property="backgroundImage" destination="UeQ-9m-AT5" id="x3o-VA-6fU"/>
-                            <outlet property="cancelEditAlarmButton" destination="rDc-1y-qT0" id="ber-oo-vpb"/>
-                            <outlet property="currentTimeLabel" destination="zTc-hX-oX4" id="XNg-HC-wP4"/>
-                            <outlet property="datePickerBackground" destination="GLV-9r-i98" id="eeF-TU-rnn"/>
-                            <outlet property="editAlarmButton" destination="iLA-ZS-bm2" id="YLJ-Jf-zUI"/>
-                            <outlet property="editAlarmButtonContainer" destination="HdC-EX-jQx" id="5vA-16-ffg"/>
-                            <outlet property="editAlarmDatePicker" destination="lsh-SA-O8W" id="xEI-a5-ifq"/>
-                            <outlet property="saveAlarmEditButton" destination="nXv-JC-4Xc" id="3oK-P1-dKP"/>
-                            <outlet property="stopButton" destination="fVf-jv-vsz" id="D8g-YP-EST"/>
-                            <outlet property="timeLeftLabel" destination="KRK-q7-IEK" id="8P9-pk-k8Z"/>
-                        </connections>
-                    </view>
-                    <connections>
-                        <outlet property="sleepView" destination="uik-k5-iFp" id="8J6-3q-J1U"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HEB-hz-IkO" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="492.75362318840581" y="77.678571428571431"/>
-        </scene>
         <!--Alarming View Controller-->
         <scene sceneID="ps2-Dd-InB">
             <objects>
@@ -402,28 +248,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="94g-NE-hjr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1187" y="78"/>
+            <point key="canvasLocation" x="468" y="78"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="jtf-Rn-AX8">
-            <size key="intrinsicContentSize" width="111" height="111"/>
-        </designable>
-    </designables>
     <resources>
         <image name="beginToSleepIcon" width="111" height="111"/>
-        <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="multiply.circle" catalog="system" width="128" height="121"/>
-        <image name="multiply.circle.fill" catalog="system" width="128" height="121"/>
         <image name="rich" width="320" height="568"/>
-        <namedColor name="disabledTitle">
-            <color red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="normalTitle">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

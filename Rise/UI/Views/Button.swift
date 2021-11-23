@@ -16,6 +16,8 @@ class Button: UIButton, PropertyAnimatable, StyledButton {
     
     var onTouchDown: ((Button) -> Void)?
     var onTouchUp: ((Button) -> Void)?
+    var onAnyTouchDown: ((Button) -> Void)?
+    var onAnyTouchUp: ((Button) -> Void)?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,19 +31,21 @@ class Button: UIButton, PropertyAnimatable, StyledButton {
     
     private func configure() {
         applyStyle(style)
-        addTarget(self, action: #selector(scaleDown(_:)), for: [.touchDown, .touchDragInside])
-        addTarget(self, action: #selector(scaleUp(_:)), for: [.touchUpInside, .touchDragOutside, .touchCancel])
+        addTarget(self, action: #selector(handleAnyTouchDown(_:)), for: [.touchDown, .touchDragInside])
+        addTarget(self, action: #selector(handleAnyTouchUp(_:)), for: [.touchUpInside, .touchDragOutside, .touchCancel])
         addTarget(self, action: #selector(handleTouchDown(_:)), for: [.touchDown])
         addTarget(self, action: #selector(handleTouchUp(_:)), for: [.touchUpInside])
     }
     
-    @objc private func scaleDown(_ sender: UIButton) {
+    @objc private func handleAnyTouchDown(_ sender: UIButton) {
+        onAnyTouchDown?(self)
         animate {
             sender.transform = CGAffineTransform(scaleX: 0.98, y: 0.95)
         }
     }
     
-    @objc private func scaleUp(_ sender: UIButton) {
+    @objc private func handleAnyTouchUp(_ sender: UIButton) {
+        onAnyTouchUp?(self)
         animate {
             sender.transform = CGAffineTransform.identity
         }

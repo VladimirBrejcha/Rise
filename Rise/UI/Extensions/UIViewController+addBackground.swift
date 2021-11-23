@@ -9,8 +9,12 @@
 import UIKit
 
 extension UIView {
-    func addBackgroundView() {
-        let view = View.backgroundView
+    func addBackgroundView(
+        _ bgView: View.Background = .default,
+        blur: UIBlurEffect.Style? = nil
+    ) {
+        let view = bgView.asUIView
+        blur.flatMap(view.applyBlur(style:))
         addSubview(view)
         view.activateConstraints(
             view.leadingAnchor.constraint(equalTo: leadingAnchor),

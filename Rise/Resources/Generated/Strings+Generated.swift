@@ -56,6 +56,10 @@ internal enum Text {
   internal static func sleepIsScheduledIn(_ p1: Any) -> String {
     return Text.tr("Localizable", "sleep_is_scheduled_in", String(describing: p1))
   }
+  /// Sleeping
+  internal static let sleeping = Text.tr("Localizable", "sleeping")
+  /// Stop
+  internal static let stop = Text.tr("Localizable", "stop")
   /// Success!
   internal static let success = Text.tr("Localizable", "success")
   /// Sun position

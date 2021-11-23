@@ -9,46 +9,53 @@
 import UIKit
 
 extension View {
-    static func screenTitleView(
-        title: String,
-        closeHandler: @escaping () -> Void
-    ) -> UIView {
 
-        let view = UIView()
-        view.backgroundColor = .clear
+    enum Title {
 
-        let titleLabel: UILabel = {
-            let label = UILabel()
-            label.applyStyle(.mediumSizedTitle)
-            label.text = title
-            return label
-        }()
+        enum CloseButton {
+            case none
+            case `default`(handler: () -> Void)
+        }
 
-        let closeButton: Button = View.closeButton(
-            handler: closeHandler
-        )
+        static func make(
+            title: String,
+            closeButton: CloseButton
+        ) -> UIView {
+            let view = UIView()
+            view.backgroundColor = .clear
 
-        view.addSubviews(
-            titleLabel,
-            closeButton
-        )
+            let titleLabel: UILabel = {
+                let label = UILabel()
+                label.applyStyle(.mediumSizedTitle)
+                label.text = title
+                return label
+            }()
 
-        view.activateConstraints(
-            view.heightAnchor.constraint(equalToConstant: 45)
-        )
+            view.activateConstraints(
+                view.heightAnchor.constraint(equalToConstant: 45)
+            )
 
-        titleLabel.activateConstraints(
-            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            titleLabel.centerYAnchor.constraint(equalTo: closeButton.centerYAnchor)
-        )
-        closeButton.activateConstraints(
-            closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
-            closeButton.widthAnchor.constraint(equalToConstant: 35),
-            closeButton.heightAnchor.constraint(equalToConstant: 35),
-            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
-        )
+            view.addSubview(titleLabel)
+            titleLabel.activateConstraints(
+                titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+                titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+                titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 5)
+            )
 
-        return view
+            if case let .default(handler) = closeButton {
+                let closeButton: Button = View.closeButton(
+                    handler: handler
+                )
+                view.addSubview(closeButton)
+                closeButton.activateConstraints(
+                    closeButton.widthAnchor.constraint(equalToConstant: 35),
+                    closeButton.heightAnchor.constraint(equalToConstant: 35),
+                    closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+                    closeButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 5)
+                )
+            }
+
+            return view
+        }
     }
 }

@@ -8,71 +8,62 @@
 
 import UIKit
 
-// TODO:
-// 1.present(Story.alarming(), with: .overContext, animated: true) Called twice
-// 2. Date might be not correct because refresher called even after snoozing
-
 final class SleepViewController: UIViewController, AutoRefreshable {
-    @IBOutlet private var sleepView: SleepView!
+
+    private var loadedView: SleepView { view as! SleepView }
     
-    var alarmTime: Date! // DI
+    private var alarmTime: Date
     private var editingAlarmTime: Date?
 
     // MARK: - AutoRefreshable
+
     var timer: Timer?
-    var dataSource: (() -> Date)?
+    var dataSource: (() -> Date)? = { Date() }
     var refreshInterval: Double = 2
 
     func refresh(with data: Date) {
         // Check if it is time to alarm
-        if data >= alarmTime {
-            stopRefreshing()
-            self.navigationController?.setViewControllers([Story.alarming(alarmTime: alarmTime)()], animated: true)
-        }
+//        if data >= alarmTime {
+//            stopRefreshing()
+//            self.navigationController?.setViewControllers([Story.alarming(alarmTime: alarmTime)()], animated: true)
+//        }
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-        sleepView.configure(
-            initialState: .normal(alarm: alarmTime),
-            dataSource: SleepView.DataSource(
-                timeLeft: { [weak self] in
-                    if let timeLeft = self?.alarmTime.fixIfNeeded().timeIntervalSince(Date()).HHmmString {
-                        return FloatingLabel.Model(text: "Time left \(timeLeft)", alpha: 1)
-                    } else {
-                        return FloatingLabel.Model(text: "", alpha: 0)
-                    }
-                },
-                currentTime: { Date().HHmmString }
-            ),
-            editAlarmHandler: { [weak self] in
-                guard let self = self else { return }
-                self.sleepView.setState(.editingAlarm(alarm: self.alarmTime))
+    // MARK: - LifeCycle
+
+    init(alarmTime: Date) {
+        self.alarmTime = alarmTime
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func loadView() {
+        super.loadView()
+
+        self.view = SleepView(
+            currentTimeDataSource: {
+                Date().HHmmString
             },
-            cancelAlarmEditHandler: { [weak self] in
-                guard let self = self else { return }
-                self.sleepView.setState(.normal(alarm: self.alarmTime))
-                self.editingAlarmTime = nil
-            },
-            saveAlarmEditHandler: { [weak self] in
-                guard let self = self else { return }
-                if let newAlarmTime = self.editingAlarmTime {
-                    self.alarmTime = newAlarmTime
-                    self.sleepView.setState(.normal(alarm: newAlarmTime))
+            wakeUpInDataSource: { [weak self] in
+                if let timeLeft = self?.alarmTime.fixIfNeeded().timeIntervalSince(Date()).HHmmString {
+                    return FloatingLabel.Model(text: "Wake up in \(timeLeft)", alpha: 1)
                 } else {
-                    self.sleepView.setState(.normal(alarm: self.alarmTime))
+                    return FloatingLabel.Model(text: "", alpha: 0)
                 }
-                self.editingAlarmTime = nil
             },
-            alarmTimeChangedHandler: { [weak self] time in
-                self?.editingAlarmTime = time
-            },
+            alarmTime: "Alarm at \(alarmTime.HHmmString)",
             stopHandler: { [weak self] in
                 self?.dismiss(animated: true)
             }
         )
-        self.dataSource = { Date() }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         beginRefreshing()
     }    
 }
