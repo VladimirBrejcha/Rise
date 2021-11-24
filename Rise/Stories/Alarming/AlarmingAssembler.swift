@@ -9,9 +9,9 @@
 import Foundation
 
 final class AlarmingAssembler {
-    func assemble(alarm time: Date) -> AlarmingViewController {
-        let controller = Storyboard.sleep.instantiateViewController(of: AlarmingViewController.self)
-        controller.alarmTime = time
-        return controller
+    func assemble() -> AlarmingViewController {
+        AlarmingViewController(
+            changeScreenBrightness: DomainLayer.changeScreenBrightness
+        )
     }
 }

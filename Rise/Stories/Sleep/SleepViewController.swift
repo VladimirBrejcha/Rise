@@ -26,11 +26,13 @@ final class SleepViewController: UIViewController, AutoRefreshable {
     var refreshInterval: Double = 2
 
     func refresh(with data: Date) {
-        // Check if it is time to alarm
-//        if data >= alarmTime {
-//            stopRefreshing()
-//            self.navigationController?.setViewControllers([Story.alarming(alarmTime: alarmTime)()], animated: true)
-//        }
+        if data >= alarmTime {
+            stopRefreshing()
+            navigationController?.setViewControllers(
+                [Story.alarming()],
+                animated: true
+            )
+        }
     }
 
     // MARK: - LifeCycle
@@ -84,16 +86,11 @@ final class SleepViewController: UIViewController, AutoRefreshable {
             }
         )
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        beginRefreshing()
-    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
         prepareToLowerBrightness(in: 20)
+        beginRefreshing()
     }
 
     override func viewWillDisappear(_ animated: Bool) {

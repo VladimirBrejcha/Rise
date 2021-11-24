@@ -108,6 +108,15 @@ internal enum Text {
     }
   }
 
+  internal enum Alarming {
+    /// Snooze
+    internal static let snooze = Text.tr("Localizable", "alarming.snooze")
+    /// Wake up
+    internal static let stop = Text.tr("Localizable", "alarming.stop")
+    /// Wake up and Rise!
+    internal static let title = Text.tr("Localizable", "alarming.title")
+  }
+
   internal enum KeepAppOpenedSuggestion {
     /// Why stay on screen
     internal static let button = Text.tr("Localizable", "keep_app_opened_suggestion.button")

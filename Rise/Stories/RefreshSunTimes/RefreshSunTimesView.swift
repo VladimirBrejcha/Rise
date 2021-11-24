@@ -46,8 +46,8 @@ final class RefreshSunTimesView: UIView {
     private lazy var refreshButton: Button = {
         let button = Button()
         button.setTitle(Text.refresh, for: .normal)
-        button.onTouchUp = {
-            [weak self] _ in self?.refreshHandler()
+        button.onTouchUp = { [weak self] _ in
+            self?.refreshHandler()
         }
         return button
     }()

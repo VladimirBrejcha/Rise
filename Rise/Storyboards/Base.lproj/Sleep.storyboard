@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Image references" minToolsVersion="12.0"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -177,86 +176,15 @@
             </objects>
             <point key="canvasLocation" x="-191.30434782608697" y="78.348214285714278"/>
         </scene>
-        <!--Alarming View Controller-->
-        <scene sceneID="ps2-Dd-InB">
-            <objects>
-                <viewController storyboardIdentifier="AlarmingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="08b-7d-uuR" customClass="AlarmingViewController" customModule="Rise" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="AMF-CZ-Oj9" customClass="AlarmingView" customModule="Rise" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itS-Zk-Iem">
-                                <rect key="frame" x="207" y="400" width="0.0" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="54"/>
-                                <color key="textColor" name="normalTitle"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M91-aB-je7" customClass="Button" customModule="Rise" customModuleProvider="target">
-                                <rect key="frame" x="20" y="720" width="374" height="50"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Xcu-kG-Ezh"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPI-dC-Th7" customClass="AutoRefreshableLabel" customModule="Rise" customModuleProvider="target">
-                                <rect key="frame" x="207" y="388" width="0.0" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="54"/>
-                                <color key="textColor" name="normalTitle"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alarm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xkq-fo-dvI">
-                                <rect key="frame" x="20" y="64" width="374" height="27"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0aP-Zf-eq1" customClass="LongPressProgressButton" customModule="Rise" customModuleProvider="target">
-                                <rect key="frame" x="20" y="782" width="374" height="60"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="SSp-eY-rqV"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="7HW-8W-BxA"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="itS-Zk-Iem" firstAttribute="centerX" secondItem="AMF-CZ-Oj9" secondAttribute="centerX" id="0ia-iZ-Zln"/>
-                            <constraint firstItem="7HW-8W-BxA" firstAttribute="trailing" secondItem="0aP-Zf-eq1" secondAttribute="trailing" constant="20" id="CEv-KI-k0b"/>
-                            <constraint firstItem="aPI-dC-Th7" firstAttribute="centerY" secondItem="AMF-CZ-Oj9" secondAttribute="centerY" constant="-60" id="KKW-cd-7d0"/>
-                            <constraint firstItem="M91-aB-je7" firstAttribute="leading" secondItem="7HW-8W-BxA" secondAttribute="leading" constant="20" id="Oq2-Cc-OqY"/>
-                            <constraint firstItem="xkq-fo-dvI" firstAttribute="top" secondItem="7HW-8W-BxA" secondAttribute="top" constant="20" id="Ou2-Wg-0Dc"/>
-                            <constraint firstItem="7HW-8W-BxA" firstAttribute="trailing" secondItem="xkq-fo-dvI" secondAttribute="trailing" constant="20" id="P3K-e9-VI6"/>
-                            <constraint firstItem="itS-Zk-Iem" firstAttribute="top" secondItem="aPI-dC-Th7" secondAttribute="bottom" constant="12" id="Trz-Dm-xMD"/>
-                            <constraint firstItem="xkq-fo-dvI" firstAttribute="leading" secondItem="7HW-8W-BxA" secondAttribute="leading" constant="20" id="Vk4-6o-E9I"/>
-                            <constraint firstItem="aPI-dC-Th7" firstAttribute="centerX" secondItem="AMF-CZ-Oj9" secondAttribute="centerX" id="YOs-E1-4ta"/>
-                            <constraint firstItem="7HW-8W-BxA" firstAttribute="trailing" secondItem="M91-aB-je7" secondAttribute="trailing" constant="20" id="bLX-KX-lCx"/>
-                            <constraint firstItem="0aP-Zf-eq1" firstAttribute="top" secondItem="M91-aB-je7" secondAttribute="bottom" constant="12" id="ipJ-7u-32w"/>
-                            <constraint firstItem="0aP-Zf-eq1" firstAttribute="leading" secondItem="7HW-8W-BxA" secondAttribute="leading" constant="20" id="jzx-Zj-PbR"/>
-                            <constraint firstItem="7HW-8W-BxA" firstAttribute="bottom" secondItem="0aP-Zf-eq1" secondAttribute="bottom" constant="20" id="qUj-wi-5vj"/>
-                        </constraints>
-                        <connections>
-                            <outlet property="currentTimeLabel" destination="aPI-dC-Th7" id="Czm-uE-t1J"/>
-                            <outlet property="greetLabel" destination="itS-Zk-Iem" id="SuP-57-FHR"/>
-                            <outlet property="snoozeButton" destination="M91-aB-je7" id="yCF-CP-iJe"/>
-                            <outlet property="stopAlarmButton" destination="0aP-Zf-eq1" id="vYm-A9-GtQ"/>
-                        </connections>
-                    </view>
-                    <connections>
-                        <outlet property="alarmingView" destination="AMF-CZ-Oj9" id="Fzb-Db-S8p"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="94g-NE-hjr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="468" y="78"/>
-        </scene>
     </scenes>
+    <designables>
+        <designable name="jtf-Rn-AX8">
+            <size key="intrinsicContentSize" width="111" height="111"/>
+        </designable>
+    </designables>
     <resources>
         <image name="beginToSleepIcon" width="111" height="111"/>
         <image name="multiply.circle" catalog="system" width="128" height="121"/>
         <image name="rich" width="320" height="568"/>
-        <namedColor name="normalTitle">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>

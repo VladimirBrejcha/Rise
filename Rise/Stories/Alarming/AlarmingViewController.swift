@@ -9,27 +9,54 @@
 import UIKit
 
 final class AlarmingViewController: UIViewController {
-    @IBOutlet private var alarmingView: AlarmingView!
 
-    var alarmTime: Date! // DI
-    
-    private let audioPlayer = AudioPlayer()
+    private var loadedView: AlarmingView { view as! AlarmingView }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    private let changeScreenBrightness: ChangeScreenBrightness
 
-        alarmingView.configure(
-            timeDataSource: { Date().HHmmString },
-            didSnooze: { [weak self] in
+    // MARK: - LifeCycle
+
+    init(changeScreenBrightness: ChangeScreenBrightness) {
+        self.changeScreenBrightness = changeScreenBrightness
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    deinit {
+        changeScreenBrightness(to: .userDefault)
+    }
+
+    override func loadView() {
+        super.loadView()
+
+        self.view = AlarmingView(
+            stopHandler: { [weak self] in
+                self?.dismiss(animated: true)
+            },
+            snoozeHandler: { [weak self] in
                 guard let self = self else { return }
-                self.navigationController!.setViewControllers(
-                    [Story.sleep(alarmTime: self.alarmTime.addingTimeInterval(minutes: 10))()],
+                self.navigationController?.setViewControllers(
+                    [Story.sleep(alarmTime: Date().addingTimeInterval(minutes: 8))()],
                     animated: true
                 )
             },
-            didStop: { [weak self] in
-                self?.dismiss(animated: true)
+            currentTimeDataSource: {
+                Date().HHmmString
             }
         )
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        changeScreenBrightness(to: .high)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        changeScreenBrightness(to: .userDefault)
     }
 }

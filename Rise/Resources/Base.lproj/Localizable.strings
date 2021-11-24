@@ -65,3 +65,6 @@
 "keep_app_opened_suggestion.description_why" = "This is necessary for the correct functioning of the alarm clock when you wake up";
 "keep_app_opened_suggestion.continue" = "Continue";
 "keep_app_opened_suggestion.button" = "Why stay on screen";
+"alarming.title" = "Wake up and Rise!";
+"alarming.snooze" = "Snooze";
+"alarming.stop" = "Wake up";

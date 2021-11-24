@@ -49,7 +49,7 @@ enum Story {
     case prepareToSleep
     case keepAppOpenedSuggestion(completion: (() -> Void)?)
     case sleep(alarmTime: Date)
-    case alarming(alarmTime: Date)
+    case alarming
 
     // Settings
     case settings
@@ -123,8 +123,8 @@ enum Story {
             return PrepareToSleepAssembler().assemble()
         case .sleep(let alarmTime):
             return SleepAssembler().assemble(alarm: alarmTime)
-        case .alarming(let alarmTime):
-            return AlarmingAssembler().assemble(alarm: alarmTime)
+        case .alarming:
+            return AlarmingAssembler().assemble()
         case .about:
             return AboutAssembler().assemble()
         case .refreshSunTime:
