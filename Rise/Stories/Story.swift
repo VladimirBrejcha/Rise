@@ -50,6 +50,7 @@ enum Story {
     case keepAppOpenedSuggestion(completion: (() -> Void)?)
     case sleep(alarmTime: Date)
     case alarming
+    case afterSleep
 
     // Settings
     case settings
@@ -138,6 +139,8 @@ enum Story {
             return KeepAppOpenedSuggestionAssembler().assemble(
                 completion: completion
             )
+        case .afterSleep:
+            return AfterSleepAssembler().assemble()
         }
     }
 }

@@ -108,6 +108,15 @@ internal enum Text {
     }
   }
 
+  internal enum AfterSleep {
+    /// Done
+    internal static let done = Text.tr("Localizable", "after_sleep.done")
+    /// Good morning
+    internal static let title = Text.tr("Localizable", "after_sleep.title")
+    /// Sleep ended
+    internal static let titleSleepStopped = Text.tr("Localizable", "after_sleep.title_sleep_stopped")
+  }
+
   internal enum Alarming {
     /// Snooze
     internal static let snooze = Text.tr("Localizable", "alarming.snooze")

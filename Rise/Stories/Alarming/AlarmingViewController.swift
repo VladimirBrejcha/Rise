@@ -35,7 +35,10 @@ final class AlarmingViewController: UIViewController {
 
         self.view = AlarmingView(
             stopHandler: { [weak self] in
-                self?.dismiss(animated: true)
+                self?.navigationController?.setViewControllers(
+                    [Story.afterSleep()],
+                    animated: true
+                )
             },
             snoozeHandler: { [weak self] in
                 guard let self = self else { return }

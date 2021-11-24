@@ -169,6 +169,9 @@
 		7EB29E0D241987DD00116433 /* PrepareToSleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB29E0C241987DD00116433 /* PrepareToSleepViewController.swift */; };
 		7EB7340F274E8AB200DC7758 /* PreventAppSleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB7340E274E8AB200DC7758 /* PreventAppSleep.swift */; };
 		7EB73411274E918100DC7758 /* ChangeScreenBrightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB73410274E918100DC7758 /* ChangeScreenBrightness.swift */; };
+		7EB73418274EBC2800DC7758 /* AfterSleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB73415274EBC2800DC7758 /* AfterSleepViewController.swift */; };
+		7EB73419274EBC2800DC7758 /* AfterSleepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB73416274EBC2800DC7758 /* AfterSleepView.swift */; };
+		7EB7341A274EBC2800DC7758 /* AfterSleepAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB73417274EBC2800DC7758 /* AfterSleepAssembler.swift */; };
 		7EB9003E23256AC9006EB9A8 /* DesignableContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9003D23256AC9006EB9A8 /* DesignableContainerView.swift */; };
 		7EB9004023256BF3006EB9A8 /* DaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9003F23256BF3006EB9A8 /* DaysView.swift */; };
 		7EB90047232AB9EB006EB9A8 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */; };
@@ -407,6 +410,9 @@
 		7EB29E0C241987DD00116433 /* PrepareToSleepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareToSleepViewController.swift; sourceTree = "<group>"; };
 		7EB7340E274E8AB200DC7758 /* PreventAppSleep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreventAppSleep.swift; sourceTree = "<group>"; };
 		7EB73410274E918100DC7758 /* ChangeScreenBrightness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeScreenBrightness.swift; sourceTree = "<group>"; };
+		7EB73415274EBC2800DC7758 /* AfterSleepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfterSleepViewController.swift; sourceTree = "<group>"; };
+		7EB73416274EBC2800DC7758 /* AfterSleepView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfterSleepView.swift; sourceTree = "<group>"; };
+		7EB73417274EBC2800DC7758 /* AfterSleepAssembler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfterSleepAssembler.swift; sourceTree = "<group>"; };
 		7EB9003D23256AC9006EB9A8 /* DesignableContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableContainerView.swift; sourceTree = "<group>"; };
 		7EB9003F23256BF3006EB9A8 /* DaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysView.swift; sourceTree = "<group>"; };
 		7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
@@ -702,6 +708,7 @@
 				7EE3EB8F274D7D390000CFDE /* KeepAppOpenedSuggestion */,
 				7EFF58B5241C1E1A00D2CCEC /* Sleep */,
 				7E514DC125A87FB1000EBE81 /* Alarming */,
+				7EB73414274EBC2800DC7758 /* AfterSleep */,
 				7E49018A2340F4190034521E /* Settings */,
 				7E1539782749672E00CC2E7B /* RefreshSunTimes */,
 				7E346CE1274A5BFE00848DBB /* AdjustSchedule */,
@@ -941,6 +948,16 @@
 				7E354E2F24119B1C0036FF3F /* LocalDataSource.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		7EB73414274EBC2800DC7758 /* AfterSleep */ = {
+			isa = PBXGroup;
+			children = (
+				7EB73417274EBC2800DC7758 /* AfterSleepAssembler.swift */,
+				7EB73416274EBC2800DC7758 /* AfterSleepView.swift */,
+				7EB73415274EBC2800DC7758 /* AfterSleepViewController.swift */,
+			);
+			path = AfterSleep;
 			sourceTree = "<group>";
 		};
 		7EB9F33B23C20218002A6DD3 /* Domain */ = {
@@ -1506,6 +1523,7 @@
 				7E69837224EC69B8002EE278 /* AlertPresentable.swift in Sources */,
 				7EB26953234F99AE008AEB3D /* Button.swift in Sources */,
 				7E15397E2749675300CC2E7B /* RefreshSunTimesViewController.swift in Sources */,
+				7EB73419274EBC2800DC7758 /* AfterSleepView.swift in Sources */,
 				7E15396F2748156C00CC2E7B /* SelfHeightSizing.swift in Sources */,
 				7E43065026ED528700B67315 /* UIStackView+addSeparators.swift in Sources */,
 				7E69837624EC69DE002EE278 /* ErrorViewAddable.swift in Sources */,
@@ -1518,6 +1536,7 @@
 				7E69836924EC6923002EE278 /* RecoveryOptions.swift in Sources */,
 				7E153969274801F100CC2E7B /* EditScheduleSegmentedControlTableCell.swift in Sources */,
 				7EF8D1E426F7AC6E002CE18B /* SunTimeError.swift in Sources */,
+				7EB7341A274EBC2800DC7758 /* AfterSleepAssembler.swift in Sources */,
 				7EE227652504C38B00EC70CB /* UserDefaults.swift in Sources */,
 				7EB9F35A23C389BF002A6DD3 /* DataLayer.swift in Sources */,
 				7EAFB6312737203000B7C7C6 /* PauseSchedule.swift in Sources */,
@@ -1683,6 +1702,7 @@
 				92E77AF822A5303400E5E21C /* SettingsViewController.swift in Sources */,
 				7E06FE97252E3841005D72CB /* AnimatedTransition.swift in Sources */,
 				7E8C6B982350FB9C0086162F /* TableView.swift in Sources */,
+				7EB73418274EBC2800DC7758 /* AfterSleepViewController.swift in Sources */,
 				7EB7340F274E8AB200DC7758 /* PreventAppSleep.swift in Sources */,
 				7EEB1E0D24424010001ABE4A /* AudioPlayer.swift in Sources */,
 				7E6225C026192E6E001AA8FD /* UITabBarItemAppearance+Styleable.swift in Sources */,

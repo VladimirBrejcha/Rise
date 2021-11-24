@@ -68,3 +68,6 @@
 "alarming.title" = "Wake up and Rise!";
 "alarming.snooze" = "Snooze";
 "alarming.stop" = "Wake up";
+"after_sleep.title" = "Good morning";
+"after_sleep.title_sleep_stopped" = "Sleep ended";
+"after_sleep.done" = "Done";
