@@ -11,11 +11,13 @@ import UIKit
 final class SleepViewController: UIViewController, AutoRefreshable {
 
     private var loadedView: SleepView { view as! SleepView }
-    
-    private var alarmTime: Date
-    private var editingAlarmTime: Date?
 
     private let preventAppSleep: PreventAppSleep
+    private let changeScreenBrightness: ChangeScreenBrightness
+    private var alarmTime: Date
+
+    private var editingAlarmTime: Date?
+    private var lowerBrightnessDispatchItem: DispatchWorkItem?
 
     // MARK: - AutoRefreshable
 
@@ -33,9 +35,14 @@ final class SleepViewController: UIViewController, AutoRefreshable {
 
     // MARK: - LifeCycle
 
-    init(alarmTime: Date, preventAppSleep: PreventAppSleep) {
+    init(
+        alarmTime: Date,
+        preventAppSleep: PreventAppSleep,
+        changeSleepBrightness: ChangeScreenBrightness
+    ) {
         self.alarmTime = alarmTime
         self.preventAppSleep = preventAppSleep
+        self.changeScreenBrightness = changeSleepBrightness
         super.init(nibName: nil, bundle: nil)
         preventAppSleep(true)
     }
@@ -47,6 +54,7 @@ final class SleepViewController: UIViewController, AutoRefreshable {
 
     deinit {
         preventAppSleep(false)
+        lowerBrightnessDispatchItem?.cancel()
     }
 
     override func loadView() {
@@ -65,6 +73,7 @@ final class SleepViewController: UIViewController, AutoRefreshable {
             },
             alarmTime: "Alarm at \(alarmTime.HHmmString)",
             stopHandler: { [weak self] in
+                self?.restoreBrightness()
                 self?.dismiss(animated: true)
             },
             keepAppOpenedHandler: { [weak self] in
@@ -79,7 +88,43 @@ final class SleepViewController: UIViewController, AutoRefreshable {
     override func viewDidLoad() {
         super.viewDidLoad()
         beginRefreshing()
-    }    
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        prepareToLowerBrightness(in: 20)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        lowerBrightnessDispatchItem?.cancel()
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        restoreBrightness()
+    }
+
+    // MARK: - Internal
+
+    private func prepareToLowerBrightness(in seconds: CGFloat) {
+        let lowerBrightnessDispatchItem = DispatchWorkItem { [weak self] in
+            self?.changeScreenBrightness(to: .low)
+        }
+        self.lowerBrightnessDispatchItem = lowerBrightnessDispatchItem
+
+        DispatchQueue.main.asyncAfter(
+            deadline: .now() + seconds,
+            execute: lowerBrightnessDispatchItem
+        )
+    }
+
+    private func restoreBrightness() {
+        lowerBrightnessDispatchItem?.cancel()
+        changeScreenBrightness(to: .userDefault)
+        prepareToLowerBrightness(in: 7)
+    }
 }
 
 fileprivate extension Date {

@@ -26,6 +26,9 @@ enum DomainLayer {
     static var preventAppSleep: PreventAppSleep {
         PreventAppSleepImpl()
     }
+    static var changeScreenBrightness: ChangeScreenBrightness {
+        ChangeScreenBrightnessImpl()
+    }
 
     // MARK: - SunTime
 

@@ -12,7 +12,8 @@ final class SleepAssembler {
     func assemble(alarm time: Date) -> SleepViewController {
         SleepViewController(
             alarmTime: time,
-            preventAppSleep: DomainLayer.preventAppSleep
+            preventAppSleep: DomainLayer.preventAppSleep,
+            changeSleepBrightness: DomainLayer.changeScreenBrightness
         )
     }
 }
