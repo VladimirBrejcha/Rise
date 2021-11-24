@@ -167,6 +167,7 @@
 		7EB26953234F99AE008AEB3D /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB26952234F99AE008AEB3D /* Button.swift */; };
 		7EB29E09241987C800116433 /* PrepareToSleepAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB29E08241987C800116433 /* PrepareToSleepAssembler.swift */; };
 		7EB29E0D241987DD00116433 /* PrepareToSleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB29E0C241987DD00116433 /* PrepareToSleepViewController.swift */; };
+		7EB7340F274E8AB200DC7758 /* PreventAppSleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB7340E274E8AB200DC7758 /* PreventAppSleep.swift */; };
 		7EB9003E23256AC9006EB9A8 /* DesignableContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9003D23256AC9006EB9A8 /* DesignableContainerView.swift */; };
 		7EB9004023256BF3006EB9A8 /* DaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9003F23256BF3006EB9A8 /* DaysView.swift */; };
 		7EB90047232AB9EB006EB9A8 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */; };
@@ -403,6 +404,7 @@
 		7EB26952234F99AE008AEB3D /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		7EB29E08241987C800116433 /* PrepareToSleepAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareToSleepAssembler.swift; sourceTree = "<group>"; };
 		7EB29E0C241987DD00116433 /* PrepareToSleepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareToSleepViewController.swift; sourceTree = "<group>"; };
+		7EB7340E274E8AB200DC7758 /* PreventAppSleep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreventAppSleep.swift; sourceTree = "<group>"; };
 		7EB9003D23256AC9006EB9A8 /* DesignableContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableContainerView.swift; sourceTree = "<group>"; };
 		7EB9003F23256BF3006EB9A8 /* DaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysView.swift; sourceTree = "<group>"; };
 		7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
@@ -959,6 +961,7 @@
 				7E43065326ED6E7500B67315 /* GetAppVersion.swift */,
 				7E48D2B5274C2E6800B14355 /* PreferredWakeUpTime.swift */,
 				7EE3EB96274D81E70000CFDE /* SuggestKeepAppOpened.swift */,
+				7EB7340E274E8AB200DC7758 /* PreventAppSleep.swift */,
 				7E3955FF26F162FC003D664D /* PrepareMail.swift */,
 				7EAFB61B2735D31100B7C7C6 /* CreateSchedule.swift */,
 				7EAFB632273729C400B7C7C6 /* UpdateSchedule.swift */,
@@ -1676,6 +1679,7 @@
 				92E77AF822A5303400E5E21C /* SettingsViewController.swift in Sources */,
 				7E06FE97252E3841005D72CB /* AnimatedTransition.swift in Sources */,
 				7E8C6B982350FB9C0086162F /* TableView.swift in Sources */,
+				7EB7340F274E8AB200DC7758 /* PreventAppSleep.swift in Sources */,
 				7EEB1E0D24424010001ABE4A /* AudioPlayer.swift in Sources */,
 				7E6225C026192E6E001AA8FD /* UITabBarItemAppearance+Styleable.swift in Sources */,
 				7E15397C2749674B00CC2E7B /* RefreshSunTimesView.swift in Sources */,

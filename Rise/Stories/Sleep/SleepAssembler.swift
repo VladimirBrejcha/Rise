@@ -10,6 +10,9 @@ import Foundation
 
 final class SleepAssembler {
     func assemble(alarm time: Date) -> SleepViewController {
-        SleepViewController(alarmTime: time)
+        SleepViewController(
+            alarmTime: time,
+            preventAppSleep: DomainLayer.preventAppSleep
+        )
     }
 }

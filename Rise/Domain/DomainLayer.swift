@@ -23,6 +23,9 @@ enum DomainLayer {
     static var suggestKeepAppUpened: SuggestKeepAppOpened {
         SuggestKeepAppOpenedImpl(DataLayer.userData)
     }
+    static var preventAppSleep: PreventAppSleep {
+        PreventAppSleepImpl()
+    }
 
     // MARK: - SunTime
 

@@ -15,6 +15,8 @@ final class SleepViewController: UIViewController, AutoRefreshable {
     private var alarmTime: Date
     private var editingAlarmTime: Date?
 
+    private let preventAppSleep: PreventAppSleep
+
     // MARK: - AutoRefreshable
 
     var timer: Timer?
@@ -31,14 +33,20 @@ final class SleepViewController: UIViewController, AutoRefreshable {
 
     // MARK: - LifeCycle
 
-    init(alarmTime: Date) {
+    init(alarmTime: Date, preventAppSleep: PreventAppSleep) {
         self.alarmTime = alarmTime
+        self.preventAppSleep = preventAppSleep
         super.init(nibName: nil, bundle: nil)
+        preventAppSleep(true)
     }
 
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    deinit {
+        preventAppSleep(false)
     }
 
     override func loadView() {
