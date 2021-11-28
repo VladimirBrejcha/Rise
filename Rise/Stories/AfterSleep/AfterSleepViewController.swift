@@ -31,7 +31,7 @@ final class AfterSleepViewController: UIViewController {
             doneHandler: { [weak self] in
                 self?.dismiss(animated: true)
             },
-            appearance: .sleepStopped
+            appearance: .sleepFinished
         )
     }
 }

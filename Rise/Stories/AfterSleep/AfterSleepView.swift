@@ -20,11 +20,48 @@ final class AfterSleepView: UIView {
         closeButton: .none
     )
 
+    private lazy var containerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }()
+
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: appearance.imageName)
         imageView.tintColor = Asset.Colors.white.color
+        imageView.layer.applyStyle(
+            .init(
+                shadow: .whiteBgSeparatorSmall
+            )
+        )
         return imageView
+    }()
+
+    private lazy var mainLabel: UILabel = {
+        let label = UILabel()
+        label.applyStyle(.boldBigTitle)
+        label.text = Text.AfterSleep.mainText
+        label.layer.applyStyle(
+            .init(
+                shadow: .whiteBgSeparatorSmall
+            )
+        )
+        return label
+    }()
+
+    private lazy var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.applyStyle(.mediumSizedBody)
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.text = """
+                     You went to sleep at 23:50
+                     and woke up at 8:35
+                     which makes it total of ~8 hours sleep
+                     """
+        label.layer.applyStyle(.init(shadow: .whiteBgSeparatorBig))
+        return label
     }()
 
     private lazy var doneButton: Button = {
@@ -58,7 +95,11 @@ final class AfterSleepView: UIView {
         addBackgroundView(.rich, blur: .light)
         addScreenTitleView(titleView)
         addSubviews(
-            imageView,
+            containerView.addSubviews(
+                imageView,
+                mainLabel,
+                descriptionLabel
+            ),
             doneButton
         )
     }
@@ -66,11 +107,27 @@ final class AfterSleepView: UIView {
     // MARK: - Layout
 
     private func setupLayout() {
+        containerView.activateConstraints(
+            containerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            containerView.centerYAnchor.constraint(equalTo: centerYAnchor)
+        )
         imageView.activateConstraints(
             imageView.heightAnchor.constraint(equalToConstant: appearance.imageSideSize),
             imageView.widthAnchor.constraint(equalToConstant: appearance.imageSideSize),
-            imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            imageView.topAnchor.constraint(equalTo: titleView.bottomAnchor, constant: 40)
+            imageView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            imageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20)
+        )
+        mainLabel.activateConstraints(
+            mainLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8),
+            mainLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -8),
+            mainLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 30)
+        )
+        descriptionLabel.activateConstraints(
+            descriptionLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8),
+            descriptionLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -8),
+            descriptionLabel.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 20),
+            descriptionLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20)
         )
         doneButton.activateConstraints(
             doneButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),

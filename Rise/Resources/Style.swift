@@ -42,6 +42,24 @@ enum Style {
                     color: Asset.Colors.lightBlue.color.cgColor
                 )
             }
+
+            static var whiteBgSeparatorBig: Shadow {
+                .init(
+                    radius: 10,
+                    opacity: 0.5,
+                    offset: .init(width: 0, height: 0),
+                    color: Asset.Colors.black.color.cgColor
+                )
+            }
+
+            static var whiteBgSeparatorSmall: Shadow {
+                .init(
+                    radius: 8,
+                    opacity: 0.25,
+                    offset: .init(width: 0, height: 0),
+                    color: Asset.Colors.black.color.cgColor
+                )
+            }
         }
 
         // MARK: Border
