@@ -9,10 +9,12 @@
 import UIKit
 
 enum Story {
+
     // Onboarding
-    case onboarding(dismissOnCompletion: Bool)
+    case onboarding
 
     // Main
+    case root
     case tabBar
     case today
     case days
@@ -60,13 +62,15 @@ enum Story {
     
     func callAsFunction() -> UIViewController {
         switch self {
+        case .root:
+            return RootStoryAssembler().assemble()
         case .tabBar:
-            return CustomTabBarController(
+            return TabBarController(
                 items: [Story.schedule(), Story.today(), Story.settings()],
                 selectedIndex: 1
             )
-        case let .onboarding(dismissOnCompletion):
-            return OnboardingAssembler().assemble(dismissOnCompletion: dismissOnCompletion)
+        case .onboarding:
+            return OnboardingAssembler().assemble()
         case .today:
             return TodayAssembler().assemble()
         case .days:

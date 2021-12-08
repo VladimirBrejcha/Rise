@@ -12,14 +12,13 @@ extension UIViewController {
     enum PresentationStyle {
         case fullScreen
         case modal
-        case overContext
-        case none
     }
     
-    func present(_ controller: UIViewController,
-                 with style: PresentationStyle,
-                 animated: Bool = true,
-                 completion: (() -> Void)? = nil
+    func present(
+        _ controller: UIViewController,
+        with style: PresentationStyle,
+        animated: Bool = true,
+        completion: (() -> Void)? = nil
     ) {
         switch style {
         case .fullScreen:
@@ -29,14 +28,6 @@ extension UIViewController {
         case .modal:
             modalPresentationStyle = .pageSheet
             controller.modalPresentationStyle = .pageSheet
-            present(controller, animated: animated, completion: completion)
-        case .overContext:
-            modalPresentationStyle = .overCurrentContext
-            controller.modalPresentationStyle = .overCurrentContext
-            present(controller, animated: animated, completion: completion)
-        case .none:
-            modalPresentationStyle = .none
-            controller.modalPresentationStyle = .none
             present(controller, animated: animated, completion: completion)
         }
     }

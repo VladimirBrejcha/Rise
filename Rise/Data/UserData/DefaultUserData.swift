@@ -23,4 +23,15 @@ final class DefaultUserData: UserData {
     
     @NonNilUserDefault("keep_app_opened_suggested", defaultValue: false)
     var keepAppOpenedSuggested: Bool
+
+    @UserDefault("active_sleep_start_date")
+    var activeSleepStartDate: Date?
+
+    @UserDefault("active_sleep_end_date")
+    var activeSleepEndDate: Date?
+
+    func invalidateActiveSleep() {
+        activeSleepStartDate = nil
+        activeSleepEndDate = nil
+    }
 }

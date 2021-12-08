@@ -1,16 +1,23 @@
 //
-//  AnimatedTransition.swift
+//  CrossDissolveTransition.swift
 //  Rise
 //
-//  Created by Vladimir Korolev on 07.10.2020.
-//  Copyright © 2020 VladimirBrejcha. All rights reserved.
+//  Created by Vladimir Korolev on 07.12.2021.
+//  Copyright © 2021 VladimirBrejcha. All rights reserved.
 //
 
 import UIKit
 
-final class AnimatedTransition: NSObject, UIViewControllerAnimatedTransitioning {
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        0.20
+final class CrossDissolveTransition: NSObject, UIViewControllerAnimatedTransitioning {
+
+    private let transitionDuration = 0.2
+
+    // MARK: - UIViewControllerAnimatedTransitioning
+
+    func transitionDuration(
+        using transitionContext: UIViewControllerContextTransitioning?
+    ) -> TimeInterval {
+        transitionDuration
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -23,7 +30,7 @@ final class AnimatedTransition: NSObject, UIViewControllerAnimatedTransitioning 
         toController.view.alpha = 0
 
         let animator = UIViewPropertyAnimator(
-            duration: transitionDuration(using: transitionContext),
+            duration: transitionDuration,
             curve: .easeIn
         ) {
             toController.view.alpha = 1

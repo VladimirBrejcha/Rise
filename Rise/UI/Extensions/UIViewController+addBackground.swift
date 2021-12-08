@@ -16,6 +16,7 @@ extension UIView {
         let view = bgView.asUIView
         blur.flatMap(view.applyBlur(style:))
         addSubview(view)
+        sendSubviewToBack(view)
         view.activateConstraints(
             view.leadingAnchor.constraint(equalTo: leadingAnchor),
             view.trailingAnchor.constraint(equalTo: trailingAnchor),

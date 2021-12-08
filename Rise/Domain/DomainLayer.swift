@@ -20,7 +20,10 @@ enum DomainLayer {
     static var preferredWakeUpTime: PreferredWakeUpTime {
         PreferredWakeUpTimeImpl(DataLayer.userData)
     }
-    static var suggestKeepAppUpened: SuggestKeepAppOpened {
+    static var manageActiveSleep: ManageActiveSleep {
+        ManageActiveSleepImpl(DataLayer.userData)
+    }
+    static var suggestKeepAppOpened: SuggestKeepAppOpened {
         SuggestKeepAppOpenedImpl(DataLayer.userData)
     }
     static var preventAppSleep: PreventAppSleep {

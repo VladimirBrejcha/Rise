@@ -27,10 +27,4 @@ extension View {
             return view
         }
     }
-    static var backgroundView: UIImageView {
-        let view = UIImageView()
-        view.image = Asset.Background.default.image
-        view.contentMode = .scaleAspectFill
-        return view
-    }
 }

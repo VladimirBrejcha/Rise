@@ -11,7 +11,8 @@ final class PrepareToSleepAssembler {
         let controller = Storyboard.sleep.instantiateViewController(of: PrepareToSleepViewController.self)
         controller.getSchedule = DomainLayer.getSchedule
         controller.preferredWakeUpTime = DomainLayer.preferredWakeUpTime
-        controller.suggestKeepAppOpened = DomainLayer.suggestKeepAppUpened
+        controller.suggestKeepAppOpened = DomainLayer.suggestKeepAppOpened
+        controller.manageActiveSleep = DomainLayer.manageActiveSleep
         return controller
     }
 }

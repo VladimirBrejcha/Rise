@@ -178,7 +178,7 @@ final class EditScheduleViewController:
     // MARK: - Private -
 
     private func dismiss() {
-        dismiss(animated: true)
+        navigationController?.popViewController(animated: true)
     }
 }
 

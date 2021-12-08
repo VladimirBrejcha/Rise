@@ -14,16 +14,13 @@ final class OnboardingViewController: UIViewController {
     private var onboardingView: OnboardingView { view as! OnboardingView }
     private var setOnboardingCompleted: SetOnboardingCompleted!
     private var data: [OnboardingView.ContentView.Model] = []
-    private var dismissOnCompletion: Bool = false
 
     convenience init(
         data: [OnboardingView.ContentView.Model],
-        setOnboardingCompleted: SetOnboardingCompleted,
-        dismissOnCompletion: Bool = false
+        setOnboardingCompleted: SetOnboardingCompleted
     ) {
         self.init(nibName: nil, bundle: nil)
         self.data = data
-        self.dismissOnCompletion = dismissOnCompletion
         self.setOnboardingCompleted = setOnboardingCompleted
     }
 
@@ -36,17 +33,8 @@ final class OnboardingViewController: UIViewController {
             completedHandler: { [weak self] in
                 guard let self = self else { return }
                 self.setOnboardingCompleted(true)
-                if self.dismissOnCompletion {
-                    self.dismiss(animated: true)
-                } else {
-                    self.navigationController?.setViewControllers([Story.tabBar()], animated: true)
-                }
+                self.navigationController?.popViewController(animated: true)
             }
         )
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        navigationController?.navigationBar.isHidden = true
     }
 }

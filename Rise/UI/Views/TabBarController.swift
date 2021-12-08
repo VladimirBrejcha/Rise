@@ -1,5 +1,5 @@
 //
-//  CustomTabBarController.swift
+//  TabBarController.swift
 //  Rise
 //
 //  Created by Vladimir Korolev on 02/06/2019.
@@ -8,7 +8,9 @@
 
 import UIKit
 
-final class CustomTabBarController: UITabBarController, UITabBarControllerDelegate {
+final class TabBarController: UITabBarController, UITabBarControllerDelegate {
+
+    private lazy var backgroundView = View.Background.default.asUIView
 
     private lazy var appearance: UITabBarAppearance = {
         let appearance = UITabBarAppearance()
@@ -21,19 +23,36 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
         return appearance
     }()
 
-    convenience init(items: [UIViewController], selectedIndex: Int) {
-        self.init(nibName: nil, bundle: nil)
+    init(items: [UIViewController], selectedIndex: Int) {
+        super.init(nibName: nil, bundle: nil)
         self.viewControllers = items
         self.selectedIndex = selectedIndex
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tabBar.standardAppearance = appearance
-        delegate = self
+    @available(*, unavailable)
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
-    private func makeItemAppearance(for style: UITabBarItemAppearance.Style) -> UITabBarItemAppearance {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        tabBar.standardAppearance = appearance
+        delegate = self
+
+        view.addSubviews(backgroundView)
+        view.sendSubviewToBack(backgroundView)
+        backgroundView.activateConstraints(
+            backgroundView.heightAnchor.constraint(equalTo: view.heightAnchor),
+            backgroundView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 100),
+            backgroundView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            backgroundView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        )
+    }
+
+    private func makeItemAppearance(
+        for style: UITabBarItemAppearance.Style
+    ) -> UITabBarItemAppearance {
         let appearance = UITabBarItemAppearance(style: style)
         appearance.configureWithDefault(for: style)
         appearance.applyStyle(.usual)
@@ -47,6 +66,10 @@ final class CustomTabBarController: UITabBarController, UITabBarControllerDelega
         animationControllerForTransitionFrom fromVC: UIViewController,
         to toVC: UIViewController
     ) -> UIViewControllerAnimatedTransitioning? {
-        CustomTransition(viewControllers: tabBarController.viewControllers)
+        ScrollTransition(
+            viewControllers: tabBarController.viewControllers,
+            backgroundView: backgroundView,
+            backgroundTranslationX: 50
+        )
     }
 }

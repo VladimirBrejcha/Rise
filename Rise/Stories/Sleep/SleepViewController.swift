@@ -12,6 +12,7 @@ final class SleepViewController: UIViewController, AutoRefreshable {
 
     private var loadedView: SleepView { view as! SleepView }
 
+    private let manageActiveSleep: ManageActiveSleep
     private let preventAppSleep: PreventAppSleep
     private let changeScreenBrightness: ChangeScreenBrightness
     private var alarmTime: Date
@@ -28,9 +29,8 @@ final class SleepViewController: UIViewController, AutoRefreshable {
     func refresh(with data: Date) {
         if data >= alarmTime {
             stopRefreshing()
-            navigationController?.setViewControllers(
-                [Story.alarming()],
-                animated: true
+            navigationController?.replaceAllOnTopOfRoot(
+                with: Story.alarming()
             )
         }
     }
@@ -39,14 +39,17 @@ final class SleepViewController: UIViewController, AutoRefreshable {
 
     init(
         alarmTime: Date,
+        manageActiveSleep: ManageActiveSleep,
         preventAppSleep: PreventAppSleep,
         changeSleepBrightness: ChangeScreenBrightness
     ) {
         self.alarmTime = alarmTime
+        self.manageActiveSleep = manageActiveSleep
         self.preventAppSleep = preventAppSleep
         self.changeScreenBrightness = changeSleepBrightness
         super.init(nibName: nil, bundle: nil)
         preventAppSleep(true)
+        manageActiveSleep.alarmAt = alarmTime
     }
 
     @available(*, unavailable)
@@ -76,9 +79,8 @@ final class SleepViewController: UIViewController, AutoRefreshable {
             alarmTime: "Alarm at \(alarmTime.HHmmString)",
             stopHandler: { [weak self] in
                 self?.restoreBrightness()
-                self?.navigationController?.setViewControllers(
-                    [Story.afterSleep()],
-                    animated: true
+                self?.navigationController?.replaceAllOnTopOfRoot(
+                    with: Story.afterSleep()
                 )
             },
             keepAppOpenedHandler: { [weak self] in

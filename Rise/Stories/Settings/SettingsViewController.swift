@@ -39,18 +39,28 @@ final class SettingsViewController: UIViewController {
                 switch identifier {
                 case .editSchedule:
                     if let schedule = self.schedule {
-                        self.present(Story.editSchedule(schedule: schedule)(), with: .fullScreen)
+                        self.navigationController?.pushViewController(
+                            Story.editSchedule(schedule: schedule)(),
+                            animated: true
+                        )
                     } else {
                         assertionFailure("Attempted to present editSchedule without schedule")
                     }
                 case .adjustBedTime:
                     if let schedule = self.schedule {
-                        self.present(Story.adjustSchedule(currentSchedule: schedule)(), with: .fullScreen)
+                        self.present(
+                            Story.adjustSchedule(
+                                currentSchedule: schedule)(),
+                            with: .fullScreen
+                        )
                     } else {
                         assertionFailure("Attempted to present editSchedule without schedule")
                     }
                 case .onboarding:
-                    self.present(Story.onboarding(dismissOnCompletion: true)(), with: .fullScreen)
+                    self.navigationController?.pushViewController(
+                        Story.onboarding(),
+                        animated: true
+                    )
                 case .about:
                     self.present(Story.about(), with: .modal)
                 case .refreshSuntime:

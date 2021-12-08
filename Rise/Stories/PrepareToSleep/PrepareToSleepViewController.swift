@@ -11,10 +11,11 @@ import UIKit
 final class PrepareToSleepViewController: UIViewController {
 
     @IBOutlet private var prepareToSleepView: PrepareToSleepView!
-    
+
     var getSchedule: GetSchedule! // DI
     var preferredWakeUpTime: PreferredWakeUpTime! // DI
     var suggestKeepAppOpened: SuggestKeepAppOpened! // DI
+    var manageActiveSleep: ManageActiveSleep! // DI
 
     private var customSelectedWakeUpTime: Date?
 
@@ -120,13 +121,13 @@ final class PrepareToSleepViewController: UIViewController {
     // MARK: - Private -
 
     private func dismiss() {
-        dismiss(animated: true)
+        navigationController?.popToRootViewController(animated: true)
     }
 
     private func goToSleep() {
-        navigationController?.setViewControllers(
-            [Story.sleep(alarmTime: wakeUpTime)()],
-            animated: true
+        manageActiveSleep.sleepStartedAt = Date()
+        navigationController?.replaceAllOnTopOfRoot(
+            with: Story.sleep(alarmTime: wakeUpTime)()
         )
     }
 }

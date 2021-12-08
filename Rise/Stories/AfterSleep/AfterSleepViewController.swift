@@ -14,10 +14,19 @@ final class AfterSleepViewController: UIViewController {
         view as! AfterSleepView
     }
 
+    private let manageActiveSleep: ManageActiveSleep
+    private let wentSleepTime: Date
+    private let totalSleepTime: Schedule.Minute
+    private let currentTime: Date = Date()
+
     // MARK: - LifeCycle
 
-    init() {
+    init(manageActiveSleep: ManageActiveSleep) {
+        self.manageActiveSleep = manageActiveSleep
+        self.wentSleepTime = manageActiveSleep.sleepStartedAt ?? Date()
+        self.totalSleepTime = Int(currentTime.timeIntervalSince(wentSleepTime)) / 60
         super.init(nibName: nil, bundle: nil)
+        manageActiveSleep.endSleep()
     }
 
     @available(*, unavailable)
@@ -29,9 +38,14 @@ final class AfterSleepViewController: UIViewController {
         super.loadView()
         self.view = AfterSleepView(
             doneHandler: { [weak self] in
-                self?.dismiss(animated: true)
+                self?.navigationController?.popToRootViewController(
+                    animated: true
+                )
             },
-            appearance: .sleepFinished
+            appearance: .sleepFinished,
+            wentSleepTime: wentSleepTime.HHmmString,
+            wokeUpTime: currentTime.HHmmString,
+            totalSleepTime: totalSleepTime > 0 ? totalSleepTime.HHmmString : nil
         )
     }
 }

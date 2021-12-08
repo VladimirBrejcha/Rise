@@ -14,4 +14,8 @@ protocol UserData: AnyObject {
     var latestAppUsageDate: Date? { get set }
     var preferredWakeUpTime: Date? { get set }
     var keepAppOpenedSuggested: Bool { get set }
+
+    var activeSleepStartDate: Date? { get set }
+    var activeSleepEndDate: Date? { get set }
+    func invalidateActiveSleep()
 }

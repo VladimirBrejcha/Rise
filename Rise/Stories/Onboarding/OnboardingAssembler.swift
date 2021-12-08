@@ -7,7 +7,7 @@
 //
 
 final class OnboardingAssembler {
-    func assemble(dismissOnCompletion: Bool = false) -> OnboardingViewController {
+    func assemble() -> OnboardingViewController {
         let controller = OnboardingViewController(
             data: [
                 .init(
@@ -31,11 +31,8 @@ final class OnboardingAssembler {
                     ]
                 ),
             ],
-            setOnboardingCompleted: DomainLayer.setOnboardingCompleted,
-            dismissOnCompletion: dismissOnCompletion
+            setOnboardingCompleted: DomainLayer.setOnboardingCompleted
         )
-        controller.modalPresentationStyle = .fullScreen
-        controller.modalTransitionStyle = .crossDissolve
         return controller
     }
 }

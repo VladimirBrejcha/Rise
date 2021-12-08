@@ -12,6 +12,9 @@ final class AfterSleepView: UIView {
 
     private let doneHandler: () -> Void
     private let appearance: Appearance
+    private let wentSleepTime: String
+    private let wokeUpTime: String
+    private let totalSleepTime: String?
 
     // MARK: - Subviews
 
@@ -43,9 +46,7 @@ final class AfterSleepView: UIView {
         label.applyStyle(.boldBigTitle)
         label.text = Text.AfterSleep.mainText
         label.layer.applyStyle(
-            .init(
-                shadow: .whiteBgSeparatorSmall
-            )
+            .init(shadow: .whiteBgSeparatorSmall)
         )
         return label
     }()
@@ -56,11 +57,13 @@ final class AfterSleepView: UIView {
         label.textAlignment = .center
         label.numberOfLines = 0
         label.text = """
-                     You went to sleep at 23:50
-                     and woke up at 8:35
-                     which makes it total of ~8 hours sleep
+                     You went to sleep at \(wentSleepTime)
+                     and woke up at \(wokeUpTime)
+                     \(totalSleepTime == nil ? "" : "total \(totalSleepTime!) of sleep")
                      """
-        label.layer.applyStyle(.init(shadow: .whiteBgSeparatorBig))
+        label.layer.applyStyle(
+            .init(shadow: .whiteBgSeparatorBig)
+        )
         return label
     }()
 
@@ -77,10 +80,16 @@ final class AfterSleepView: UIView {
 
     init(
         doneHandler: @escaping () -> Void,
-        appearance: Appearance
+        appearance: Appearance,
+        wentSleepTime: String,
+        wokeUpTime: String,
+        totalSleepTime: String?
     ) {
         self.doneHandler = doneHandler
         self.appearance = appearance
+        self.wentSleepTime = wentSleepTime
+        self.wokeUpTime = wokeUpTime
+        self.totalSleepTime = totalSleepTime
         super.init(frame: .zero)
         setupViews()
         setupLayout()

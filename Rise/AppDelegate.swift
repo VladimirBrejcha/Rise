@@ -14,13 +14,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private lazy var mainWindow: UIWindow = {
         let window = UIWindow(frame: UIScreen.main.bounds)
-        let nc = UINavigationController(
-            rootViewController: DataLayer.userData.onboardingCompleted
-                ? Story.tabBar()
-                : Story.onboarding(dismissOnCompletion: false)()
-        )
-        nc.navigationBar.isHidden = true
-        window.rootViewController = nc
+        window.rootViewController = Story.root()
         window.makeKeyAndVisible()
         return window
     }()

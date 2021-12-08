@@ -35,16 +35,15 @@ final class AlarmingViewController: UIViewController {
 
         self.view = AlarmingView(
             stopHandler: { [weak self] in
-                self?.navigationController?.setViewControllers(
-                    [Story.afterSleep()],
-                    animated: true
+                self?.navigationController?.replaceAllOnTopOfRoot(
+                    with: Story.afterSleep()
                 )
             },
             snoozeHandler: { [weak self] in
-                guard let self = self else { return }
-                self.navigationController?.setViewControllers(
-                    [Story.sleep(alarmTime: Date().addingTimeInterval(minutes: 8))()],
-                    animated: true
+                self?.navigationController?.replaceAllOnTopOfRoot(
+                    with: Story.sleep(
+                        alarmTime: Date().addingTimeInterval(minutes: 8)
+                    )()
                 )
             },
             currentTimeDataSource: {

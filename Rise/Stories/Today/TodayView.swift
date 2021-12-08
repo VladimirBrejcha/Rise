@@ -78,7 +78,7 @@ final class TodayView: UIView {
     }
 
     private func setupViews() {
-        addBackgroundView()
+//        addBackgroundView()
         addSubviews(
             daysView,
             timeUntilSleepLabel,

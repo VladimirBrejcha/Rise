@@ -40,11 +40,9 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
                 self?.floatingLabelModel ?? .empty
             },
             sleepHandler: { [weak self] in
-                self?.present(
-                    AnimatedTransitionNavigationController(
-                        rootViewController: Story.prepareToSleep()
-                    ),
-                    with: .fullScreen
+                self?.navigationController?.pushViewController(
+                    Story.prepareToSleep(),
+                    animated: true
                 )
             },
             showAdjustSchedule: adjustSchedule.mightNeedAdjustment,
@@ -117,14 +115,6 @@ final class TodayViewController: UIViewController, PropertyAnimatable {
             )
         default:
             return .empty
-        }
-    }
-
-    // MARK: - Utils
-
-    private func makeTabBar(visible: Bool) {
-        animate {
-            self.tabBarController?.tabBar.alpha = visible ? 1 : 0
         }
     }
 }

@@ -6,8 +6,12 @@
 //  Copyright © 2021 VladimirBrejcha. All rights reserved.
 //
 
+import Foundation
+
 final class AfterSleepAssembler {
     func assemble() -> AfterSleepViewController {
-        AfterSleepViewController()
+        AfterSleepViewController(
+            manageActiveSleep: DomainLayer.manageActiveSleep
+        )
     }
 }

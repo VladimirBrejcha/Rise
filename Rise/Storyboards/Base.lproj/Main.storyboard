@@ -17,9 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="wWO-aV-jcq">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tb3-ZL-ubK">
                                 <rect key="frame" x="207" y="448" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -84,14 +81,10 @@
                             <constraint firstItem="rDk-7j-wGh" firstAttribute="leading" secondItem="Cn5-HU-DMT" secondAttribute="leading" constant="20" id="MQU-zs-huS"/>
                             <constraint firstItem="Tb3-ZL-ubK" firstAttribute="centerX" secondItem="rDk-7j-wGh" secondAttribute="centerX" id="NKx-9R-qoe"/>
                             <constraint firstItem="rDk-7j-wGh" firstAttribute="centerY" secondItem="Vzi-Wy-UVB" secondAttribute="centerY" id="PFU-of-VWX"/>
-                            <constraint firstAttribute="bottom" secondItem="wWO-aV-jcq" secondAttribute="bottom" id="QMK-hQ-bUU"/>
                             <constraint firstItem="Tb3-ZL-ubK" firstAttribute="centerY" secondItem="rDk-7j-wGh" secondAttribute="centerY" id="QQl-ES-c3G"/>
                             <constraint firstItem="Cn5-HU-DMT" firstAttribute="bottom" secondItem="jrZ-yT-gcw" secondAttribute="bottom" constant="30" id="TdZ-ls-b7N"/>
                             <constraint firstItem="Cn5-HU-DMT" firstAttribute="trailing" secondItem="jrZ-yT-gcw" secondAttribute="trailing" constant="20" id="l7e-eg-I1k"/>
-                            <constraint firstItem="wWO-aV-jcq" firstAttribute="top" secondItem="Vzi-Wy-UVB" secondAttribute="top" id="olS-Lg-H3H"/>
-                            <constraint firstItem="wWO-aV-jcq" firstAttribute="trailing" secondItem="Cn5-HU-DMT" secondAttribute="trailing" id="p0l-kt-P3Y"/>
                             <constraint firstItem="jrZ-yT-gcw" firstAttribute="leading" secondItem="Cn5-HU-DMT" secondAttribute="leading" constant="20" id="raa-SG-cdB"/>
-                            <constraint firstItem="wWO-aV-jcq" firstAttribute="leading" secondItem="Cn5-HU-DMT" secondAttribute="leading" id="xgK-dl-kBT"/>
                         </constraints>
                         <connections>
                             <outlet property="cellBottomLeft" destination="ZIQ-VN-HRe" id="9Uu-Qx-9CR"/>
@@ -122,7 +115,6 @@
     <resources>
         <image name="alarm" width="25" height="25"/>
         <image name="alarmPressed" width="25" height="25"/>
-        <image name="default" width="1280" height="2272"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

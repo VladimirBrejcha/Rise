@@ -40,7 +40,7 @@ final class SettingsView: UIView {
     }
 
     private func setupViews() {
-        addBackgroundView()
+//        addBackgroundView()
         addSubviews(
             VStack
         )
