@@ -87,17 +87,12 @@ enum Style {
 
         struct Item {
 
-            let titleColor: (normal: UIColor, selected: UIColor)
             let iconColor: (normal: UIColor, selected: UIColor)
 
             // MARK: Instances
 
             static var usual: Item {
                 Item(
-                    titleColor: (
-                        normal: .clear,
-                        selected: Asset.Colors.white.color
-                    ),
                     iconColor: (
                         normal: Asset.Colors.whiteSeparator.color,
                         selected: Asset.Colors.white.color

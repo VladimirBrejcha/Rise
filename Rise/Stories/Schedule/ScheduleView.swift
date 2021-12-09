@@ -9,20 +9,109 @@
 import UIKit
 
 final class ScheduleView: UIView, PropertyAnimatable, Statefull {
-    
-    @IBOutlet private var topLabel: UILabel!
-    @IBOutlet private var centerLabel: UILabel!
-    @IBOutlet private var middleButton: Button!
-    @IBOutlet private var cellTopLeft: ImageLabelViewWithContextMenu!
-    @IBOutlet private var cellTopRight: ImageLabelViewWithContextMenu!
-    @IBOutlet private var cellBottomLeft: ImageLabelViewWithContextMenu!
-    @IBOutlet private var cellBottomRight: ImageLabelViewWithContextMenu!
 
     // MARK: - PropertyAnimatable
 
     var propertyAnimationDuration: Double = 0.3
 
-    // MARK: - Statefull -
+    // MARK: - Subviews
+
+    private lazy var centerLabel: UILabel = {
+        let label = UILabel()
+        label.applyStyle(.mediumSizedTitle)
+        return label
+    }()
+
+    private lazy var middleButton: Button = {
+        let button = Button()
+        button.onTouchUp = { [weak self] _ in
+            self?.state?.middleButtonHandler()
+        }
+        return button
+    }()
+
+    private lazy var HStack: UIStackView = {
+        let stack = UIStackView()
+        stack.distribution = .fillEqually
+        stack.axis = .horizontal
+        stack.spacing = 10
+        return stack
+    }()
+
+    private lazy var VStackLeft: UIStackView = {
+        let stack = UIStackView()
+        stack.distribution = .fillEqually
+        stack.axis = .vertical
+        stack.spacing = 10
+        return stack
+    }()
+
+    private lazy var VStackRight: UIStackView = {
+        let stack = UIStackView()
+        stack.distribution = .fillEqually
+        stack.axis = .vertical
+        stack.spacing = 10
+        return stack
+    }()
+    
+    private lazy var cellTopLeft = ImageLabelViewWithContextMenu()
+    private lazy var cellTopRight = ImageLabelViewWithContextMenu()
+    private lazy var cellBottomLeft = ImageLabelViewWithContextMenu()
+    private lazy var cellBottomRight = ImageLabelViewWithContextMenu()
+
+    // MARK: - LifeCycle
+
+    init() {
+        super.init(frame: .zero)
+        setupViews()
+        setupLayout()
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("This class does not support NSCoder")
+    }
+
+    private func setupViews() {
+        addSubviews(
+            centerLabel,
+            HStack.addArrangedSubviews(
+                VStackLeft.addArrangedSubviews(
+                    cellTopLeft,
+                    cellBottomLeft
+                ),
+                VStackRight.addArrangedSubviews(
+                    cellTopRight,
+                    cellBottomRight
+                )
+            ),
+            middleButton
+        )
+    }
+
+    private func setupLayout() {
+        centerLabel.activateConstraints(
+            centerLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            centerLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            centerLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
+        )
+
+        HStack.activateConstraints(
+            HStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            HStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            HStack.centerYAnchor.constraint(equalTo: centerYAnchor),
+            HStack.widthAnchor.constraint(equalTo: HStack.heightAnchor)
+        )
+
+        middleButton.activateConstraints(
+            middleButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            middleButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            middleButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -32),
+            middleButton.heightAnchor.constraint(equalToConstant: 44)
+        )
+    }
+
+    // MARK: - Statefull
 
     typealias CellState = ImageLabelViewWithContextMenu.State
 
@@ -32,7 +121,6 @@ final class ScheduleView: UIView, PropertyAnimatable, Statefull {
             case no(reason: String)
         }
         let showCells: ShowCells
-        let title: String
         let middleButtonTitle: String
         let middleButtonHandler: () -> Void
     }
@@ -58,19 +146,10 @@ final class ScheduleView: UIView, PropertyAnimatable, Statefull {
                 self?.applyToAllCells { $0.alpha = 0 }
             }
         }
-        topLabel.text = state.title
         middleButton.setTitle(state.middleButtonTitle, for: .normal)
-        middleButton.onTouchDown = { _ in state.middleButtonHandler() }
     }
 
-    // MARK: - Configuration -
-
-    func configure() {
-        centerLabel.applyStyle(.mediumSizedTitle)
-        topLabel.applyStyle(.bigSizedTitle)
-    }
-
-    // MARK: - Internal -
+    // MARK: - Internal
 
     private func applyToAllCells(_ change: ((ImageLabelViewWithContextMenu) -> Void)) {
         change(cellTopLeft)
@@ -84,7 +163,6 @@ extension ScheduleView.State: Changeable {
     init(copy: ChangeableWrapper<ScheduleView.State>) {
         self.init(
             showCells: copy.showCells,
-            title: copy.title,
             middleButtonTitle: copy.middleButtonTitle,
             middleButtonHandler: copy.middleButtonHandler
         )

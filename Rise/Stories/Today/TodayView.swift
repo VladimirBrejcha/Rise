@@ -78,7 +78,6 @@ final class TodayView: UIView {
     }
 
     private func setupViews() {
-//        addBackgroundView()
         addSubviews(
             daysView,
             timeUntilSleepLabel,
@@ -98,13 +97,13 @@ final class TodayView: UIView {
 
     private func setupLayout() {
         buttonsVStack.activateConstraints(
-            buttonsVStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            buttonsVStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            buttonsVStack.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)
+            buttonsVStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            buttonsVStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            buttonsVStack.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -32)
         )
         buttonsVStack.arrangedSubviews.forEach { view in
             view.activateConstraints(
-                view.heightAnchor.constraint(equalToConstant: 50)
+                view.heightAnchor.constraint(equalToConstant: 44)
             )
         }
         timeUntilSleepLabel.activateConstraints(
@@ -120,11 +119,11 @@ final class TodayView: UIView {
                     return daysView.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor)
                 }
             }(),
-            daysView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            daysView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            daysView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            daysView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             {
                 if UIScreen.isSmallSize {
-                    return daysView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20)
+                    return daysView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 100)
                 } else {
                     return daysView.heightAnchor.constraint(greaterThanOrEqualTo: heightAnchor, multiplier: 0.42)
                 }

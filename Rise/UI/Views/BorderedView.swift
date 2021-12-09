@@ -23,6 +23,6 @@ final class BorderedView: UIView {
         backgroundColor = .clear
         layer.borderColor = Asset.Colors.white.color.withAlphaComponent(0.85).cgColor
         layer.borderWidth = 1
-        layer.cornerRadius = 15
+        layer.cornerRadius = 16
     }
 }

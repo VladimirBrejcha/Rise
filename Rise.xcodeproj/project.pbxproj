@@ -11,6 +11,7 @@
 		7E07A10123AFBEE300B9D61A /* WelcomeCreateScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E07A10023AFBEE300B9D61A /* WelcomeCreateScheduleViewController.swift */; };
 		7E0834AC2387351400BA1AE8 /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0834AB2387351400BA1AE8 /* Date+Utils.swift */; };
 		7E0B88F72455BEF400BC3CF5 /* SelectableStackViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0B88F52455BEF400BC3CF5 /* SelectableStackViewButton.swift */; };
+		7E13C71F27617F73009310CD /* UITabBarItem+withSystemIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E13C71E27617F73009310CD /* UITabBarItem+withSystemIcons.swift */; };
 		7E153969274801F100CC2E7B /* EditScheduleSegmentedControlTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E153968274801F100CC2E7B /* EditScheduleSegmentedControlTableCell.swift */; };
 		7E15396B2748028400CC2E7B /* UISegmentedControl+Styleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E15396A2748028400CC2E7B /* UISegmentedControl+Styleable.swift */; };
 		7E15396D2748043700CC2E7B /* EditScheduleSegmentedControlTableCell+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E15396C2748043700CC2E7B /* EditScheduleSegmentedControlTableCell+Model.swift */; };
@@ -226,7 +227,6 @@
 		92D12FDD22A44B3B0093B0A3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D12FDC22A44B3B0093B0A3 /* TabBarController.swift */; };
 		92D7D6532296F297009321AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6522296F297009321AE /* AppDelegate.swift */; };
 		92D7D6552296F297009321AE /* SleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6542296F297009321AE /* SleepViewController.swift */; };
-		92D7D6582296F297009321AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92D7D6562296F297009321AE /* Main.storyboard */; };
 		92D7D65A2296F298009321AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92D7D6592296F298009321AE /* Assets.xcassets */; };
 		92D7D65D2296F298009321AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92D7D65B2296F298009321AE /* LaunchScreen.storyboard */; };
 		92D7D6732296F298009321AE /* RiseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6722296F298009321AE /* RiseUITests.swift */; };
@@ -256,6 +256,7 @@
 		7E07A10023AFBEE300B9D61A /* WelcomeCreateScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCreateScheduleViewController.swift; sourceTree = "<group>"; };
 		7E0834AB2387351400BA1AE8 /* Date+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utils.swift"; sourceTree = "<group>"; };
 		7E0B88F52455BEF400BC3CF5 /* SelectableStackViewButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectableStackViewButton.swift; sourceTree = "<group>"; };
+		7E13C71E27617F73009310CD /* UITabBarItem+withSystemIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarItem+withSystemIcons.swift"; sourceTree = "<group>"; };
 		7E153968274801F100CC2E7B /* EditScheduleSegmentedControlTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScheduleSegmentedControlTableCell.swift; sourceTree = "<group>"; };
 		7E15396A2748028400CC2E7B /* UISegmentedControl+Styleable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+Styleable.swift"; sourceTree = "<group>"; };
 		7E15396C2748043700CC2E7B /* EditScheduleSegmentedControlTableCell+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditScheduleSegmentedControlTableCell+Model.swift"; sourceTree = "<group>"; };
@@ -364,7 +365,6 @@
 		7E8AB6CD23A18D27009CE41A /* WakeUpTimeCreateScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUpTimeCreateScheduleViewController.swift; sourceTree = "<group>"; };
 		7E8C6B972350FB9C0086162F /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		7E8EFA2B26EABBB700DEE564 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		7E8EFA2C26EABBB700DEE564 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7E8EFA2E26EABC1800DEE564 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7E8EFA3126EABC2F00DEE564 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Sleep.storyboard; sourceTree = "<group>"; };
 		7E8EFA3626EABC3800DEE564 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CreateSchedule.storyboard; sourceTree = "<group>"; };
@@ -1087,7 +1087,6 @@
 			children = (
 				7E4798F4239D894B007FB8F2 /* Storyboard.swift */,
 				92D7D65B2296F298009321AE /* LaunchScreen.storyboard */,
-				92D7D6562296F297009321AE /* Main.storyboard */,
 				7E8EFA3526EABC3800DEE564 /* CreateSchedule.storyboard */,
 				7E8EFA3026EABC2F00DEE564 /* Sleep.storyboard */,
 			);
@@ -1214,6 +1213,7 @@
 				7E43065C26EE617500B67315 /* UIStackView+addArrangedSubviews.swift */,
 				7E48D2B3274C22C900B14355 /* UIScreen+isSmallSize.swift */,
 				7E18C6C627616B3300BD6471 /* UINavigationController+replaceAllOnTopOfRoot.swift */,
+				7E13C71E27617F73009310CD /* UITabBarItem+withSystemIcons.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1470,7 +1470,6 @@
 				7E8EFA3C26EABC3900DEE564 /* CreateSchedule.storyboard in Resources */,
 				7E8EFA2F26EABC1800DEE564 /* Localizable.strings in Resources */,
 				7EEB1E0F2443369F001ABE4A /* bellAlarm.wav in Resources */,
-				92D7D6582296F297009321AE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1537,6 +1536,7 @@
 				7E43065026ED528700B67315 /* UIStackView+addSeparators.swift in Sources */,
 				7E69837624EC69DE002EE278 /* ErrorViewAddable.swift in Sources */,
 				7EAFB61C2735D31100B7C7C6 /* CreateSchedule.swift in Sources */,
+				7E13C71F27617F73009310CD /* UITabBarItem+withSystemIcons.swift in Sources */,
 				7EB1C0332340F9550028237E /* ScheduleViewController.swift in Sources */,
 				7EA38AE623783FFD0007919B /* DefaultLocationRemoteDataSource.swift in Sources */,
 				7E2E0A692744471B00A51344 /* IntensityCreateScheduleViewController.swift in Sources */,
@@ -1776,14 +1776,6 @@
 				7E8EFA3626EABC3800DEE564 /* Base */,
 			);
 			name = CreateSchedule.storyboard;
-			sourceTree = "<group>";
-		};
-		92D7D6562296F297009321AE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7E8EFA2C26EABBB700DEE564 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		92D7D65B2296F298009321AE /* LaunchScreen.storyboard */ = {

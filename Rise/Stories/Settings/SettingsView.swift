@@ -26,12 +26,15 @@ final class SettingsView: UIView {
 
     // MARK: - LifeCycle
 
-    convenience init(
-        selectionHandler: @escaping (SettingIdentifier) -> Void
-    ) {
-        self.init(frame: .zero)
+    init(selectionHandler: @escaping (SettingIdentifier) -> Void) {
         self.selectionHandler = selectionHandler
+        super.init(frame: .zero)
         setup()
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("This class does not support NSCoder")
     }
 
     private func setup() {
@@ -40,7 +43,6 @@ final class SettingsView: UIView {
     }
 
     private func setupViews() {
-//        addBackgroundView()
         addSubviews(
             VStack
         )

@@ -1,5 +1,5 @@
 //
-//  ImageLabelSquareView.swift
+//  ImageLabelView.swift
 //  Rise
 //
 //  Created by Vladimir Korolev on 21.02.2021.
@@ -9,15 +9,19 @@
 import UIKit
 
 final class ImageLabelView: UIView, Statefull, NibLoadable {
+
     @IBOutlet private var imageView: UIImageView!
     @IBOutlet private var label: UILabel!
 
     // MARK: - Statefull
+
     struct State {
         let image: UIImage?
         let text: String?
     }
+
     private(set) var state: State?
+
     func setState(_ state: State) {
         self.state = state
         imageView.image = state.image
@@ -25,7 +29,8 @@ final class ImageLabelView: UIView, Statefull, NibLoadable {
         label.text = state.text
     }
 
-    // MARK: - Internal -
+    // MARK: - LifeCycle
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()

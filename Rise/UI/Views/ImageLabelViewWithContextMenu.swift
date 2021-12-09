@@ -8,49 +8,61 @@
 
 import UIKit
 
-final class ImageLabelViewWithContextMenu: UIView, Statefull, UIContextMenuInteractionDelegate {
-    private let contentView: ImageLabelView = ImageLabelView(frame: CGRect.zero)
+final class ImageLabelViewWithContextMenu:
+    UIView,
+    Statefull,
+    UIContextMenuInteractionDelegate
+{
+    private let contentView = ImageLabelView(frame: .zero)
 
     // MARK: - Statefull
+
     struct State {
         let image: UIImage?
         let text: String?
         let contextViewController: UIViewController?
         let actions: [UIAction]
     }
+
     private(set) var state: State?
+
     func setState(_ state: State) {
         self.state = state
-        contentView.setState(.init(image: state.image, text: state.text))
+        contentView.setState(
+            .init(
+                image: state.image,
+                text: state.text
+            )
+        )
     }
 
-    // MARK: - Internal -
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    // MARK: - LifeCycle
+
+    init() {
+        super.init(frame: .zero)
         configure()
     }
 
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        configure()
+        fatalError("This class does not support NSCoder")
     }
 
     private func configure() {
         backgroundColor = .clear
-
         addSubview(contentView)
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        addConstraints([
-            topAnchor.constraint(equalTo: contentView.topAnchor),
-            bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
-        ])
-
         addInteraction(UIContextMenuInteraction(delegate: self))
+
+        contentView.activateConstraints(
+            contentView.topAnchor.constraint(equalTo: topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor)
+        )
     }
 
-    // MARK: - UIContextMenuInteractionDelegate -
+    // MARK: - UIContextMenuInteractionDelegate
+
     func contextMenuInteraction(
         _ interaction: UIContextMenuInteraction,
         previewForHighlightingMenuWithConfiguration configuration: UIContextMenuConfiguration
@@ -66,9 +78,11 @@ final class ImageLabelViewWithContextMenu: UIView, Statefull, UIContextMenuInter
     ) -> UIContextMenuConfiguration? {
         UIContextMenuConfiguration(
             identifier: String(describing: self.state?.contextViewController) as NSCopying,
-            previewProvider: { [weak self] in self?.state?.contextViewController },
+            previewProvider: { [weak self] in
+                self?.state?.contextViewController
+            },
             actionProvider: { [weak self] _ in
-                UIMenu(title: "", image: nil, identifier: nil, options: [], children: self?.state?.actions ?? [])
+                UIMenu(children: self?.state?.actions ?? [])
             }
         )
     }

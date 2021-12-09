@@ -10,23 +10,38 @@ import UIKit
 
 final class ScheduleViewController: UIViewController {
 
-    @IBOutlet private var scheduleView: ScheduleView!
+    private var loadedView: ScheduleView {
+        view as! ScheduleView
+    }
 
-    var getSchedule: GetSchedule! // DI
-    var pauseSchedule: PauseSchedule! // DI
+    private let getSchedule: GetSchedule
+    private let pauseSchedule: PauseSchedule
 
     private let bedImage = UIImage(systemName: "bed.double.fill")
     private let sunImage = UIImage(systemName: "sun.max.fill")
     private let moonImage = UIImage(systemName: "moon.fill")
     private let speedometerImage = UIImage(systemName: "speedometer")
 
-    private var schedule: Schedule?
+    private var schedule: Schedule? {
+        getSchedule.today()
+    }
 
     // MARK: - LifeCycle -
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        scheduleView.configure()
+    init(getSchedule: GetSchedule, pauseSchedule: PauseSchedule) {
+        self.getSchedule = getSchedule
+        self.pauseSchedule = pauseSchedule
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("This class does not support NSCoder")
+    }
+
+    override func loadView() {
+        super.loadView()
+        self.view = ScheduleView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -35,13 +50,10 @@ final class ScheduleViewController: UIViewController {
     }
 
     private func refresh() {
-        schedule = getSchedule.today()
-
         guard let schedule = schedule else {
-            scheduleView.setState(
+            loadedView.setState(
                 ScheduleView.State(
                     showCells: .no(reason: "You don't have the schedule yet"),
-                    title: "Personal schedule",
                     middleButtonTitle: "Create Rise schedule",
                     middleButtonHandler: { [weak self] in
                         self?.present(
@@ -128,15 +140,14 @@ final class ScheduleViewController: UIViewController {
             actions: []
         )
 
-        scheduleView.setState(
+        loadedView.setState(
             ScheduleView.State(
                 showCells: .yes(sleepDurationCell, intensityCell, wakeUpCell, bedtimeCell),
-                title: "Personal schedule",
                 middleButtonTitle: pauseSchedule.isOnPause ? "Resume" : "Pause",
                 middleButtonHandler: { [weak self] in
-                    guard let self = self, let state = self.scheduleView.state else { return }
+                    guard let self = self, let state = self.loadedView.state else { return }
                     self.pauseSchedule(!self.pauseSchedule.isOnPause)
-                    self.scheduleView.setState(
+                    self.loadedView.setState(
                         state.changing {
                             $0.middleButtonTitle = self.pauseSchedule.isOnPause ? "Resume" : "Pause"
                         }

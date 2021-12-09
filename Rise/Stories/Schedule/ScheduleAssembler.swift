@@ -6,11 +6,18 @@
 //  Copyright © 2020 VladimirBrejcha. All rights reserved.
 //
 
+import UIKit
+
 final class ScheduleAssembler {
     func assemble() -> ScheduleViewController {
-        let controller = Storyboard.main.instantiateViewController(of: ScheduleViewController.self)
-        controller.getSchedule = DomainLayer.getSchedule
-        controller.pauseSchedule = DomainLayer.pauseSchedule
-        return controller
+        let vc = ScheduleViewController(
+            getSchedule: DomainLayer.getSchedule,
+            pauseSchedule: DomainLayer.pauseSchedule
+        )
+        vc.tabBarItem = UITabBarItem.withSystemIcons(
+            normal: "person",
+            selected: "person.fill"
+        )
+        return vc
     }
 }

@@ -30,8 +30,6 @@ internal enum Asset {
     internal static let white = ColorAsset(name: "White")
     internal static let whiteSeparator = ColorAsset(name: "WhiteSeparator")
   }
-  internal static let alarm = ImageAsset(name: "alarm")
-  internal static let alarmPressed = ImageAsset(name: "alarmPressed")
   internal enum Background {
     internal static let `default` = ImageAsset(name: "default")
     internal static let rich = ImageAsset(name: "rich")
@@ -41,11 +39,6 @@ internal enum Asset {
   internal static let cancel = ImageAsset(name: "cancel")
   internal static let fallasleep = ImageAsset(name: "fallasleep")
   internal static let launchScreenLogo = ImageAsset(name: "launchScreenLogo")
-  internal static let settings = ImageAsset(name: "settings")
-  internal static let settingsPressed = ImageAsset(name: "settingsPressed")
-  internal static let sleepIcon = ImageAsset(name: "sleepIcon")
-  internal static let sleepIconPressed = ImageAsset(name: "sleepIconPressed")
-  internal static let tabBarBack = ImageAsset(name: "tabBarBack")
   internal static let wakeup = ImageAsset(name: "wakeup")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name

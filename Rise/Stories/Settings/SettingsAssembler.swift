@@ -10,11 +10,12 @@ import UIKit
 
 final class SettingsAssembler {
     func assemble() -> SettingsViewController {
-        let vc = SettingsViewController(getSchedule: DomainLayer.getSchedule)
-        vc.tabBarItem = UITabBarItem(
-            title: nil,
-            image: Asset.settings.image,
-            selectedImage: Asset.settingsPressed.image
+        let vc = SettingsViewController(
+            getSchedule: DomainLayer.getSchedule
+        )
+        vc.tabBarItem = UITabBarItem.withSystemIcons(
+            normal: "gearshape",
+            selected: "gearshape.fill"
         )
         return vc
     }

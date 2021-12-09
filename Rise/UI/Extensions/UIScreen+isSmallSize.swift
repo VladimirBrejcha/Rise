@@ -9,8 +9,8 @@
 import UIKit
 
 extension UIScreen {
-    /* iPhone SE and smaller */
+    /* iPhone SE 2 and smaller */
     static var isSmallSize: Bool {
-        main.bounds.height <= 568
+        main.bounds.height <= 667
     }
 }

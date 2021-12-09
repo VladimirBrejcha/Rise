@@ -70,10 +70,10 @@ final class DaysCollectionView: CollectionView {
             )
         )
         item.contentInsets = .init(
-            top: 4,
-            leading: 4,
-            bottom: 4,
-            trailing: 4
+            top: 5,
+            leading: 5,
+            bottom: 5,
+            trailing: 5
         )
 
         let configuration = UICollectionViewCompositionalLayoutConfiguration()

@@ -15,7 +15,6 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
     private lazy var appearance: UITabBarAppearance = {
         let appearance = UITabBarAppearance()
         appearance.configureWithTransparentBackground()
-        appearance.backgroundImage = Asset.tabBarBack.image
         appearance.stackedItemPositioning = .fill
         appearance.compactInlineLayoutAppearance = makeItemAppearance(for: .compactInline)
         appearance.inlineLayoutAppearance = makeItemAppearance(for: .inline)
@@ -38,6 +37,9 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
         super.viewDidLoad()
 
         tabBar.standardAppearance = appearance
+        if #available(iOS 15.0, *) {
+            tabBar.scrollEdgeAppearance = appearance
+        }
         delegate = self
 
         view.addSubviews(backgroundView)

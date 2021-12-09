@@ -14,10 +14,10 @@ final class TodayAssembler {
             getSchedule: DomainLayer.getSchedule,
             adjustSchedule: DomainLayer.adjustSchedule
         )
-        vc.tabBarItem = UITabBarItem(
-            title: nil,
-            image: Asset.sleepIcon.image,
-            selectedImage: Asset.sleepIconPressed.image
+        vc.tabBarItem = UITabBarItem.withSystemIcons(
+            normal: "moon.stars",
+            selected: "moon.stars.fill",
+            size: 25
         )
         return vc
     }

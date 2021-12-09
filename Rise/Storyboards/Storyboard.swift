@@ -9,7 +9,6 @@
 import UIKit
 
 struct Storyboard {
-    static let main: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
     static let createSchedule: UIStoryboard = UIStoryboard(name: "CreateSchedule", bundle: nil)
     static let sleep: UIStoryboard = UIStoryboard(name: "Sleep", bundle: nil)
 }
