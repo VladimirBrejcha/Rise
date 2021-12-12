@@ -143,15 +143,15 @@ final class SleepView: UIView {
             wakeUpInLabel.bottomAnchor.constraint(equalTo: buttonsVStack.topAnchor, constant: -10)
         )
         buttonsVStack.activateConstraints(
-            buttonsVStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            buttonsVStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            buttonsVStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            buttonsVStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
             buttonsVStack.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)
         )
         stopButton.activateConstraints(
-            stopButton.heightAnchor.constraint(equalToConstant: 62)
+            stopButton.heightAnchor.constraint(equalToConstant: 56)
         )
         keepAppOpenedButton.activateConstraints(
-            keepAppOpenedButton.heightAnchor.constraint(equalToConstant: 50)
+            keepAppOpenedButton.heightAnchor.constraint(equalToConstant: 44)
         )
     }
 }

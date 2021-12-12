@@ -118,7 +118,7 @@ final class AdjustScheduleView: UIView {
 
     func allowSave(_ allow: Bool) {
         saveButton.isHidden = !allow
-        saveButtonHeightConstraint.constant = allow ? 50 : 0
+        saveButtonHeightConstraint.constant = allow ? 44 : 0
     }
 
     func allowEdit(_ allow: Bool) {
@@ -159,8 +159,8 @@ final class AdjustScheduleView: UIView {
             datePicker.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
         )
         saveButton.activateConstraints(
-            saveButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            saveButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            saveButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            saveButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
             saveButtonHeightConstraint,
             saveButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)
         )

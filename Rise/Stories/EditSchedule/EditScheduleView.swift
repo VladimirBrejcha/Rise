@@ -87,9 +87,9 @@ final class EditScheduleView: UIView {
             editScheduleTableView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -10)
         )
         saveButton.activateConstraints(
-            saveButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            saveButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            saveButton.heightAnchor.constraint(equalToConstant: 50),
+            saveButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            saveButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            saveButton.heightAnchor.constraint(equalToConstant: 44),
             saveButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10)
         )
     }

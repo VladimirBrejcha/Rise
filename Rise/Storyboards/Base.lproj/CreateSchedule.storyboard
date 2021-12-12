@@ -36,16 +36,16 @@
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="laz-fg-JOl">
-                                <rect key="frame" x="0.0" y="102" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="102" width="414" height="678"/>
                                 <connections>
                                     <segue destination="fxt-dk-StR" kind="embed" identifier="SetupSchedulePageViewController" id="mXt-a5-Ryw"/>
                                 </connections>
                             </containerView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qus-zp-R0h">
-                                <rect key="frame" x="10" y="782" width="394" height="50"/>
+                                <rect key="frame" x="40" y="788" width="334" height="44"/>
                                 <subviews>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TaK-KH-eXq" customClass="Button" customModule="Rise" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="192" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="162" height="44"/>
                                         <color key="backgroundColor" white="1" alpha="0.070000000000000007" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Back">
@@ -56,7 +56,7 @@
                                         </connections>
                                     </button>
                                     <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t3a-mE-e9U" customClass="Button" customModule="Rise" customModuleProvider="target">
-                                        <rect key="frame" x="202" y="0.0" width="192" height="50"/>
+                                        <rect key="frame" x="172" y="0.0" width="162" height="44"/>
                                         <color key="backgroundColor" white="1" alpha="0.070000000000000007" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Next">
@@ -68,7 +68,7 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="lO2-d1-WJK"/>
+                                    <constraint firstAttribute="height" constant="44" id="lO2-d1-WJK"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -80,8 +80,8 @@
                             <constraint firstItem="laz-fg-JOl" firstAttribute="leading" secondItem="MrT-vQ-GsT" secondAttribute="leading" id="9Nz-sU-ZY1"/>
                             <constraint firstItem="HFA-In-GCm" firstAttribute="trailing" secondItem="MrT-vQ-GsT" secondAttribute="trailing" id="CER-ye-Veo"/>
                             <constraint firstItem="MrT-vQ-GsT" firstAttribute="trailing" secondItem="laz-fg-JOl" secondAttribute="trailing" id="Fdl-du-yR0"/>
-                            <constraint firstItem="qus-zp-R0h" firstAttribute="leading" secondItem="MrT-vQ-GsT" secondAttribute="leading" constant="10" id="GUg-7n-a1u"/>
-                            <constraint firstItem="MrT-vQ-GsT" firstAttribute="trailing" secondItem="qus-zp-R0h" secondAttribute="trailing" constant="10" id="LvQ-dm-I4C"/>
+                            <constraint firstItem="qus-zp-R0h" firstAttribute="leading" secondItem="MrT-vQ-GsT" secondAttribute="leading" constant="40" id="GUg-7n-a1u"/>
+                            <constraint firstItem="MrT-vQ-GsT" firstAttribute="trailing" secondItem="qus-zp-R0h" secondAttribute="trailing" constant="40" id="LvQ-dm-I4C"/>
                             <constraint firstItem="MrT-vQ-GsT" firstAttribute="trailing" secondItem="Vga-E1-S1H" secondAttribute="trailing" constant="12" id="eLp-bL-KZY"/>
                             <constraint firstAttribute="bottom" secondItem="HFA-In-GCm" secondAttribute="bottom" id="fmA-TB-exu"/>
                             <constraint firstItem="laz-fg-JOl" firstAttribute="top" secondItem="Vga-E1-S1H" secondAttribute="bottom" constant="8" id="o17-dH-9dF"/>

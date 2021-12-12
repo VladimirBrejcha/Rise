@@ -13,7 +13,7 @@ final class EditScheduleButtonTableCell:
     ConfigurableCell,
     SelfHeightSizing
 {
-    static var height: CGFloat { 58 }
+    static var height: CGFloat { 44 }
 
     // MARK: - Subviews
 
@@ -48,10 +48,10 @@ final class EditScheduleButtonTableCell:
 
     private func setupLayout() {
         button.activateConstraints(
-            button.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            button.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
-            button.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4)
+            button.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
+            button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30),
+            button.topAnchor.constraint(equalTo: contentView.topAnchor),
+            button.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         )
     }
 

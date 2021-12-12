@@ -139,9 +139,9 @@ final class AfterSleepView: UIView {
             descriptionLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20)
         )
         doneButton.activateConstraints(
-            doneButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            doneButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            doneButton.heightAnchor.constraint(equalToConstant: 50),
+            doneButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            doneButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            doneButton.heightAnchor.constraint(equalToConstant: 44),
             doneButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)
         )
     }

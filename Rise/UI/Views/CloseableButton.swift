@@ -18,10 +18,10 @@ extension View {
         let closeButton = View.closeButton(handler: closeHandler)
         button.addSubview(closeButton)
         closeButton.activateConstraints(
-            closeButton.trailingAnchor.constraint(equalTo: button.trailingAnchor, constant: -6),
+            closeButton.trailingAnchor.constraint(equalTo: button.trailingAnchor, constant: -4),
             closeButton.centerYAnchor.constraint(equalTo: button.centerYAnchor),
-            closeButton.widthAnchor.constraint(equalToConstant: 40),
-            closeButton.heightAnchor.constraint(equalToConstant: 40)
+            closeButton.widthAnchor.constraint(equalToConstant: 36),
+            closeButton.heightAnchor.constraint(equalToConstant: 36)
         )
         return button
     }

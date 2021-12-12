@@ -117,9 +117,9 @@ final class RefreshSunTimesView: UIView {
             loadingView.heightAnchor.constraint(equalToConstant: 180)
         )
         refreshButton.activateConstraints(
-            refreshButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            refreshButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            refreshButton.heightAnchor.constraint(equalToConstant: 50),
+            refreshButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            refreshButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            refreshButton.heightAnchor.constraint(equalToConstant: 44),
             refreshButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)
         )
     }
