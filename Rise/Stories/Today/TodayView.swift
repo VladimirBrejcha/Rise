@@ -26,7 +26,9 @@ final class TodayView: UIView {
     private lazy var sleepButton: Button = {
         let button = Button()
         button.setTitle(Text.sleep, for: .normal)
-        button.onTouchUp = { [weak self] _ in self?.sleepHandler() }
+        button.onTouchUp = { [weak self] in
+            self?.sleepHandler()
+        }
         return button
     }()
 

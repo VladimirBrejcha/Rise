@@ -60,6 +60,6 @@ final class EditScheduleButtonTableCell:
     func configure(with model: Model) {
         button.setTitle(model.title, for: .normal)
         button.setTitleColor(Asset.Colors.red.color, for: .normal)
-        button.onTouchUp = { _ in model.action() }
+        button.onTouchUp = { model.action() }
     }
 }

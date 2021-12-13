@@ -14,10 +14,10 @@ class Button: UIButton, PropertyAnimatable, StyledButton {
 
     var style: Style.Button = .primary
     
-    var onTouchDown: ((Button) -> Void)?
-    var onTouchUp: ((Button) -> Void)?
-    var onAnyTouchDown: ((Button) -> Void)?
-    var onAnyTouchUp: ((Button) -> Void)?
+    var onTouchDown: (() -> Void)?
+    var onTouchUp: (() -> Void)?
+    var onAnyTouchDown: (() -> Void)?
+    var onAnyTouchUp: (() -> Void)?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,24 +38,24 @@ class Button: UIButton, PropertyAnimatable, StyledButton {
     }
     
     @objc private func handleAnyTouchDown(_ sender: UIButton) {
-        onAnyTouchDown?(self)
+        onAnyTouchDown?()
         animate {
             sender.transform = CGAffineTransform(scaleX: 0.98, y: 0.95)
         }
     }
     
     @objc private func handleAnyTouchUp(_ sender: UIButton) {
-        onAnyTouchUp?(self)
+        onAnyTouchUp?()
         animate {
             sender.transform = CGAffineTransform.identity
         }
     }
 
     @objc private func handleTouchDown(_ sender: UIButton) {
-        onTouchDown?(self)
+        onTouchDown?()
     }
 
     @objc private func handleTouchUp(_ sender: UIButton) {
-        onTouchUp?(self)
+        onTouchUp?()
     }
 }

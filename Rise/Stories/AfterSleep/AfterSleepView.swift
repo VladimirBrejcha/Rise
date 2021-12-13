@@ -70,7 +70,7 @@ final class AfterSleepView: UIView {
     private lazy var doneButton: Button = {
         let button = Button()
         button.setTitle(Text.AfterSleep.done, for: .normal)
-        button.onTouchUp = { [weak self] _ in
+        button.onTouchUp = { [weak self] in
             self?.doneHandler()
         }
         return button

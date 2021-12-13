@@ -12,9 +12,7 @@ extension View {
         closeButton.applyStyle(.image)
         closeButton.setImage(Asset.cancel.image, for: .normal)
         closeButton.tintColor = Asset.Colors.white.color
-        closeButton.onTouchUp = { _ in
-            handler()
-        }
+        closeButton.onTouchUp = { handler() }
         return closeButton
     }
 }

@@ -24,7 +24,7 @@ final class ScheduleView: UIView, PropertyAnimatable, Statefull {
 
     private lazy var middleButton: Button = {
         let button = Button()
-        button.onTouchUp = { [weak self] _ in
+        button.onTouchUp = { [weak self] in
             self?.state?.middleButtonHandler()
         }
         return button

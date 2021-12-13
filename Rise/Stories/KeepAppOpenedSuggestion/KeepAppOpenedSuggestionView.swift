@@ -45,7 +45,7 @@ final class KeepAppOpenedSuggestionView: UIView {
     private lazy var continueButton: Button = {
         let button = Button()
         button.setTitle(Text.KeepAppOpenedSuggestion.continue, for: .normal)
-        button.onTouchUp = { [weak self] _ in
+        button.onTouchUp = { [weak self] in
             self?.continueHandler()
         }
         return button

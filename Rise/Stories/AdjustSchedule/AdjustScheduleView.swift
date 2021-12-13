@@ -68,8 +68,8 @@ final class AdjustScheduleView: UIView {
     private lazy var saveButton: Button = {
         let button = Button()
         button.setTitle(Text.save, for: .normal)
-        button.onTouchUp = { [weak self] _
-            in self?.saveHandler()
+        button.onTouchUp = { [weak self] in
+            self?.saveHandler()
         }
         button.isHidden = true
         return button

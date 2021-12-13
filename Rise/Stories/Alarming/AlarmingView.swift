@@ -38,7 +38,7 @@ final class AlarmingView: UIView {
     private lazy var snoozeButton: Button = {
         let button = Button()
         button.setTitle(Text.Alarming.snooze, for: .normal)
-        button.onTouchUp = { [weak self] _ in
+        button.onTouchUp = { [weak self] in
             self?.snoozeHandler()
         }
         button.applyStyle(.secondary)

@@ -34,7 +34,7 @@ final class EditScheduleView: UIView {
     private lazy var saveButton: Button = {
         let button = Button()
         button.setTitle(Text.save, for: .normal)
-        button.onTouchUp = { [weak self] _ in
+        button.onTouchUp = { [weak self] in
             self?.saveHandler()
         }
         return button

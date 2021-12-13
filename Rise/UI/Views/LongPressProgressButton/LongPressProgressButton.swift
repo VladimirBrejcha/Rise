@@ -36,7 +36,7 @@ final class LongPressProgressButton: UIView, NibLoadable {
         setupFromNib()
         progressView.layer.cornerRadius = 3
         progressView.clipsToBounds = true
-        button.onAnyTouchDown = { [weak self] _ in
+        button.onAnyTouchDown = { [weak self] in
             guard let self = self else { return }
             if self.workItem != nil { return }
             self.workItem = DispatchWorkItem { [weak self] in
@@ -53,7 +53,7 @@ final class LongPressProgressButton: UIView, NibLoadable {
                 self.animator?.startAnimation()
             }
         }
-        button.onAnyTouchUp = { [weak self] _ in
+        button.onAnyTouchUp = { [weak self] in
             guard let self = self else { return }
             if let workItem = self.workItem {
                 workItem.cancel()

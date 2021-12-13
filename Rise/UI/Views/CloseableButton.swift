@@ -14,7 +14,7 @@ extension View {
     ) -> Button {
         let button = Button()
         if let style = style { button.applyStyle(style) }
-        button.onTouchUp = { _ in touchHandler() }
+        button.onTouchUp = { touchHandler() }
         let closeButton = View.closeButton(handler: closeHandler)
         button.addSubview(closeButton)
         closeButton.activateConstraints(

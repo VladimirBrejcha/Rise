@@ -21,7 +21,7 @@ final class OnboardingView: UIView, UIScrollViewDelegate {
 
     private lazy var button: Button = {
         let button = Button()
-        button.onTouchUp = { [weak self] _ in
+        button.onTouchUp = { [weak self] in
             guard let self = self else { return }
             if self.currentPageIndex < self.content.count - 1 {
                 self.currentPageIndex += 1
