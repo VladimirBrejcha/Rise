@@ -93,7 +93,7 @@ final class KeepAppOpenedSuggestionView: UIView {
             continueButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
             continueButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
             continueButton.heightAnchor.constraint(equalToConstant: 44),
-            continueButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10)
+            continueButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20)
         )
     }
 }

@@ -11,10 +11,10 @@ import UIKit
 final class AfterSleepView: UIView {
 
     private let doneHandler: () -> Void
+    private let adjustScheduleHandler: () -> Void
     private let appearance: Appearance
-    private let wentSleepTime: String
-    private let wokeUpTime: String
-    private let totalSleepTime: String?
+    private let descriptionText: String
+    private let showAdjustSchedule: Bool
 
     // MARK: - Subviews
 
@@ -56,15 +56,29 @@ final class AfterSleepView: UIView {
         label.applyStyle(.mediumSizedBody)
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.text = """
-                     You went to sleep at \(wentSleepTime)
-                     and woke up at \(wokeUpTime)
-                     \(totalSleepTime == nil ? "" : "total \(totalSleepTime!) of sleep")
-                     """
+        label.text = descriptionText
         label.layer.applyStyle(
             .init(shadow: .whiteBgSeparatorBig)
         )
         return label
+    }()
+
+    private lazy var buttonsVStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.spacing = 8
+        return stack
+    }()
+
+    private lazy var adjustScheduleButton: Button = {
+        let button = Button()
+        button.setTitle(Text.adjustSchedule, for: .normal)
+        button.applyStyle(.secondary)
+        button.onTouchUp = { [weak self] in
+            self?.adjustScheduleHandler()
+        }
+        button.isHidden = !showAdjustSchedule
+        return button
     }()
 
     private lazy var doneButton: Button = {
@@ -80,16 +94,16 @@ final class AfterSleepView: UIView {
 
     init(
         doneHandler: @escaping () -> Void,
+        adjustScheduleHandler: @escaping () -> Void,
         appearance: Appearance,
-        wentSleepTime: String,
-        wokeUpTime: String,
-        totalSleepTime: String?
+        descriptionText: String,
+        showAdjustSchedule: Bool
     ) {
         self.doneHandler = doneHandler
+        self.adjustScheduleHandler = adjustScheduleHandler
         self.appearance = appearance
-        self.wentSleepTime = wentSleepTime
-        self.wokeUpTime = wokeUpTime
-        self.totalSleepTime = totalSleepTime
+        self.descriptionText = descriptionText
+        self.showAdjustSchedule = showAdjustSchedule
         super.init(frame: .zero)
         setupViews()
         setupLayout()
@@ -109,7 +123,10 @@ final class AfterSleepView: UIView {
                 mainLabel,
                 descriptionLabel
             ),
-            doneButton
+            buttonsVStack.addArrangedSubviews(
+                adjustScheduleButton,
+                doneButton
+            )
         )
     }
 
@@ -119,7 +136,7 @@ final class AfterSleepView: UIView {
         containerView.activateConstraints(
             containerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            containerView.centerYAnchor.constraint(equalTo: centerYAnchor)
+            containerView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -40)
         )
         imageView.activateConstraints(
             imageView.heightAnchor.constraint(equalToConstant: appearance.imageSideSize),
@@ -138,12 +155,16 @@ final class AfterSleepView: UIView {
             descriptionLabel.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 20),
             descriptionLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20)
         )
-        doneButton.activateConstraints(
-            doneButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
-            doneButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
-            doneButton.heightAnchor.constraint(equalToConstant: 44),
-            doneButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)
+        buttonsVStack.activateConstraints(
+            buttonsVStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            buttonsVStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            buttonsVStack.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)
         )
+        buttonsVStack.subviews.forEach { view in
+            view.activateConstraints(
+                view.heightAnchor.constraint(equalToConstant: 44)
+            )
+        }
     }
 }
 

@@ -11,7 +11,8 @@ import Foundation
 final class AfterSleepAssembler {
     func assemble() -> AfterSleepViewController {
         AfterSleepViewController(
-            manageActiveSleep: DomainLayer.manageActiveSleep
+            manageActiveSleep: DomainLayer.manageActiveSleep,
+            getSchedule: DomainLayer.getSchedule
         )
     }
 }
