@@ -12,12 +12,14 @@ import Foundation
 internal enum Text {
   /// Adjust schedule
   internal static let adjustSchedule = Text.tr("Localizable", "adjust_schedule")
-  /// Sometimes we all miss our sleep schedule
-  internal static let adjustScheduleDescription = Text.tr("Localizable", "adjust_schedule_description")
+  /// The next bedtime will be changed to 
+  internal static let adjustScheduleNextSleep = Text.tr("Localizable", "adjust_schedule_next_sleep")
   /// If you missed sleep
   internal static let adjustScheduleShortDescription = Text.tr("Localizable", "adjust_schedule_short_description")
-  /// In case this happens to you, you can update the Rise schedule to better suit your current situation. Remember, there is no need to rush, good sleep requires careful attention.
+  /// You can update Rise schedule to better match your current situation if you missed your bedtime. Remember, there is no need to rush, a good sleep requires careful attention.
   internal static let adjustScheduleSuggestionToAdjust = Text.tr("Localizable", "adjust_schedule_suggestion_to_adjust")
+  /// Would you like to update your schedule to better fit your last sleep?
+  internal static let adjustScheduleWannaAdjust = Text.tr("Localizable", "adjust_schedule_wanna_adjust")
   /// An internal error occurred
   internal static let anInternalErrorOccurred = Text.tr("Localizable", "an_internal_error_occurred")
   /// Edit Rise schedule
@@ -26,7 +28,7 @@ internal enum Text {
   internal static let failedToLoadTime = Text.tr("Localizable", "failed_to_load_time")
   /// It's time to sleep!
   internal static let itsTimeToSleep = Text.tr("Localizable", "its_time_to_sleep!")
-  /// last time I went to sleep at
+  /// Next bedtime
   internal static let lastTimeIWentSleepAt = Text.tr("Localizable", "last_time_i_went_sleep_at")
   /// Location access is required to perform refresh
   internal static let locationAccessIsRequiredToPerformRefresh = Text.tr("Localizable", "location_access_is_required_to_perform_refresh")

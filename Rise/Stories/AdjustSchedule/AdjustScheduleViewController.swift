@@ -24,10 +24,12 @@ final class AdjustScheduleViewController: UIViewController {
     init(
         adjustSchedule: AdjustSchedule,
         currentSchedule: Schedule,
+        selectedToBed: Date? = nil,
         completion: ((Bool) -> Void)?
     ) {
         self.adjustSchedule = adjustSchedule
         self.currentSchedule = currentSchedule
+        self.selectedToBed = selectedToBed
         self.completion = completion
         super.init(nibName: nil, bundle: nil)
     }
@@ -62,7 +64,22 @@ final class AdjustScheduleViewController: UIViewController {
                     })
                 }
             },
-            initialDate: currentSchedule.toBed,
+            descriptionText: {
+                if let selectedToBed = selectedToBed {
+                    return """
+                           \(Text.adjustScheduleWannaAdjust)
+
+                           \(Text.adjustScheduleNextSleep)\(selectedToBed.HHmmString)
+                           """
+                } else {
+                    return """
+                           \(Text.adjustScheduleSuggestionToAdjust)
+
+                           \(Text.lastTimeIWentSleepAt):
+                           """
+                }
+            }(),
+            initialDate: selectedToBed ?? currentSchedule.toBed,
             dateChangedHandler: { [weak self] date in
                 guard let self = self else { return }
                 self.loadedView.allowSave(
@@ -72,5 +89,7 @@ final class AdjustScheduleViewController: UIViewController {
                 self.selectedToBed = date
             }
         )
+        loadedView.allowEdit(selectedToBed == nil)
+        loadedView.allowSave(selectedToBed != nil)
     }
 }

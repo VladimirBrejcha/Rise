@@ -53,10 +53,11 @@
 "adjust_schedule" = "Adjust schedule";
 "edit_rise_schedule" = "Edit Rise schedule";
 "save" = "Save";
-"adjust_schedule_description" = "Sometimes we all miss our sleep schedule";
 "adjust_schedule_short_description" = "If you missed sleep";
-"adjust_schedule_suggestion_to_adjust" = "In case this happens to you, you can update the Rise schedule to better suit your current situation. Remember, there is no need to rush, good sleep requires careful attention.";
-"last_time_i_went_sleep_at" = "last time I went to sleep at";
+"adjust_schedule_suggestion_to_adjust" = "You can update Rise schedule to better match your current situation if you missed your bedtime. Remember, there is no need to rush, a good sleep requires careful attention.";
+"adjust_schedule_wanna_adjust" = "Would you like to update your schedule to better fit your last sleep?";
+"adjust_schedule_next_sleep" = "The next bedtime will be changed to ";
+"last_time_i_went_sleep_at" = "Next bedtime";
 "sleeping" = "Sleeping";
 "stop" = "Stop";
 "keep_app_opened_suggestion.title" = "Information";

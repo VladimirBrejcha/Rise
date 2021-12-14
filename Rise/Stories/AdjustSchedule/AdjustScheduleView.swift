@@ -13,6 +13,7 @@ final class AdjustScheduleView: UIView {
     private let closeHandler: () -> Void
     private let saveHandler: () -> Void
     private let dateChangedHandler: (Date) -> Void
+    private let descriptionText: String
 
     // MARK: - Subviews
 
@@ -41,14 +42,7 @@ final class AdjustScheduleView: UIView {
         label.applyStyle(.mediumSizedBody)
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.text = """
-                     \(Text.adjustScheduleDescription)
-
-                     \(Text.adjustScheduleSuggestionToAdjust)
-
-
-                     \(Text.lastTimeIWentSleepAt):
-                     """
+        label.text = descriptionText
         return label
     }()
 
@@ -71,7 +65,6 @@ final class AdjustScheduleView: UIView {
         button.onTouchUp = { [weak self] in
             self?.saveHandler()
         }
-        button.isHidden = true
         return button
     }()
 
@@ -80,12 +73,14 @@ final class AdjustScheduleView: UIView {
     init(
         closeHandler: @escaping () -> Void,
         saveHandler: @escaping () -> Void,
+        descriptionText: String,
         initialDate: Date,
         dateChangedHandler: @escaping (Date) -> Void
     ) {
         self.closeHandler = closeHandler
         self.saveHandler = saveHandler
         self.dateChangedHandler = dateChangedHandler
+        self.descriptionText = descriptionText
         super.init(frame: .zero)
         datePicker.setDate(initialDate, animated: false)
         setupViews()
@@ -117,12 +112,12 @@ final class AdjustScheduleView: UIView {
     }
 
     func allowSave(_ allow: Bool) {
-        saveButton.isHidden = !allow
-        saveButtonHeightConstraint.constant = allow ? 44 : 0
+        saveButton.isEnabled = allow
     }
 
     func allowEdit(_ allow: Bool) {
         datePicker.isHidden = !allow
+        datePickerH.constant = allow ? 160 : 0
     }
 
     func showSuccess() {
@@ -131,7 +126,7 @@ final class AdjustScheduleView: UIView {
 
     // MARK: - Layout
 
-    private lazy var saveButtonHeightConstraint = saveButton.heightAnchor.constraint(equalToConstant: 0)
+    private lazy var datePickerH = datePicker.heightAnchor.constraint(equalToConstant: 160)
 
     private func setupLayout() {
         scrollView.activateConstraints(
@@ -148,11 +143,11 @@ final class AdjustScheduleView: UIView {
         )
         descriptionLabel.activateConstraints(
             descriptionLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20),
-            descriptionLabel.widthAnchor.constraint(equalTo: widthAnchor, constant: -40),
+            descriptionLabel.widthAnchor.constraint(equalTo: widthAnchor, constant: -34),
             descriptionLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
         )
         datePicker.activateConstraints(
-            datePicker.heightAnchor.constraint(equalToConstant: 160),
+            datePickerH,
             datePicker.widthAnchor.constraint(equalTo: widthAnchor, constant: -40),
             datePicker.centerXAnchor.constraint(equalTo: centerXAnchor),
             datePicker.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20),
@@ -161,7 +156,7 @@ final class AdjustScheduleView: UIView {
         saveButton.activateConstraints(
             saveButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
             saveButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
-            saveButtonHeightConstraint,
+            saveButton.heightAnchor.constraint(equalToConstant: 44),
             saveButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)
         )
     }

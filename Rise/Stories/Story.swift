@@ -21,6 +21,7 @@ enum Story {
     case schedule
     case adjustSchedule(
         currentSchedule: Schedule,
+        selectedToBed: Date? = nil,
         completion: ((Bool) -> Void)? = nil
     )
     
@@ -134,9 +135,10 @@ enum Story {
             return AboutAssembler().assemble()
         case .refreshSunTime:
             return RefreshSunTimesAssembler().assemble()
-        case let .adjustSchedule(currentSchedule, completion):
+        case let .adjustSchedule(currentSchedule, selectedToBed, completion):
             return AdjustScheduleAssembler().assemble(
                 currentSchedule: currentSchedule,
+                selectedToBed: selectedToBed,
                 completion: completion
             )
         case let .keepAppOpenedSuggestion(completion):

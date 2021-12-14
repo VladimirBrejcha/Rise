@@ -55,9 +55,10 @@ final class AfterSleepViewController: UIViewController {
                 {
                     self.present(
                         Story.adjustSchedule(
-                            currentSchedule: schedule
+                            currentSchedule: schedule,
+                            selectedToBed: self.wentSleepTime
                         )(),
-                        with: .fullScreen
+                        with: .modal
                     )
                 }
             },
@@ -92,9 +93,9 @@ final class AfterSleepViewController: UIViewController {
     ) -> String {
         var string = "You went to bed at \(wentSleepTime)"
         if let lateBy = lateBy {
-            string.append(contentsOf: "\nit's \(lateBy) later than scheduled")
+            string.append(contentsOf: "\nit's \(lateBy) later than scheduled\n")
         }
-        string.append(contentsOf: "\n\nYou woke up at \(wokeUpTime)")
+        string.append(contentsOf: "\nYou woke up at \(wokeUpTime)")
         if let totalSleepTime = totalSleepTime {
             string.append(contentsOf: "\nwhich is a total of \(totalSleepTime) of sleep")
         }
@@ -108,7 +109,7 @@ final class AfterSleepViewController: UIViewController {
         guard let schedule = schedule else {
             return false
         }
-        return !(-20...20)
+        return (-20...20)
             .contains(
                 minutes(sinceScheduled: schedule, wentSleepAt: wentSleepTime)
             )
