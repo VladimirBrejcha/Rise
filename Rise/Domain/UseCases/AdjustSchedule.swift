@@ -48,20 +48,43 @@ final class AdjustScheduleImpl: AdjustSchedule {
         currentSchedule schedule: Schedule,
         newToBed: Date
     ) {
+        adjusted = true
         let newSchedule = Schedule(
             sleepDuration: schedule.sleepDuration,
             intensity: schedule.intensity,
-            toBed: newToBed,
+            toBed: normalizeDate(oldToBed: schedule.toBed, newToBed: newToBed) ?? newToBed,
             wakeUp: schedule.wakeUp,
             targetToBed: schedule.targetToBed,
             targetWakeUp: schedule.targetWakeUp
         )
-        adjusted = true
         if newSchedule == schedule {
             log(.warning, "No changes, early return")
             return
         }
         scheduleRepository.deleteAll()
         scheduleRepository.save(newSchedule)
+    }
+
+    private func normalizeDate(oldToBed: Date, newToBed: Date) -> Date? {
+        guard let daysDiff = calendar.dateComponents(
+            [.day],
+            from: oldToBed,
+            to: newToBed
+        ).day else {
+            assertionFailure("Couldn't extract days from dates diff between \(oldToBed) and \(newToBed)")
+            log(.error, "Couldn't extract days from dates diff between \(oldToBed) and \(newToBed)")
+            return nil
+        }
+
+        if abs(daysDiff) == 0 {
+            return newToBed
+        }
+
+        log(.warning, "The dates were too far away, adding \(-daysDiff) to newDate")
+        return calendar.date(
+            byAdding: .day,
+            value: -daysDiff,
+            to: newToBed
+        )
     }
 }

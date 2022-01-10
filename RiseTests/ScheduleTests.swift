@@ -1004,33 +1004,48 @@ class ScheduleTests: XCTestCase {
             targetWakeUp: time(day: 1, hour: 7)
         )
 
-        let newToBed = time(day: 2, hour: 0)
-        var newSchedule: Schedule?
+        let newToBedDates = [
+            time(day: 2, hour: 0),
+            time(day: 1, hour: 22),
+            time(day: 0, hour: 23, min: 1),
+            time(day: 2, hour: 22, min: 59),
+            time(day: 1, hour: 5)
+        ]
+        var newSchedules: [Schedule] = []
+
         let saveExpectation = expectation(description: "save")
+        saveExpectation.expectedFulfillmentCount = newToBedDates.count
+
         let deleteExpectation = expectation(description: "delete")
+        deleteExpectation.expectedFulfillmentCount = newToBedDates.count
+
         scheduleRepository.saveHandler = handleSave
         scheduleRepository.deleteAllHandler = handleDeleteAll
 
         // When
 
-        adjustSchedule.callAsFunction(
-            currentSchedule: schedule,
-            newToBed: newToBed
-        )
+        newToBedDates.forEach { newToBed in
+            adjustSchedule.callAsFunction(
+                currentSchedule: schedule,
+                newToBed: newToBed
+            )
+        }
 
         // Then
 
-        let expectedSchedule = Schedule(
-            sleepDuration: 8 * 60,
-            intensity: .normal,
-            toBed: newToBed,
-            wakeUp: time(day: 1, hour: 7),
-            targetToBed: time(day: 1, hour: 23),
-            targetWakeUp: time(day: 1, hour: 7)
-        )
+        let expectedSchedules = newToBedDates.map { newToBed in
+            Schedule(
+                sleepDuration: 8 * 60,
+                intensity: .normal,
+                toBed: newToBed,
+                wakeUp: time(day: 1, hour: 7),
+                targetToBed: time(day: 1, hour: 23),
+                targetWakeUp: time(day: 1, hour: 7)
+            )
+        }
 
         func handleSave(_ schedule: Schedule) {
-            newSchedule = schedule
+            newSchedules.append(schedule)
             saveExpectation.fulfill()
         }
 
@@ -1043,8 +1058,93 @@ class ScheduleTests: XCTestCase {
                 XCTFail(error.localizedDescription)
                 return
             }
-            XCTAssertEqual(expectedSchedule, newSchedule)
-            XCTAssertNotEqual(newSchedule, schedule)
+            XCTAssertEqual(expectedSchedules, newSchedules)
+            newSchedules.forEach {
+                XCTAssertNotEqual($0, schedule)
+            }
+        }
+    }
+
+    func testAdjustScheduleEditDateFarAway() {
+
+        // Given
+
+        let schedule = Schedule(
+            sleepDuration: 8 * 60,
+            intensity: .normal,
+            toBed: time(day: 1, hour: 23),
+            wakeUp: time(day: 1, hour: 7),
+            targetToBed: time(day: 1, hour: 23),
+            targetWakeUp: time(day: 1, hour: 7)
+        )
+
+        let newToBedDates = [
+            time(day: 3, hour: 0),
+            time(day: 0, hour: 22, min: 59),
+            time(day: 20, hour: 23, min: 1),
+            time(month: 10, day: 1, hour: 22)
+        ]
+        let expectedToBedDates = [
+            time(day: 2, hour: 0),
+            time(day: 1, hour: 22, min: 59),
+            time(day: 1, hour: 23, min: 1),
+            time(month: 1, day: 2, hour: 22)
+        ]
+        var newSchedules: [Schedule] = []
+
+        let saveExpectation = expectation(description: "save")
+        saveExpectation.expectedFulfillmentCount = expectedToBedDates.count
+
+        let deleteExpectation = expectation(description: "delete")
+        deleteExpectation.expectedFulfillmentCount = expectedToBedDates.count
+
+        scheduleRepository.saveHandler = handleSave
+        scheduleRepository.deleteAllHandler = handleDeleteAll
+
+        // When
+
+        newToBedDates.forEach { newToBed in
+            adjustSchedule.callAsFunction(
+                currentSchedule: schedule,
+                newToBed: newToBed
+            )
+        }
+
+        // Then
+
+        let expectedSchedules = expectedToBedDates.map { newToBed in
+            Schedule(
+                sleepDuration: 8 * 60,
+                intensity: .normal,
+                toBed: newToBed,
+                wakeUp: time(day: 1, hour: 7),
+                targetToBed: time(day: 1, hour: 23),
+                targetWakeUp: time(day: 1, hour: 7)
+            )
+        }
+
+        func handleSave(_ schedule: Schedule) {
+            newSchedules.append(schedule)
+            saveExpectation.fulfill()
+        }
+
+        func handleDeleteAll() {
+            deleteExpectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1) { error in
+            if let error = error {
+                XCTFail(error.localizedDescription)
+                return
+            }
+            expectedSchedules.enumerated().forEach {
+                let expected = $0.element
+                let actual = newSchedules[$0.offset]
+                XCTAssertEqual(actual, expected, "\n\n\(expected.toBed)\n!=\n\(actual.toBed)\n")
+            }
+            newSchedules.forEach {
+                XCTAssertNotEqual($0, schedule)
+            }
         }
     }
 
@@ -1096,8 +1196,13 @@ extension ScheduleTests {
 
 extension ScheduleTests {
     class UserDataMock: UserData {
+        var preferredWakeUpTime: Date? = nil
+        var keepAppOpenedSuggested: Bool = false
+        var activeSleepStartDate: Date? = nil
+        var activeSleepEndDate: Date? = nil
         var onboardingCompleted: Bool = true
         var scheduleOnPause: Bool = false
         var latestAppUsageDate: Date? = nil
+        func invalidateActiveSleep() { }
     }
 }

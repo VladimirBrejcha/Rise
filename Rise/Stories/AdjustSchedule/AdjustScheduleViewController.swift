@@ -41,6 +41,7 @@ final class AdjustScheduleViewController: UIViewController {
 
     override func loadView() {
         super.loadView()
+
         self.view = AdjustScheduleView(
             closeHandler: { [weak self] in
                 self?.dismiss(animated: true, completion: {
@@ -89,6 +90,7 @@ final class AdjustScheduleViewController: UIViewController {
                 self.selectedToBed = date
             }
         )
+
         loadedView.allowEdit(selectedToBed == nil)
         loadedView.allowSave(selectedToBed != nil)
     }
