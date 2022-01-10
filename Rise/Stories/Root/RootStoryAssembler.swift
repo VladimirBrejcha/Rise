@@ -26,7 +26,8 @@ final class RootStoryAssembler {
             }
         }
         
-        else if !DataLayer.userData.onboardingCompleted {
+//        else if !DataLayer.userData.onboardingCompleted {
+        else if true {
             controllers.append(Story.onboarding())
         }
 

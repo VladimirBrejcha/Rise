@@ -819,6 +819,14 @@
 			path = Gradientable;
 			sourceTree = "<group>";
 		};
+		7E62D769278CA53800AC9B90 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				7EA64EEA25A8BC9F0029FBE7 /* NotificationManager.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		7E644D4D24FACF4100BF198C /* Errors */ = {
 			isa = PBXGroup;
 			children = (
@@ -1145,7 +1153,6 @@
 				7E162FF0243D0E22004C68B1 /* AutoRefreshable.swift */,
 				7E15397127494C1000CC2E7B /* AudioPlayer */,
 				7EE227642504C38B00EC70CB /* UserDefaults.swift */,
-				7EA64EEA25A8BC9F0029FBE7 /* NotificationManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1314,6 +1321,7 @@
 				7E4901872340F3970034521E /* Stories */,
 				7EB9F33B23C20218002A6DD3 /* Domain */,
 				7EB1C0342340FA6E0028237E /* Data */,
+				7E62D769278CA53800AC9B90 /* Service */,
 				92D7D68422980138009321AE /* UI */,
 				7EF3EE192340F8A5003BE978 /* Utils */,
 				7EF3EE162340F75A003BE978 /* Resources */,

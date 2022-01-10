@@ -19,6 +19,9 @@ extension OnboardingView.ContentView {
         private lazy var label: UILabel = {
             let label = UILabel()
             label.applyStyle(.mediumSizedBody)
+            label.layer.applyStyle(
+                .init(shadow: .whiteBgSeparatorBig)
+            )
             label.numberOfLines = 0
             return label
         }()
@@ -65,7 +68,7 @@ extension OnboardingView.ContentView {
                 point.centerYAnchor.constraint(equalTo: label.centerYAnchor)
             )
             label.activateConstraints(
-                label.leadingAnchor.constraint(equalTo: point.trailingAnchor, constant: pointSide),
+                label.leadingAnchor.constraint(equalTo: point.trailingAnchor, constant: 16),
                 label.topAnchor.constraint(equalTo: topAnchor),
                 label.bottomAnchor.constraint(equalTo: bottomAnchor),
                 label.trailingAnchor.constraint(equalTo: trailingAnchor)

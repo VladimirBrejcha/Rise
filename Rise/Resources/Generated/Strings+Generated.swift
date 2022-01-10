@@ -146,22 +146,30 @@ internal enum Text {
   }
 
   internal enum Onboarding {
+    /// As you pass through the various stages of sleep, your body cognitively and physically restores itself
+    internal static let aboutSleep = Text.tr("Localizable", "onboarding.about_sleep")
+    /// Sleep may also help your brain reorganize and retain memories
+    internal static let aboutSleep2 = Text.tr("Localizable", "onboarding.about_sleep_2")
+    /// Lack of sleep can affect everything from your mental health to your waistline
+    internal static let aboutSleep3 = Text.tr("Localizable", "onboarding.about_sleep_3")
     /// Continue
     internal static let action = Text.tr("Localizable", "onboarding.action")
     /// Begin to Rise
     internal static let actionFinal = Text.tr("Localizable", "onboarding.action_final")
-    /// Have you ever dreamed of waking up right on time?
-    internal static let dreamedOfWakingUpInTime = Text.tr("Localizable", "onboarding.dreamed_of_waking_up_in_time")
     /// It happens with all of us
     internal static let itHappensWithAllOfUs = Text.tr("Localizable", "onboarding.it_happens_with_all_of_us")
-    /// Missed an alarm and still woke up broken?
+    /// Missed the alarm and still woke up broken?
     internal static let missedAlarm = Text.tr("Localizable", "onboarding.missed_alarm")
-    /// Personal sleep schedule assistant to help establish quality sleep
-    internal static let personalAssistent = Text.tr("Localizable", "onboarding.personal_assistent")
-    /// Adjust, secure and maintain a good sleep
-    internal static let secureGoodSleep = Text.tr("Localizable", "onboarding.secure_good_sleep")
+    /// A personal assistant on the sleep schedule, helping to establish a quality sleep
+    internal static let personalAssistant = Text.tr("Localizable", "onboarding.personal_assistant")
+    /// It will help to make a suitable sleep plan in order to achieve a full sleep and stick to it
+    internal static let personalAssistant2 = Text.tr("Localizable", "onboarding.personal_assistant_2")
+    /// No matter what state your sleep is in now, Rise will lead you to the right one for you and will support you in difficult days
+    internal static let personalAssistant3 = Text.tr("Localizable", "onboarding.personal_assistant_3")
+    /// Unable to adjust your sleep to a suitable mode?
+    internal static let unableToAdjust = Text.tr("Localizable", "onboarding.unable_to_adjust")
     internal enum Title {
-      /// Have you scheduled it?
+      /// Maintaining quality sleep is not easy
       internal static let haveYouScheduledIt = Text.tr("Localizable", "onboarding.title.have_you_scheduled_it")
       /// Meet Rise!
       internal static let meetRise = Text.tr("Localizable", "onboarding.title.meet_rise")
