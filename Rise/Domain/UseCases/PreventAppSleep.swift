@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol HasPreventAppSleepUseCase {
+    var preventAppSleep: PreventAppSleep { get }
+}
+
 protocol PreventAppSleep {
     func callAsFunction(_ prevent: Bool)
 }

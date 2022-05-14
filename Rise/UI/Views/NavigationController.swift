@@ -12,9 +12,8 @@ final class NavigationController: UINavigationController, UINavigationController
 
     // MARK: - LifeCycle
 
-    init(items: [UIViewController]) {
+    init() {
         super.init(nibName: nil, bundle: nil)
-        self.viewControllers = items
         self.isNavigationBarHidden = true
         self.delegate = self
     }

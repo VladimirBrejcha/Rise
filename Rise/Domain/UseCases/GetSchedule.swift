@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol HasGetScheduleUseCase {
+  var getSchedule: GetSchedule { get }
+}
+
 protocol GetSchedule {
     func yesterday() -> Schedule?
     func today() -> Schedule?

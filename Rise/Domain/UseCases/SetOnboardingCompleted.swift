@@ -6,6 +6,10 @@
 //  Copyright © 2021 VladimirBrejcha. All rights reserved.
 //
 
+protocol HasSetOnboardingCompleted {
+  var setOnboardingCompleted: SetOnboardingCompleted { get }
+}
+
 protocol SetOnboardingCompleted {
     func callAsFunction(_ completed: Bool)
 }

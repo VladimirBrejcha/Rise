@@ -24,29 +24,7 @@ enum Story {
         selectedToBed: Date? = nil,
         completion: ((Bool) -> Void)? = nil
     )
-    
-    // Create schedule
-    case createSchedule(onCreate: () -> Void)
-    case welcomeCreateSchedule
-    case sleepDurationCreateSchedule(
-        sleepDurationOutput: (Int) -> Void,
-        currentSleepDuration: () -> Schedule.Minute?
-    )
-    case wakeUpTimeCreateSchedule(
-        toBedTimeOutput: (Date) -> Void,
-        wakeUpTimeOutput: (Date) -> Void,
-        currentSleepDuration: () -> Schedule.Minute?,
-        currentWakeUpTime: () -> Date?
-    )
-    case intensityCreateSchedule(
-        scheduleIntensityOutput: (Schedule.Intensity) -> Void,
-        currentIntensity: () -> Schedule.Intensity?
-    )
-    case wentSleepCreateSchedule(
-        wentSleepOutput: (Date) -> Void,
-        currentWentSleepTime: () -> Date?
-    )
-    case scheduleCreatedCreateSchedule
+
     
     // Sleep
     case prepareToSleep
@@ -64,77 +42,43 @@ enum Story {
     func callAsFunction() -> UIViewController {
         switch self {
         case .root:
-            return RootStoryAssembler().assemble()
+          fatalError()
+//            return RootStoryAssembler().assemble()
         case .tabBar:
             return TabBarController(
                 items: [Story.schedule(), Story.today(), Story.settings()],
                 selectedIndex: 1
             )
         case .onboarding:
-            return OnboardingAssembler().assemble()
+          fatalError()
         case .today:
-            return TodayAssembler().assemble()
+//            return TodayAssembler().assemble()
+          fatalError()
         case .days:
-            return DaysAssembler().assemble()
+          fatalError()
+//            return DaysAssembler().assemble()
         case .schedule:
-            return ScheduleAssembler().assemble()
+//            return ScheduleAssembler().assemble()
+          fatalError()
         case .settings:
-            return SettingsAssembler().assemble()
-        case let .createSchedule(onCreate):
-            return CreateScheduleAssembler().assemble(onCreate: onCreate)
-        case .welcomeCreateSchedule:
-            return Storyboard.createSchedule.instantiateViewController(
-                of: WelcomeCreateScheduleViewController.self
-            )
-        case let .sleepDurationCreateSchedule(sleepDurationOutput, currentSleepDuration):
-            let controller = Storyboard.createSchedule.instantiateViewController(
-                of: SleepDurationCreateScheduleViewController.self
-            )
-            controller.sleepDurationOutput = sleepDurationOutput
-            controller.currentSleepDuration = currentSleepDuration
-            return controller
-        case let .wakeUpTimeCreateSchedule(
-            toBedTimeOutput, wakeUpTimeOutput, currentSleepDuration, currentWakeUpTime
-        ):
-            let controller = Storyboard.createSchedule.instantiateViewController(
-                of: WakeUpTimeCreateScheduleViewController.self
-            )
-            controller.toBedTimeOutput = toBedTimeOutput
-            controller.wakeUpTimeOutput = wakeUpTimeOutput
-            controller.currentSleepDuration = currentSleepDuration
-            controller.currentWakeUpTime = currentWakeUpTime
-            return controller
-        case let .intensityCreateSchedule(scheduleIntensityOutput, currentIntensity):
-            let controller = Storyboard.createSchedule.instantiateViewController(
-                of: IntensityCreateScheduleViewController.self
-            )
-            controller.scheduleIntensityOutput = scheduleIntensityOutput
-            controller.currentIntensity = currentIntensity
-            return controller
-        case let .wentSleepCreateSchedule(wentSleepOutput, currentWentSleepTime):
-            let controller = Storyboard.createSchedule.instantiateViewController(
-                of: WentSleepCreateScheduleViewController.self
-            )
-            controller.wentSleepTimeOutput = wentSleepOutput
-            controller.currentWentSleepTime = currentWentSleepTime
-            return controller
-        case .scheduleCreatedCreateSchedule:
-            let controller = Storyboard.createSchedule.instantiateViewController(
-                of: ScheduleCreatedCreateScheduleViewController.self
-            )
-            return controller
+//            return SettingsAssembler().assemble()
+          fatalError()
         case let .editSchedule(schedule):
-            return EditScheduleAssembler().assemble(schedule: schedule)
+//            return EditScheduleAssembler().assemble(schedule: schedule)
+          fatalError()
         case .prepareToSleep:
-            return PrepareToSleepAssembler().assemble()
+//            return PrepareToSleepAssembler().assemble()
+          fatalError()
         case .sleep(let alarmTime):
-            return SleepAssembler().assemble(alarm: alarmTime)
+//            return SleepAssembler().assemble(alarm: alarmTime)
+          fatalError()
         case .alarming:
             return AlarmingAssembler().assemble()
         case .about:
             return AboutAssembler().assemble()
         case .refreshSunTime:
-            return RefreshSunTimesAssembler().assemble()
+//            return RefreshSunTimesAssembler().assemble()
+          fatalError()
         case let .adjustSchedule(currentSchedule, selectedToBed, completion):
             return AdjustScheduleAssembler().assemble(
                 currentSchedule: currentSchedule,
@@ -142,9 +86,10 @@ enum Story {
                 completion: completion
             )
         case let .keepAppOpenedSuggestion(completion):
-            return KeepAppOpenedSuggestionAssembler().assemble(
-                completion: completion
-            )
+//            return KeepAppOpenedSuggestionAssembler().assemble(
+//                completion: completion
+//            )
+          fatalError()
         case .afterSleep:
             return AfterSleepAssembler().assemble()
         }

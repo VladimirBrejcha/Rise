@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol HasUpdateScheduleUseCase {
+  var updateSchedule: UpdateSchedule { get }
+}
+
 /*
  * Creates new schedule with given parameters or with fallback to current schedule parameters
  * Deletes old schedule from the storage

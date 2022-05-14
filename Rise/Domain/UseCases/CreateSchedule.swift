@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol HasCreateScheduleUseCase {
+  var createSchedule: CreateSchedule { get }
+}
+
 protocol CreateSchedule {
     func callAsFunction(
         wantedSleepDuration: Schedule.Minute,

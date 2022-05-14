@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol HasManageActiveSleepUseCase {
+  var manageActiveSleep: ManageActiveSleep { get }
+}
+
 /*
  * Provides start and end dates for active sleep (if exists)
  * Provides method to end sleep and therefore invalidates sleep dates

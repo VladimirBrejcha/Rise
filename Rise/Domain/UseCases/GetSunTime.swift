@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol HasGetSunTimeUseCase {
+  var getSunTime: GetSunTime { get }
+}
+
 typealias GetSunTimeCompletion = (Result<[SunTime], Error>) -> Void
 
 protocol GetSunTime {

@@ -6,11 +6,15 @@
 //  Copyright © 2021 VladimirBrejcha. All rights reserved.
 //
 
+protocol HasSuggestKeepAppOpenedUseCase {
+  var suggestKeepAppOpened: SuggestKeepAppOpened { get }
+}
+
 /*
  * Provides interface to get or set information about
  * wherever app should suggest to keep it opened while sleeping
  */
-protocol SuggestKeepAppOpened {
+protocol SuggestKeepAppOpened: AnyObject {
     var shouldSuggest: Bool { get set }
 }
 

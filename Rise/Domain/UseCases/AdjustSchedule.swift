@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol HasAdjustScheduleUseCase {
+  var adjustSchedule: AdjustSchedule { get }
+}
+
 /*
  * Creates new schedule with given `toBed` parameter and other parameters are unchanged from `currentSchedule`
  * Deletes old schedule from the storage

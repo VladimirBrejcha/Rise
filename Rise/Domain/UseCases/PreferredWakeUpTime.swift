@@ -8,10 +8,14 @@
 
 import Foundation
 
+protocol HasPreferredWakeUpTimeUseCase {
+  var preferredWakeUpTime: PreferredWakeUpTime { get }
+}
+
 /*
  * Provides preferred wake up time in case if user have no schedule
  */
-protocol PreferredWakeUpTime {
+protocol PreferredWakeUpTime: AnyObject {
     var time: Date? { get set }
 }
 

@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol HasDeleteScheduleUseCase {
+  var deleteSchedule: DeleteSchedule { get }
+}
+
 protocol DeleteSchedule {
     func callAsFunction()
 }

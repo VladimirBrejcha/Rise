@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol HasRefreshSunTimeUseCase {
+  var refreshSunTime: RefreshSunTime { get }
+}
+
 /*
  * Removes all data for Location and SunTime
  * Fetches new location

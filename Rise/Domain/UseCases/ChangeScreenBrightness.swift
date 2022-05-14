@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol HasChangeScreenBrightnessUseCase {
+    var changeScreenBrightness: ChangeScreenBrightness { get }
+}
+
 enum ScreenBrightnessLevel {
     case low
     case high
