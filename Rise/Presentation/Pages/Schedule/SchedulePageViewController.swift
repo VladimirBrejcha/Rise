@@ -17,7 +17,6 @@ extension SchedulePage {
       case createSchedule
     }
     typealias Deps = HasGetScheduleUseCase & HasPauseScheduleUseCase
-    typealias Params = Void
     typealias View = SchedulePage.View
     
     private let getSchedule: GetSchedule

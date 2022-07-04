@@ -24,7 +24,6 @@
 		7E15398C2749D70C00CC2E7B /* CloseableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E15398B2749D70C00CC2E7B /* CloseableButton.swift */; };
 		7E15398E2749D71E00CC2E7B /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E15398D2749D71E00CC2E7B /* CloseButton.swift */; };
 		7E162FF1243D0E22004C68B1 /* AutoRefreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E162FF0243D0E22004C68B1 /* AutoRefreshable.swift */; };
-		7E173372240D9F7A0028FDBE /* DomainLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E173371240D9F7A0028FDBE /* DomainLayer.swift */; };
 		7E173375241044D70028FDBE /* SunTimeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E173374241044D70028FDBE /* SunTimeRepository.swift */; };
 		7E17337924104DDA0028FDBE /* LocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E17337824104DDA0028FDBE /* LocationRepository.swift */; };
 		7E18C6C727616B3300BD6471 /* UINavigationController+replaceAllOnTopOfRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E18C6C627616B3300BD6471 /* UINavigationController+replaceAllOnTopOfRoot.swift */; };
@@ -38,14 +37,12 @@
 		7E31497D23425CA600941606 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31497C23425CA600941606 /* TableViewDataSource.swift */; };
 		7E31497F23425D3700941606 /* EditScheduleTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31497E23425D3700941606 /* EditScheduleTableView.swift */; };
 		7E32630D275EAD270045CEA0 /* ManageActiveSleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E32630C275EAD270045CEA0 /* ManageActiveSleep.swift */; };
-		7E32630F275EB01D0045CEA0 /* RootStoryAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E32630E275EB01D0045CEA0 /* RootStoryAssembler.swift */; };
 		7E326313275EBCFB0045CEA0 /* CrossDissolveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E326312275EBCFB0045CEA0 /* CrossDissolveTransition.swift */; };
 		7E326315275EBD1E0045CEA0 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E326314275EBD1E0045CEA0 /* NavigationController.swift */; };
 		7E3414BC28426F3400725580 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 7E3414BB28426F3400725580 /* Core */; };
 		7E3414BE28426F6900725580 /* SelectableStackView in Frameworks */ = {isa = PBXBuildFile; productRef = 7E3414BD28426F6900725580 /* SelectableStackView */; };
 		7E3414C028426F6900725580 /* LoadingView in Frameworks */ = {isa = PBXBuildFile; productRef = 7E3414BF28426F6900725580 /* LoadingView */; };
 		7E346CE5274A5BFE00848DBB /* AdjustScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E346CE2274A5BFE00848DBB /* AdjustScheduleView.swift */; };
-		7E346CE6274A5BFE00848DBB /* AdjustScheduleAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E346CE3274A5BFE00848DBB /* AdjustScheduleAssembler.swift */; };
 		7E346CE7274A5BFE00848DBB /* AdjustScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E346CE4274A5BFE00848DBB /* AdjustScheduleViewController.swift */; };
 		7E346CE9274A5C5500848DBB /* ScreenTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E346CE8274A5C5500848DBB /* ScreenTitleView.swift */; };
 		7E346CEB274A635F00848DBB /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E346CEA274A635F00848DBB /* View.swift */; };
@@ -66,14 +63,13 @@
 		7E43063F26ECC58400B67315 /* DescriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43063E26ECC58400B67315 /* DescriptionLabel.swift */; };
 		7E43064426ED3EE600B67315 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43064326ED3EE600B67315 /* UserData.swift */; };
 		7E43064726ED3F0A00B67315 /* DefaultUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43064626ED3F0A00B67315 /* DefaultUserData.swift */; };
-		7E43064926ED40F400B67315 /* SetOnboardingCompleted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43064826ED40F400B67315 /* SetOnboardingCompleted.swift */; };
+		7E43064926ED40F400B67315 /* ManageOnboardingCompleted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43064826ED40F400B67315 /* ManageOnboardingCompleted.swift */; };
 		7E43064B26ED4FF600B67315 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43064A26ED4FF600B67315 /* SettingsView.swift */; };
 		7E43064E26ED514C00B67315 /* SettingItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43064D26ED514C00B67315 /* SettingItemView.swift */; };
 		7E43065026ED528700B67315 /* UIStackView+addSeparators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43064F26ED528700B67315 /* UIStackView+addSeparators.swift */; };
 		7E43065426ED6E7500B67315 /* GetAppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43065326ED6E7500B67315 /* GetAppVersion.swift */; };
 		7E43065726EE4F2000B67315 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43065626EE4F2000B67315 /* AboutView.swift */; };
 		7E43065926EE4F3200B67315 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43065826EE4F3200B67315 /* AboutViewController.swift */; };
-		7E43065B26EE4F3800B67315 /* AboutAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43065A26EE4F3800B67315 /* AboutAssembler.swift */; };
 		7E43065D26EE617500B67315 /* UIStackView+addArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43065C26EE617500B67315 /* UIStackView+addArrangedSubviews.swift */; };
 		7E43065F26EE63DB00B67315 /* AboutItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43065E26EE63DB00B67315 /* AboutItemView.swift */; };
 		7E43066226EE974D00B67315 /* AboutIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43066126EE974D00B67315 /* AboutIdentifier.swift */; };
@@ -82,7 +78,6 @@
 		7E48D2B6274C2E6800B14355 /* PreferredWakeUpTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E48D2B5274C2E6800B14355 /* PreferredWakeUpTime.swift */; };
 		7E514DB325A87F5E000EBE81 /* AlarmingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E514DB225A87F5E000EBE81 /* AlarmingViewController.swift */; };
 		7E514DB825A87F67000EBE81 /* AlarmingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E514DB725A87F67000EBE81 /* AlarmingView.swift */; };
-		7E514DBD25A87F6F000EBE81 /* AlarmingAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E514DBC25A87F6F000EBE81 /* AlarmingAssembler.swift */; };
 		7E541AF423FB259400BAD710 /* DaysCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E541AF223FB259400BAD710 /* DaysCollectionCell.swift */; };
 		7E541AF723FB384F00BAD710 /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E541AF623FB384F00BAD710 /* ConfigurableCell.swift */; };
 		7E541AF923FB386B00BAD710 /* CellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E541AF823FB386B00BAD710 /* CellConfigurator.swift */; };
@@ -180,7 +175,6 @@
 		7EB73411274E918100DC7758 /* ChangeScreenBrightness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB73410274E918100DC7758 /* ChangeScreenBrightness.swift */; };
 		7EB73418274EBC2800DC7758 /* AfterSleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB73415274EBC2800DC7758 /* AfterSleepViewController.swift */; };
 		7EB73419274EBC2800DC7758 /* AfterSleepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB73416274EBC2800DC7758 /* AfterSleepView.swift */; };
-		7EB7341A274EBC2800DC7758 /* AfterSleepAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB73417274EBC2800DC7758 /* AfterSleepAssembler.swift */; };
 		7EB9003E23256AC9006EB9A8 /* DesignableContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9003D23256AC9006EB9A8 /* DesignableContainerView.swift */; };
 		7EB9004023256BF3006EB9A8 /* DaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB9003F23256BF3006EB9A8 /* DaysView.swift */; };
 		7EB90047232AB9EB006EB9A8 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */; };
@@ -194,7 +188,6 @@
 		7ED6DD3125E1B50800F906CE /* ImageLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ED6DD3025E1B50800F906CE /* ImageLabelView.xib */; };
 		7ED6DD3625E2A30700F906CE /* ImageLabelViewWithContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED6DD3525E2A30700F906CE /* ImageLabelViewWithContextMenu.swift */; };
 		7ED6DD3F25E33E3D00F906CE /* Statefull.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED6DD3E25E33E3D00F906CE /* Statefull.swift */; };
-		7ED8E59723BFFD5100A1E96F /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED8E59623BFFD5100A1E96F /* Story.swift */; };
 		7EE227652504C38B00EC70CB /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE227642504C38B00EC70CB /* UserDefaults.swift */; };
 		7EE3EB94274D7D390000CFDE /* KeepAppOpenedSuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE3EB91274D7D390000CFDE /* KeepAppOpenedSuggestionView.swift */; };
 		7EE3EB95274D7D390000CFDE /* KeepAppOpenedSuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE3EB92274D7D390000CFDE /* KeepAppOpenedSuggestionViewController.swift */; };
@@ -224,7 +217,6 @@
 		7EF8D1E926F7E98F002CE18B /* SunTimeRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF8D1E826F7E98F002CE18B /* SunTimeRepositoryTests.swift */; };
 		7EFAEF6726F5785300C51A13 /* DaysCollectionCell+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFAEF6626F5785300C51A13 /* DaysCollectionCell+Model.swift */; };
 		7EFAEF6926F5938200C51A13 /* DaysCollectionCell+SideItemVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFAEF6826F5938200C51A13 /* DaysCollectionCell+SideItemVStack.swift */; };
-		7EFF58B9241C1E3B00D2CCEC /* SleepAssembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFF58B8241C1E3B00D2CCEC /* SleepAssembler.swift */; };
 		92D12FDD22A44B3B0093B0A3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D12FDC22A44B3B0093B0A3 /* TabBarController.swift */; };
 		92D7D6532296F297009321AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6522296F297009321AE /* AppDelegate.swift */; };
 		92D7D6552296F297009321AE /* SleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6542296F297009321AE /* SleepViewController.swift */; };
@@ -270,7 +262,6 @@
 		7E15398B2749D70C00CC2E7B /* CloseableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseableButton.swift; sourceTree = "<group>"; };
 		7E15398D2749D71E00CC2E7B /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		7E162FF0243D0E22004C68B1 /* AutoRefreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRefreshable.swift; sourceTree = "<group>"; };
-		7E173371240D9F7A0028FDBE /* DomainLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainLayer.swift; sourceTree = "<group>"; };
 		7E173374241044D70028FDBE /* SunTimeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeRepository.swift; sourceTree = "<group>"; };
 		7E17337824104DDA0028FDBE /* LocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepository.swift; sourceTree = "<group>"; };
 		7E18C6C627616B3300BD6471 /* UINavigationController+replaceAllOnTopOfRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+replaceAllOnTopOfRoot.swift"; sourceTree = "<group>"; };
@@ -284,12 +275,10 @@
 		7E31497C23425CA600941606 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		7E31497E23425D3700941606 /* EditScheduleTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScheduleTableView.swift; sourceTree = "<group>"; };
 		7E32630C275EAD270045CEA0 /* ManageActiveSleep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageActiveSleep.swift; sourceTree = "<group>"; };
-		7E32630E275EB01D0045CEA0 /* RootStoryAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootStoryAssembler.swift; sourceTree = "<group>"; };
 		7E326312275EBCFB0045CEA0 /* CrossDissolveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrossDissolveTransition.swift; sourceTree = "<group>"; };
 		7E326314275EBD1E0045CEA0 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		7E3414BA28426DDE00725580 /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Core; sourceTree = "<group>"; };
 		7E346CE2274A5BFE00848DBB /* AdjustScheduleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjustScheduleView.swift; sourceTree = "<group>"; };
-		7E346CE3274A5BFE00848DBB /* AdjustScheduleAssembler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjustScheduleAssembler.swift; sourceTree = "<group>"; };
 		7E346CE4274A5BFE00848DBB /* AdjustScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjustScheduleViewController.swift; sourceTree = "<group>"; };
 		7E346CE8274A5C5500848DBB /* ScreenTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTitleView.swift; sourceTree = "<group>"; };
 		7E346CEA274A635F00848DBB /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -310,14 +299,13 @@
 		7E43063E26ECC58400B67315 /* DescriptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionLabel.swift; sourceTree = "<group>"; };
 		7E43064326ED3EE600B67315 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		7E43064626ED3F0A00B67315 /* DefaultUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUserData.swift; sourceTree = "<group>"; };
-		7E43064826ED40F400B67315 /* SetOnboardingCompleted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetOnboardingCompleted.swift; sourceTree = "<group>"; };
+		7E43064826ED40F400B67315 /* ManageOnboardingCompleted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageOnboardingCompleted.swift; sourceTree = "<group>"; };
 		7E43064A26ED4FF600B67315 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7E43064D26ED514C00B67315 /* SettingItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemView.swift; sourceTree = "<group>"; };
 		7E43064F26ED528700B67315 /* UIStackView+addSeparators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+addSeparators.swift"; sourceTree = "<group>"; };
 		7E43065326ED6E7500B67315 /* GetAppVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAppVersion.swift; sourceTree = "<group>"; };
 		7E43065626EE4F2000B67315 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		7E43065826EE4F3200B67315 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
-		7E43065A26EE4F3800B67315 /* AboutAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAssembler.swift; sourceTree = "<group>"; };
 		7E43065C26EE617500B67315 /* UIStackView+addArrangedSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+addArrangedSubviews.swift"; sourceTree = "<group>"; };
 		7E43065E26EE63DB00B67315 /* AboutItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutItemView.swift; sourceTree = "<group>"; };
 		7E43066126EE974D00B67315 /* AboutIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutIdentifier.swift; sourceTree = "<group>"; };
@@ -326,7 +314,6 @@
 		7E48D2B5274C2E6800B14355 /* PreferredWakeUpTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferredWakeUpTime.swift; sourceTree = "<group>"; };
 		7E514DB225A87F5E000EBE81 /* AlarmingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmingViewController.swift; sourceTree = "<group>"; };
 		7E514DB725A87F67000EBE81 /* AlarmingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmingView.swift; sourceTree = "<group>"; };
-		7E514DBC25A87F6F000EBE81 /* AlarmingAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmingAssembler.swift; sourceTree = "<group>"; };
 		7E541AF223FB259400BAD710 /* DaysCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysCollectionCell.swift; sourceTree = "<group>"; };
 		7E541AF623FB384F00BAD710 /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
 		7E541AF823FB386B00BAD710 /* CellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurator.swift; sourceTree = "<group>"; };
@@ -424,7 +411,6 @@
 		7EB73410274E918100DC7758 /* ChangeScreenBrightness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeScreenBrightness.swift; sourceTree = "<group>"; };
 		7EB73415274EBC2800DC7758 /* AfterSleepViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfterSleepViewController.swift; sourceTree = "<group>"; };
 		7EB73416274EBC2800DC7758 /* AfterSleepView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfterSleepView.swift; sourceTree = "<group>"; };
-		7EB73417274EBC2800DC7758 /* AfterSleepAssembler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AfterSleepAssembler.swift; sourceTree = "<group>"; };
 		7EB9003D23256AC9006EB9A8 /* DesignableContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableContainerView.swift; sourceTree = "<group>"; };
 		7EB9003F23256BF3006EB9A8 /* DaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysView.swift; sourceTree = "<group>"; };
 		7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
@@ -440,7 +426,6 @@
 		7ED6DD3025E1B50800F906CE /* ImageLabelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageLabelView.xib; sourceTree = "<group>"; };
 		7ED6DD3525E2A30700F906CE /* ImageLabelViewWithContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabelViewWithContextMenu.swift; sourceTree = "<group>"; };
 		7ED6DD3E25E33E3D00F906CE /* Statefull.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statefull.swift; sourceTree = "<group>"; };
-		7ED8E59623BFFD5100A1E96F /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		7EE1397E23E36944003895D4 /* AIFlatSwitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AIFlatSwitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EE1398523E36AF6003895D4 /* AIFlatSwitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AIFlatSwitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EE227642504C38B00EC70CB /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
@@ -473,7 +458,6 @@
 		7EF8D1E826F7E98F002CE18B /* SunTimeRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeRepositoryTests.swift; sourceTree = "<group>"; };
 		7EFAEF6626F5785300C51A13 /* DaysCollectionCell+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DaysCollectionCell+Model.swift"; sourceTree = "<group>"; };
 		7EFAEF6826F5938200C51A13 /* DaysCollectionCell+SideItemVStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DaysCollectionCell+SideItemVStack.swift"; sourceTree = "<group>"; };
-		7EFF58B8241C1E3B00D2CCEC /* SleepAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepAssembler.swift; sourceTree = "<group>"; };
 		92D12FDC22A44B3B0093B0A3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		92D7D64F2296F297009321AE /* Rise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D7D6522296F297009321AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -640,14 +624,6 @@
 			path = TableView;
 			sourceTree = "<group>";
 		};
-		7E326310275EB0990045CEA0 /* Root */ = {
-			isa = PBXGroup;
-			children = (
-				7E32630E275EB01D0045CEA0 /* RootStoryAssembler.swift */,
-			);
-			path = Root;
-			sourceTree = "<group>";
-		};
 		7E326311275EBCE70045CEA0 /* Transitions */ = {
 			isa = PBXGroup;
 			children = (
@@ -660,7 +636,6 @@
 		7E346CE1274A5BFE00848DBB /* AdjustSchedule */ = {
 			isa = PBXGroup;
 			children = (
-				7E346CE3274A5BFE00848DBB /* AdjustScheduleAssembler.swift */,
 				7E346CE2274A5BFE00848DBB /* AdjustScheduleView.swift */,
 				7E346CE4274A5BFE00848DBB /* AdjustScheduleViewController.swift */,
 			);
@@ -695,7 +670,6 @@
 		7E43065526EE2FBE00B67315 /* About */ = {
 			isa = PBXGroup;
 			children = (
-				7E43065A26EE4F3800B67315 /* AboutAssembler.swift */,
 				7E43065626EE4F2000B67315 /* AboutView.swift */,
 				7E43065826EE4F3200B67315 /* AboutViewController.swift */,
 				7E43066126EE974D00B67315 /* AboutIdentifier.swift */,
@@ -710,19 +684,6 @@
 				7E43065E26EE63DB00B67315 /* AboutItemView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		7E4901872340F3970034521E /* Stories */ = {
-			isa = PBXGroup;
-			children = (
-				7ED8E59623BFFD5100A1E96F /* Story.swift */,
-				7E326310275EB0990045CEA0 /* Root */,
-				7E514DC125A87FB1000EBE81 /* Alarming */,
-				7EB73414274EBC2800DC7758 /* AfterSleep */,
-				7E346CE1274A5BFE00848DBB /* AdjustSchedule */,
-				7E43065526EE2FBE00B67315 /* About */,
-			);
-			path = Stories;
 			sourceTree = "<group>";
 		};
 		7E4901882340F3BE0034521E /* Today */ = {
@@ -770,7 +731,6 @@
 		7E514DC125A87FB1000EBE81 /* Alarming */ = {
 			isa = PBXGroup;
 			children = (
-				7E514DBC25A87F6F000EBE81 /* AlarmingAssembler.swift */,
 				7E514DB725A87F67000EBE81 /* AlarmingView.swift */,
 				7E514DB225A87F5E000EBE81 /* AlarmingViewController.swift */,
 			);
@@ -780,6 +740,8 @@
 		7E5A1EA5282FE009005F19D6 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				92D7D65B2296F298009321AE /* LaunchScreen.storyboard */,
+				7E4798F4239D894B007FB8F2 /* Storyboard.swift */,
 				7E5A1EAE282FE1CE005F19D6 /* Coordinator.swift */,
 				7E5A1EB428300A66005F19D6 /* Pages */,
 			);
@@ -789,6 +751,10 @@
 		7E5A1EB428300A66005F19D6 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				7E43065526EE2FBE00B67315 /* About */,
+				7E346CE1274A5BFE00848DBB /* AdjustSchedule */,
+				7EB73414274EBC2800DC7758 /* AfterSleep */,
+				7E514DC125A87FB1000EBE81 /* Alarming */,
 				7EFF58B5241C1E1A00D2CCEC /* Sleep */,
 				7E1539782749672E00CC2E7B /* RefreshSunTimes */,
 				7EE3EB8F274D7D390000CFDE /* KeepAppOpenedSuggestion */,
@@ -995,7 +961,6 @@
 		7EB73414274EBC2800DC7758 /* AfterSleep */ = {
 			isa = PBXGroup;
 			children = (
-				7EB73417274EBC2800DC7758 /* AfterSleepAssembler.swift */,
 				7EB73416274EBC2800DC7758 /* AfterSleepView.swift */,
 				7EB73415274EBC2800DC7758 /* AfterSleepViewController.swift */,
 			);
@@ -1005,9 +970,8 @@
 		7EB9F33B23C20218002A6DD3 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				7E173371240D9F7A0028FDBE /* DomainLayer.swift */,
-				7E5A1EB0282FE239005F19D6 /* UseCases.swift */,
 				7E5A1EB2282FE284005F19D6 /* UseCaseLocator.swift */,
+				7E5A1EB0282FE239005F19D6 /* UseCases.swift */,
 				7E17337A241053910028FDBE /* Entities */,
 				7EB9F33E23C20252002A6DD3 /* UseCases */,
 				7E173373241044BF0028FDBE /* Interfaces */,
@@ -1020,7 +984,7 @@
 			children = (
 				7EB9F34B23C20504002A6DD3 /* GetSunTime.swift */,
 				7E1539762749619400CC2E7B /* RefreshSunTime.swift */,
-				7E43064826ED40F400B67315 /* SetOnboardingCompleted.swift */,
+				7E43064826ED40F400B67315 /* ManageOnboardingCompleted.swift */,
 				7E43065326ED6E7500B67315 /* GetAppVersion.swift */,
 				7E48D2B5274C2E6800B14355 /* PreferredWakeUpTime.swift */,
 				7E32630C275EAD270045CEA0 /* ManageActiveSleep.swift */,
@@ -1108,15 +1072,6 @@
 				7E91D9562371E4080087436F /* RiseDailySunTime+CoreDataProperties.swift */,
 			);
 			path = Entity;
-			sourceTree = "<group>";
-		};
-		7EE71BFD239D8AF0005ABE1A /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				7E4798F4239D894B007FB8F2 /* Storyboard.swift */,
-				92D7D65B2296F298009321AE /* LaunchScreen.storyboard */,
-			);
-			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		7EE87CEB2442233500E1BD3B /* LongPressProgressButton */ = {
@@ -1302,7 +1257,6 @@
 		7EFF58B5241C1E1A00D2CCEC /* Sleep */ = {
 			isa = PBXGroup;
 			children = (
-				7EFF58B8241C1E3B00D2CCEC /* SleepAssembler.swift */,
 				7E9D9C0324E58F38000772C0 /* SleepView.swift */,
 				92D7D6542296F297009321AE /* SleepViewController.swift */,
 			);
@@ -1337,8 +1291,6 @@
 				7EEBEBFD2721F3AF00F8C8D2 /* main.swift */,
 				92D7D6522296F297009321AE /* AppDelegate.swift */,
 				7E5A1EA5282FE009005F19D6 /* Presentation */,
-				7EE71BFD239D8AF0005ABE1A /* Storyboards */,
-				7E4901872340F3970034521E /* Stories */,
 				7EB9F33B23C20218002A6DD3 /* Domain */,
 				7EB1C0342340FA6E0028237E /* Data */,
 				7E62D769278CA53800AC9B90 /* Service */,
@@ -1575,7 +1527,6 @@
 				7E69836924EC6923002EE278 /* RecoveryOptions.swift in Sources */,
 				7E153969274801F100CC2E7B /* EditScheduleSegmentedControlCell.swift in Sources */,
 				7EF8D1E426F7AC6E002CE18B /* SunTimeError.swift in Sources */,
-				7EB7341A274EBC2800DC7758 /* AfterSleepAssembler.swift in Sources */,
 				7EE227652504C38B00EC70CB /* UserDefaults.swift in Sources */,
 				7EB9F35A23C389BF002A6DD3 /* DataLayer.swift in Sources */,
 				7EAFB6312737203000B7C7C6 /* PauseSchedule.swift in Sources */,
@@ -1616,7 +1567,6 @@
 				7EAFB61A2735D28E00B7C7C6 /* Schedule.swift in Sources */,
 				7E5E335A261A34B4000EE976 /* UIView+applyBlur.swift in Sources */,
 				7E6225B326192E24001AA8FD /* UILabel+Styleable.swift in Sources */,
-				7E32630F275EB01D0045CEA0 /* RootStoryAssembler.swift in Sources */,
 				7EA38AE423783EFC0007919B /* DefaultLocationRepository.swift in Sources */,
 				7E69837A24EC69FE002EE278 /* ErrorViewRemovable.swift in Sources */,
 				7EF8D1E126F7ABC8002CE18B /* SunTimeAPIServiceImpl.swift in Sources */,
@@ -1624,7 +1574,7 @@
 				7E173375241044D70028FDBE /* SunTimeRepository.swift in Sources */,
 				7E199CD2240BD41D00B702AD /* SliderWithValues.swift in Sources */,
 				7E1539772749619400CC2E7B /* RefreshSunTime.swift in Sources */,
-				7E43064926ED40F400B67315 /* SetOnboardingCompleted.swift in Sources */,
+				7E43064926ED40F400B67315 /* ManageOnboardingCompleted.swift in Sources */,
 				7E354E3024119B1C0036FF3F /* LocalDataSource.swift in Sources */,
 				7E162FF1243D0E22004C68B1 /* AutoRefreshable.swift in Sources */,
 				7E15396B2748028400CC2E7B /* UISegmentedControl+Styleable.swift in Sources */,
@@ -1634,7 +1584,6 @@
 				7E07A10123AFBEE300B9D61A /* WelcomeCreateScheduleViewController.swift in Sources */,
 				7E989FE125F5B0DF001954CD /* CollectionPageScrollDelegate.swift in Sources */,
 				7E5A1EB3282FE284005F19D6 /* UseCaseLocator.swift in Sources */,
-				7ED8E59723BFFD5100A1E96F /* Story.swift in Sources */,
 				7E9AC0DC28720C7F00E0153E /* KeepAppOpenedSuggestion.swift in Sources */,
 				7E43064E26ED514C00B67315 /* SettingItemView.swift in Sources */,
 				7EF4C198240412EC0098135A /* EditScheduleDatePickerTableCell+Model.swift in Sources */,
@@ -1689,7 +1638,6 @@
 				7EA7BA0C2354F2510051A92D /* CollectionView.swift in Sources */,
 				7EAFB6262735DA8400B7C7C6 /* ScheduleRepositoryImpl.swift in Sources */,
 				7E91D95B2371E4080087436F /* RiseDailySunTime+CoreDataClass.swift in Sources */,
-				7EFF58B9241C1E3B00D2CCEC /* SleepAssembler.swift in Sources */,
 				7E69836524EC68F4002EE278 /* RecoverableError.swift in Sources */,
 				7EAFB6242735DA0100B7C7C6 /* ScheduleRepository.swift in Sources */,
 				7E0B88F72455BEF400BC3CF5 /* SelectableStackViewButton.swift in Sources */,
@@ -1707,14 +1655,12 @@
 				7E48D2B6274C2E6800B14355 /* PreferredWakeUpTime.swift in Sources */,
 				7E9D9C1524EB0E13000772C0 /* EditScheduleView.swift in Sources */,
 				7E9D9C1324E5DA57000772C0 /* SchedulePageView.swift in Sources */,
-				7E514DBD25A87F6F000EBE81 /* AlarmingAssembler.swift in Sources */,
 				7EAFB6222735D89F00B7C7C6 /* ScheduleData.xcdatamodeld in Sources */,
 				7E9D9C0824E596DA000772C0 /* PrepareToSleepView.swift in Sources */,
 				7E346CE9274A5C5500848DBB /* ScreenTitleView.swift in Sources */,
 				7E354403283AA21F00C1E149 /* Days.swift in Sources */,
 				7E43063926EBCEDD00B67315 /* UIView+addSubviews.swift in Sources */,
 				7EEB1E122443370F001ABE4A /* AlarmSounds.swift in Sources */,
-				7E346CE6274A5BFE00848DBB /* AdjustScheduleAssembler.swift in Sources */,
 				7E43063F26ECC58400B67315 /* DescriptionLabel.swift in Sources */,
 				7EEFC00F25E1AEB0007AE725 /* BorderedView.swift in Sources */,
 				7E9D9C0424E58F39000772C0 /* SleepView.swift in Sources */,
@@ -1724,7 +1670,6 @@
 				7EE6905E243E658B00CA423E /* LongPressProgressButton.swift in Sources */,
 				7E5F292A23F9638C0050DFD3 /* FloatingLabel.swift in Sources */,
 				7EAFB63E2737318D00B7C7C6 /* Double+Utils.swift in Sources */,
-				7E173372240D9F7A0028FDBE /* DomainLayer.swift in Sources */,
 				7E346CF3274AE0CA00848DBB /* AdjustSchedule.swift in Sources */,
 				7E43064B26ED4FF600B67315 /* SettingsView.swift in Sources */,
 				7EAFB62D2735EC1200B7C7C6 /* SaveSchedule.swift in Sources */,
@@ -1734,7 +1679,6 @@
 				7E5A1EB1282FE239005F19D6 /* UseCases.swift in Sources */,
 				7EE87CEF2442254A00E1BD3B /* AutoRefreshableLabel.swift in Sources */,
 				7E326315275EBD1E0045CEA0 /* NavigationController.swift in Sources */,
-				7E43065B26EE4F3800B67315 /* AboutAssembler.swift in Sources */,
 				7EEA217923B6A3B400354BEA /* UIViewController+present.swift in Sources */,
 				7E31497D23425CA600941606 /* TableViewDataSource.swift in Sources */,
 				7E514DB325A87F5E000EBE81 /* AlarmingViewController.swift in Sources */,

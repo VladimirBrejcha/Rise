@@ -8,6 +8,10 @@
 
 import MessageUI
 
+protocol HasPrepareMail {
+  var prepareMail: PrepareMail { get }
+}
+
 enum PrepareMailError: LocalizedError {
     case cannotSendMail
 

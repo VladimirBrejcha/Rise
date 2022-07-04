@@ -44,8 +44,8 @@ final class UseCaseLocator: UseCases {
     RefreshSunTimeImpl(locationRepository, sunTimeRepository)
   }
 
-  var setOnboardingCompleted: SetOnboardingCompleted {
-    SetOnboardingCompletedUseCase(userData)
+  var manageOnboardingCompleted: ManageOnboardingCompleted {
+    ManageOnboardingCompletedImpl(userData)
   }
 
   var adjustSchedule: AdjustSchedule {
@@ -53,7 +53,7 @@ final class UseCaseLocator: UseCases {
   }
 
   var getSchedule: GetSchedule {
-    GetScheduleImpl(scheduleRepository, DomainLayer.createNextSchedule)
+    GetScheduleImpl(scheduleRepository, createNextSchedule)
   }
 
   var pauseSchedule: PauseSchedule {
@@ -78,5 +78,21 @@ final class UseCaseLocator: UseCases {
 
   var changeScreenBrightness: ChangeScreenBrightness {
     ChangeScreenBrightnessImpl()
+  }
+
+  var prepareMail: PrepareMail {
+    PrepareMailUseCase()
+  }
+
+  var getAppVersion: GetAppVersion {
+    GetAppVersionUseCase()
+  }
+
+  var createNextSchedule: CreateNextSchedule {
+    CreateNextScheduleImpl(userData)
+  }
+
+  var saveSchedule: SaveSchedule {
+    SaveScheduleImpl(scheduleRepository)
   }
 }

@@ -1,10 +1,10 @@
 import UIKit
 
 public protocol ViewController: UIViewController {
-  associatedtype Deps
-  associatedtype Params
-  associatedtype OutCommand
-  typealias Out = (OutCommand) -> Void
+  associatedtype Deps = Void
+  associatedtype Params = Void
+  associatedtype OutCommand = Void
+  associatedtype Out = (OutCommand) -> Void
   associatedtype View: UIView
 }
 

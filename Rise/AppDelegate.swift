@@ -20,7 +20,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
   )
 
   private lazy var coordinator: RootCoordinator = RootCoordinator(
-    deps: useCaseLocator,
+    useCases: useCaseLocator,
     navigationController: rootViewController
   )
 

@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol HasGetAppVersion {
+  var getAppVersion: GetAppVersion { get }
+}
+
 protocol GetAppVersion {
     func callAsFunction() -> String?
 }

@@ -7,10 +7,9 @@
 //
 
 typealias UseCases =
-
   HasGetSunTimeUseCase
 & HasRefreshSunTimeUseCase
-& HasSetOnboardingCompleted
+& HasManageOnboardingCompleted
 & HasAdjustScheduleUseCase
 & HasGetScheduleUseCase
 & HasPauseScheduleUseCase
@@ -22,3 +21,7 @@ typealias UseCases =
 & HasPreferredWakeUpTimeUseCase
 & HasPreventAppSleepUseCase
 & HasChangeScreenBrightnessUseCase
+& HasPrepareMail
+& HasGetAppVersion
+& HasCreateNextSchedule
+& HasSaveSchedule

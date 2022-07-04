@@ -23,7 +23,6 @@ extension Settings {
 
     typealias Deps = HasGetScheduleUseCase
     typealias View = Settings.View
-    typealias Params = Void
 
     private let deps: Deps
     private let out: Out

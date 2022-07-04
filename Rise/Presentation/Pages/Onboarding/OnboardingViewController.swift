@@ -17,10 +17,8 @@ extension Onboarding {
       .lightContent
     }
 
-    enum OutCommand {
-      case finish
-    }
-    typealias Deps = HasSetOnboardingCompleted
+    enum OutCommand { case finish }
+    typealias Deps = HasManageOnboardingCompleted
     typealias Params = [View.ContentView.Model]
     typealias View = Onboarding.View
 
@@ -46,9 +44,9 @@ extension Onboarding {
         content: data,
         buttonTitle: Text.Onboarding.action,
         finalButtonTitle: Text.Onboarding.actionFinal,
-        completedHandler: { [weak self] in
-          self?.deps.setOnboardingCompleted(true)
-          self?.out(.finish)
+        completedHandler: { [unowned self] in
+          deps.manageOnboardingCompleted.isCompleted = true
+          out(.finish)
         }
       )
     }

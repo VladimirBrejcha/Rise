@@ -19,8 +19,6 @@ extension Days {
     ViewController
   {
     typealias Deps = HasGetSunTimeUseCase & HasGetScheduleUseCase
-    typealias Params = Void
-    typealias OutCommand = Void
 
     private typealias Snapshot = CollectionView.Snapshot
     private typealias Item = CollectionView.Item.Model

@@ -6,20 +6,22 @@
 //  Copyright © 2021 VladimirBrejcha. All rights reserved.
 //
 
-import Foundation
+protocol HasSaveSchedule {
+  var saveSchedule: SaveSchedule { get }
+}
 
 protocol SaveSchedule {
-    func callAsFunction(_ schedule: Schedule)
+  func callAsFunction(_ schedule: Schedule)
 }
 
 final class SaveScheduleImpl: SaveSchedule {
-    private let scheduleRepository: ScheduleRepository
+  private let scheduleRepository: ScheduleRepository
 
-    init(_ scheduleRepository: ScheduleRepository) {
-        self.scheduleRepository = scheduleRepository
-    }
+  init(_ scheduleRepository: ScheduleRepository) {
+    self.scheduleRepository = scheduleRepository
+  }
 
-    func callAsFunction(_ schedule: Schedule) {
-        scheduleRepository.save(schedule)
-    }
+  func callAsFunction(_ schedule: Schedule) {
+    scheduleRepository.save(schedule)
+  }
 }

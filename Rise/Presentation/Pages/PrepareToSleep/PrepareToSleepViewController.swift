@@ -19,7 +19,6 @@ final class PrepareToSleepViewController: UIViewController, ViewController {
     case showSleep(wakeUp: Date)
   }
 
-  typealias Params = Void
   typealias View = PrepareToSleepView
   typealias Deps =
   HasGetScheduleUseCase

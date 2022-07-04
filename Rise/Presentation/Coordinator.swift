@@ -10,24 +10,50 @@ import UIKit
 
 final class RootCoordinator {
 
-  typealias Dependencies = UseCases
-
-  private let deps: Dependencies
+  private let useCases: UseCases
   private let navigationController: UINavigationController
 
-  init(deps: Dependencies, navigationController: UINavigationController) {
-    self.deps = deps
+  init(useCases: UseCases,
+       navigationController: UINavigationController
+  ) {
+    self.useCases = useCases
     self.navigationController = navigationController
   }
 
   func run() {
     navigationController.setViewControllers(
-      [tabBar, onboarding],
+      rootControllers,
       animated: true
     )
   }
 
-  // MARK: - ViewControllers
+  // MARK: - rootControllers
+
+  private var rootControllers: [UIViewController] {
+    var controllers: [UIViewController] = [tabBar]
+
+    // if is sleeping
+    if let activeSleepEndDate = useCases.manageActiveSleep.alarmAt {
+      let minSinceWakeUp = Date().timeIntervalSince(activeSleepEndDate) / 60
+      switch minSinceWakeUp {
+      case ..<0:
+        controllers.append(sleep(params: activeSleepEndDate))
+      case 0...30:
+        controllers.append(alarming)
+      default:
+        // if expected wake up happened more than 30 minutes ago, discard sleep
+        useCases.manageActiveSleep.endSleep()
+      }
+    }
+
+    else if !useCases.manageOnboardingCompleted.isCompleted {
+      controllers.append(onboarding)
+    }
+
+    return controllers
+  }
+
+  // MARK: - All View Controllers
 
   private var tabBar: TabBarController {
     TabBarController(
@@ -38,23 +64,24 @@ final class RootCoordinator {
 
   private var onboarding: Onboarding.Controller {
     Onboarding.Controller(
-      deps: deps,
+      deps: useCases,
       params: Onboarding.defaultParams,
       out: { [unowned nc = navigationController] command in
-        nc.popViewController(animated: true)
-    })
+        switch command {
+        case .finish:
+          nc.popViewController(animated: true)
+        }
+      })
   }
 
   private var settings: Settings.Controller {
-    .init(deps: deps) { [self, unowned nc = navigationController] command in
+    .init(deps: useCases) { [self, unowned nc = navigationController] command in
       switch command {
       case .editSchedule(let schedule):
         nc.pushViewController(editSchedule(params: schedule), animated: true)
       case .adjustSchedule(let schedule):
         nc.present(
-          Story.adjustSchedule(
-            currentSchedule: schedule
-          )(),
+          adjustSchedule((schedule, nil)),
           with: .fullScreen
         )
       case .showOnboarding:
@@ -63,7 +90,7 @@ final class RootCoordinator {
           animated: true
         )
       case .showAbout:
-        nc.present(Story.about(), with: .modal)
+        nc.present(about, with: .modal)
       case .showRefreshSuntime:
         nc.present(refreshSunTimes, with: .modal)
       }
@@ -71,7 +98,7 @@ final class RootCoordinator {
   }
 
   private func editSchedule(params: EditSchedule.Controller.Params) -> EditSchedule.Controller {
-    .init(deps: deps, params: params) { [unowned nc = navigationController] command in
+    .init(deps: useCases, params: params) { [unowned nc = navigationController] command in
       switch command {
       case .finish:
         nc.popViewController(animated: true)
@@ -80,7 +107,7 @@ final class RootCoordinator {
   }
 
   private var schedule: SchedulePage.Controller {
-    .init(deps: deps) { [self, unowned nc = navigationController] command in
+    .init(deps: useCases) { [self, unowned nc = navigationController] command in
       switch command {
       case .createSchedule:
         nc.present(
@@ -92,10 +119,10 @@ final class RootCoordinator {
   }
 
   private var createSchedule: CreateScheduleViewController {
-    CreateScheduleAssembler().assemble()
+    CreateScheduleAssembler().assemble(deps: useCases)
   }
 
-  func keepAppOpened(
+  private func keepAppOpened(
     params: KeepAppOpenedSuggestion.Controller.Params
   ) -> KeepAppOpenedSuggestion.Controller {
     .init(params: params) { [unowned nc = navigationController] command in
@@ -111,7 +138,7 @@ final class RootCoordinator {
   
   private var prepareToSleep: PrepareToSleepViewController {
     let controller = Storyboard.sleep.instantiateViewController(of: PrepareToSleepViewController.self)
-    controller.deps = deps
+    controller.deps = useCases
     controller.out = { [self, unowned nc = navigationController] command in
       switch command {
       case .showKeepAppOpenedSuggestion(let completion):
@@ -123,7 +150,7 @@ final class RootCoordinator {
         nc.popToRootViewController(animated: true)
       case .showSleep(let wakeUp):
         nc.replaceAllOnTopOfRoot(
-          with: Story.sleep(alarmTime: wakeUp)()
+          with: sleep(params: wakeUp)
         )
       }
     }
@@ -132,8 +159,8 @@ final class RootCoordinator {
 
   private var today: Today.Controller {
     .init(
-      deps: deps,
-      params: Days.Controller(deps: deps)
+      deps: useCases,
+      params: Days.Controller(deps: useCases)
     ) { [self, unowned nc = navigationController] command in
       switch command {
       case .prepareToSleep:
@@ -143,18 +170,15 @@ final class RootCoordinator {
         )
       case let .adjustSchedule(currentSchedule, completion):
         nc.present(
-          Story.adjustSchedule(
-            currentSchedule: currentSchedule,
-            completion: completion
-          )(),
+          adjustSchedule((currentSchedule, nil), completion: completion),
           with: .modal
         )
       }
     }
   }
 
-  var refreshSunTimes: RefreshSunTimesViewController {
-    .init(deps: deps) { [unowned nc = navigationController] command in
+  private var refreshSunTimes: RefreshSunTimesViewController {
+    .init(deps: useCases) { [unowned nc = navigationController] command in
       switch command {
       case .finish:
         nc.dismiss(animated: true)
@@ -162,8 +186,8 @@ final class RootCoordinator {
     }
   }
 
-  func sleep(params: SleepViewController.Params) -> SleepViewController {
-    .init(deps: deps, params: params) { [self, unowned nc = navigationController] command in
+  private func sleep(params: SleepViewController.Params) -> SleepViewController {
+    .init(deps: useCases, params: params) { [self, unowned nc = navigationController] command in
       switch command {
       case .showKeepAppOpenedSuggestion:
         nc.present(
@@ -172,13 +196,66 @@ final class RootCoordinator {
         )
       case .showAfterSleep:
         nc.replaceAllOnTopOfRoot(
-          with: Story.afterSleep()
+          with: afterSleep
         )
       case .showAlarming:
         nc.replaceAllOnTopOfRoot(
-          with: Story.alarming()
+          with: alarming
         )
       }
     }
+  }
+
+  private var alarming: AlarmingViewController {
+    .init(deps: useCases) { [self, unowned nc = navigationController] command in
+      switch command {
+      case .alarmStopped:
+        nc.replaceAllOnTopOfRoot(
+          with: afterSleep
+        )
+      case .alarmSnoozed(let newAlarmTime):
+        nc.replaceAllOnTopOfRoot(
+          with: sleep(params: newAlarmTime)
+        )
+      }
+    }
+  }
+
+  private var afterSleep: AfterSleepViewController {
+    .init(deps: useCases) { [self, unowned nc = navigationController] command in
+      switch command {
+      case .finish:
+        nc.popToRootViewController(
+          animated: true
+        )
+      case let .adjustSchedule(currentSchedule, toBed):
+        nc.present(
+          adjustSchedule((currentSchedule: currentSchedule, toBed: toBed)),
+          with: .modal
+        )
+      }
+    }
+  }
+
+  private func adjustSchedule(
+    _ params: AdjustScheduleViewController.Params,
+    completion: ((Bool) -> Void)? = nil
+  ) -> AdjustScheduleViewController {
+    .init(deps: useCases, params: params) { [unowned nc = navigationController] command in
+      switch command {
+      case .cancelAdjustment:
+        nc.dismiss(animated: true, completion: {
+          completion?(false)
+        })
+      case .adjustmentCompleted:
+        nc.dismiss(animated: true, completion: {
+          completion?(true)
+        })
+      }
+    }
+  }
+
+  private var about: AboutViewController {
+    .init(deps: useCases)
   }
 }

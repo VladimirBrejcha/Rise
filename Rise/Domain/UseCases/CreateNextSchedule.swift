@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol HasCreateNextSchedule {
+  var createNextSchedule: CreateNextSchedule { get }
+}
+
 /*
  * Creates schedule for the next day
  *

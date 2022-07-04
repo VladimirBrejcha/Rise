@@ -17,7 +17,6 @@ extension KeepAppOpenedSuggestion {
       case finish((() -> Void)?)
     }
 
-    typealias Deps = Void
     typealias View = KeepAppOpenedSuggestion.View
     typealias Params = (() -> Void)?
 
