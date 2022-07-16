@@ -137,8 +137,6 @@
 		7EEB1E0D24424010001ABE4A /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB1E0C24424010001ABE4A /* AudioPlayer.swift */; };
 		7EEB1E0F2443369F001ABE4A /* bellAlarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7EEB1E0E2443369F001ABE4A /* bellAlarm.wav */; };
 		7EEB1E122443370F001ABE4A /* AlarmSounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB1E112443370F001ABE4A /* AlarmSounds.swift */; };
-		7EEBEBFE2721F3AF00F8C8D2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEBEBFD2721F3AF00F8C8D2 /* main.swift */; };
-		7EEBEC002721F3F300F8C8D2 /* TestsAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEBEBFF2721F3F300F8C8D2 /* TestsAppDelegate.swift */; };
 		7EEFC00F25E1AEB0007AE725 /* BorderedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEFC00E25E1AEB0007AE725 /* BorderedView.swift */; };
 		7EEFC01725E1AFD8007AE725 /* ImageLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEFC01625E1AFD8007AE725 /* ImageLabelView.swift */; };
 		7EF4C195240412D80098135A /* EditScheduleDatePickerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF4C193240412D80098135A /* EditScheduleDatePickerTableCell.swift */; };
@@ -156,28 +154,10 @@
 		92D7D6552296F297009321AE /* SleepViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6542296F297009321AE /* SleepViewController.swift */; };
 		92D7D65A2296F298009321AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92D7D6592296F298009321AE /* Assets.xcassets */; };
 		92D7D65D2296F298009321AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92D7D65B2296F298009321AE /* LaunchScreen.storyboard */; };
-		92D7D6732296F298009321AE /* RiseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6722296F298009321AE /* RiseUITests.swift */; };
 		92E77AF822A5303400E5E21C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E77AF722A5303400E5E21C /* SettingsViewController.swift */; };
 		92E77AFA22A5304400E5E21C /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E77AF922A5304400E5E21C /* TodayViewController.swift */; };
 		92FE417A28833DE700F328DB /* Localization in Frameworks */ = {isa = PBXBuildFile; productRef = 92FE417928833DE700F328DB /* Localization */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		7EBE900923C9231200043651 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 92D7D6472296F297009321AE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 92D7D64E2296F297009321AE;
-			remoteInfo = Rise;
-		};
-		92D7D66F2296F298009321AE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 92D7D6472296F297009321AE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 92D7D64E2296F297009321AE;
-			remoteInfo = Rise;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		7E07A10023AFBEE300B9D61A /* WelcomeCreateScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCreateScheduleViewController.swift; sourceTree = "<group>"; };
@@ -293,8 +273,6 @@
 		7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		7EB9F34F23C35CA9002A6DD3 /* SchedulePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePage.swift; sourceTree = "<group>"; };
 		7EB9F35323C36B54002A6DD3 /* CreateScheduleAssembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateScheduleAssembler.swift; sourceTree = "<group>"; };
-		7EBE900423C9231200043651 /* RiseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RiseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7EBE900823C9231200043651 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7ECA517D25E340BD009362F9 /* ContextPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextPreview.swift; sourceTree = "<group>"; };
 		7ECD2C702419168600408C4B /* EditScheduleButtonTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScheduleButtonTableCell.swift; sourceTree = "<group>"; };
 		7ECD2C77241916C600408C4B /* EditScheduleButtonTableCell+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditScheduleButtonTableCell+Model.swift"; sourceTree = "<group>"; };
@@ -313,8 +291,6 @@
 		7EEB1E0C24424010001ABE4A /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		7EEB1E0E2443369F001ABE4A /* bellAlarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bellAlarm.wav; sourceTree = "<group>"; };
 		7EEB1E112443370F001ABE4A /* AlarmSounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSounds.swift; sourceTree = "<group>"; };
-		7EEBEBFD2721F3AF00F8C8D2 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		7EEBEBFF2721F3F300F8C8D2 /* TestsAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsAppDelegate.swift; sourceTree = "<group>"; };
 		7EEFC00E25E1AEB0007AE725 /* BorderedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedView.swift; sourceTree = "<group>"; };
 		7EEFC01625E1AFD8007AE725 /* ImageLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabelView.swift; sourceTree = "<group>"; };
 		7EF4C193240412D80098135A /* EditScheduleDatePickerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScheduleDatePickerTableCell.swift; sourceTree = "<group>"; };
@@ -333,7 +309,6 @@
 		92D7D6542296F297009321AE /* SleepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepViewController.swift; sourceTree = "<group>"; };
 		92D7D6592296F298009321AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92D7D65E2296F298009321AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		92D7D66E2296F298009321AE /* RiseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RiseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D7D6722296F298009321AE /* RiseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiseUITests.swift; sourceTree = "<group>"; };
 		92D7D6742296F298009321AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92E77AF722A5303400E5E21C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -341,13 +316,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		7EBE900123C9231200043651 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		92D7D64C2296F297009321AE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -358,13 +326,6 @@
 				92D1FD7F28833A3E008B8EC0 /* DomainLayer in Frameworks */,
 				92695F1A28831EB800D382C2 /* Core in Frameworks */,
 				92FE417A28833DE700F328DB /* Localization in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		92D7D66B2296F298009321AE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -726,15 +687,6 @@
 			path = AfterSleep;
 			sourceTree = "<group>";
 		};
-		7EBE900523C9231200043651 /* RiseTests */ = {
-			isa = PBXGroup;
-			children = (
-				7EEBEBFF2721F3F300F8C8D2 /* TestsAppDelegate.swift */,
-				7EBE900823C9231200043651 /* Info.plist */,
-			);
-			path = RiseTests;
-			sourceTree = "<group>";
-		};
 		7ECD2C742419168900408C4B /* ButtonTableCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -933,7 +885,6 @@
 				7E15397F2749B02900CC2E7B /* Packages */,
 				92D7D6512296F297009321AE /* Rise */,
 				92D7D6712296F298009321AE /* RiseUITests */,
-				7EBE900523C9231200043651 /* RiseTests */,
 				92D7D6502296F297009321AE /* Products */,
 				58118E3FFAF9EC6FD86AEFC7 /* Frameworks */,
 			);
@@ -943,8 +894,6 @@
 			isa = PBXGroup;
 			children = (
 				92D7D64F2296F297009321AE /* Rise.app */,
-				92D7D66E2296F298009321AE /* RiseUITests.xctest */,
-				7EBE900423C9231200043651 /* RiseTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -952,7 +901,6 @@
 		92D7D6512296F297009321AE /* Rise */ = {
 			isa = PBXGroup;
 			children = (
-				7EEBEBFD2721F3AF00F8C8D2 /* main.swift */,
 				92D7D6522296F297009321AE /* AppDelegate.swift */,
 				7E5A1EA5282FE009005F19D6 /* Presentation */,
 				7E62D769278CA53800AC9B90 /* Service */,
@@ -986,24 +934,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7EBE900323C9231200043651 /* RiseTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7EBE900B23C9231200043651 /* Build configuration list for PBXNativeTarget "RiseTests" */;
-			buildPhases = (
-				7EBE900023C9231200043651 /* Sources */,
-				7EBE900123C9231200043651 /* Frameworks */,
-				7EBE900223C9231200043651 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7EBE900A23C9231200043651 /* PBXTargetDependency */,
-			);
-			name = RiseTests;
-			productName = RiseTests;
-			productReference = 7EBE900423C9231200043651 /* RiseTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		92D7D64E2296F297009321AE /* Rise */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 92D7D6772296F298009321AE /* Build configuration list for PBXNativeTarget "Rise" */;
@@ -1030,24 +960,6 @@
 			productReference = 92D7D64F2296F297009321AE /* Rise.app */;
 			productType = "com.apple.product-type.application";
 		};
-		92D7D66D2296F298009321AE /* RiseUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 92D7D67D2296F298009321AE /* Build configuration list for PBXNativeTarget "RiseUITests" */;
-			buildPhases = (
-				92D7D66A2296F298009321AE /* Sources */,
-				92D7D66B2296F298009321AE /* Frameworks */,
-				92D7D66C2296F298009321AE /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				92D7D6702296F298009321AE /* PBXTargetDependency */,
-			);
-			name = RiseUITests;
-			productName = RiseUITests;
-			productReference = 92D7D66E2296F298009321AE /* RiseUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1058,16 +970,8 @@
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = VladimirBrejcha;
 				TargetAttributes = {
-					7EBE900323C9231200043651 = {
-						CreatedOnToolsVersion = 11.3;
-						TestTargetID = 92D7D64E2296F297009321AE;
-					};
 					92D7D64E2296F297009321AE = {
 						CreatedOnToolsVersion = 10.2.1;
-					};
-					92D7D66D2296F298009321AE = {
-						CreatedOnToolsVersion = 10.2.1;
-						TestTargetID = 92D7D64E2296F297009321AE;
 					};
 				};
 			};
@@ -1089,20 +993,11 @@
 			projectRoot = "";
 			targets = (
 				92D7D64E2296F297009321AE /* Rise */,
-				92D7D66D2296F298009321AE /* RiseUITests */,
-				7EBE900323C9231200043651 /* RiseTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		7EBE900223C9231200043651 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		92D7D64D2296F297009321AE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1116,13 +1011,6 @@
 				92D7D65A2296F298009321AE /* Assets.xcassets in Resources */,
 				7E8EFA3C26EABC3900DEE564 /* CreateSchedule.storyboard in Resources */,
 				7EEB1E0F2443369F001ABE4A /* bellAlarm.wav in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		92D7D66C2296F298009321AE /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1149,14 +1037,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		7EBE900023C9231200043651 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7EEBEC002721F3F300F8C8D2 /* TestsAppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		92D7D64B2296F297009321AE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1241,7 +1121,6 @@
 				7EB9003E23256AC9006EB9A8 /* DesignableContainerView.swift in Sources */,
 				7E346CE5274A5BFE00848DBB /* AdjustScheduleView.swift in Sources */,
 				7E708A3923BFD09B003B5702 /* WentSleepCreateScheduleViewController.swift in Sources */,
-				7EEBEBFE2721F3AF00F8C8D2 /* main.swift in Sources */,
 				7E6225AA26192DF9001AA8FD /* Styleable.swift in Sources */,
 				92D12FDD22A44B3B0093B0A3 /* TabBarController.swift in Sources */,
 				7E43063D26ECC4E400B67315 /* ContentView.swift in Sources */,
@@ -1300,28 +1179,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		92D7D66A2296F298009321AE /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				92D7D6732296F298009321AE /* RiseUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		7EBE900A23C9231200043651 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 92D7D64E2296F297009321AE /* Rise */;
-			targetProxy = 7EBE900923C9231200043651 /* PBXContainerItemProxy */;
-		};
-		92D7D6702296F298009321AE /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 92D7D64E2296F297009321AE /* Rise */;
-			targetProxy = 92D7D66F2296F298009321AE /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7E8EFA3026EABC2F00DEE564 /* Sleep.storyboard */ = {
@@ -1351,48 +1209,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		7EBE900C23C9231200043651 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 29UN6WTSCZ;
-				INFOPLIST_FILE = RiseTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vladimirBrejcha.RiseTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rise.app/Rise";
-			};
-			name = Debug;
-		};
-		7EBE900D23C9231200043651 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 29UN6WTSCZ;
-				INFOPLIST_FILE = RiseTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vladimirBrejcha.RiseTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Rise.app/Rise";
-			};
-			name = Release;
-		};
 		92D7D6752296F298009321AE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1557,58 +1373,9 @@
 			};
 			name = Release;
 		};
-		92D7D67E2296F298009321AE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 29UN6WTSCZ;
-				INFOPLIST_FILE = RiseUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = VladimirBrejcha.RiseUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Rise;
-			};
-			name = Debug;
-		};
-		92D7D67F2296F298009321AE /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 29UN6WTSCZ;
-				INFOPLIST_FILE = RiseUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = VladimirBrejcha.RiseUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Rise;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7EBE900B23C9231200043651 /* Build configuration list for PBXNativeTarget "RiseTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7EBE900C23C9231200043651 /* Debug */,
-				7EBE900D23C9231200043651 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		92D7D64A2296F297009321AE /* Build configuration list for PBXProject "Rise" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1623,15 +1390,6 @@
 			buildConfigurations = (
 				92D7D6782296F298009321AE /* Debug */,
 				92D7D6792296F298009321AE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		92D7D67D2296F298009321AE /* Build configuration list for PBXNativeTarget "RiseUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				92D7D67E2296F298009321AE /* Debug */,
-				92D7D67F2296F298009321AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

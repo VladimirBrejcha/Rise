@@ -10,6 +10,7 @@ import UIKit
 import DataLayer
 import DomainLayer
 
+@main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
