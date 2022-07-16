@@ -76,11 +76,11 @@ public final class UseCaseLocator: UseCases {
   }
   
   public var prepareMail: PrepareMail {
-    PrepareMailUseCase()
+    PrepareMailImpl()
   }
   
   public var getAppVersion: GetAppVersion {
-    GetAppVersionUseCase()
+    GetAppVersionImpl()
   }
   
   public var createNextSchedule: CreateNextSchedule {

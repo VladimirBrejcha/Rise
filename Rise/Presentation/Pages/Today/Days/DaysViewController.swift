@@ -20,7 +20,7 @@ extension Days {
     LocationPermissionAlertPresentable,
     ViewController
   {
-    typealias Deps = HasGetSunTimeUseCase & HasGetScheduleUseCase
+    typealias Deps = HasGetSunTime & HasGetSchedule
 
     private typealias Snapshot = CollectionView.Snapshot
     private typealias Item = CollectionView.Item.Model

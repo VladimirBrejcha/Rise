@@ -17,7 +17,7 @@ final class AlarmingViewController: UIViewController, ViewController {
     case alarmSnoozed(newAlarmTime: Date)
   }
 
-  typealias Deps = HasChangeScreenBrightnessUseCase
+  typealias Deps = HasChangeScreenBrightness
   typealias View = AlarmingView
 
   private let out: Out

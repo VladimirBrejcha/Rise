@@ -23,7 +23,7 @@ extension EditSchedule {
       case finish
     }
 
-    typealias Deps = HasDeleteScheduleUseCase & HasUpdateScheduleUseCase
+    typealias Deps = HasDeleteSchedule & HasUpdateSchedule
     typealias View = EditSchedule.View
     typealias Params = Schedule
 

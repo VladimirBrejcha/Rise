@@ -22,10 +22,10 @@ final class PrepareToSleepViewController: UIViewController, ViewController {
 
   typealias View = PrepareToSleepView
   typealias Deps =
-  HasGetScheduleUseCase
-  & HasPreferredWakeUpTimeUseCase
-  & HasSuggestKeepAppOpenedUseCase
-  & HasManageActiveSleepUseCase
+  HasGetSchedule
+  & HasPreferredWakeUpTime
+  & HasSuggestKeepAppOpened
+  & HasManageActiveSleep
 
   var out: Out! // DI
   var deps: Deps! // DI

@@ -1,7 +1,7 @@
 import Foundation
 import DataLayer
 
-public protocol HasDeleteScheduleUseCase {
+public protocol HasDeleteSchedule {
   var deleteSchedule: DeleteSchedule { get }
 }
 

@@ -1,7 +1,7 @@
 import Foundation
 import Core
 
-public protocol HasCreateScheduleUseCase {
+public protocol HasCreateSchedule {
   var createSchedule: CreateSchedule { get }
 }
 

@@ -22,7 +22,7 @@ extension Settings {
       case showRefreshSuntime
     }
 
-    typealias Deps = HasGetScheduleUseCase
+    typealias Deps = HasGetSchedule
     typealias View = Settings.View
 
     private let deps: Deps

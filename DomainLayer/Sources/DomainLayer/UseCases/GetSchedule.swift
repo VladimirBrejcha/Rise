@@ -1,16 +1,8 @@
-//
-//  GetSchedule.swift
-//  Rise
-//
-//  Created by Vladimir Korolev on 06.11.2021.
-//  Copyright © 2021 VladimirBrejcha. All rights reserved.
-//
-
 import Foundation
 import Core
 import DataLayer
 
-public protocol HasGetScheduleUseCase {
+public protocol HasGetSchedule {
   var getSchedule: GetSchedule { get }
 }
 

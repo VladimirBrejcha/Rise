@@ -1,7 +1,7 @@
 import Foundation
 import DataLayer
 
-public protocol HasPreferredWakeUpTimeUseCase {
+public protocol HasPreferredWakeUpTime {
   var preferredWakeUpTime: PreferredWakeUpTime { get }
 }
 

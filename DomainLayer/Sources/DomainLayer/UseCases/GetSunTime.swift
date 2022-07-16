@@ -2,7 +2,7 @@ import Foundation
 import Core
 import DataLayer
 
-public protocol HasGetSunTimeUseCase {
+public protocol HasGetSunTime {
   var getSunTime: GetSunTime { get }
 }
 

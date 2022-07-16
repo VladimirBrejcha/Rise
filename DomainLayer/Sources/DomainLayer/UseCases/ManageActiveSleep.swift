@@ -1,7 +1,7 @@
 import Foundation
 import DataLayer
 
-public protocol HasManageActiveSleepUseCase {
+public protocol HasManageActiveSleep {
   var manageActiveSleep: ManageActiveSleep { get }
 }
 

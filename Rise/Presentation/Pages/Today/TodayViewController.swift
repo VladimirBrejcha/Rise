@@ -19,7 +19,7 @@ extension Today {
       case prepareToSleep
       case adjustSchedule(currentSchedule: Schedule, completion: (Bool) -> Void)
     }
-    typealias Deps = HasGetScheduleUseCase & HasAdjustScheduleUseCase
+    typealias Deps = HasGetSchedule & HasAdjustSchedule
     typealias Params = Days.Controller
     typealias View = Today.View
 

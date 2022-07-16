@@ -1,15 +1,7 @@
-//
-//  RefreshSunTime.swift
-//  Rise
-//
-//  Created by Vladimir Korolev on 20.11.2021.
-//  Copyright © 2021 VladimirBrejcha. All rights reserved.
-//
-
 import Foundation
 import DataLayer
 
-public protocol HasRefreshSunTimeUseCase {
+public protocol HasRefreshSunTime {
   var refreshSunTime: RefreshSunTime { get }
 }
 

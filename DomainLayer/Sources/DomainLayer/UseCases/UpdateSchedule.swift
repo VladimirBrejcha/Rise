@@ -2,7 +2,7 @@ import Foundation
 import Core
 import DataLayer
 
-public protocol HasUpdateScheduleUseCase {
+public protocol HasUpdateSchedule {
   var updateSchedule: UpdateSchedule { get }
 }
 

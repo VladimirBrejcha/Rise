@@ -19,9 +19,9 @@ final class SleepViewController: UIViewController, AutoRefreshable, ViewControll
   }
   
   typealias Deps =
-  HasManageActiveSleepUseCase
-  & HasPreventAppSleepUseCase
-  & HasChangeScreenBrightnessUseCase
+  HasManageActiveSleep
+  & HasPreventAppSleep
+  & HasChangeScreenBrightness
   
   typealias Params = Date
   typealias View = SleepView

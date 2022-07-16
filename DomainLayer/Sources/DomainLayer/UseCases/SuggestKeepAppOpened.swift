@@ -1,6 +1,6 @@
 import DataLayer
 
-public protocol HasSuggestKeepAppOpenedUseCase {
+public protocol HasSuggestKeepAppOpened {
   var suggestKeepAppOpened: SuggestKeepAppOpened { get }
 }
 

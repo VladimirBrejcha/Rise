@@ -17,7 +17,7 @@ final class AfterSleepViewController: UIViewController, ViewController {
     case finish
   }
 
-  typealias Deps = HasManageActiveSleepUseCase & HasGetScheduleUseCase
+  typealias Deps = HasManageActiveSleep & HasGetSchedule
   typealias View = AfterSleepView
 
   private let manageActiveSleep: ManageActiveSleep

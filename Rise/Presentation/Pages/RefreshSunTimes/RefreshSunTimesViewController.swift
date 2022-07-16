@@ -20,7 +20,7 @@ final class RefreshSunTimesViewController:
     case finish
   }
 
-  typealias Deps = HasRefreshSunTimeUseCase
+  typealias Deps = HasRefreshSunTime
   typealias View = RefreshSunTimesView
 
   private let refreshSunTime: RefreshSunTime

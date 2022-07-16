@@ -26,7 +26,7 @@ public protocol PrepareMail {
   ) -> Result<MFMailComposeViewController?, PrepareMailError>
 }
 
-final class PrepareMailUseCase: PrepareMail {
+final class PrepareMailImpl: PrepareMail {
   func callAsFunction(
     to recipient: String,
     subject: String?,

@@ -1,16 +1,8 @@
-//
-//  AdjustSchedule.swift
-//  Rise
-//
-//  Created by Vladimir Korolev on 21.11.2021.
-//  Copyright © 2021 VladimirBrejcha. All rights reserved.
-//
-
 import Foundation
 import Core
 import DataLayer
 
-public protocol HasAdjustScheduleUseCase {
+public protocol HasAdjustSchedule {
   var adjustSchedule: AdjustSchedule { get }
 }
 

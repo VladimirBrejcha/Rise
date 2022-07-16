@@ -1,6 +1,6 @@
 import DataLayer
 
-public protocol HasPauseScheduleUseCase {
+public protocol HasPauseSchedule {
   var pauseSchedule: PauseSchedule { get }
 }
 

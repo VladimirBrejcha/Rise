@@ -1,6 +1,6 @@
 import UIKit
 
-public protocol HasChangeScreenBrightnessUseCase {
+public protocol HasChangeScreenBrightness {
   var changeScreenBrightness: ChangeScreenBrightness { get }
 }
 

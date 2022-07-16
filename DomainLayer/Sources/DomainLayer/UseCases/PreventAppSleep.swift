@@ -1,6 +1,6 @@
 import UIKit
 
-public protocol HasPreventAppSleepUseCase {
+public protocol HasPreventAppSleep {
     var preventAppSleep: PreventAppSleep { get }
 }
 

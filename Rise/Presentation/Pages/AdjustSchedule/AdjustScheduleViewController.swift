@@ -17,7 +17,7 @@ final class AdjustScheduleViewController: UIViewController, ViewController {
     case cancelAdjustment
     case adjustmentCompleted
   }
-  typealias Deps = HasAdjustScheduleUseCase
+  typealias Deps = HasAdjustSchedule
   typealias Params = (currentSchedule: Schedule, toBed: Date?)
   typealias View = AdjustScheduleView
   

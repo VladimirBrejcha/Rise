@@ -9,7 +9,7 @@
 import DomainLayer
 
 final class CreateScheduleAssembler {
-  func assemble(deps: HasCreateScheduleUseCase & HasSaveSchedule) -> CreateScheduleViewController {
+  func assemble(deps: HasCreateSchedule & HasSaveSchedule) -> CreateScheduleViewController {
     let controller = Storyboard.createSchedule.instantiateViewController(
       of: CreateScheduleViewController.self
     )

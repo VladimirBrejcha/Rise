@@ -17,7 +17,7 @@ extension SchedulePage {
     enum OutCommand {
       case createSchedule
     }
-    typealias Deps = HasGetScheduleUseCase & HasPauseScheduleUseCase
+    typealias Deps = HasGetSchedule & HasPauseSchedule
     typealias View = SchedulePage.View
     
     private let getSchedule: GetSchedule
