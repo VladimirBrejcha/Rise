@@ -23,6 +23,8 @@ public final class DefaultUserData: UserData {
   @UserDefault("active_sleep_end_date")
   public var activeSleepEndDate: Date?
 
+  public init() { }
+
   public func invalidateActiveSleep() {
     activeSleepStartDate = nil
     activeSleepEndDate = nil

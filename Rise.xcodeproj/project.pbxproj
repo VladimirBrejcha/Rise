@@ -85,7 +85,6 @@
 		7E69837824EC69EE002EE278 /* ErrorViewCreatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69837724EC69EE002EE278 /* ErrorViewCreatable.swift */; };
 		7E69837A24EC69FE002EE278 /* ErrorViewRemovable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69837924EC69FE002EE278 /* ErrorViewRemovable.swift */; };
 		7E69837C24EC702B002EE278 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E69837B24EC702B002EE278 /* ErrorView.swift */; };
-		7E6D2A73272EA3F200A1D6AD /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6D2A72272EA3F200A1D6AD /* ScheduleTests.swift */; };
 		7E708A3423BF635B003B5702 /* SleepDurationCreateScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3323BF635B003B5702 /* SleepDurationCreateScheduleViewController.swift */; };
 		7E708A3923BFD09B003B5702 /* WentSleepCreateScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3823BFD09B003B5702 /* WentSleepCreateScheduleViewController.swift */; };
 		7E708A3B23BFD0C7003B5702 /* ScheduleCreatedCreateScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E708A3A23BFD0C7003B5702 /* ScheduleCreatedCreateScheduleViewController.swift */; };
@@ -257,7 +256,6 @@
 		7E69837724EC69EE002EE278 /* ErrorViewCreatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewCreatable.swift; sourceTree = "<group>"; };
 		7E69837924EC69FE002EE278 /* ErrorViewRemovable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewRemovable.swift; sourceTree = "<group>"; };
 		7E69837B24EC702B002EE278 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
-		7E6D2A72272EA3F200A1D6AD /* ScheduleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTests.swift; sourceTree = "<group>"; };
 		7E708A3323BF635B003B5702 /* SleepDurationCreateScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepDurationCreateScheduleViewController.swift; sourceTree = "<group>"; };
 		7E708A3823BFD09B003B5702 /* WentSleepCreateScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WentSleepCreateScheduleViewController.swift; sourceTree = "<group>"; };
 		7E708A3A23BFD0C7003B5702 /* ScheduleCreatedCreateScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCreatedCreateScheduleViewController.swift; sourceTree = "<group>"; };
@@ -732,7 +730,6 @@
 			isa = PBXGroup;
 			children = (
 				7EEBEBFF2721F3F300F8C8D2 /* TestsAppDelegate.swift */,
-				7E6D2A72272EA3F200A1D6AD /* ScheduleTests.swift */,
 				7EBE900823C9231200043651 /* Info.plist */,
 			);
 			path = RiseTests;
@@ -1157,7 +1154,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EEBEC002721F3F300F8C8D2 /* TestsAppDelegate.swift in Sources */,
-				7E6D2A73272EA3F200A1D6AD /* ScheduleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

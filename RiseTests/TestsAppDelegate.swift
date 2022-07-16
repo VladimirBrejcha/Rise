@@ -12,4 +12,3 @@ import UIKit
 final class TestsAppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 }
-
