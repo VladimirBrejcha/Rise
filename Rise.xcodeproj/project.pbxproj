@@ -146,7 +146,6 @@
 		7EF4C198240412EC0098135A /* EditScheduleDatePickerTableCell+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF4C197240412EC0098135A /* EditScheduleDatePickerTableCell+Model.swift */; };
 		7EF4C19D240436CD0098135A /* EditScheduleSliderTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF4C19B240436CD0098135A /* EditScheduleSliderTableCell.swift */; };
 		7EF4C1A0240436D70098135A /* EditScheduleSliderTableCell+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF4C19F240436D70098135A /* EditScheduleSliderTableCell+Model.swift */; };
-		7EF8D1E926F7E98F002CE18B /* SunTimeRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF8D1E826F7E98F002CE18B /* SunTimeRepositoryTests.swift */; };
 		7EFAEF6726F5785300C51A13 /* DaysCollectionCell+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFAEF6626F5785300C51A13 /* DaysCollectionCell+Model.swift */; };
 		7EFAEF6926F5938200C51A13 /* DaysCollectionCell+SideItemVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFAEF6826F5938200C51A13 /* DaysCollectionCell+SideItemVStack.swift */; };
 		92695F1828831EB100D382C2 /* Core in Resources */ = {isa = PBXBuildFile; fileRef = 92695F1728831EB100D382C2 /* Core */; };
@@ -324,7 +323,6 @@
 		7EF4C197240412EC0098135A /* EditScheduleDatePickerTableCell+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditScheduleDatePickerTableCell+Model.swift"; sourceTree = "<group>"; };
 		7EF4C19B240436CD0098135A /* EditScheduleSliderTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScheduleSliderTableCell.swift; sourceTree = "<group>"; };
 		7EF4C19F240436D70098135A /* EditScheduleSliderTableCell+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditScheduleSliderTableCell+Model.swift"; sourceTree = "<group>"; };
-		7EF8D1E826F7E98F002CE18B /* SunTimeRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunTimeRepositoryTests.swift; sourceTree = "<group>"; };
 		7EFAEF6626F5785300C51A13 /* DaysCollectionCell+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DaysCollectionCell+Model.swift"; sourceTree = "<group>"; };
 		7EFAEF6826F5938200C51A13 /* DaysCollectionCell+SideItemVStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DaysCollectionCell+SideItemVStack.swift"; sourceTree = "<group>"; };
 		92695F1728831EB100D382C2 /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Core; sourceTree = "<group>"; };
@@ -735,7 +733,6 @@
 			children = (
 				7EEBEBFF2721F3F300F8C8D2 /* TestsAppDelegate.swift */,
 				7E6D2A72272EA3F200A1D6AD /* ScheduleTests.swift */,
-				7EF8D1E826F7E98F002CE18B /* SunTimeRepositoryTests.swift */,
 				7EBE900823C9231200043651 /* Info.plist */,
 			);
 			path = RiseTests;
@@ -1161,7 +1158,6 @@
 			files = (
 				7EEBEC002721F3F300F8C8D2 /* TestsAppDelegate.swift in Sources */,
 				7E6D2A73272EA3F200A1D6AD /* ScheduleTests.swift in Sources */,
-				7EF8D1E926F7E98F002CE18B /* SunTimeRepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
