@@ -25,7 +25,7 @@ final class AfterSleepViewController: UIViewController, ViewController {
 
   private let todaySchedule: Schedule?
   private let wentSleepTime: Date
-  private let totalSleepTime: Schedule.Minute
+  private let totalSleepTime: Int
   private let currentTime: Date = Date()
 
   // MARK: - LifeCycle

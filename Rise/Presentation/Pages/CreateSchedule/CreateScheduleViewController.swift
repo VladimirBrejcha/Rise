@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Core
 
 final class CreateScheduleViewController:
   UIViewController,
@@ -22,12 +23,12 @@ final class CreateScheduleViewController:
     case welcome
     case sleepDuration(
       sleepDurationOutput: (Int) -> Void,
-      currentSleepDuration: () -> Schedule.Minute?
+      currentSleepDuration: () -> Int?
     )
     case wakeUpTime(
       toBedTimeOutput: (Date) -> Void,
       wakeUpTimeOutput: (Date) -> Void,
-      currentSleepDuration: () -> Schedule.Minute?,
+      currentSleepDuration: () -> Int?,
       currentWakeUpTime: () -> Date?
     )
     case intensity(
@@ -93,7 +94,7 @@ final class CreateScheduleViewController:
 
   // opened for DI into PageController controllers
 
-  private(set) var chosenSleepDuration: Schedule.Minute = 8 * 60
+  private(set) var chosenSleepDuration: Int = 8 * 60
   private(set) var chosenWakeUpTime: Date?
   private(set) var chosenToBedTime: Date?
   private(set) var chosenIntensity: Schedule.Intensity = .normal
@@ -150,7 +151,7 @@ final class CreateScheduleViewController:
 
   // opened for DI into PageController controllers
 
-  func sleepDurationValueChanged(_ value: Schedule.Minute) {
+  func sleepDurationValueChanged(_ value: Int) {
     chosenSleepDuration = value
     updateButtonsWithCurrentStory()
   }
@@ -306,7 +307,7 @@ extension CreateScheduleViewController {
     }
   }
 
-  func recoverableError(from error: Swift.Error) -> RecoverableError {
+  func recoverableError(from error: Swift.Error) -> Core.RecoverableError {
     RecoverableError(
       error: error,
       attempter: RecoveryAttempter(

@@ -31,7 +31,7 @@ extension EditSchedule {
     private let out: Out
 
     private var pickedToBed: Date?
-    private var pickedSleepDuration: Schedule.Minute? {
+    private var pickedSleepDuration: Int? {
       didSet {
         if let pickedSleepDuration = pickedSleepDuration {
           sleepDurationObserver?(pickedSleepDuration)
@@ -40,7 +40,7 @@ extension EditSchedule {
     }
     private var pickedIntensity: Schedule.Intensity?
 
-    private var sleepDurationObserver: ((Schedule.Minute) -> Void)?
+    private var sleepDurationObserver: ((Int) -> Void)?
 
     private lazy var tableDataSource: TableDataSource = {
       let plannedToBed = schedule.targetToBed

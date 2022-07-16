@@ -7,73 +7,74 @@
 //
 
 import UIKit
+import Core
 
 protocol AlertCreatable: AnyObject, ErrorReasonExtractable {
-    func makeAlert(for error: Error) -> UIAlertController
-    func makeAlert(
-        title: String?,
-        message: String?,
-        actions: [UIAlertAction]
-    ) -> UIAlertController
-    func makeAreYouSureAlert(text: String, action: UIAlertAction) -> UIAlertController
+  func makeAlert(for error: Error) -> UIAlertController
+  func makeAlert(
+    title: String?,
+    message: String?,
+    actions: [UIAlertAction]
+  ) -> UIAlertController
+  func makeAreYouSureAlert(text: String, action: UIAlertAction) -> UIAlertController
 }
 
 extension AlertCreatable where Self: UIViewController {
-    func makeAlert(for error: Error) -> UIAlertController {
-        if let recoverableError = error as? RecoverableError {
-            return makeRecoverableAlert(for: recoverableError)
-        }
-        
-        let defaultTitle = "Error"
-        let description = errorReason(from: error)
-        
-        if let localizedError = error as? LocalizedError {
-            return makeAlert(
-                title: localizedError.errorDescription ?? defaultTitle,
-                message: description,
-                actions: [.okAction]
-            )
-        }
-
-        return makeAlert(
-            title: defaultTitle,
-            message: description,
-            actions: [.okAction]
-        )
+  func makeAlert(for error: Error) -> UIAlertController {
+    if let recoverableError = error as? Core.RecoverableError {
+      return makeRecoverableAlert(for: recoverableError)
     }
 
-    func makeAreYouSureAlert(text: String, action: UIAlertAction) -> UIAlertController {
-        makeAlert(title: "Are you sure?", message: text, actions: [action, .cancelAction])
-    }
-    
-    func makeAlert(
-        title: String?,
-        message: String?,
-        actions: [UIAlertAction]
-    ) -> UIAlertController {
-        let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        actions.forEach(alertViewController.addAction)
-        return alertViewController
+    let defaultTitle = "Error"
+    let description = errorReason(from: error)
+
+    if let localizedError = error as? LocalizedError {
+      return makeAlert(
+        title: localizedError.errorDescription ?? defaultTitle,
+        message: description,
+        actions: [.okAction]
+      )
     }
 
-    private func makeRecoverableAlert(
-        for recoverableError: RecoverableError
-    ) -> UIAlertController {
-        let title = recoverableError.errorDescription
-        let message = errorReason(from: recoverableError)
-        let actions = recoverableError.recoveryOptions.enumerated().map { (element) -> UIAlertAction in
-            let style: UIAlertAction.Style = element.offset == 0
-                ? .cancel
-                : .default
-            return UIAlertAction(title: element.element, style: style) { _ in
-                recoverableError.attemptRecovery(optionIndex: element.offset)
-            }
-        }
-        return makeAlert(title: title, message: message, actions: actions)
+    return makeAlert(
+      title: defaultTitle,
+      message: description,
+      actions: [.okAction]
+    )
+  }
+
+  func makeAreYouSureAlert(text: String, action: UIAlertAction) -> UIAlertController {
+    makeAlert(title: "Are you sure?", message: text, actions: [action, .cancelAction])
+  }
+
+  func makeAlert(
+    title: String?,
+    message: String?,
+    actions: [UIAlertAction]
+  ) -> UIAlertController {
+    let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    actions.forEach(alertViewController.addAction)
+    return alertViewController
+  }
+
+  private func makeRecoverableAlert(
+    for recoverableError: Core.RecoverableError
+  ) -> UIAlertController {
+    let title = recoverableError.errorDescription
+    let message = errorReason(from: recoverableError)
+    let actions = recoverableError.recoveryOptions.enumerated().map { (element) -> UIAlertAction in
+      let style: UIAlertAction.Style = element.offset == 0
+      ? .cancel
+      : .default
+      return UIAlertAction(title: element.element, style: style) { _ in
+        recoverableError.attemptRecovery(optionIndex: element.offset)
+      }
     }
+    return makeAlert(title: title, message: message, actions: actions)
+  }
 }
 
 extension UIAlertAction {
-    static let okAction = UIAlertAction(title: "Ok", style: .cancel) { _ in }
-    static let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in }
+  static let okAction = UIAlertAction(title: "Ok", style: .cancel) { _ in }
+  static let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in }
 }

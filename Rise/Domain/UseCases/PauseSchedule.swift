@@ -6,6 +6,8 @@
 //  Copyright © 2021 VladimirBrejcha. All rights reserved.
 //
 
+import DataLayer
+
 protocol HasPauseScheduleUseCase {
   var pauseSchedule: PauseSchedule { get }
 }
@@ -16,15 +18,15 @@ protocol PauseSchedule {
 }
 
 final class PauseScheduleImpl: PauseSchedule {
-
+  
   private let userData: UserData
-
+  
   var isOnPause: Bool { userData.scheduleOnPause }
-
+  
   init(_ userData: UserData) {
     self.userData = userData
   }
-
+  
   func callAsFunction(_ pause: Bool) {
     userData.scheduleOnPause = pause
   }

@@ -9,55 +9,55 @@
 import UIKit
 
 final class WakeUpTimeCreateScheduleViewController: UIViewController {
-    @IBOutlet private var wakeUpTimeDatePicker: UIDatePicker!
-    @IBOutlet private var expectedToBedLabel: UILabel!
+  @IBOutlet private var wakeUpTimeDatePicker: UIDatePicker!
+  @IBOutlet private var expectedToBedLabel: UILabel!
 
-    var wakeUpTimeOutput: ((Date) -> Void)? // DI
-    var toBedTimeOutput: ((Date) -> Void)? // DI
-    var currentWakeUpTime: (() -> Date?)? // DI
-    var currentSleepDuration: (() -> Schedule.Minute?)? // DI
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  var wakeUpTimeOutput: ((Date) -> Void)? // DI
+  var toBedTimeOutput: ((Date) -> Void)? // DI
+  var currentWakeUpTime: (() -> Date?)? // DI
+  var currentSleepDuration: (() -> Int?)? // DI
 
-        wakeUpTimeDatePicker.applyStyle(.usual)
-        
-        if let currentWakeUpTime = currentWakeUpTime?() {
-            wakeUpTimeDatePicker.setDate(currentWakeUpTime, animated: false)
-        }
-        if let currentSleepDuration = currentSleepDuration?() {
-            let toBedTime = makeExpectedToBedTime(
-                from: wakeUpTimeDatePicker.date,
-                sleepDuration: currentSleepDuration
-            )
-            refreshToBedLabel(text: makeToBedText(date: toBedTime))
-        }
-    }
-    
-    @IBAction private func wakeUpTimeChanged(_ sender: UIDatePicker) {
-        if let currentSleepDuration = currentSleepDuration?() {
-            let toBedTime = makeExpectedToBedTime(
-                from: sender.date,
-                sleepDuration: currentSleepDuration
-            )
-            toBedTimeOutput?(toBedTime)
-            refreshToBedLabel(text: makeToBedText(date: toBedTime))
-        }
-        wakeUpTimeOutput?(sender.date)
-    }
+  override func viewDidLoad() {
+    super.viewDidLoad()
 
-    private func refreshToBedLabel(text: String) {
-        expectedToBedLabel.text = text
-    }
+    wakeUpTimeDatePicker.applyStyle(.usual)
 
-    private func makeExpectedToBedTime(
-        from wakeUpDate: Date,
-        sleepDuration: Schedule.Minute
-    ) -> Date {
-        wakeUpDate.addingTimeInterval(minutes: -sleepDuration)
+    if let currentWakeUpTime = currentWakeUpTime?() {
+      wakeUpTimeDatePicker.setDate(currentWakeUpTime, animated: false)
     }
+    if let currentSleepDuration = currentSleepDuration?() {
+      let toBedTime = makeExpectedToBedTime(
+        from: wakeUpTimeDatePicker.date,
+        sleepDuration: currentSleepDuration
+      )
+      refreshToBedLabel(text: makeToBedText(date: toBedTime))
+    }
+  }
 
-    private func makeToBedText(date: Date) -> String {
-        "To sleep at \(date.HHmmString) o'clock"
+  @IBAction private func wakeUpTimeChanged(_ sender: UIDatePicker) {
+    if let currentSleepDuration = currentSleepDuration?() {
+      let toBedTime = makeExpectedToBedTime(
+        from: sender.date,
+        sleepDuration: currentSleepDuration
+      )
+      toBedTimeOutput?(toBedTime)
+      refreshToBedLabel(text: makeToBedText(date: toBedTime))
     }
+    wakeUpTimeOutput?(sender.date)
+  }
+
+  private func refreshToBedLabel(text: String) {
+    expectedToBedLabel.text = text
+  }
+
+  private func makeExpectedToBedTime(
+    from wakeUpDate: Date,
+    sleepDuration: Int
+  ) -> Date {
+    wakeUpDate.addingTimeInterval(minutes: -sleepDuration)
+  }
+
+  private func makeToBedText(date: Date) -> String {
+    "To sleep at \(date.HHmmString) o'clock"
+  }
 }

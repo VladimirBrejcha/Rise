@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import DataLayer
 
 protocol HasRefreshSunTimeUseCase {
   var refreshSunTime: RefreshSunTime { get }
@@ -18,38 +19,38 @@ protocol HasRefreshSunTimeUseCase {
  * Next `GetSunTime` call will load refreshed suntimes
  */
 protocol RefreshSunTime {
-    func callAsFunction(
-        permissionRequestProvider: @escaping (@escaping (Bool) -> Void) -> Void,
-        onSuccess: @escaping() -> Void,
-        onFailure: @escaping (Error) -> Void
-    )
+  func callAsFunction(
+    permissionRequestProvider: @escaping (@escaping (Bool) -> Void) -> Void,
+    onSuccess: @escaping() -> Void,
+    onFailure: @escaping (Error) -> Void
+  )
 }
 
 final class RefreshSunTimeImpl: RefreshSunTime {
-    private let locationRepository: LocationRepository
-    private let sunTimeRepository: SunTimeRepository
+  private let locationRepository: LocationRepository
+  private let sunTimeRepository: SunTimeRepository
 
-    init(_ locationRepository: LocationRepository, _ sunTimeRepository: SunTimeRepository) {
-        self.locationRepository = locationRepository
-        self.sunTimeRepository = sunTimeRepository
-    }
+  init(_ locationRepository: LocationRepository, _ sunTimeRepository: SunTimeRepository) {
+    self.locationRepository = locationRepository
+    self.sunTimeRepository = sunTimeRepository
+  }
 
-    func callAsFunction(
-        permissionRequestProvider: @escaping (@escaping (Bool) -> Void) -> Void,
-        onSuccess: @escaping() -> Void,
-        onFailure: @escaping (Error) -> Void
-    ) {
-        locationRepository.deleteAll()
-        sunTimeRepository.deleteAll()
-        locationRepository.get(
-            permissionRequestProvider: permissionRequestProvider
-        ) { result in
-            if case .success = result {
-                onSuccess()
-            }
-            if case let .failure(error) = result {
-                onFailure(error)
-            }
-        }
+  func callAsFunction(
+    permissionRequestProvider: @escaping (@escaping (Bool) -> Void) -> Void,
+    onSuccess: @escaping() -> Void,
+    onFailure: @escaping (Error) -> Void
+  ) {
+    locationRepository.deleteAll()
+    sunTimeRepository.deleteAll()
+    locationRepository.get(
+      permissionRequestProvider: permissionRequestProvider
+    ) { result in
+      if case .success = result {
+        onSuccess()
+      }
+      if case let .failure(error) = result {
+        onFailure(error)
+      }
     }
+  }
 }

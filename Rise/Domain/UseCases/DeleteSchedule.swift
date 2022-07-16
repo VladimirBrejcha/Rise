@@ -7,29 +7,30 @@
 //
 
 import Foundation
+import DataLayer
 
 protocol HasDeleteScheduleUseCase {
   var deleteSchedule: DeleteSchedule { get }
 }
 
 protocol DeleteSchedule {
-    func callAsFunction()
+  func callAsFunction()
 }
 
 final class DeleteScheduleImpl: DeleteSchedule {
-
-    private let scheduleRepository: ScheduleRepository
-    private let userData: UserData
-
-    init(_ scheduleRepository: ScheduleRepository,
-         _ userData: UserData
-    ) {
-        self.scheduleRepository = scheduleRepository
-        self.userData = userData
-    }
-
-    func callAsFunction() {
-        scheduleRepository.deleteAll()
-        userData.scheduleOnPause = false
-    }
+  
+  private let scheduleRepository: ScheduleRepository
+  private let userData: UserData
+  
+  init(_ scheduleRepository: ScheduleRepository,
+       _ userData: UserData
+  ) {
+    self.scheduleRepository = scheduleRepository
+    self.userData = userData
+  }
+  
+  func callAsFunction() {
+    scheduleRepository.deleteAll()
+    userData.scheduleOnPause = false
+  }
 }

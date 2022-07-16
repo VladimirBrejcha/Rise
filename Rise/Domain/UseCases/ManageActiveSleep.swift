@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import DataLayer
 
 protocol HasManageActiveSleepUseCase {
   var manageActiveSleep: ManageActiveSleep { get }
@@ -17,29 +18,29 @@ protocol HasManageActiveSleepUseCase {
  * Provides method to end sleep and therefore invalidates sleep dates
  */
 protocol ManageActiveSleep: AnyObject {
-    var sleepStartedAt: Date? { get set }
-    var alarmAt: Date? { get set }
-    func endSleep()
+  var sleepStartedAt: Date? { get set }
+  var alarmAt: Date? { get set }
+  func endSleep()
 }
 
 final class ManageActiveSleepImpl: ManageActiveSleep {
 
-    private let userData: UserData
+  private let userData: UserData
 
-    var sleepStartedAt: Date? {
-        get { userData.activeSleepStartDate }
-        set { userData.activeSleepStartDate = newValue }
-    }
-    var alarmAt: Date? {
-        get { userData.activeSleepEndDate }
-        set { userData.activeSleepEndDate = newValue }
-    }
+  var sleepStartedAt: Date? {
+    get { userData.activeSleepStartDate }
+    set { userData.activeSleepStartDate = newValue }
+  }
+  var alarmAt: Date? {
+    get { userData.activeSleepEndDate }
+    set { userData.activeSleepEndDate = newValue }
+  }
 
-    init(_ userData: UserData) {
-        self.userData = userData
-    }
+  init(_ userData: UserData) {
+    self.userData = userData
+  }
 
-    func endSleep() {
-        userData.invalidateActiveSleep()
-    }
+  func endSleep() {
+    userData.invalidateActiveSleep()
+  }
 }

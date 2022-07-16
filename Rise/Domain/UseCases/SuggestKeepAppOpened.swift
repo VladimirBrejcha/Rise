@@ -6,6 +6,8 @@
 //  Copyright © 2021 VladimirBrejcha. All rights reserved.
 //
 
+import DataLayer
+
 protocol HasSuggestKeepAppOpenedUseCase {
   var suggestKeepAppOpened: SuggestKeepAppOpened { get }
 }
@@ -15,18 +17,18 @@ protocol HasSuggestKeepAppOpenedUseCase {
  * wherever app should suggest to keep it opened while sleeping
  */
 protocol SuggestKeepAppOpened: AnyObject {
-    var shouldSuggest: Bool { get set }
+  var shouldSuggest: Bool { get set }
 }
 
 final class SuggestKeepAppOpenedImpl: SuggestKeepAppOpened {
-    private let userData: UserData
+  private let userData: UserData
 
-    var shouldSuggest: Bool {
-        get { !userData.keepAppOpenedSuggested }
-        set { userData.keepAppOpenedSuggested = !newValue }
-    }
+  var shouldSuggest: Bool {
+    get { !userData.keepAppOpenedSuggested }
+    set { userData.keepAppOpenedSuggested = !newValue }
+  }
 
-    init(_ userData: UserData) {
-        self.userData = userData
-    }
+  init(_ userData: UserData) {
+    self.userData = userData
+  }
 }

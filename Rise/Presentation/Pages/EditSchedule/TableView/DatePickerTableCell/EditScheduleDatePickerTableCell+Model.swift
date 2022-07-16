@@ -9,11 +9,11 @@
 import Foundation
 
 extension EditScheduleDatePickerTableCell {
-    struct Model {
-        let initialValue: Date
-        let initialSleepDuration: Schedule.Minute
-        let text: String
-        let datePickerDelegate: (Date) -> Void
-        let sleepDurationObserver: (@escaping (Schedule.Minute) -> Void) -> Void
-    }
+  struct Model {
+    let initialValue: Date
+    let initialSleepDuration: Int
+    let text: String
+    let datePickerDelegate: (Date) -> Void
+    let sleepDurationObserver: (@escaping (Int) -> Void) -> Void
+  }
 }

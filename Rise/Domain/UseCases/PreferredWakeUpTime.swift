@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import DataLayer
 
 protocol HasPreferredWakeUpTimeUseCase {
   var preferredWakeUpTime: PreferredWakeUpTime { get }
@@ -16,19 +17,19 @@ protocol HasPreferredWakeUpTimeUseCase {
  * Provides preferred wake up time in case if user have no schedule
  */
 protocol PreferredWakeUpTime: AnyObject {
-    var time: Date? { get set }
+  var time: Date? { get set }
 }
 
 final class PreferredWakeUpTimeImpl: PreferredWakeUpTime {
 
-    private let userData: UserData
+  private let userData: UserData
 
-    var time: Date? {
-        get { userData.preferredWakeUpTime }
-        set { userData.preferredWakeUpTime = newValue }
-    }
+  var time: Date? {
+    get { userData.preferredWakeUpTime }
+    set { userData.preferredWakeUpTime = newValue }
+  }
 
-    init(_ userData: UserData) {
-        self.userData = userData
-    }
+  init(_ userData: UserData) {
+    self.userData = userData
+  }
 }

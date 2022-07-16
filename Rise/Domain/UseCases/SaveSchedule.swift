@@ -6,6 +6,9 @@
 //  Copyright © 2021 VladimirBrejcha. All rights reserved.
 //
 
+import DataLayer
+import Core
+
 protocol HasSaveSchedule {
   var saveSchedule: SaveSchedule { get }
 }

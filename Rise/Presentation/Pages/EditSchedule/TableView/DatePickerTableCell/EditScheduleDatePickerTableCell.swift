@@ -15,7 +15,7 @@ final class EditScheduleDatePickerTableCell:
 {
     static var height: CGFloat { 200 }
     private var datePickerDelegate: ((Date) -> Void)?
-    private var sleepDuration: Schedule.Minute = 8 * 60 {
+    private var sleepDuration: Int = 8 * 60 {
         didSet {
             self.refreshWakeUpLabel(with: datePicker.date, sleepDuration: sleepDuration)
         }
@@ -123,7 +123,7 @@ final class EditScheduleDatePickerTableCell:
         datePickerDelegate = model.datePickerDelegate
     }
 
-    private func refreshWakeUpLabel(with date: Date, sleepDuration: Schedule.Minute) {
+    private func refreshWakeUpLabel(with date: Date, sleepDuration: Int) {
         let wakeUpDate = date.addingTimeInterval(minutes: sleepDuration)
         wakeUpLabel.text = "Estimated wake up at \(wakeUpDate.HHmmString)"
     }
