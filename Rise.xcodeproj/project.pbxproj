@@ -279,8 +279,6 @@
 		7ED6DD3025E1B50800F906CE /* ImageLabelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageLabelView.xib; sourceTree = "<group>"; };
 		7ED6DD3525E2A30700F906CE /* ImageLabelViewWithContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabelViewWithContextMenu.swift; sourceTree = "<group>"; };
 		7ED6DD3E25E33E3D00F906CE /* Statefull.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statefull.swift; sourceTree = "<group>"; };
-		7EE1397E23E36944003895D4 /* AIFlatSwitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AIFlatSwitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7EE1398523E36AF6003895D4 /* AIFlatSwitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AIFlatSwitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EE3EB91274D7D390000CFDE /* KeepAppOpenedSuggestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeepAppOpenedSuggestionView.swift; sourceTree = "<group>"; };
 		7EE3EB92274D7D390000CFDE /* KeepAppOpenedSuggestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeepAppOpenedSuggestionViewController.swift; sourceTree = "<group>"; };
 		7EE6905B243E64C600CA423E /* LongPressProgressButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LongPressProgressButton.xib; sourceTree = "<group>"; };
@@ -309,8 +307,6 @@
 		92D7D6542296F297009321AE /* SleepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepViewController.swift; sourceTree = "<group>"; };
 		92D7D6592296F298009321AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92D7D65E2296F298009321AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		92D7D6722296F298009321AE /* RiseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiseUITests.swift; sourceTree = "<group>"; };
-		92D7D6742296F298009321AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92E77AF722A5303400E5E21C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		92E77AF922A5304400E5E21C /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -335,8 +331,6 @@
 		58118E3FFAF9EC6FD86AEFC7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7EE1398523E36AF6003895D4 /* AIFlatSwitch.framework */,
-				7EE1397E23E36944003895D4 /* AIFlatSwitch.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -884,7 +878,6 @@
 			children = (
 				7E15397F2749B02900CC2E7B /* Packages */,
 				92D7D6512296F297009321AE /* Rise */,
-				92D7D6712296F298009321AE /* RiseUITests */,
 				92D7D6502296F297009321AE /* Products */,
 				58118E3FFAF9EC6FD86AEFC7 /* Frameworks */,
 			);
@@ -909,15 +902,6 @@
 				7EF3EE162340F75A003BE978 /* Resources */,
 			);
 			path = Rise;
-			sourceTree = "<group>";
-		};
-		92D7D6712296F298009321AE /* RiseUITests */ = {
-			isa = PBXGroup;
-			children = (
-				92D7D6722296F298009321AE /* RiseUITests.swift */,
-				92D7D6742296F298009321AE /* Info.plist */,
-			);
-			path = RiseUITests;
 			sourceTree = "<group>";
 		};
 		92D7D68422980138009321AE /* UI */ = {
