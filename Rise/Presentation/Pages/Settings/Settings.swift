@@ -7,14 +7,15 @@
 //
 
 import UIKit
+import Localization
 
 enum Settings {
   enum Setting {
-      case editSchedule
-      case adjustBedTime
-      case refreshSuntime
-      case onboarding
-      case about
+    case editSchedule
+    case adjustBedTime
+    case refreshSuntime
+    case onboarding
+    case about
   }
 }
 

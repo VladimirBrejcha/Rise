@@ -4,18 +4,16 @@
 import PackageDescription
 
 let package = Package(
-    name: "DomainLayer",
+    name: "Localization",
+    defaultLocalization: "en",
     platforms: [.iOS(.v14)],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
-            name: "DomainLayer",
-            targets: ["DomainLayer"]),
+            name: "Localization",
+            targets: ["Localization"]),
     ],
     dependencies: [
-      .package(path: "Core/"),
-      .package(path: "DataLayer/"),
-      .package(path: "Localization/")
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
     ],
@@ -23,10 +21,10 @@ let package = Package(
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
-            name: "DomainLayer",
-            dependencies: ["DataLayer", "Core", "Localization"]),
+            name: "Localization",
+            dependencies: []),
         .testTarget(
-            name: "DomainLayerTests",
-            dependencies: ["DomainLayer"]),
+            name: "LocalizationTests",
+            dependencies: ["Localization"]),
     ]
 )

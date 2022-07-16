@@ -1,13 +1,6 @@
-//
-//  PrepareMail.swift
-//  Rise
-//
-//  Created by Vladimir Korolev on 15.09.2021.
-//  Copyright © 2021 VladimirBrejcha. All rights reserved.
-//
-
 import MessageUI
 import Core
+import Localization
 
 public protocol HasPrepareMail {
   var prepareMail: PrepareMail { get }
@@ -19,8 +12,7 @@ public enum PrepareMailError: LocalizedError {
   public var errorDescription: String? {
     switch self {
     case .cannotSendMail:
-      fatalError() // todo
-//      return Text.PrepareMailError.cannotSend
+      return Text.PrepareMailError.cannotSend
     }
   }
 }

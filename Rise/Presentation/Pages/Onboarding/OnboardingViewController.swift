@@ -9,24 +9,25 @@
 import UIKit
 import Core
 import DomainLayer
+import Localization
 
 extension Onboarding {
-
+  
   final class Controller: UIViewController, ViewController {
-
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
       .lightContent
     }
-
+    
     enum OutCommand { case finish }
     typealias Deps = HasManageOnboardingCompleted
     typealias Params = [View.ContentView.Model]
     typealias View = Onboarding.View
-
+    
     private let deps: Deps
     private let data: Params
     private let out: Out
-
+    
     init(deps: Deps, params: Params, out: @escaping Out) {
       self.deps = deps
       self.data = params
@@ -38,7 +39,7 @@ extension Onboarding {
     required init?(coder: NSCoder) {
       fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func loadView() {
       super.loadView()
       self.view = View(

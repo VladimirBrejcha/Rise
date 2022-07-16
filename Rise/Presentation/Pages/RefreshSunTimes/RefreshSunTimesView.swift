@@ -8,6 +8,7 @@
 
 import UIKit
 import LoadingView
+import Localization
 
 final class RefreshSunTimesView: UIView {
 

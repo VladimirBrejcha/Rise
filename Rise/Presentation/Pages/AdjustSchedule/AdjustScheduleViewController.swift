@@ -9,6 +9,7 @@
 import UIKit
 import Core
 import DomainLayer
+import Localization
 
 final class AdjustScheduleViewController: UIViewController, ViewController {
 

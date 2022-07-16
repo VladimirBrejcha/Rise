@@ -11,6 +11,7 @@ import MessageUI
 import SafariServices
 import Core
 import DomainLayer
+import Localization
 
 final class AboutViewController:
   UIViewController,

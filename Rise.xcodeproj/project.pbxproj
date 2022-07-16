@@ -94,10 +94,8 @@
 		7E88A35123F8B20C00E792CA /* VerticalPositionMoveAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E88A35023F8B20C00E792CA /* VerticalPositionMoveAnimation.swift */; };
 		7E8AB6CE23A18D27009CE41A /* WakeUpTimeCreateScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8AB6CD23A18D27009CE41A /* WakeUpTimeCreateScheduleViewController.swift */; };
 		7E8C6B982350FB9C0086162F /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8C6B972350FB9C0086162F /* TableView.swift */; };
-		7E8EFA2F26EABC1800DEE564 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7E8EFA2D26EABC1800DEE564 /* Localizable.strings */; };
 		7E8EFA3226EABC2F00DEE564 /* Sleep.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E8EFA3026EABC2F00DEE564 /* Sleep.storyboard */; };
 		7E8EFA3C26EABC3900DEE564 /* CreateSchedule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E8EFA3526EABC3800DEE564 /* CreateSchedule.storyboard */; };
-		7E8EFA4226EAC4D400DEE564 /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8EFA4126EAC4D400DEE564 /* Strings+Generated.swift */; };
 		7E97226425B8C90500DBEF5E /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E97226325B8C90500DBEF5E /* Style.swift */; };
 		7E989FE125F5B0DF001954CD /* CollectionPageScrollDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E989FE025F5B0DF001954CD /* CollectionPageScrollDelegate.swift */; };
 		7E9AC0D62871E95B00E0153E /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9AC0D52871E95B00E0153E /* Settings.swift */; };
@@ -166,6 +164,7 @@
 		92D7D6732296F298009321AE /* RiseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6722296F298009321AE /* RiseUITests.swift */; };
 		92E77AF822A5303400E5E21C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E77AF722A5303400E5E21C /* SettingsViewController.swift */; };
 		92E77AFA22A5304400E5E21C /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E77AF922A5304400E5E21C /* TodayViewController.swift */; };
+		92FE417A28833DE700F328DB /* Localization in Frameworks */ = {isa = PBXBuildFile; productRef = 92FE417928833DE700F328DB /* Localization */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -272,10 +271,8 @@
 		7E8AB6CD23A18D27009CE41A /* WakeUpTimeCreateScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUpTimeCreateScheduleViewController.swift; sourceTree = "<group>"; };
 		7E8C6B972350FB9C0086162F /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		7E8EFA2B26EABBB700DEE564 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		7E8EFA2E26EABC1800DEE564 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7E8EFA3126EABC2F00DEE564 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Sleep.storyboard; sourceTree = "<group>"; };
 		7E8EFA3626EABC3800DEE564 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CreateSchedule.storyboard; sourceTree = "<group>"; };
-		7E8EFA4126EAC4D400DEE564 /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
 		7E97226325B8C90500DBEF5E /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		7E989FE025F5B0DF001954CD /* CollectionPageScrollDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPageScrollDelegate.swift; sourceTree = "<group>"; };
 		7E9AC0D52871E95B00E0153E /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -340,6 +337,7 @@
 		92695F1B28831EE400D382C2 /* DataLayer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DataLayer; sourceTree = "<group>"; };
 		92D12FDC22A44B3B0093B0A3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		92D1FD7D288338A9008B8EC0 /* DomainLayer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DomainLayer; sourceTree = "<group>"; };
+		92D1FD8028833C59008B8EC0 /* Localization */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Localization; sourceTree = "<group>"; };
 		92D7D64F2296F297009321AE /* Rise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D7D6522296F297009321AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92D7D6542296F297009321AE /* SleepViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepViewController.swift; sourceTree = "<group>"; };
@@ -369,6 +367,7 @@
 				7E3414C028426F6900725580 /* LoadingView in Frameworks */,
 				92D1FD7F28833A3E008B8EC0 /* DomainLayer in Frameworks */,
 				92695F1A28831EB800D382C2 /* Core in Frameworks */,
+				92FE417A28833DE700F328DB /* Localization in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +432,7 @@
 		7E15397F2749B02900CC2E7B /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				92D1FD8028833C59008B8EC0 /* Localization */,
 				92D1FD7D288338A9008B8EC0 /* DomainLayer */,
 				92695F1B28831EE400D382C2 /* DataLayer */,
 				92695F1728831EB100D382C2 /* Core */,
@@ -714,7 +714,6 @@
 			isa = PBXGroup;
 			children = (
 				7E43063626EBC93300B67315 /* XCAssets+Generated.swift */,
-				7E8EFA4126EAC4D400DEE564 /* Strings+Generated.swift */,
 			);
 			path = Generated;
 			sourceTree = "<group>";
@@ -814,7 +813,6 @@
 			isa = PBXGroup;
 			children = (
 				7E8EFA4026EAC4B600DEE564 /* Generated */,
-				7E8EFA2D26EABC1800DEE564 /* Localizable.strings */,
 				7E97226325B8C90500DBEF5E /* Style.swift */,
 				7EEB1E10244336A7001ABE4A /* Sounds */,
 				92D7D65E2296F298009321AE /* Info.plist */,
@@ -1057,6 +1055,7 @@
 				92695F1928831EB800D382C2 /* Core */,
 				92695F1C2883267C00D382C2 /* DataLayer */,
 				92D1FD7E28833A3E008B8EC0 /* DomainLayer */,
+				92FE417928833DE700F328DB /* Localization */,
 			);
 			productName = Rise;
 			productReference = 92D7D64F2296F297009321AE /* Rise.app */;
@@ -1147,7 +1146,6 @@
 				7ED6DD3125E1B50800F906CE /* ImageLabelView.xib in Resources */,
 				92D7D65A2296F298009321AE /* Assets.xcassets in Resources */,
 				7E8EFA3C26EABC3900DEE564 /* CreateSchedule.storyboard in Resources */,
-				7E8EFA2F26EABC1800DEE564 /* Localizable.strings in Resources */,
 				7EEB1E0F2443369F001ABE4A /* bellAlarm.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1315,7 +1313,6 @@
 				7EE6905E243E658B00CA423E /* LongPressProgressButton.swift in Sources */,
 				7E5F292A23F9638C0050DFD3 /* FloatingLabel.swift in Sources */,
 				7E43064B26ED4FF600B67315 /* SettingsView.swift in Sources */,
-				7E8EFA4226EAC4D400DEE564 /* Strings+Generated.swift in Sources */,
 				7EE87CEF2442254A00E1BD3B /* AutoRefreshableLabel.swift in Sources */,
 				7E326315275EBD1E0045CEA0 /* NavigationController.swift in Sources */,
 				7EEA217923B6A3B400354BEA /* UIViewController+present.swift in Sources */,
@@ -1363,14 +1360,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		7E8EFA2D26EABC1800DEE564 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7E8EFA2E26EABC1800DEE564 /* Base */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
 		7E8EFA3026EABC2F00DEE564 /* Sleep.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1726,6 +1715,10 @@
 		92D1FD7E28833A3E008B8EC0 /* DomainLayer */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DomainLayer;
+		};
+		92FE417928833DE700F328DB /* Localization */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Localization;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

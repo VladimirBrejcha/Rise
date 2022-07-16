@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Localization
 
 final class AfterSleepView: UIView {
   

@@ -6,6 +6,8 @@
 //  Copyright © 2022 VladimirBrejcha. All rights reserved.
 //
 
+import Localization
+
 enum Onboarding { }
 
 extension Onboarding {
