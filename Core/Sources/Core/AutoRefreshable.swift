@@ -1,26 +1,17 @@
-//
-//  AutoRefreshable.swift
-//  Rise
-//
-//  Created by Vladimir Korolev on 07.04.2020.
-//  Copyright © 2020 VladimirBrejcha. All rights reserved.
-//
-
 import Foundation
-import Core
 
-protocol Refreshable {
+public protocol Refreshable {
   associatedtype DataType
   func refresh(with data: DataType)
 }
 
-protocol AutoRefreshable: AnyObject, Refreshable {
+public protocol AutoRefreshable: AnyObject, Refreshable {
   var timer: Timer? { get set }
   var dataSource: (() -> DataType)? { get set }
   var refreshInterval: Double { get set }
 }
 
-extension AutoRefreshable {
+public extension AutoRefreshable {
   func beginRefreshing() {
     guard let dataSource = dataSource else {
       log(.error, "AutoRefreshable.beginRefreshing failed, dataSource was nil")

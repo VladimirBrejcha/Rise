@@ -20,7 +20,6 @@
 		7E15397E2749675300CC2E7B /* RefreshSunTimesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E15397D2749675300CC2E7B /* RefreshSunTimesViewController.swift */; };
 		7E15398C2749D70C00CC2E7B /* CloseableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E15398B2749D70C00CC2E7B /* CloseableButton.swift */; };
 		7E15398E2749D71E00CC2E7B /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E15398D2749D71E00CC2E7B /* CloseButton.swift */; };
-		7E162FF1243D0E22004C68B1 /* AutoRefreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E162FF0243D0E22004C68B1 /* AutoRefreshable.swift */; };
 		7E18C6C727616B3300BD6471 /* UINavigationController+replaceAllOnTopOfRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E18C6C627616B3300BD6471 /* UINavigationController+replaceAllOnTopOfRoot.swift */; };
 		7E199CD2240BD41D00B702AD /* SliderWithValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E199CD1240BD41D00B702AD /* SliderWithValues.swift */; };
 		7E199CD4240BD43400B702AD /* SliderWithValues.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E199CD3240BD43400B702AD /* SliderWithValues.xib */; };
@@ -103,8 +102,6 @@
 		7E9AC0DC28720C7F00E0153E /* KeepAppOpenedSuggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9AC0DB28720C7F00E0153E /* KeepAppOpenedSuggestion.swift */; };
 		7E9D9C0424E58F39000772C0 /* SleepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D9C0324E58F38000772C0 /* SleepView.swift */; };
 		7E9D9C0824E596DA000772C0 /* PrepareToSleepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D9C0724E596DA000772C0 /* PrepareToSleepView.swift */; };
-		7E9D9C0B24E59B08000772C0 /* Changeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D9C0A24E59B08000772C0 /* Changeable.swift */; };
-		7E9D9C0D24E59B21000772C0 /* ChangeableWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D9C0C24E59B21000772C0 /* ChangeableWrapper.swift */; };
 		7E9D9C0F24E5BADC000772C0 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D9C0E24E5BADC000772C0 /* FloatingButton.swift */; };
 		7E9D9C1124E5BEFA000772C0 /* CreateScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D9C1024E5BEFA000772C0 /* CreateScheduleView.swift */; };
 		7E9D9C1324E5DA57000772C0 /* SchedulePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D9C1224E5DA57000772C0 /* SchedulePageView.swift */; };
@@ -198,7 +195,6 @@
 		7E15397D2749675300CC2E7B /* RefreshSunTimesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshSunTimesViewController.swift; sourceTree = "<group>"; };
 		7E15398B2749D70C00CC2E7B /* CloseableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseableButton.swift; sourceTree = "<group>"; };
 		7E15398D2749D71E00CC2E7B /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
-		7E162FF0243D0E22004C68B1 /* AutoRefreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoRefreshable.swift; sourceTree = "<group>"; };
 		7E18C6C627616B3300BD6471 /* UINavigationController+replaceAllOnTopOfRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+replaceAllOnTopOfRoot.swift"; sourceTree = "<group>"; };
 		7E199CD1240BD41D00B702AD /* SliderWithValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderWithValues.swift; sourceTree = "<group>"; };
 		7E199CD3240BD43400B702AD /* SliderWithValues.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SliderWithValues.xib; sourceTree = "<group>"; };
@@ -280,8 +276,6 @@
 		7E9AC0DB28720C7F00E0153E /* KeepAppOpenedSuggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepAppOpenedSuggestion.swift; sourceTree = "<group>"; };
 		7E9D9C0324E58F38000772C0 /* SleepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepView.swift; sourceTree = "<group>"; };
 		7E9D9C0724E596DA000772C0 /* PrepareToSleepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepareToSleepView.swift; sourceTree = "<group>"; };
-		7E9D9C0A24E59B08000772C0 /* Changeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Changeable.swift; sourceTree = "<group>"; };
-		7E9D9C0C24E59B21000772C0 /* ChangeableWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeableWrapper.swift; sourceTree = "<group>"; };
 		7E9D9C0E24E5BADC000772C0 /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		7E9D9C1024E5BEFA000772C0 /* CreateScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateScheduleView.swift; sourceTree = "<group>"; };
 		7E9D9C1224E5DA57000772C0 /* SchedulePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePageView.swift; sourceTree = "<group>"; };
@@ -718,15 +712,6 @@
 			path = Generated;
 			sourceTree = "<group>";
 		};
-		7E9D9C0924E59AFD000772C0 /* Changeable */ = {
-			isa = PBXGroup;
-			children = (
-				7E9D9C0A24E59B08000772C0 /* Changeable.swift */,
-				7E9D9C0C24E59B21000772C0 /* ChangeableWrapper.swift */,
-			);
-			path = Changeable;
-			sourceTree = "<group>";
-		};
 		7EADA5E7239DA9FA00FE4843 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -829,8 +814,6 @@
 		7EF3EE192340F8A5003BE978 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				7E9D9C0924E59AFD000772C0 /* Changeable */,
-				7E162FF0243D0E22004C68B1 /* AutoRefreshable.swift */,
 				7E15397127494C1000CC2E7B /* AudioPlayer */,
 			);
 			path = Utils;
@@ -1239,7 +1222,6 @@
 				7E69837A24EC69FE002EE278 /* ErrorViewRemovable.swift in Sources */,
 				7E25756723F8749A007AE4B5 /* Animation.swift in Sources */,
 				7E199CD2240BD41D00B702AD /* SliderWithValues.swift in Sources */,
-				7E162FF1243D0E22004C68B1 /* AutoRefreshable.swift in Sources */,
 				7E15396B2748028400CC2E7B /* UISegmentedControl+Styleable.swift in Sources */,
 				7EAD159F25F50DF700392E6A /* DaysViewController.swift in Sources */,
 				7E378662261679460098A204 /* CALayer+Styleable.swift in Sources */,
@@ -1273,14 +1255,12 @@
 				7E43063D26ECC4E400B67315 /* ContentView.swift in Sources */,
 				7E326313275EBCFB0045CEA0 /* CrossDissolveTransition.swift in Sources */,
 				7E43063726EBC93300B67315 /* XCAssets+Generated.swift in Sources */,
-				7E9D9C0B24E59B08000772C0 /* Changeable.swift in Sources */,
 				7E9AC0D62871E95B00E0153E /* Settings.swift in Sources */,
 				7EB29E0D241987DD00116433 /* PrepareToSleepViewController.swift in Sources */,
 				7E252A8826EBBE6600DEB6F0 /* OnboardingViewController.swift in Sources */,
 				7E15398C2749D70C00CC2E7B /* CloseableButton.swift in Sources */,
 				7ECA517E25E340BD009362F9 /* ContextPreview.swift in Sources */,
 				7E346CF1274AC8F700848DBB /* UIViewController+addScreenTitleView.swift in Sources */,
-				7E9D9C0D24E59B21000772C0 /* ChangeableWrapper.swift in Sources */,
 				7E6225D72619CD9F001AA8FD /* Gradientable.swift in Sources */,
 				7EB196DA23A01B8F00E6C40B /* CreateScheduleViewController.swift in Sources */,
 				92D7D6532296F297009321AE /* AppDelegate.swift in Sources */,

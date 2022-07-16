@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Core
 
 final class FloatingLabel: UILabel, AutoRefreshable, PropertyAnimatable {
 

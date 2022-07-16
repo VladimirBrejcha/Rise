@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Core
 
 final class AutoRefreshableLabel: UILabel, AutoRefreshable {
     var timer: Timer?
