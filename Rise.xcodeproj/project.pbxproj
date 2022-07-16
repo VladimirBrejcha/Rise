@@ -736,13 +736,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		7EAFB6362737313F00B7C7C6 /* Date */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Date;
-			sourceTree = "<group>";
-		};
 		7EB73414274EBC2800DC7758 /* AfterSleep */ = {
 			isa = PBXGroup;
 			children = (
@@ -837,7 +830,6 @@
 			isa = PBXGroup;
 			children = (
 				7E9D9C0924E59AFD000772C0 /* Changeable */,
-				7EAFB6362737313F00B7C7C6 /* Date */,
 				7E162FF0243D0E22004C68B1 /* AutoRefreshable.swift */,
 				7E15397127494C1000CC2E7B /* AudioPlayer */,
 			);
