@@ -1,18 +1,10 @@
-//
-//  PreventAppSleep.swift
-//  Rise
-//
-//  Created by Vladimir Korolev on 24.11.2021.
-//  Copyright © 2021 VladimirBrejcha. All rights reserved.
-//
-
 import UIKit
 
-protocol HasPreventAppSleepUseCase {
+public protocol HasPreventAppSleepUseCase {
     var preventAppSleep: PreventAppSleep { get }
 }
 
-protocol PreventAppSleep {
+public protocol PreventAppSleep {
     func callAsFunction(_ prevent: Bool)
 }
 

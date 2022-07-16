@@ -8,6 +8,7 @@
 
 import UIKit
 import DataLayer
+import DomainLayer
 
 final class AppDelegate: UIResponder, UIApplicationDelegate {
 

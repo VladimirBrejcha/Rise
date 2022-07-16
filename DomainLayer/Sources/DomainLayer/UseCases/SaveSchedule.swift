@@ -1,19 +1,11 @@
-//
-//  SaveSchedule.swift
-//  Rise
-//
-//  Created by Vladimir Korolev on 06.11.2021.
-//  Copyright © 2021 VladimirBrejcha. All rights reserved.
-//
-
 import DataLayer
 import Core
 
-protocol HasSaveSchedule {
+public protocol HasSaveSchedule {
   var saveSchedule: SaveSchedule { get }
 }
 
-protocol SaveSchedule {
+public protocol SaveSchedule {
   func callAsFunction(_ schedule: Schedule)
 }
 

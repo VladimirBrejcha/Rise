@@ -8,6 +8,7 @@
 
 import UIKit
 import Core
+import DomainLayer
 
 final class RefreshSunTimesViewController:
     UIViewController,

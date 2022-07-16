@@ -1,16 +1,8 @@
-//
-//  UpdateSchedule.swift
-//  Rise
-//
-//  Created by Vladimir Korolev on 07.11.2021.
-//  Copyright © 2021 VladimirBrejcha. All rights reserved.
-//
-
 import Foundation
 import Core
 import DataLayer
 
-protocol HasUpdateScheduleUseCase {
+public protocol HasUpdateScheduleUseCase {
   var updateSchedule: UpdateSchedule { get }
 }
 
@@ -19,7 +11,7 @@ protocol HasUpdateScheduleUseCase {
  * Deletes old schedule from the storage
  * Saves new schedule to the storage
  */
-protocol UpdateSchedule {
+public protocol UpdateSchedule {
   func callAsFunction(
     current schedule: Schedule,
     newSleepDuration: Int?,

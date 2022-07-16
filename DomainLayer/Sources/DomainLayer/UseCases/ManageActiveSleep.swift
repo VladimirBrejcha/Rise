@@ -1,15 +1,7 @@
-//
-//  ManageActiveSleep.swift
-//  Rise
-//
-//  Created by Vladimir Korolev on 06.12.2021.
-//  Copyright © 2021 VladimirBrejcha. All rights reserved.
-//
-
 import Foundation
 import DataLayer
 
-protocol HasManageActiveSleepUseCase {
+public protocol HasManageActiveSleepUseCase {
   var manageActiveSleep: ManageActiveSleep { get }
 }
 
@@ -17,7 +9,7 @@ protocol HasManageActiveSleepUseCase {
  * Provides start and end dates for active sleep (if exists)
  * Provides method to end sleep and therefore invalidates sleep dates
  */
-protocol ManageActiveSleep: AnyObject {
+public protocol ManageActiveSleep: AnyObject {
   var sleepStartedAt: Date? { get set }
   var alarmAt: Date? { get set }
   func endSleep()

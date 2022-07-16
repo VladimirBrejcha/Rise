@@ -1,18 +1,10 @@
-//
-//  ManageOnboardingCompleted.swift
-//  Rise
-//
-//  Created by Vladimir Korolev on 11.09.2021.
-//  Copyright © 2021 VladimirBrejcha. All rights reserved.
-//
-
 import DataLayer
 
-protocol HasManageOnboardingCompleted {
+public protocol HasManageOnboardingCompleted {
   var manageOnboardingCompleted: ManageOnboardingCompleted { get }
 }
 
-protocol ManageOnboardingCompleted: AnyObject {
+public protocol ManageOnboardingCompleted: AnyObject {
   var isCompleted: Bool { get set }
 }
 

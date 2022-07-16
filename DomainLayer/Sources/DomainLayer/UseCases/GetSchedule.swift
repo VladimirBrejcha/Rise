@@ -10,11 +10,11 @@ import Foundation
 import Core
 import DataLayer
 
-protocol HasGetScheduleUseCase {
+public protocol HasGetScheduleUseCase {
   var getSchedule: GetSchedule { get }
 }
 
-protocol GetSchedule {
+public protocol GetSchedule {
   func yesterday() -> Schedule?
   func today() -> Schedule?
   func tomorrow() -> Schedule?

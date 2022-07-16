@@ -1,19 +1,11 @@
-//
-//  DeleteSchedule.swift
-//  Rise
-//
-//  Created by Vladimir Korolev on 07.11.2021.
-//  Copyright © 2021 VladimirBrejcha. All rights reserved.
-//
-
 import Foundation
 import DataLayer
 
-protocol HasDeleteScheduleUseCase {
+public protocol HasDeleteScheduleUseCase {
   var deleteSchedule: DeleteSchedule { get }
 }
 
-protocol DeleteSchedule {
+public protocol DeleteSchedule {
   func callAsFunction()
 }
 

@@ -1,14 +1,6 @@
-//
-//  SuggestKeepAppOpened.swift
-//  Rise
-//
-//  Created by Vladimir Korolev on 23.11.2021.
-//  Copyright © 2021 VladimirBrejcha. All rights reserved.
-//
-
 import DataLayer
 
-protocol HasSuggestKeepAppOpenedUseCase {
+public protocol HasSuggestKeepAppOpenedUseCase {
   var suggestKeepAppOpened: SuggestKeepAppOpened { get }
 }
 
@@ -16,7 +8,7 @@ protocol HasSuggestKeepAppOpenedUseCase {
  * Provides interface to get or set information about
  * wherever app should suggest to keep it opened while sleeping
  */
-protocol SuggestKeepAppOpened: AnyObject {
+public protocol SuggestKeepAppOpened: AnyObject {
   var shouldSuggest: Bool { get set }
 }
 

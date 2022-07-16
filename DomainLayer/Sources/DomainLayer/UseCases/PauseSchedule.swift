@@ -1,18 +1,10 @@
-//
-//  PauseSchedule.swift
-//  Rise
-//
-//  Created by Vladimir Korolev on 06.11.2021.
-//  Copyright © 2021 VladimirBrejcha. All rights reserved.
-//
-
 import DataLayer
 
-protocol HasPauseScheduleUseCase {
+public protocol HasPauseScheduleUseCase {
   var pauseSchedule: PauseSchedule { get }
 }
 
-protocol PauseSchedule {
+public protocol PauseSchedule {
   func callAsFunction(_ pause: Bool)
   var isOnPause: Bool { get }
 }

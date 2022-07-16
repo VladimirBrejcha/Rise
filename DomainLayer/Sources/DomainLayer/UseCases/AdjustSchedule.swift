@@ -10,7 +10,7 @@ import Foundation
 import Core
 import DataLayer
 
-protocol HasAdjustScheduleUseCase {
+public protocol HasAdjustScheduleUseCase {
   var adjustSchedule: AdjustSchedule { get }
 }
 
@@ -19,7 +19,7 @@ protocol HasAdjustScheduleUseCase {
  * Deletes old schedule from the storage
  * Saves new schedule to the storage
  */
-protocol AdjustSchedule {
+public protocol AdjustSchedule {
   func callAsFunction(
     currentSchedule schedule: Schedule,
     newToBed: Date

@@ -1,22 +1,14 @@
-//
-//  PreferredWakeUpTime.swift
-//  Rise
-//
-//  Created by Vladimir Korolev on 22.11.2021.
-//  Copyright © 2021 VladimirBrejcha. All rights reserved.
-//
-
 import Foundation
 import DataLayer
 
-protocol HasPreferredWakeUpTimeUseCase {
+public protocol HasPreferredWakeUpTimeUseCase {
   var preferredWakeUpTime: PreferredWakeUpTime { get }
 }
 
 /*
  * Provides preferred wake up time in case if user have no schedule
  */
-protocol PreferredWakeUpTime: AnyObject {
+public protocol PreferredWakeUpTime: AnyObject {
   var time: Date? { get set }
 }
 

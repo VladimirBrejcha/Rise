@@ -1,16 +1,8 @@
-//
-//  CreateNextSchedule.swift
-//  Rise
-//
-//  Created by Vladimir Korolev on 06.11.2021.
-//  Copyright © 2021 VladimirBrejcha. All rights reserved.
-//
-
 import Foundation
 import DataLayer
 import Core
 
-protocol HasCreateNextSchedule {
+public protocol HasCreateNextSchedule {
   var createNextSchedule: CreateNextSchedule { get }
 }
 
@@ -19,7 +11,7 @@ protocol HasCreateNextSchedule {
  *
  * Returns the same schedule if `targetToBed` already reached
  */
-protocol CreateNextSchedule {
+public protocol CreateNextSchedule {
   func callAsFunction(from schedule: Schedule) -> Schedule
 }
 

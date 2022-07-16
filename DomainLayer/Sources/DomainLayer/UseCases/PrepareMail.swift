@@ -9,22 +9,23 @@
 import MessageUI
 import Core
 
-protocol HasPrepareMail {
+public protocol HasPrepareMail {
   var prepareMail: PrepareMail { get }
 }
 
-enum PrepareMailError: LocalizedError {
+public enum PrepareMailError: LocalizedError {
   case cannotSendMail
 
-  var errorDescription: String? {
+  public var errorDescription: String? {
     switch self {
     case .cannotSendMail:
-      return Text.PrepareMailError.cannotSend
+      fatalError() // todo
+//      return Text.PrepareMailError.cannotSend
     }
   }
 }
 
-protocol PrepareMail {
+public protocol PrepareMail {
   // returns .success(nil) if MFMailComposeViewController.canSendMail() was false, but mailto: operation succeed
   func callAsFunction(
     to recipient: String,

@@ -10,6 +10,7 @@ import UIKit
 import MessageUI
 import SafariServices
 import Core
+import DomainLayer
 
 final class AboutViewController:
   UIViewController,

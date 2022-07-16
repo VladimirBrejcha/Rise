@@ -9,7 +9,7 @@
 import Foundation
 import DataLayer
 
-protocol HasRefreshSunTimeUseCase {
+public protocol HasRefreshSunTimeUseCase {
   var refreshSunTime: RefreshSunTime { get }
 }
 
@@ -18,7 +18,7 @@ protocol HasRefreshSunTimeUseCase {
  * Fetches new location
  * Next `GetSunTime` call will load refreshed suntimes
  */
-protocol RefreshSunTime {
+public protocol RefreshSunTime {
   func callAsFunction(
     permissionRequestProvider: @escaping (@escaping (Bool) -> Void) -> Void,
     onSuccess: @escaping() -> Void,

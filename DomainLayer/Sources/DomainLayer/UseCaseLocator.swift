@@ -1,24 +1,17 @@
-//
-//  UseCaseLocator.swift
-//  Rise
-//
-//  Created by Vladimir Korolev on 14.05.2022.
-//  Copyright © 2022 VladimirBrejcha. All rights reserved.
-//
-
 import DataLayer
 
-final class UseCaseLocator: UseCases {
+public final class UseCaseLocator: UseCases {
   
   private let scheduleRepository: ScheduleRepository
   private let sunTimeRepository: SunTimeRepository
   private let locationRepository: LocationRepository
   private let userData: UserData
   
-  init(scheduleRepository: ScheduleRepository,
-       sunTimeRepository: SunTimeRepository,
-       locationRepository: LocationRepository,
-       userData: UserData
+  public init(
+    scheduleRepository: ScheduleRepository,
+    sunTimeRepository: SunTimeRepository,
+    locationRepository: LocationRepository,
+    userData: UserData
   ) {
     self.scheduleRepository = scheduleRepository
     self.sunTimeRepository = sunTimeRepository
@@ -26,75 +19,75 @@ final class UseCaseLocator: UseCases {
     self.userData = userData
   }
   
-  var createSchedule: CreateSchedule {
+  public var createSchedule: CreateSchedule {
     CreateScheduleImpl()
   }
   
-  var updateSchedule: UpdateSchedule {
+  public var updateSchedule: UpdateSchedule {
     UpdateScheduleImpl(createSchedule, scheduleRepository)
   }
   
-  var deleteSchedule: DeleteSchedule {
+  public var deleteSchedule: DeleteSchedule {
     DeleteScheduleImpl(scheduleRepository, userData)
   }
   
-  var getSunTime: GetSunTime {
+  public var getSunTime: GetSunTime {
     GetSunTimeImpl(locationRepository, sunTimeRepository)
   }
   
-  var refreshSunTime: RefreshSunTime {
+  public var refreshSunTime: RefreshSunTime {
     RefreshSunTimeImpl(locationRepository, sunTimeRepository)
   }
   
-  var manageOnboardingCompleted: ManageOnboardingCompleted {
+  public var manageOnboardingCompleted: ManageOnboardingCompleted {
     ManageOnboardingCompletedImpl(userData)
   }
   
-  var adjustSchedule: AdjustSchedule {
+  public var adjustSchedule: AdjustSchedule {
     AdjustScheduleImpl(scheduleRepository, userData)
   }
   
-  var getSchedule: GetSchedule {
+  public var getSchedule: GetSchedule {
     GetScheduleImpl(scheduleRepository, createNextSchedule)
   }
   
-  var pauseSchedule: PauseSchedule {
+  public var pauseSchedule: PauseSchedule {
     PauseScheduleImpl(userData)
   }
   
-  var manageActiveSleep: ManageActiveSleep {
+  public var manageActiveSleep: ManageActiveSleep {
     ManageActiveSleepImpl(userData)
   }
   
-  var suggestKeepAppOpened: SuggestKeepAppOpened {
+  public var suggestKeepAppOpened: SuggestKeepAppOpened {
     SuggestKeepAppOpenedImpl(userData)
   }
   
-  var preferredWakeUpTime: PreferredWakeUpTime {
+  public var preferredWakeUpTime: PreferredWakeUpTime {
     PreferredWakeUpTimeImpl(userData)
   }
   
-  var preventAppSleep: PreventAppSleep {
+  public var preventAppSleep: PreventAppSleep {
     PreventAppSleepImpl()
   }
   
-  var changeScreenBrightness: ChangeScreenBrightness {
+  public var changeScreenBrightness: ChangeScreenBrightness {
     ChangeScreenBrightnessImpl()
   }
   
-  var prepareMail: PrepareMail {
+  public var prepareMail: PrepareMail {
     PrepareMailUseCase()
   }
   
-  var getAppVersion: GetAppVersion {
+  public var getAppVersion: GetAppVersion {
     GetAppVersionUseCase()
   }
   
-  var createNextSchedule: CreateNextSchedule {
+  public var createNextSchedule: CreateNextSchedule {
     CreateNextScheduleImpl(userData)
   }
   
-  var saveSchedule: SaveSchedule {
+  public var saveSchedule: SaveSchedule {
     SaveScheduleImpl(scheduleRepository)
   }
 }

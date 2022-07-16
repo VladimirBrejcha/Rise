@@ -6,6 +6,8 @@
 //  Copyright © 2020 VladimirBrejcha. All rights reserved.
 //
 
+import DomainLayer
+
 final class CreateScheduleAssembler {
   func assemble(deps: HasCreateScheduleUseCase & HasSaveSchedule) -> CreateScheduleViewController {
     let controller = Storyboard.createSchedule.instantiateViewController(

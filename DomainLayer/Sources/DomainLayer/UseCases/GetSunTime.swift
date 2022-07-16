@@ -1,22 +1,14 @@
-//
-//  GetSunTime.swift
-//  Rise
-//
-//  Created by Vladimir Korolev on 05.01.2020.
-//  Copyright © 2020 VladimirBrejcha. All rights reserved.
-//
-
 import Foundation
 import Core
 import DataLayer
 
-protocol HasGetSunTimeUseCase {
+public protocol HasGetSunTimeUseCase {
   var getSunTime: GetSunTime { get }
 }
 
-typealias GetSunTimeCompletion = (Result<[SunTime], Error>) -> Void
+public typealias GetSunTimeCompletion = (Result<[SunTime], Error>) -> Void
 
-protocol GetSunTime {
+public protocol GetSunTime {
   func callAsFunction(
     numberOfDays: Int,
     since date: Date,
