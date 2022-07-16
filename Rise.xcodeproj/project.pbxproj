@@ -476,20 +476,6 @@
 			name = Packages;
 			sourceTree = "<group>";
 		};
-		7E173373241044BF0028FDBE /* Interfaces */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Interfaces;
-			sourceTree = "<group>";
-		};
-		7E17337A241053910028FDBE /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Entities;
-			sourceTree = "<group>";
-		};
 		7E199CD5240BD43C00B702AD /* SliderWithValues */ = {
 			isa = PBXGroup;
 			children = (
@@ -808,9 +794,7 @@
 			children = (
 				7E5A1EB2282FE284005F19D6 /* UseCaseLocator.swift */,
 				7E5A1EB0282FE239005F19D6 /* UseCases.swift */,
-				7E17337A241053910028FDBE /* Entities */,
 				7EB9F33E23C20252002A6DD3 /* UseCases */,
-				7E173373241044BF0028FDBE /* Interfaces */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
