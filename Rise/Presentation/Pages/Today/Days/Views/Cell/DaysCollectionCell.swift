@@ -19,6 +19,7 @@ extension Days {
     private var model: Model?
 
     // MARK: - Subviews
+
     private lazy var loadingView: LoadingView = {
       let view = LoadingView()
       view.infoLabelFont = Style.Text.mediumSizedBody.font
@@ -128,6 +129,11 @@ extension Days {
 
     override func prepareForReuse() {
       super.prepareForReuse()
+      loadingView.restoreAnimation()
+    }
+
+    override func didMoveToWindow() {
+      super.didMoveToWindow()
       loadingView.restoreAnimation()
     }
 

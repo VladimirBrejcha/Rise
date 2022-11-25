@@ -168,11 +168,13 @@ extension Days {
 
     private func refreshSunTimes(allowPermissionAlert: Bool = false) {
       guard let state = state else { return }
+
       setState(
         state.changing {
           $0.sunTime = .loading
         }
       )
+
       deps.getSunTime(
         numberOfDays: 3,
         since: NoonedDay.yesterday.date,
