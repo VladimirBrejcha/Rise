@@ -92,6 +92,7 @@ final class CreateScheduleViewController:
   var createSchedule: CreateSchedule! // DI
   var saveSchedule: SaveSchedule! // DI
   var stages: [Stage]! // DI
+  var onCreate: (() -> Void)?
 
   // opened for DI into PageController controllers
 
@@ -125,7 +126,9 @@ final class CreateScheduleViewController:
           guard let self = self else { return }
           switch self.currentStage {
           case .scheduleCreated:
-            self.dismiss()
+            self.dismiss(completion: { [weak self] in
+              self?.onCreate?()
+            })
           case .wentSleep:
             do {
               try self.generateSchedule()

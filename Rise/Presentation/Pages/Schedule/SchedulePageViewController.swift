@@ -15,7 +15,7 @@ extension SchedulePage {
   final class Controller: UIViewController, ViewController {
     
     enum OutCommand {
-      case createSchedule
+      case createSchedule(onCreate: () -> Void)
     }
     typealias Deps = HasGetSchedule & HasPauseSchedule
     typealias View = SchedulePage.View
@@ -74,13 +74,9 @@ extension SchedulePage {
             showCells: .no(reason: "You don't have the schedule yet"),
             middleButtonTitle: "Create Rise schedule",
             middleButtonHandler: { [weak self] in
-              self?.out(.createSchedule)
-              //              self?.present(
-              //                Story.createSchedule(onCreate: { [weak self] in
-              //                  self?.refresh()
-              //                })(),
-              //                with: .modal
-              //              )
+              self?.out(.createSchedule(onCreate: {
+                self?.refresh()
+              }))
             }
           )
         )

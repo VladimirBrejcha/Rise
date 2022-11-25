@@ -110,17 +110,22 @@ final class RootCoordinator {
   private var schedule: SchedulePage.Controller {
     .init(deps: useCases) { [self, unowned nc = navigationController] command in
       switch command {
-      case .createSchedule:
+      case .createSchedule(let onCreate):
         nc.present(
-          createSchedule,
+          createSchedule(onCreate: onCreate),
           with: .modal
         )
       }
     }
   }
 
-  private var createSchedule: CreateScheduleViewController {
-    CreateScheduleAssembler().assemble(deps: useCases)
+  private func createSchedule(
+    onCreate: @escaping () -> Void
+  ) -> CreateScheduleViewController {
+    CreateScheduleAssembler().assemble(
+      deps: useCases,
+      onCreate: onCreate
+    )
   }
 
   private func keepAppOpened(

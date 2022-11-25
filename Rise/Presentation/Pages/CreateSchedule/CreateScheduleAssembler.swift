@@ -9,12 +9,16 @@
 import DomainLayer
 
 final class CreateScheduleAssembler {
-  func assemble(deps: HasCreateSchedule & HasSaveSchedule) -> CreateScheduleViewController {
+  func assemble(
+    deps: HasCreateSchedule & HasSaveSchedule,
+    onCreate: @escaping () -> Void
+  ) -> CreateScheduleViewController {
     let controller = Storyboard.createSchedule.instantiateViewController(
       of: CreateScheduleViewController.self
     )
     controller.createSchedule = deps.createSchedule
     controller.saveSchedule = deps.saveSchedule
+    controller.onCreate = onCreate
     controller.stages = [
       .welcome,
       .sleepDuration(
