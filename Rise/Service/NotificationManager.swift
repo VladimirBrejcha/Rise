@@ -99,3 +99,16 @@ extension UIApplication {
     }
   }
 }
+//MARK: - Request permission
+
+func registerLocal() {
+    let notificationCenter = UNUserNotificationCenter.current()
+    
+    notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+        if granted {
+            print("Yay")
+        } else  {
+            print("D'oh")
+        }
+    }
+}
