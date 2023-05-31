@@ -104,11 +104,25 @@ extension UIApplication {
 func registerLocal() {
     let notificationCenter = UNUserNotificationCenter.current()
     
-    notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
-        if granted {
-            print("Yay")
-        } else  {
-            print("D'oh")
+        notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+            guard granted else { return }
+                notificationCenter.getNotificationSettings { (settings)  in
+                    print("Notification settings: \(settings)")
+                    guard settings.authorizationStatus == .authorized else { return }
         }
     }
+}
+//MARK: - Notifications
+func notifyIsTimeToSleep () {
+    let center = UNUserNotificationCenter.current()
+    
+    let content = UNMutableNotificationContent()
+    content.title = "Is time to sleep"
+    content.body = "if you're in the rhythm you need to go to sleep"
+    content.categoryIdentifier = "notify to sleep"
+    content.sound = .default
+    
+    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+    let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+    center.add(request)
 }
