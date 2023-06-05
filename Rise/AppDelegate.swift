@@ -50,5 +50,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func applicationWillTerminate(_ application: UIApplication) {
     DataLayer.userData.latestAppUsageDate = Date()
+      coordinator.stopTimeToSleepTimer()
   }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        coordinator.stopTimeToSleepTimer()
+    }
 }
