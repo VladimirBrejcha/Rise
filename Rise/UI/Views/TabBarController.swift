@@ -47,10 +47,10 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
 //            let acceptButton = NotificationData.acceptButtons[randomInt]
 //            let cancelButton = NotificationData.cancelButtons[randomInt]
 //
-//            showAlert(title, description, acceptButton, cancelButton)
+//            showTimeToSleepAlert(title, description, acceptButton, cancelButton)
 //        }
 //
-//        func showAlert(_ title: String,_ message: String,_ okaction: String,_ cancelAction: String) {
+//        func showTimeToSleepAlert(_ title: String,_ message: String,_ okaction: String,_ cancelAction: String) {
 //            let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
 //            let okAction = UIAlertAction(title: okaction, style: .default)
 //            let cancelAction = UIAlertAction(title: cancelAction, style: .cancel)

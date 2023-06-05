@@ -44,6 +44,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
   ) -> Bool {
     window = mainWindow
     coordinator.run()
+    coordinator.beginTimeToSleepTimer()
     return true
   }
 

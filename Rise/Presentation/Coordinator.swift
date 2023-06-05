@@ -71,7 +71,6 @@ final class RootCoordinator {
                 switch command {
                 case .finish:
                     nc.popViewController(animated: true)
-//                    NotificationManager.registerLocal()
                 }
             })
     }
@@ -266,4 +265,27 @@ final class RootCoordinator {
     private var about: AboutViewController {
         .init(deps: useCases)
     }
+//MARK: -  Timer
+    
+    var startTime: TimeInterval = 0.0
+    var timer: Timer?
+    
+    func beginTimeToSleepTimer() {
+        startTime = Date.timeIntervalSinceReferenceDate
+        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(someCode), userInfo: nil, repeats: true)
+        print("Start timer")
+        }
+    
+    @objc func someCode() {
+        print("Some Code")
+    }
+    
+    func stopTimeToSleepTimer() {
+        timer?.invalidate()
+        timer = nil
+        print("Stop timer")
+    }
+    
+
 }
+
