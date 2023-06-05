@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1231D9A22A2774F90079133A /* NotificationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1231D9A12A2774F90079133A /* NotificationData.swift */; };
 		7E07A10123AFBEE300B9D61A /* WelcomeCreateScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E07A10023AFBEE300B9D61A /* WelcomeCreateScheduleViewController.swift */; };
 		7E0B88F72455BEF400BC3CF5 /* SelectableStackViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0B88F52455BEF400BC3CF5 /* SelectableStackViewButton.swift */; };
 		7E13C71F27617F73009310CD /* UITabBarItem+withSystemIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E13C71E27617F73009310CD /* UITabBarItem+withSystemIcons.swift */; };
@@ -160,6 +161,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1231D9A12A2774F90079133A /* NotificationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationData.swift; sourceTree = "<group>"; };
 		7E07A10023AFBEE300B9D61A /* WelcomeCreateScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCreateScheduleViewController.swift; sourceTree = "<group>"; };
 		7E0B88F52455BEF400BC3CF5 /* SelectableStackViewButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectableStackViewButton.swift; sourceTree = "<group>"; };
 		7E13C71E27617F73009310CD /* UITabBarItem+withSystemIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarItem+withSystemIcons.swift"; sourceTree = "<group>"; };
@@ -608,6 +610,7 @@
 			isa = PBXGroup;
 			children = (
 				7EA64EEA25A8BC9F0029FBE7 /* NotificationManager.swift */,
+				1231D9A12A2774F90079133A /* NotificationData.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1063,6 +1066,7 @@
 				7EE3EB94274D7D390000CFDE /* KeepAppOpenedSuggestionView.swift in Sources */,
 				7E3543FF283A5C1200C1E149 /* Today.swift in Sources */,
 				7E43065F26EE63DB00B67315 /* AboutItemView.swift in Sources */,
+				1231D9A22A2774F90079133A /* NotificationData.swift in Sources */,
 				7EA7BA0A2354F1810051A92D /* DaysCollectionView.swift in Sources */,
 				7E708A4023BFD92D003B5702 /* EditScheduleViewController.swift in Sources */,
 				7E48D2B4274C22C900B14355 /* UIScreen+isSmallSize.swift in Sources */,

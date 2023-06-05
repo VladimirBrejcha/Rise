@@ -20,7 +20,7 @@ public final class UseCaseLocator: UseCases {
   }
   
   public var createSchedule: CreateSchedule {
-    CreateScheduleImpl()
+      CreateScheduleImpl()
   }
   
   public var updateSchedule: UpdateSchedule {
