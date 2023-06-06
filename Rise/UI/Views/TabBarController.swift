@@ -35,29 +35,6 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        DispatchQueue.main.async {
-//            getRandomNumber()
-//        }
-//        func getRandomNumber() {
-//            let randomInt = Int.random(in: 0...9)
-//            guard randomInt >= 0 && randomInt < NotificationData.notificationTitles.count else { return }
-//
-//            let title = NotificationData.notificationTitles[randomInt]
-//            let description = NotificationData.notificationDescriptions[randomInt]
-//            let acceptButton = NotificationData.acceptButtons[randomInt]
-//            let cancelButton = NotificationData.cancelButtons[randomInt]
-//
-//            showTimeToSleepAlert(title, description, acceptButton, cancelButton)
-//        }
-//
-//        func showTimeToSleepAlert(_ title: String,_ message: String,_ okaction: String,_ cancelAction: String) {
-//            let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
-//            let okAction = UIAlertAction(title: okaction, style: .default)
-//            let cancelAction = UIAlertAction(title: cancelAction, style: .cancel)
-//            ac.addAction(okAction)
-//            ac.addAction(cancelAction)
-//            present(ac, animated: true)
-//        }
         
         tabBar.standardAppearance = appearance
         if #available(iOS 15.0, *) {

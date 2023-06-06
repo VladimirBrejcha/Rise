@@ -265,27 +265,55 @@ final class RootCoordinator {
     private var about: AboutViewController {
         .init(deps: useCases)
     }
-//MARK: -  Timer
+    
+    //MARK: -  Timer
     
     var startTime: TimeInterval = 0.0
     var timer: Timer?
     
     func beginTimeToSleepTimer() {
         startTime = Date.timeIntervalSinceReferenceDate
-        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(someCode), userInfo: nil, repeats: true)
-        print("Start timer")
-        }
+        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(checkSleepTime), userInfo: nil, repeats: true)
+    }
     
-    @objc func someCode() {
-        print("Some Code")
+    @objc func checkSleepTime() {
+        let currentDate = Date()
+        guard let timeToSleep = useCases.getSchedule.yesterday()?.toBed else { return }
+        if currentDate >= timeToSleep {
+            if useCases.manageActiveSleep.sleepStartedAt == nil {
+                getRandomNumber()
+            }
+        }
     }
     
     func stopTimeToSleepTimer() {
         timer?.invalidate()
         timer = nil
-        print("Stop timer")
+        print("Stop time - \(String(describing: timer))")
     }
     
-
+    //MARK: - Random allerts
+    
+    func getRandomNumber() {
+        let randomInt = Int.random(in: 0...9)
+        guard randomInt >= 0 && randomInt < NotificationData.notificationTitles.count else { return }
+        
+        let title = NotificationData.notificationTitles[randomInt]
+        let description = NotificationData.notificationDescriptions[randomInt]
+        let acceptButton = NotificationData.acceptButtons[randomInt]
+        let cancelButton = NotificationData.cancelButtons[randomInt]
+        
+        showTimeToSleepAlert(title, description, acceptButton, cancelButton)
+    }
+    
+    func showTimeToSleepAlert(_ title: String,_ message: String,_ okaction: String,_ cancelAction: String) {
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: okaction, style: .default)
+        let cancelAction = UIAlertAction(title: cancelAction, style: .cancel) { _ in self.stopTimeToSleepTimer() }
+        
+        ac.addAction(cancelAction)
+        ac.addAction(okAction)
+        
+        navigationController.present(ac, animated: true)
+    }
 }
-
