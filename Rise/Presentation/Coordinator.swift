@@ -270,15 +270,22 @@ final class RootCoordinator {
     
     var startTime: TimeInterval = 0.0
     var timer: Timer?
+    var timeToSleepHasBeenShown: Bool = false
+
     
     func beginTimeToSleepTimer() {
+        if timeToSleepHasBeenShown {
+            return
+        }
+        
         startTime = Date.timeIntervalSinceReferenceDate
         timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(checkSleepTime), userInfo: nil, repeats: true)
     }
     
     @objc func checkSleepTime() {
         let currentDate = Date()
-        guard let timeToSleep = useCases.getSchedule.yesterday()?.toBed else { return }
+        guard let timeToSleep = useCases.getSchedule.today()?.toBed else { return }
+        
         if currentDate >= timeToSleep {
             if useCases.manageActiveSleep.sleepStartedAt == nil {
                 getRandomNumber()
@@ -289,7 +296,6 @@ final class RootCoordinator {
     func stopTimeToSleepTimer() {
         timer?.invalidate()
         timer = nil
-        print("Stop time - \(String(describing: timer))")
     }
     
     //MARK: - Random allerts
@@ -306,14 +312,19 @@ final class RootCoordinator {
         showTimeToSleepAlert(title, description, acceptButton, cancelButton)
     }
     
-    func showTimeToSleepAlert(_ title: String,_ message: String,_ okaction: String,_ cancelAction: String) {
+    func showTimeToSleepAlert(_ title: String, _ message: String, _ okaction: String, _ cancelAction: String) {
         let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: okaction, style: .default)
-        let cancelAction = UIAlertAction(title: cancelAction, style: .cancel) { _ in self.stopTimeToSleepTimer() }
+        let vc = prepareToSleep
+        
+        let okAction = UIAlertAction(title: okaction, style: .default) { _ in self.navigationController.pushViewController(vc, animated: true)
+            self.stopTimeToSleepTimer()}
+        let cancelAction = UIAlertAction(title: cancelAction, style: .cancel) { _ in
+            self.stopTimeToSleepTimer()}
         
         ac.addAction(cancelAction)
         ac.addAction(okAction)
         
         navigationController.present(ac, animated: true)
+        timeToSleepHasBeenShown = true
     }
 }
