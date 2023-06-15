@@ -1,12 +1,77 @@
 //
-//  NotificationDate.swift
-//  Rise
+//  File.swift
+//  
 //
-//  Created by Артем Чжен on 31/05/23.
-//  Copyright © 2023 VladimirBrejcha. All rights reserved.
+//  Created by Артем Чжен on 15/06/23.
 //
 
 import Foundation
+
+public typealias OnNotifyParams = (title: String, description: String, acceptButton: String, cancelButton: String)
+
+public protocol HasNotifyToSleep {
+    var notifyToSleep: NotifyToSleep { get }
+}
+
+public protocol NotifyToSleep: AnyObject {
+    var onNotify: ((OnNotifyParams) -> Void)? {get set}
+    var didNotify: Bool {get set}
+    
+    func start()
+    func stop()
+}
+
+class NotifyToSleepImpl: NotifyToSleep {
+    var startTime: TimeInterval = 0.0
+    var timer: Timer?
+    var didNotify: Bool = false
+    let getSchedule: GetSchedule
+    let manageActiveSleep: ManageActiveSleep
+    var onNotify: ((OnNotifyParams) -> Void)?
+    
+    init(getSchedule: GetSchedule, manageActiveSleep: ManageActiveSleep) {
+        self.getSchedule = getSchedule
+        self.manageActiveSleep = manageActiveSleep
+    }
+    
+    func start() {
+        if didNotify {
+            return
+        }
+        stop()
+
+        startTime = Date.timeIntervalSinceReferenceDate
+        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(checkSleepTime), userInfo: nil, repeats: true)
+    }
+    
+    @objc func checkSleepTime() {
+        let currentDate = Date()
+        guard let timeToSleep = getSchedule.today()?.toBed else { return }
+        
+        if currentDate >= timeToSleep {
+            if manageActiveSleep.sleepStartedAt == nil {
+                notify()
+            }
+        }
+    }
+    
+    func stop() {
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    func notify() {
+        let randomInt = Int.random(in: 0...9)
+        guard randomInt >= 0 && randomInt < NotificationData.notificationTitles.count else { return }
+        
+        let title = NotificationData.notificationTitles[randomInt]
+        let description = NotificationData.notificationDescriptions[randomInt]
+        let acceptButton = NotificationData.acceptButtons[randomInt]
+        let cancelButton = NotificationData.cancelButtons[randomInt]
+        
+        onNotify?(OnNotifyParams(title, description, acceptButton, cancelButton))
+    }
+}
 
 struct NotificationData {
     static let notificationTitles: [String] = ["Sleepy Time Awaits",

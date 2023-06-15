@@ -44,7 +44,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
   ) -> Bool {
     window = mainWindow
     coordinator.run()
-    coordinator.beginTimeToSleepTimer()
+    useCaseLocator.notifyToSleep.start()
     return true
   }
 
@@ -53,9 +53,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
   }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
-        coordinator.beginTimeToSleepTimer()
+        useCaseLocator.notifyToSleep.start()
     }
     func applicationDidEnterBackground(_ application: UIApplication) {
-        coordinator.stopTimeToSleepTimer()
+        useCaseLocator.notifyToSleep.stop()
     }
 }
