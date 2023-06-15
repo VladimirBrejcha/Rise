@@ -287,6 +287,7 @@ final class CreateScheduleViewController:
           intensity: chosenIntensity
         )
       )
+        NotificationManager.registerLocal()
     } else {
       throw Error.someFieldsAreMissing
     }

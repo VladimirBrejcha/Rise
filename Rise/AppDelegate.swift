@@ -44,10 +44,18 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
   ) -> Bool {
     window = mainWindow
     coordinator.run()
+    useCaseLocator.notifyToSleep.start()
     return true
   }
 
   func applicationWillTerminate(_ application: UIApplication) {
     DataLayer.userData.latestAppUsageDate = Date()
   }
+    
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        useCaseLocator.notifyToSleep.start()
+    }
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        useCaseLocator.notifyToSleep.stop()
+    }
 }

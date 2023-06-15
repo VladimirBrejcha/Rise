@@ -84,6 +84,7 @@ extension Today {
 
       addChild(daysViewController)
       daysViewController.didMove(toParent: self)
+
     }
 
     override func viewWillAppear(_ animated: Bool) {

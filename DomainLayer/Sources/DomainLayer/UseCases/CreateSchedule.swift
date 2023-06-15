@@ -36,7 +36,7 @@ final class CreateScheduleImpl: CreateSchedule {
       )
     )
   }
-  
+
   private func calculateWakeUp(toBed: Date, sleepDuration: Int) -> Date {
     toBed
       .addingTimeInterval(days: -1)

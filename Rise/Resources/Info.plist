@@ -49,5 +49,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSUserNotificationsUsageDescription</key>
+	<string>Notifications from Rise may include sleep reminders, wake-up alarms, and motivational messages.</string>
 </dict>
 </plist>

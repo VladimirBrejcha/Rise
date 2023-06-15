@@ -46,7 +46,7 @@ final class PrepareToSleepViewController: UIViewController, ViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
+      
     guard let hours = calendar.dateComponents([.hour], from: Date()).hour else {
       out(.finish)
       return
