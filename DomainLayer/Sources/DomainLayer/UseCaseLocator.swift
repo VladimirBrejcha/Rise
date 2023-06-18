@@ -31,9 +31,9 @@ public final class UseCaseLocator: UseCases {
         DeleteScheduleImpl(scheduleRepository, userData)
     }
     
-    public var getSunTime: GetSunTime {
-        GetSunTimeImpl(locationRepository, sunTimeRepository)
-    }
+    public lazy var getSunTime: GetSunTime = GetSunTimeImpl(
+        locationRepository, sunTimeRepository
+    )
     
     public var refreshSunTime: RefreshSunTime {
         RefreshSunTimeImpl(locationRepository, sunTimeRepository)
@@ -91,5 +91,7 @@ public final class UseCaseLocator: UseCases {
         SaveScheduleImpl(scheduleRepository)
     }
     
-    public lazy var notifyToSleep: NotifyToSleep = NotifyToSleepImpl(getSchedule: getSchedule, manageActiveSleep: manageActiveSleep)
+    public lazy var notifyToSleep: NotifyToSleep = NotifyToSleepImpl(
+        getSchedule: getSchedule, manageActiveSleep: manageActiveSleep
+    )
 }
