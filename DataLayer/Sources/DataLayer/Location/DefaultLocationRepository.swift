@@ -2,9 +2,9 @@ import Core
 
 final class DefaultLocationRepository: LocationRepository {
   private let localDataSource: LocationLocalDataSource
-  private let remoteDataSource: LocationRemoteDataSource
+  private let remoteDataSource: LocationDeviceDataSource
 
-  init(_ localDataSource: LocationLocalDataSource, _ remoteDataSource: LocationRemoteDataSource) {
+  init(_ localDataSource: LocationLocalDataSource, _ remoteDataSource: LocationDeviceDataSource) {
     self.localDataSource = localDataSource
     self.remoteDataSource = remoteDataSource
   }

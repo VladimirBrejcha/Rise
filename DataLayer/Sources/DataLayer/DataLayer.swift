@@ -22,7 +22,7 @@ fileprivate struct DataSources {
   static let locationLocalDataSource: LocationLocalDataSource = DefaultLocationLocalDataSource(
     containerName: "LocationData"
   )
-  static let locationRemoteDataSource: LocationRemoteDataSource = DefaultLocationRemoteDataSource()
+  static let locationRemoteDataSource: LocationDeviceDataSource = LocationDeviceDataSourceImpl()
   static let sunTimeLocalDataSource: SunTimeLocalDataSource = SunTimeCoreDataService(
     containerName: "SunTimeData"
   )
