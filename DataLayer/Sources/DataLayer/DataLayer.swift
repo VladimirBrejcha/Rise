@@ -7,7 +7,7 @@ public enum DataLayer {
   )
   public static let locationRepository: LocationRepository = DefaultLocationRepository(
     DataSources.locationLocalDataSource,
-    DataSources.locationRemoteDataSource
+    DataSources.locationDeviceDataSource
   )
   public static let scheduleRepository: ScheduleRepository = ScheduleRepositoryImpl(
     DataSources.scheduleLocalDataSource
@@ -22,7 +22,7 @@ fileprivate struct DataSources {
   static let locationLocalDataSource: LocationLocalDataSource = DefaultLocationLocalDataSource(
     containerName: "LocationData"
   )
-  static let locationRemoteDataSource: LocationDeviceDataSource = LocationDeviceDataSourceImpl()
+  static let locationDeviceDataSource: LocationDeviceDataSource = LocationDeviceDataSourceImpl()
   static let sunTimeLocalDataSource: SunTimeLocalDataSource = SunTimeCoreDataService(
     containerName: "SunTimeData"
   )
