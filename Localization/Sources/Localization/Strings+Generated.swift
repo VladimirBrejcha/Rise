@@ -88,6 +88,14 @@ public enum Text {
   public static let youDontHaveAScheduleYet = Text.tr("Localizable", "you_dont_have_a_schedule_yet")
 
   public enum About {
+    public enum Coauthors {
+      /// Nouble Bushido
+      public static let noubleBushido = Text.tr("Localizable", "about.coauthors.noubleBushido")
+      /// Vladimir Brejcha
+      public static let vladimirBrejcha = Text.tr("Localizable", "about.coauthors.vladimirBrejcha")
+      /// Vladislav
+      public static let vladislav = Text.tr("Localizable", "about.coauthors.vladislav")
+    }
     public enum Feedback {
       /// Leave Feedback
       public static let mail = Text.tr("Localizable", "about.feedback.mail")

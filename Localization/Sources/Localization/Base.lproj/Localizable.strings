@@ -27,6 +27,9 @@
 "about.social.linked_in" = "Reach me via LinkedIn";
 "about.social.telegram" = "Reach me via Telegram";
 "about.feedback.mail" = "Leave Feedback";
+"about.coauthors.noubleBushido" = "Nouble Bushido";
+"about.coauthors.vladislav" = "Vladislav";
+"about.coauthors.vladimirBrejcha" = "Vladimir Brejcha";
 "prepare_mail_error.cannot_send" = "Cannot send email. Make sure a mail app is installed";
 "yesterday" = "Yesterday";
 "today" = "Today";
