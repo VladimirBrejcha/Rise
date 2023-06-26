@@ -92,4 +92,8 @@ public final class UseCaseLocator: UseCases {
     }
     
     public lazy var notifyToSleep: NotifyToSleep = NotifyToSleepImpl(getSchedule: getSchedule, manageActiveSleep: manageActiveSleep)
+    
+    public lazy var notifications: Notifications = NotifacationsImpl(getSchedule: getSchedule)
 }
+
+

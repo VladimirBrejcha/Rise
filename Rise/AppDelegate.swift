@@ -12,50 +12,52 @@ import DomainLayer
 
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
-
-  var window: UIWindow?
-
-  private let useCaseLocator = UseCaseLocator(
-    scheduleRepository: DataLayer.scheduleRepository,
-    sunTimeRepository: DataLayer.sunTimeRepository,
-    locationRepository: DataLayer.locationRepository,
-    userData: DataLayer.userData
-  )
-
-  private lazy var coordinator: RootCoordinator = RootCoordinator(
-    useCases: useCaseLocator,
-    navigationController: rootViewController
-  )
-
-  private let rootViewController = NavigationController()
-
-  private lazy var mainWindow: UIWindow = {
-    let window = UIWindow(frame: UIScreen.main.bounds)
-    window.rootViewController = rootViewController
-    window.makeKeyAndVisible()
-    return window
-  }()
-
-  // MARK: - UIApplicationDelegate
-
-  func application(
-    _ application: UIApplication,
-    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
-  ) -> Bool {
-    window = mainWindow
-    coordinator.run()
-    useCaseLocator.notifyToSleep.start()
-    return true
-  }
-
-  func applicationWillTerminate(_ application: UIApplication) {
-    DataLayer.userData.latestAppUsageDate = Date()
-  }
+    
+    var window: UIWindow?
+    
+    private let useCaseLocator = UseCaseLocator(
+        scheduleRepository: DataLayer.scheduleRepository,
+        sunTimeRepository: DataLayer.sunTimeRepository,
+        locationRepository: DataLayer.locationRepository,
+        userData: DataLayer.userData
+    )
+    
+    private lazy var coordinator: RootCoordinator = RootCoordinator(
+        useCases: useCaseLocator,
+        navigationController: rootViewController
+    )
+    
+    private let rootViewController = NavigationController()
+    
+    private lazy var mainWindow: UIWindow = {
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.rootViewController = rootViewController
+        window.makeKeyAndVisible()
+        return window
+    }()
+    
+    // MARK: - UIApplicationDelegate
+    
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+    ) -> Bool {
+        window = mainWindow
+        coordinator.run()
+        useCaseLocator.notifyToSleep.start()
+        return true
+    }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        DataLayer.userData.latestAppUsageDate = Date()
+    }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         useCaseLocator.notifyToSleep.start()
     }
     func applicationDidEnterBackground(_ application: UIApplication) {
         useCaseLocator.notifyToSleep.stop()
+        useCaseLocator.notifications.scheduleNotifications(inseconds: 5) { _ in }
     }
 }
+

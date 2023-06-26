@@ -18,3 +18,4 @@ public typealias UseCases =
 & HasCreateNextSchedule
 & HasSaveSchedule
 & HasNotifyToSleep
+& HasNotifications
