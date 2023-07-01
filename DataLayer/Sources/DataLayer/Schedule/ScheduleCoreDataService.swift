@@ -81,7 +81,7 @@ fileprivate extension ScheduleObject {
   }
 }
 
-fileprivate extension Schedule {
+extension Schedule {
   init?(object: ScheduleObject) {
     guard let intensity = Schedule.Intensity.init(rawValue: object.intensity),
           let toBed = object.toBed,
