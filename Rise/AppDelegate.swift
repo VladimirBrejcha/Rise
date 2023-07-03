@@ -47,6 +47,8 @@
             coordinator.run()
             useCaseLocator.notifyToSleep.start()
             
+            UNUserNotificationCenter.current().delegate = self
+
             return true
         }
         

@@ -5,9 +5,9 @@
 //  Created by Артем Чжен on 25/06/23.
 //
 
-import Foundation
+//import Foundation
 import UserNotifications
-import UIKit
+//import UIKit
 import Core
 import Combine
 import DataLayer
@@ -17,27 +17,25 @@ public protocol HasNotification {
 }
 
 public protocol Notification: AnyObject {
-    var didNotification: Bool { get set }
     func reScheduleNotification()
 }
 
 class NotificationImpl: NSObject, Notification, UNUserNotificationCenterDelegate {
     
     private let scheduleRepository: ScheduleRepository
-//    private let cancellable: AnyCancellable
+    private let cancellable: AnyCancellable
     
-    var didNotification: Bool = true
     var getSchedule: GetSchedule
     
     init(getSchedule: GetSchedule, scheduleRepository: ScheduleRepository) {
         self.getSchedule = getSchedule
         self.scheduleRepository = scheduleRepository
-//        self.cancellable = scheduleRepository.publisher().sink(receiveValue: { _ in })
+        self.cancellable = scheduleRepository.publisher().sink(receiveValue: { _ in })
     }
     
-//    deinit {
-//        cancellable.cancel()
-//    }
+    deinit {
+        cancellable.cancel()
+    }
     
     func reScheduleNotification() {
         NotificationManager.removeNotification()
