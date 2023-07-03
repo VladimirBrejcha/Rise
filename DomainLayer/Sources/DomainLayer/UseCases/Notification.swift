@@ -13,17 +13,19 @@ public protocol HasNotifications {
 }
 
 public protocol Notifications: AnyObject {
-    var didBotifications: Bool { get set }
+    var didNotifications: Bool { get set }
     func scheduleNotifications(inseconds seconds: TimeInterval, completion: (Bool) ->())
     
 }
 
 class NotifacationsImpl: Notifications {
-    var didBotifications: Bool = true
+    var didNotifications: Bool = true
     var getSchedule: GetSchedule
+    let manageActiveSleep: ManageActiveSleep
     
-    init(getSchedule: GetSchedule) {
+    init(getSchedule: GetSchedule, manageActiveSleep: ManageActiveSleep ) {
         self.getSchedule = getSchedule
+        self.manageActiveSleep = manageActiveSleep
     }
     
     func scheduleNotifications(inseconds seconds: TimeInterval, completion: (Bool) -> ()) {
@@ -34,25 +36,24 @@ class NotifacationsImpl: Notifications {
         let currentTime = calendar.component(.minute, from: Date())
         let sleepTime = calendar.component(.minute, from: timeToSleep)
         print("111111111111")
-        
-        if didBotifications {
-            return
-        }
-        
+    
         if currentTime >= sleepTime {
-            print("222222222222")
-            let notificationContent = UNMutableNotificationContent()
-            notificationContent.title = TextNotify.textTitleNotify.randomElement() ?? "The textBodyNotify is empty"
-            notificationContent.body = TextNotify.textBodyNotify.randomElement() ?? "The textTitleNotify is empty"
-            notificationContent.sound = .default
-            
-            let components = calendar.dateComponents([.month, .day, .hour, .minute, .second], from: date)
-            let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
-            let request = UNNotificationRequest(identifier: "111", content: notificationContent, trigger: trigger)
-            
-            let notificationCenter = UNUserNotificationCenter.current()
-            notificationCenter.add(request, withCompletionHandler: nil)
-            didBotifications = false
+            if manageActiveSleep.sleepStartedAt == nil {
+                print("222222222222")
+                
+                let notificationContent = UNMutableNotificationContent()
+                notificationContent.title = TextNotify.textTitleNotify.randomElement() ?? "The textBodyNotify is empty"
+                notificationContent.body = TextNotify.textBodyNotify.randomElement() ?? "The textTitleNotify is empty"
+                notificationContent.categoryIdentifier = "reminder"
+                notificationContent.sound = .default
+                
+                let components = calendar.dateComponents([.month, .day, .hour, .minute, .second], from: date)
+                let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+                let request = UNNotificationRequest(identifier: "111", content: notificationContent, trigger: trigger)
+                
+                let notificationCenter = UNUserNotificationCenter.current()
+                notificationCenter.add(request, withCompletionHandler: nil)
+            }
         }
     }
 }
@@ -80,4 +81,3 @@ struct TextNotify {
                                             "Dream Yoga",
                                             "Royal Slumber"]
 }
-
