@@ -14,4 +14,7 @@ enum AboutIdentifier {
     case linkedIn
     case telegram
     case mailFeedback
+    case vladimirBrejcha
+    case noubleBushido
+    case vladislav
 }

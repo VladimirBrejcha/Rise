@@ -24,19 +24,30 @@ final class RootCoordinator {
     }
     
     func run() {
+        if useCases.manageOnboardingCompleted.isCompleted == false {
+            navigationController.setViewControllers(
+                [onboarding()],
+                animated: true
+            )
+        } else {
+            configureRoot()
+        }
+
+        useCases.notifyToSleep.onNotify = showTimeToSleepAlert
+    }
+
+    // MARK: - rootControllers
+
+    private func configureRoot() {
         navigationController.setViewControllers(
             rootControllers,
             animated: true
         )
-        
-        useCases.notifyToSleep.onNotify = showTimeToSleepAlert
     }
-    
-    // MARK: - rootControllers
-    
+
     private var rootControllers: [UIViewController] {
         var controllers: [UIViewController] = [tabBar]
-        
+
         // if is sleeping
         if let activeSleepEndDate = useCases.manageActiveSleep.alarmAt {
             let minSinceWakeUp = Date().timeIntervalSince(activeSleepEndDate) / 60
@@ -50,31 +61,31 @@ final class RootCoordinator {
                 useCases.manageActiveSleep.endSleep()
             }
         }
-        
-        else if !useCases.manageOnboardingCompleted.isCompleted {
-            controllers.append(onboarding)
-        }
-        
+
         return controllers
     }
-    
+
     // MARK: - All View Controllers
-    
+
     private var tabBar: TabBarController {
         TabBarController(
             items: [schedule, today, settings],
             selectedIndex: 1
         )
     }
-    
-    private var onboarding: Onboarding.Controller {
+
+    private func onboarding(initial: Bool = true) -> Onboarding.Controller {
         Onboarding.Controller(
             deps: useCases,
             params: Onboarding.defaultParams,
-            out: { [unowned nc = navigationController] command in
+            out: { [weak self, weak nc = navigationController] command in
                 switch command {
                 case .finish:
-                    nc.popViewController(animated: true)
+                    if initial {
+                        self?.configureRoot()
+                    } else {
+                        nc?.popViewController(animated: true)
+                    }
                 }
             })
     }
@@ -91,7 +102,7 @@ final class RootCoordinator {
                 )
             case .showOnboarding:
                 nc.pushViewController(
-                    onboarding,
+                    onboarding(initial: false),
                     animated: true
                 )
             case .showAbout:

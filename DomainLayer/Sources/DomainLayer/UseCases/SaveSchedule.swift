@@ -2,11 +2,11 @@ import DataLayer
 import Core
 
 public protocol HasSaveSchedule {
-  var saveSchedule: SaveSchedule { get }
+    var saveSchedule: SaveSchedule { get }
 }
 
 public protocol SaveSchedule {
-  func callAsFunction(_ schedule: Schedule)
+    func callAsFunction(_ schedule: Schedule)
 }
 
 final class SaveScheduleImpl: SaveSchedule {
