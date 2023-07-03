@@ -9,6 +9,7 @@
 import UIKit
 import DomainLayer
 import UserNotifications
+import Core
 
 final class RootCoordinator {
     
@@ -268,15 +269,16 @@ final class RootCoordinator {
     private var about: AboutViewController {
         .init(deps: useCases)
     }
-
     
     //MARK: - Random allerts
     
     func showTimeToSleepAlert(_ params: OnNotifyParams) {
         let ac = UIAlertController(title: params.title, message: params.description, preferredStyle: .alert)
-        let vc = prepareToSleep
+//        let vc = prepareToSleep
         
-        let okAction = UIAlertAction(title: params.acceptButton, style: .default) { _ in self.navigationController.pushViewController(vc, animated: true)
+        let okAction = UIAlertAction(title: params.acceptButton, style: .default) { _ in
+            self.goToPrepareToSleep()
+//            self.navigationController.pushViewController(vc, animated: true)
             self.useCases.notifyToSleep.stop()}
         let cancelAction = UIAlertAction(title: params.cancelButton, style: .cancel) { _ in
             self.useCases.notifyToSleep.stop()}
@@ -286,5 +288,10 @@ final class RootCoordinator {
         
         navigationController.present(ac, animated: true)
         useCases.notifyToSleep.didNotify = true
+    }
+    
+    func goToPrepareToSleep() {
+        let vc = prepareToSleep
+        self.navigationController.pushViewController(vc, animated: true)
     }
 }
