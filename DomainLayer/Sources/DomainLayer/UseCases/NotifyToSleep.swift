@@ -46,9 +46,7 @@ class NotifyToSleepImpl: NotifyToSleep {
     
     @objc func checkSleepTime() {
         let currentDate = Date()
-        print("------------------------------Сейчас время \(currentDate)")
         guard let timeToSleep = getSchedule.today()?.toBed else { return }
-        print("------------------------------Время сна\(timeToSleep)")
         if currentDate >= timeToSleep {
             if manageActiveSleep.sleepStartedAt == nil {
                 notify()

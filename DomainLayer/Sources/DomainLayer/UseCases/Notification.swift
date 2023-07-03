@@ -7,58 +7,58 @@
 
 import Foundation
 import UserNotifications
+import UIKit
+import Core
+import Combine
+import DataLayer
 
-public protocol HasNotifications {
-    var notifications: Notifications { get }
+public protocol HasNotification {
+    var notification: Notification { get }
 }
 
-public protocol Notifications: AnyObject {
-    var didNotifications: Bool { get set }
-    func scheduleNotifications(inseconds seconds: TimeInterval, completion: (Bool) ->())
+public protocol Notification: AnyObject {
+    var didNotification: Bool { get set }
+    func reScheduleNotification()
+}
+
+class NotificationImpl: NSObject, Notification, UNUserNotificationCenterDelegate {
     
-}
-
-class NotifacationsImpl: Notifications {
-    var didNotifications: Bool = true
+    private let scheduleRepository: ScheduleRepository
+//    private let cancellable: AnyCancellable
+    
+    var didNotification: Bool = true
     var getSchedule: GetSchedule
-    let manageActiveSleep: ManageActiveSleep
     
-    init(getSchedule: GetSchedule, manageActiveSleep: ManageActiveSleep ) {
+    init(getSchedule: GetSchedule, scheduleRepository: ScheduleRepository) {
         self.getSchedule = getSchedule
-        self.manageActiveSleep = manageActiveSleep
+        self.scheduleRepository = scheduleRepository
+//        self.cancellable = scheduleRepository.publisher().sink(receiveValue: { _ in })
     }
     
-    func scheduleNotifications(inseconds seconds: TimeInterval, completion: (Bool) -> ()) {
-        let date = Date(timeIntervalSinceNow: seconds)
-        guard let timeToSleep = getSchedule.today()?.toBed else { return }
-        
-        let calendar = Calendar.current
-        let currentTime = calendar.component(.minute, from: Date())
-        let sleepTime = calendar.component(.minute, from: timeToSleep)
-        print("111111111111")
+//    deinit {
+//        cancellable.cancel()
+//    }
     
-        if currentTime >= sleepTime {
-            if manageActiveSleep.sleepStartedAt == nil {
-                print("222222222222")
-                
-                let notificationContent = UNMutableNotificationContent()
-                notificationContent.title = TextNotify.textTitleNotify.randomElement() ?? "The textBodyNotify is empty"
-                notificationContent.body = TextNotify.textBodyNotify.randomElement() ?? "The textTitleNotify is empty"
-                notificationContent.categoryIdentifier = "reminder"
-                notificationContent.sound = .default
-                
-                let components = calendar.dateComponents([.month, .day, .hour, .minute, .second], from: date)
-                let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
-                let request = UNNotificationRequest(identifier: "111", content: notificationContent, trigger: trigger)
-                
-                let notificationCenter = UNUserNotificationCenter.current()
-                notificationCenter.add(request, withCompletionHandler: nil)
-            }
+    func reScheduleNotification() {
+        NotificationManager.removeNotification()
+        
+        guard let timeToSleepToday = getSchedule.today()?.toBed else { return }
+        guard let timeToSleepTommorow = getSchedule.tomorrow()?.toBed else { return }
+        
+        let dateArray = [timeToSleepToday, timeToSleepTommorow, Date().addingTimeInterval(5)]
+        
+        for date in dateArray {
+            let caledar = Calendar.current
+            let components = caledar.dateComponents([.year,.month,.day, .hour, .minute, .second], from: date)
+            
+            let title = TextNotify.textTitleNotify.randomElement() ?? "Dreamland's Champion"
+            let body = TextNotify.textBodyNotify.randomElement() ?? "🌟 Time to catch some Zs, champ! Your bed is calling and dreams await. Charge up for tomorrow's adventures!” 🛌💤"
+            NotificationManager.createNotification(title: title, body: body, components: components)
         }
     }
 }
 
-struct TextNotify {
+public struct TextNotify {
     static var  textBodyNotify: [String] = ["🌟 “Time to catch some Zs, champ! Your bed is calling and dreams await. Charge up for tomorrow's adventures!” 🛌💤",
                                             "🌜 “The stars are out and the night is young. Head to bed and set sail to Dreamland. Tomorrow’s a fresh start!” 🚀",
                                             "🌙 You've given today your all, now it's time to embrace the night! Slip into your dreams and let your mind be free. Sweet dreams! 🍬",
