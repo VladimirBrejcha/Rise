@@ -274,11 +274,9 @@ final class RootCoordinator {
     
     func showTimeToSleepAlert(_ params: OnNotifyParams) {
         let ac = UIAlertController(title: params.title, message: params.description, preferredStyle: .alert)
-//        let vc = prepareToSleep
         
         let okAction = UIAlertAction(title: params.acceptButton, style: .default) { _ in
             self.goToPrepareToSleep()
-//            self.navigationController.pushViewController(vc, animated: true)
             self.useCases.notifyToSleep.stop()}
         let cancelAction = UIAlertAction(title: params.cancelButton, style: .cancel) { _ in
             self.useCases.notifyToSleep.stop()}
