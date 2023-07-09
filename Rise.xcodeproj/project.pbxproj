@@ -157,9 +157,7 @@
 		92E77AF822A5303400E5E21C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E77AF722A5303400E5E21C /* SettingsViewController.swift */; };
 		92E77AFA22A5304400E5E21C /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E77AF922A5304400E5E21C /* TodayViewController.swift */; };
 		92FE417A28833DE700F328DB /* Localization in Frameworks */ = {isa = PBXBuildFile; productRef = 92FE417928833DE700F328DB /* Localization */; };
-		CE8BD59F2A55613300C15CD0 /* AlarmMelody.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8BD59E2A55613300C15CD0 /* AlarmMelody.swift */; };
 		CE8BD5A12A55636300C15CD0 /* DefaultMelody.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE8BD5A02A55636300C15CD0 /* DefaultMelody.wav */; };
-		CEA3AC002A5AA9AF004A32CE /* ChooiceMelody.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA3ABFF2A5AA9AF004A32CE /* ChooiceMelody.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -312,9 +310,7 @@
 		92D7D65E2296F298009321AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92E77AF722A5303400E5E21C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		92E77AF922A5304400E5E21C /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
-		CE8BD59E2A55613300C15CD0 /* AlarmMelody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmMelody.swift; sourceTree = "<group>"; };
 		CE8BD5A02A55636300C15CD0 /* DefaultMelody.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = DefaultMelody.wav; sourceTree = "<group>"; };
-		CEA3ABFF2A5AA9AF004A32CE /* ChooiceMelody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooiceMelody.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -901,7 +897,7 @@
 			isa = PBXGroup;
 			children = (
 				92D7D6522296F297009321AE /* AppDelegate.swift */,
-				CE8BD59D2A55610E00C15CD0 /* AlarmMelody */,
+				CEA3AC022A5ABBBA004A32CE /* Sounds */,
 				7E5A1EA5282FE009005F19D6 /* Presentation */,
 				7E62D769278CA53800AC9B90 /* Service */,
 				92D7D68422980138009321AE /* UI */,
@@ -920,16 +916,6 @@
 				7E88A34F23F8B1F400E792CA /* Animations */,
 			);
 			path = UI;
-			sourceTree = "<group>";
-		};
-		CE8BD59D2A55610E00C15CD0 /* AlarmMelody */ = {
-			isa = PBXGroup;
-			children = (
-				CEA3AC022A5ABBBA004A32CE /* Sounds */,
-				CE8BD59E2A55613300C15CD0 /* AlarmMelody.swift */,
-				CEA3ABFF2A5AA9AF004A32CE /* ChooiceMelody.swift */,
-			);
-			path = AlarmMelody;
 			sourceTree = "<group>";
 		};
 		CEA3AC022A5ABBBA004A32CE /* Sounds */ = {
@@ -1102,7 +1088,6 @@
 				7EB90047232AB9EB006EB9A8 /* ProgressBar.swift in Sources */,
 				7E5E335A261A34B4000EE976 /* UIView+applyBlur.swift in Sources */,
 				7E6225B326192E24001AA8FD /* UILabel+Styleable.swift in Sources */,
-				CEA3AC002A5AA9AF004A32CE /* ChooiceMelody.swift in Sources */,
 				7E69837A24EC69FE002EE278 /* ErrorViewRemovable.swift in Sources */,
 				7E25756723F8749A007AE4B5 /* Animation.swift in Sources */,
 				7E199CD2240BD41D00B702AD /* SliderWithValues.swift in Sources */,
@@ -1184,7 +1169,6 @@
 				7EB9004023256BF3006EB9A8 /* DaysView.swift in Sources */,
 				7E5E3350261A17FF000EE976 /* UIDatePicker+Styleable.swift in Sources */,
 				7EFAEF6726F5785300C51A13 /* DaysCollectionCell+Model.swift in Sources */,
-				CE8BD59F2A55613300C15CD0 /* AlarmMelody.swift in Sources */,
 				7E6225B826192E3F001AA8FD /* UIButton+Styleable.swift in Sources */,
 				7E69837824EC69EE002EE278 /* ErrorViewCreatable.swift in Sources */,
 				7E708A3423BF635B003B5702 /* SleepDurationCreateScheduleViewController.swift in Sources */,

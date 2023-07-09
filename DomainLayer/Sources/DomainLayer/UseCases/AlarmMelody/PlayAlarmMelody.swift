@@ -1,5 +1,5 @@
 //
-//  AlarmMelody.swift
+//  PlayAlarmMelody.swift
 //  Rise
 //
 //  Created by VPDev on 05.07.2023.
@@ -8,23 +8,32 @@
 
 import AVFoundation
 
-final class AlarmMelody {
+public protocol HasPlayAlarmMelody {
+    var playAlarmMelody: PlayAlarmMelody { get }
+}
+public protocol PlayAlarmMelody {
+    func play()
+    func stop()
+}
+final class PlayAlarmMelodyImpl: PlayAlarmMelody {
     
-    private let alarmPlayer: AVPlayer
+    private var alarmPlayer: AVPlayer?
     
     let audioSession = AVAudioSession.sharedInstance()
     private var timeObserver: Any?
     
-    init?(melody: Melody = .defaultMelody) {
-        guard let url = melody.path else { return nil }
-        self.alarmPlayer = AVPlayer(url: url)
-        smoothSound()
-        seekAfterPlayinEnd()
+    init(melody: AlarmMelody = .defaultMelody) {
+        if let url = melody.path {
+            self.alarmPlayer = AVPlayer(url: url)
+        }
     }
 
     // MARK: - Public methods
 
-    func alarmPlay()  {
+    public func play()  {
+        guard let alarmPlayer = alarmPlayer else { return }
+        smoothSound()
+        seekAfterPlayinEnd()
         alarmPlayer.play()
         do {
             try audioSession.setCategory(.playback,
@@ -38,7 +47,8 @@ final class AlarmMelody {
         
     }
 
-    func alarmPause() {
+   public func stop() {
+       guard let alarmPlayer = alarmPlayer else { return }
         alarmPlayer.pause()
         do {
             try audioSession.setActive(false)
@@ -52,16 +62,16 @@ final class AlarmMelody {
     // MARK: - Private methods
 
     private func smoothSound() {
+        guard let alarmPlayer = alarmPlayer else { return }
         alarmPlayer.volume = 0.0
         timeObserver = alarmPlayer.addPeriodicTimeObserver(
             forInterval: CMTime(seconds: 0.25,
                                 preferredTimescale: CMTimeScale(NSEC_PER_SEC)),
             queue: DispatchQueue.main) { _ in
-                guard self.alarmPlayer.volume < 1 else {
-                    self.alarmPlayer.removeTimeObserver(self.timeObserver as Any)
+                guard alarmPlayer.volume < 1 else {
+                    alarmPlayer.removeTimeObserver(self.timeObserver as Any)
                     return }
-                print(self.alarmPlayer.volume)
-                self.alarmPlayer.volume += 0.025
+                alarmPlayer.volume += 0.025
             }
     }
 
@@ -75,6 +85,7 @@ final class AlarmMelody {
     }
 
     @objc private func actionAfterStopAudio() {
+        guard let alarmPlayer = alarmPlayer else { return }
         alarmPlayer.seek(to: .zero)
         alarmPlayer.play()
     }

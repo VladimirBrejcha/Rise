@@ -1,5 +1,5 @@
 //
-//  ChooiceMelody.swift
+//  AlarmMelody.swift
 //  Rise
 //
 //  Created by VPDev on 09.07.2023.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Melody {
+enum AlarmMelody {
     case defaultMelody
     
     var name: String {
