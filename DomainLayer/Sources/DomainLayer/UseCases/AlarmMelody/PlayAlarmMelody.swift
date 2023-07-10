@@ -7,6 +7,7 @@
 //
 
 import AVFoundation
+import Core
 
 public protocol HasPlayAlarmMelody {
     var playAlarmMelody: PlayAlarmMelody { get }
@@ -27,13 +28,13 @@ final class PlayAlarmMelodyImpl: PlayAlarmMelody {
             self.alarmPlayer = AVPlayer(url: url)
         }
     }
-
+    
     // MARK: - Public methods
-
+    
     public func play()  {
         guard let alarmPlayer = alarmPlayer else { return }
-        smoothSound()
-        seekAfterPlayinEnd()
+        increaseVolume()
+        loopAudio()
         alarmPlayer.play()
         do {
             try audioSession.setCategory(.playback,
@@ -42,26 +43,26 @@ final class PlayAlarmMelodyImpl: PlayAlarmMelody {
                                                    .mixWithOthers])
             try audioSession.setActive(true)
         } catch {
-            print("Audio session error active")
+            log(.error, "Audio session error active")
         }
         
     }
-
-   public func stop() {
-       guard let alarmPlayer = alarmPlayer else { return }
+    
+    public func stop() {
+        guard let alarmPlayer = alarmPlayer else { return }
         alarmPlayer.pause()
         do {
             try audioSession.setActive(false)
         } catch {
-            print("Audio session error pause")
+            log(.error, "Audio session error stop")
         }
         guard alarmPlayer.volume < 1 else { return }
         alarmPlayer.removeTimeObserver(timeObserver as Any)
     }
-
+    
     // MARK: - Private methods
-
-    private func smoothSound() {
+    
+    private func increaseVolume() {
         guard let alarmPlayer = alarmPlayer else { return }
         alarmPlayer.volume = 0.0
         timeObserver = alarmPlayer.addPeriodicTimeObserver(
@@ -74,16 +75,16 @@ final class PlayAlarmMelodyImpl: PlayAlarmMelody {
                 alarmPlayer.volume += 0.025
             }
     }
-
+    
     // MARK: - NotificationCenter
-
-    private func seekAfterPlayinEnd() {
+    
+    private func loopAudio() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(actionAfterStopAudio),
                                                name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
                                                object: nil)
     }
-
+    
     @objc private func actionAfterStopAudio() {
         guard let alarmPlayer = alarmPlayer else { return }
         alarmPlayer.seek(to: .zero)

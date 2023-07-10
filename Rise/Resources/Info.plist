@@ -24,6 +24,8 @@
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Please allow us to use your location</string>
+	<key>NSUserNotificationsUsageDescription</key>
+	<string>Notifications from Rise may include sleep reminders, wake-up alarms, and motivational messages.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>
@@ -49,7 +51,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>NSUserNotificationsUsageDescription</key>
-	<string>Notifications from Rise may include sleep reminders, wake-up alarms, and motivational messages.</string>
 </dict>
 </plist>
