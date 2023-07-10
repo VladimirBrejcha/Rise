@@ -87,6 +87,7 @@ public final class NotificationManager: NSObject {
 //    }
     
     //MARK: - Request permission
+    
   public static func registerLocal() {
         let notificationCenter = UNUserNotificationCenter.current()
         
@@ -121,6 +122,7 @@ public final class NotificationManager: NSObject {
     }
 }
 //MARK: - Extension
+
 import UIKit
 extension UIApplication {
     static func openAppSettings() {
