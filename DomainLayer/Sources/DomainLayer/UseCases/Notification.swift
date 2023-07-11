@@ -43,7 +43,7 @@ class NotificationImpl: NSObject, Notification, UNUserNotificationCenterDelegate
         guard let timeToSleepToday = getSchedule.today()?.toBed else { return }
         guard let timeToSleepTommorow = getSchedule.tomorrow()?.toBed else { return }
         
-        let dateArray = [timeToSleepToday, timeToSleepTommorow, Date().addingTimeInterval(5)]
+        let dateArray = [timeToSleepToday, timeToSleepTommorow]
         
         for date in dateArray {
             let caledar = Calendar.current
