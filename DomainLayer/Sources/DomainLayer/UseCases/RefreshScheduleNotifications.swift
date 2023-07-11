@@ -10,7 +10,7 @@ public protocol HasNotification {
 }
 
 public protocol RefreshScheduleNotifications: AnyObject {
-    func reScheduleNotification()
+    func callAsFunction()
 }
 
 class NotificationImpl: NSObject, RefreshScheduleNotifications, UNUserNotificationCenterDelegate {
@@ -30,7 +30,7 @@ class NotificationImpl: NSObject, RefreshScheduleNotifications, UNUserNotificati
         cancellable.cancel()
     }
     
-    func reScheduleNotification() {
+    func callAsFunction() {
         NotificationManager.cancelAllPendingRequests()
         
         guard let timeToSleepToday = getSchedule.today()?.toBed else { return }
