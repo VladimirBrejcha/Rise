@@ -6,14 +6,14 @@ import Combine
 import DataLayer
 
 public protocol HasNotification {
-    var notification: Notification { get }
+    var notification: RefreshScheduleNotifications { get }
 }
 
-public protocol Notification: AnyObject {
+public protocol RefreshScheduleNotifications: AnyObject {
     func reScheduleNotification()
 }
 
-class NotificationImpl: NSObject, Notification, UNUserNotificationCenterDelegate {
+class NotificationImpl: NSObject, RefreshScheduleNotifications, UNUserNotificationCenterDelegate {
     
     private let scheduleRepository: ScheduleRepository
     private let cancellable: AnyCancellable

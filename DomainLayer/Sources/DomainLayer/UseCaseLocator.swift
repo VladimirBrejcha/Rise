@@ -93,7 +93,7 @@
         
         public lazy var notifyToSleep: NotifyToSleep = NotifyToSleepImpl(getSchedule: getSchedule, manageActiveSleep: manageActiveSleep)
         
-        public lazy var notification: Notification = NotificationImpl(getSchedule: getSchedule, scheduleRepository: scheduleRepository)
+        public lazy var notification: RefreshScheduleNotifications = NotificationImpl(getSchedule: getSchedule, scheduleRepository: scheduleRepository)
     }
 
 
