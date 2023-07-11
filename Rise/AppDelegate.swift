@@ -63,7 +63,6 @@
         func applicationDidEnterBackground(_ application: UIApplication) {
             useCaseLocator.notifyToSleep.stop()
             useCaseLocator.notification.reScheduleNotification()
-            UNUserNotificationCenter.current().delegate = self
         }
         
         func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
