@@ -8,7 +8,6 @@
 
 import UserNotifications
 
-
 public final class NotificationManager: NSObject {
     
 // MARK: - Request permission
@@ -19,7 +18,7 @@ public final class NotificationManager: NSObject {
         notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
             guard granted else { return }
             notificationCenter.getNotificationSettings { (settings)  in
-                log(.info, "Notification settings: \(settings)")
+                print("Notification settings: \(settings)")
                 guard settings.authorizationStatus == .authorized else { return }
             }
         }
