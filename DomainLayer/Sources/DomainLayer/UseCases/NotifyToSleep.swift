@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  
-//
-//  Created by Артем Чжен on 15/06/23.
-//
-
 import Foundation
 
 public typealias OnNotifyParams = (title: String, description: String, acceptButton: String, cancelButton: String)
