@@ -31,7 +31,7 @@ class NotificationImpl: NSObject, Notification, UNUserNotificationCenterDelegate
     }
     
     func reScheduleNotification() {
-        NotificationManager.removeNotification()
+        NotificationManager.cancelAllPendingRequests()
         
         guard let timeToSleepToday = getSchedule.today()?.toBed else { return }
         guard let timeToSleepTommorow = getSchedule.tomorrow()?.toBed else { return }

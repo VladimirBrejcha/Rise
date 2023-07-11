@@ -10,7 +10,7 @@ import UserNotifications
 
 public final class NotificationManager: NSObject {
     
-    //MARK: - Request permission
+// MARK: - Request permission
     
   public static func requestNotificationPermission() {
         let notificationCenter = UNUserNotificationCenter.current()
@@ -38,9 +38,9 @@ public final class NotificationManager: NSObject {
         let request = UNNotificationRequest(identifier: "notification", content: notificationContent, trigger: trigger)
         notificationCenter.add(request)
     }
-//MARK: - Remove notification
+//MARK: - Cancel pending requests
     
-    public static func removeNotification(){
+    public static func cancelAllPendingRequests(){
         let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.removeAllPendingNotificationRequests()
     }
