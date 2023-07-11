@@ -88,7 +88,7 @@ public final class NotificationManager: NSObject {
     
     //MARK: - Request permission
     
-  public static func registerLocal() {
+  public static func requestNotificationPermission() {
         let notificationCenter = UNUserNotificationCenter.current()
         
         notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
