@@ -69,9 +69,7 @@ final class PlayAlarmMelodyImpl: PlayAlarmMelody {
             forInterval: CMTime(seconds: 0.25,
                                 preferredTimescale: CMTimeScale(NSEC_PER_SEC)),
             queue: DispatchQueue.main) { _ in
-                guard alarmPlayer.volume < 1 else {
-                    alarmPlayer.removeTimeObserver(self.timeObserver as Any)
-                    return }
+                guard alarmPlayer.volume < 1 else { return }
                 alarmPlayer.volume += 0.025
             }
     }

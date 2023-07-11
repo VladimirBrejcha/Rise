@@ -30,6 +30,7 @@ final class AlarmingViewController: UIViewController, ViewController {
         self.changeScreenBrightness = deps.changeScreenBrightness
         self.out = out
         self.playAlarmMelody = deps.playAlarmMelody
+        playAlarmMelody.play()
         super.init(nibName: nil, bundle: nil)
     }
     
