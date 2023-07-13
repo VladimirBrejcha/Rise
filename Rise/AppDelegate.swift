@@ -46,7 +46,7 @@
             window = mainWindow
             coordinator.run()
             useCaseLocator.notifyToSleep.start()
-            
+            useCaseLocator.notification.callAsFunction()
             UNUserNotificationCenter.current().delegate = self
 
             return true
@@ -62,7 +62,6 @@
         
         func applicationDidEnterBackground(_ application: UIApplication) {
             useCaseLocator.notifyToSleep.stop()
-            useCaseLocator.notification.callAsFunction()
         }
         
         func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {

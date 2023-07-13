@@ -36,19 +36,15 @@ class NotificationImpl: NSObject, RefreshScheduleNotifications, UNUserNotificati
     
     func callAsFunction() {
         NotificationManager.cancelAllPendingRequests()
-        
-        guard let timeToSleepToday = getSchedule.today()?.toBed else { return }
-        guard let timeToSleepTommorow = getSchedule.tomorrow()?.toBed else { return }
-        
-        let dateArray = [timeToSleepToday, timeToSleepTommorow]
-        
-        for date in dateArray {
-            let caledar = Calendar.current
-            let components = caledar.dateComponents([.year,.month,.day, .hour, .minute, .second], from: date)
-            
-            let title = TextNotify.textTitleNotify.randomElement() ?? "Dreamland's Champion"
-            let body = TextNotify.textBodyNotify.randomElement() ?? "🌟 Time to catch some Zs, champ! Your bed is calling and dreams await. Charge up for tomorrow's adventures!” 🛌💤"
-            NotificationManager.createNotification(title: title, body: body, components: components)
+        if let timeToSleepNextDays = Optional(getSchedule.forNextDays(numberOfDays: 10, startToday: true)) {
+            for date in timeToSleepNextDays {
+                let calendar = Calendar.current
+                let components = calendar.dateComponents([.year,.month,.day, .hour, .minute, .second], from: date.toBed)
+                let title = TextNotify.textTitleNotify.randomElement() ?? "Dreamland's Champion"
+                let body = TextNotify.textBodyNotify.randomElement() ?? "🌟 Time to catch some Zs, champ! Your bed is calling and dreams await. Charge up for tomorrow's adventures!”🛌💤"
+                
+                NotificationManager.createNotification(title: title, body: body, components: components)
+            }
         }
     }
 }
