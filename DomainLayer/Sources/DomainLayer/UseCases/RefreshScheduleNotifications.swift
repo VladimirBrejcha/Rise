@@ -16,21 +16,18 @@ public protocol RefreshScheduleNotifications: AnyObject {
 class NotificationImpl: NSObject, RefreshScheduleNotifications, UNUserNotificationCenterDelegate {
     
     private let scheduleRepository: ScheduleRepository
-    private var cancellable: AnyCancellable?
+    private let cancellable: AnyCancellable
     
     var getSchedule: GetSchedule
     
     init(getSchedule: GetSchedule, scheduleRepository: ScheduleRepository) {
         self.getSchedule = getSchedule
         self.scheduleRepository = scheduleRepository
-        super.init()
-        self.cancellable = scheduleRepository.publisher().sink(receiveValue: { [weak self] _ in
-            self?.callAsFunction()
-        })
+        self.cancellable = scheduleRepository.publisher().sink(receiveValue: { _ in })
     }
     
     deinit {
-        cancellable?.cancel()
+        cancellable.cancel()
     }
     
     func callAsFunction() {
