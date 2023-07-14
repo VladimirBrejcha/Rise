@@ -157,6 +157,11 @@
 		92E77AF822A5303400E5E21C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E77AF722A5303400E5E21C /* SettingsViewController.swift */; };
 		92E77AFA22A5304400E5E21C /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E77AF922A5304400E5E21C /* TodayViewController.swift */; };
 		92FE417A28833DE700F328DB /* Localization in Frameworks */ = {isa = PBXBuildFile; productRef = 92FE417928833DE700F328DB /* Localization */; };
+		CE8BD5A12A55636300C15CD0 /* DefaultMelody.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE8BD5A02A55636300C15CD0 /* DefaultMelody.wav */; };
+		CEEEFB352A5DAC8C0060D6EA /* erokiaMelody.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CEEEFB312A5DAC8C0060D6EA /* erokiaMelody.mp3 */; };
+		CEEEFB362A5DAC8C0060D6EA /* cockMelody.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEEEFB322A5DAC8C0060D6EA /* cockMelody.wav */; };
+		CEEEFB372A5DAC8C0060D6EA /* tiktakMelody.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEEEFB332A5DAC8C0060D6EA /* tiktakMelody.wav */; };
+		CEEEFB382A5DAC8C0060D6EA /* oldAlarmMelody.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEEEFB342A5DAC8C0060D6EA /* oldAlarmMelody.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -309,6 +314,11 @@
 		92D7D65E2296F298009321AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92E77AF722A5303400E5E21C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		92E77AF922A5304400E5E21C /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		CE8BD5A02A55636300C15CD0 /* DefaultMelody.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = DefaultMelody.wav; sourceTree = "<group>"; };
+		CEEEFB312A5DAC8C0060D6EA /* erokiaMelody.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = erokiaMelody.mp3; sourceTree = "<group>"; };
+		CEEEFB322A5DAC8C0060D6EA /* cockMelody.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cockMelody.wav; sourceTree = "<group>"; };
+		CEEEFB332A5DAC8C0060D6EA /* tiktakMelody.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tiktakMelody.wav; sourceTree = "<group>"; };
+		CEEEFB342A5DAC8C0060D6EA /* oldAlarmMelody.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = oldAlarmMelody.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -895,6 +905,7 @@
 			isa = PBXGroup;
 			children = (
 				92D7D6522296F297009321AE /* AppDelegate.swift */,
+				CEA3AC022A5ABBBA004A32CE /* Sounds */,
 				7E5A1EA5282FE009005F19D6 /* Presentation */,
 				7E62D769278CA53800AC9B90 /* Service */,
 				92D7D68422980138009321AE /* UI */,
@@ -913,6 +924,18 @@
 				7E88A34F23F8B1F400E792CA /* Animations */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		CEA3AC022A5ABBBA004A32CE /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				CEEEFB322A5DAC8C0060D6EA /* cockMelody.wav */,
+				CEEEFB312A5DAC8C0060D6EA /* erokiaMelody.mp3 */,
+				CEEEFB342A5DAC8C0060D6EA /* oldAlarmMelody.wav */,
+				CEEEFB332A5DAC8C0060D6EA /* tiktakMelody.wav */,
+				CE8BD5A02A55636300C15CD0 /* DefaultMelody.wav */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -986,13 +1009,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEEEFB382A5DAC8C0060D6EA /* oldAlarmMelody.wav in Resources */,
+				CE8BD5A12A55636300C15CD0 /* DefaultMelody.wav in Resources */,
 				7E199CD4240BD43400B702AD /* SliderWithValues.xib in Resources */,
 				92D7D65D2296F298009321AE /* LaunchScreen.storyboard in Resources */,
 				7E8EFA3226EABC2F00DEE564 /* Sleep.storyboard in Resources */,
+				CEEEFB362A5DAC8C0060D6EA /* cockMelody.wav in Resources */,
 				92695F1828831EB100D382C2 /* Core in Resources */,
 				7EE6905C243E64C600CA423E /* LongPressProgressButton.xib in Resources */,
 				7ED6DD3125E1B50800F906CE /* ImageLabelView.xib in Resources */,
+				CEEEFB372A5DAC8C0060D6EA /* tiktakMelody.wav in Resources */,
 				92D7D65A2296F298009321AE /* Assets.xcassets in Resources */,
+				CEEEFB352A5DAC8C0060D6EA /* erokiaMelody.mp3 in Resources */,
 				7E8EFA3C26EABC3900DEE564 /* CreateSchedule.storyboard in Resources */,
 				7EEB1E0F2443369F001ABE4A /* bellAlarm.wav in Resources */,
 			);
