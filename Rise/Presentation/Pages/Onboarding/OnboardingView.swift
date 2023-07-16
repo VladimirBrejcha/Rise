@@ -158,7 +158,22 @@ extension Onboarding {
       if oldPageIndex == currentPageIndex { return }
       pageControl.currentPage = currentPageIndex
       updateButtonTitle()
+        (pagesContainerView.arrangedSubviews[oldPageIndex] as! ContentView).animate(false, animation: .identity)
+        (pagesContainerView.arrangedSubviews[currentPageIndex] as! ContentView).animate(true, animation: transforms[currentPageIndex])
     }
+
+      func pageChanged1() {
+          (pagesContainerView.arrangedSubviews[currentPageIndex] as! ContentView).animate(true, animation: transforms[currentPageIndex])
+      }
+
+      var transforms: [CGAffineTransform] =
+      [
+        .init(rotationAngle: (.pi / 4)),
+        .init(translationX: 0, y: 12),
+        .init(scaleX: 1.15, y: 1.15),
+        .init(translationX: 0, y: 12),
+        .init(translationX: 0, y: 12),
+      ]
 
     private func scrollToCurrentPage() {
       scrollView.setContentOffset(

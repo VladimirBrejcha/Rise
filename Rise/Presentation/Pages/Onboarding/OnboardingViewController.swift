@@ -52,5 +52,12 @@ extension Onboarding {
         }
       )
     }
+
+      override func viewDidLoad() {
+          super.viewDidLoad()
+          rootView.pageChanged1()
+      }
+
+
   }
 }

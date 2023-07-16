@@ -10,7 +10,9 @@ import UIKit
 
 extension Onboarding.View {
 
-  final class ContentView: UIView {
+    final class ContentView: UIView, PropertyAnimatable {
+        var propertyAnimationDuration: Double { 1 }
+
 
     struct Model {
       let title: String
@@ -77,6 +79,7 @@ extension Onboarding.View {
             image.heightAnchor.constraint(equalToConstant: 70)
         )
         image.tintColor = .white
+        img = image
 
         stackView.addArrangedSubviews(
             image,
@@ -84,6 +87,18 @@ extension Onboarding.View {
             DescriptionLabel(text: model.description)
         )
     }
+
+      var img: UIImageView?
+
+        func animate(_ animate: Bool, animation: CGAffineTransform) {
+          if animate {
+              UIView.animate(withDuration: 1, delay: 0, options: [.autoreverse, .repeat, .curveEaseInOut]) {
+                  self.img?.transform = animation
+              }
+          } else {
+              img?.stopAnimating()
+          }
+      }
 
     // MARK: - Layout
 
