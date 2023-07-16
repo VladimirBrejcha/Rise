@@ -177,43 +177,33 @@ public enum Text {
     /// Unable to adjust your sleep to a suitable mode?
     public static let unableToAdjust = Text.tr("Localizable", "onboarding.unable_to_adjust")
     public enum Page1 {
-      /// Hi there! I'm the creator of Rise.
-      /// I used to struggle with maintaining a healthy sleep schedule, often finding myself waking up groggy and drained. I wanted to change this - for myself and for others like me. That's how Rise came to life.
-      ///  Rise is designed to be your personal sleep companion, gently guiding you towards better sleep.
+      /// Created from personal struggles with sleep, Rise is here to help you achieve healthier, more refreshing sleep.
       public static let body = Text.tr("Localizable", "onboarding.page1.body")
-      /// Your Personal Sleep Assistant is Here
+      /// Welcome to Rise!
       public static let title = Text.tr("Localizable", "onboarding.page1.title")
     }
     public enum Page2 {
-      /// Rise isn't just another alarm app; it's a smart sleep assistant that helps you create your own personal sleep schedule.
-      /// It takes into account your target wake-up time, desired sleep duration, and adjusts itself daily to get you closer to your sleep goals.
-      /// It's like having your very own sleep coach, working tirelessly to improve your sleep
+      /// Rise creates a unique sleep schedule for you, based on your desired wake-up time and sleep duration, gradually nudging you towards your goals.
       public static let body = Text.tr("Localizable", "onboarding.page2.body")
-      /// Your Customized Sleep Schedule
+      /// Your Tailored Sleep Schedule
       public static let title = Text.tr("Localizable", "onboarding.page2.title")
     }
     public enum Page3 {
-      /// Ever noticed how some days you wake up feeling better than others?
-      /// That could be because your sleep schedule is in sync with the sun's. That's why we ask for your location.
-      /// Rise uses this information to show you the sunrise and sunset times in your city, helping you align your sleep cycle with nature's rhythm.
+      /// Using your location, Rise provides sunrise and sunset times, helping you align your sleep with the day's natural light.
       public static let body = Text.tr("Localizable", "onboarding.page3.body")
-      /// Stay in Sync with Nature
+      /// Nature's Rhythm
       public static let title = Text.tr("Localizable", "onboarding.page3.title")
     }
     public enum Page4 {
-      /// Remember how harsh traditional alarms can be?
-      /// With Rise, we are changing that. We have built in gentle alarm sounds that begin softly and increase gradually, waking you up in a calm and soothing way.
-      /// The app even sends you friendly reminders when it's time to wind down for bed and when it's time to rise and shine!
+      /// No more rude awakenings. Rise uses soft nature sounds that gradually increase, waking you up gently for a better start to your day.
       public static let body = Text.tr("Localizable", "onboarding.page4.body")
-      /// A Gentle Wake Up Call
+      /// A Soothing Start
       public static let title = Text.tr("Localizable", "onboarding.page4.title")
     }
     public enum Page5 {
-      /// Rise is more than an app - it's a commitment to better sleep and healthier days.
-      /// We need your permission for notifications, not just for alarms, but also to send you helpful and motivational reminders about the importance of good sleep.
-      /// Let's embark on this journey to better sleep together.
+      /// To fully guide you on this journey to improved sleep, Rise needs your permission for notifications. Let's embark on this sleep-enhancing adventure together.
       public static let body = Text.tr("Localizable", "onboarding.page5.body")
-      /// Join Us on a Journey to Better Sleep
+      /// Let's Rise Together!
       public static let title = Text.tr("Localizable", "onboarding.page5.title")
     }
     public enum Title {
