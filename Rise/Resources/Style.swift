@@ -52,6 +52,15 @@ enum Style {
                 )
             }
 
+            static var onboardingShadow: Shadow {
+                .init(
+                    radius: 12,
+                    opacity: 0.55,
+                    offset: .init(width: 0, height: 0),
+                    color: Asset.Colors.test.color.cgColor
+                )
+            }
+
             static var whiteBgSeparatorSmall: Shadow {
                 .init(
                     radius: 8,

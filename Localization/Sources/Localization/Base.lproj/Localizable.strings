@@ -1,3 +1,13 @@
+"onboarding.page1.title" = "Your Personal Sleep Assistant is Here";
+"onboarding.page1.body" = "Hi there! I'm the creator of Rise.\nI used to struggle with maintaining a healthy sleep schedule, often finding myself waking up groggy and drained. I wanted to change this - for myself and for others like me. That's how Rise came to life.\n Rise is designed to be your personal sleep companion, gently guiding you towards better sleep.";
+"onboarding.page2.title" = "Your Customized Sleep Schedule";
+"onboarding.page2.body" = "Rise isn't just another alarm app; it's a smart sleep assistant that helps you create your own personal sleep schedule.\nIt takes into account your target wake-up time, desired sleep duration, and adjusts itself daily to get you closer to your sleep goals.\nIt's like having your very own sleep coach, working tirelessly to improve your sleep";
+"onboarding.page3.title" = "Stay in Sync with Nature";
+"onboarding.page3.body" = "Ever noticed how some days you wake up feeling better than others?\nThat could be because your sleep schedule is in sync with the sun's. That's why we ask for your location.\nRise uses this information to show you the sunrise and sunset times in your city, helping you align your sleep cycle with nature's rhythm.";
+"onboarding.page4.title" = "A Gentle Wake Up Call";
+"onboarding.page4.body" = "Remember how harsh traditional alarms can be?\nWith Rise, we are changing that. We have built in gentle alarm sounds that begin softly and increase gradually, waking you up in a calm and soothing way.\nThe app even sends you friendly reminders when it's time to wind down for bed and when it's time to rise and shine!";
+"onboarding.page5.title" = "Join Us on a Journey to Better Sleep";
+"onboarding.page5.body" = "Rise is more than an app - it's a commitment to better sleep and healthier days.\nWe need your permission for notifications, not just for alarms, but also to send you helpful and motivational reminders about the importance of good sleep.\nLet's embark on this journey to better sleep together.";
 "onboarding.title.sleep_is_important" = "Sleep is important";
 "onboarding.title.have_you_scheduled_it" = "Maintaining quality sleep is not easy";
 "onboarding.title.meet_rise" = "Meet Rise!";

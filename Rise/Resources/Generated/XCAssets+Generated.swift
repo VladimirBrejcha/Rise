@@ -26,6 +26,7 @@ internal enum Asset {
     internal static let defaultContainerBackground = ColorAsset(name: "DefaultContainerBackground")
     internal static let lightBlue = ColorAsset(name: "LightBlue")
     internal static let red = ColorAsset(name: "Red")
+    internal static let test = ColorAsset(name: "Test")
     internal static let violet = ColorAsset(name: "Violet")
     internal static let white = ColorAsset(name: "White")
     internal static let whiteSeparator = ColorAsset(name: "WhiteSeparator")

@@ -18,9 +18,11 @@ extension Onboarding.View.ContentView {
     
     private lazy var label: UILabel = {
       let label = UILabel()
-      label.applyStyle(.mediumSizedBody)
+        label.applyStyle(Style.Text(font: .systemFont(ofSize: 20, weight: .medium),
+                            color: Asset.Colors.test.color))
+        label.textAlignment = .center
       label.layer.applyStyle(
-        .init(shadow: .whiteBgSeparatorBig)
+        .init(shadow: .onboardingShadow)
       )
       label.numberOfLines = 0
       return label
@@ -29,12 +31,12 @@ extension Onboarding.View.ContentView {
     private lazy var point: UIView = {
       let view = UIView()
       view.backgroundColor = .white
-      view.layer.applyStyle(
-        .init(
-          shadow: .usual,
-          cornerRadius: pointSide / 2
-        )
-      )
+//      view.layer.applyStyle(
+//        .init(
+//          shadow: .usual,
+//          cornerRadius: pointSide / 2
+//        )
+//      )
       return view
     }()
     
@@ -42,7 +44,16 @@ extension Onboarding.View.ContentView {
     
     convenience init(text: String) {
       self.init(frame: .zero)
-      self.label.text = text
+//      self.label.text = text
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        paragraphStyle.paragraphSpacing = 8
+        self.label.attributedText = NSAttributedString(string: text, attributes: [
+            .strokeColor: Asset.Colors.lightBlue.color.withAlphaComponent(0.7),
+            .foregroundColor: UIColor.white,
+            .strokeWidth: -1.0,
+            .paragraphStyle: paragraphStyle
+        ])
       setup()
     }
     
@@ -53,22 +64,22 @@ extension Onboarding.View.ContentView {
     
     private func setupViews() {
       addSubviews(
-        label,
-        point
+        label
+//        point
       )
     }   
     
     // MARK: - Layout
     
     private func setupLayout() {
-      point.activateConstraints(
-        point.heightAnchor.constraint(equalToConstant: pointSide),
-        point.widthAnchor.constraint(equalToConstant: pointSide),
-        point.leadingAnchor.constraint(equalTo: leadingAnchor),
-        point.centerYAnchor.constraint(equalTo: label.centerYAnchor)
-      )
+//      point.activateConstraints(
+//        point.heightAnchor.constraint(equalToConstant: pointSide),
+//        point.widthAnchor.constraint(equalToConstant: pointSide),
+//        point.leadingAnchor.constraint(equalTo: leadingAnchor),
+//        point.centerYAnchor.constraint(equalTo: label.centerYAnchor)
+//      )
       label.activateConstraints(
-        label.leadingAnchor.constraint(equalTo: point.trailingAnchor, constant: 16),
+        label.leadingAnchor.constraint(equalTo: leadingAnchor),
         label.topAnchor.constraint(equalTo: topAnchor),
         label.bottomAnchor.constraint(equalTo: bottomAnchor),
         label.trailingAnchor.constraint(equalTo: trailingAnchor)
