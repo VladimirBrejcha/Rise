@@ -57,7 +57,7 @@ enum Style {
                     radius: 12,
                     opacity: 0.55,
                     offset: .init(width: 0, height: 0),
-                    color: Asset.Colors.test.color.cgColor
+                    color: Asset.Colors.darkBlue.color.cgColor
                 )
             }
 

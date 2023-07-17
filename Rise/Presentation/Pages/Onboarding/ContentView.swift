@@ -28,7 +28,7 @@ extension Onboarding.View {
             label.applyStyle(
                 Style.Text(
                     font: .systemFont(ofSize: 20, weight: .medium),
-                    color: Asset.Colors.test.color
+                    color: Asset.Colors.darkBlue.color
                 )
             )
             label.layer.applyStyle(
@@ -82,7 +82,12 @@ extension Onboarding.View {
                     systemName: model.image
                 )?.withRenderingMode(.alwaysTemplate)
             )
-            view.layer.applyStyle(Style.Layer(shadow: Style.Layer.Shadow(radius: 15, opacity: 0.6, color: Asset.Colors.lightBlue.color.cgColor)))
+            view.layer.applyStyle(
+                Style.Layer(shadow: Style.Layer.Shadow(
+                    radius: 15, opacity: 0.6,
+                    color: Asset.Colors.lightBlue.color.cgColor)
+                )
+            )
             view.contentMode = .scaleAspectFit
             view.tintColor = .white
             return view
