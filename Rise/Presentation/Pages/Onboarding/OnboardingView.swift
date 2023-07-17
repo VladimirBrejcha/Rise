@@ -168,7 +168,7 @@ extension Onboarding {
 
       var transforms: [CGAffineTransform] =
       [
-        .init(rotationAngle: (.pi / 4)),
+        .init(rotationAngle: (.pi / 6)),
         .init(translationX: 0, y: 12),
         .init(scaleX: 1.15, y: 1.15),
         .init(translationX: 0, y: 12),
