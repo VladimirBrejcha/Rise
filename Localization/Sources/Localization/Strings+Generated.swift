@@ -154,35 +154,39 @@ public enum Text {
   }
 
   public enum Onboarding {
-    /// As you pass through the various stages of sleep, your body cognitively and physically restores itself
-    public static let aboutSleep = Text.tr("Localizable", "onboarding.about_sleep")
-    /// Sleep may also help your brain reorganize and retain memories
-    public static let aboutSleep2 = Text.tr("Localizable", "onboarding.about_sleep_2")
-    /// Lack of sleep can affect everything from your mental health to your waistline
-    public static let aboutSleep3 = Text.tr("Localizable", "onboarding.about_sleep_3")
     /// Continue
     public static let action = Text.tr("Localizable", "onboarding.action")
     /// Begin to Rise
     public static let actionFinal = Text.tr("Localizable", "onboarding.action_final")
-    /// It happens with all of us
-    public static let itHappensWithAllOfUs = Text.tr("Localizable", "onboarding.it_happens_with_all_of_us")
-    /// Missed the alarm and still woke up broken?
-    public static let missedAlarm = Text.tr("Localizable", "onboarding.missed_alarm")
-    /// A personal assistant on the sleep schedule, helping to establish a quality sleep
-    public static let personalAssistant = Text.tr("Localizable", "onboarding.personal_assistant")
-    /// It will help to make a suitable sleep plan in order to achieve a full sleep and stick to it
-    public static let personalAssistant2 = Text.tr("Localizable", "onboarding.personal_assistant_2")
-    /// No matter what state your sleep is in now, Rise will lead you to the right one for you and will support you in difficult days
-    public static let personalAssistant3 = Text.tr("Localizable", "onboarding.personal_assistant_3")
-    /// Unable to adjust your sleep to a suitable mode?
-    public static let unableToAdjust = Text.tr("Localizable", "onboarding.unable_to_adjust")
-    public enum Title {
-      /// Maintaining quality sleep is not easy
-      public static let haveYouScheduledIt = Text.tr("Localizable", "onboarding.title.have_you_scheduled_it")
-      /// Meet Rise!
-      public static let meetRise = Text.tr("Localizable", "onboarding.title.meet_rise")
-      /// Sleep is important
-      public static let sleepIsImportant = Text.tr("Localizable", "onboarding.title.sleep_is_important")
+    public enum Page1 {
+      /// Created from personal struggles with sleep, Rise is here to help you achieve healthier, more refreshing sleep.
+      public static let body = Text.tr("Localizable", "onboarding.page1.body")
+      /// Welcome to Rise!
+      public static let title = Text.tr("Localizable", "onboarding.page1.title")
+    }
+    public enum Page2 {
+      /// Rise creates a unique sleep schedule for you, based on your desired wake-up time and sleep duration, gradually nudging you towards your goals.
+      public static let body = Text.tr("Localizable", "onboarding.page2.body")
+      /// Your Tailored Sleep Schedule
+      public static let title = Text.tr("Localizable", "onboarding.page2.title")
+    }
+    public enum Page3 {
+      /// Using your location, Rise provides sunrise and sunset times, helping you align your sleep with the day's natural light.
+      public static let body = Text.tr("Localizable", "onboarding.page3.body")
+      /// Nature's Rhythm
+      public static let title = Text.tr("Localizable", "onboarding.page3.title")
+    }
+    public enum Page4 {
+      /// No more rude awakenings. Rise uses soft nature sounds that gradually increase, waking you up gently for a better start to your day.
+      public static let body = Text.tr("Localizable", "onboarding.page4.body")
+      /// A Soothing Start
+      public static let title = Text.tr("Localizable", "onboarding.page4.title")
+    }
+    public enum Page5 {
+      /// To fully guide you on this journey to improved sleep, Rise needs your permission for notifications. Let's embark on this sleep-enhancing adventure together.
+      public static let body = Text.tr("Localizable", "onboarding.page5.body")
+      /// Let's Rise Together!
+      public static let title = Text.tr("Localizable", "onboarding.page5.title")
     }
   }
 
