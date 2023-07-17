@@ -32,7 +32,6 @@ final class RefreshSunTimeImpl: RefreshSunTime {
     onSuccess: @escaping() -> Void,
     onFailure: @escaping (Error) -> Void
   ) {
-    locationRepository.deleteAll()
     sunTimeRepository.deleteAll()
     locationRepository.get(
       permissionRequestProvider: permissionRequestProvider
