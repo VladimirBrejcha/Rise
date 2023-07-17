@@ -50,6 +50,7 @@ final class SunTimeRepositoryImpl: SunTimeRepository {
                 do {
                     let remoteResult = try await apiRequest(missedDates, location: location)
                     try? localDataSource.save(sunTimes: remoteResult)
+                    deleteAllOutdated()
                     completion(.success(localResult + remoteResult))
                 } catch let error {
                     log(.error, "getting remote sunTimes failed: \(error.localizedDescription)")
@@ -63,6 +64,7 @@ final class SunTimeRepositoryImpl: SunTimeRepository {
                 do {
                     let remoteResult = try await apiRequest(dates, location: location)
                     try? localDataSource.save(sunTimes: remoteResult)
+                    deleteAllOutdated()
                     completion(.success(remoteResult))
                 } catch let error {
                     log(.error, "getting remote sunTimes failed: \(error.localizedDescription)")
@@ -72,6 +74,16 @@ final class SunTimeRepositoryImpl: SunTimeRepository {
         }
     }
 
+    func deleteAllOutdated() {
+        log(.info)
+
+        do {
+            try localDataSource.delete(before: Date().addingTimeInterval(days: -3))
+        } catch (let error) {
+            assertionFailure(error.localizedDescription)
+            log(.error, "deleting error: \(error.localizedDescription)")
+        }
+    }
 
     func deleteAll() {
         log(.info)

@@ -18,6 +18,17 @@ final class SunTimeCoreDataService:
         }
     }
 
+    func delete(before date: Date) throws {
+        log(.info, "date: \(date)")
+
+        try container.fetch(requestBuilder: {
+          $0.predicate = date.beforePredicate
+        }).forEach {
+          context.delete($0)
+        }
+        try container.saveContext()
+    }
+
     func save(sunTimes: [SunTime]) throws {
         log(.info, "sunTimes: \(sunTimes)")
 
@@ -41,6 +52,13 @@ final class SunTimeCoreDataService:
 }
 
 fileprivate extension Date {
+
+    var beforePredicate: NSPredicate {
+        return NSPredicate(
+            format: "sunrise =< %@",
+            argumentArray: [self]
+        )
+    }
 
     var dayPredicate: NSPredicate {
 
