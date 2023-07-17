@@ -40,7 +40,7 @@ public enum Text {
   public static let refresh = Text.tr("Localizable", "refresh")
   /// Refresh sun times
   public static let refreshSunTimes = Text.tr("Localizable", "refresh_sun_times")
-  /// We store your location on the device to provide fast and energy efficient access to sunrise/sunset times even offline
+  /// We store sunrises and sunsets on the device to provide fast and energy efficient access times even offline
   public static let refreshSunTimesDescription = Text.tr("Localizable", "refresh_sun_times_description")
   /// Rise schedule is paused
   public static let riseScheduleIsPaused = Text.tr("Localizable", "rise_schedule_is_paused")

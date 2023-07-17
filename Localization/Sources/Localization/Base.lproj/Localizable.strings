@@ -49,7 +49,7 @@
 "to_bed" = "To bed";
 "refresh" = "Refresh";
 "refresh_sun_times" = "Refresh sun times";
-"refresh_sun_times_description" = "We store your location on the device to provide fast and energy efficient access to sunrise/sunset times even offline";
+"refresh_sun_times_description" = "We store sunrises and sunsets on the device to provide fast and energy efficient access times even offline";
 "use_refresh_for" = "In case if your location changed use refresh to update it with actual data";
 "location_access_missing" = "Location access missing";
 "location_access_is_required_to_perform_refresh" = "Location access is required to perform refresh";
