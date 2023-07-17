@@ -22,14 +22,14 @@ final class RootCoordinator {
     }
     
     func run() {
-//        if useCases.manageOnboardingCompleted.isCompleted == false {
+        if useCases.manageOnboardingCompleted.isCompleted == false {
             navigationController.setViewControllers(
                 [onboarding()],
                 animated: true
             )
-//        } else {
-//            configureRoot()
-//        }
+        } else {
+            configureRoot()
+        }
 
         useCases.notifyToSleep.onNotify = showTimeToSleepAlert
     }

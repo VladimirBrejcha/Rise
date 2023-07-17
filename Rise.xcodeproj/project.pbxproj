@@ -49,7 +49,6 @@
 		7E43063926EBCEDD00B67315 /* UIView+addSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43063826EBCEDD00B67315 /* UIView+addSubviews.swift */; };
 		7E43063B26EBCEF600B67315 /* UIView+activateConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43063A26EBCEF600B67315 /* UIView+activateConstraints.swift */; };
 		7E43063D26ECC4E400B67315 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43063C26ECC4E400B67315 /* ContentView.swift */; };
-		7E43063F26ECC58400B67315 /* DescriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43063E26ECC58400B67315 /* DescriptionLabel.swift */; };
 		7E43064B26ED4FF600B67315 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43064A26ED4FF600B67315 /* SettingsView.swift */; };
 		7E43064E26ED514C00B67315 /* SettingItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43064D26ED514C00B67315 /* SettingItemView.swift */; };
 		7E43065026ED528700B67315 /* UIStackView+addSeparators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43064F26ED528700B67315 /* UIStackView+addSeparators.swift */; };
@@ -205,7 +204,6 @@
 		7E43063826EBCEDD00B67315 /* UIView+addSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+addSubviews.swift"; sourceTree = "<group>"; };
 		7E43063A26EBCEF600B67315 /* UIView+activateConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+activateConstraints.swift"; sourceTree = "<group>"; };
 		7E43063C26ECC4E400B67315 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		7E43063E26ECC58400B67315 /* DescriptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionLabel.swift; sourceTree = "<group>"; };
 		7E43064A26ED4FF600B67315 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7E43064D26ED514C00B67315 /* SettingItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemView.swift; sourceTree = "<group>"; };
 		7E43064F26ED528700B67315 /* UIStackView+addSeparators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+addSeparators.swift"; sourceTree = "<group>"; };
@@ -409,8 +407,8 @@
 			children = (
 				7E5A1E9E282FA868005F19D6 /* Onboarding.swift */,
 				7E252A8926EBBE9600DEB6F0 /* OnboardingView.swift */,
+				7E43063C26ECC4E400B67315 /* ContentView.swift */,
 				7E252A8726EBBE6600DEB6F0 /* OnboardingViewController.swift */,
-				7E43064026ECC75E00B67315 /* Views */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -459,15 +457,6 @@
 				7E346CE4274A5BFE00848DBB /* AdjustScheduleViewController.swift */,
 			);
 			path = AdjustSchedule;
-			sourceTree = "<group>";
-		};
-		7E43064026ECC75E00B67315 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				7E43063C26ECC4E400B67315 /* ContentView.swift */,
-				7E43063E26ECC58400B67315 /* DescriptionLabel.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		7E43064C26ED513A00B67315 /* Views */ = {
@@ -1163,7 +1152,6 @@
 				7E354403283AA21F00C1E149 /* Days.swift in Sources */,
 				7E43063926EBCEDD00B67315 /* UIView+addSubviews.swift in Sources */,
 				7EEB1E122443370F001ABE4A /* AlarmSounds.swift in Sources */,
-				7E43063F26ECC58400B67315 /* DescriptionLabel.swift in Sources */,
 				7EEFC00F25E1AEB0007AE725 /* BorderedView.swift in Sources */,
 				7E9D9C0424E58F39000772C0 /* SleepView.swift in Sources */,
 				7EE6905E243E658B00CA423E /* LongPressProgressButton.swift in Sources */,
@@ -1348,13 +1336,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 29UN6WTSCZ;
 				INFOPLIST_FILE = "$(SRCROOT)/Rise/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = VladimirBrejcha.Rise;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vladimirkorolev.rise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -1371,13 +1359,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 29UN6WTSCZ;
 				INFOPLIST_FILE = "$(SRCROOT)/Rise/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = VladimirBrejcha.Rise;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vladimirkorolev.rise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
