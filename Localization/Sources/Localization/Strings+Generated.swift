@@ -60,7 +60,7 @@ public enum Text {
   }
   /// Sleeping
   public static let sleeping = Text.tr("Localizable", "sleeping")
-  /// Stop
+  /// Hold to stop
   public static let stop = Text.tr("Localizable", "stop")
   /// Success!
   public static let success = Text.tr("Localizable", "success")

@@ -1337,7 +1337,6 @@
 				CODE_SIGN_ENTITLEMENTS = Rise/Rise.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 29UN6WTSCZ;
 				INFOPLIST_FILE = "$(SRCROOT)/Rise/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -1362,7 +1361,6 @@
 				CODE_SIGN_ENTITLEMENTS = Rise/Rise.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 29UN6WTSCZ;
 				INFOPLIST_FILE = "$(SRCROOT)/Rise/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
