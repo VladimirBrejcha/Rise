@@ -1134,7 +1134,7 @@ class ScheduleTests: XCTestCase {
             if let error = error {
                 XCTFail(error.localizedDescription)
                 return
-                DomainLayer/Sources/DomainLayer/UseCases/GetSchedule.swift            }
+            }
             XCTAssertEqual(todaySchedule, expectedSchedules[0])
             XCTAssertEqual(tomorrowSchedule, expectedSchedules[1])
             XCTAssertEqual(savedSchedules.count, 12)
