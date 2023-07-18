@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22F82" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="RiseSunTime" representedClassName="RiseSunTime" syncable="YES">
-        <attribute name="sunrise" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="sunset" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="sunrise" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="sunset" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
 </model>

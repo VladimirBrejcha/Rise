@@ -13,12 +13,23 @@ class LocalDataSource<Object: NSManagedObject> {
         guard let mom = NSManagedObjectModel(contentsOf: url) else {
             fatalError("Failed to initialize mom from URL: \(String(describing: url))")
         }
-        let container = PersistentContainer<Object>(name: containerName, managedObjectModel: mom)
+        let container = PersistentContainer<Object>(
+            name: containerName, managedObjectModel: mom
+        )
         container.loadPersistentStores { description, error in
             if let error = error {
                 fatalError("Unable to load persistent stores: \(error)")
             }
         }
+        // Only initialize the schema when building the app with the
+        // Debug build configuration.
+        #if DEBUG
+        do {
+            try container.initializeCloudKitSchema(options: [])
+        } catch let error {
+            assertionFailure("Unable to initCloudKitSchema: \(error.localizedDescription)")
+        }
+        #endif
         return container
     }()
 
