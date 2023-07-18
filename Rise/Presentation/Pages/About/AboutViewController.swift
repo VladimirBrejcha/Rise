@@ -26,11 +26,10 @@ final class AboutViewController:
     private let getAppVersion: GetAppVersion
     private let prepareMail: PrepareMail
 
-    private let termsAndConditionsUrlString = "https://www.app-privacy-policy.com/live.php?token=VtZdH0djhNg5Tr4BoQhtPjwzUSGJqH6r"
-    private let privacyPolicyUrlString = "https://rise-0.flycricket.io/privacy.html"
-    private let openSourceUrlString = "https://www.craft.do/s/mLWjI6dIfOxHCJ"
+    private let termsAndConditionsUrlString = "https://blog.vladimirbrejcha.com/rise/terms"
+    private let privacyPolicyUrlString = "https://blog.vladimirbrejcha.com/rise/privacy-policy"
+    private let openSourceUrlString = "https://blog.vladimirbrejcha.com/rise/open-source"
     private let gitHubUrlString = "https://github.com/VladimirBrejcha/Rise"
-    private let linkedInUrlString = "https://www.linkedin.com/in/vladimir-korolev/"
     private let telegramUrlString = "https://t.me/vladimirbrejcha"
     private let noubleBushidoUrlString = "https://github.com/Artem-Chzh"
     private let vladislavUrlString = "https://github.com/VPOneDev"
@@ -113,8 +112,6 @@ final class AboutViewController:
                     openInBrowser(openSourceUrlString)
                 case .gitHub:
                     openInBrowser(gitHubUrlString)
-                case .linkedIn:
-                    openInBrowser(linkedInUrlString)
                 case .telegram:
                     openInBrowser(telegramUrlString)
                 case .mailFeedback:
