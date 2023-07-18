@@ -10,15 +10,15 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 public enum Text {
-  /// Adjust schedule
+  /// Schedule Revision
   public static let adjustSchedule = Text.tr("Localizable", "adjust_schedule")
-  /// The next bedtime will be changed to 
+  /// Your next scheduled bedtime will be adjusted to 
   public static let adjustScheduleNextSleep = Text.tr("Localizable", "adjust_schedule_next_sleep")
   /// If you missed sleep
   public static let adjustScheduleShortDescription = Text.tr("Localizable", "adjust_schedule_short_description")
-  /// You can update Rise schedule to better match your current situation if you missed your bedtime. Remember, there is no need to rush, a good sleep requires careful attention.
+  /// If you've deviated from your regular sleep schedule, you can adjust your Rise routine to align with your current sleep pattern. It's all about progress, not perfection. After all, maintaining a consistent sleep schedule necessitates diligence and patience.
   public static let adjustScheduleSuggestionToAdjust = Text.tr("Localizable", "adjust_schedule_suggestion_to_adjust")
-  /// Would you like to update your schedule to better fit your last sleep?
+  /// Would you like to revise your sleep schedule based on your most recent sleep data?
   public static let adjustScheduleWannaAdjust = Text.tr("Localizable", "adjust_schedule_wanna_adjust")
   /// An internal error occurred
   public static let anInternalErrorOccurred = Text.tr("Localizable", "an_internal_error_occurred")
@@ -28,7 +28,7 @@ public enum Text {
   public static let failedToLoadTime = Text.tr("Localizable", "failed_to_load_time")
   /// It's time to sleep!
   public static let itsTimeToSleep = Text.tr("Localizable", "its_time_to_sleep!")
-  /// Next bedtime
+  /// Set next bedtime to
   public static let lastTimeIWentSleepAt = Text.tr("Localizable", "last_time_i_went_sleep_at")
   /// Location access is required to perform refresh
   public static let locationAccessIsRequiredToPerformRefresh = Text.tr("Localizable", "location_access_is_required_to_perform_refresh")
@@ -139,17 +139,17 @@ public enum Text {
   }
 
   public enum KeepAppOpenedSuggestion {
-    /// Why stay on screen
+    /// Learn More
     public static let button = Text.tr("Localizable", "keep_app_opened_suggestion.button")
-    /// Continue
+    /// Proceed
     public static let `continue` = Text.tr("Localizable", "keep_app_opened_suggestion.continue")
-    /// Please do not close the app or lock your phone while you sleep
+    /// Ensure the app stays open and your phone remains unlocked while you sleep
     public static let description = Text.tr("Localizable", "keep_app_opened_suggestion.description")
-    /// This is necessary for the correct functioning of the alarm clock when you wake up
+    /// This ensures the alarm clock operates correctly upon waking
     public static let descriptionWhy = Text.tr("Localizable", "keep_app_opened_suggestion.description_why")
-    /// Information
+    /// App Usage Guidelines
     public static let title = Text.tr("Localizable", "keep_app_opened_suggestion.title")
-    /// We suggest to leave the phone near the bed and keep it unlocked
+    /// We recommend positioning your phone close to your bed, with the screen unlocked
     public static let whereToPlacePhone = Text.tr("Localizable", "keep_app_opened_suggestion.where_to_place_phone")
   }
 
