@@ -8,6 +8,8 @@ class SunTimeRepositoryTests: XCTestCase {
     // MARK: - Mocks
 
     class SunTimeCoreDataServiceFakeDataImpl: SunTimeLocalDataSource {
+        func delete(before date: Date) throws { }
+
         private let fakeData: [SunTime]
 
         init(fakeData: [SunTime]) {
@@ -102,6 +104,8 @@ class SunTimeRepositoryTests: XCTestCase {
 
     func testSaving() {
         class SunTimeCoreDataServiceFakeDataSaverImpl: SunTimeLocalDataSource {
+            func delete(before date: Date) throws { }
+
             private let fakeData: [SunTime]
             var savedData: [SunTime] = []
 
@@ -143,6 +147,8 @@ class SunTimeRepositoryTests: XCTestCase {
 
     func testDeleting() {
         class SunTimeCoreDataServiceDataDeleter: SunTimeLocalDataSource {
+            func delete(before date: Date) throws {}
+
 
             let expectation: XCTestExpectation
 
@@ -175,6 +181,8 @@ class SunTimeRepositoryTests: XCTestCase {
 
     func testFail() {
         class SunTimeCoreDataServiceFailingImpl: SunTimeLocalDataSource {
+            func delete(before date: Date) throws { }
+
             func getSunTimes(for dates: [Date]) throws -> [SunTime] {
                 throw NetworkError.internalError
             }

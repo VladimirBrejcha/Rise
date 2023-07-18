@@ -130,8 +130,8 @@ class ScheduleTests: XCTestCase {
 
         // Given
 
-        let currentHours = Array(1...70)
-        let wantedHours = Array(0...69)
+        let currentHours = Array(1...7)
+        let wantedHours = Array(0...6)
 
         for duration in allDurations {
 
@@ -168,8 +168,8 @@ class ScheduleTests: XCTestCase {
 
         // Given
 
-        let currentHours = Array(0...70)
-        let wantedHours = Array(0...70)
+        let currentHours = Array(0...7)
+        let wantedHours = Array(0...7)
 
         for duration in allDurations {
 
