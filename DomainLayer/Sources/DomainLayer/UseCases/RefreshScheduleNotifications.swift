@@ -26,7 +26,9 @@ class NotificationImpl: NSObject, RefreshScheduleNotifications, UNUserNotificati
         
         super.init()
         self.cancellable = scheduleRepository.publisher().sink(receiveValue: { [weak self] _ in
-            self?.callAsFunction()
+            DispatchQueue.main.async {
+                self?.callAsFunction()
+            }
         })
     }
     
