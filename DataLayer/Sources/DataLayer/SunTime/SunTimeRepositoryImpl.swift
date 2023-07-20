@@ -4,6 +4,8 @@ import Foundation
 
 final class SunTimeRepositoryImpl: SunTimeRepository {
 
+    var cached: Cache<[Core.SunTime]>?
+
     private let localDataSource: SunTimeLocalDataSource
 
     private let weatherService: WeatherService
@@ -23,21 +25,15 @@ final class SunTimeRepositoryImpl: SunTimeRepository {
         )
     }
 
-    func requestSunTimes(
-        dates: [Date],
-        location: CLLocation,
-        completion: @escaping (SunTimesResult) -> Void
-    ) {
+    func requestSunTimes(dates: [Date], location: CLLocation) async -> SunTimesResult {
         if dates.isEmpty {
-            completion(.success([]))
-            return
+            return .success([])
         }
         do {
             let localResult = try localDataSource.getSunTimes(for: dates)
             if (localResult.count == dates.count) {
                 log(.info, "found stored sunTimes: \(localResult)")
-                completion(.success(localResult))
-                return
+                return .success(localResult)
             }
 
             let missedDates: [Date] = dates.filter { date in
@@ -46,36 +42,35 @@ final class SunTimeRepositoryImpl: SunTimeRepository {
                 }
             }
 
-            Task {
-                do {
-                    let remoteResult = try await apiRequest(missedDates, location: location)
-                    try? localDataSource.save(sunTimes: remoteResult)
-                    deleteAllOutdated()
-                    completion(.success(localResult + remoteResult))
-                } catch let error {
-                    log(.error, "getting remote sunTimes failed: \(error.localizedDescription)")
-                    completion(.failure(SunTimeError.networkError(underlyingError: error)))
-                }
+            do {
+                let remoteResult = try await apiRequest(missedDates, location: location)
+                try? localDataSource.save(sunTimes: remoteResult)
+                deleteAllOutdated()
+                cached = Cache(items: remoteResult)
+                return .success(localResult + remoteResult)
+            } catch let error {
+                log(.error, "getting remote sunTimes failed: \(error.localizedDescription)")
+                return .failure(SunTimeError.networkError(underlyingError: error))
             }
 
         } catch (let error) {
             log(.error, "getting local sunTimes failed: \(error.localizedDescription)")
-            Task {
-                do {
-                    let remoteResult = try await apiRequest(dates, location: location)
-                    try? localDataSource.save(sunTimes: remoteResult)
-                    deleteAllOutdated()
-                    completion(.success(remoteResult))
-                } catch let error {
-                    log(.error, "getting remote sunTimes failed: \(error.localizedDescription)")
-                    completion(.failure(SunTimeError.networkError(underlyingError: error)))
-                }
+            do {
+                let remoteResult = try await apiRequest(dates, location: location)
+                try? localDataSource.save(sunTimes: remoteResult)
+                deleteAllOutdated()
+                cached = Cache(items: remoteResult)
+                return .success(remoteResult)
+            } catch let error {
+                log(.error, "getting remote sunTimes failed: \(error.localizedDescription)")
+                return .failure(SunTimeError.networkError(underlyingError: error))
             }
         }
     }
 
     func deleteAllOutdated() {
         log(.info)
+        cached = nil
 
         do {
             try localDataSource.delete(before: Date().addingTimeInterval(days: -3))
@@ -90,6 +85,7 @@ final class SunTimeRepositoryImpl: SunTimeRepository {
 
         do {
             try localDataSource.deleteAll()
+            cached = nil
         } catch (let error) {
             assertionFailure(error.localizedDescription)
             log(.error, "deleting error: \(error.localizedDescription)")
