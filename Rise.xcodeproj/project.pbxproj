@@ -602,13 +602,6 @@
 			path = Gradientable;
 			sourceTree = "<group>";
 		};
-		7E62D769278CA53800AC9B90 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
 		7E69836C24EC6977002EE278 /* Alerts */ = {
 			isa = PBXGroup;
 			children = (
@@ -895,7 +888,6 @@
 				92D7D6522296F297009321AE /* AppDelegate.swift */,
 				CEA3AC022A5ABBBA004A32CE /* Sounds */,
 				7E5A1EA5282FE009005F19D6 /* Presentation */,
-				7E62D769278CA53800AC9B90 /* Service */,
 				92D7D68422980138009321AE /* UI */,
 				7EF3EE192340F8A5003BE978 /* Utils */,
 				7EF3EE162340F75A003BE978 /* Resources */,
