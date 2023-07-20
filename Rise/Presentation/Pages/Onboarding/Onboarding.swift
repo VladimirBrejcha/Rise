@@ -7,36 +7,34 @@
 //
 
 import Localization
+import CoreGraphics
 
 enum Onboarding { }
 
 extension Onboarding {
-  static var defaultParams: Controller.Params {
-    [
-      .init(
-        title: Text.Onboarding.Title.sleepIsImportant,
-        descriptions: [
-          Text.Onboarding.aboutSleep,
-          Text.Onboarding.aboutSleep2,
-          Text.Onboarding.aboutSleep3
+    
+    static var defaultParams: Controller.Params {
+        [
+            .init(title: Text.Onboarding.Page1.title,
+                  image: "hand.wave.fill",
+                  animationTransform: CGAffineTransform(rotationAngle: (.pi / 6)),
+                  description: Text.Onboarding.Page1.body),
+            .init(title: Text.Onboarding.Page2.title,
+                  image: "calendar",
+                  animationTransform: CGAffineTransform(translationX: 0, y: 12),
+                  description: Text.Onboarding.Page2.body),
+            .init(title: Text.Onboarding.Page3.title,
+                  image: "sun.dust.fill",
+                  animationTransform: CGAffineTransform(scaleX: 1.15, y: 1.15),
+                  description: Text.Onboarding.Page3.body),
+            .init(title: Text.Onboarding.Page4.title,
+                  image: "bird.fill",
+                  animationTransform: CGAffineTransform(translationX: 0, y: 12),
+                  description: Text.Onboarding.Page4.body),
+            .init(title: Text.Onboarding.Page5.title,
+                  image: "powersleep",
+                  animationTransform: CGAffineTransform(translationX: 0, y: 12),
+                  description: Text.Onboarding.Page5.body),
         ]
-      ),
-      .init(
-        title: Text.Onboarding.Title.haveYouScheduledIt,
-        descriptions: [
-          Text.Onboarding.missedAlarm,
-          Text.Onboarding.unableToAdjust,
-          Text.Onboarding.itHappensWithAllOfUs
-        ]
-      ),
-      .init(
-        title: Text.Onboarding.Title.meetRise,
-        descriptions: [
-          Text.Onboarding.personalAssistant,
-          Text.Onboarding.personalAssistant2,
-          Text.Onboarding.personalAssistant3
-        ]
-      ),
-    ]
-  }
+    }
 }

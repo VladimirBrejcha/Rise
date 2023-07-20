@@ -2,7 +2,7 @@ import CoreLocation
 import Core
 
 protocol LocationDeviceDataSource {
-    func get(_ completion: @escaping (Result<Location, Error>) -> Void)
+    func get(_ completion: @escaping (Result<CLLocation, Error>) -> Void)
     func requestPermissions(
         permissionRequestProvider: @escaping (@escaping (Bool) -> Void) -> Void,
         _ completion: @escaping (Bool) -> Void
@@ -16,7 +16,7 @@ final class LocationDeviceDataSourceImpl:
 {
     private let locationManager = CLLocationManager()
     private var requestPermissionsCompletion: ((Bool) -> Void)?
-    private var requestLocationCompletion: ((Result<Location, Error>) -> Void)?
+    private var requestLocationCompletion: ((Result<CLLocation, Error>) -> Void)?
     private var permissionRequestProvider: (() -> Void)?
     @UserDefault("authorization_status")
     private var authorizationStatusStorage: Int32?
@@ -37,7 +37,7 @@ final class LocationDeviceDataSourceImpl:
         locationManager.delegate = self
     }
 
-    func get(_ completion: @escaping (Result<Location, Error>) -> Void) {
+    func get(_ completion: @escaping (Result<CLLocation, Error>) -> Void) {
         log(.info)
         requestLocationCompletion = completion
         locationManager.requestLocation()
@@ -73,13 +73,7 @@ final class LocationDeviceDataSourceImpl:
         guard let completion = requestLocationCompletion else { return }
 
         if let newLocation = locations.last {
-            completion(
-                .success(
-                    Location(
-                        latitude: newLocation.coordinate.latitude.description,
-                        longitude: newLocation.coordinate.longitude.description)
-                )
-            )
+            completion(.success(newLocation))
         } else {
             completion(.failure(NetworkError.noDataReceived))
         }

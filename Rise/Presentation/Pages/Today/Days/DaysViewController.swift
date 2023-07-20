@@ -91,14 +91,10 @@ extension Days {
       }
     }
 
-    override func viewDidLoad() {
-      super.viewDidLoad()
-      refreshSunTimes()
-    }
-
     override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
       refreshSchedule()
+        refreshSunTimes(allowPermissionAlert: false)
     }
 
     func refreshSchedule() {

@@ -1,11 +1,11 @@
-// swift-tools-version: 5.6
+// swift-tools-version: 5.8
 
 import PackageDescription
 
 let package = Package(
   name: "Localization",
   defaultLocalization: "en",
-  platforms: [.iOS(.v14)],
+  platforms: [.iOS(.v16)],
   products: [
     .library(
       name: "Localization",

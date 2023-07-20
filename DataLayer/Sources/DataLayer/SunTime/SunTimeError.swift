@@ -2,7 +2,7 @@ import Foundation
 import Core
 
 public enum SunTimeError: LocalizedError {
-  case networkError (underlyingError: NetworkError)
+  case networkError (underlyingError: Error)
   case internalError
 
   public var errorDescription: String? {

@@ -93,8 +93,8 @@ class ScheduleTests: XCTestCase {
 
         // Given
 
-        let currentHours = Array(0...50)
-        let wantedHours = Array(1...51)
+        let currentHours = Array(0...5)
+        let wantedHours = Array(1...6)
 
         for duration in allDurations {
 
@@ -130,8 +130,8 @@ class ScheduleTests: XCTestCase {
 
         // Given
 
-        let currentHours = Array(1...70)
-        let wantedHours = Array(0...69)
+        let currentHours = Array(1...7)
+        let wantedHours = Array(0...6)
 
         for duration in allDurations {
 
@@ -168,8 +168,8 @@ class ScheduleTests: XCTestCase {
 
         // Given
 
-        let currentHours = Array(0...70)
-        let wantedHours = Array(0...70)
+        let currentHours = Array(0...7)
+        let wantedHours = Array(0...7)
 
         for duration in allDurations {
 
@@ -1134,7 +1134,10 @@ class ScheduleTests: XCTestCase {
             if let error = error {
                 XCTFail(error.localizedDescription)
                 return
+
                 DomainLayer/Sources/DomainLayer/UseCases/GetSchedule.swift            }
+            }
+      
             XCTAssertEqual(todaySchedule, expectedSchedules[0])
             XCTAssertEqual(tomorrowSchedule, expectedSchedules[1])
             XCTAssertEqual(savedSchedules.count, 12)

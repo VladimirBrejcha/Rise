@@ -63,7 +63,7 @@ final class AdjustScheduleViewController: UIViewController, ViewController {
         }
       },
       descriptionText: {
-        if let selectedToBed = selectedToBed {
+        if let selectedToBed {
           return """
                  \(Text.adjustScheduleWannaAdjust)
 

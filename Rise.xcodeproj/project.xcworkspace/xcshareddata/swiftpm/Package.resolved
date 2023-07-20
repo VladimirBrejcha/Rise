@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "loadingview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/VladimirBrejcha/LoadingView",
+      "state" : {
+        "revision" : "fd2c13a0bd0ed0a2c25e11a6b528bf0575ded95e",
+        "version" : "1.0.4"
+      }
+    },
+    {
+      "identity" : "selectablestackview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/VladimirBrejcha/SelectableStackView",
+      "state" : {
+        "revision" : "109bc45646dd8c9745d950d30986e5a7ab616e8a",
+        "version" : "1.2.4"
+      }
+    }
+  ],
+  "version" : 2
+}

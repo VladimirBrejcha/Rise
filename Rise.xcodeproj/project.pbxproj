@@ -49,7 +49,6 @@
 		7E43063926EBCEDD00B67315 /* UIView+addSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43063826EBCEDD00B67315 /* UIView+addSubviews.swift */; };
 		7E43063B26EBCEF600B67315 /* UIView+activateConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43063A26EBCEF600B67315 /* UIView+activateConstraints.swift */; };
 		7E43063D26ECC4E400B67315 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43063C26ECC4E400B67315 /* ContentView.swift */; };
-		7E43063F26ECC58400B67315 /* DescriptionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43063E26ECC58400B67315 /* DescriptionLabel.swift */; };
 		7E43064B26ED4FF600B67315 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43064A26ED4FF600B67315 /* SettingsView.swift */; };
 		7E43064E26ED514C00B67315 /* SettingItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43064D26ED514C00B67315 /* SettingItemView.swift */; };
 		7E43065026ED528700B67315 /* UIStackView+addSeparators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E43064F26ED528700B67315 /* UIStackView+addSeparators.swift */; };
@@ -156,6 +155,11 @@
 		92E77AF822A5303400E5E21C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E77AF722A5303400E5E21C /* SettingsViewController.swift */; };
 		92E77AFA22A5304400E5E21C /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E77AF922A5304400E5E21C /* TodayViewController.swift */; };
 		92FE417A28833DE700F328DB /* Localization in Frameworks */ = {isa = PBXBuildFile; productRef = 92FE417928833DE700F328DB /* Localization */; };
+		CE8BD5A12A55636300C15CD0 /* DefaultMelody.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE8BD5A02A55636300C15CD0 /* DefaultMelody.wav */; };
+		CEEEFB352A5DAC8C0060D6EA /* erokiaMelody.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CEEEFB312A5DAC8C0060D6EA /* erokiaMelody.mp3 */; };
+		CEEEFB362A5DAC8C0060D6EA /* cockMelody.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEEEFB322A5DAC8C0060D6EA /* cockMelody.wav */; };
+		CEEEFB372A5DAC8C0060D6EA /* tiktakMelody.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEEEFB332A5DAC8C0060D6EA /* tiktakMelody.wav */; };
+		CEEEFB382A5DAC8C0060D6EA /* oldAlarmMelody.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEEEFB342A5DAC8C0060D6EA /* oldAlarmMelody.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -199,7 +203,6 @@
 		7E43063826EBCEDD00B67315 /* UIView+addSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+addSubviews.swift"; sourceTree = "<group>"; };
 		7E43063A26EBCEF600B67315 /* UIView+activateConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+activateConstraints.swift"; sourceTree = "<group>"; };
 		7E43063C26ECC4E400B67315 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		7E43063E26ECC58400B67315 /* DescriptionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionLabel.swift; sourceTree = "<group>"; };
 		7E43064A26ED4FF600B67315 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7E43064D26ED514C00B67315 /* SettingItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemView.swift; sourceTree = "<group>"; };
 		7E43064F26ED528700B67315 /* UIStackView+addSeparators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+addSeparators.swift"; sourceTree = "<group>"; };
@@ -295,6 +298,7 @@
 		7EF4C19F240436D70098135A /* EditScheduleSliderTableCell+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditScheduleSliderTableCell+Model.swift"; sourceTree = "<group>"; };
 		7EFAEF6626F5785300C51A13 /* DaysCollectionCell+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DaysCollectionCell+Model.swift"; sourceTree = "<group>"; };
 		7EFAEF6826F5938200C51A13 /* DaysCollectionCell+SideItemVStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DaysCollectionCell+SideItemVStack.swift"; sourceTree = "<group>"; };
+		920383272A659F6300CE6E3E /* Rise.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rise.entitlements; sourceTree = "<group>"; };
 		92695F1728831EB100D382C2 /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Core; sourceTree = "<group>"; };
 		92695F1B28831EE400D382C2 /* DataLayer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DataLayer; sourceTree = "<group>"; };
 		92D12FDC22A44B3B0093B0A3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -307,6 +311,11 @@
 		92D7D65E2296F298009321AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92E77AF722A5303400E5E21C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		92E77AF922A5304400E5E21C /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		CE8BD5A02A55636300C15CD0 /* DefaultMelody.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = DefaultMelody.wav; sourceTree = "<group>"; };
+		CEEEFB312A5DAC8C0060D6EA /* erokiaMelody.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = erokiaMelody.mp3; sourceTree = "<group>"; };
+		CEEEFB322A5DAC8C0060D6EA /* cockMelody.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cockMelody.wav; sourceTree = "<group>"; };
+		CEEEFB332A5DAC8C0060D6EA /* tiktakMelody.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tiktakMelody.wav; sourceTree = "<group>"; };
+		CEEEFB342A5DAC8C0060D6EA /* oldAlarmMelody.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = oldAlarmMelody.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -397,8 +406,8 @@
 			children = (
 				7E5A1E9E282FA868005F19D6 /* Onboarding.swift */,
 				7E252A8926EBBE9600DEB6F0 /* OnboardingView.swift */,
+				7E43063C26ECC4E400B67315 /* ContentView.swift */,
 				7E252A8726EBBE6600DEB6F0 /* OnboardingViewController.swift */,
-				7E43064026ECC75E00B67315 /* Views */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -447,15 +456,6 @@
 				7E346CE4274A5BFE00848DBB /* AdjustScheduleViewController.swift */,
 			);
 			path = AdjustSchedule;
-			sourceTree = "<group>";
-		};
-		7E43064026ECC75E00B67315 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				7E43063C26ECC4E400B67315 /* ContentView.swift */,
-				7E43063E26ECC58400B67315 /* DescriptionLabel.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		7E43064C26ED513A00B67315 /* Views */ = {
@@ -891,7 +891,9 @@
 		92D7D6512296F297009321AE /* Rise */ = {
 			isa = PBXGroup;
 			children = (
+				920383272A659F6300CE6E3E /* Rise.entitlements */,
 				92D7D6522296F297009321AE /* AppDelegate.swift */,
+				CEA3AC022A5ABBBA004A32CE /* Sounds */,
 				7E5A1EA5282FE009005F19D6 /* Presentation */,
 				7E62D769278CA53800AC9B90 /* Service */,
 				92D7D68422980138009321AE /* UI */,
@@ -910,6 +912,18 @@
 				7E88A34F23F8B1F400E792CA /* Animations */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		CEA3AC022A5ABBBA004A32CE /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				CEEEFB322A5DAC8C0060D6EA /* cockMelody.wav */,
+				CEEEFB312A5DAC8C0060D6EA /* erokiaMelody.mp3 */,
+				CEEEFB342A5DAC8C0060D6EA /* oldAlarmMelody.wav */,
+				CEEEFB332A5DAC8C0060D6EA /* tiktakMelody.wav */,
+				CE8BD5A02A55636300C15CD0 /* DefaultMelody.wav */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -983,13 +997,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEEEFB382A5DAC8C0060D6EA /* oldAlarmMelody.wav in Resources */,
+				CE8BD5A12A55636300C15CD0 /* DefaultMelody.wav in Resources */,
 				7E199CD4240BD43400B702AD /* SliderWithValues.xib in Resources */,
 				92D7D65D2296F298009321AE /* LaunchScreen.storyboard in Resources */,
 				7E8EFA3226EABC2F00DEE564 /* Sleep.storyboard in Resources */,
+				CEEEFB362A5DAC8C0060D6EA /* cockMelody.wav in Resources */,
 				92695F1828831EB100D382C2 /* Core in Resources */,
 				7EE6905C243E64C600CA423E /* LongPressProgressButton.xib in Resources */,
 				7ED6DD3125E1B50800F906CE /* ImageLabelView.xib in Resources */,
+				CEEEFB372A5DAC8C0060D6EA /* tiktakMelody.wav in Resources */,
 				92D7D65A2296F298009321AE /* Assets.xcassets in Resources */,
+				CEEEFB352A5DAC8C0060D6EA /* erokiaMelody.mp3 in Resources */,
 				7E8EFA3C26EABC3900DEE564 /* CreateSchedule.storyboard in Resources */,
 				7EEB1E0F2443369F001ABE4A /* bellAlarm.wav in Resources */,
 			);
@@ -1131,7 +1150,6 @@
 				7E354403283AA21F00C1E149 /* Days.swift in Sources */,
 				7E43063926EBCEDD00B67315 /* UIView+addSubviews.swift in Sources */,
 				7EEB1E122443370F001ABE4A /* AlarmSounds.swift in Sources */,
-				7E43063F26ECC58400B67315 /* DescriptionLabel.swift in Sources */,
 				7EEFC00F25E1AEB0007AE725 /* BorderedView.swift in Sources */,
 				7E9D9C0424E58F39000772C0 /* SleepView.swift in Sources */,
 				7EE6905E243E658B00CA423E /* LongPressProgressButton.swift in Sources */,
@@ -1242,7 +1260,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1298,7 +1316,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1312,17 +1330,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Rise/Rise.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 29UN6WTSCZ;
 				INFOPLIST_FILE = "$(SRCROOT)/Rise/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = VladimirBrejcha.Rise;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vladimirkorolev.rise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -1335,17 +1355,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Rise/Rise.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 29UN6WTSCZ;
 				INFOPLIST_FILE = "$(SRCROOT)/Rise/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = VladimirBrejcha.Rise;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vladimirkorolev.rise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;

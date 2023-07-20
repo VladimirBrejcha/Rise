@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22F82" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ScheduleObject" representedClassName="ScheduleObject" syncable="YES" codeGenerationType="class">
         <attribute name="intensity" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="sleepDuration" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="targetToBed" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="targetWakeUp" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="toBed" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="wakeUp" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="targetToBed" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="targetWakeUp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="toBed" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="wakeUp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
-    <elements>
-        <element name="ScheduleObject" positionX="-63" positionY="-18" width="128" height="119"/>
-    </elements>
 </model>

@@ -11,7 +11,6 @@ enum AboutIdentifier {
     case privacyPolicy
     case openSource
     case gitHub
-    case linkedIn
     case telegram
     case mailFeedback
     case vladimirBrejcha
