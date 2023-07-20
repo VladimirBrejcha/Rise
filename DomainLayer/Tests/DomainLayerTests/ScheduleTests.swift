@@ -35,7 +35,7 @@ class ScheduleTests: XCTestCase {
         scheduleRepository.getLatestHandler = nil
         scheduleRepository.saveHandler = nil
         scheduleRepository.deleteAllHandler = nil
-    }
+
 
     // MARK: - CreateSchedule
 
