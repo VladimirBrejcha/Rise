@@ -1133,9 +1133,7 @@ class ScheduleTests: XCTestCase {
         waitForExpectations(timeout: 1) { error in
             if let error = error {
                 XCTFail(error.localizedDescription)
-                return
-
-                DomainLayer/Sources/DomainLayer/UseCases/GetSchedule.swift            }
+                return }
             }
       
             XCTAssertEqual(todaySchedule, expectedSchedules[0])
