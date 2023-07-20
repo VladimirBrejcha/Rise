@@ -16,6 +16,7 @@ extension Today {
 
     private let sleepHandler: () -> Void
     private let adjustScheduleHandler: () -> Void
+    private let closeAdjustScheduleHandler: () -> Void
     private let timeUntilSleepDataSource: () -> FloatingLabel.Model
 
     // MARK: - Subviews
@@ -42,7 +43,7 @@ extension Today {
           self?.adjustScheduleHandler()
         },
         closeHandler: { [weak self] in
-          self?.adjustScheduleButton.isHidden = true
+          self?.closeAdjustScheduleHandler()
         },
         style: .secondary
       )
@@ -66,10 +67,12 @@ extension Today {
       sleepHandler: @escaping () -> Void,
       showAdjustSchedule: Bool,
       adjustScheduleHandler: @escaping () -> Void,
+      closeAdjustScheduleHandler: @escaping () -> Void,
       daysView: Days.View
     ) {
       self.sleepHandler = sleepHandler
       self.adjustScheduleHandler = adjustScheduleHandler
+      self.closeAdjustScheduleHandler = closeAdjustScheduleHandler
       self.timeUntilSleepDataSource = timeUntilSleepDataSource
       self.daysView = daysView
       super.init(frame: .zero)
