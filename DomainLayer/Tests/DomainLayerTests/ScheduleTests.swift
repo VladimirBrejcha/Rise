@@ -35,7 +35,7 @@ class ScheduleTests: XCTestCase {
         scheduleRepository.getLatestHandler = nil
         scheduleRepository.saveHandler = nil
         scheduleRepository.deleteAllHandler = nil
-    }
+
 
     // MARK: - CreateSchedule
 
@@ -1133,8 +1133,9 @@ class ScheduleTests: XCTestCase {
         waitForExpectations(timeout: 1) { error in
             if let error = error {
                 XCTFail(error.localizedDescription)
-                return
+                return }
             }
+      
             XCTAssertEqual(todaySchedule, expectedSchedules[0])
             XCTAssertEqual(tomorrowSchedule, expectedSchedules[1])
             XCTAssertEqual(savedSchedules.count, 12)
