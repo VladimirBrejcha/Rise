@@ -25,25 +25,12 @@ extension Onboarding.View {
 
         private lazy var descriptionLabel: UILabel = {
             let label = UILabel()
-            label.applyStyle(
-                Style.Text(
-                    font: .systemFont(ofSize: 20, weight: .medium),
-                    color: Asset.Colors.darkBlue.color
-                )
-            )
+            label.applyStyle(.onTopOfRich)
             label.layer.applyStyle(
                 .init(shadow: .onboardingShadow)
             )
             label.numberOfLines = 0
-            let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.alignment = .center
-            paragraphStyle.paragraphSpacing = 8
-            label.attributedText = NSAttributedString(string: model.description, attributes: [
-                .strokeColor: Asset.Colors.lightBlue.color.withAlphaComponent(0.7),
-                .foregroundColor: UIColor.white,
-                .strokeWidth: -1.0,
-                .paragraphStyle: paragraphStyle
-            ])
+            label.attributedText = .descriptionOnTopOfRich(text: model.description)
             return label
         }()
 
@@ -54,14 +41,7 @@ extension Onboarding.View {
             label.layer.applyStyle(
                 .init(shadow: .onboardingShadow)
             )
-            label.attributedText = NSAttributedString(
-                string: model.title,
-                attributes: [
-                    .strokeColor: Asset.Colors.lightBlue.color.withAlphaComponent(0.5),
-                    .foregroundColor: UIColor.white,
-                    .strokeWidth: -1.0
-                ]
-            )
+            label.attributedText = .onTopOfRich(text: model.title)
             label.adjustsFontSizeToFitWidth = true
             label.minimumScaleFactor = 0.7
             return label

@@ -144,6 +144,13 @@ enum Style {
         static var description: Text {
             Text(font: .systemFont(ofSize: 14), color: Asset.Colors.white.color.withAlphaComponent(0.7))
         }
+
+        static var onTopOfRich: Text {
+            Text(
+                font: .systemFont(ofSize: 20, weight: .medium),
+                color: Asset.Colors.darkBlue.color
+            )
+        }
     }
 
     // MARK: - Button
@@ -244,5 +251,30 @@ enum Style {
                 normalTextColor: Asset.Colors.white.color.withAlphaComponent(0.3)
             )
         }
+    }
+}
+
+extension NSAttributedString {
+    static func onTopOfRich(text: String) -> NSAttributedString {
+        NSAttributedString(
+            string: text,
+            attributes: [
+                .strokeColor: Asset.Colors.lightBlue.color.withAlphaComponent(0.5),
+                .foregroundColor: UIColor.white,
+                .strokeWidth: -1.0
+            ]
+        )
+    }
+
+    static func descriptionOnTopOfRich(text: String, alignment: NSTextAlignment = .center) -> NSAttributedString {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = alignment
+        paragraphStyle.paragraphSpacing = 8
+        return NSAttributedString(string: text, attributes: [
+            .strokeColor: Asset.Colors.lightBlue.color.withAlphaComponent(0.7),
+            .foregroundColor: UIColor.white,
+            .strokeWidth: -1.0,
+            .paragraphStyle: paragraphStyle
+        ])
     }
 }
