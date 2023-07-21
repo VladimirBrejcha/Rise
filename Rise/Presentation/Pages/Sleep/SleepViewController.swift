@@ -94,7 +94,7 @@ final class SleepViewController: UIViewController, AutoRefreshable, ViewControll
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    prepareToLowerBrightness(in: 20)
+    prepareToLowerBrightness(in: 3)
     beginRefreshing()
   }
   
@@ -125,7 +125,7 @@ final class SleepViewController: UIViewController, AutoRefreshable, ViewControll
   private func restoreBrightness() {
     lowerBrightnessDispatchItem?.cancel()
     deps.changeScreenBrightness(to: .userDefault)
-    prepareToLowerBrightness(in: 7)
+    prepareToLowerBrightness(in: 3)
   }
 }
 
