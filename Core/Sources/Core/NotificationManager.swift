@@ -10,16 +10,27 @@ import UserNotifications
 
 public final class NotificationManager: NSObject {
     
+    public static var isNotificationPermissionGraned: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: "NotificationPermissionGranted")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "NotificationPermissionGranted")
+        }
+    }
+    
 // MARK: - Request permission
     
-  public static func requestNotificationPermission() {
+    public static func requestNotificationPermission() {
         let notificationCenter = UNUserNotificationCenter.current()
         
         notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
             guard granted else { return }
             notificationCenter.getNotificationSettings { (settings)  in
                 log(.info, "Notification settings: \(settings)")
-                guard settings.authorizationStatus == .authorized else { return }
+                guard settings.authorizationStatus == .authorized else
+                { return }
+                isNotificationPermissionGraned = true
             }
         }
     }
@@ -49,7 +60,7 @@ public final class NotificationManager: NSObject {
 
 import UIKit
 extension UIApplication {
-    static func openAppSettings() {
+    public static func openAppSettings() {
         guard let url = URL(string: UIApplication.openSettingsURLString) else {
             log(.error, "Cannot build settings url")
             return
