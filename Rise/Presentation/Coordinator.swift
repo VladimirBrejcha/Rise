@@ -281,7 +281,7 @@ final class RootCoordinator {
         .init(deps: useCases)
     }
     
-    //MARK: - Random allerts
+    //MARK: - Random alerts
     
     func showTimeToSleepAlert(_ params: OnNotifyParams) {
         let ac = UIAlertController(title: params.title, message: params.description, preferredStyle: .alert)
