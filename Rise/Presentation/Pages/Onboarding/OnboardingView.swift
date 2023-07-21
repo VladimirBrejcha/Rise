@@ -26,9 +26,11 @@ extension Onboarding {
             button.onTouchUp = { [weak self] in
                 guard let self = self else { return }
                 if self.currentPageIndex < self.content.count - 1 {
+                    self.page(at: currentPageIndex)?.animate(false)
                     self.currentPageIndex += 1
                     self.pageControl.currentPage = self.currentPageIndex
                     self.scrollToCurrentPage()
+                    self.page(at: currentPageIndex)?.animate(true)
                     self.updateButtonTitle()
                 } else {
                     self.completedHandler?()
