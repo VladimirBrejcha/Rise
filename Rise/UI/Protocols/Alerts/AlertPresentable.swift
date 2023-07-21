@@ -16,7 +16,7 @@ extension LocationPermissionAlertPresentable {
     func presentLocationPermissionAccessAlert(_ proceededToSettings: @escaping (Bool) -> Void) {
         presentAlert(
             text: "Location access",
-            description: "Please provide location access. This is needed to fetch correct sunrise/sunset times. We never share your personal data with anyone",
+            description: "'Rise' requires access to your location to calculate accurate sunrise and sunset times for your area. This information is displayed on the main screen and is used to compare with your personal sleep schedule times, allowing you to align your routines with natural daylight hours. Please note, we only access your location data when the app is in use and do not share this data with any third parties.",
             actions: [
                 .init(
                     title: "Ok",

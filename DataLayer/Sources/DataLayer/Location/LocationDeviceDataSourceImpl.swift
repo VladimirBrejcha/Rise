@@ -18,17 +18,9 @@ final class LocationDeviceDataSourceImpl:
     private var requestPermissionsCompletion: ((Bool) -> Void)?
     private var requestLocationCompletion: ((Result<CLLocation, Error>) -> Void)?
     private var permissionRequestProvider: (() -> Void)?
-    @UserDefault("authorization_status")
-    private var authorizationStatusStorage: Int32?
     private var authorizationStatus: CLAuthorizationStatus? {
         get {
-            if let status = authorizationStatusStorage {
-                return .init(rawValue: status)
-            }
-            return nil
-        }
-        set {
-            authorizationStatusStorage = newValue?.rawValue
+            locationManager.authorizationStatus
         }
     }
 
@@ -48,12 +40,14 @@ final class LocationDeviceDataSourceImpl:
         _ completion: @escaping (Bool) -> Void
     ) {
         log(.info, "current status = \(String(describing: authorizationStatus?.rawValue))")
-        if authorizationStatus == nil {
+        if authorizationStatus == nil
+            || authorizationStatus ==  .notDetermined
+        {
             requestPermissionsCompletion = completion
             locationManager.requestWhenInUseAuthorization()
-        } else if authorizationStatus == .notDetermined
-                    || authorizationStatus == .denied
-                    || authorizationStatus == .restricted {
+        } else if authorizationStatus == .denied
+                    || authorizationStatus == .restricted
+        {
             requestPermissionsCompletion = completion
             permissionRequestProvider { [weak self] proceedToSettings in
                 if !proceedToSettings {
@@ -93,7 +87,6 @@ final class LocationDeviceDataSourceImpl:
         guard let completion = requestPermissionsCompletion else { return }
         
         log(.info, "status = \(status.rawValue)")
-        authorizationStatus = status
 
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
