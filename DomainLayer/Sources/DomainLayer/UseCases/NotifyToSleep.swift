@@ -1,4 +1,6 @@
 import Foundation
+import Core
+import UIKit
 
 public typealias OnNotifyParams = (title: String, description: String, acceptButton: String, cancelButton: String)
 
@@ -12,6 +14,7 @@ public protocol NotifyToSleep: AnyObject {
     
     func start()
     func stop()
+    func checkPermissions()
 }
 
 class NotifyToSleepImpl: NotifyToSleep {
@@ -32,7 +35,6 @@ class NotifyToSleepImpl: NotifyToSleep {
             return
         }
         stop()
-        
         startTime = Date.timeIntervalSinceReferenceDate
         timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(checkSleepTime), userInfo: nil, repeats: true)
     }
@@ -40,7 +42,9 @@ class NotifyToSleepImpl: NotifyToSleep {
     @objc func checkSleepTime() {
         let currentDate = Date()
         guard let timeToSleep = getSchedule.today()?.toBed else { return }
+        
         if currentDate >= timeToSleep {
+            checkPermissions()
             if manageActiveSleep.sleepStartedAt == nil {
                 notify()
             }
@@ -62,6 +66,19 @@ class NotifyToSleepImpl: NotifyToSleep {
         let cancelButton = NotificationData.cancelButtons[randomInt]
         
         onNotify?(OnNotifyParams(title, description, acceptButton, cancelButton))
+    }
+    
+    func checkPermissions() {
+        if NotificationManager.isNotificationPermissionGraned {
+            log(.info, "Notification permission granted")
+        } else {
+            let permissionVC = PermissionViewController()
+            
+            if let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
+               let topViewController = windowScene.windows.first?.rootViewController {
+                topViewController.present(permissionVC, animated: true, completion: nil)
+            }
+        }
     }
     
     struct NotificationData {
