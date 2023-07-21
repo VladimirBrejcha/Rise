@@ -15,6 +15,7 @@ public protocol RefreshScheduleNotifications: AnyObject {
 
 class NotificationImpl: NSObject, RefreshScheduleNotifications, UNUserNotificationCenterDelegate {
     
+    
     private let scheduleRepository: ScheduleRepository
     private var cancellable: AnyCancellable?
     
@@ -50,7 +51,7 @@ class NotificationImpl: NSObject, RefreshScheduleNotifications, UNUserNotificati
         }
     }
 }
-
+    
 public struct TextNotify {
     static var  textBodyNotify: [String] = ["🌟 “Time to catch some Zs, champ! Your bed is calling and dreams await. Charge up for tomorrow's adventures!” 🛌💤",
                                             "🌜 “The stars are out and the night is young. Head to bed and set sail to Dreamland. Tomorrow’s a fresh start!” 🚀",
