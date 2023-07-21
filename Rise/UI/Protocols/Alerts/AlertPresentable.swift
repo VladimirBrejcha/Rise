@@ -19,7 +19,7 @@ extension LocationPermissionAlertPresentable {
             description: "'Rise' requires access to your location to calculate accurate sunrise and sunset times for your area. This information is displayed on the main screen and is used to compare with your personal sleep schedule times, allowing you to align your routines with natural daylight hours. Please note, we only access your location data when the app is in use and do not share this data with any third parties.",
             actions: [
                 .init(
-                    title: "Ok",
+                    title: "Go to Settings",
                     style: .default,
                     handler: { _ in
                         if let url = URL(string: UIApplication.openSettingsURLString) {
@@ -29,7 +29,7 @@ extension LocationPermissionAlertPresentable {
                     }
                 ),
                 .init(
-                    title: "Cancel",
+                    title: "Not Now",
                     style: .cancel,
                     handler: { _ in
                         proceededToSettings(false)
