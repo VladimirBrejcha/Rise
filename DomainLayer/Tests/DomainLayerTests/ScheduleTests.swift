@@ -53,7 +53,8 @@ class ScheduleTests: XCTestCase {
         let currentHour = time(day: 2, hour: 23, min: 30)
         let wantedHour = time(day: 1, hour: 23)
 
-        let expCurHour = time(day: 1, hour: 23, min: 30)
+        let expCurHour = time(day: 2, hour: 23, min: 30)
+        let expWantedHour = time(day: 2, hour: 23)
 
         // When
 
@@ -74,10 +75,10 @@ class ScheduleTests: XCTestCase {
                 .addingTimeInterval(minutes: duration)
         )
         XCTAssertEqual(schedule.intensity, .normal)
-        XCTAssertEqual(schedule.targetToBed, wantedHour)
+        XCTAssertEqual(schedule.targetToBed, expWantedHour)
         XCTAssertEqual(
             schedule.targetWakeUp,
-            wantedHour
+            expWantedHour
                 .addingTimeInterval(days: -1)
                 .addingTimeInterval(minutes: duration)
         )

@@ -42,11 +42,11 @@ final class CreateScheduleImpl: CreateSchedule {
     }
 
     private func adjustToBeds(current: Date, wanted: Date) -> (current: Date, wanted: Date) {
-        var resCurrent: Date = current
-        while ((resCurrent.timeIntervalSince1970 - wanted.timeIntervalSince1970) / 60 / 60) > 12 {
-            resCurrent = current.addingTimeInterval(days: -1)
+        var resWanted = wanted
+        while ((current.timeIntervalSince1970 - resWanted.timeIntervalSince1970) / 60 / 60) > 12 {
+            resWanted = resWanted.addingTimeInterval(days: 1)
         }
-        return (resCurrent, wanted)
+        return (current, resWanted)
     }
 
     private func calculateWakeUp(toBed: Date, sleepDuration: Int) -> Date {
