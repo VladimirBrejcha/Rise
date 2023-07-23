@@ -22,6 +22,8 @@ public enum Text {
   public static let adjustScheduleWannaAdjust = Text.tr("Localizable", "adjust_schedule_wanna_adjust")
   /// An internal error occurred
   public static let anInternalErrorOccurred = Text.tr("Localizable", "an_internal_error_occurred")
+  /// Begin
+  public static let begin = Text.tr("Localizable", "begin")
   /// Edit Rise schedule
   public static let editRiseSchedule = Text.tr("Localizable", "edit_rise_schedule")
   /// Failed to load time

@@ -11,6 +11,8 @@ import UIKit
 final class WentSleepCreateScheduleViewController: UIViewController {
     @IBOutlet private weak var wentSleepDatePicker: UIDatePicker!
     
+    @IBOutlet private var icon: UIImageView!
+
     var wentSleepTimeOutput: ((Date) -> Void)? // DI
     var currentWentSleepTime: (() -> Date?)? // DI
     
@@ -21,6 +23,7 @@ final class WentSleepCreateScheduleViewController: UIViewController {
         if let currentWentSleepTime = currentWentSleepTime?() {
             wentSleepDatePicker.setDate(currentWentSleepTime, animated: false)
         }
+        icon.layer.applyStyle(.gloomingIcon)
     }
     
     @IBAction private func wentSleepTimeChanged(_ sender: UIDatePicker) {

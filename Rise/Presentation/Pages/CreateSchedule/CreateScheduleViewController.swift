@@ -9,6 +9,7 @@
 import UIKit
 import Core
 import DomainLayer
+import Localization
 
 final class CreateScheduleViewController:
   UIViewController,
@@ -113,7 +114,7 @@ final class CreateScheduleViewController:
     createScheduleView.configure(
       model: .init(
         backButtonTitle: "",
-        nextButtonTitle: "Start"
+        nextButtonTitle: Text.begin
       ),
       handlers: .init(
         close: { [weak self] in
@@ -226,7 +227,7 @@ final class CreateScheduleViewController:
       )
       createScheduleView.model = .init(
         backButtonTitle: "",
-        nextButtonTitle: "Start"
+        nextButtonTitle: Text.begin
       )
     case .sleepDuration:
       createScheduleView.state = .init(

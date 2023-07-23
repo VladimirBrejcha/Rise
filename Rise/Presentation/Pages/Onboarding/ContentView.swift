@@ -62,12 +62,7 @@ extension Onboarding.View {
                     systemName: model.image
                 )?.withRenderingMode(.alwaysTemplate)
             )
-            view.layer.applyStyle(
-                Style.Layer(shadow: Style.Layer.Shadow(
-                    radius: 15, opacity: 0.6,
-                    color: Asset.Colors.lightBlue.color.cgColor)
-                )
-            )
+            view.layer.applyStyle(.gloomingIcon)
             view.contentMode = .scaleAspectFit
             view.tintColor = .white
             return view

@@ -24,6 +24,13 @@ enum Style {
             Layer(border: .usual, cornerRadius: 12)
         }
 
+        static var gloomingIcon: Layer {
+            Layer(shadow: Shadow(
+                radius: 15, opacity: 0.6,
+                color: Asset.Colors.lightBlue.color.cgColor)
+            )
+        }
+
         // MARK: Shadow
 
         struct Shadow {

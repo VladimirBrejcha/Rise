@@ -12,6 +12,8 @@ final class WakeUpTimeCreateScheduleViewController: UIViewController {
     @IBOutlet private var wakeUpTimeDatePicker: UIDatePicker!
     @IBOutlet private var expectedToBedLabel: UILabel!
 
+    @IBOutlet private var icon: UIImageView!
+
     var wakeUpTimeOutput: ((Date) -> Void)? // DI
     var toBedTimeOutput: ((Date) -> Void)? // DI
     var currentWakeUpTime: (() -> Date?)? // DI
@@ -32,6 +34,7 @@ final class WakeUpTimeCreateScheduleViewController: UIViewController {
             )
             refreshToBedLabel(text: makeToBedText(date: toBedTime))
         }
+        icon.layer.applyStyle(.gloomingIcon)
     }
 
     @IBAction private func wakeUpTimeChanged(_ sender: UIDatePicker) {
@@ -57,6 +60,6 @@ final class WakeUpTimeCreateScheduleViewController: UIViewController {
     }
 
     private func makeToBedText(date: Date) -> String {
-        "To sleep at \(date.HHmmString) o'clock"
+        "To align your sleep schedule, aim to go to bed by \(date.HHmmString)."
     }
 }
