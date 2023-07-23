@@ -53,10 +53,10 @@ class NotifyToSleepImpl: NotifyToSleep {
     @objc func checkSleepTime() {
         let currentDate = Date()
         guard let timeToSleep = getSchedule.today()?.toBed else { return }
-        
         if currentDate >= timeToSleep {
-            checkPermissions()
             if manageActiveSleep.sleepStartedAt == nil {
+                checkAndRequestNotificationPermissions()
+                lastNotificationDate = Date()
                 notify()
             }
         }
@@ -79,19 +79,27 @@ class NotifyToSleepImpl: NotifyToSleep {
         onNotify?(OnNotifyParams(title, description, acceptButton, cancelButton))
     }
     
-    func checkPermissions() {
-        if NotificationManager.isNotificationPermissionGraned {
-            log(.info, "Notification permission granted")
-        } else {
-            let permissionVC = PermissionViewController()
-            
-            if let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
-               let topViewController = windowScene.windows.first?.rootViewController {
-                topViewController.present(permissionVC, animated: true, completion: nil)
+    func checkAndRequestNotificationPermissions() {
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.getNotificationSettings { settings in
+            DispatchQueue.main.async {
+                if settings.authorizationStatus == .authorized {
+                    log(.info, "Notification permission granted")
+                    self.didNotify = true
+                } else {
+                    if let lastNotificationDate = self.lastNotificationDate, Date().timeIntervalSince(lastNotificationDate) < 24 * 60 * 60 {
+                        self.didNotify = true
+                               return
+                           }
+                    if let activeViewController = self.activeViewController, let permissionVC = self.permissionViewController {
+                        activeViewController.present(permissionVC, animated: true)
+                    }
+                }
             }
         }
     }
-    
+}
+
     struct NotificationData {
         static let alertTitles: [String] = ["Sleepy Time Awaits",
                                             "Ready for Dreamland?",
@@ -137,5 +145,3 @@ class NotifyToSleepImpl: NotifyToSleep {
                                                "Refresh Now",
                                                "Join Dreams"]
     }
-}
-
