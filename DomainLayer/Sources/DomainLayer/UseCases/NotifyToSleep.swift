@@ -31,19 +31,23 @@ class NotifyToSleepImpl: NotifyToSleep {
     let getSchedule: GetSchedule
     let manageActiveSleep: ManageActiveSleep
     var onNotify: ((OnNotifyParams) -> Void)?
+    var activeViewController: UIViewController?
+    var permissionViewController: UIViewController?
+    var lastNotificationDate: Date?
     
     init(getSchedule: GetSchedule, manageActiveSleep: ManageActiveSleep) {
         self.getSchedule = getSchedule
         self.manageActiveSleep = manageActiveSleep
+        
     }
     
-    func start() {
+    func startNotificationTimer() {
         if didNotify {
             return
         }
-        stop()
+        stopNotificationTimer()
         startTime = Date.timeIntervalSinceReferenceDate
-        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(checkSleepTime), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(checkSleepTime), userInfo: nil, repeats: true)
     }
     
     @objc func checkSleepTime() {
@@ -58,7 +62,7 @@ class NotifyToSleepImpl: NotifyToSleep {
         }
     }
     
-    func stop() {
+    func stopNotificationTimer() {
         timer?.invalidate()
         timer = nil
     }
