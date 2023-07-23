@@ -10,7 +10,7 @@ import UserNotifications
 
 public final class NotificationManager: NSObject {
     
-    public static var isNotificationPermissionGraned: Bool {
+    public static var isNotificationPermissionGranted: Bool {
         get {
             return UserDefaults.standard.bool(forKey: "NotificationPermissionGranted")
         }
@@ -30,7 +30,7 @@ public final class NotificationManager: NSObject {
                 log(.info, "Notification settings: \(settings)")
                 guard settings.authorizationStatus == .authorized else
                 { return }
-                isNotificationPermissionGraned = true
+                isNotificationPermissionGranted = true
             }
         }
     }
