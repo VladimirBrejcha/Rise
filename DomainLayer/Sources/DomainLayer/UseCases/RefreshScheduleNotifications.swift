@@ -14,8 +14,6 @@ public protocol RefreshScheduleNotifications: AnyObject {
 }
 
 class NotificationImpl: NSObject, RefreshScheduleNotifications, UNUserNotificationCenterDelegate {
-    
-    
     private let scheduleRepository: ScheduleRepository
     private var cancellable: AnyCancellable?
     
