@@ -11,13 +11,20 @@ public protocol HasNotifyToSleep {
 public protocol NotifyToSleep: AnyObject {
     var onNotify: ((OnNotifyParams) -> Void)? { get set }
     var didNotify: Bool { get set }
-    
-    func start()
-    func stop()
-    func checkPermissions()
+    func startNotificationTimer()
+    func stopNotificationTimer()
+    func setNotificationActiveViewController(_ viewController: UIViewController)
+    func setPermissionViewControllerIfNeeded(_ permission: UIViewController)
 }
 
 class NotifyToSleepImpl: NotifyToSleep {
+    func setNotificationActiveViewController(_ viewController: UIViewController) {
+        self.activeViewController = viewController
+    }
+    func setPermissionViewControllerIfNeeded(_ permission: UIViewController) {
+        self.permissionViewController = permission
+    }
+    
     var startTime: TimeInterval = 0.0
     var timer: Timer?
     var didNotify: Bool = false
