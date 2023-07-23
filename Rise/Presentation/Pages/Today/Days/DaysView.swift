@@ -39,7 +39,7 @@ extension Days {
       collection.backgroundColor = .clear
       collection.showsHorizontalScrollIndicator = false
       collection.isPagingEnabled = true
-      collection.layer.cornerRadius = 12
+      collection.layer.cornerRadius = 16
       return collection
     }()
 

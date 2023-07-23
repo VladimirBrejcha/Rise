@@ -11,7 +11,6 @@ import Core
 
 final class ImageLabelViewWithContextMenu:
     UIView,
-    Statefull,
     UIContextMenuInteractionDelegate
 {
     private let contentView = ImageLabelView(frame: .zero)

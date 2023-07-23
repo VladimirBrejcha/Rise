@@ -21,7 +21,7 @@ enum Style {
         // MARK: Instances
 
         static var usualBorder: Layer {
-            Layer(border: .usual, cornerRadius: 12)
+            Layer(border: .usual, cornerRadius: 16)
         }
 
         static var gloomingIcon: Layer {
@@ -207,21 +207,6 @@ enum Style {
                 backgroundColor: .clear,
                 effects: Layer(
                     border: .usual,
-                    cornerRadius: 22
-                )
-            )
-        }
-
-        static var red: Button {
-            Button(
-                disabledTitleColor: Asset.Colors.red.color.withAlphaComponent(0.5),
-                titleStyle: Text(
-                    font: UIFont.boldSystemFont(ofSize: 18),
-                    color: Asset.Colors.red.color
-                ),
-                backgroundColor: Asset.Colors.white.color,
-                effects: Layer(
-                    shadow: .usual,
                     cornerRadius: 22
                 )
             )

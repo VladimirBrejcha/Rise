@@ -17,6 +17,7 @@ extension UIView {
         blur.flatMap(view.applyBlur(style:))
         addSubview(view)
         sendSubviewToBack(view)
+        view.clipsToBounds = true
         view.activateConstraints(
             view.leadingAnchor.constraint(equalTo: leadingAnchor),
             view.trailingAnchor.constraint(equalTo: trailingAnchor),

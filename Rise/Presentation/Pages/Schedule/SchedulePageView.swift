@@ -11,7 +11,7 @@ import Core
 
 extension SchedulePage {
   
-  final class View: UIView, PropertyAnimatable, Statefull {
+  final class View: UIView, PropertyAnimatable {
     
     // MARK: - PropertyAnimatable
     
@@ -100,8 +100,8 @@ extension SchedulePage {
       )
       
       HStack.activateConstraints(
-        HStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-        HStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+        HStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+        HStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
         HStack.centerYAnchor.constraint(equalTo: centerYAnchor),
         HStack.widthAnchor.constraint(equalTo: HStack.heightAnchor)
       )
@@ -113,8 +113,6 @@ extension SchedulePage {
         middleButton.heightAnchor.constraint(equalToConstant: 44)
       )
     }
-    
-    // MARK: - Statefull
     
     typealias CellState = ImageLabelViewWithContextMenu.State
     

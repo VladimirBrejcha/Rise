@@ -78,7 +78,44 @@ extension Days {
                     ) as? CollectionView.Item else {
                         return nil
                     }
-
+                    let preview = ContextPreview()
+                    cell.contextViewController = preview
+                    preview.setState(
+                        ContextPreview.State(
+                            image: { () -> UIImage? in
+                                switch item.id.kind {
+                                case .schedule:
+                                    return UIImage(systemName: "calendar.circle.fill")
+                                case .sun:
+                                    return UIImage(systemName: "sun.and.horizon.circle.fill")
+                                }
+                            }(),
+                            title: { () -> String in
+                                switch item.id.kind {
+                                case .schedule:
+                                    return "Schedule for \(item.id.day.rawValue)"
+                                case .sun:
+                                    return "Sun cycle for \(item.id.day.rawValue)"
+                                }
+                            }(),
+                            description: { () -> String in
+                                switch item.id.kind {
+                                case .schedule:
+                                    if case let .showingContent(left, right) = item.state {
+                                        return "Planned wake-up at \(left), bedtime at \(right)"
+                                    } else {
+                                        return ""
+                                    }
+                                case .sun:
+                                    if case let .showingContent(left, right) = item.state {
+                                        return "Sunrise at \(left), sunset at \(right)"
+                                    } else {
+                                        return ""
+                                    }
+                                }
+                            }()
+                        )
+                    )
                     cell.configure(with: item)
                     cell.repeatButtonHandler = { [weak self] id in
                         self?.repeatButtonHandler(identifier: id)
