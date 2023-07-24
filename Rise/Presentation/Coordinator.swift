@@ -305,15 +305,15 @@ final class RootCoordinator {
         self.navigationController.pushViewController(vc, animated: true)
     }
     //MARK: - Lazy Initialization PermissionViewController
-   private func showAppSettings() {
-       UIApplication.openAppSettings()
-   }
+    private func showAppSettings() {
+        UIApplication.openAppSettings()
+    }
     
-   private func dismissPermissionViewController() {
+    private func dismissPermissionViewController() {
         permissionViewController.dismiss(animated: true)
     }
     
-     var permissionViewController: PermissionViewController = {
+    var permissionViewController: PermissionViewController = {
         let viewController = PermissionViewController()
         return viewController
     }()
