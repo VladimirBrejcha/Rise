@@ -132,6 +132,8 @@ final class RootCoordinator {
                     createSchedule(onCreate: onCreate),
                     with: .modal
                 )
+            case .editSchedule( let schedule):
+                nc.pushViewController(editSchedule(params: schedule), animated: true)
             }
         }
     }
