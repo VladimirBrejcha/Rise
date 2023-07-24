@@ -52,14 +52,13 @@ class NotifyToSleepImpl: NotifyToSleep {
     
     @objc func checkSleepTime() {
         let currentDate = Date()
-        guard let timeToSleep = getSchedule.today()?.toBed else { return }
-        if currentDate >= timeToSleep {
-            if manageActiveSleep.sleepStartedAt == nil {
-                checkAndRequestNotificationPermissions()
-                lastNotificationDate = Date()
-                notify()
-            }
-        }
+        
+        guard let timeToSleep = getSchedule.today()?.toBed,
+              currentDate >= timeToSleep,
+              manageActiveSleep.sleepStartedAt == nil else { return }
+        checkAndRequestNotificationPermissions()
+        lastNotificationDate = Date()
+        notify()
     }
     
     func stopNotificationTimer() {
