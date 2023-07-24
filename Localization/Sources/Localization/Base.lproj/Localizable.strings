@@ -73,7 +73,7 @@
 "keep_app_opened_suggestion.button" = "Learn More";
 "alarming.title" = "Wake up and Rise!";
 "alarming.snooze" = "Snooze";
-"alarming.stop" = "Wake up";
+"alarming.stop" = "Hold to wake up";
 "after_sleep.title" = "Sleep finished";
 "after_sleep.title_sleep_stopped" = "Sleep ended";
 "after_sleep.main_text" = "Good morning!";

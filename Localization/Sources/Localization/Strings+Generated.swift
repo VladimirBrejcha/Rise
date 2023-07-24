@@ -134,7 +134,7 @@ public enum Text {
   public enum Alarming {
     /// Snooze
     public static let snooze = Text.tr("Localizable", "alarming.snooze")
-    /// Wake up
+    /// Hold to wake up
     public static let stop = Text.tr("Localizable", "alarming.stop")
     /// Wake up and Rise!
     public static let title = Text.tr("Localizable", "alarming.title")
