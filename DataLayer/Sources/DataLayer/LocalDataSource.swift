@@ -27,7 +27,7 @@ class LocalDataSource<Object: NSManagedObject> {
         do {
             try container.initializeCloudKitSchema(options: [])
         } catch let error {
-//            assertionFailure("Unable to initCloudKitSchema: \(error.localizedDescription)")
+            assertionFailure("Unable to initCloudKitSchema: \(error.localizedDescription)")
         }
         #endif
         return container
