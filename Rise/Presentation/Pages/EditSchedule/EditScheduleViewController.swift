@@ -91,7 +91,7 @@ extension EditSchedule {
             model: .init(
               initialValue: plannedToBed,
               initialSleepDuration: schedule.sleepDuration,
-              text: "To bed time",
+              text: "Bedtime",
               datePickerDelegate: { [weak self] value in
                 self?.pickedToBed = value
               },

@@ -35,9 +35,54 @@ class ScheduleTests: XCTestCase {
         scheduleRepository.getLatestHandler = nil
         scheduleRepository.saveHandler = nil
         scheduleRepository.deleteAllHandler = nil
+    }
 
 
     // MARK: - CreateSchedule
+
+    // when datePicker return incorrect value
+    // case:
+    // 23:30 last went sleep
+    // 23:30 wanted to sleep but one day behind
+    // resulting in incorrectly calculated schedule
+    func testCreateScheduleSpecialCase() {
+
+        // Given
+
+        let duration = 8 * 60
+        let currentHour = time(day: 2, hour: 23, min: 30)
+        let wantedHour = time(day: 1, hour: 23)
+
+        let expCurHour = time(day: 2, hour: 23, min: 30)
+        let expWantedHour = time(day: 2, hour: 23)
+
+        // When
+
+        let schedule = createSchedule(
+            wantedSleepDuration: duration,
+            currentToBed: currentHour,
+            wantedToBed: wantedHour,
+            intensity: .normal
+        )
+
+        // Then
+
+        XCTAssertEqual(schedule.toBed, expCurHour)
+        XCTAssertEqual(
+            schedule.wakeUp,
+            expCurHour
+                .addingTimeInterval(days: -1)
+                .addingTimeInterval(minutes: duration)
+        )
+        XCTAssertEqual(schedule.intensity, .normal)
+        XCTAssertEqual(schedule.targetToBed, expWantedHour)
+        XCTAssertEqual(
+            schedule.targetWakeUp,
+            expWantedHour
+                .addingTimeInterval(days: -1)
+                .addingTimeInterval(minutes: duration)
+        )
+    }
 
     func testCreateSchedule() {
 
@@ -1134,23 +1179,22 @@ class ScheduleTests: XCTestCase {
             if let error = error {
                 XCTFail(error.localizedDescription)
                 return }
-            }
-      
-            XCTAssertEqual(todaySchedule, expectedSchedules[0])
-            XCTAssertEqual(tomorrowSchedule, expectedSchedules[1])
-            XCTAssertEqual(savedSchedules.count, 12)
-            XCTAssertEqual(forNDays.count, 11)
-            for day in (0...10) {
-                let expected = savedSchedules[day]
-                let got = forNDays[day]
-                XCTAssertEqual(expected, got)
-            }
-            XCTAssertEqual(forNDaysWithoutToday.count, 11)
-            for day in (0...10) {
-                let expected = savedSchedules[day + 1]
-                let got = forNDaysWithoutToday[day]
-                XCTAssertEqual(expected, got)
-            }
+        }
+
+        XCTAssertEqual(todaySchedule, expectedSchedules[0])
+        XCTAssertEqual(tomorrowSchedule, expectedSchedules[1])
+        XCTAssertEqual(savedSchedules.count, 12)
+        XCTAssertEqual(forNDays.count, 11)
+        for day in (0...10) {
+            let expected = savedSchedules[day]
+            let got = forNDays[day]
+            XCTAssertEqual(expected, got)
+        }
+        XCTAssertEqual(forNDaysWithoutToday.count, 11)
+        for day in (0...10) {
+            let expected = savedSchedules[day + 1]
+            let got = forNDaysWithoutToday[day]
+            XCTAssertEqual(expected, got)
         }
     }
 

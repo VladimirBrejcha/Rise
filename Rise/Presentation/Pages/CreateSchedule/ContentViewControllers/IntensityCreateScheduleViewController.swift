@@ -13,6 +13,7 @@ final class IntensityCreateScheduleViewController: UIViewController {
 
     @IBOutlet private var intensityDescriptionLabel: UILabel!
     @IBOutlet private var intensitySegmentedControl: UISegmentedControl!
+    @IBOutlet private var intensityIconView: UIImageView!
 
     var scheduleIntensityOutput: ((Schedule.Intensity) -> Void)? // DI
     var currentIntensity: (() -> Schedule.Intensity?)? // DI
@@ -30,6 +31,7 @@ final class IntensityCreateScheduleViewController: UIViewController {
                 handler: { [weak self] _ in
                     self?.scheduleIntensityOutput?(.low)
                     self?.refreshDescriptionLabel(with: .low)
+                    self?.refreshIcon(with: .low)
                 }
             ),
             at: 0,
@@ -41,6 +43,7 @@ final class IntensityCreateScheduleViewController: UIViewController {
                 handler: { [weak self] _ in
                     self?.scheduleIntensityOutput?(.normal)
                     self?.refreshDescriptionLabel(with: .normal)
+                    self?.refreshIcon(with: .normal)
                 }
             ),
             at: 1,
@@ -52,6 +55,7 @@ final class IntensityCreateScheduleViewController: UIViewController {
                 handler: { [weak self] _ in
                     self?.scheduleIntensityOutput?(.high)
                     self?.refreshDescriptionLabel(with: .high)
+                    self?.refreshIcon(with: .high)
                 }
             ),
             at: 2,
@@ -60,17 +64,23 @@ final class IntensityCreateScheduleViewController: UIViewController {
         let intensity = currentIntensity?() ?? defaultIntensity
         intensitySegmentedControl.selectedSegmentIndex = intensity.index
         refreshDescriptionLabel(with: intensity)
+        refreshIcon(with: intensity)
+        intensityIconView.layer.applyStyle(.gloomingIcon)
+    }
+
+    private func refreshIcon(with intensity: Schedule.Intensity) {
+        intensityIconView.image = UIImage(systemName: intensity.iconName)
     }
 
     private func refreshDescriptionLabel(with intensity: Schedule.Intensity) {
         intensityDescriptionLabel.text = {
             switch intensity {
             case .low:
-                return "Smoothly and calmly reach the target"
+                return "Gentle Journey.\nMake gradual changes to your sleep pattern. Ideal if you prefer a slow and steady transition."
             case .normal:
-                return "Recommended: middle pace"
+                return "Balanced Pace.\nRecommended for a smooth transition to your ideal sleep schedule."
             case .high:
-                return "Achieve the goal most quickly"
+                return "Rapid Route.\nMake swift changes to your sleep habits. Best if you want quick results, but it could be challenging."
             }
         }()
     }

@@ -26,7 +26,6 @@ extension EditSchedule.TableView {
 
     private lazy var segmentedControl: UISegmentedControl = {
       let segmentedControl = UISegmentedControl()
-      segmentedControl.applyStyle(.usual)
       return segmentedControl
     }()
 

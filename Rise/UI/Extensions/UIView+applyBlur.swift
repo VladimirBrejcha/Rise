@@ -12,12 +12,9 @@ extension UIView {
     func applyBlur(style: UIBlurEffect.Style) {
         let blur = UIBlurEffect(style: style)
         let view = UIVisualEffectView(effect: blur)
+        view.layer.masksToBounds = true
         addSubview(view)
-        view.activateConstraints(
-            view.leadingAnchor.constraint(equalTo: leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: trailingAnchor),
-            view.topAnchor.constraint(equalTo: topAnchor),
-            view.bottomAnchor.constraint(equalTo: bottomAnchor)
-        )
+        sendSubviewToBack(view)
+        view.activateConstraints(edgesTo(self))
     }
 }

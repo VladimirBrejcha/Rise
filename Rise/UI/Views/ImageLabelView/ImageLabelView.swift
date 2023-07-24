@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class ImageLabelView: UIView, Statefull, NibLoadable {
+final class ImageLabelView: UIView, NibLoadable {
 
     @IBOutlet private var imageView: UIImageView!
     @IBOutlet private var label: UILabel!
@@ -48,5 +48,7 @@ final class ImageLabelView: UIView, Statefull, NibLoadable {
         label.textColor = .white
         label.textAlignment = .center
         label.numberOfLines = 0
+        layer.cornerRadius = 16
+        layer.applyStyle(.usualBorder)
     }
 }

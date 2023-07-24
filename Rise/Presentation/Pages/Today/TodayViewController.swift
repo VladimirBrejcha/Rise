@@ -28,6 +28,8 @@ extension Today {
     private let daysViewController: Days.Controller
     private var todaySchedule: Schedule?
 
+    private var cancelledOnce = false
+
     override var tabBarItem: UITabBarItem! {
       get { _tabBarItem }
       set { _tabBarItem = newValue }
@@ -60,7 +62,7 @@ extension Today {
         sleepHandler: { [weak self] in
           self?.out(.prepareToSleep)
         },
-        showAdjustSchedule: deps.adjustSchedule.mightNeedAdjustment,
+        showAdjustSchedule: todaySchedule != nil && deps.adjustSchedule.mightNeedAdjustment,
         adjustScheduleHandler: { [weak self] in
           guard let todaySchedule = self?.todaySchedule else {
             return
@@ -75,6 +77,10 @@ extension Today {
             }
           ))
         },
+        closeAdjustScheduleHandler: { [weak self] in
+            self?.cancelledOnce = true
+            self?.rootView.allowAdjustSchedule(false)
+        },
         daysView: daysViewController.rootView
       )
     }
@@ -84,13 +90,15 @@ extension Today {
 
       addChild(daysViewController)
       daysViewController.didMove(toParent: self)
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
 
       todaySchedule = deps.getSchedule.today()
+      if cancelledOnce == false {
+        rootView.allowAdjustSchedule(todaySchedule != nil && deps.adjustSchedule.mightNeedAdjustment)
+      }
     }
 
     // MARK: - Floating label model

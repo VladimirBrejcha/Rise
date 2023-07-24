@@ -37,9 +37,7 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
         super.viewDidLoad()
         
         tabBar.standardAppearance = appearance
-        if #available(iOS 15.0, *) {
-            tabBar.scrollEdgeAppearance = appearance
-        }
+        tabBar.scrollEdgeAppearance = appearance
         delegate = self
 
         view.addSubviews(backgroundView)

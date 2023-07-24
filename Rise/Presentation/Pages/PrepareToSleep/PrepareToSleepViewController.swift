@@ -12,144 +12,146 @@ import DomainLayer
 
 final class PrepareToSleepViewController: UIViewController, ViewController {
 
-  @IBOutlet private var prepareToSleepView: PrepareToSleepView!
+    @IBOutlet private var prepareToSleepView: PrepareToSleepView!
 
-  enum OutCommand {
-    case showKeepAppOpenedSuggestion(completion: () -> Void)
-    case finish
-    case showSleep(wakeUp: Date)
-  }
-
-  typealias View = PrepareToSleepView
-  typealias Deps =
-  HasGetSchedule
-  & HasPreferredWakeUpTime
-  & HasSuggestKeepAppOpened
-  & HasManageActiveSleep
-
-  var out: Out! // DI
-  var deps: Deps! // DI
-
-  private var customSelectedWakeUpTime: Date?
-
-  private var wakeUpTime: Date {
-    if let schedule = schedule {
-      return customSelectedWakeUpTime ?? schedule.wakeUp
-    } else {
-      return customSelectedWakeUpTime ?? deps.preferredWakeUpTime.time ?? Date()
-    }
-  }
-
-  private var schedule: Schedule?
-
-  // MARK: - LifeCycle
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-      
-    guard let hours = calendar.dateComponents([.hour], from: Date()).hour else {
-      out(.finish)
-      return
+    enum OutCommand {
+        case showKeepAppOpenedSuggestion(completion: () -> Void)
+        case finish
+        case showSleep(wakeUp: Date)
     }
 
-    if hours < 6 {
-      schedule = deps.getSchedule.today()
-    } else {
-      schedule = deps.getSchedule.tomorrow()
-    }
+    typealias View = PrepareToSleepView
+    typealias Deps =
+    HasGetSchedule
+    & HasPreferredWakeUpTime
+    & HasSuggestKeepAppOpened
+    & HasManageActiveSleep
 
-    rootView.configure(
-      model: PrepareToSleepView.Model(
-        toSleepText: motivatingText,
-        title: "Prepare to sleep",
-        startSleepText: "begin to sleep",
-        wakeUpTitle: "Alarm at \(wakeUpTime.HHmmString)",
-        wakeUpTime: wakeUpTime
-      ),
-      dataSource: PrepareToSleepView.DataSource(
-        timeUntilWakeUp: { [weak self] () -> String in
-          guard let self = self else { return "" }
-          let wakeUpTime = self.wakeUpTime.fixIfNeeded()
-          return "\(wakeUpTime.timeIntervalSinceNow.HHmmString) until wake up"
+    var out: Out! // DI
+    var deps: Deps! // DI
+
+    private var customSelectedWakeUpTime: Date?
+
+    private var wakeUpTime: Date {
+        if let schedule = schedule {
+            return customSelectedWakeUpTime ?? schedule.wakeUp
+        } else {
+            return customSelectedWakeUpTime ?? deps.preferredWakeUpTime.time ?? Date()
         }
-      ),
-      handlers: PrepareToSleepView.Handlers(
-        wakeUp: { [weak self] in
-          if let self = self {
-            self.prepareToSleepView.state = self.prepareToSleepView.state == .normal
-            ? .expanded
-            : .normal
-          }
-        },
-        sleep: { [weak self] in
-          guard let self = self else { return }
-          if self.deps.suggestKeepAppOpened.shouldSuggest {
-            self.deps.suggestKeepAppOpened.shouldSuggest = false
-            self.out(.showKeepAppOpenedSuggestion(completion: self.goToSleep))
-          } else {
-            self.goToSleep()
-          }
-        },
-        close: { [weak self] in
-          self?.out(.finish)
-        },
-        wakeUpTimeChanged: { [weak self] newValue in
-          self?.customSelectedWakeUpTime = newValue
-          self?.deps.preferredWakeUpTime.time = newValue
-          self?.prepareToSleepView.model = self?.prepareToSleepView.model?.changing { model in
-            model.wakeUpTime = newValue
-            model.wakeUpTitle = "Alarm at \(newValue.HHmmString)"
-          }
+    }
+
+    private var schedule: Schedule?
+
+    // MARK: - LifeCycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        guard let hours = calendar.dateComponents([.hour], from: Date()).hour else {
+            out(.finish)
+            return
         }
-      )
-    )
-  }
 
-  // MARK: - Make motivating text
+        if hours < 6 {
+            schedule = deps.getSchedule.today()
+        } else {
+            schedule = deps.getSchedule.tomorrow()
+        }
 
-  private var motivatingText: String {
-    if let time = schedule?.toBed {
-      return makeMotivatingText(with: time)
-    } else {
-      return "Have a good night!"
+        rootView.configure(
+            model: PrepareToSleepView.Model(
+                toSleepText: motivatingText,
+                title: "Prepare to sleep",
+                startSleepText: "begin to sleep",
+                wakeUpTitle: "Alarm at \(wakeUpTime.HHmmString)",
+                wakeUpTime: wakeUpTime
+            ),
+            dataSource: PrepareToSleepView.DataSource(
+                timeUntilWakeUp: { [weak self] () -> String in
+                    guard let self = self else { return "" }
+                    let wakeUpTime = self.wakeUpTime
+                    return "\(wakeUpTime.timeIntervalSinceNow.HHmmString) until wake up"
+                }
+            ),
+            handlers: PrepareToSleepView.Handlers(
+                wakeUp: { [weak self] in
+                    if let self = self {
+                        self.prepareToSleepView.state = self.prepareToSleepView.state == .normal
+                        ? .expanded
+                        : .normal
+                    }
+                },
+                sleep: { [weak self] in
+                    guard let self = self else { return }
+                    if self.deps.suggestKeepAppOpened.shouldSuggest {
+                        self.deps.suggestKeepAppOpened.shouldSuggest = false
+                        self.out(.showKeepAppOpenedSuggestion(completion: self.goToSleep))
+                    } else {
+                        self.goToSleep()
+                    }
+                },
+                close: { [weak self] in
+                    self?.out(.finish)
+                },
+                wakeUpTimeChanged: { [weak self] newValue in
+                    self?.customSelectedWakeUpTime = newValue
+                    self?.deps.preferredWakeUpTime.time = newValue
+                    self?.prepareToSleepView.model = self?.prepareToSleepView.model?.changing { model in
+                        model.wakeUpTime = newValue.fixIfNeeded()
+                        model.wakeUpTitle = "Alarm at \(newValue.HHmmString)"
+                    }
+                }
+            )
+        )
     }
-  }
 
-  private func makeMotivatingText(with time: Date) -> String {
-    let timeSinceNow = time.timeIntervalSinceNow
-    if timeSinceNow.isNearby {
-      return "You are just in time today!"
-    } else if timeSinceNow > 0 {
-      return "Good night, sleep well"
-    } else /* if timeSinceNow < 0 */ {
-      return "You are a little late today, it happens with all of us. Sleep well!"
+    // MARK: - Make motivating text
+
+    private var motivatingText: String {
+        if let time = schedule?.toBed {
+            return makeMotivatingText(with: time)
+        } else {
+            return "Have a good night!"
+        }
     }
-  }
 
-  // MARK: - Private -
+    private func makeMotivatingText(with time: Date) -> String {
+        let timeSinceNow = time.timeIntervalSinceNow
+        if timeSinceNow.isNearby {
+            return "You are just in time today!"
+        } else if timeSinceNow > 0 {
+            return "Good night, sleep well"
+        } else /* if timeSinceNow < 0 */ {
+            return "You are a little late today, it happens with all of us. Sleep well!"
+        }
+    }
 
-  private func goToSleep() {
-    deps.manageActiveSleep.sleepStartedAt = Date()
-    out(.showSleep(wakeUp: wakeUpTime))
-  }
+    // MARK: - Private -
+
+    private func goToSleep() {
+        deps.manageActiveSleep.sleepStartedAt = Date()
+        out(.showSleep(wakeUp: wakeUpTime))
+    }
 }
 
 fileprivate extension Date {
-  func fixIfNeeded() -> Date {
-    if self < Date() {
-      return self.changeDayStoringTime(to: .tomorrow)
-    } else {
-      return self
+    func fixIfNeeded() -> Date {
+        if self < Date() {
+            return self.changeDayStoringTime(to: .tomorrow)
+        } else if ((self.timeIntervalSince1970 - Date().timeIntervalSince1970) / 60 / 60) > 24 {
+            return self.changeDayStoringTime(to: .today)
+        } else {
+            return self
+        }
     }
-  }
 
-  var timeIntervalSinceNow: TimeInterval {
-    timeIntervalSince(Date())
-  }
+    var timeIntervalSinceNow: TimeInterval {
+        timeIntervalSince(Date())
+    }
 }
 
 fileprivate extension TimeInterval {
-  var isNearby: Bool {
-    toMinutes() > -10 && toMinutes() < 10
-  }
+    var isNearby: Bool {
+        toMinutes() > -10 && toMinutes() < 10
+    }
 }

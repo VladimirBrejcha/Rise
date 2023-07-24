@@ -8,4 +8,12 @@
 
 import UIKit
 
-final class ScheduleCreatedCreateScheduleViewController: UIViewController { }
+final class ScheduleCreatedCreateScheduleViewController: UIViewController {
+
+    @IBOutlet private var icon: UIImageView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        icon.layer.applyStyle(.gloomingIcon)
+    }
+}

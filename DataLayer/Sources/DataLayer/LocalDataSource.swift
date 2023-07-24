@@ -53,6 +53,7 @@ class LocalDataSource<Object: NSManagedObject> {
         for object in objects {
             context.delete(object)
         }
+        try container.saveContext()
     }
 
     func publisher<T: NSManagedObject>(

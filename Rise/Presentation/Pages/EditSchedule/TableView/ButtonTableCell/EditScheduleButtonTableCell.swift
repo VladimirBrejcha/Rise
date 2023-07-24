@@ -13,13 +13,13 @@ final class EditScheduleButtonTableCell:
     ConfigurableCell,
     SelfHeightSizing
 {
-    static var height: CGFloat { 44 }
+    static var height: CGFloat { 60 }
 
     // MARK: - Subviews
 
     private lazy var button: Button = {
         let button = Button()
-        button.applyStyle(.red)
+        button.applyStyle(.secondary)
         return button
     }()
 
@@ -50,7 +50,7 @@ final class EditScheduleButtonTableCell:
         button.activateConstraints(
             button.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
             button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30),
-            button.topAnchor.constraint(equalTo: contentView.topAnchor),
+            button.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
             button.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         )
     }

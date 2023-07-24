@@ -137,7 +137,6 @@
 		7EEB1E0D24424010001ABE4A /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB1E0C24424010001ABE4A /* AudioPlayer.swift */; };
 		7EEB1E0F2443369F001ABE4A /* bellAlarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7EEB1E0E2443369F001ABE4A /* bellAlarm.wav */; };
 		7EEB1E122443370F001ABE4A /* AlarmSounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB1E112443370F001ABE4A /* AlarmSounds.swift */; };
-		7EEFC00F25E1AEB0007AE725 /* BorderedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEFC00E25E1AEB0007AE725 /* BorderedView.swift */; };
 		7EEFC01725E1AFD8007AE725 /* ImageLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEFC01625E1AFD8007AE725 /* ImageLabelView.swift */; };
 		7EF4C195240412D80098135A /* EditScheduleDatePickerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF4C193240412D80098135A /* EditScheduleDatePickerTableCell.swift */; };
 		7EF4C198240412EC0098135A /* EditScheduleDatePickerTableCell+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF4C197240412EC0098135A /* EditScheduleDatePickerTableCell+Model.swift */; };
@@ -294,7 +293,6 @@
 		7EEB1E0C24424010001ABE4A /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		7EEB1E0E2443369F001ABE4A /* bellAlarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bellAlarm.wav; sourceTree = "<group>"; };
 		7EEB1E112443370F001ABE4A /* AlarmSounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSounds.swift; sourceTree = "<group>"; };
-		7EEFC00E25E1AEB0007AE725 /* BorderedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedView.swift; sourceTree = "<group>"; };
 		7EEFC01625E1AFD8007AE725 /* ImageLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabelView.swift; sourceTree = "<group>"; };
 		7EF4C193240412D80098135A /* EditScheduleDatePickerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScheduleDatePickerTableCell.swift; sourceTree = "<group>"; };
 		7EF4C197240412EC0098135A /* EditScheduleDatePickerTableCell+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditScheduleDatePickerTableCell+Model.swift"; sourceTree = "<group>"; };
@@ -608,13 +606,6 @@
 			path = Gradientable;
 			sourceTree = "<group>";
 		};
-		7E62D769278CA53800AC9B90 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
 		7E69836C24EC6977002EE278 /* Alerts */ = {
 			isa = PBXGroup;
 			children = (
@@ -836,7 +827,6 @@
 				7E6225D12619CD75001AA8FD /* HorizontalFadeView.swift */,
 				7EB9003D23256AC9006EB9A8 /* DesignableContainerView.swift */,
 				7EB90046232AB9EB006EB9A8 /* ProgressBar.swift */,
-				7EEFC00E25E1AEB0007AE725 /* BorderedView.swift */,
 				7E9D9C0E24E5BADC000772C0 /* FloatingButton.swift */,
 				7ED6DD3525E2A30700F906CE /* ImageLabelViewWithContextMenu.swift */,
 				7ECA517D25E340BD009362F9 /* ContextPreview.swift */,
@@ -901,7 +891,6 @@
 				92D7D6522296F297009321AE /* AppDelegate.swift */,
 				CEA3AC022A5ABBBA004A32CE /* Sounds */,
 				7E5A1EA5282FE009005F19D6 /* Presentation */,
-				7E62D769278CA53800AC9B90 /* Service */,
 				92D7D68422980138009321AE /* UI */,
 				7EF3EE192340F8A5003BE978 /* Utils */,
 				7EF3EE162340F75A003BE978 /* Resources */,
@@ -1157,7 +1146,6 @@
 				7E354403283AA21F00C1E149 /* Days.swift in Sources */,
 				7E43063926EBCEDD00B67315 /* UIView+addSubviews.swift in Sources */,
 				7EEB1E122443370F001ABE4A /* AlarmSounds.swift in Sources */,
-				7EEFC00F25E1AEB0007AE725 /* BorderedView.swift in Sources */,
 				7E9D9C0424E58F39000772C0 /* SleepView.swift in Sources */,
 				12F895FA2A6BFC8A000389B7 /* PermissonViewController.swift in Sources */,
 				7EE6905E243E658B00CA423E /* LongPressProgressButton.swift in Sources */,

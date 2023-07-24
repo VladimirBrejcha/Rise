@@ -21,7 +21,14 @@ enum Style {
         // MARK: Instances
 
         static var usualBorder: Layer {
-            Layer(border: .usual, cornerRadius: 12)
+            Layer(border: .usual, cornerRadius: 16)
+        }
+
+        static var gloomingIcon: Layer {
+            Layer(shadow: Shadow(
+                radius: 15, opacity: 0.6,
+                color: Asset.Colors.lightBlue.color.cgColor)
+            )
         }
 
         // MARK: Shadow
@@ -144,6 +151,13 @@ enum Style {
         static var description: Text {
             Text(font: .systemFont(ofSize: 14), color: Asset.Colors.white.color.withAlphaComponent(0.7))
         }
+
+        static var onTopOfRich: Text {
+            Text(
+                font: .systemFont(ofSize: 20, weight: .medium),
+                color: Asset.Colors.darkBlue.color
+            )
+        }
     }
 
     // MARK: - Button
@@ -197,21 +211,6 @@ enum Style {
                 )
             )
         }
-
-        static var red: Button {
-            Button(
-                disabledTitleColor: Asset.Colors.red.color.withAlphaComponent(0.5),
-                titleStyle: Text(
-                    font: UIFont.boldSystemFont(ofSize: 18),
-                    color: Asset.Colors.red.color
-                ),
-                backgroundColor: Asset.Colors.white.color,
-                effects: Layer(
-                    shadow: .usual,
-                    cornerRadius: 22
-                )
-            )
-        }
     }
     
     // MARK: - Picker
@@ -244,5 +243,30 @@ enum Style {
                 normalTextColor: Asset.Colors.white.color.withAlphaComponent(0.3)
             )
         }
+    }
+}
+
+extension NSAttributedString {
+    static func onTopOfRich(text: String) -> NSAttributedString {
+        NSAttributedString(
+            string: text,
+            attributes: [
+                .strokeColor: Asset.Colors.lightBlue.color.withAlphaComponent(0.5),
+                .foregroundColor: UIColor.white,
+                .strokeWidth: -1.0
+            ]
+        )
+    }
+
+    static func descriptionOnTopOfRich(text: String, alignment: NSTextAlignment = .center) -> NSAttributedString {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = alignment
+        paragraphStyle.paragraphSpacing = 8
+        return NSAttributedString(string: text, attributes: [
+            .strokeColor: Asset.Colors.lightBlue.color.withAlphaComponent(0.7),
+            .foregroundColor: UIColor.white,
+            .strokeWidth: -1.0,
+            .paragraphStyle: paragraphStyle
+        ])
     }
 }

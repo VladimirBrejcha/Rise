@@ -119,16 +119,17 @@
                 }
             }
         }
-        
-        private var schedule: SchedulePage.Controller {
-            .init(deps: useCases) { [self, unowned nc = navigationController] command in
-                switch command {
-                case .createSchedule(let onCreate):
-                    nc.present(
-                        createSchedule(onCreate: onCreate),
-                        with: .modal
-                    )
-                }
+    
+    private var schedule: SchedulePage.Controller {
+        .init(deps: useCases) { [self, unowned nc = navigationController] command in
+            switch command {
+            case .createSchedule(let onCreate):
+                nc.present(
+                    createSchedule(onCreate: onCreate),
+                    with: .modal
+                )
+            case let .editSchedule(schedule):
+                nc.pushViewController(editSchedule(params: schedule), animated: true)
             }
         }
         

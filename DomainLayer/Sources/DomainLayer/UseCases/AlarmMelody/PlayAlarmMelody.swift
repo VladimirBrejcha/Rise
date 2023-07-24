@@ -33,19 +33,18 @@ final class PlayAlarmMelodyImpl: PlayAlarmMelody {
     
     public func play()  {
         guard let alarmPlayer = alarmPlayer else { return }
-        increaseVolume()
-        loopAudio()
-        alarmPlayer.play()
         do {
             try audioSession.setCategory(.playback,
-                                         mode: .moviePlayback,
+                                         mode: .default,
                                          options: [.allowAirPlay,
                                                    .mixWithOthers])
             try audioSession.setActive(true)
         } catch {
             log(.error, "Audio session error active")
         }
-        
+        increaseVolume()
+        loopAudio()
+        alarmPlayer.play()
     }
     
     public func stop() {
@@ -66,11 +65,11 @@ final class PlayAlarmMelodyImpl: PlayAlarmMelody {
         guard let alarmPlayer = alarmPlayer else { return }
         alarmPlayer.volume = 0.0
         timeObserver = alarmPlayer.addPeriodicTimeObserver(
-            forInterval: CMTime(seconds: 0.25,
+            forInterval: CMTime(seconds: 0.5,
                                 preferredTimescale: CMTimeScale(NSEC_PER_SEC)),
             queue: DispatchQueue.main) { _ in
                 guard alarmPlayer.volume < 1 else { return }
-                alarmPlayer.volume += 0.025
+                alarmPlayer.volume += 0.0125
             }
     }
     
@@ -85,8 +84,10 @@ final class PlayAlarmMelodyImpl: PlayAlarmMelody {
     
     @objc private func actionAfterStopAudio() {
         guard let alarmPlayer = alarmPlayer else { return }
-        alarmPlayer.seek(to: .zero)
-        alarmPlayer.play()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            alarmPlayer.seek(to: .zero)
+            alarmPlayer.play()
+        }
     }
     
 }
