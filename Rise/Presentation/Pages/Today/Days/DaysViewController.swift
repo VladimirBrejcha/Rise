@@ -10,6 +10,7 @@ import UIKit
 import Core
 import DomainLayer
 import Localization
+import DataLayer
 
 extension Days {
 
@@ -26,7 +27,8 @@ extension Days {
         typealias View = Days.View
 
         struct State: Equatable {
-            let sunTime: LoadState<[NoonedDay: SunTime]>
+            struct Data: Equatable { let days: [NoonedDay: SunTime]; let legal: WKLegal }
+            let sunTime: LoadState<Data>
             let yesterdaySchedule: Schedule?
             let todaySchedule: Schedule?
             let tomorrowSchedule: Schedule?
@@ -185,6 +187,12 @@ extension Days {
             )
 
             rootView.applySnapshot(snapshot)
+
+            if case let .loaded(data) = state.sunTime {
+                rootView.applyLegal(data.legal)
+            } else {
+                rootView.applyLegal(nil)
+            }
         }
 
         // MARK: - Actions
@@ -219,13 +227,16 @@ extension Days {
                 }
             ) { [weak self] result in
                 guard let self = self else { return }
-                if case .success (let sunTimes) = result {
+                if case .success (let data) = result {
                     self.state = self.state.changing {
                         $0.sunTime = .loaded(
-                            data: Dictionary(
-                                uniqueKeysWithValues: zip(
-                                    NoonedDay.allCases, sunTimes
-                                )
+                            data: .init(
+                                days: Dictionary(
+                                    uniqueKeysWithValues: zip(
+                                        NoonedDay.allCases, data.0
+                                    )
+                                ),
+                                legal: data.1
                             )
                         )
                     }
@@ -280,12 +291,12 @@ extension Days {
             }
         }
 
-        private func transformSunTimeItem(_ item: Item, applying state: State.LoadState<[NoonedDay: SunTime]>) -> Item {
+        private func transformSunTimeItem(_ item: Item, applying state: State.LoadState<Days.Controller.State.Data>) -> Item {
             switch state {
             case .loading:
                 return item.changing { $0.state = .loading }
             case .loaded(let sunTimes):
-                guard let sunTime = sunTimes[item.id.day] else { return item }
+                guard let sunTime = sunTimes.days[item.id.day] else { return item }
                 return item.changing {
                     $0.state = .showingContent(
                         left: sunTime.sunrise.HHmmString,
@@ -321,7 +332,19 @@ extension Days {
         // MARK: - Default items -
 
         private func makeDefaultItems(for day: NoonedDay) -> [Item] {
-            [
+            [ .init(
+                state: .showingInfo(info: Text.youDontHaveAScheduleYet),
+                image: (
+                    left: Asset.wakeup.image,
+                    right: Asset.fallasleep.image
+                ),
+                title: (
+                    left: Text.wakeUp,
+                    middle: Text.scheduledSleep,
+                    right: Text.toBed
+                ),
+                id: Item.ID(kind: .schedule, day: day)
+            ),
                 .init(
                     state: .loading,
                     image: (
@@ -340,19 +363,6 @@ extension Days {
                         right: Text.sunset
                     ),
                     id: Item.ID(kind: .sun, day: day)
-                ),
-                .init(
-                    state: .showingInfo(info: Text.youDontHaveAScheduleYet),
-                    image: (
-                        left: Asset.wakeup.image,
-                        right: Asset.fallasleep.image
-                    ),
-                    title: (
-                        left: Text.wakeUp,
-                        middle: Text.scheduledSleep,
-                        right: Text.toBed
-                    ),
-                    id: Item.ID(kind: .schedule, day: day)
                 )
             ]
         }

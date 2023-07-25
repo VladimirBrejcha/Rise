@@ -2,7 +2,8 @@ import Foundation
 import Core
 import CoreLocation
 
-public typealias SunTimesResult = Result<[SunTime], SunTimeError>
+public typealias SunTimesResult
+= Result<([SunTime], WKLegal), SunTimeError>
 
 public struct Cache<T> {
     let dateStored: Date
@@ -24,7 +25,7 @@ public struct Cache<T> {
 
 public protocol SunTimeRepository {
 
-    var cached: Cache<[SunTime]>? { get }
+    var cached: Cache<([SunTime], WKLegal)>? { get }
 
     func requestSunTimes(dates: [Date], location: CLLocation) async -> SunTimesResult
 
