@@ -227,7 +227,6 @@ final class RootCoordinator {
                 nc.replaceAllOnTopOfRoot(
                     with: alarming
                 )
-                NotificationManager.requestNotificationPermission()
             }
         }
     }

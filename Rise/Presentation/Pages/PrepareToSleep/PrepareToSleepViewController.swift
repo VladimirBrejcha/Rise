@@ -86,6 +86,7 @@ final class PrepareToSleepViewController: UIViewController, ViewController {
                     if self.deps.suggestKeepAppOpened.shouldSuggest {
                         self.deps.suggestKeepAppOpened.shouldSuggest = false
                         self.out(.showKeepAppOpenedSuggestion(completion: self.goToSleep))
+                        NotificationManager.requestNotificationPermission()
                     } else {
                         self.goToSleep()
                     }
