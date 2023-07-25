@@ -34,6 +34,7 @@ final class SunTimeRepositoryImpl: SunTimeRepository {
             let localResult = try localDataSource.getSunTimes(for: dates)
             if (localResult.count == dates.count) {
                 log(.info, "found stored sunTimes: \(localResult)")
+                cached = Cache(items: (localResult, legal))
                 return .success((localResult, legal))
             }
 
