@@ -16,13 +16,9 @@ class PermissionViewController: UIViewController, ViewController {
     var goToSettingsAction: (() -> Void)?
     var skipAction: (() -> Void)?
     
-       override func loadView() {
-           super.loadView()
-           self.view = PermissionView()
-       }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func loadView() {
+        super.loadView()
+        self.view = PermissionView()
         if let permissionView = view as? PermissionView {
             permissionView.goToSettingsButton.addTarget(self, action: #selector(goToSettingsTapped), for: .touchUpInside)
             permissionView.skipButton.addTarget(self, action: #selector(skipButtonTapped), for: .touchUpInside)
