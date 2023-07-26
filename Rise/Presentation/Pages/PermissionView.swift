@@ -11,6 +11,7 @@ import LoadingView
 import Localization
 
 class PermissionView: UIView {
+    
     lazy var titleLabel: UILabel = {
            let label = UILabel()
            label.font = UIFont.systemFont(ofSize: 24, weight: .semibold)

@@ -28,12 +28,12 @@ class PermissionViewController: UIViewController, ViewController {
             permissionView.skipButton.addTarget(self, action: #selector(skipButtonTapped), for: .touchUpInside)
         }
     }
-
-       @objc  func goToSettingsTapped() {
-           goToSettingsAction?()
-       }
-
-       @objc  func skipButtonTapped() {
-           skipAction?()
-       }
+    
+    @objc  func goToSettingsTapped() {
+        goToSettingsAction?()
+    }
+    
+    @objc  func skipButtonTapped() {
+        skipAction?()
+    }
 }
