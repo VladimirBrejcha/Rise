@@ -93,7 +93,7 @@ public final class UseCaseLocator: UseCases {
 
     public lazy var notifyToSleep: NotifyToSleep = NotifyToSleepImpl(getSchedule: getSchedule, manageActiveSleep: manageActiveSleep)
 
-    public lazy var notification: RefreshScheduleNotifications = NotificationImpl(getSchedule: getSchedule, scheduleRepository: scheduleRepository)
+    public lazy var notification: ScheduleNotificationDelegate = NotificationImpl(getSchedule: getSchedule, scheduleRepository: scheduleRepository)
 
     public var playAlarmMelody: PlayAlarmMelody {
         PlayAlarmMelodyImpl()

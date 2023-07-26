@@ -48,6 +48,11 @@ final class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationC
         useCaseLocator.notifyToSleep.startNotificationTimer()
         useCaseLocator.notification.callAsFunction()
         UNUserNotificationCenter.current().delegate = self
+        
+        let sleepCategory = UNNotificationCategory(identifier: "SleepCategory", actions: [], intentIdentifiers: [], options: [])
+            UNUserNotificationCenter.current().setNotificationCategories([sleepCategory])
+
+//            return true
 
         return true
     }
@@ -65,7 +70,12 @@ final class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationC
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        coordinator.goToPrepareToSleep()
+        let categoryIdentifier = response.notification.request.content.categoryIdentifier
+        if categoryIdentifier == "SleepCategory" {
+            coordinator.goToPrepareToSleep()
+        } else {
+        
+        }
         completionHandler()
     }
 }
