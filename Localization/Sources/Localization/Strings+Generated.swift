@@ -91,11 +91,11 @@ public enum Text {
 
   public enum About {
     public enum Coauthors {
-      /// Nouble Bushido
+      /// Artem Chzhen
       public static let noubleBushido = Text.tr("Localizable", "about.coauthors.noubleBushido")
       /// Vladimir Brejcha
       public static let vladimirBrejcha = Text.tr("Localizable", "about.coauthors.vladimirBrejcha")
-      /// Vladislav
+      /// Vladislav Pavlov
       public static let vladislav = Text.tr("Localizable", "about.coauthors.vladislav")
     }
     public enum Feedback {
