@@ -24,8 +24,11 @@ final class AlarmingView: UIView {
   private lazy var currentTimeLabel: AutoRefreshableLabel = {
     let label = AutoRefreshableLabel()
     label.textAlignment = .center
-    label.font = UIFont.systemFont(ofSize: 54, weight: .medium)
+    label.font = UIFont.systemFont(ofSize: 54, weight: .semibold)
     label.textColor = Asset.Colors.white.color
+      label.layer.applyStyle(
+          .init(shadow: .onboardingShadow)
+      )
     return label
   }()
   

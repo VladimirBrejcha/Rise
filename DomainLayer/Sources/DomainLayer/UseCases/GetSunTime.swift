@@ -7,7 +7,8 @@ public protocol HasGetSunTime {
     var getSunTime: GetSunTime { get }
 }
 
-public typealias GetSunTimeCompletion = (Result<[SunTime], Error>) -> Void
+public typealias GetSunTimeCompletion
+= (Result<([SunTime], WKLegal), Error>) -> Void
 
 public protocol GetSunTime {
     func callAsFunction(
@@ -63,8 +64,10 @@ final class GetSunTimeImpl: GetSunTime {
                 dates: dates,
                 location: location
             )
-            if case .success (let sunTimes) = result {
-                completion(.success(sunTimes.sorted { $0.sunrise < $1.sunrise }))
+            if case .success (let res) = result {
+                completion(.success(
+                    ((res.0.sorted { $0.sunrise < $1.sunrise }), res.1))
+                )
             }
             if case .failure (let error) = result {
                 completion(.failure(error))

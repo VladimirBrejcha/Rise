@@ -3,16 +3,26 @@ import Foundation
 import WeatherKit
 import CoreLocation
 
+public struct WKLegal: Equatable { public let img: Data; public let url: URL }
+
 public protocol WeatherService {
     func requestSunTimes(
         for dateInterval: DateInterval,
         location: CLLocation
     ) async throws -> [SunTime]
+
+    func getAttribution() async throws -> WKLegal
 }
 
 final class WKServiceImpl: WeatherService {
 
     private let ws = WeatherKit.WeatherService.shared
+
+    func getAttribution() async throws -> WKLegal {
+        let atr = try await ws.attribution
+        let img = try Data(contentsOf: atr.combinedMarkDarkURL)
+        return WKLegal(img: img, url: atr.legalPageURL)
+    }
 
     func requestSunTimes(
         for dateInterval: DateInterval,

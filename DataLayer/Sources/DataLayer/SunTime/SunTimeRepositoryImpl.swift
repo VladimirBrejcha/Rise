@@ -4,7 +4,7 @@ import Foundation
 
 final class SunTimeRepositoryImpl: SunTimeRepository {
 
-    var cached: Cache<[Core.SunTime]>?
+    var cached: Cache<([SunTime], WKLegal)>?
 
     private let localDataSource: SunTimeLocalDataSource
 
@@ -26,14 +26,16 @@ final class SunTimeRepositoryImpl: SunTimeRepository {
     }
 
     func requestSunTimes(dates: [Date], location: CLLocation) async -> SunTimesResult {
-        if dates.isEmpty {
-            return .success([])
-        }
         do {
+            let legal = try await weatherService.getAttribution()
+            if dates.isEmpty {
+                return .success(([], legal))
+            }
             let localResult = try localDataSource.getSunTimes(for: dates)
             if (localResult.count == dates.count) {
                 log(.info, "found stored sunTimes: \(localResult)")
-                return .success(localResult)
+                cached = Cache(items: (localResult, legal))
+                return .success((localResult, legal))
             }
 
             let missedDates: [Date] = dates.filter { date in
@@ -46,8 +48,9 @@ final class SunTimeRepositoryImpl: SunTimeRepository {
                 let remoteResult = try await apiRequest(missedDates, location: location)
                 try? localDataSource.save(sunTimes: remoteResult)
                 deleteAllOutdated()
-                cached = Cache(items: remoteResult)
-                return .success(localResult + remoteResult)
+                let res = localResult + remoteResult
+                cached = Cache(items: (res, legal))
+                return .success((res, legal))
             } catch let error {
                 log(.error, "getting remote sunTimes failed: \(error.localizedDescription)")
                 return .failure(SunTimeError.networkError(underlyingError: error))
@@ -59,8 +62,9 @@ final class SunTimeRepositoryImpl: SunTimeRepository {
                 let remoteResult = try await apiRequest(dates, location: location)
                 try? localDataSource.save(sunTimes: remoteResult)
                 deleteAllOutdated()
-                cached = Cache(items: remoteResult)
-                return .success(remoteResult)
+                let legal = try await weatherService.getAttribution()
+                cached = Cache(items: (remoteResult, legal))
+                return .success((remoteResult, legal))
             } catch let error {
                 log(.error, "getting remote sunTimes failed: \(error.localizedDescription)")
                 return .failure(SunTimeError.networkError(underlyingError: error))

@@ -96,6 +96,7 @@ final class AfterSleepView: UIView {
     private lazy var VStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
+        stack.distribution = .fillProportionally
         stack.backgroundColor = Asset.Colors.darkBlue.color.withAlphaComponent(0.2)
         stack.layer.cornerRadius = 12
         stack.spacing = 8
@@ -138,11 +139,8 @@ final class AfterSleepView: UIView {
 
         imageView.contentMode = .scaleAspectFit
         imageView.activateConstraints {
-            [$0.heightAnchor.constraint(equalToConstant: 26),
-             $0.widthAnchor.constraint(equalToConstant: 26)]
+            [$0.widthAnchor.constraint(equalToConstant: 26)]
         }
-
-        hStack.activateConstraints { [$0.heightAnchor.constraint(equalToConstant: 32)]}
 
         return hStack
     }
