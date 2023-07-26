@@ -31,7 +31,7 @@ final class AboutViewController:
     private let openSourceUrlString = "https://blog.vladimirbrejcha.com/rise/open-source"
     private let gitHubUrlString = "https://github.com/VladimirBrejcha/Rise"
     private let telegramUrlString = "https://t.me/vladimirbrejcha"
-    private let noubleBushidoUrlString = "https://github.com/Artem-Chzh"
+    private let noubleBushidoUrlString = "https://github.com/Nouble-Bushido"
     private let vladislavUrlString = "https://github.com/VPOneDev"
     private let vladimirBrejchaUrlString = "https://github.com/vladimirBrejcha"
 
