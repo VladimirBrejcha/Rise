@@ -36,14 +36,17 @@ public final class NotificationManager: NSObject {
     }
 //MARK: - Create notification
     
-    public static func createNotification(title: String, body: String, components: DateComponents) {
+    public static func createNotification(title: String, body: String, components: DateComponents, categoryIdentifier: String? = nil) {
         let notificationCenter = UNUserNotificationCenter.current()
         let notificationContent = UNMutableNotificationContent()
         
         notificationContent.title = title
         notificationContent.body = body
-        notificationContent.categoryIdentifier = "notification"
         notificationContent.sound = .default
+        
+        if let categoryIdentifier = categoryIdentifier {
+              notificationContent.categoryIdentifier = categoryIdentifier
+          }
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
         let request = UNNotificationRequest(identifier: "notification", content: notificationContent, trigger: trigger)
