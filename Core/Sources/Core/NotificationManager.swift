@@ -44,6 +44,12 @@ public final class NotificationManager: NSObject {
         notificationContent.body = body
         notificationContent.sound = .default
         
+        if categoryIdentifier == "SleepCategory" {
+            notificationContent.sound = .default
+        } else {
+            notificationContent.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "shum.wav"))
+        }
+        
         if let categoryIdentifier = categoryIdentifier {
               notificationContent.categoryIdentifier = categoryIdentifier
           }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		12F895F82A6BFA32000389B7 /* PermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F895F72A6BFA32000389B7 /* PermissionView.swift */; };
 		12F895FA2A6BFC8A000389B7 /* PermissonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F895F92A6BFC8A000389B7 /* PermissonViewController.swift */; };
+		12FD5FB72A70FB21003A532E /* shum.wav in Resources */ = {isa = PBXBuildFile; fileRef = 12FD5FB62A70FB21003A532E /* shum.wav */; };
 		7E07A10123AFBEE300B9D61A /* WelcomeCreateScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E07A10023AFBEE300B9D61A /* WelcomeCreateScheduleViewController.swift */; };
 		7E0B88F72455BEF400BC3CF5 /* SelectableStackViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0B88F52455BEF400BC3CF5 /* SelectableStackViewButton.swift */; };
 		7E13C71F27617F73009310CD /* UITabBarItem+withSystemIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E13C71E27617F73009310CD /* UITabBarItem+withSystemIcons.swift */; };
@@ -166,6 +167,7 @@
 /* Begin PBXFileReference section */
 		12F895F72A6BFA32000389B7 /* PermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionView.swift; sourceTree = "<group>"; };
 		12F895F92A6BFC8A000389B7 /* PermissonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissonViewController.swift; sourceTree = "<group>"; };
+		12FD5FB62A70FB21003A532E /* shum.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shum.wav; sourceTree = "<group>"; };
 		7E07A10023AFBEE300B9D61A /* WelcomeCreateScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCreateScheduleViewController.swift; sourceTree = "<group>"; };
 		7E0B88F52455BEF400BC3CF5 /* SelectableStackViewButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectableStackViewButton.swift; sourceTree = "<group>"; };
 		7E13C71E27617F73009310CD /* UITabBarItem+withSystemIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarItem+withSystemIcons.swift"; sourceTree = "<group>"; };
@@ -717,6 +719,7 @@
 			children = (
 				7EEB1E112443370F001ABE4A /* AlarmSounds.swift */,
 				7EEB1E0E2443369F001ABE4A /* bellAlarm.wav */,
+				12FD5FB62A70FB21003A532E /* shum.wav */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -992,6 +995,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12FD5FB72A70FB21003A532E /* shum.wav in Resources */,
 				CEEEFB382A5DAC8C0060D6EA /* oldAlarmMelody.wav in Resources */,
 				CE8BD5A12A55636300C15CD0 /* DefaultMelody.wav in Resources */,
 				7E199CD4240BD43400B702AD /* SliderWithValues.xib in Resources */,
