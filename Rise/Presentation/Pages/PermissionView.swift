@@ -17,7 +17,7 @@ class PermissionView: UIView {
            label.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
            label.textColor = .white
            label.textAlignment = .center
-           label.text = "Rise"
+           label.text = "Enable Notifications"
            label.translatesAutoresizingMaskIntoConstraints = false
            return label
        }()
@@ -47,20 +47,18 @@ class PermissionView: UIView {
            return label
        }()
        
-       lazy var goToSettingsButton: UIButton = {
-           let button = UIButton(type: .system)
+       lazy var goToSettingsButton: Button = {
+           let button = Button()
            button.setTitle("Go to Settings", for: .normal)
-           button.tintColor = .white
-           button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+           button.style = .primary
            button.translatesAutoresizingMaskIntoConstraints = false
            return button
        }()
        
-       lazy var skipButton: UIButton = {
-           let button = UIButton(type: .system)
-           button.setTitle("Not Now", for: .normal)
-           button.tintColor = .white
-           button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+    lazy var skipButton: Button = {
+        let button = Button()
+        button.setTitle("Not Now", for: .normal)
+        button.applyStyle(.secondary)
            button.translatesAutoresizingMaskIntoConstraints = false
            return button
        }()
@@ -86,29 +84,36 @@ class PermissionView: UIView {
            addSubview(goToSettingsButton)
            addSubview(skipButton)
        }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        goToSettingsButton.layer.cornerRadius = goToSettingsButton.bounds.height / 2
+        skipButton.layer.cornerRadius = skipButton.bounds.height / 2
+    }
        
        private func setupLayout() {
            NSLayoutConstraint.activate([
-               titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 28),
-               titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-               titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-               
-               moonImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 28),
-               moonImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-               moonImageView.widthAnchor.constraint(equalToConstant: 80),
-               moonImageView.heightAnchor.constraint(equalToConstant: 80),
-               
-               messageLabel.topAnchor.constraint(equalTo: moonImageView.bottomAnchor, constant: 16),
-               messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-               messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-               
-               goToSettingsButton.bottomAnchor.constraint(equalTo: skipButton.topAnchor, constant: -10),
-               goToSettingsButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-               goToSettingsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-               
-               skipButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -50),
-               skipButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-               skipButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
+            moonImageView.topAnchor.constraint(equalTo:  safeAreaLayoutGuide.topAnchor, constant: 40),
+            moonImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            moonImageView.widthAnchor.constraint(equalToConstant: 80),
+            moonImageView.heightAnchor.constraint(equalToConstant: 80),
+            
+            titleLabel.topAnchor.constraint(equalTo: moonImageView.bottomAnchor, constant: 20),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            
+            messageLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            messageLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
+            messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            messageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            
+            goToSettingsButton.bottomAnchor.constraint(equalTo: skipButton.topAnchor, constant: -10),
+            goToSettingsButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            goToSettingsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            
+            skipButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -50),
+            skipButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            skipButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
            ])
        }
 }
