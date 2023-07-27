@@ -1,6 +1,7 @@
 import Foundation
 import Core
 import UIKit
+import DataLayer
 
 public typealias OnNotifyParams = (title: String, description: String, acceptButton: String, cancelButton: String)
 
@@ -25,10 +26,12 @@ class NotifyToSleepImpl: NotifyToSleep {
     var onNotify: ((OnNotifyParams) -> Void)?
     var lastNotificationDate: Date?
     var getControllers: (() -> (UIViewController, UIViewController)?)?
+    var userDate: UserData
     
-    init(getSchedule: GetSchedule, manageActiveSleep: ManageActiveSleep) {
+    init(getSchedule: GetSchedule, manageActiveSleep: ManageActiveSleep, userDate: UserData) {
         self.getSchedule = getSchedule
         self.manageActiveSleep = manageActiveSleep
+        self.userDate = userDate
     }
     
     func startNotificationTimer() {
@@ -44,9 +47,8 @@ class NotifyToSleepImpl: NotifyToSleep {
         guard let timeToSleep = getSchedule.today()?.toBed,
               currentDate >= timeToSleep,
               manageActiveSleep.sleepStartedAt == nil else { return }
-        checkAndRequestNotificationPermissions()
-        lastNotificationDate = Date()
-        notify()
+            checkAndRequestNotificationPermissions()
+            notify()
     }
     
     func stopNotificationTimer() {
@@ -72,15 +74,12 @@ class NotifyToSleepImpl: NotifyToSleep {
             DispatchQueue.main.async {
                 if settings.authorizationStatus == .authorized {
                     log(.info, "Notification permission granted")
-                    self.didNotify = true
-                } else {
-                    if let lastNotificationDate = self.lastNotificationDate, Date().timeIntervalSince(lastNotificationDate) < 24 * 60 * 60 {
-                        self.didNotify = true
-                        return
-                    }
-                    if let (activeViewController, permissionViewController) = self.getControllers?() {
-                        activeViewController.present(permissionViewController, animated: true)
-                    }
+                    return
+                }
+                if self.userDate.notificationsSuggested { return }
+                if let (activeViewController, permissionViewController) = self.getControllers?() {
+                    activeViewController.present(permissionViewController, animated: true)
+                    self.userDate.notificationsSuggested = true
                 }
             }
         }

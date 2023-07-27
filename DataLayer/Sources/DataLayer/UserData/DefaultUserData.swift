@@ -29,4 +29,6 @@ public final class DefaultUserData: UserData {
     activeSleepStartDate = nil
     activeSleepEndDate = nil
   }
+    @NonNilUserDefault("notifications_suggested", defaultValue: false)
+    public var notificationsSuggested: Bool
 }

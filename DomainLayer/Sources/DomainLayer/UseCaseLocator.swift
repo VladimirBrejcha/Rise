@@ -91,7 +91,7 @@ public final class UseCaseLocator: UseCases {
         SaveScheduleImpl(scheduleRepository)
     }
 
-    public lazy var notifyToSleep: NotifyToSleep = NotifyToSleepImpl(getSchedule: getSchedule, manageActiveSleep: manageActiveSleep)
+    public lazy var notifyToSleep: NotifyToSleep = NotifyToSleepImpl(getSchedule: getSchedule, manageActiveSleep: manageActiveSleep, userDate: userData)
 
     public lazy var notification: ScheduleNotificationDelegate = NotificationImpl(getSchedule: getSchedule, scheduleRepository: scheduleRepository)
 
