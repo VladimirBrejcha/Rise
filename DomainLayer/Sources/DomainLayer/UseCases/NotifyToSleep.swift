@@ -26,12 +26,12 @@ class NotifyToSleepImpl: NotifyToSleep {
     var onNotify: ((OnNotifyParams) -> Void)?
     var lastNotificationDate: Date?
     var getControllers: (() -> (UIViewController, UIViewController)?)?
-    var userDate: UserData
+    var userData: UserData
     
-    init(getSchedule: GetSchedule, manageActiveSleep: ManageActiveSleep, userDate: UserData) {
+    init(getSchedule: GetSchedule, manageActiveSleep: ManageActiveSleep, userData: UserData) {
         self.getSchedule = getSchedule
         self.manageActiveSleep = manageActiveSleep
-        self.userDate = userDate
+        self.userData = userData
     }
     
     func startNotificationTimer() {
@@ -76,10 +76,10 @@ class NotifyToSleepImpl: NotifyToSleep {
                     log(.info, "Notification permission granted")
                     return
                 }
-                if self.userDate.notificationsSuggested { return }
+                if self.userData.notificationsSuggested { return }
                 if let (activeViewController, permissionViewController) = self.getControllers?() {
                     activeViewController.present(permissionViewController, animated: true)
-                    self.userDate.notificationsSuggested = true
+                    self.userData.notificationsSuggested = true
                 }
             }
         }

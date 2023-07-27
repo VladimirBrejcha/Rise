@@ -1446,6 +1446,7 @@ extension ScheduleTests {
 
 extension ScheduleTests {
     class UserDataMock: UserData {
+        var notificationsSuggested: Bool = false
         var preferredWakeUpTime: Date? = nil
         var keepAppOpenedSuggested: Bool = false
         var activeSleepStartDate: Date? = nil
