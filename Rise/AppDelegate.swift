@@ -45,9 +45,14 @@ final class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationC
     ) -> Bool {
         window = mainWindow
         coordinator.run()
-        useCaseLocator.notifyToSleep.start()
-        useCaseLocator.notification.callAsFunction()
+        useCaseLocator.notifyToSleep.startNotificationTimer()
+        useCaseLocator.notification.scheduleNotifications()
         UNUserNotificationCenter.current().delegate = self
+        
+        let sleepCategory = UNNotificationCategory(identifier: "SleepCategory", actions: [], intentIdentifiers: [], options: [])
+            UNUserNotificationCenter.current().setNotificationCategories([sleepCategory])
+
+//            return true
 
         return true
     }
@@ -57,15 +62,20 @@ final class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationC
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        useCaseLocator.notifyToSleep.start()
+        useCaseLocator.notifyToSleep.startNotificationTimer()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        useCaseLocator.notifyToSleep.stop()
+        useCaseLocator.notifyToSleep.stopNotificationTimer()
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        coordinator.goToPrepareToSleep()
+        let categoryIdentifier = response.notification.request.content.categoryIdentifier
+        if categoryIdentifier == "SleepCategory" {
+            coordinator.goToPrepareToSleep()
+        } else {
+        
+        }
         completionHandler()
     }
 }

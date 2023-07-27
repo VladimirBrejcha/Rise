@@ -12,8 +12,7 @@ import UserNotifications
 import Core
 
 final class RootCoordinator {
-    
-    private let useCases: UseCases
+    private var useCases: UseCases
     private let navigationController: UINavigationController
     
     init(useCases: UseCases,
@@ -32,22 +31,21 @@ final class RootCoordinator {
         } else {
             configureRoot()
         }
-
+        useCases.notifyToSleep.getControllers = getTopAndPermissionControllersClosure()
         useCases.notifyToSleep.onNotify = showTimeToSleepAlert
     }
-
     // MARK: - rootControllers
-
+    
     private func configureRoot() {
         navigationController.setViewControllers(
             rootControllers,
             animated: true
         )
     }
-
+    
     private var rootControllers: [UIViewController] {
         var controllers: [UIViewController] = [tabBar]
-
+        
         // if is sleeping
         if let activeSleepEndDate = useCases.manageActiveSleep.alarmAt {
             let minSinceWakeUp = Date().timeIntervalSince(activeSleepEndDate) / 60
@@ -61,19 +59,19 @@ final class RootCoordinator {
                 useCases.manageActiveSleep.endSleep()
             }
         }
-
+        
         return controllers
     }
-
+    
     // MARK: - All View Controllers
-
+    
     private var tabBar: TabBarController {
         TabBarController(
             items: [schedule, today, settings],
             selectedIndex: 1
         )
     }
-
+    
     private func onboarding(initial: Bool = true) -> Onboarding.Controller {
         Onboarding.Controller(
             deps: useCases,
@@ -130,7 +128,7 @@ final class RootCoordinator {
                     createSchedule(onCreate: onCreate),
                     with: .modal
                 )
-            case let .editSchedule(schedule):
+            case .editSchedule( let schedule):
                 nc.pushViewController(editSchedule(params: schedule), animated: true)
             }
         }
@@ -225,7 +223,6 @@ final class RootCoordinator {
                 nc.replaceAllOnTopOfRoot(
                     with: alarming
                 )
-                NotificationManager.requestNotificationPermission()
             }
         }
     }
@@ -282,18 +279,17 @@ final class RootCoordinator {
     private var about: AboutViewController {
         .init(deps: useCases)
     }
-    
-    //MARK: - Random allerts
+    //MARK: - Random alerts
     
     func showTimeToSleepAlert(_ params: OnNotifyParams) {
         let ac = UIAlertController(title: params.title, message: params.description, preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: params.acceptButton, style: .default) { _ in
             self.goToPrepareToSleep()
-            self.useCases.notifyToSleep.stop()}
+            self.useCases.notifyToSleep.stopNotificationTimer()}
         let cancelAction = UIAlertAction(title: params.cancelButton, style: .cancel) { _ in
-            self.useCases.notifyToSleep.stop()}
-
+            self.useCases.notifyToSleep.stopNotificationTimer()}
+        
         ac.addAction(cancelAction)
         ac.addAction(okAction)
         
@@ -304,5 +300,51 @@ final class RootCoordinator {
     func goToPrepareToSleep() {
         let vc = prepareToSleep
         self.navigationController.pushViewController(vc, animated: true)
+    }
+    //MARK: - Lazy Initialization PermissionViewController
+    private func showAppSettings() {
+        UIApplication.openAppSettings()
+    }
+    
+    private func dismissPermissionViewController() {
+        permissionViewController.dismiss(animated: true)
+    }
+    
+    var permissionViewController: PermissionViewController {
+        let viewController = PermissionViewController( out: {commands in
+            switch commands {
+            case .goToSettings:
+                self.showAppSettings()
+            case .skip:
+                self.dismissPermissionViewController()
+            }
+        })
+        return viewController
+    }
+    
+    private func getPermissionView() -> PermissionView? {
+        guard let permissionView = permissionViewController.view as? PermissionView else {
+            return nil
+        }
+        return permissionView
+    }
+    // MARK: - Get top ViewController
+    
+    func getTopViewController() -> UIViewController? {
+        var activeViewController = navigationController.viewControllers.last
+        while let presentedViewController = activeViewController?.presentedViewController {
+            activeViewController = presentedViewController
+        }
+        return activeViewController
+    }
+    
+    private func getTopAndPermissionControllersClosure() -> (() -> (UIViewController, UIViewController)?) {
+        return { [weak self] in
+            guard let topViewController = self?.getTopViewController(),
+                  let permissionViewController = self?.permissionViewController else {
+                return nil
+            }
+            return (topViewController, permissionViewController)
+        }
     }
 }

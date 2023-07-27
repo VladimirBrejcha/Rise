@@ -12,27 +12,37 @@ public final class NotificationManager: NSObject {
     
 // MARK: - Request permission
     
-  public static func requestNotificationPermission() {
+    public static func requestNotificationPermission() {
         let notificationCenter = UNUserNotificationCenter.current()
         
         notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
             guard granted else { return }
             notificationCenter.getNotificationSettings { (settings)  in
                 log(.info, "Notification settings: \(settings)")
-                guard settings.authorizationStatus == .authorized else { return }
+                guard settings.authorizationStatus == .authorized else
+                { return }
             }
         }
     }
 //MARK: - Create notification
     
-    public static func createNotification(title: String, body: String, components: DateComponents) {
+    public static func createNotification(title: String, body: String, components: DateComponents, categoryIdentifier: String? = nil) {
         let notificationCenter = UNUserNotificationCenter.current()
         let notificationContent = UNMutableNotificationContent()
         
         notificationContent.title = title
         notificationContent.body = body
-        notificationContent.categoryIdentifier = "notification"
         notificationContent.sound = .default
+        
+        if categoryIdentifier == "SleepCategory" {
+            notificationContent.sound = .default
+        } else {
+            notificationContent.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "shum.wav"))
+        }
+        
+        if let categoryIdentifier = categoryIdentifier {
+              notificationContent.categoryIdentifier = categoryIdentifier
+          }
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
         let request = UNNotificationRequest(identifier: "notification", content: notificationContent, trigger: trigger)
@@ -49,7 +59,7 @@ public final class NotificationManager: NSObject {
 
 import UIKit
 extension UIApplication {
-    static func openAppSettings() {
+    public static func openAppSettings() {
         guard let url = URL(string: UIApplication.openSettingsURLString) else {
             log(.error, "Cannot build settings url")
             return

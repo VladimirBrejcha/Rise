@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12F895F82A6BFA32000389B7 /* PermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F895F72A6BFA32000389B7 /* PermissionView.swift */; };
+		12F895FA2A6BFC8A000389B7 /* PermissonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F895F92A6BFC8A000389B7 /* PermissonViewController.swift */; };
+		12FD5FB72A70FB21003A532E /* shum.wav in Resources */ = {isa = PBXBuildFile; fileRef = 12FD5FB62A70FB21003A532E /* shum.wav */; };
 		7E07A10123AFBEE300B9D61A /* WelcomeCreateScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E07A10023AFBEE300B9D61A /* WelcomeCreateScheduleViewController.swift */; };
 		7E0B88F72455BEF400BC3CF5 /* SelectableStackViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0B88F52455BEF400BC3CF5 /* SelectableStackViewButton.swift */; };
 		7E13C71F27617F73009310CD /* UITabBarItem+withSystemIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E13C71E27617F73009310CD /* UITabBarItem+withSystemIcons.swift */; };
@@ -162,6 +165,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		12F895F72A6BFA32000389B7 /* PermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionView.swift; sourceTree = "<group>"; };
+		12F895F92A6BFC8A000389B7 /* PermissonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissonViewController.swift; sourceTree = "<group>"; };
+		12FD5FB62A70FB21003A532E /* shum.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shum.wav; sourceTree = "<group>"; };
 		7E07A10023AFBEE300B9D61A /* WelcomeCreateScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCreateScheduleViewController.swift; sourceTree = "<group>"; };
 		7E0B88F52455BEF400BC3CF5 /* SelectableStackViewButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectableStackViewButton.swift; sourceTree = "<group>"; };
 		7E13C71E27617F73009310CD /* UITabBarItem+withSystemIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarItem+withSystemIcons.swift"; sourceTree = "<group>"; };
@@ -548,6 +554,8 @@
 		7E5A1EB428300A66005F19D6 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				12F895F72A6BFA32000389B7 /* PermissionView.swift */,
+				12F895F92A6BFC8A000389B7 /* PermissonViewController.swift */,
 				7E43065526EE2FBE00B67315 /* About */,
 				7E346CE1274A5BFE00848DBB /* AdjustSchedule */,
 				7EB73414274EBC2800DC7758 /* AfterSleep */,
@@ -711,6 +719,7 @@
 			children = (
 				7EEB1E112443370F001ABE4A /* AlarmSounds.swift */,
 				7EEB1E0E2443369F001ABE4A /* bellAlarm.wav */,
+				12FD5FB62A70FB21003A532E /* shum.wav */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -986,6 +995,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12FD5FB72A70FB21003A532E /* shum.wav in Resources */,
 				CEEEFB382A5DAC8C0060D6EA /* oldAlarmMelody.wav in Resources */,
 				CE8BD5A12A55636300C15CD0 /* DefaultMelody.wav in Resources */,
 				7E199CD4240BD43400B702AD /* SliderWithValues.xib in Resources */,
@@ -1132,6 +1142,7 @@
 				7E346CED274A637B00848DBB /* BackgroundView.swift in Sources */,
 				7EA0924222C8CF820019F2E9 /* ScrollTransition.swift in Sources */,
 				7E15396D2748043700CC2E7B /* EditScheduleSegmentedControlCell+Model.swift in Sources */,
+				12F895F82A6BFA32000389B7 /* PermissionView.swift in Sources */,
 				7E9D9C1524EB0E13000772C0 /* EditScheduleView.swift in Sources */,
 				7E9D9C1324E5DA57000772C0 /* SchedulePageView.swift in Sources */,
 				7E9D9C0824E596DA000772C0 /* PrepareToSleepView.swift in Sources */,
@@ -1140,6 +1151,7 @@
 				7E43063926EBCEDD00B67315 /* UIView+addSubviews.swift in Sources */,
 				7EEB1E122443370F001ABE4A /* AlarmSounds.swift in Sources */,
 				7E9D9C0424E58F39000772C0 /* SleepView.swift in Sources */,
+				12F895FA2A6BFC8A000389B7 /* PermissonViewController.swift in Sources */,
 				7EE6905E243E658B00CA423E /* LongPressProgressButton.swift in Sources */,
 				7E5F292A23F9638C0050DFD3 /* FloatingLabel.swift in Sources */,
 				7E43064B26ED4FF600B67315 /* SettingsView.swift in Sources */,
