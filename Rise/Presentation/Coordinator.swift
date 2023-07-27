@@ -33,11 +33,6 @@ final class RootCoordinator {
         }
         useCases.notifyToSleep.getControllers = getTopAndPermissionControllersClosure()
         useCases.notifyToSleep.onNotify = showTimeToSleepAlert
-        
-//        permissionViewController.goToSettingsAction = { [weak self] in
-//            self?.showAppSettings() }
-//        permissionViewController.skipAction = { [weak self] in
-//            self?.dismissPermissionViewController() }
     }
     // MARK: - rootControllers
     
