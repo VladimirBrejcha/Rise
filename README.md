@@ -1,7 +1,3 @@
-# Rise
+# Rise — Sleep Companion
 
-The idea of the app is to automatically schedule user sleep to meet his wishes for the sleep
-
-#### MVP
-
-[Rise MVP 1.0 reference](https://www.craft.do/s/a3zWqLyDWTiEKn)
+We are [in the App Store](https://apps.apple.com/us/app/rise-sleep-companion/id6451386327)!
