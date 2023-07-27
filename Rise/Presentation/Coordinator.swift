@@ -34,10 +34,10 @@ final class RootCoordinator {
         useCases.notifyToSleep.getControllers = getTopAndPermissionControllersClosure()
         useCases.notifyToSleep.onNotify = showTimeToSleepAlert
         
-        permissionViewController.goToSettingsAction = { [weak self] in
-            self?.showAppSettings() }
-        permissionViewController.skipAction = { [weak self] in
-            self?.dismissPermissionViewController() }
+//        permissionViewController.goToSettingsAction = { [weak self] in
+//            self?.showAppSettings() }
+//        permissionViewController.skipAction = { [weak self] in
+//            self?.dismissPermissionViewController() }
     }
     // MARK: - rootControllers
     
@@ -315,10 +315,17 @@ final class RootCoordinator {
         permissionViewController.dismiss(animated: true)
     }
     
-    var permissionViewController: PermissionViewController = {
-        let viewController = PermissionViewController()
+    var permissionViewController: PermissionViewController {
+        let viewController = PermissionViewController( out: {commands in
+            switch commands {
+            case .goToSettings:
+                self.showAppSettings()
+            case .skip:
+                self.dismissPermissionViewController()
+            }
+        })
         return viewController
-    }()
+    }
     
     private func getPermissionView() -> PermissionView? {
         guard let permissionView = permissionViewController.view as? PermissionView else {

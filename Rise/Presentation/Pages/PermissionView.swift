@@ -11,6 +11,10 @@ import LoadingView
 import Localization
 
 class PermissionView: UIView {
+    private let goToSettingsAction: () -> Void
+    private let skipAction: () -> Void
+    
+
     
     lazy var titleLabel: UILabel = {
            let label = UILabel()
@@ -51,6 +55,9 @@ class PermissionView: UIView {
            let button = Button()
            button.setTitle("Go to Settings", for: .normal)
            button.style = .primary
+           button.onTouchUp = { [weak self] in
+               self?.goToSettingsAction()
+           }
            button.translatesAutoresizingMaskIntoConstraints = false
            return button
        }()
@@ -59,21 +66,25 @@ class PermissionView: UIView {
         let button = Button()
         button.setTitle("Not Now", for: .normal)
         button.applyStyle(.secondary)
+        button.onTouchUp = { [weak self] in
+            self?.skipAction()
+        }
            button.translatesAutoresizingMaskIntoConstraints = false
            return button
        }()
        
-       override init(frame: CGRect) {
-           super.init(frame: frame)
+    init(goToSettingsAction: @escaping () -> Void, skipAction: @escaping () -> Void) {
+        self.goToSettingsAction = goToSettingsAction
+        self.skipAction = skipAction
+        super.init(frame: .zero)
            setupView()
            setupLayout()
        }
-       
-       required init?(coder aDecoder: NSCoder) {
-           super.init(coder: aDecoder)
-           setupView()
-           setupLayout()
-       }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("This class does not support NSCoder")
+    }
        
        private func setupView() {
            addBackgroundView(.rich, blur: .dark)
