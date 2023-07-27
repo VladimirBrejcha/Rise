@@ -46,7 +46,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationC
         window = mainWindow
         coordinator.run()
         useCaseLocator.notifyToSleep.startNotificationTimer()
-        useCaseLocator.notification.callAsFunction()
+        useCaseLocator.notification.scheduleNotifications()
         UNUserNotificationCenter.current().delegate = self
         
         let sleepCategory = UNNotificationCategory(identifier: "SleepCategory", actions: [], intentIdentifiers: [], options: [])

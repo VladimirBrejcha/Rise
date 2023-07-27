@@ -10,7 +10,7 @@ public protocol HasNotification {
 }
 
 public protocol ScheduleNotificationDelegate: AnyObject {
-    func callAsFunction()
+    func scheduleNotifications()
 }
 
 class NotificationImpl: NSObject, ScheduleNotificationDelegate, UNUserNotificationCenterDelegate {
@@ -26,7 +26,7 @@ class NotificationImpl: NSObject, ScheduleNotificationDelegate, UNUserNotificati
         super.init()
         self.cancellable = scheduleRepository.publisher().sink(receiveValue: { [weak self] _ in
             DispatchQueue.main.async {
-                self?.callAsFunction()
+                self?.scheduleNotifications()
             }
         })
     }
@@ -49,7 +49,7 @@ class NotificationImpl: NSObject, ScheduleNotificationDelegate, UNUserNotificati
         NotificationManager.createNotification(title: wakeUpTitle, body: wakeUpBody, components: wakeUpComponents)
     }
     
-    func callAsFunction() {
+    func scheduleNotifications() {
         NotificationManager.cancelAllPendingRequests()
         
         guard let schedule = Optional(getSchedule.forNextDays(numberOfDays: 10, startToday: true)) else { return }
