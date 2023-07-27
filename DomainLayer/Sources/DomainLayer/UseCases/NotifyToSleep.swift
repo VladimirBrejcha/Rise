@@ -47,8 +47,8 @@ class NotifyToSleepImpl: NotifyToSleep {
         guard let timeToSleep = getSchedule.today()?.toBed,
               currentDate >= timeToSleep,
               manageActiveSleep.sleepStartedAt == nil else { return }
-            checkAndRequestNotificationPermissions()
-            notify()
+        checkAndRequestNotificationPermissions()
+        notify()
     }
     
     func stopNotificationTimer() {
