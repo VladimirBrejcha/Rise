@@ -21,8 +21,7 @@ final class PrepareToSleepViewController: UIViewController, ViewController {
     }
 
     typealias View = PrepareToSleepView
-    typealias Deps =
-    HasGetSchedule
+    typealias Deps = HasGetSchedule
     & HasPreferredWakeUpTime
     & HasSuggestKeepAppOpened
     & HasManageActiveSleep
@@ -33,11 +32,16 @@ final class PrepareToSleepViewController: UIViewController, ViewController {
     private var customSelectedWakeUpTime: Date?
 
     private var wakeUpTime: Date {
-        if let schedule = schedule {
-            return customSelectedWakeUpTime ?? schedule.wakeUp
-        } else {
-            return customSelectedWakeUpTime ?? deps.preferredWakeUpTime.time ?? Date()
-        }
+        let time = { () -> Date in
+            if let schedule {
+                return customSelectedWakeUpTime ?? schedule.wakeUp
+            } else {
+                return customSelectedWakeUpTime
+                ?? deps.preferredWakeUpTime.time
+                ?? .now
+            }
+        }()
+        return time.adjusted
     }
 
     private var schedule: Schedule?
@@ -47,16 +51,7 @@ final class PrepareToSleepViewController: UIViewController, ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let hours = calendar.dateComponents([.hour], from: Date()).hour else {
-            out(.finish)
-            return
-        }
-
-        if hours < 6 {
-            schedule = deps.getSchedule.today()
-        } else {
-            schedule = deps.getSchedule.tomorrow()
-        }
+        schedule = deps.getSchedule.today()
 
         rootView.configure(
             model: PrepareToSleepView.Model(
@@ -98,7 +93,7 @@ final class PrepareToSleepViewController: UIViewController, ViewController {
                     self?.customSelectedWakeUpTime = newValue
                     self?.deps.preferredWakeUpTime.time = newValue
                     self?.prepareToSleepView.model = self?.prepareToSleepView.model?.changing { model in
-                        model.wakeUpTime = newValue.fixIfNeeded()
+                        model.wakeUpTime = newValue
                         model.wakeUpTitle = "Alarm at \(newValue.HHmmString)"
                     }
                 }
@@ -136,18 +131,18 @@ final class PrepareToSleepViewController: UIViewController, ViewController {
 }
 
 fileprivate extension Date {
-    func fixIfNeeded() -> Date {
-        if self < Date() {
-            return self.changeDayStoringTime(to: .tomorrow)
-        } else if ((self.timeIntervalSince1970 - Date().timeIntervalSince1970) / 60 / 60) > 24 {
-            return self.changeDayStoringTime(to: .today)
-        } else {
-            return self
+    var adjusted: Date {
+        if self < .now {
+            return changeDayStoringTime(to: .tomorrow)
         }
+        if (timeIntervalSinceNow / 60 / 60) > 24 {
+            return changeDayStoringTime(to: .today)
+        }
+        return self
     }
 
     var timeIntervalSinceNow: TimeInterval {
-        timeIntervalSince(Date())
+        timeIntervalSince(.now)
     }
 }
 
