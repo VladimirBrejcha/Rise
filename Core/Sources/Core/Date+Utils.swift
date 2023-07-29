@@ -13,7 +13,7 @@ extension Date {
 
   public func changeDayStoringTime(to date: Date) -> Date {
     let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
-    let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: self)
+      let timeComponents = calendar.dateComponents([.hour, .minute, .second, .nanosecond], from: self)
     guard
       let newDate = calendar.date(
         from: DateComponents(
@@ -22,7 +22,8 @@ extension Date {
           day: dateComponents.day,
           hour: timeComponents.hour,
           minute: timeComponents.minute,
-          second: timeComponents.second
+          second: timeComponents.second,
+          nanosecond: timeComponents.nanosecond
         )
       ) else {
       fatalError()
@@ -44,3 +45,4 @@ extension Date {
     return dateFormatter.string(from: self)
   }
 }
+

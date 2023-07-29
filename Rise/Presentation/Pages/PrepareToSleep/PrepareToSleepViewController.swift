@@ -41,7 +41,7 @@ final class PrepareToSleepViewController: UIViewController, ViewController {
                 ?? .now
             }
         }()
-        return time.adjusted
+        return time.withinNext24h(of: .now)
     }
 
     private var schedule: Schedule?
@@ -65,7 +65,7 @@ final class PrepareToSleepViewController: UIViewController, ViewController {
                 timeUntilWakeUp: { [weak self] () -> String in
                     guard let self = self else { return "" }
                     let wakeUpTime = self.wakeUpTime
-                    return "\(wakeUpTime.timeIntervalSinceNow.HHmmString) until wake up"
+                    return "\(wakeUpTime.timeIntervalSince(.now).HHmmString) until wake up"
                 }
             ),
             handlers: PrepareToSleepView.Handlers(
@@ -112,7 +112,7 @@ final class PrepareToSleepViewController: UIViewController, ViewController {
     }
 
     private func makeMotivatingText(with time: Date) -> String {
-        let timeSinceNow = time.timeIntervalSinceNow
+        let timeSinceNow = time.timeIntervalSince(.now)
         if timeSinceNow.isNearby {
             return "You are just in time today!"
         } else if timeSinceNow > 0 {
@@ -127,22 +127,6 @@ final class PrepareToSleepViewController: UIViewController, ViewController {
     private func goToSleep() {
         deps.manageActiveSleep.sleepStartedAt = Date()
         out(.showSleep(wakeUp: wakeUpTime))
-    }
-}
-
-fileprivate extension Date {
-    var adjusted: Date {
-        if self < .now {
-            return changeDayStoringTime(to: .tomorrow)
-        }
-        if (timeIntervalSinceNow / 60 / 60) > 24 {
-            return changeDayStoringTime(to: .today)
-        }
-        return self
-    }
-
-    var timeIntervalSinceNow: TimeInterval {
-        timeIntervalSince(.now)
     }
 }
 
