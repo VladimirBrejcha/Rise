@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UILibrary
 
 extension EditSchedule.TableView {
 
@@ -62,23 +63,23 @@ extension EditSchedule.TableView {
     // MARK: - Layout
 
     private func setupLayout() {
-      titleLabel.activateConstraints(
-        titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
-        titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-        titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
-      )
-      container.activateConstraints(
-        container.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-        container.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-        container.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-        container.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 2)
-      )
-      segmentedControl.activateConstraints(
-        segmentedControl.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-        segmentedControl.trailingAnchor.constraint(equalTo: container.trailingAnchor),
-        segmentedControl.bottomAnchor.constraint(equalTo: container.bottomAnchor),
-        segmentedControl.topAnchor.constraint(equalTo: container.topAnchor)
-      )
+        titleLabel.activateConstraints {
+            [$0.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
+            $0.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            $0.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)]
+        }
+        container.activateConstraints {
+            [$0.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            $0.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            $0.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            $0.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 2)]
+        }
+        segmentedControl.activateConstraints {
+            [$0.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            $0.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+            $0.bottomAnchor.constraint(equalTo: container.bottomAnchor),
+            $0.topAnchor.constraint(equalTo: container.topAnchor)]
+        }
     }
 
     // MARK: - ConfigurableCell

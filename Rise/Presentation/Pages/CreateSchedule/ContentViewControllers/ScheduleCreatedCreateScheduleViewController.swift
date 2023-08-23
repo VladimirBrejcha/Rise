@@ -7,13 +7,19 @@
 //
 
 import UIKit
+import DomainLayer
 
 final class ScheduleCreatedCreateScheduleViewController: UIViewController {
 
     @IBOutlet private var icon: UIImageView!
 
+    var requestNotificationPermissions: RequestNotificationPermissions! // DI
+
     override func viewDidLoad() {
         super.viewDidLoad()
         icon.layer.applyStyle(.gloomingIcon)
+        Task {
+            await requestNotificationPermissions(askExplicitlyFrom: self)
+        }
     }
 }

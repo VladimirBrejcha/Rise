@@ -8,6 +8,7 @@
 
 import UIKit
 import LoadingView
+import UILibrary
 
 extension Days {
 
@@ -144,26 +145,26 @@ extension Days {
         }
 
         private func setupLayout() {
-            loadingViewTitle.activateConstraints(
-                loadingViewTitle.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
-                loadingViewTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-                loadingViewTitle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
-            )
-            loadingView.activateConstraints(
-                loadingView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-                loadingView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-                loadingView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
-                loadingView.topAnchor.constraint(equalTo: loadingViewTitle.bottomAnchor, constant: 4)
-            )
-            HStack.activateConstraints(
-                HStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
-                HStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
-                HStack.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -4),
-                HStack.bottomAnchor.constraint(greaterThanOrEqualTo: contentView.bottomAnchor, constant: -12),
-                HStack.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 4),
-                HStack.topAnchor.constraint(lessThanOrEqualTo: contentView.topAnchor, constant: 12),
-                HStack.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
-            )
+            loadingViewTitle.activateConstraints {
+                [$0.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
+                $0.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+                $0.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)]
+            }
+            loadingView.activateConstraints {
+                [$0.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+                $0.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+                $0.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+                $0.topAnchor.constraint(equalTo: loadingViewTitle.bottomAnchor, constant: 4)]
+            }
+            HStack.activateConstraints {
+                [$0.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
+                $0.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
+                $0.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -4),
+                $0.bottomAnchor.constraint(greaterThanOrEqualTo: contentView.bottomAnchor, constant: -12),
+                $0.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 4),
+                $0.topAnchor.constraint(lessThanOrEqualTo: contentView.topAnchor, constant: 12),
+                $0.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)]
+            }
         }
 
         // MARK: - UIContextMenuInteractionDelegate

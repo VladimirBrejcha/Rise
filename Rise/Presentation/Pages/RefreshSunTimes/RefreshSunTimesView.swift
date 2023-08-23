@@ -9,6 +9,7 @@
 import UIKit
 import LoadingView
 import Localization
+import UILibrary
 
 final class RefreshSunTimesView: UIView {
 
@@ -17,7 +18,7 @@ final class RefreshSunTimesView: UIView {
 
   // MARK: - Subviews
 
-  private lazy var titleView: UIView = View.Title.make(
+  private lazy var titleView: UIView = Title.make(
     title: Text.refreshSunTimes,
     closeButton: .default { [weak self] in
       self?.closeHandler()
@@ -40,7 +41,7 @@ final class RefreshSunTimesView: UIView {
   private lazy var imageView: UIImageView = {
     let imageView = UIImageView()
     imageView.image = UIImage(systemName: "location.fill")
-    imageView.tintColor = Asset.Colors.white.color
+      imageView.tintColor = Asset.Colors.white.color
     return imageView
   }()
   
@@ -105,23 +106,23 @@ final class RefreshSunTimesView: UIView {
   // MARK: - Layout
 
   private func setupLayout() {
-    imageView.activateConstraints(
-      imageView.heightAnchor.constraint(equalToConstant: 50),
-      imageView.widthAnchor.constraint(equalToConstant: 50),
-      imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-      imageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -100)
-    )
-    loadingView.activateConstraints(
-      loadingView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20),
-      loadingView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-      loadingView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-      loadingView.heightAnchor.constraint(equalToConstant: 180)
-    )
-    refreshButton.activateConstraints(
-      refreshButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
-      refreshButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
-      refreshButton.heightAnchor.constraint(equalToConstant: 44),
-      refreshButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)
-    )
+      imageView.activateConstraints {
+          [$0.heightAnchor.constraint(equalToConstant: 50),
+          $0.widthAnchor.constraint(equalToConstant: 50),
+          $0.centerXAnchor.constraint(equalTo: centerXAnchor),
+          $0.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -100)]
+      }
+      loadingView.activateConstraints {
+          [$0.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20),
+          $0.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+          $0.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+          $0.heightAnchor.constraint(equalToConstant: 180)]
+      }
+      refreshButton.activateConstraints {
+          [$0.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+          $0.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+          $0.heightAnchor.constraint(equalToConstant: 44),
+          $0.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)]
+      }
   }
 }

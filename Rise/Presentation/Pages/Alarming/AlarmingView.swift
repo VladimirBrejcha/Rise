@@ -8,6 +8,7 @@
 
 import UIKit
 import Localization
+import UILibrary
 
 final class AlarmingView: UIView {
   
@@ -16,7 +17,7 @@ final class AlarmingView: UIView {
   
   // MARK: - Subviews
   
-  private lazy var titleView: UIView = View.Title.make(
+  private lazy var titleView: UIView = Title.make(
     title: Text.Alarming.title,
     closeButton: .none
   )
@@ -24,11 +25,10 @@ final class AlarmingView: UIView {
   private lazy var currentTimeLabel: AutoRefreshableLabel = {
     let label = AutoRefreshableLabel()
     label.textAlignment = .center
-    label.font = UIFont.systemFont(ofSize: 54, weight: .semibold)
-    label.textColor = Asset.Colors.white.color
-      label.layer.applyStyle(
-          .init(shadow: .onboardingShadow)
-      )
+    label.applyStyle(.largeTime)
+    label.layer.applyStyle(
+        .init(shadow: .onboardingShadow)
+    )
     return label
   }()
   
@@ -94,21 +94,21 @@ final class AlarmingView: UIView {
   // MARK: - Layout
   
   private func setupLayout() {
-    currentTimeLabel.activateConstraints(
-      currentTimeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-      currentTimeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-      currentTimeLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -20)
-    )
-    buttonsVStack.activateConstraints(
-      buttonsVStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
-      buttonsVStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
-      buttonsVStack.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)
-    )
-    stopButton.activateConstraints(
-      stopButton.heightAnchor.constraint(equalToConstant: 56)
-    )
-    snoozeButton.activateConstraints(
-      snoozeButton.heightAnchor.constraint(equalToConstant: 44)
-    )
+      currentTimeLabel.activateConstraints {
+          [$0.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+          $0.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+          $0.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -20)]
+      }
+      buttonsVStack.activateConstraints {
+          [$0.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+          $0.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+          $0.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)]
+      }
+      stopButton.activateConstraints {
+          [$0.heightAnchor.constraint(equalToConstant: 56)]
+      }
+      snoozeButton.activateConstraints {
+          [$0.heightAnchor.constraint(equalToConstant: 44)]
+      }
   }
 }

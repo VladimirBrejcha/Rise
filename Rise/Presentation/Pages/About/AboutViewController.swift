@@ -12,6 +12,7 @@ import SafariServices
 import Core
 import DomainLayer
 import Localization
+import UILibrary
 
 final class AboutViewController:
     UIViewController,

@@ -10,139 +10,140 @@ import UIKit
 import Core
 import DomainLayer
 import Localization
+import UILibrary
 
 extension Today {
 
-  final class Controller: UIViewController, ViewController {
+    final class Controller: UIViewController, ViewController {
 
-    enum OutCommand {
-      case prepareToSleep
-      case adjustSchedule(currentSchedule: Schedule, completion: (Bool) -> Void)
-    }
-    typealias Deps = HasGetSchedule & HasAdjustSchedule
-    typealias Params = Days.Controller
-    typealias View = Today.View
+        enum OutCommand {
+            case prepareToSleep
+            case adjustSchedule(currentSchedule: Schedule, completion: (Bool) -> Void)
+        }
+        typealias Deps = HasGetSchedule & HasAdjustSchedule
+        typealias Params = Days.Controller
+        typealias View = Today.View
 
-    private let deps: Deps
-    private let out: Out
-    private let daysViewController: Days.Controller
-    private var todaySchedule: Schedule?
+        private let deps: Deps
+        private let out: Out
+        private let daysViewController: Days.Controller
+        private var todaySchedule: Schedule?
 
-    private var cancelledOnce = false
+        private var cancelledOnce = false
 
-    override var tabBarItem: UITabBarItem! {
-      get { _tabBarItem }
-      set { _tabBarItem = newValue }
-    }
+        override var tabBarItem: UITabBarItem! {
+            get { _tabBarItem }
+            set { _tabBarItem = newValue }
+        }
 
-    private lazy var _tabBarItem: UITabBarItem = .withSystemIcons(
-      normal: "moon.stars",
-      selected: "moon.stars.fill",
-      size: 25
-    )
+        private lazy var _tabBarItem: UITabBarItem = .withSystemIcons(
+            normal: "moon.stars",
+            selected: "moon.stars.fill",
+            size: 25
+        )
 
-    init(deps: Deps, params: Params, out: @escaping Out) {
-      self.deps = deps
-      self.daysViewController = params
-      self.out = out
-      super.init(nibName: nil, bundle: nil)
-    }
+        init(deps: Deps, params: Params, out: @escaping Out) {
+            self.deps = deps
+            self.daysViewController = params
+            self.out = out
+            super.init(nibName: nil, bundle: nil)
+        }
 
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-      fatalError("init(coder:) has not been implemented")
-    }
+        @available(*, unavailable)
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
 
-    override func loadView() {
-      super.loadView()
-      self.view = View(
-        timeUntilSleepDataSource: { [weak self] in
-          self?.floatingLabelModel ?? .empty
-        },
-        sleepHandler: { [weak self] in
-          self?.out(.prepareToSleep)
-        },
-        showAdjustSchedule: todaySchedule != nil && deps.adjustSchedule.mightNeedAdjustment,
-        adjustScheduleHandler: { [weak self] in
-          guard let todaySchedule = self?.todaySchedule else {
-            return
-          }
-          self?.out(.adjustSchedule(
-            currentSchedule: todaySchedule,
-            completion: { adjusted in
-              if adjusted {
-                self?.daysViewController.refreshSchedule()
-              }
-              self?.rootView.allowAdjustSchedule(false)
+        override func loadView() {
+            super.loadView()
+            self.view = View(
+                timeUntilSleepDataSource: { [weak self] in
+                    self?.floatingLabelModel ?? .empty
+                },
+                sleepHandler: { [weak self] in
+                    self?.out(.prepareToSleep)
+                },
+                showAdjustSchedule: todaySchedule != nil && deps.adjustSchedule.mightNeedAdjustment,
+                adjustScheduleHandler: { [weak self] in
+                    guard let todaySchedule = self?.todaySchedule else {
+                        return
+                    }
+                    self?.out(.adjustSchedule(
+                        currentSchedule: todaySchedule,
+                        completion: { adjusted in
+                            if adjusted {
+                                self?.daysViewController.refreshSchedule()
+                            }
+                            self?.rootView.allowAdjustSchedule(false)
+                        }
+                    ))
+                },
+                closeAdjustScheduleHandler: { [weak self] in
+                    self?.cancelledOnce = true
+                    self?.rootView.allowAdjustSchedule(false)
+                },
+                daysView: daysViewController.rootView
+            )
+        }
+
+        override func viewDidLoad() {
+            super.viewDidLoad()
+
+            addChild(daysViewController)
+            daysViewController.didMove(toParent: self)
+        }
+
+        override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+
+            todaySchedule = deps.getSchedule.today()
+            if cancelledOnce == false {
+                rootView.allowAdjustSchedule(todaySchedule != nil && deps.adjustSchedule.mightNeedAdjustment)
             }
-          ))
-        },
-        closeAdjustScheduleHandler: { [weak self] in
-            self?.cancelledOnce = true
-            self?.rootView.allowAdjustSchedule(false)
-        },
-        daysView: daysViewController.rootView
-      )
+        }
+
+        // MARK: - Floating label model
+
+        private var floatingLabelModel: FloatingLabel.Model {
+            guard let todaySchedule = todaySchedule else {
+                return .empty
+            }
+
+            guard let minutesUntilSleep = calendar
+                .dateComponents(
+                    [.minute],
+                    from: Date(),
+                    to: todaySchedule.toBed
+                ).minute
+            else {
+                return .empty
+            }
+
+            let alpha: Float = 0.85
+
+            switch minutesUntilSleep {
+            case ...0:
+                return .init(
+                    text: Text.itsTimeToSleep,
+                    alpha: alpha
+                )
+            case 1..<10:
+                return .init(
+                    text: Text.sleepInJustAFew(minutesUntilSleep.HHmmString),
+                    alpha: alpha
+                )
+            case 10...(60 * 5):
+                return .init(
+                    text: Text.sleepIsScheduledIn(minutesUntilSleep.HHmmString),
+                    alpha: alpha
+                )
+            default:
+                return .empty
+            }
+        }
     }
-
-    override func viewDidLoad() {
-      super.viewDidLoad()
-
-      addChild(daysViewController)
-      daysViewController.didMove(toParent: self)
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-      super.viewWillAppear(animated)
-
-      todaySchedule = deps.getSchedule.today()
-      if cancelledOnce == false {
-        rootView.allowAdjustSchedule(todaySchedule != nil && deps.adjustSchedule.mightNeedAdjustment)
-      }
-    }
-
-    // MARK: - Floating label model
-
-    private var floatingLabelModel: FloatingLabel.Model {
-      guard let todaySchedule = todaySchedule else {
-        return .empty
-      }
-
-      guard let minutesUntilSleep = calendar
-        .dateComponents(
-          [.minute],
-          from: Date(),
-          to: todaySchedule.toBed
-        ).minute
-      else {
-        return .empty
-      }
-
-      let alpha: Float = 0.85
-
-      switch minutesUntilSleep {
-      case ...0:
-        return .init(
-          text: Text.itsTimeToSleep,
-          alpha: alpha
-        )
-      case 1..<10:
-        return .init(
-          text: Text.sleepInJustAFew(minutesUntilSleep.HHmmString),
-          alpha: alpha
-        )
-      case 10...(60 * 5):
-        return .init(
-          text: Text.sleepIsScheduledIn(minutesUntilSleep.HHmmString),
-          alpha: alpha
-        )
-      default:
-        return .empty
-      }
-    }
-  }
 }
 
 fileprivate extension FloatingLabel.Model {
-  static var empty = FloatingLabel.Model(text: "", alpha: 0)
+    static var empty = FloatingLabel.Model(text: "", alpha: 0)
 }

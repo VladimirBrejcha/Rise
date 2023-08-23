@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UILibrary
 
 final class EditScheduleButtonTableCell:
     UITableViewCell,
@@ -47,12 +48,12 @@ final class EditScheduleButtonTableCell:
     // MARK: - Layout
 
     private func setupLayout() {
-        button.activateConstraints(
-            button.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
-            button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30),
-            button.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            button.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-        )
+        button.activateConstraints {
+            [$0.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
+            $0.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -30),
+            $0.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+            $0.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)]
+        }
     }
 
     // MARK: - ConfigurableCell

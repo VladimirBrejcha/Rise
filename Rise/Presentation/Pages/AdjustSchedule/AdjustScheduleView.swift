@@ -8,6 +8,7 @@
 
 import UIKit
 import Localization
+import UILibrary
 
 final class AdjustScheduleView: UIView {
   
@@ -18,7 +19,7 @@ final class AdjustScheduleView: UIView {
   
   // MARK: - Subviews
   
-  private lazy var titleView: UIView = View.Title.make(
+  private lazy var titleView: UIView = Title.make(
     title: Text.adjustSchedule,
     closeButton: .default { [weak self] in
       self?.closeHandler()
@@ -34,7 +35,7 @@ final class AdjustScheduleView: UIView {
   private lazy var imageView: UIImageView = {
     let imageView = UIImageView()
     imageView.image = UIImage(systemName: "bed.double.circle.fill")
-    imageView.tintColor = Asset.Colors.white.color
+      imageView.tintColor = Asset.Colors.white.color
     return imageView
   }()
   
@@ -129,36 +130,36 @@ final class AdjustScheduleView: UIView {
   
   private lazy var datePickerH = datePicker.heightAnchor.constraint(equalToConstant: 160)
   
-  private func setupLayout() {
-    scrollView.activateConstraints(
-      scrollView.topAnchor.constraint(equalTo: titleView.bottomAnchor, constant: 10),
-      scrollView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -20),
-      scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
-      scrollView.trailingAnchor.constraint(equalTo: trailingAnchor)
-    )
-    imageView.activateConstraints(
-      imageView.heightAnchor.constraint(equalToConstant: 80),
-      imageView.widthAnchor.constraint(equalToConstant: 80),
-      imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-      imageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 30)
-    )
-    descriptionLabel.activateConstraints(
-      descriptionLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20),
-      descriptionLabel.widthAnchor.constraint(equalTo: widthAnchor, constant: -34),
-      descriptionLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
-    )
-    datePicker.activateConstraints(
-      datePickerH,
-      datePicker.widthAnchor.constraint(equalTo: widthAnchor, constant: -40),
-      datePicker.centerXAnchor.constraint(equalTo: centerXAnchor),
-      datePicker.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20),
-      datePicker.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
-    )
-    saveButton.activateConstraints(
-      saveButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
-      saveButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
-      saveButton.heightAnchor.constraint(equalToConstant: 44),
-      saveButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)
-    )
+    private func setupLayout() {
+        scrollView.activateConstraints {
+            [$0.topAnchor.constraint(equalTo: titleView.bottomAnchor, constant: 10),
+             $0.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -20),
+             $0.leadingAnchor.constraint(equalTo: leadingAnchor),
+             $0.trailingAnchor.constraint(equalTo: trailingAnchor)]
+        }
+        imageView.activateConstraints {
+            [$0.heightAnchor.constraint(equalToConstant: 80),
+            $0.widthAnchor.constraint(equalToConstant: 80),
+            $0.centerXAnchor.constraint(equalTo: centerXAnchor),
+            $0.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 30)]
+        }
+        descriptionLabel.activateConstraints {
+            [$0.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20),
+            $0.widthAnchor.constraint(equalTo: widthAnchor, constant: -34),
+            $0.centerXAnchor.constraint(equalTo: centerXAnchor)]
+        }
+        datePicker.activateConstraints {
+            [datePickerH,
+            $0.widthAnchor.constraint(equalTo: widthAnchor, constant: -40),
+            $0.centerXAnchor.constraint(equalTo: centerXAnchor),
+            $0.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20),
+            $0.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)]
+        }
+        saveButton.activateConstraints {
+            [$0.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            $0.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            $0.heightAnchor.constraint(equalToConstant: 44),
+            $0.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)]
+        }
   }
 }

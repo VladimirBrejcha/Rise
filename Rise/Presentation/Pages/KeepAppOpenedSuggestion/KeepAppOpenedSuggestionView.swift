@@ -8,6 +8,7 @@
 
 import UIKit
 import Localization
+import UILibrary
 
 extension KeepAppOpenedSuggestion {
 
@@ -17,7 +18,7 @@ extension KeepAppOpenedSuggestion {
 
     // MARK: - Subviews
 
-    private lazy var titleView: UIView = Rise.View.Title.make(
+    private lazy var titleView: UIView = Title.make(
       title: Text.KeepAppOpenedSuggestion.title,
       closeButton: .none
     )
@@ -26,7 +27,7 @@ extension KeepAppOpenedSuggestion {
       let imageView = UIImageView()
       imageView.image = UIImage(systemName: "app.badge.checkmark")
       imageView.contentMode = .scaleAspectFill
-      imageView.tintColor = Asset.Colors.white.color
+        imageView.tintColor = Asset.Colors.white.color
       return imageView
     }()
 
@@ -81,23 +82,23 @@ extension KeepAppOpenedSuggestion {
     // MARK: - Layout
 
     private func setupLayout() {
-      imageView.activateConstraints(
-        imageView.heightAnchor.constraint(equalToConstant: 60),
-        imageView.widthAnchor.constraint(equalToConstant: 60),
-        imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-        imageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -100)
-      )
-      descriptionLabel.activateConstraints(
-        descriptionLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20),
-        descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-        descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
-      )
-      continueButton.activateConstraints(
-        continueButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
-        continueButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
-        continueButton.heightAnchor.constraint(equalToConstant: 44),
-        continueButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20)
-      )
+        imageView.activateConstraints {
+            [$0.heightAnchor.constraint(equalToConstant: 60),
+            $0.widthAnchor.constraint(equalToConstant: 60),
+            $0.centerXAnchor.constraint(equalTo: centerXAnchor),
+            $0.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -100)]
+        }
+        descriptionLabel.activateConstraints {
+            [$0.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20),
+            $0.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            $0.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)]
+        }
+        continueButton.activateConstraints {
+            [$0.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            $0.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            $0.heightAnchor.constraint(equalToConstant: 44),
+            $0.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20)]
+        }
     }
   }
 }

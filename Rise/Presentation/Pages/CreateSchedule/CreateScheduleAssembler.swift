@@ -10,7 +10,7 @@ import DomainLayer
 
 final class CreateScheduleAssembler {
   func assemble(
-    deps: HasCreateSchedule & HasSaveSchedule,
+    deps: HasCreateSchedule & HasSaveSchedule & HasRequestNotificationPermissions,
     onCreate: @escaping () -> Void
   ) -> CreateScheduleViewController {
     let controller = Storyboard.createSchedule.instantiateViewController(
@@ -59,7 +59,7 @@ final class CreateScheduleAssembler {
           controller?.chosenLastTimeWentSleep
         }
       ),
-      .scheduleCreated
+      .scheduleCreated(deps.requestNotificationPermissions)
     ]
     return controller
   }

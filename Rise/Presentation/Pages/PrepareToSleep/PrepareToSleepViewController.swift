@@ -25,6 +25,7 @@ final class PrepareToSleepViewController: UIViewController, ViewController {
     & HasPreferredWakeUpTime
     & HasSuggestKeepAppOpened
     & HasManageActiveSleep
+    & HasRequestNotificationPermissions
 
     var out: Out! // DI
     var deps: Deps! // DI
@@ -81,7 +82,6 @@ final class PrepareToSleepViewController: UIViewController, ViewController {
                     if self.deps.suggestKeepAppOpened.shouldSuggest {
                         self.deps.suggestKeepAppOpened.shouldSuggest = false
                         self.out(.showKeepAppOpenedSuggestion(completion: self.goToSleep))
-                        NotificationManager.requestNotificationPermission()
                     } else {
                         self.goToSleep()
                     }
@@ -99,6 +99,9 @@ final class PrepareToSleepViewController: UIViewController, ViewController {
                 }
             )
         )
+        Task {
+            await deps.requestNotificationPermissions(askExplicitlyFrom: self)
+        }
     }
 
     // MARK: - Make motivating text

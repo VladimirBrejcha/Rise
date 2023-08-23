@@ -9,29 +9,7 @@
 import UIKit
 import Localization
 import UIKit
-
-public extension UIView {
-    func activateConstraints(_ constraints: (UIView) -> [NSLayoutConstraint]) {
-        translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate(constraints(self))
-    }
-
-    func edgesTo(_ view: UIView) -> (UIView) -> [NSLayoutConstraint] {
-        { [$0.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-           $0.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-           $0.topAnchor.constraint(equalTo: view.topAnchor),
-           $0.bottomAnchor.constraint(equalTo: view.bottomAnchor)]
-        }
-    }
-
-    func edgesTo(_ view: UIView, padding: CGFloat) -> (UIView) -> [NSLayoutConstraint] {
-        { [$0.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-           $0.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-           $0.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
-           $0.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding)]
-        }
-    }
-}
+import UILibrary
 
 final class AfterSleepView: UIView {
 
@@ -112,7 +90,7 @@ final class AfterSleepView: UIView {
         bgView.backgroundColor = Asset.Colors.darkBlue.color.withAlphaComponent(0.2)
         bgView.layer.cornerRadius = 12
         bgView.addSubview(label)
-        label.activateConstraints(edgesTo(bgView, padding: 8))
+        label.activateConstraints(edgesTo(bgView, padding: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)))
         return bgView
     }()
 
@@ -230,46 +208,46 @@ final class AfterSleepView: UIView {
     // MARK: - Layout
 
     private func setupLayout() {
-        containerView.activateConstraints(
-            containerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
-            containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
-            containerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40)
-        )
-        imageView.activateConstraints(
-            imageView.heightAnchor.constraint(equalToConstant: 100),
-            imageView.widthAnchor.constraint(equalToConstant: 100),
-            imageView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            imageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20)
-        )
-        mainLabel.activateConstraints(
-            mainLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8),
-            mainLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -8),
-            mainLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 30)
-        )
-        quoteView.activateConstraints(
-            quoteView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8),
-            quoteView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -8),
-            quoteView.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 28)
-        )
-        sleepStatsLabel.activateConstraints(
-            sleepStatsLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
-            sleepStatsLabel.topAnchor.constraint(equalTo: quoteView.bottomAnchor, constant: 28)
-        )
-        VStack.activateConstraints(
-            VStack.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8),
-            VStack.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -8),
-            VStack.topAnchor.constraint(equalTo: sleepStatsLabel.bottomAnchor, constant: 4),
-            VStack.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 0)
-        )
-        buttonsVStack.activateConstraints(
-            buttonsVStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
-            buttonsVStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
-            buttonsVStack.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)
-        )
+        containerView.activateConstraints {
+            [$0.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
+            $0.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
+            $0.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40)]
+        }
+        imageView.activateConstraints {
+            [$0.heightAnchor.constraint(equalToConstant: 100),
+            $0.widthAnchor.constraint(equalToConstant: 100),
+            $0.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            $0.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 20)]
+        }
+        mainLabel.activateConstraints {
+            [$0.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8),
+            $0.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -8),
+            $0.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 30)]
+        }
+        quoteView.activateConstraints {
+            [$0.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8),
+            $0.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -8),
+            $0.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 28)]
+        }
+        sleepStatsLabel.activateConstraints {
+            [$0.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
+            $0.topAnchor.constraint(equalTo: quoteView.bottomAnchor, constant: 28)]
+        }
+        VStack.activateConstraints {
+            [$0.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8),
+            $0.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -8),
+            $0.topAnchor.constraint(equalTo: sleepStatsLabel.bottomAnchor, constant: 4),
+            $0.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 0)]
+        }
+        buttonsVStack.activateConstraints {
+            [$0.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            $0.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            $0.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)]
+        }
         buttonsVStack.subviews.forEach { view in
-            view.activateConstraints(
-                view.heightAnchor.constraint(equalToConstant: 44)
-            )
+            view.activateConstraints {
+                [$0.heightAnchor.constraint(equalToConstant: 44)]
+            }
         }
     }
 }

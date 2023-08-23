@@ -1,4 +1,5 @@
 import DataLayer
+import Core
 
 public final class UseCaseLocator: UseCases {
 
@@ -6,17 +7,20 @@ public final class UseCaseLocator: UseCases {
     private let sunTimeRepository: SunTimeRepository
     private let locationRepository: LocationRepository
     private let userData: UserData
+    private let notificationManager: NotificationManager
 
     public init(
         scheduleRepository: ScheduleRepository,
         sunTimeRepository: SunTimeRepository,
         locationRepository: LocationRepository,
-        userData: UserData
+        userData: UserData,
+        notificationManager: NotificationManager
     ) {
         self.scheduleRepository = scheduleRepository
         self.sunTimeRepository = sunTimeRepository
         self.locationRepository = locationRepository
         self.userData = userData
+        self.notificationManager = notificationManager
     }
 
     public var createSchedule: CreateSchedule {
@@ -56,7 +60,7 @@ public final class UseCaseLocator: UseCases {
     }
 
     public var manageActiveSleep: ManageActiveSleep {
-        ManageActiveSleepImpl(userData)
+        ManageActiveSleepImpl(userData, notificationManager)
     }
 
     public var suggestKeepAppOpened: SuggestKeepAppOpened {
@@ -93,9 +97,19 @@ public final class UseCaseLocator: UseCases {
 
     public lazy var notifyToSleep: NotifyToSleep = NotifyToSleepImpl(getSchedule: getSchedule, manageActiveSleep: manageActiveSleep, userData: userData)
 
-    public lazy var notification: ScheduleNotificationDelegate = NotificationImpl(getSchedule: getSchedule, scheduleRepository: scheduleRepository)
+    public lazy var scheduleSleepNotifications: ScheduleSleepNotifications = ScheduleSleepNotificationsImpl(
+        getSchedule: getSchedule,
+        scheduleRepository: scheduleRepository,
+        notificationManager: notificationManager
+    )
 
     public var playAlarmMelody: PlayAlarmMelody {
         PlayAlarmMelodyImpl()
     }
+
+    public lazy var requestNotificationPermissions: RequestNotificationPermissions =
+    RequestNotificationPermissionsImpl(
+        notificationManager: notificationManager,
+        userData: userData
+    )
 }

@@ -9,63 +9,82 @@
 import UserNotifications
 
 public final class NotificationManager: NSObject {
+
+    private let center = UNUserNotificationCenter.current()
+
+    public override init() {
+        super.init()
+        let sleepCategory = UNNotificationCategory(identifier: "SleepCategory", actions: [], intentIdentifiers: [], options: [])
+        UNUserNotificationCenter.current().setNotificationCategories([sleepCategory])
+    }
     
-// MARK: - Request permission
-    
-    public static func requestNotificationPermission() {
-        let notificationCenter = UNUserNotificationCenter.current()
-        
-        notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
-            guard granted else { return }
-            notificationCenter.getNotificationSettings { (settings)  in
-                log(.info, "Notification settings: \(settings)")
-                guard settings.authorizationStatus == .authorized else
-                { return }
-            }
+    // MARK: - Permissions
+
+    @discardableResult
+    public func requestPermissions() async -> Bool {
+        log(.info, "requestPermissions")
+        do {
+            return try await center
+                .requestAuthorization(options: [.alert, .sound])
+        } catch (let error) {
+            log(.error, error.localizedDescription)
+            return false
         }
     }
-//MARK: - Create notification
+
+    public enum AuthorizationStatus {
+        case notDetermined, authorized, denied
+    }
+    public func isAuthorized() async -> AuthorizationStatus {
+        let settings = await center.notificationSettings()
+        switch settings.authorizationStatus {
+        case .notDetermined:
+            return .notDetermined
+        case .denied:
+            return .denied
+        case .authorized:
+            return .authorized
+        case .provisional:
+            return .authorized
+        case .ephemeral:
+            return .authorized
+        @unknown default:
+            return .notDetermined
+        }
+    }
     
-    public static func createNotification(title: String, body: String, components: DateComponents, categoryIdentifier: String? = nil) {
-        let notificationCenter = UNUserNotificationCenter.current()
+    // MARK: - Create notification
+    
+    public func createNotification(
+        title: String,
+        body: String,
+        components: DateComponents,
+        categoryIdentifier: String? = nil,
+        identifier: String
+    ) {
         let notificationContent = UNMutableNotificationContent()
-        
         notificationContent.title = title
         notificationContent.body = body
         notificationContent.sound = .default
-        
         if categoryIdentifier == "SleepCategory" {
             notificationContent.sound = .default
         } else {
-            notificationContent.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "shum.wav"))
+            notificationContent.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "DefaultMelody.wav"))
         }
-        
         if let categoryIdentifier = categoryIdentifier {
-              notificationContent.categoryIdentifier = categoryIdentifier
-          }
-        
-        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
-        let request = UNNotificationRequest(identifier: "notification", content: notificationContent, trigger: trigger)
-        notificationCenter.add(request)
+            notificationContent.categoryIdentifier = categoryIdentifier
+        }
+        center.add(UNNotificationRequest(
+            identifier: identifier,
+            content: notificationContent,
+            trigger: UNCalendarNotificationTrigger(
+                dateMatching: components,
+                repeats: false
+            )
+        ))
     }
-//MARK: - Cancel pending requests
-    
-    public static func cancelAllPendingRequests(){
-        let notificationCenter = UNUserNotificationCenter.current()
-        notificationCenter.removeAllPendingNotificationRequests()
-    }
-}
-//MARK: - Extension
 
-import UIKit
-extension UIApplication {
-    public static func openAppSettings() {
-        guard let url = URL(string: UIApplication.openSettingsURLString) else {
-            log(.error, "Cannot build settings url")
-            return
-        }
-        UIApplication.shared.open(url, options: [:]) { done in
-            log(.info, "Open settings request completed = \(done)")
-        }
+    public func cleanDelivered() {
+        center.removeAllDeliveredNotifications()
     }
 }

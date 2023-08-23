@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UILibrary
 
 final class EditScheduleDatePickerTableCell:
     UITableViewCell,
@@ -86,29 +87,29 @@ final class EditScheduleDatePickerTableCell:
     // MARK: - Layout
 
     private func setupLayout() {
-        titleLabel.activateConstraints(
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
-        )
-        container.activateConstraints(
-            container.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            container.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            container.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 2)
-        )
-        datePicker.activateConstraints(
-            datePicker.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            datePicker.trailingAnchor.constraint(equalTo: container.trailingAnchor),
-            datePicker.bottomAnchor.constraint(equalTo: container.bottomAnchor),
-            datePicker.heightAnchor.constraint(equalToConstant: 140),
-            datePicker.topAnchor.constraint(equalTo: container.topAnchor)
-        )
-        wakeUpLabel.activateConstraints(
-            wakeUpLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            wakeUpLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            wakeUpLabel.topAnchor.constraint(equalTo: container.bottomAnchor, constant: 10),
-            wakeUpLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-        )
+        titleLabel.activateConstraints {
+            [$0.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
+            $0.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            $0.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)]
+        }
+        container.activateConstraints {
+            [$0.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+             $0.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+             $0.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 2)]
+        }
+        datePicker.activateConstraints {
+            [$0.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+             $0.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+             $0.bottomAnchor.constraint(equalTo: container.bottomAnchor),
+             $0.heightAnchor.constraint(equalToConstant: 140),
+             $0.topAnchor.constraint(equalTo: container.topAnchor)]
+        }
+        wakeUpLabel.activateConstraints {
+            [$0.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+             $0.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+             $0.topAnchor.constraint(equalTo: container.bottomAnchor, constant: 10),
+             $0.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)]
+        }
     }
     
     // MARK: - ConfigurableCell -

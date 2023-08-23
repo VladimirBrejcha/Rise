@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UILibrary
 
 final class EditScheduleSliderTableCell:
     UITableViewCell,
@@ -60,24 +61,24 @@ final class EditScheduleSliderTableCell:
     // MARK: - Layout
 
     private func setupLayout() {
-        titleLabel.activateConstraints(
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
-        )
-        container.activateConstraints(
-            container.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            container.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            container.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            container.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 2)
-        )
-        slider.activateConstraints(
-            slider.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            slider.trailingAnchor.constraint(equalTo: container.trailingAnchor),
-            slider.bottomAnchor.constraint(equalTo: container.bottomAnchor),
-            slider.heightAnchor.constraint(equalToConstant: 90),
-            slider.topAnchor.constraint(equalTo: container.topAnchor)
-        )
+        titleLabel.activateConstraints {
+            [$0.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
+            $0.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            $0.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)]
+        }
+        container.activateConstraints {
+            [$0.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            $0.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            $0.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            $0.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 2)]
+        }
+        slider.activateConstraints {
+            [$0.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+            $0.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+            $0.bottomAnchor.constraint(equalTo: container.bottomAnchor),
+            $0.heightAnchor.constraint(equalToConstant: 90),
+            $0.topAnchor.constraint(equalTo: container.topAnchor)]
+        }
     }
 
     // MARK: - ConfigurableCell

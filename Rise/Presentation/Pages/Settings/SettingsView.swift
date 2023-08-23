@@ -66,12 +66,12 @@ extension Settings {
         separated: true
       )
       VStack.arrangedSubviews.forEach { view in
-        view.activateConstraints(
-          view.widthAnchor.constraint(
-            equalTo: VStack.widthAnchor,
-            constant: view is ItemView ? 0 : -44
-          )
-        )
+          view.activateConstraints {
+              [$0.widthAnchor.constraint(
+                equalTo: VStack.widthAnchor,
+                constant: view is ItemView ? 0 : -44
+              )]
+          }
       }
     }
 
@@ -86,11 +86,11 @@ extension Settings {
     // MARK: - Layout
 
     private func setupLayout() {
-      VStack.activateConstraints(
-        VStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-        VStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-        VStack.centerYAnchor.constraint(equalTo: centerYAnchor)
-      )
+        VStack.activateConstraints {
+            [$0.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            $0.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            $0.centerYAnchor.constraint(equalTo: centerYAnchor)]
+        }
     }
   }
 }

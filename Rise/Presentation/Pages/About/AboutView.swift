@@ -179,64 +179,64 @@ final class AboutView: UIView, UIScrollViewDelegate {
     // MARK: - Layout
 
     private func setupLayout() {
-        logoImageView.activateConstraints(
-            logoImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
-            logoImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            logoImageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.4),
-            logoImageView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.4)
-        )
-        nameLabel.activateConstraints(
-            nameLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 8),
-            nameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
-        )
-        appVersionLabel.activateConstraints(
-            appVersionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 8),
-            appVersionLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
-        )
-        scrollView.activateConstraints(
-            scrollView.topAnchor.constraint(equalTo: topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
-        )
-        contentView.activateConstraints(
-            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
-        )
-        VStack.activateConstraints(
-            VStack.topAnchor.constraint(equalTo: appVersionLabel.bottomAnchor, constant: 20),
-            VStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
-            VStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            VStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            VStack.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -40)
-        )
+        logoImageView.activateConstraints {
+            [$0.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
+             $0.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+             $0.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.4),
+             $0.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.4)]
+        }
+        nameLabel.activateConstraints {
+            [$0.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 8),
+            $0.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)]
+        }
+        appVersionLabel.activateConstraints {
+            [$0.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 8),
+            $0.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)]
+        }
+        scrollView.activateConstraints {
+            [$0.topAnchor.constraint(equalTo: topAnchor),
+            $0.leadingAnchor.constraint(equalTo: leadingAnchor),
+            $0.trailingAnchor.constraint(equalTo: trailingAnchor),
+            $0.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)]
+        }
+        contentView.activateConstraints {
+            [$0.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            $0.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            $0.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            $0.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            $0.widthAnchor.constraint(equalTo: scrollView.widthAnchor)]
+        }
+        VStack.activateConstraints {
+            [$0.topAnchor.constraint(equalTo: appVersionLabel.bottomAnchor, constant: 20),
+            $0.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
+            $0.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            $0.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            $0.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -40)]
+        }
         VStack.arrangedSubviews.forEach { view in
-            view.activateConstraints(
-                view.widthAnchor.constraint(equalTo: VStack.widthAnchor)
-            )
+            view.activateConstraints {
+                [$0.widthAnchor.constraint(equalTo: VStack.widthAnchor)]
+            }
         }
         legalVStack.arrangedSubviews.forEach { view in
-            view.activateConstraints(
-                view.widthAnchor.constraint(equalTo: VStack.widthAnchor)
-            )
+            view.activateConstraints {
+                [$0.widthAnchor.constraint(equalTo: VStack.widthAnchor)]
+            }
         }
         socialVStack.arrangedSubviews.forEach { view in
-            view.activateConstraints(
-                view.widthAnchor.constraint(equalTo: VStack.widthAnchor)
-            )
+            view.activateConstraints {
+                [$0.widthAnchor.constraint(equalTo: VStack.widthAnchor)]
+            }
         }
         coauthorsVStack.arrangedSubviews.forEach { view in
-            view.activateConstraints(
-                view.widthAnchor.constraint(equalTo: VStack.widthAnchor)
-            )
+            view.activateConstraints {
+                [$0.widthAnchor.constraint(equalTo: VStack.widthAnchor)]
+            }
         }
         feedbackVStack.arrangedSubviews.forEach { view in
-            view.activateConstraints(
-                view.widthAnchor.constraint(equalTo: VStack.widthAnchor)
-            )
+            view.activateConstraints {
+                [$0.widthAnchor.constraint(equalTo: VStack.widthAnchor)]
+            }
         }
     }
 

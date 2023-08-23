@@ -20,7 +20,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationC
         scheduleRepository: DataLayer.scheduleRepository,
         sunTimeRepository: DataLayer.sunTimeRepository,
         locationRepository: DataLayer.locationRepository,
-        userData: DataLayer.userData
+        userData: DataLayer.userData,
+        notificationManager: NotificationManager()
     )
 
     private lazy var coordinator: RootCoordinator = RootCoordinator(
@@ -46,13 +47,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationC
         window = mainWindow
         coordinator.run()
         useCaseLocator.notifyToSleep.startNotificationTimer()
-        useCaseLocator.notification.scheduleNotifications()
+        useCaseLocator.scheduleSleepNotifications()
         UNUserNotificationCenter.current().delegate = self
-        
-        let sleepCategory = UNNotificationCategory(identifier: "SleepCategory", actions: [], intentIdentifiers: [], options: [])
-            UNUserNotificationCenter.current().setNotificationCategories([sleepCategory])
-
-//            return true
 
         return true
     }

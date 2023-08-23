@@ -26,12 +26,13 @@
 ##   - To know which params are supported for a template, use `swiftgen template doc xcassets swift5` to open the template documentation on GitHub.
  xcassets:
    inputs:
-     - ${PROJECT_DIR}/${TARGET_NAME}/Resources/Assets.xcassets
+     - UILibrary/Sources/UILibrary/Resources/Assets.xcassets
    outputs:
      - templateName: swift5
        params:
          forceProvidesNamespaces: true
-       output: ${PROJECT_DIR}/${TARGET_NAME}/Resources/Generated/XCAssets+Generated.swift
+         publicAccess: true
+       output: UILibrary/Sources/UILibrary/Generated/XCAssets+Generated.swift
 
 
 ## Generate constants for your storyboards and XIBs.

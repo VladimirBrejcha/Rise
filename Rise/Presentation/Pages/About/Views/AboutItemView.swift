@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UILibrary
 
 extension AboutView {
   
@@ -19,8 +20,8 @@ extension AboutView {
     private var model: Model!
     private var touchHandler: (() -> Void)?
     var propertyAnimationDuration: Double { 0.2 }
-    private let normalBgColor: UIColor = Asset.Colors.white.color.withAlphaComponent(0.1)
-    private let selectedBgColor: UIColor = Asset.Colors.white.color.withAlphaComponent(0.3)
+      private let normalBgColor = Asset.Colors.white.color.withAlphaComponent(0.1)
+      private let selectedBgColor = Asset.Colors.white.color.withAlphaComponent(0.3)
     
     // MARK: - Subviews
     
@@ -82,12 +83,12 @@ extension AboutView {
     // MARK: - Layout
     
     private func setupLayout() {
-      titleLabel.activateConstraints(
-        titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 12),
-        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
-        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
-        titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12)
-      )
+        titleLabel.activateConstraints {
+            [$0.topAnchor.constraint(equalTo: topAnchor, constant: 12),
+            $0.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
+            $0.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
+            $0.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12)]
+        }
     }
   }
 }

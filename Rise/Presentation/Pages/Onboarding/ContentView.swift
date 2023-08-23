@@ -107,14 +107,14 @@ extension Onboarding.View {
         // MARK: - Layout
 
         private func setupLayout() {
-            stackView.activateConstraints(
-                stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-                stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-                stackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 32)
-            )
-            imageView.activateConstraints(
-                imageView.heightAnchor.constraint(equalToConstant: 70)
-            )
+            stackView.activateConstraints {
+                [$0.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+                $0.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+                $0.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 32)]
+            }
+            imageView.activateConstraints {
+                [$0.heightAnchor.constraint(equalToConstant: 70)]
+            }
         }
     }
 }

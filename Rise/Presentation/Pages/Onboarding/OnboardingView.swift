@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UILibrary
 
 extension Onboarding {
 
@@ -117,33 +118,33 @@ extension Onboarding {
         // MARK: - Layout
 
         private func setupLayout() {
-            button.activateConstraints(
-                button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 44),
-                button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -44),
-                button.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -24),
-                button.heightAnchor.constraint(equalToConstant: 44)
-            )
-            scrollView.activateConstraints(
-                scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
-                scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
-                scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-                scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
-            )
-            pagesContainerView.activateConstraints(
-                pagesContainerView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-                pagesContainerView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-                pagesContainerView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-                pagesContainerView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
-            )
-            pagesContainerView.arrangedSubviews.forEach { view in
-                view.activateConstraints(
-                    view.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
-                )
+            button.activateConstraints {
+                [$0.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 44),
+                $0.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -44),
+                $0.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -24),
+                $0.heightAnchor.constraint(equalToConstant: 44)]
             }
-            pageControl.activateConstraints(
-                pageControl.centerXAnchor.constraint(equalTo: button.centerXAnchor),
-                pageControl.bottomAnchor.constraint(equalTo: button.topAnchor, constant: -16)
-            )
+            scrollView.activateConstraints {
+                [$0.leadingAnchor.constraint(equalTo: leadingAnchor),
+                $0.trailingAnchor.constraint(equalTo: trailingAnchor),
+                $0.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+                $0.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)]
+            }
+            pagesContainerView.activateConstraints {
+                [$0.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+                $0.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+                $0.topAnchor.constraint(equalTo: scrollView.topAnchor),
+                $0.heightAnchor.constraint(equalTo: scrollView.heightAnchor)]
+            }
+            pagesContainerView.arrangedSubviews.forEach { view in
+                view.activateConstraints {
+                    [$0.widthAnchor.constraint(equalTo: scrollView.widthAnchor)]
+                }
+            }
+            pageControl.activateConstraints {
+                [$0.centerXAnchor.constraint(equalTo: button.centerXAnchor),
+                $0.bottomAnchor.constraint(equalTo: button.topAnchor, constant: -16)]
+            }
         }
 
         // MARK: - UIScrollViewDelegate

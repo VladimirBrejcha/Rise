@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -22,10 +20,12 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>&apos;Rise&apos; requires access to your location to calculate accurate sunrise and sunset times for your area. This information is displayed on the main screen and is used to compare with your personal sleep schedule times, allowing you to align your routines with natural daylight hours. Please note, we only access your location data when the app is in use once and do not share this data with any third parties.</string>
+	<string>'Rise' requires access to your location to calculate accurate sunrise and sunset times for your area. This information is displayed on the main screen and is used to compare with your personal sleep schedule times, allowing you to align your routines with natural daylight hours. Please note, we only access your location data when the app is in use once and do not share this data with any third parties.</string>
 	<key>NSUserNotificationsUsageDescription</key>
 	<string>Notifications from Rise may include sleep reminders, wake-up alarms, and motivational messages.</string>
 	<key>UIBackgroundModes</key>
@@ -34,7 +34,7 @@
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<string>LaunchScreen.storyboard</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

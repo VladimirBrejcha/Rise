@@ -8,6 +8,7 @@
 
 import UIKit
 import Localization
+import UILibrary
 
 extension EditSchedule {
 
@@ -18,7 +19,7 @@ extension EditSchedule {
 
     // MARK: - Subviews
 
-    private lazy var titleView: UIView = Rise.View.Title.make(
+    private lazy var titleView: UIView = Title.make(
       title: Text.editRiseSchedule,
       closeButton: .default { [weak self] in
         self?.closeHandler()
@@ -83,18 +84,18 @@ extension EditSchedule {
     // MARK: - Layout
 
     private func setupLayout() {
-      editScheduleTableView.activateConstraints(
-        editScheduleTableView.topAnchor.constraint(equalTo: titleView.bottomAnchor, constant: 10),
-        editScheduleTableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-        editScheduleTableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-        editScheduleTableView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -10)
-      )
-      saveButton.activateConstraints(
-        saveButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
-        saveButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
-        saveButton.heightAnchor.constraint(equalToConstant: 44),
-        saveButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10)
-      )
+        editScheduleTableView.activateConstraints {
+            [$0.topAnchor.constraint(equalTo: titleView.bottomAnchor, constant: 10),
+            $0.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            $0.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            $0.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -10)]
+        }
+        saveButton.activateConstraints {
+            [$0.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            $0.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            $0.heightAnchor.constraint(equalToConstant: 44),
+            $0.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10)]
+        }
     }
   }
 }

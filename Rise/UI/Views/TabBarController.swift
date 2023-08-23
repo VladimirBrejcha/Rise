@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import UILibrary
 
 final class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
-    private lazy var backgroundView = View.Background.default.asUIView
+    private lazy var backgroundView = Background.default.asUIView
 
     private lazy var appearance: UITabBarAppearance = {
         let appearance = UITabBarAppearance()
@@ -42,12 +43,12 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
         view.addSubviews(backgroundView)
         view.sendSubviewToBack(backgroundView)
-        backgroundView.activateConstraints(
-            backgroundView.heightAnchor.constraint(equalTo: view.heightAnchor),
-            backgroundView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 100),
-            backgroundView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            backgroundView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        )
+        backgroundView.activateConstraints {
+            [$0.heightAnchor.constraint(equalTo: view.heightAnchor),
+            $0.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 100),
+            $0.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            $0.centerYAnchor.constraint(equalTo: view.centerYAnchor)]
+        }
     }
 
     private func makeItemAppearance(

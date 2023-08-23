@@ -8,6 +8,7 @@
 
 import UIKit
 import Core
+import UILibrary
 
 extension SchedulePage {
   
@@ -93,25 +94,25 @@ extension SchedulePage {
     }
     
     private func setupLayout() {
-      centerLabel.activateConstraints(
-        centerLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-        centerLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-        centerLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
-      )
+        centerLabel.activateConstraints {
+            [$0.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            $0.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            $0.centerYAnchor.constraint(equalTo: centerYAnchor)]
+        }
       
-      HStack.activateConstraints(
-        HStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-        HStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-        HStack.centerYAnchor.constraint(equalTo: centerYAnchor),
-        HStack.widthAnchor.constraint(equalTo: HStack.heightAnchor)
-      )
+        HStack.activateConstraints {
+            [$0.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            $0.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            $0.centerYAnchor.constraint(equalTo: centerYAnchor),
+            $0.widthAnchor.constraint(equalTo: $0.heightAnchor)]
+        }
       
-      middleButton.activateConstraints(
-        middleButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
-        middleButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
-        middleButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -32),
-        middleButton.heightAnchor.constraint(equalToConstant: 44)
-      )
+        middleButton.activateConstraints {
+            [$0.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+            $0.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+            $0.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -32),
+            $0.heightAnchor.constraint(equalToConstant: 44)]
+        }
     }
     
     typealias CellState = ImageLabelViewWithContextMenu.State

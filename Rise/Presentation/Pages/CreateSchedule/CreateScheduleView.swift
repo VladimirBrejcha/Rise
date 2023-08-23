@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UILibrary
 
 final class CreateScheduleView: UIView, PropertyAnimatable {
     @IBOutlet private weak var buttonsStackView: UIStackView!

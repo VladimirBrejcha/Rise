@@ -9,6 +9,7 @@
 import UIKit
 import Core
 import DomainLayer
+import UILibrary
 
 extension SchedulePage {
 

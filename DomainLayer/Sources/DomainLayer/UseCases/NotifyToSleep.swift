@@ -12,7 +12,6 @@ public protocol HasNotifyToSleep {
 public protocol NotifyToSleep: AnyObject {
     var onNotify: ((OnNotifyParams) -> Void)? { get set }
     var didNotify: Bool { get set }
-    var getControllers: (() -> (UIViewController, UIViewController)?)? { get set }
     func startNotificationTimer()
     func stopNotificationTimer()
 }
@@ -25,7 +24,6 @@ class NotifyToSleepImpl: NotifyToSleep {
     let manageActiveSleep: ManageActiveSleep
     var onNotify: ((OnNotifyParams) -> Void)?
     var lastNotificationDate: Date?
-    var getControllers: (() -> (UIViewController, UIViewController)?)?
     var userData: UserData
     
     init(getSchedule: GetSchedule, manageActiveSleep: ManageActiveSleep, userData: UserData) {
@@ -47,7 +45,6 @@ class NotifyToSleepImpl: NotifyToSleep {
         guard let timeToSleep = getSchedule.today()?.toBed,
               currentDate >= timeToSleep,
               manageActiveSleep.sleepStartedAt == nil else { return }
-        checkAndRequestNotificationPermissions()
         notify()
     }
     
@@ -66,23 +63,6 @@ class NotifyToSleepImpl: NotifyToSleep {
         let cancelButton = NotificationData.cancelButtons[randomInt]
         
         onNotify?(OnNotifyParams(title, description, acceptButton, cancelButton))
-    }
-    
-    func checkAndRequestNotificationPermissions() {
-        let notificationCenter = UNUserNotificationCenter.current()
-        notificationCenter.getNotificationSettings { settings in
-            DispatchQueue.main.async {
-                if settings.authorizationStatus == .authorized {
-                    log(.info, "Notification permission granted")
-                    return
-                }
-                if self.userData.notificationsSuggested { return }
-                if let (activeViewController, permissionViewController) = self.getControllers?() {
-                    activeViewController.present(permissionViewController, animated: true)
-                    self.userData.notificationsSuggested = true
-                }
-            }
-        }
     }
 }
 

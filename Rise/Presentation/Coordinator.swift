@@ -10,6 +10,7 @@ import UIKit
 import DomainLayer
 import UserNotifications
 import Core
+import UILibrary
 
 final class RootCoordinator {
     private var useCases: UseCases
@@ -31,7 +32,6 @@ final class RootCoordinator {
         } else {
             configureRoot()
         }
-        useCases.notifyToSleep.getControllers = getTopAndPermissionControllersClosure()
         useCases.notifyToSleep.onNotify = showTimeToSleepAlert
     }
     // MARK: - rootControllers
@@ -301,50 +301,13 @@ final class RootCoordinator {
         let vc = prepareToSleep
         self.navigationController.pushViewController(vc, animated: true)
     }
-    //MARK: - Lazy Initialization PermissionViewController
-    private func showAppSettings() {
-        UIApplication.openAppSettings()
-    }
-    
-    private func dismissPermissionViewController() {
-        permissionViewController.dismiss(animated: true)
-    }
-    
-    var permissionViewController: PermissionViewController {
-        let viewController = PermissionViewController( out: {commands in
-            switch commands {
-            case .goToSettings:
-                self.showAppSettings()
-            case .skip:
-                self.dismissPermissionViewController()
-            }
-        })
-        return viewController
-    }
-    
-    private func getPermissionView() -> PermissionView? {
-        guard let permissionView = permissionViewController.view as? PermissionView else {
-            return nil
-        }
-        return permissionView
-    }
-    // MARK: - Get top ViewController
-    
-    func getTopViewController() -> UIViewController? {
-        var activeViewController = navigationController.viewControllers.last
-        while let presentedViewController = activeViewController?.presentedViewController {
-            activeViewController = presentedViewController
-        }
-        return activeViewController
-    }
-    
-    private func getTopAndPermissionControllersClosure() -> (() -> (UIViewController, UIViewController)?) {
-        return { [weak self] in
-            guard let topViewController = self?.getTopViewController(),
-                  let permissionViewController = self?.permissionViewController else {
-                return nil
-            }
-            return (topViewController, permissionViewController)
-        }
+}
+
+extension UINavigationController {
+    func replaceAllOnTopOfRoot(with controller: UIViewController) {
+        setViewControllers(
+            [viewControllers.first, controller].compactMap { $0 },
+            animated: true
+        )
     }
 }

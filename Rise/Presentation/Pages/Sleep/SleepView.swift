@@ -8,6 +8,7 @@
 
 import UIKit
 import Localization
+import UILibrary
 
 final class SleepView: UIView {
 
@@ -17,7 +18,7 @@ final class SleepView: UIView {
 
   // MARK: - Subviews
 
-  private lazy var titleView: UIView = View.Title.make(
+  private lazy var titleView: UIView = Title.make(
     title: Text.sleeping,
     closeButton: .none
   )
@@ -25,8 +26,7 @@ final class SleepView: UIView {
   private lazy var currentTimeLabel: AutoRefreshableLabel = {
     let label = AutoRefreshableLabel()
     label.textAlignment = .center
-    label.font = UIFont.systemFont(ofSize: 54, weight: .medium)
-    label.textColor = Asset.Colors.white.color
+    label.applyStyle(.largeTime)
     return label
   }()
 
@@ -40,8 +40,7 @@ final class SleepView: UIView {
   private lazy var wakeUpInLabel: FloatingLabel = {
     let label = FloatingLabel()
     label.textAlignment = .center
-    label.font = UIFont.systemFont(ofSize: 15)
-    label.textColor = Asset.Colors.white.color
+    label.applyStyle(.floating)
     return label
   }()
 
@@ -53,7 +52,7 @@ final class SleepView: UIView {
   }()
 
   private lazy var keepAppOpenedButton: Button = {
-    let button = View.closeableButton(
+    let button = closeableButton(
       touchHandler: { [weak self] in
         self?.keepAppOpenedHandler()
       },
@@ -128,31 +127,31 @@ final class SleepView: UIView {
   // MARK: - Layout
 
   private func setupLayout() {
-    currentTimeLabel.activateConstraints(
-      currentTimeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-      currentTimeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-      currentTimeLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -20)
-    )
-    alarmAtLabel.activateConstraints(
-      alarmAtLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-      alarmAtLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-      alarmAtLabel.topAnchor.constraint(equalTo: currentTimeLabel.bottomAnchor, constant: 10)
-    )
-    wakeUpInLabel.activateConstraints(
-      wakeUpInLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-      wakeUpInLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-      wakeUpInLabel.bottomAnchor.constraint(equalTo: buttonsVStack.topAnchor, constant: -10)
-    )
-    buttonsVStack.activateConstraints(
-      buttonsVStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
-      buttonsVStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
-      buttonsVStack.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)
-    )
-    stopButton.activateConstraints(
-      stopButton.heightAnchor.constraint(equalToConstant: 56)
-    )
-    keepAppOpenedButton.activateConstraints(
-      keepAppOpenedButton.heightAnchor.constraint(equalToConstant: 44)
-    )
+      currentTimeLabel.activateConstraints {
+          [$0.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+          $0.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+          $0.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -20)]
+      }
+      alarmAtLabel.activateConstraints {
+          [$0.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+          $0.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+          $0.topAnchor.constraint(equalTo: currentTimeLabel.bottomAnchor, constant: 10)]
+      }
+      wakeUpInLabel.activateConstraints {
+          [$0.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+          $0.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+          $0.bottomAnchor.constraint(equalTo: buttonsVStack.topAnchor, constant: -10)]
+      }
+      buttonsVStack.activateConstraints {
+          [$0.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
+          $0.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -40),
+          $0.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -30)]
+      }
+      stopButton.activateConstraints {
+          [$0.heightAnchor.constraint(equalToConstant: 56)]
+      }
+      keepAppOpenedButton.activateConstraints {
+          [$0.heightAnchor.constraint(equalToConstant: 44)]
+      }
   }
 }

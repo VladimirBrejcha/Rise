@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UILibrary
 
 extension Days.CollectionCell {
 

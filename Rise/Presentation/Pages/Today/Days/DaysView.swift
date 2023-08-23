@@ -9,6 +9,7 @@
 import UIKit
 import SelectableStackView
 import DataLayer
+import UILibrary
 
 extension Days {
 
@@ -88,17 +89,17 @@ extension Days {
         }
 
         private func setupLayout() {
-            segmentedControl.activateConstraints(
-                segmentedControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 6),
-                segmentedControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -6),
-                segmentedControl.heightAnchor.constraint(equalToConstant: 20),
-                segmentedControl.topAnchor.constraint(equalTo: topAnchor)
-            )
-            daysCollection.activateConstraints(
-                daysCollection.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 4),
-                daysCollection.leadingAnchor.constraint(equalTo: leadingAnchor),
-                daysCollection.trailingAnchor.constraint(equalTo: trailingAnchor)
-            )
+            segmentedControl.activateConstraints {
+                [$0.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 6),
+                $0.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -6),
+                $0.heightAnchor.constraint(equalToConstant: 20),
+                $0.topAnchor.constraint(equalTo: topAnchor)]
+            }
+            daysCollection.activateConstraints {
+                [$0.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 4),
+                $0.leadingAnchor.constraint(equalTo: leadingAnchor),
+                $0.trailingAnchor.constraint(equalTo: trailingAnchor)]
+            }
             legalImageView.activateConstraints {
                 [$0.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
                  $0.bottomAnchor.constraint(equalTo: bottomAnchor),

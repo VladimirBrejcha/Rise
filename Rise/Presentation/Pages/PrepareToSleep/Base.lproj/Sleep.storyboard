@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,10 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rich" translatesAutoresizingMaskIntoConstraints="NO" id="EL6-ld-qe1">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jtf-Rn-AX8" customClass="FloatingButton" customModule="Rise" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jtf-Rn-AX8" customClass="ObjcFloatingButton">
                                 <rect key="frame" x="177" y="768" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="jtf-Rn-AX8" secondAttribute="height" multiplier="1:1" id="IKn-ui-gj7"/>
@@ -32,13 +29,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eFW-pU-9p4">
-                                <rect key="frame" x="10" y="74.5" width="394" height="0.0"/>
+                                <rect key="frame" x="10" y="78.5" width="394" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m1Z-4p-KwJ">
-                                <rect key="frame" x="367" y="59" width="35" height="35"/>
+                                <rect key="frame" x="367" y="63" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="LHf-fg-MYI"/>
                                     <constraint firstAttribute="height" constant="35" id="XdQ-0k-7od"/>
@@ -71,7 +68,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="bCo-5Q-2C3" customClass="HorizontalFadeView" customModule="Rise" customModuleProvider="target">
+                                    <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="bCo-5Q-2C3" customClass="HorizontalFadeView">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -107,12 +104,6 @@
                                     <outletCollection property="gestureRecognizers" destination="PDc-vU-zAb" appends="YES" id="CZy-xp-iGZ"/>
                                 </connections>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LjJ-vb-W3f" customClass="AutoRefreshableLabel" customModule="Rise" customModuleProvider="target">
-                                <rect key="frame" x="10" y="489" width="394" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IV8-6m-UNl">
                                 <rect key="frame" x="10" y="407" width="394" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -124,7 +115,6 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="LjJ-vb-W3f" firstAttribute="leading" secondItem="tYg-Dq-Zrm" secondAttribute="leading" constant="10" id="2C1-rK-9Sb"/>
                             <constraint firstItem="w1G-qy-7HK" firstAttribute="centerY" secondItem="APf-fs-GD3" secondAttribute="centerY" id="4nM-ob-BD8"/>
                             <constraint firstItem="xQO-cs-6vp" firstAttribute="top" secondItem="jtf-Rn-AX8" secondAttribute="bottom" constant="14" id="5Z8-3n-YcD"/>
                             <constraint firstItem="eFW-pU-9p4" firstAttribute="leading" secondItem="tYg-Dq-Zrm" secondAttribute="leading" constant="10" id="B0C-ZI-W4b"/>
@@ -137,24 +127,16 @@
                             <constraint firstItem="tYg-Dq-Zrm" firstAttribute="bottom" secondItem="xQO-cs-6vp" secondAttribute="bottom" constant="20" id="Sbi-BK-omK"/>
                             <constraint firstItem="jtf-Rn-AX8" firstAttribute="centerX" secondItem="APf-fs-GD3" secondAttribute="centerX" id="WkN-RN-BrL"/>
                             <constraint firstItem="xQO-cs-6vp" firstAttribute="leading" secondItem="APf-fs-GD3" secondAttribute="leading" constant="10" id="YnV-so-rHm"/>
-                            <constraint firstItem="EL6-ld-qe1" firstAttribute="trailing" secondItem="tYg-Dq-Zrm" secondAttribute="trailing" id="e5p-b5-oII"/>
                             <constraint firstItem="IV8-6m-UNl" firstAttribute="leading" secondItem="APf-fs-GD3" secondAttribute="leading" constant="10" id="e8K-fo-ajw"/>
-                            <constraint firstItem="EL6-ld-qe1" firstAttribute="leading" secondItem="tYg-Dq-Zrm" secondAttribute="leading" id="f2A-UL-cc0"/>
                             <constraint firstAttribute="trailing" secondItem="xQO-cs-6vp" secondAttribute="trailing" constant="10" id="iti-dJ-iJh"/>
-                            <constraint firstAttribute="bottom" secondItem="EL6-ld-qe1" secondAttribute="bottom" id="lDd-yX-bu5"/>
                             <constraint firstItem="eFW-pU-9p4" firstAttribute="centerY" secondItem="m1Z-4p-KwJ" secondAttribute="centerY" constant="-2" id="mhJ-Ra-QFR"/>
-                            <constraint firstItem="tYg-Dq-Zrm" firstAttribute="trailing" secondItem="LjJ-vb-W3f" secondAttribute="trailing" constant="10" id="r1c-4j-vqr"/>
-                            <constraint firstItem="EL6-ld-qe1" firstAttribute="top" secondItem="APf-fs-GD3" secondAttribute="top" id="s5t-jC-Wuu"/>
-                            <constraint firstItem="LjJ-vb-W3f" firstAttribute="top" secondItem="w1G-qy-7HK" secondAttribute="bottom" constant="16" id="uKi-7b-l0k"/>
                             <constraint firstAttribute="trailing" secondItem="IV8-6m-UNl" secondAttribute="trailing" constant="10" id="zip-zD-8In"/>
                         </constraints>
                         <connections>
-                            <outlet property="backgroundImageView" destination="EL6-ld-qe1" id="ne7-n0-Sye"/>
+                            <outlet property="centerContainerView" destination="w1G-qy-7HK" id="wpj-cF-ns9"/>
                             <outlet property="fadeView" destination="bCo-5Q-2C3" id="voa-hV-Vsh"/>
                             <outlet property="startSleepButton" destination="jtf-Rn-AX8" id="hmx-eI-XMF"/>
                             <outlet property="startSleepLabel" destination="xQO-cs-6vp" id="b7z-jB-b1Z"/>
-                            <outlet property="timeUntilWakeUpLabel" destination="LjJ-vb-W3f" id="4iI-yb-hPK"/>
-                            <outlet property="timeUntilWakeUpTopConstraint" destination="uKi-7b-l0k" id="RQF-QH-9CN"/>
                             <outlet property="titleLabel" destination="eFW-pU-9p4" id="piW-IM-qJt"/>
                             <outlet property="toSleepLabel" destination="IV8-6m-UNl" id="GGU-bW-jij"/>
                             <outlet property="wakeUpContainerHeightConstraint" destination="iUn-wb-UPq" id="G5i-jN-mWW"/>
@@ -177,14 +159,8 @@
             <point key="canvasLocation" x="-191.30434782608697" y="78.348214285714278"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="jtf-Rn-AX8">
-            <size key="intrinsicContentSize" width="111" height="111"/>
-        </designable>
-    </designables>
     <resources>
         <image name="beginToSleepIcon" width="111" height="111"/>
-        <image name="multiply.circle" catalog="system" width="128" height="121"/>
-        <image name="rich" width="320" height="568"/>
+        <image name="multiply.circle" catalog="system" width="128" height="123"/>
     </resources>
 </document>

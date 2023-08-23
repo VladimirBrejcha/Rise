@@ -44,7 +44,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qus-zp-R0h">
                                 <rect key="frame" x="40" y="788" width="334" height="44"/>
                                 <subviews>
-                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TaK-KH-eXq" customClass="Button" customModule="Rise" customModuleProvider="target">
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TaK-KH-eXq" customClass="ObjcButton">
                                         <rect key="frame" x="0.0" y="0.0" width="162" height="44"/>
                                         <color key="backgroundColor" white="1" alpha="0.070000000000000007" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -55,7 +55,7 @@
                                             <action selector="backTouchUp:" destination="mrk-j1-Kya" eventType="touchUpInside" id="5Gg-aw-sc0"/>
                                         </connections>
                                     </button>
-                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t3a-mE-e9U" customClass="Button" customModule="Rise" customModuleProvider="target">
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t3a-mE-e9U" customClass="ObjcButton">
                                         <rect key="frame" x="172" y="0.0" width="162" height="44"/>
                                         <color key="backgroundColor" white="1" alpha="0.070000000000000007" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
