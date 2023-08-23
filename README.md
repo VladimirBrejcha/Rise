@@ -40,3 +40,5 @@ Don't just sleep better, rise better! Begin your sleep transformation journey wi
 [Open Source Notes](/OpenSourceNotes.md)
 
 #### Built with love ❤️ by [@VladimirBrejcha](github.com/vladimirbrejcha)
+
+[Source Code](https://github.com/VladimirBrejcha/Rise)
