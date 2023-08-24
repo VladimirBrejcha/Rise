@@ -21,3 +21,4 @@ public typealias UseCases =
 & HasScheduleSleepNotifications
 & HasPlayAlarmMelody
 & HasRequestNotificationPermissions
+& HasPlayWhileSleepingMelody

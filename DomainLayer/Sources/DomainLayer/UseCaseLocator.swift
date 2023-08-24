@@ -103,9 +103,13 @@ public final class UseCaseLocator: UseCases {
         scheduleRepository: scheduleRepository,
         notificationManager: notificationManager
     )
+    
+    public var playAlarmMelody: PlayMelody {
+        PlayAlarmMelody()
+    }
 
-    public var playAlarmMelody: PlayAlarmMelody {
-        PlayAlarmMelodyImpl()
+    public var playWhileSleepingMelody: PlayMelody {
+        PlayWhileSleepingMelody(melody: .thunderstorm)
     }
 
     public lazy var requestNotificationPermissions: RequestNotificationPermissions =

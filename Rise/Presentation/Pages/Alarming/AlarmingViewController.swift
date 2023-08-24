@@ -21,7 +21,7 @@ final class AlarmingViewController: UIViewController, ViewController {
     typealias View = AlarmingView
     
     private let changeScreenBrightness: ChangeScreenBrightness
-    private let playAlarmMelody: PlayAlarmMelody
+    private let playAlarmMelody: PlayMelody
     private let out: Out
     
     // MARK: - LifeCycle
