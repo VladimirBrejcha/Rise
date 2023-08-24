@@ -60,11 +60,11 @@ final class PlayBeforeAlarmMelody: PlayMelody {
         guard let player else { return }
         player.volume = 0.1
         timeObserver = player.addPeriodicTimeObserver(
-            forInterval: CMTime(seconds: 5,
+            forInterval: CMTime(seconds: 15,
                                 preferredTimescale: CMTimeScale(NSEC_PER_SEC)),
             queue: DispatchQueue.main
         ) { _ in
-            guard player.volume < 0.75 else { return }
+            guard player.volume < 0.7 else { return }
             player.volume += 0.0125
         }
     }
