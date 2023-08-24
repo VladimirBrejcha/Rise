@@ -46,10 +46,11 @@ public final class UseCaseLocator: UseCases {
     public var manageOnboardingCompleted: ManageOnboardingCompleted {
         ManageOnboardingCompletedImpl(userData)
     }
-
-    public var adjustSchedule: AdjustSchedule {
-        AdjustScheduleImpl(scheduleRepository, userData)
-    }
+    
+    public lazy
+    var adjustSchedule: AdjustSchedule = AdjustScheduleImpl(
+        scheduleRepository, userData
+    )
 
     public var getSchedule: GetSchedule {
         GetScheduleImpl(scheduleRepository, createNextSchedule)

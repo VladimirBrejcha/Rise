@@ -24,11 +24,11 @@ class LocalDataSource<Object: NSManagedObject> {
         // Only initialize the schema when building the app with the
         // Debug build configuration.
         #if DEBUG
-//        do {
-//            try container.initializeCloudKitSchema(options: [])
-//        } catch let error {
-//            assertionFailure("Unable to initCloudKitSchema: \(error.localizedDescription)")
-//        }
+        do {
+            try container.initializeCloudKitSchema(options: [])
+        } catch let error {
+            assertionFailure("Unable to initCloudKitSchema: \(error.localizedDescription)")
+        }
         #endif
         return container
     }()
