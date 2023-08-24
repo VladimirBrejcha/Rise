@@ -109,11 +109,11 @@ public final class UseCaseLocator: UseCases {
     }
 
     public var playWhileSleepingMelody: PlayMelody {
-        PlayWhileSleepingMelody(melody: .thunderstorm)
+        PlayWhileSleepingMelody()
     }
 
     public var playBeforeAlarmMelody: PlayMelody {
-        PlayWhileSleepingMelody(melody: .rainAndBirds)
+        PlayBeforeAlarmMelody()
     }
 
     public lazy var selectAlarmMelody: SelectAlarmMelody = SelectAlarmMelodyImpl(userData: userData)

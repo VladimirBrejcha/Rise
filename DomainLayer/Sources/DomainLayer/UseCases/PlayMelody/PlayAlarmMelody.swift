@@ -2,6 +2,10 @@ import AVFoundation
 import Core
 import DataLayer
 
+public protocol HasPlayAlarmMelody {
+    var playAlarmMelody: PlayMelody { get }
+}
+
 final class PlayAlarmMelody: PlayMelody {
 
     private var alarmPlayer: AVPlayer?

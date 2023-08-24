@@ -1,11 +1,11 @@
 import AVFoundation
 import Core
 
-public protocol HasPlayWhileSleepingMelody {
-    var playWhileSleepingMelody: PlayMelody { get }
+public protocol HasPlayBeforeAlarmMelody {
+    var playBeforeAlarmMelody: PlayMelody { get }
 }
 
-final class PlayWhileSleepingMelody: PlayMelody {
+final class PlayBeforeAlarmMelody: PlayMelody {
 
     private var player: AVPlayer?
     private let audioSession = AVAudioSession.sharedInstance()
@@ -14,7 +14,7 @@ final class PlayWhileSleepingMelody: PlayMelody {
     private(set) var isActive: Bool = false
 
     init() {
-        if let url = Melody.thunderstorm.path {
+        if let url = Melody.rainAndBirds.path {
             self.player = AVPlayer(url: url)
         }
     }
@@ -58,13 +58,13 @@ final class PlayWhileSleepingMelody: PlayMelody {
 
     private func increaseVolume() {
         guard let player else { return }
-        player.volume = 0.0
+        player.volume = 0.1
         timeObserver = player.addPeriodicTimeObserver(
-            forInterval: CMTime(seconds: 0.5,
+            forInterval: CMTime(seconds: 5,
                                 preferredTimescale: CMTimeScale(NSEC_PER_SEC)),
             queue: DispatchQueue.main
         ) { _ in
-            guard player.volume < 1 else { return }
+            guard player.volume < 0.75 else { return }
             player.volume += 0.0125
         }
     }
