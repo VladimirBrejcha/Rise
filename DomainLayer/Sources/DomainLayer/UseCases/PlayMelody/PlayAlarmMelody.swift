@@ -7,16 +7,24 @@ final class PlayAlarmMelody: PlayMelody {
     private let audioSession = AVAudioSession.sharedInstance()
     private var timeObserver: Any?
 
+    private(set) var isActive: Bool = false
+
     init(melody: Melody = .defaultMelody) {
         if let url = melody.path {
             self.alarmPlayer = AVPlayer(url: url)
         }
     }
 
+    deinit {
+        stop()
+    }
+
     // MARK: - Public methods
 
     public func play()  {
-        guard let alarmPlayer = alarmPlayer else { return }
+        guard let alarmPlayer = alarmPlayer,
+              isActive == false else { return }
+        isActive = true
         do {
             try audioSession.setCategory(.playback,
                                          mode: .default,
@@ -32,7 +40,9 @@ final class PlayAlarmMelody: PlayMelody {
     }
 
     public func stop() {
-        guard let alarmPlayer = alarmPlayer else { return }
+        guard let alarmPlayer = alarmPlayer,
+              isActive else { return }
+        isActive = false
         alarmPlayer.pause()
         do {
             try audioSession.setActive(false)

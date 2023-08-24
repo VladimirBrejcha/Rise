@@ -7,6 +7,7 @@ enum Melody {
     case oldAlarmMelody
     case tiktakMelody
     case thunderstorm
+    case rainAndBirds
     
     var name: String {
         switch self {
@@ -22,13 +23,15 @@ enum Melody {
             return "tiktakMelody"
         case .thunderstorm:
             return "thunderstorm"
+        case .rainAndBirds:
+            return "rainAndBirds"
         }
     }
     
     var type: String {
         switch self {
         case .erokiaMelody: return "mp3"
-        case .thunderstorm: return "mp3"
+        case .thunderstorm, .rainAndBirds: return "mp3"
         default: return "wav"
         }
     }

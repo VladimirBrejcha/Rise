@@ -27,6 +27,7 @@ final class SleepViewController:
     & HasPreventAppSleep
     & HasChangeScreenBrightness
     & HasPlayWhileSleepingMelody
+    & HasPlayBeforeAlarmMelody
 
     typealias Params = Date
     typealias View = SleepView
@@ -38,19 +39,56 @@ final class SleepViewController:
     private var editingAlarmTime: Date?
     private var lowerBrightnessDispatchItem: DispatchWorkItem?
 
-    private let playMelody: PlayMelody
+    private let playWhileSleepingMelody: PlayMelody
+    private let playBeforeAlarmMelody: PlayMelody
+
+    private var whileSleepingPlayed = false
+
+    private lazy var sleepLengthIsEnoughForMelodies: Bool = {
+        let minsBeforeAlarm = calendar.dateComponents(
+            [.minute], from: Date.now, to: alarmTime
+        ).minute
+        guard let minsBeforeAlarm, minsBeforeAlarm >= 60
+        else { return false }
+        return true
+    }()
 
     // MARK: - AutoRefreshable
 
     var timer: Timer?
-    var dataSource: (() -> Date)? = { Date() }
+    var dataSource: (() -> Date)? = { Date.now }
     var refreshInterval: Double = 2
 
     func refresh(with data: Date) {
+
         if data >= alarmTime {
             stopRefreshing()
-            playMelody.stop()
+            playWhileSleepingMelody.stop()
+            playBeforeAlarmMelody.stop()
             out(.showAlarming)
+            return
+        }
+
+        guard sleepLengthIsEnoughForMelodies else { return }
+
+        let minsBeforeAlarm = calendar.dateComponents(
+            [.minute], from: data, to: alarmTime
+        ).minute
+        guard let minsBeforeAlarm else { return }
+
+        if whileSleepingPlayed == false
+            && minsBeforeAlarm > 30
+            && playWhileSleepingMelody.isActive == false
+        {
+            whileSleepingPlayed = true
+            playWhileSleepingMelody.play()
+        }
+
+        else if minsBeforeAlarm <= 30,
+           playBeforeAlarmMelody.isActive == false
+        {
+            playWhileSleepingMelody.stop()
+            playBeforeAlarmMelody.play()
         }
     }
 
@@ -60,7 +98,8 @@ final class SleepViewController:
         self.alarmTime = params
         self.deps = deps
         self.out = out
-        self.playMelody = deps.playWhileSleepingMelody
+        self.playWhileSleepingMelody = deps.playWhileSleepingMelody
+        self.playBeforeAlarmMelody = deps.playBeforeAlarmMelody
         super.init(nibName: nil, bundle: nil)
         deps.preventAppSleep(true)
         deps.manageActiveSleep.alarmAt = alarmTime
@@ -93,7 +132,8 @@ final class SleepViewController:
             alarmTime: "Alarm at \(alarmTime.HHmmString)",
             stopHandler: { [weak self] in
                 self?.restoreBrightness()
-                self?.playMelody.stop()
+                self?.playWhileSleepingMelody.stop()
+                self?.playBeforeAlarmMelody.stop()
                 self?.out(.showAfterSleep)
             },
             keepAppOpenedHandler: { [weak self] in
@@ -104,13 +144,12 @@ final class SleepViewController:
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        playMelody.play()
+        beginRefreshing()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         prepareToLowerBrightness(in: 3)
-        beginRefreshing()
     }
 
     override func viewWillDisappear(_ animated: Bool) {

@@ -97,6 +97,7 @@
 		92695F1A28831EB800D382C2 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 92695F1928831EB800D382C2 /* Core */; };
 		92695F1D2883267C00D382C2 /* DataLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 92695F1C2883267C00D382C2 /* DataLayer */; };
 		92C3D17F2A978DE400735F28 /* thunderstorm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 92C3D17E2A978DE400735F28 /* thunderstorm.mp3 */; };
+		92C3D1812A978E8A00735F28 /* rainAndBirds.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 92C3D1802A978E8A00735F28 /* rainAndBirds.mp3 */; };
 		92D12FDD22A44B3B0093B0A3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D12FDC22A44B3B0093B0A3 /* TabBarController.swift */; };
 		92D1FD7F28833A3E008B8EC0 /* DomainLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 92D1FD7E28833A3E008B8EC0 /* DomainLayer */; };
 		92D7D6532296F297009321AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6522296F297009321AE /* AppDelegate.swift */; };
@@ -199,6 +200,7 @@
 		92695F1728831EB100D382C2 /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Core; sourceTree = "<group>"; };
 		92695F1B28831EE400D382C2 /* DataLayer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DataLayer; sourceTree = "<group>"; };
 		92C3D17E2A978DE400735F28 /* thunderstorm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = thunderstorm.mp3; sourceTree = "<group>"; };
+		92C3D1802A978E8A00735F28 /* rainAndBirds.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rainAndBirds.mp3; sourceTree = "<group>"; };
 		92D12FDC22A44B3B0093B0A3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		92D1FD7D288338A9008B8EC0 /* DomainLayer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DomainLayer; sourceTree = "<group>"; };
 		92D1FD8028833C59008B8EC0 /* Localization */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Localization; sourceTree = "<group>"; };
@@ -661,6 +663,7 @@
 				CEEEFB322A5DAC8C0060D6EA /* cockMelody.wav */,
 				92C3D17E2A978DE400735F28 /* thunderstorm.mp3 */,
 				CEEEFB312A5DAC8C0060D6EA /* erokiaMelody.mp3 */,
+				92C3D1802A978E8A00735F28 /* rainAndBirds.mp3 */,
 				CEEEFB342A5DAC8C0060D6EA /* oldAlarmMelody.wav */,
 				CEEEFB332A5DAC8C0060D6EA /* tiktakMelody.wav */,
 				CE8BD5A02A55636300C15CD0 /* DefaultMelody.wav */,
@@ -752,6 +755,7 @@
 				CEEEFB352A5DAC8C0060D6EA /* erokiaMelody.mp3 in Resources */,
 				7E8EFA3C26EABC3900DEE564 /* CreateSchedule.storyboard in Resources */,
 				922796442A96167C00082FAF /* Assets.xcassets in Resources */,
+				92C3D1812A978E8A00735F28 /* rainAndBirds.mp3 in Resources */,
 				7EEB1E0F2443369F001ABE4A /* bellAlarm.wav in Resources */,
 				92C3D17F2A978DE400735F28 /* thunderstorm.mp3 in Resources */,
 			);

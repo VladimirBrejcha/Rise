@@ -7,16 +7,23 @@ final class PlayWhileSleepingMelody: PlayMelody {
     private let audioSession = AVAudioSession.sharedInstance()
     private var timeObserver: Any?
 
+    private(set) var isActive: Bool = false
+
     init(melody: Melody) {
         if let url = melody.path {
             self.player = AVPlayer(url: url)
         }
     }
 
+    deinit {
+        stop()
+    }
+
     // MARK: - Public methods
 
     public func play()  {
-        guard let player = player else { return }
+        guard let player = player, isActive == false else { return }
+        isActive = true
         do {
             try audioSession.setCategory(.playback,
                                          mode: .default,
@@ -30,7 +37,8 @@ final class PlayWhileSleepingMelody: PlayMelody {
     }
 
     public func stop() {
-        guard let player = player else { return }
+        guard let player = player, isActive else { return }
+        isActive = false
         player.pause()
         do {
             try audioSession.setActive(false)
