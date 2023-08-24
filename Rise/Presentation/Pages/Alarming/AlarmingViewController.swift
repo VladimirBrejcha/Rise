@@ -56,11 +56,6 @@ final class AlarmingViewController: UIViewController, ViewController {
         )
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        playAlarmMelody.play()
-    }
-
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         changeScreenBrightness(to: .high)

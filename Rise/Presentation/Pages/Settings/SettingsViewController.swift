@@ -20,6 +20,7 @@ extension Settings {
       case showOnboarding
       case showAbout
       case showRefreshSuntime
+      case showSelectAlarmMelody
     }
 
     typealias Deps = HasGetSchedule
@@ -80,6 +81,8 @@ extension Settings {
             out(.showAbout)
           case .refreshSuntime:
             out(.showRefreshSuntime)
+          case .selectAlarmMelody:
+            out(.showSelectAlarmMelody)
           }
         }
       )

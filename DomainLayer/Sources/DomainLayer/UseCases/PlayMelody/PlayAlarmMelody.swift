@@ -1,5 +1,6 @@
 import AVFoundation
 import Core
+import DataLayer
 
 final class PlayAlarmMelody: PlayMelody {
 
@@ -7,12 +8,12 @@ final class PlayAlarmMelody: PlayMelody {
     private let audioSession = AVAudioSession.sharedInstance()
     private var timeObserver: Any?
 
+    private let selectAlarmMelody: SelectAlarmMelody
+
     private(set) var isActive: Bool = false
 
-    init(melody: Melody = .defaultMelody) {
-        if let url = melody.path {
-            self.alarmPlayer = AVPlayer(url: url)
-        }
+    init(selectAlarmMelody: SelectAlarmMelody) {
+        self.selectAlarmMelody = selectAlarmMelody
     }
 
     deinit {
@@ -22,8 +23,12 @@ final class PlayAlarmMelody: PlayMelody {
     // MARK: - Public methods
 
     public func play()  {
-        guard let alarmPlayer = alarmPlayer,
-              isActive == false else { return }
+        guard isActive == false else { return }
+        let melody = selectAlarmMelody.selectedMelody
+        if let url = melody.path {
+            alarmPlayer = AVPlayer(url: url)
+        }
+        guard let alarmPlayer else { return }
         isActive = true
         do {
             try audioSession.setCategory(.playback,
@@ -40,8 +45,7 @@ final class PlayAlarmMelody: PlayMelody {
     }
 
     public func stop() {
-        guard let alarmPlayer = alarmPlayer,
-              isActive else { return }
+        guard let alarmPlayer, isActive else { return }
         isActive = false
         alarmPlayer.pause()
         do {
@@ -57,7 +61,7 @@ final class PlayAlarmMelody: PlayMelody {
     // MARK: - Private methods
 
     private func increaseVolume() {
-        guard let alarmPlayer = alarmPlayer else { return }
+        guard let alarmPlayer else { return }
         alarmPlayer.volume = 0.0
         timeObserver = alarmPlayer.addPeriodicTimeObserver(
             forInterval: CMTime(seconds: 0.5,
@@ -78,7 +82,7 @@ final class PlayAlarmMelody: PlayMelody {
     }
 
     @objc private func actionAfterStopAudio() {
-        guard let alarmPlayer = alarmPlayer else { return }
+        guard let alarmPlayer else { return }
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             alarmPlayer.seek(to: .zero)
             alarmPlayer.play()

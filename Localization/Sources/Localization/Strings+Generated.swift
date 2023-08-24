@@ -205,6 +205,8 @@ public enum Text {
       public static let editSchedule = Text.tr("Localizable", "settings.description.edit_schedule")
       /// Update sunrise/sunset if your location changed
       public static let refresh = Text.tr("Localizable", "settings.description.refresh")
+      /// Wake up with your favorite alarm sound
+      public static let selectAlarmMelody = Text.tr("Localizable", "settings.description.select_alarm_melody")
       /// If forgot what it is all for
       public static let showOnboarding = Text.tr("Localizable", "settings.description.show_onboarding")
     }
@@ -215,6 +217,8 @@ public enum Text {
       public static let editSchedule = Text.tr("Localizable", "settings.title.edit_schedule")
       /// Refresh sun times
       public static let refresh = Text.tr("Localizable", "settings.title.refresh")
+      /// Select Alarm Melody
+      public static let selectAlarmMelody = Text.tr("Localizable", "settings.title.select_alarm_melody")
       /// Show onboarding
       public static let showOnboarding = Text.tr("Localizable", "settings.title.show_onboarding")
     }

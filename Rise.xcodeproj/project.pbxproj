@@ -98,6 +98,8 @@
 		92695F1D2883267C00D382C2 /* DataLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 92695F1C2883267C00D382C2 /* DataLayer */; };
 		92C3D17F2A978DE400735F28 /* thunderstorm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 92C3D17E2A978DE400735F28 /* thunderstorm.mp3 */; };
 		92C3D1812A978E8A00735F28 /* rainAndBirds.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 92C3D1802A978E8A00735F28 /* rainAndBirds.mp3 */; };
+		92C3D1842A97967000735F28 /* SelectAlarmMelodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C3D1832A97967000735F28 /* SelectAlarmMelodyView.swift */; };
+		92C3D1862A97967800735F28 /* SelectAlarmMelodyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C3D1852A97967800735F28 /* SelectAlarmMelodyViewController.swift */; };
 		92D12FDD22A44B3B0093B0A3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D12FDC22A44B3B0093B0A3 /* TabBarController.swift */; };
 		92D1FD7F28833A3E008B8EC0 /* DomainLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 92D1FD7E28833A3E008B8EC0 /* DomainLayer */; };
 		92D7D6532296F297009321AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7D6522296F297009321AE /* AppDelegate.swift */; };
@@ -105,11 +107,11 @@
 		92E77AF822A5303400E5E21C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E77AF722A5303400E5E21C /* SettingsViewController.swift */; };
 		92E77AFA22A5304400E5E21C /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E77AF922A5304400E5E21C /* TodayViewController.swift */; };
 		92FE417A28833DE700F328DB /* Localization in Frameworks */ = {isa = PBXBuildFile; productRef = 92FE417928833DE700F328DB /* Localization */; };
-		CE8BD5A12A55636300C15CD0 /* DefaultMelody.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE8BD5A02A55636300C15CD0 /* DefaultMelody.wav */; };
-		CEEEFB352A5DAC8C0060D6EA /* erokiaMelody.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CEEEFB312A5DAC8C0060D6EA /* erokiaMelody.mp3 */; };
-		CEEEFB362A5DAC8C0060D6EA /* cockMelody.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEEEFB322A5DAC8C0060D6EA /* cockMelody.wav */; };
-		CEEEFB372A5DAC8C0060D6EA /* tiktakMelody.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEEEFB332A5DAC8C0060D6EA /* tiktakMelody.wav */; };
-		CEEEFB382A5DAC8C0060D6EA /* oldAlarmMelody.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEEEFB342A5DAC8C0060D6EA /* oldAlarmMelody.wav */; };
+		CE8BD5A12A55636300C15CD0 /* rise.wav in Resources */ = {isa = PBXBuildFile; fileRef = CE8BD5A02A55636300C15CD0 /* rise.wav */; };
+		CEEEFB352A5DAC8C0060D6EA /* softMagical.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CEEEFB312A5DAC8C0060D6EA /* softMagical.mp3 */; };
+		CEEEFB362A5DAC8C0060D6EA /* roosters.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEEEFB322A5DAC8C0060D6EA /* roosters.wav */; };
+		CEEEFB372A5DAC8C0060D6EA /* tiktak.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEEEFB332A5DAC8C0060D6EA /* tiktak.wav */; };
+		CEEEFB382A5DAC8C0060D6EA /* oldAlarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = CEEEFB342A5DAC8C0060D6EA /* oldAlarm.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -201,6 +203,8 @@
 		92695F1B28831EE400D382C2 /* DataLayer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DataLayer; sourceTree = "<group>"; };
 		92C3D17E2A978DE400735F28 /* thunderstorm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = thunderstorm.mp3; sourceTree = "<group>"; };
 		92C3D1802A978E8A00735F28 /* rainAndBirds.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rainAndBirds.mp3; sourceTree = "<group>"; };
+		92C3D1832A97967000735F28 /* SelectAlarmMelodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAlarmMelodyView.swift; sourceTree = "<group>"; };
+		92C3D1852A97967800735F28 /* SelectAlarmMelodyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAlarmMelodyViewController.swift; sourceTree = "<group>"; };
 		92D12FDC22A44B3B0093B0A3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		92D1FD7D288338A9008B8EC0 /* DomainLayer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DomainLayer; sourceTree = "<group>"; };
 		92D1FD8028833C59008B8EC0 /* Localization */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Localization; sourceTree = "<group>"; };
@@ -210,11 +214,11 @@
 		92D7D65E2296F298009321AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92E77AF722A5303400E5E21C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		92E77AF922A5304400E5E21C /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
-		CE8BD5A02A55636300C15CD0 /* DefaultMelody.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = DefaultMelody.wav; sourceTree = "<group>"; };
-		CEEEFB312A5DAC8C0060D6EA /* erokiaMelody.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = erokiaMelody.mp3; sourceTree = "<group>"; };
-		CEEEFB322A5DAC8C0060D6EA /* cockMelody.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cockMelody.wav; sourceTree = "<group>"; };
-		CEEEFB332A5DAC8C0060D6EA /* tiktakMelody.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tiktakMelody.wav; sourceTree = "<group>"; };
-		CEEEFB342A5DAC8C0060D6EA /* oldAlarmMelody.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = oldAlarmMelody.wav; sourceTree = "<group>"; };
+		CE8BD5A02A55636300C15CD0 /* rise.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rise.wav; sourceTree = "<group>"; };
+		CEEEFB312A5DAC8C0060D6EA /* softMagical.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = softMagical.mp3; sourceTree = "<group>"; };
+		CEEEFB322A5DAC8C0060D6EA /* roosters.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = roosters.wav; sourceTree = "<group>"; };
+		CEEEFB332A5DAC8C0060D6EA /* tiktak.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tiktak.wav; sourceTree = "<group>"; };
+		CEEEFB342A5DAC8C0060D6EA /* oldAlarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = oldAlarm.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -431,6 +435,7 @@
 		7E5A1EB428300A66005F19D6 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				92C3D1822A97965D00735F28 /* SelectAlarmMelody */,
 				7E43065526EE2FBE00B67315 /* About */,
 				7E346CE1274A5BFE00848DBB /* AdjustSchedule */,
 				7EB73414274EBC2800DC7758 /* AfterSleep */,
@@ -616,6 +621,15 @@
 			path = Sleep;
 			sourceTree = "<group>";
 		};
+		92C3D1822A97965D00735F28 /* SelectAlarmMelody */ = {
+			isa = PBXGroup;
+			children = (
+				92C3D1832A97967000735F28 /* SelectAlarmMelodyView.swift */,
+				92C3D1852A97967800735F28 /* SelectAlarmMelodyViewController.swift */,
+			);
+			path = SelectAlarmMelody;
+			sourceTree = "<group>";
+		};
 		92D7D6462296F297009321AE = {
 			isa = PBXGroup;
 			children = (
@@ -660,13 +674,13 @@
 		CEA3AC022A5ABBBA004A32CE /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				CEEEFB322A5DAC8C0060D6EA /* cockMelody.wav */,
+				CEEEFB322A5DAC8C0060D6EA /* roosters.wav */,
 				92C3D17E2A978DE400735F28 /* thunderstorm.mp3 */,
-				CEEEFB312A5DAC8C0060D6EA /* erokiaMelody.mp3 */,
+				CEEEFB312A5DAC8C0060D6EA /* softMagical.mp3 */,
 				92C3D1802A978E8A00735F28 /* rainAndBirds.mp3 */,
-				CEEEFB342A5DAC8C0060D6EA /* oldAlarmMelody.wav */,
-				CEEEFB332A5DAC8C0060D6EA /* tiktakMelody.wav */,
-				CE8BD5A02A55636300C15CD0 /* DefaultMelody.wav */,
+				CEEEFB342A5DAC8C0060D6EA /* oldAlarm.wav */,
+				CEEEFB332A5DAC8C0060D6EA /* tiktak.wav */,
+				CE8BD5A02A55636300C15CD0 /* rise.wav */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -744,15 +758,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				12FD5FB72A70FB21003A532E /* shum.wav in Resources */,
-				CEEEFB382A5DAC8C0060D6EA /* oldAlarmMelody.wav in Resources */,
-				CE8BD5A12A55636300C15CD0 /* DefaultMelody.wav in Resources */,
+				CEEEFB382A5DAC8C0060D6EA /* oldAlarm.wav in Resources */,
+				CE8BD5A12A55636300C15CD0 /* rise.wav in Resources */,
 				7E8EFA3226EABC2F00DEE564 /* Sleep.storyboard in Resources */,
-				CEEEFB362A5DAC8C0060D6EA /* cockMelody.wav in Resources */,
+				CEEEFB362A5DAC8C0060D6EA /* roosters.wav in Resources */,
 				92695F1828831EB100D382C2 /* Core in Resources */,
-				CEEEFB372A5DAC8C0060D6EA /* tiktakMelody.wav in Resources */,
+				CEEEFB372A5DAC8C0060D6EA /* tiktak.wav in Resources */,
 				924C45442A96192E003D67CF /* LaunchScreen.storyboard in Resources */,
 				9250DF382A950F5E007FBCD5 /* UILibrary in Resources */,
-				CEEEFB352A5DAC8C0060D6EA /* erokiaMelody.mp3 in Resources */,
+				CEEEFB352A5DAC8C0060D6EA /* softMagical.mp3 in Resources */,
 				7E8EFA3C26EABC3900DEE564 /* CreateSchedule.storyboard in Resources */,
 				922796442A96167C00082FAF /* Assets.xcassets in Resources */,
 				92C3D1812A978E8A00735F28 /* rainAndBirds.mp3 in Resources */,
@@ -822,6 +836,7 @@
 				92D7D6552296F297009321AE /* SleepViewController.swift in Sources */,
 				7E541AF723FB384F00BAD710 /* ConfigurableCell.swift in Sources */,
 				7EAD159F25F50DF700392E6A /* DaysViewController.swift in Sources */,
+				92C3D1862A97967800735F28 /* SelectAlarmMelodyViewController.swift in Sources */,
 				7E07A10123AFBEE300B9D61A /* WelcomeCreateScheduleViewController.swift in Sources */,
 				7E989FE125F5B0DF001954CD /* CollectionPageScrollDelegate.swift in Sources */,
 				7E9AC0DC28720C7F00E0153E /* KeepAppOpenedSuggestion.swift in Sources */,
@@ -853,6 +868,7 @@
 				7E9D9C1324E5DA57000772C0 /* SchedulePageView.swift in Sources */,
 				7E9D9C0824E596DA000772C0 /* PrepareToSleepView.swift in Sources */,
 				7E354403283AA21F00C1E149 /* Days.swift in Sources */,
+				92C3D1842A97967000735F28 /* SelectAlarmMelodyView.swift in Sources */,
 				7EEB1E122443370F001ABE4A /* AlarmSounds.swift in Sources */,
 				7E9D9C0424E58F39000772C0 /* SleepView.swift in Sources */,
 				7E43064B26ED4FF600B67315 /* SettingsView.swift in Sources */,

@@ -22,7 +22,7 @@ final class PlayWhileSleepingMelody: PlayMelody {
     // MARK: - Public methods
 
     public func play()  {
-        guard let player = player, isActive == false else { return }
+        guard let player, isActive == false else { return }
         isActive = true
         do {
             try audioSession.setCategory(.playback,
@@ -37,7 +37,7 @@ final class PlayWhileSleepingMelody: PlayMelody {
     }
 
     public func stop() {
-        guard let player = player, isActive else { return }
+        guard let player, isActive else { return }
         isActive = false
         player.pause()
         do {
@@ -53,7 +53,7 @@ final class PlayWhileSleepingMelody: PlayMelody {
     // MARK: - Private methods
 
     private func increaseVolume() {
-        guard let player = player else { return }
+        guard let player else { return }
         player.volume = 0.0
         timeObserver = player.addPeriodicTimeObserver(
             forInterval: CMTime(seconds: 0.5,

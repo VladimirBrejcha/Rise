@@ -107,6 +107,8 @@ final class RootCoordinator {
                 nc.present(about, with: .modal)
             case .showRefreshSuntime:
                 nc.present(refreshSunTimes, with: .modal)
+            case .showSelectAlarmMelody:
+                nc.present(selectAlarmMelody, with: .modal)
             }
         }
     }
@@ -202,6 +204,15 @@ final class RootCoordinator {
         .init(deps: useCases) { [unowned nc = navigationController] command in
             switch command {
             case .finish:
+                nc.dismiss(animated: true)
+            }
+        }
+    }
+
+    private var selectAlarmMelody: SelectAlarmMelodyViewController {
+        .init(deps: useCases) { [unowned nc = navigationController] command in
+            switch command {
+            case .save, .close:
                 nc.dismiss(animated: true)
             }
         }

@@ -105,7 +105,7 @@ public final class UseCaseLocator: UseCases {
     )
 
     public var playAlarmMelody: PlayMelody {
-        PlayAlarmMelody()
+        PlayAlarmMelody(selectAlarmMelody: selectAlarmMelody)
     }
 
     public var playWhileSleepingMelody: PlayMelody {
@@ -114,6 +114,12 @@ public final class UseCaseLocator: UseCases {
 
     public var playBeforeAlarmMelody: PlayMelody {
         PlayWhileSleepingMelody(melody: .rainAndBirds)
+    }
+
+    public lazy var selectAlarmMelody: SelectAlarmMelody = SelectAlarmMelodyImpl(userData: userData)
+
+    public var playMelodyPreview: PlayMelodyPreview {
+        PlayMelodyPreviewImpl()
     }
 
     public lazy var requestNotificationPermissions: RequestNotificationPermissions =

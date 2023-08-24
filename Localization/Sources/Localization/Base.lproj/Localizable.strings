@@ -18,6 +18,8 @@
 "settings.description.about" = "Learn more about Rise";
 "settings.title.refresh" = "Refresh sun times";
 "settings.description.refresh" = "Update sunrise/sunset if your location changed";
+"settings.title.select_alarm_melody" = "Select Alarm Melody";
+"settings.description.select_alarm_melody" = "Wake up with your favorite alarm sound";
 "about.legal.terms_and_conditions" = "Terms and Conditions";
 "about.legal.privacy_policy" = "Privacy Policy";
 "about.legal.open_source" = "License and Open Source Notes";

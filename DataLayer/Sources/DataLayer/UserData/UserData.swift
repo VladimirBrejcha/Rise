@@ -11,4 +11,6 @@ public protocol UserData: AnyObject {
     var activeSleepEndDate: Date? { get set }
     var notificationsSuggested: Bool { get set }
     func invalidateActiveSleep()
+
+    var selectedAlarmMelody: String? { get set }
 }
