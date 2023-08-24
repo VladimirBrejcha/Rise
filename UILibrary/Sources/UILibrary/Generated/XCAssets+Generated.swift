@@ -35,7 +35,6 @@ public enum Asset {
     public static let `default` = ImageAsset(name: "default")
     public static let rich = ImageAsset(name: "rich")
   }
-  public static let calendar = ImageAsset(name: "calendar")
   public static let cancel = ImageAsset(name: "cancel")
   public static let fallasleep = ImageAsset(name: "fallasleep")
   public static let launchScreenLogo = ImageAsset(name: "launchScreenLogo")
