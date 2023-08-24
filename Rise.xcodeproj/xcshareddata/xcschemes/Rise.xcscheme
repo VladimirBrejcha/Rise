@@ -61,7 +61,7 @@
          </BuildableReference>
       </BuildableProductRunnable>
       <LocationScenarioReference
-         identifier = "Hong Kong, China"
+         identifier = "com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier"
          referenceType = "1">
       </LocationScenarioReference>
    </LaunchAction>
