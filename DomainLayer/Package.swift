@@ -13,12 +13,13 @@ let package = Package(
   dependencies: [
     .package(path: "Core/"),
     .package(path: "DataLayer/"),
-    .package(path: "Localization/")
+    .package(path: "Localization/"),
+    .package(path: "UILibrary/")
   ],
   targets: [
     .target(
       name: "DomainLayer",
-      dependencies: ["DataLayer", "Core", "Localization"]),
+      dependencies: ["DataLayer", "UILibrary", "Core", "Localization"]),
     .testTarget(
       name: "DomainLayerTests",
       dependencies: ["DomainLayer"]),
