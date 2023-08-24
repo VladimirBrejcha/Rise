@@ -125,6 +125,15 @@ public enum Style {
 
     public struct Text {
 
+        public init(font: UIFont,
+                    color: UIColor? = nil,
+                    alignment: NSTextAlignment? = nil
+        ) {
+            self.font = font
+            self.color = color
+            self.alignment = alignment
+        }
+
         public let font: UIFont
         private(set) var color: UIColor?
         private(set) var alignment: NSTextAlignment?
@@ -173,11 +182,25 @@ public enum Style {
 
     public struct Button {
 
-        private(set) var disabledTitleColor: UIColor? = nil
-        private(set) var selectedTitleColor: UIColor? = nil
+        public init(
+            disabledTitleColor: UIColor? = nil,
+            selectedTitleColor: UIColor? = nil,
+            titleStyle: Style.Text,
+            backgroundColor: UIColor = .clear,
+            effects: Style.Layer? = nil
+        ) {
+            self.disabledTitleColor = disabledTitleColor
+            self.selectedTitleColor = selectedTitleColor
+            self.titleStyle = titleStyle
+            self.backgroundColor = backgroundColor
+            self.effects = effects
+        }
+
+        private(set) var disabledTitleColor: UIColor?
+        private(set) var selectedTitleColor: UIColor?
         let titleStyle: Text
-        private(set) var backgroundColor: UIColor = .clear
-        private(set) var effects: Layer? = nil
+        private(set) var backgroundColor: UIColor
+        private(set) var effects: Layer?
 
         // MARK: Instances
 

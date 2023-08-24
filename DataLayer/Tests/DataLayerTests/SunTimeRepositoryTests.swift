@@ -26,6 +26,10 @@ class SunTimeRepositoryTests: XCTestCase {
     }
 
     class SunTimeAPIServiceFakeDataImpl: WeatherService {
+        func getAttribution() async throws -> WKLegal {
+            .init(img: Data(), url: URL(filePath: "/"))
+        }
+
         private let fakeData: [SunTime]
 
         init(fakeData: [SunTime]) {
@@ -42,67 +46,64 @@ class SunTimeRepositoryTests: XCTestCase {
 
     // MARK: - Tests
 
-    func testLocalOnly() {
-        setUp()
+    func testLocalOnly() async throws {
+        try await setUp()
 
         let repository = SunTimeRepositoryImpl(
             SunTimeCoreDataServiceFakeDataImpl(fakeData: fakeSunTimes),
             SunTimeAPIServiceFakeDataImpl(fakeData: [])
         )
 
-        repository.requestSunTimes(
+        let result = await repository.requestSunTimes(
             dates: fakeRequestedDates,
             location: CLLocation()
-        ) { result in
-            if case let .success(sunTimes) = result {
-                XCTAssertEqual(sunTimes.count, self.fakeRequestedDates.count)
-            } else {
-                XCTAssert(false)
-            }
+        )
+        if case let .success(sunTimes) = result {
+            XCTAssertEqual(sunTimes.0.count, fakeRequestedDates.count)
+        } else {
+            XCTAssert(false)
         }
     }
 
-    func testRemoteOnly() {
-        setUp()
+    func testRemoteOnly() async throws {
+        try await setUp()
 
         let repository = SunTimeRepositoryImpl(
             SunTimeCoreDataServiceFakeDataImpl(fakeData: []),
             SunTimeAPIServiceFakeDataImpl(fakeData: fakeSunTimes)
         )
 
-        repository.requestSunTimes(
+        let result = await repository.requestSunTimes(
             dates: fakeRequestedDates,
             location: CLLocation()
-        ) { result in
-            if case let .success(sunTimes) = result {
-                XCTAssertEqual(sunTimes.count, self.fakeRequestedDates.count)
-            } else {
-                XCTAssert(false)
-            }
+        )
+        if case let .success(sunTimes) = result {
+            XCTAssertEqual(sunTimes.0.count, fakeRequestedDates.count)
+        } else {
+            XCTAssert(false)
         }
     }
 
-    func testLocalAndRemote() {
-        setUp()
+    func testLocalAndRemote() async throws {
+        try await setUp()
 
         let repository = SunTimeRepositoryImpl(
             SunTimeCoreDataServiceFakeDataImpl(fakeData: [fakeSunTimes[0]]),
             SunTimeAPIServiceFakeDataImpl(fakeData: Array(fakeSunTimes[1...2]))
         )
 
-        repository.requestSunTimes(
+        let result = await repository.requestSunTimes(
             dates: fakeRequestedDates,
             location: CLLocation()
-        ) { result in
-            if case let .success(sunTimes) = result {
-                XCTAssertEqual(sunTimes.count, self.fakeRequestedDates.count)
-            } else {
-                XCTAssert(false)
-            }
+        )
+        if case let .success(sunTimes) = result {
+            XCTAssertEqual(sunTimes.0.count, fakeRequestedDates.count)
+        } else {
+            XCTAssert(false)
         }
     }
 
-    func testSaving() {
+    func testSaving() async throws {
         class SunTimeCoreDataServiceFakeDataSaverImpl: SunTimeLocalDataSource {
             func delete(before date: Date) throws { }
 
@@ -124,7 +125,7 @@ class SunTimeRepositoryTests: XCTestCase {
             func deleteAll() throws { }
         }
 
-        setUp()
+        try await setUp()
 
         let localDataSource = SunTimeCoreDataServiceFakeDataSaverImpl(fakeData: [fakeSunTimes[0]])
 
@@ -133,15 +134,14 @@ class SunTimeRepositoryTests: XCTestCase {
             SunTimeAPIServiceFakeDataImpl(fakeData: Array(fakeSunTimes[1...2]))
         )
 
-        repository.requestSunTimes(
+        let result = await repository.requestSunTimes(
             dates: fakeRequestedDates,
             location: CLLocation()
-        ) { result in
-            if case .success = result {
-                XCTAssertEqual(localDataSource.savedData, Array(self.fakeSunTimes[1...2]))
-            } else {
-                XCTAssert(false)
-            }
+        )
+        if case .success = result {
+            XCTAssertEqual(localDataSource.savedData, Array(fakeSunTimes[1...2]))
+        } else {
+            XCTAssert(false)
         }
     }
 
@@ -179,7 +179,7 @@ class SunTimeRepositoryTests: XCTestCase {
         wait(for: [expectation], timeout: 1)
     }
 
-    func testFail() {
+    func testFail() async throws {
         class SunTimeCoreDataServiceFailingImpl: SunTimeLocalDataSource {
             func delete(before date: Date) throws { }
 
@@ -193,27 +193,30 @@ class SunTimeRepositoryTests: XCTestCase {
         }
 
         class SunTimeAPIServiceFailingImpl: WeatherService {
+            func getAttribution() async throws -> WKLegal {
+                WKLegal(img: Data(), url: URL(filePath: "/"))
+            }
+
             func requestSunTimes(for dateInterval: DateInterval, location: CLLocation) async throws -> [SunTime] {
                 throw NetworkError.internalError
             }
         }
 
-        setUp()
+        try await setUp()
 
         let repository = SunTimeRepositoryImpl(
             SunTimeCoreDataServiceFailingImpl(),
             SunTimeAPIServiceFailingImpl()
         )
 
-        repository.requestSunTimes(
+        let result = await repository.requestSunTimes(
             dates: fakeRequestedDates,
             location: CLLocation()
-        ) { result in
-            if case .success = result {
-                XCTAssert(false)
-            } else {
-                XCTAssert(true)
-            }
+        )
+        if case .success = result {
+            XCTAssert(false)
+        } else {
+            XCTAssert(true)
         }
     }
 

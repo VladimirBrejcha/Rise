@@ -12,15 +12,12 @@ let package = Package(
             targets: ["UILibrary"]),
     ],
     dependencies: [
-        .package(path: "Core/"),
+        .package(path: "Core/")
     ],
     targets: [
         .target(
             name: "UILibrary",
             dependencies: ["Core",],
-            resources: [.process("Resources")]),
-        .testTarget(
-            name: "UILibraryTests",
-            dependencies: ["UILibrary"]),
+            resources: [.process("Resources")])
     ]
 )
