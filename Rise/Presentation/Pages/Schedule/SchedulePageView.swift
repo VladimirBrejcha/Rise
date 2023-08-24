@@ -28,6 +28,7 @@ extension SchedulePage {
     
     private lazy var middleButton: Button = {
       let button = Button()
+      button.applyStyle(.secondary)
       button.onTouchUp = { [weak self] in
         self?.state?.middleButtonHandler()
       }

@@ -168,13 +168,13 @@ extension SchedulePage {
             rootView.setState(
                 View.State(
                     showCells: .yes(sleepDurationCell, intensityCell, wakeUpCell, bedtimeCell),
-                    middleButtonTitle: pauseSchedule.isOnPause ? "Resume" : "Pause",
+                    middleButtonTitle: pauseSchedule.isOnPause ? "Resume Schedule" : "Pause Schedule",
                     middleButtonHandler: { [weak self] in
                         guard let self = self, let state = self.rootView.state else { return }
                         self.pauseSchedule(!self.pauseSchedule.isOnPause)
                         self.rootView.setState(
                             state.changing {
-                                $0.middleButtonTitle = self.pauseSchedule.isOnPause ? "Resume" : "Pause"
+                                $0.middleButtonTitle = self.pauseSchedule.isOnPause ? "Resume Schedule" : "Pause Schedule"
                             }
                         )
                     }
