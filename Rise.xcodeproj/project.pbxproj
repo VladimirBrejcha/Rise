@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		12FD5FB72A70FB21003A532E /* shum.wav in Resources */ = {isa = PBXBuildFile; fileRef = 12FD5FB62A70FB21003A532E /* shum.wav */; };
 		7E07A10123AFBEE300B9D61A /* WelcomeCreateScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E07A10023AFBEE300B9D61A /* WelcomeCreateScheduleViewController.swift */; };
 		7E13C71F27617F73009310CD /* UITabBarItem+withSystemIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E13C71E27617F73009310CD /* UITabBarItem+withSystemIcons.swift */; };
 		7E153969274801F100CC2E7B /* EditScheduleSegmentedControlCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E153968274801F100CC2E7B /* EditScheduleSegmentedControlCell.swift */; };
@@ -81,8 +80,6 @@
 		7EE3EB94274D7D390000CFDE /* KeepAppOpenedSuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE3EB91274D7D390000CFDE /* KeepAppOpenedSuggestionView.swift */; };
 		7EE3EB95274D7D390000CFDE /* KeepAppOpenedSuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE3EB92274D7D390000CFDE /* KeepAppOpenedSuggestionViewController.swift */; };
 		7EEB1E0D24424010001ABE4A /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB1E0C24424010001ABE4A /* AudioPlayer.swift */; };
-		7EEB1E0F2443369F001ABE4A /* bellAlarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7EEB1E0E2443369F001ABE4A /* bellAlarm.wav */; };
-		7EEB1E122443370F001ABE4A /* AlarmSounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEB1E112443370F001ABE4A /* AlarmSounds.swift */; };
 		7EF4C195240412D80098135A /* EditScheduleDatePickerTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF4C193240412D80098135A /* EditScheduleDatePickerTableCell.swift */; };
 		7EF4C198240412EC0098135A /* EditScheduleDatePickerTableCell+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF4C197240412EC0098135A /* EditScheduleDatePickerTableCell+Model.swift */; };
 		7EF4C19D240436CD0098135A /* EditScheduleSliderTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF4C19B240436CD0098135A /* EditScheduleSliderTableCell.swift */; };
@@ -116,7 +113,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		12FD5FB62A70FB21003A532E /* shum.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shum.wav; sourceTree = "<group>"; };
 		7E07A10023AFBEE300B9D61A /* WelcomeCreateScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCreateScheduleViewController.swift; sourceTree = "<group>"; };
 		7E13C71E27617F73009310CD /* UITabBarItem+withSystemIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarItem+withSystemIcons.swift"; sourceTree = "<group>"; };
 		7E153968274801F100CC2E7B /* EditScheduleSegmentedControlCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScheduleSegmentedControlCell.swift; sourceTree = "<group>"; };
@@ -188,8 +184,6 @@
 		7EE3EB92274D7D390000CFDE /* KeepAppOpenedSuggestionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeepAppOpenedSuggestionViewController.swift; sourceTree = "<group>"; };
 		7EE939162340F68800FE9954 /* SchedulePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchedulePageViewController.swift; sourceTree = "<group>"; };
 		7EEB1E0C24424010001ABE4A /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
-		7EEB1E0E2443369F001ABE4A /* bellAlarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bellAlarm.wav; sourceTree = "<group>"; };
-		7EEB1E112443370F001ABE4A /* AlarmSounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSounds.swift; sourceTree = "<group>"; };
 		7EF4C193240412D80098135A /* EditScheduleDatePickerTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScheduleDatePickerTableCell.swift; sourceTree = "<group>"; };
 		7EF4C197240412EC0098135A /* EditScheduleDatePickerTableCell+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditScheduleDatePickerTableCell+Model.swift"; sourceTree = "<group>"; };
 		7EF4C19B240436CD0098135A /* EditScheduleSliderTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScheduleSliderTableCell.swift; sourceTree = "<group>"; };
@@ -529,21 +523,11 @@
 			path = KeepAppOpenedSuggestion;
 			sourceTree = "<group>";
 		};
-		7EEB1E10244336A7001ABE4A /* Sounds */ = {
-			isa = PBXGroup;
-			children = (
-				7EEB1E112443370F001ABE4A /* AlarmSounds.swift */,
-				7EEB1E0E2443369F001ABE4A /* bellAlarm.wav */,
-				12FD5FB62A70FB21003A532E /* shum.wav */,
-			);
-			path = Sounds;
-			sourceTree = "<group>";
-		};
 		7EF3EE162340F75A003BE978 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CEA3AC022A5ABBBA004A32CE /* Sounds */,
 				924C45422A96192E003D67CF /* LaunchScreen.storyboard */,
-				7EEB1E10244336A7001ABE4A /* Sounds */,
 				92D7D65E2296F298009321AE /* Info.plist */,
 				922796432A96167C00082FAF /* Assets.xcassets */,
 			);
@@ -656,7 +640,6 @@
 			children = (
 				920383272A659F6300CE6E3E /* Rise.entitlements */,
 				92D7D6522296F297009321AE /* AppDelegate.swift */,
-				CEA3AC022A5ABBBA004A32CE /* Sounds */,
 				7E5A1EA5282FE009005F19D6 /* Presentation */,
 				7E15397127494C1000CC2E7B /* AudioPlayer */,
 				92D7D68422980138009321AE /* UI */,
@@ -760,7 +743,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12FD5FB72A70FB21003A532E /* shum.wav in Resources */,
 				CEEEFB382A5DAC8C0060D6EA /* oldAlarm.wav in Resources */,
 				CE8BD5A12A55636300C15CD0 /* rise.wav in Resources */,
 				7E8EFA3226EABC2F00DEE564 /* Sleep.storyboard in Resources */,
@@ -773,7 +755,6 @@
 				7E8EFA3C26EABC3900DEE564 /* CreateSchedule.storyboard in Resources */,
 				922796442A96167C00082FAF /* Assets.xcassets in Resources */,
 				92C3D1812A978E8A00735F28 /* rainAndBirds.mp3 in Resources */,
-				7EEB1E0F2443369F001ABE4A /* bellAlarm.wav in Resources */,
 				92C3D17F2A978DE400735F28 /* thunderstorm.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -873,7 +854,6 @@
 				7E9D9C0824E596DA000772C0 /* PrepareToSleepView.swift in Sources */,
 				7E354403283AA21F00C1E149 /* Days.swift in Sources */,
 				92C3D1842A97967000735F28 /* SelectAlarmMelodyView.swift in Sources */,
-				7EEB1E122443370F001ABE4A /* AlarmSounds.swift in Sources */,
 				7E9D9C0424E58F39000772C0 /* SleepView.swift in Sources */,
 				7E43064B26ED4FF600B67315 /* SettingsView.swift in Sources */,
 				7E326315275EBD1E0045CEA0 /* NavigationController.swift in Sources */,
