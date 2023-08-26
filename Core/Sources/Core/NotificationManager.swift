@@ -87,4 +87,8 @@ public final class NotificationManager: NSObject {
     public func cleanDelivered() {
         center.removeAllDeliveredNotifications()
     }
+
+    public func removeNotification(by id: String) {
+        center.removePendingNotificationRequests(withIdentifiers: [id])
+    }
 }

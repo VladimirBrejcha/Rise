@@ -11,6 +11,8 @@ public protocol HasScheduleSleepNotifications {
 
 public protocol ScheduleSleepNotifications: AnyObject {
     func callAsFunction()
+    func setAlarmNotification(time: Date)
+    func cancelAlarmNotification()
 }
 
 class ScheduleSleepNotificationsImpl:
@@ -56,7 +58,7 @@ class ScheduleSleepNotificationsImpl:
         )
     }
     
-    func generateWakeUpNotification(for date: Date, index: Int) {
+    func generateWakeUpNotification(for date: Date, id: String) {
         let wakeUpComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
         let wakeUpTitle = NotificationText.textTitleWakeUp.randomElement() ?? "🌞 Rise and Shine: A New Day Beckons!"
         let wakeUpBody = NotificationText.textBodyWakeUp.randomElement() ?? "☀️ Good morning! It's a brand-new day filled with possibilities. Time to rise and shine, and make the most of it!"
@@ -64,7 +66,7 @@ class ScheduleSleepNotificationsImpl:
             title: wakeUpTitle,
             body: wakeUpBody,
             components: wakeUpComponents,
-            identifier: "time-to-wake-\(index)"
+            identifier: id
         )
     }
     
@@ -73,8 +75,17 @@ class ScheduleSleepNotificationsImpl:
             .forNextDays(numberOfDays: 10, startToday: true)
         for (i, day) in schedule.enumerated() {
             generateSleepNotification(for: day.toBed, index: i)
-            generateWakeUpNotification(for: day.wakeUp, index: i)
         }
+    }
+
+    private let wakeNotificationId = "time-to-wake"
+
+    func setAlarmNotification(time: Date) {
+        generateWakeUpNotification(for: time, id: wakeNotificationId)
+    }
+
+    func cancelAlarmNotification() {
+        notificationManager.removeNotification(by: wakeNotificationId)
     }
 }
     

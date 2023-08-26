@@ -28,6 +28,7 @@ final class SleepViewController:
     & HasChangeScreenBrightness
     & HasPlayWhileSleepingMelody
     & HasPlayBeforeAlarmMelody
+    & HasScheduleSleepNotifications
 
     typealias Params = Date
     typealias View = SleepView
@@ -103,6 +104,7 @@ final class SleepViewController:
         super.init(nibName: nil, bundle: nil)
         deps.preventAppSleep(true)
         deps.manageActiveSleep.alarmAt = alarmTime
+        deps.scheduleSleepNotifications.setAlarmNotification(time: alarmTime)
     }
 
     @available(*, unavailable)
@@ -123,7 +125,7 @@ final class SleepViewController:
                 Date().HHmmString
             },
             wakeUpInDataSource: { [weak self] in
-                if let timeLeft = self?.alarmTime.fixIfNeeded().timeIntervalSince(Date()).HHmmString {
+                if let timeLeft = self?.alarmTime.fixIfNeeded().timeIntervalSince(Date.now).HHmmString {
                     return FloatingLabel.Model(text: "Wake up in \(timeLeft)", alpha: 1)
                 } else {
                     return FloatingLabel.Model(text: "", alpha: 0)
@@ -134,6 +136,7 @@ final class SleepViewController:
                 self?.restoreBrightness()
                 self?.playWhileSleepingMelody.stop()
                 self?.playBeforeAlarmMelody.stop()
+                self?.deps.scheduleSleepNotifications.cancelAlarmNotification()
                 self?.out(.showAfterSleep)
             },
             keepAppOpenedHandler: { [weak self] in
